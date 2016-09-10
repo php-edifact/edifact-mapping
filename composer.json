@@ -1,5 +1,5 @@
 {
-    "name": "PHPEdifact/edifact-mapping",
+    "name": "php-edifact/edifact-mapping",
     "description": "XML mappings from UNTDID",
     "keywords": ["EDI", "EDIFACT", "message", "mapping", "UNECE"],
     "homepage": "https://github.com/php-edifact/edifact-mapping",
