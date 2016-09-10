@@ -1,0 +1,11 @@
+{
+    "name": "sabas/EDIMapping",
+    "description": "Tools in PHP for UN/EDIFACT",
+    "keywords": ["EDI", "EDIFACT", "message", "container"],
+    "homepage": "https://github.com/sabas/edifact",
+    "autoload": {
+        "psr-4": {
+            "EDI\\Mapping\\": "src/Mapping/"
+        }
+    }
+}
