@@ -1,8 +1,8 @@
 {
-    "name": "sabas/EDIMapping",
-    "description": "Tools in PHP for UN/EDIFACT",
-    "keywords": ["EDI", "EDIFACT", "message", "container"],
-    "homepage": "https://github.com/sabas/edifact",
+    "name": "PHPEdifact/edifact-mapping",
+    "description": "XML mappings from UNTDID",
+    "keywords": ["EDI", "EDIFACT", "message", "mapping", "UNECE"],
+    "homepage": "https://github.com/PHPEdifact/edifact-mapping",
     "autoload": {
         "psr-4": {
             "EDI\\Mapping\\": "src/Mapping/"
