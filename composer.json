@@ -2,7 +2,7 @@
     "name": "PHPEdifact/edifact-mapping",
     "description": "XML mappings from UNTDID",
     "keywords": ["EDI", "EDIFACT", "message", "mapping", "UNECE"],
-    "homepage": "https://github.com/PHPEdifact/edifact-mapping",
+    "homepage": "https://github.com/php-edifact/edifact-mapping",
     "autoload": {
         "psr-4": {
             "EDI\\Mapping\\": "src/Mapping/"
