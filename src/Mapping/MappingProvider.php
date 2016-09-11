@@ -6,10 +6,13 @@ class MappingProvider {
     private $directory = 'D95B';
 
     public function __construct($directory = 'D95B') {
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')           
-            define("SEPARATOR", "\\");
-        else 
-            define("SEPARATOR", "/");
+        if (!defined("SEPARATOR")) {
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                define("SEPARATOR", "\\");
+            } else {
+                define("SEPARATOR", "/");
+            }
+        }
         $this->directory = $directory;
     }
 
