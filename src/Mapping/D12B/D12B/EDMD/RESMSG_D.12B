@@ -1,0 +1,640 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                            Reservation message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : RESMSG
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG9 Travel, Tourism and Leisure
+
+
+
+                                  CONTENTS
+
+                            Reservation message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Reservation
+       message (RESMSG) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A Reservation message is sent by a tourism operator to one or more
+       service providers in order to request desired services. These
+       services may be subject to confirmation by any of the parties
+       concerned.
+
+1.2    Field of application
+
+       The Reservation message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       A Reservation message may cover one or more services provided by one
+       or more suppliers for a person or for a group of persons.
+       
+       This message is part of a scenario which includes research,
+       availability query, reservation and cancellation of services
+       relating to travel, tourism and leisure.
+       
+       The response to this message is the Supplier response message
+       (SUPRES).
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Reservation message is RESMSG.
+
+        Note: Reservation messages conforming to this document must contain
+        the following data in segment UNH, composite S009:
+
+        Data element  0065 RESMSG
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment identifying the Reservation message.
+
+00030   LAN, Language
+        A segment identifying the language used in a transaction.
+
+00040   PCD, Percentage details
+        A segment containing a percentage factor which relates to the
+        services or products requested in the whole message.
+
+00050   PAI, Payment instructions
+        A segment specifying a method of payment relating to the services
+        or products requested in the whole message.
+
+00060   DTM, Date/time/period
+        A segment specifying a date that applies to the message, (e.g. date
+        of this message, date until such message is valid).
+
+00070   FTX, Free text
+        A segment for information in coded or clear form to provide any
+        other information related to the whole message.
+
+00080   LOC, Place/location identification
+        A segment containing location information pertaining to the
+        services or products requested in the whole message.
+
+00090   MOA, Monetary amount
+        A segment containing the monetary amounts to be paid by the sender
+        for all beneficiaries, services or products requested in the whole
+        message.
+
+00100   PYT, Payment terms
+        A segment specifying payment terms relating to the services or
+        products requested in the whole message.
+
+00110   FII, Financial institution information
+        A segment containing financial institution information relating to
+        the services or products requested in the whole message.
+
+
+00120   Segment group 1:  RFF-DTM
+        A group of segments indicating references relating to the message.
+
+00130      RFF, Reference
+           A segment containing references relating to the whole message.
+
+00140      DTM, Date/time/period
+           A segment specifying the date that applies to the previous
+           reference.
+
+
+00150   Segment group 2:  NAD-RFF-COM-LAN-SG3
+        A group of segments identifying the sender and the receiver and all
+        other parties involved in the transaction and how to communicate
+        information to each of them.
+
+00160      NAD, Name and address
+           A segment providing name and address of the parties related to
+           the message (sender, receiver, airline, agent).
+
+00170      RFF, Reference
+           A segment indicating any additional reference for the party
+           identified in the preceding NAD segment.
+
+00180      COM, Communication contact
+           A segment containing communication information for the party
+           identified in the preceding NAD segment.
+
+00190      LAN, Language
+           A segment indicating the language to be used by the party
+           identified in the preceding NAD segment.
+
+
+00200      Segment group 3:  CTA-COM-LAN
+           A group of segments identifying a person or a department within
+           a party specified in the preceding NAD segment and how to
+           communicate with them.
+
+00210         CTA, Contact information
+              A segment identifying a person or a department for the party
+              specified in the preceding NAD segment, and to whom the
+              communication should be directed.
+
+00220         COM, Communication contact
+              A segment providing communication information for the person
+              or department identified in the preceding CTA segment.
+
+00230         LAN, Language
+              A segment indicating the language to communicate with the
+              person or department identified in the preceding CTA segment.
+
+
+00240   Segment group 4:  SEQ-SG5-SG9
+        A group of segments relating to the requested services and to the
+        beneficiaries.
+
+00250      SEQ, Sequence details
+           A segment which provides a sequence number for later reference
+           to a related service, product or beneficiary.
+
+
+00260      Segment group 5:  IMD-QTY-LAN-DTM-NAD-RFF-PCD-PAI-PYT-FII-DIM-
+                             FTX-SG6-SG7-SG8
+           A group of segments identifying a particular service or product
+           requested.
+
+00270         IMD, Item description
+              A segment identifying a particular product or service.
+
+00280         QTY, Quantity
+              A segment specifying a quantity related to the service or
+              product identified in the preceding IMD segment.
+
+00290         LAN, Language
+              A segment indicating the language to be used for the
+              requested service or product identified in the preceding IMD
+              segment.
+
+00300         DTM, Date/time/period
+              A segment to indicate any date and/or time pertaining to the
+              service or product identified in the preceding IMD segment.
+
+00310         NAD, Name and address
+              A segment specifying name and address information related to
+              the service or product identified in the preceding IMD
+              segment.
+
+00320         RFF, Reference
+              A segment containing reference relating to the service or
+              product identified in the preceding IMD segment.
+
+00330         PCD, Percentage details
+              A segment containing percentage factors which relate to the
+              service or product identified in the preceding IMD segment.
+
+00340         PAI, Payment instructions
+              A segment specifying methods of payment relating to the
+              service or product identified in the preceding IMD segment.
+
+00350         PYT, Payment terms
+              A segment specifying payment terms for the service or product
+              identified in an associated IMD segment.
+
+00360         FII, Financial institution information
+              A segment containing financial institution information
+              relating to the service or product identified in the
+              preceding IMD segment.
+
+00370         DIM, Dimensions
+              A segment providing dimensions which may be required for the
+              provision of the service or product identified in the
+              preceding IMD segment.
+
+00380         FTX, Free text
+              A segment for information in coded or clear form to provide
+              any other information related to the service or product
+              identified in the preceding IMD segment.
+
+
+00390         Segment group 6:  LOC-NAD-DTM
+              A group of segments identifying location and if necessary the
+              name and address of a specific place connected with this
+              location.
+
+00400            LOC, Place/location identification
+                 A segment containing location information pertaining to
+                 the service or product identified in the preceding IMD
+                 segment.
+
+00410            NAD, Name and address
+                 A segment providing name and address information relating
+                 to the information specified in the preceding LOC segment.
+
+00420            DTM, Date/time/period
+                 A segment providing date and/or time information relating
+                 to the information specified in the preceding LOC segment.
+
+
+00430         Segment group 7:  MOA-QTY
+              A group of segments containing the monetary amount to be paid
+              related to the quantity of the service or product identified
+              in the preceding IMD segment.
+
+00440            MOA, Monetary amount
+                 A segment containing the monetary amount to be paid by the
+                 sender for the service or product identified in the
+                 preceding IMD segment.
+
+00450            QTY, Quantity
+                 A segment specifying a quantity related to the service or
+                 product identified in the IMD segment.
+
+
+00460         Segment group 8:  RCS-FII-MOA-RFF-FTX
+              A group of segments providing special conditions or
+              additional requirements related to the service or product
+              identified in the preceding IMD segment.
+
+00470            RCS, Requirements and conditions
+                 A segment to specify types of requirements attached to the
+                 provision of a service.
+
+00480            FII, Financial institution information
+                 A segment containing financial institution information
+                 relating to the special conditions or requirements
+                 identified in the preceding RCS segment.
+
+00490            MOA, Monetary amount
+                 A segment containing the monetary amount to be paid by the
+                 sender for the special conditions or requirements
+                 identified in the preceding RCS segment.
+
+00500            RFF, Reference
+                 A segment containing reference information relating to the
+                 special conditions or requirements identified in the
+                 preceding RCS segment.
+
+00510            FTX, Free text
+                 A segment for information in coded or clear form to
+                 provide any other information related to the preceding RCS
+                 segment.
+
+
+00520      Segment group 9:  MEM-SG10
+           A group of segments containing information pertaining to the
+           beneficiaries of the services or products requested in the
+           message.
+
+00530         MEM, Membership details
+              A segment specifying relationship between persons within a
+              group.
+
+
+00540         Segment group 10: NAD-ATT-RFF-LAN-FTX-COM-SG11-SG12-SG13-SG14
+              A group of segments providing information related to a group
+              or an individual beneficiary.
+
+00550            NAD, Name and address
+                 A segment specifying name and address information related
+                 to the preceding MEM segment.
+
+00560            ATT, Attribute
+                 A segment specifying an attribute related to the preceding
+                 NAD segment.
+
+00570            RFF, Reference
+                 A segment providing reference information related to the
+                 preceding NAD segment.
+
+00580            LAN, Language
+                 A segment providing language information which relates to
+                 the preceding NAD segment.
+
+00590            FTX, Free text
+                 A segment for information in coded or clear form to
+                 provide any other information related to the preceding NAD
+                 segment.
+
+00600            COM, Communication contact
+                 A segment providing communication information related to
+                 the preceding NAD segment.
+
+
+00610            Segment group 11: CTA-COM
+                 A group of segments providing contact information related
+                 to the NAD segment.
+
+00620               CTA, Contact information
+                    A segment providing contact information related to the
+                    preceding NAD segment.
+
+00630               COM, Communication contact
+                    A segment providing communication information related
+                    to the preceding CTA segment.
+
+
+00640            Segment group 12: DOC-LOC-DTM
+                 A group of segments providing documentation information
+                 related to the preceding NAD segment.
+
+00650               DOC, Document/message details
+                    A segment indicating a type of document (e.g. passport,
+                    visa, driving licence, vaccination certificate, etc...)
+                    related to the preceding NAD segment.
+
+00660               LOC, Place/location identification
+                    A segment identifying the place of issue of the
+                    document referenced in the preceding DOC segment.
+
+00670               DTM, Date/time/period
+                    A segment indicating the date of issue of the document
+                    referenced in the preceding DOC segment.
+
+
+00680            Segment group 13: PAI-PYT-FII-MOA-RFF
+                 A group of segments providing payment information, payment
+                 terms, financial institution, monetary amount and
+                 references related to the preceding NAD segment.
+
+00690               PAI, Payment instructions
+                    A segment specifying a method of payment relating to
+                    the preceding NAD segment.
+
+00700               PYT, Payment terms
+                    A segment providing payment terms related to the
+                    preceding PAI segment.
+
+00710               FII, Financial institution information
+                    A segment providing financial institution information
+                    relating to preceding PAI segment.
+
+00720               MOA, Monetary amount
+                    A segment providing monetary information (e.g. a rate
+                    request, maximum price, etc...) related to the
+                    preceding PAI segment.
+
+00730               RFF, Reference
+                    A segment providing reference information related to
+                    the preceding PAI segment.
+
+
+00740            Segment group 14: RCS-MOA-RFF-FTX
+                 A group of segments providing information of special
+                 requirements or conditions related to the preceding NAD
+                 segment.
+
+00750               RCS, Requirements and conditions
+                    A segment to specify a type of requirement (e.g.
+                    special diet needs, handicapped facilities, etc...)
+                    related to the preceding NAD segment.
+
+00760               MOA, Monetary amount
+                    A segment providing a monetary amount related to the
+                    preceding RCS segment.
+
+00770               RFF, Reference
+                    A segment containing reference information relating to
+                    the preceding RCS segment.
+
+00780               FTX, Free text
+                    A segment specifying information in coded or clear form
+                    to provide any other information related to the
+                    preceding RCS segment.
+
+00790   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ATT Attribute
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DIM Dimensions
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          IMD Item description
+          LAN Language
+          LOC Place/location identification
+          MEM Membership details
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          PCD Percentage details
+          PYT Payment terms
+          QTY Quantity
+          RCS Requirements and conditions
+          RFF Reference
+          SEQ Sequence details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   LAN Language                                 C   1     
+00040   PCD Percentage details                       C   1     
+00050   PAI Payment instructions                     C   1     
+00060   DTM Date/time/period                         C   5     
+00070   FTX Free text                                C   5     
+00080   LOC Place/location identification            C   2     
+00090   MOA Monetary amount                          C   5     
+00100   PYT Payment terms                            C   10    
+00110   FII Financial institution information        C   5     
+
+00120       ---- Segment group 1  ------------------ C   5----------------+
+00130   RFF Reference                                M   1                |
+00140   DTM Date/time/period                         C   1----------------+
+
+00150       ---- Segment group 2  ------------------ C   5----------------+
+00160   NAD Name and address                         M   1                |
+00170   RFF Reference                                C   5                |
+00180   COM Communication contact                    C   5                |
+00190   LAN Language                                 C   1                |
+                                                                          |
+00200       ---- Segment group 3  ------------------ C   5---------------+|
+00210   CTA Contact information                      M   1               ||
+00220   COM Communication contact                    C   5               ||
+00230   LAN Language                                 C   1---------------++
+
+00240       ---- Segment group 4  ------------------ C   99---------------+
+00250   SEQ Sequence details                         M   1                |
+                                                                          |
+00260       ---- Segment group 5  ------------------ C   99--------------+|
+00270   IMD Item description                         M   1               ||
+00280   QTY Quantity                                 C   1               ||
+00290   LAN Language                                 C   1               ||
+00300   DTM Date/time/period                         C   20              ||
+00310   NAD Name and address                         C   1               ||
+00320   RFF Reference                                C   99              ||
+00330   PCD Percentage details                       C   1               ||
+00340   PAI Payment instructions                     C   1               ||
+00350   PYT Payment terms                            C   5               ||
+00360   FII Financial institution information        C   5               ||
+00370   DIM Dimensions                               C   2               ||
+00380   FTX Free text                                C   5               ||
+                                                                         ||
+00390       ---- Segment group 6  ------------------ C   10-------------+||
+00400   LOC Place/location identification            M   1              |||
+00410   NAD Name and address                         C   1              |||
+00420   DTM Date/time/period                         C   10-------------+||
+                                                                         ||
+00430       ---- Segment group 7  ------------------ C   99-------------+||
+00440   MOA Monetary amount                          M   1              |||
+00450   QTY Quantity                                 C   1--------------+||
+                                                                         ||
+00460       ---- Segment group 8  ------------------ C   10-------------+||
+00470   RCS Requirements and conditions              M   1              |||
+00480   FII Financial institution information        C   5              |||
+00490   MOA Monetary amount                          C   2              |||
+00500   RFF Reference                                C   1              |||
+00510   FTX Free text                                C   1--------------++|
+                                                                          |
+00520       ---- Segment group 9  ------------------ C   99--------------+|
+00530   MEM Membership details                       M   1               ||
+                                                                         ||
+00540       ---- Segment group 10 ------------------ C   99-------------+||
+00550   NAD Name and address                         M   1              |||
+00560   ATT Attribute                                C   99             |||
+00570   RFF Reference                                C   99             |||
+00580   LAN Language                                 C   1              |||
+00590   FTX Free text                                C   5              |||
+00600   COM Communication contact                    C   5              |||
+                                                                        |||
+00610       ---- Segment group 11 ------------------ C   1-------------+|||
+00620   CTA Contact information                      M   1             ||||
+00630   COM Communication contact                    C   5-------------+|||
+                                                                        |||
+00640       ---- Segment group 12 ------------------ C   5-------------+|||
+00650   DOC Document/message details                 M   1             ||||
+00660   LOC Place/location identification            C   1             ||||
+00670   DTM Date/time/period                         C   10------------+|||
+                                                                        |||
+00680       ---- Segment group 13 ------------------ C   10------------+|||
+00690   PAI Payment instructions                     M   1             ||||
+00700   PYT Payment terms                            C   1             ||||
+00710   FII Financial institution information        C   1             ||||
+00720   MOA Monetary amount                          C   1             ||||
+00730   RFF Reference                                C   9-------------+|||
+                                                                        |||
+00740       ---- Segment group 14 ------------------ C   10------------+|||
+00750   RCS Requirements and conditions              M   1             ||||
+00760   MOA Monetary amount                          C   2             ||||
+00770   RFF Reference                                C   2             ||||
+00780   FTX Free text                                C   1-------------++++
+00790   UNT Message trailer                          M   1     

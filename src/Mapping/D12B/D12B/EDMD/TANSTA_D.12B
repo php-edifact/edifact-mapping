@@ -1,0 +1,311 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Tank status report message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : TANSTA
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 1
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG3 Transport
+
+
+
+                                  CONTENTS
+
+                        Tank status report message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Tank status report
+       message (TANSTA) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message from a vessel to the shipplanning department of a shipping
+       line and vice versa (e.g. via satellite), giving details about the
+       contents of ballast tanks, fuel tanks, water tanks and other figures
+       necessary for the calculation of the stability of the vessel.
+
+1.2    Field of application
+
+       The Tank status report message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message serves to transmit information about all non-cargo
+       deadweight items on board a vessel. This includes all ballast and
+       service tanks, stores, crew and effects and other miscellaneous
+       items including deadweight constants.
+       
+       The message can be used for transmission of either current or
+       forecast status of tank and deadweight items. For example, the
+       message may be used to transmit information relating to an actual
+       departure condition from one port but can also be used to transmit
+       data relating to a forecast arrival condition at another port.
+       
+       In general, the message will be generated on board by the ship's
+       operator and transmitted to other parties interested in the vessel's
+       stability and safety. This is normally the operations or tonnage
+       centre but may also be a third party such as a terminal operator.
+       
+       In certain circumstances the message can also be transmitted to the
+       vessel. In this case the contents of the message may be used to
+       advise the ship's master of a desirable arrival condition.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Tank status report message is TANSTA.
+
+        Note: Tank status report messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 TANSTA
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the beginning of a message and to transmit
+        identifying number.
+
+00030   DTM, Date/time/period
+        A segment to indicate a date and time applying to the whole
+        message, such as:
+        - document or message date and or time
+
+00040   NAD, Name and address
+        A segment to identify a party's name, address, and function, such
+        as:
+        - message recipient
+        - message sender
+
+
+00050   Segment group 1:  RFF-DTM
+        A group of segments to specify a reference (and its related date
+        and or time) which applies to the whole message.
+
+00060      RFF, Reference
+           A segment to specify a reference, such as:
+           - reference to previous message
+
+00070      DTM, Date/time/period
+           A segment to indicate a date and or time related to the
+           reference.
+
+
+00080   Segment group 2:  TDT-LOC-DTM-RFF-FTX
+        A group of segments to provide details of the main carriage
+        transport, including related locations and date and times.
+
+00090      TDT, Transport information
+           A segment to specify transport details for the main carriage,
+           such as:
+           - discharge voyage number
+           - radio call sign of the vessel
+           - nationality of the vessel
+
+00100      LOC, Place/location identification
+           A segment to specify either the place of departure or the place
+           of arrival for the main carriage.
+
+00110      DTM, Date/time/period
+           A segment to specify a date and or time related to the main
+           carriage transport, such as:
+           - estimated date/time of departure
+           - estimated date/time of arrival
+
+00120      RFF, Reference
+           A segment to specify a reference related to the transport
+           details, such as:
+           - loading voyage number (if different from the voyage number
+           assigned by the carrier or his agent in the TDT-segment).
+
+00130      FTX, Free text
+           A segment to specify supplementary information related to the
+           main carriage transport.
+
+
+00140   Segment group 3:  LOC-MEA-DIM-FTX
+        A group of segments to identify a tank or deadweight item by its
+        place on or in the means of transport.
+
+00150      LOC, Place/location identification
+           A segment to specify the location of a tank or deadweight item
+           on the means of transport, such as:
+           - fore peak tank
+
+00160      MEA, Measurements
+           A segment to provide a measurement related to the tank or
+           deadweight item, such as:
+           - gross weight of tank contents
+           - volume of liquid in the tank
+           - specific gravity
+           - percentage full
+
+00170      DIM, Dimensions
+           A segment to specify dimensions of the deadweight item, such as:
+           - length expressed in 'longitudinal centre of gravity'
+           - width expressed in 'transverse centre of gravity (from
+           centerline)'
+           - height expressed in 'vertical centre of gravity (from keel)'
+
+00180      FTX, Free text
+           A segment to describe the actual contents of tanks, such as
+           lubricating oil, marine fuel oil, fresh water.
+
+00190   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          DIM Dimensions
+          DTM Date/time/period
+          FTX Free text
+          LOC Place/location identification
+          MEA Measurements
+          NAD Name and address
+          RFF Reference
+          TDT Transport information
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   1     
+00040   NAD Name and address                         C   9     
+
+00050       ---- Segment group 1  ------------------ C   9----------------+
+00060   RFF Reference                                M   1                |
+00070   DTM Date/time/period                         C   9----------------+
+
+00080       ---- Segment group 2  ------------------ M   9----------------+
+00090   TDT Transport information                    M   1                |
+00100   LOC Place/location identification            M   1                |
+00110   DTM Date/time/period                         M   9                |
+00120   RFF Reference                                C   1                |
+00130   FTX Free text                                C   1----------------+
+
+00140       ---- Segment group 3  ------------------ C   999--------------+
+00150   LOC Place/location identification            M   1                |
+00160   MEA Measurements                             M   9                |
+00170   DIM Dimensions                               C   9                |
+00180   FTX Free text                                C   1----------------+
+00190   UNT Message trailer                          M   1     

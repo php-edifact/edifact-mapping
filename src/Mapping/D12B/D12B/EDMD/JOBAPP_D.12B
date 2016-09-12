@@ -1,0 +1,593 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                      Job application proposal message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : JOBAPP
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG11 Social Security, Employment and Education
+
+
+
+                                  CONTENTS
+
+                      Job application proposal message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Job application
+       proposal message (JOBAPP) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message specifying detailed information of proposals for one or
+       more job applicants from an employment agency to an employer. The
+       detailed information is related to profession, occupation, age,
+       education, experiences, salaries, other benefits, requested location
+       of the job, work and contract conditions.
+
+1.2    Field of application
+
+       The Job application proposal message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The intention of the message is to provide information of proposals
+       for one or more job applicants. A Job Application Proposal Message
+       is transmitted from an employment agency to an employer or an
+       employment agency. A Job Application Proposal Message may contain
+       detailed information, in form of advertisements, of one or more
+       applicants. A Job Application Proposal Message may be related to
+       earlier offered jobs or vacancies by an employer.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       All specified dates and times should be in the format 'yymmdd' or
+       'hhmm' unless all parties involved in the transaction agree that
+       there is a functional requirement for an alternative format.
+       Periods should be specified as whole numbers representing the
+       required period as indicated in the format qualifier (weeks, months,
+       etc.).
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+       Conditional data that is not required in the message should not be
+       included.
+       Care must be taken that the segment qualifier in dependent segments
+       do not conflict with the segment qualifier of the trigger segment of
+       a group.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Job application proposal message is
+        JOBAPP.
+
+        Note: Job application proposal messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 JOBAPP
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the job
+        application proposal by means of its type and number and, when
+        necessary, its function.
+
+00030   DTM, Date/time/period
+        A segment specifying general dates and, when relevant, times
+        related to the whole message. The segment must be specified at
+        least once to identify the document date. The Date/time/period
+        segment within other Segment groups should be used whenever the
+        date or time or period requires to be logically related to another
+        specified data item.
+
+
+00040   Segment group 1:  PNA-ADR-LOC-DTM-SG2
+        A group of segments identifying the parties with associated
+        information.
+
+00050      PNA, Party identification
+           A segment identifying names of the parties, in coded or clear
+           form, and their functions relevant to the Job Application
+           Proposal Message. Identification of the enterprise and the job
+           administration parties is mandatory for the Job Application
+           Proposal Message. It is recommended that, where possible, only
+           the coded form of the party identification should be specified,
+           e.g. where the enterprise and the job administration are known
+           to each other, thus only the coded identification is required,
+           but a job center or a job application address (interview) may
+           vary and would have to be clearly specified, preferably in
+           structured format.
+
+00060      ADR, Address
+           A segment indicating the address of the relevant party.
+
+00070      LOC, Place/location identification
+           A segment giving more specific location information of the party
+           specified in the ADR segment, e.g. internal site or building
+           number.
+
+00080      DTM, Date/time/period
+           A segment specifying the date or time.
+
+
+00090      Segment group 2:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in the PNA
+           segment.
+
+00100         CTA, Contact information
+              A segment to identify a person or department and their
+              function, to whom communications should be directed.
+
+00110         COM, Communication contact
+              A segment to identify a communications type and number for
+              the contact specified in the CTA segment, e.g. telephone-
+              number, fax-number, telex-number.
+
+
+00120   Segment group 3:  RFF-DTM
+        A group of segments for giving references and, where necessary,
+        their dates, relating to the whole message.
+
+00130      RFF, Reference
+           A segment identifying the reference by its number related to the
+           whole message.
+
+00140      DTM, Date/time/period
+           A segment specifying the date or time related to the reference.
+
+
+00150   Segment group 4:  GEI-FTX
+        A group of segments specifying general processing indicators and,
+        when necessary, additional textual information, relevant for the
+        whole message.
+
+00160      GEI, Processing information
+           A segment specifying general indicators for the whole message.
+
+00170      FTX, Free text
+           A segment with free text information, in coded or clear form,
+           used when additional information is needed but cannot be
+           accommodated within other segments. In computer to computer
+           exchanges such text will normally require the receiver to
+           process this segment manually.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00180   UNS, Section control
+        A mandatory service segment placed before the first user segment in
+        the detail section to avoid segment collision.
+
+
+00190   Segment group 5:  RFF-DTM-SG6-SG7-SG8-SG9-SG13
+        A group of segments providing details of a job application. This
+        Segment group may be repeated to give information about several
+        other job application proposals. The Segment group 5 gives detailed
+        information, in coded or textual form, e.g. job advertisement, of
+        one or more applicants. The information may be related to an
+        earlier sent job order of an employer.
+
+00200      RFF, Reference
+           A segment identifying the administrative operation of a job
+           application by a number given by an employment agency, e.g.
+           order number of an employment agency.
+
+00210      DTM, Date/time/period
+           A segment specifying date and, when relevant, time relating to
+           the RFF segment. Examples of the use of this DTM segment are:
+           order date or time of the employment agency.
+
+
+00220      Segment group 6:  PNA-DTM-LOC-NAT-PDI-DOC
+           A group of segments identifying an applicant and related
+           information for a job requirement.
+
+00230         PNA, Party identification
+              A segment giving the identity of the applicant.
+
+00240         DTM, Date/time/period
+              A segment specifying the date of birth of the applicant.
+
+00250         LOC, Place/location identification
+              A segment indicating the place of birth of the applicant. It
+              may also specify requirements regarding the job location.
+
+00260         NAT, Nationality
+              A segment indicating nationality (or nationalities) of the
+              person identified in the previous PNA segment.
+
+00270         PDI, Person demographic information
+              A segment providing personal information about the applicant:
+              i.e. gender, marital status.
+
+00280         DOC, Document/message details
+              A segment indicating the list of documents the concerned
+              person has in his possession.
+
+
+00290      Segment group 7:  GEI-FTX
+           A group of segments specifying general processing indicators
+           and, when necessary, additional textual information, relevant
+           for the proposed person.
+
+00300         GEI, Processing information
+              A segment specifying general indicators related to the
+              proposed person.
+
+00310         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              used when additional information is needed but cannot be
+              accommodated within other segments. In computer to computer
+              exchanges such text will normally require the receiver to
+              process this segment manually.
+
+
+00320      Segment group 8:  RCS-FTX
+           A group of segments identifying requirements or conditions of
+           one or more applicants.
+
+00330         RCS, Requirements and conditions
+              A segment to give in coded form the requirements for a job
+              application.
+
+00340         FTX, Free text
+              A segment with free text information (job qualifications and
+              requirements for individual applicants) related to job
+              advertisement, in coded or clear form, used when additional
+              information is needed but cannot be accommodated within other
+              segments. In computer to computer exchanges such text will
+              normally require the receiver to process this segment
+              manually.
+
+
+00350      Segment group 9:  SAL-FTX-SG10-SG11-SG12
+           A group of segments giving information about the requesting
+           remuneration and conditions regarding the remuneration.
+
+00360         SAL, Remuneration type identification
+              A segment identifying the type of the remuneration requested,
+              and if relevant the name of the remuneration type or
+              contract.
+
+00370         FTX, Free text
+              A segment used when additional information regarding the
+              remuneration type or contract and which cannot be
+              accommodated within other segment.
+
+
+00380         Segment group 10: ATT-FTX
+              A group of segments giving attribute information, in coded
+              form for the remuneration and, where necessary, additional
+              textual information.
+
+00390            ATT, Attribute
+                 A segment identifying additional remuneration information
+                 in coded form. The codes are also related to working
+                 condition, working time, employment contract, piece work
+                 and remuneration benefits.
+
+00400            FTX, Free text
+                 A segment specifying in free text form the additional
+                 information which cannot be accommodate within other
+                 segments.
+
+
+00410         Segment group 11: GEI-FTX
+              A group of segments specifying processing indicators and, if
+              necessary, additional textual information, relevant to the
+              required remuneration.
+
+00420            GEI, Processing information
+                 A segment specifying general indicator related to the
+                 remuneration required.
+
+00430            FTX, Free text
+                 A segment specifying in free text form a process regarding
+                 the required remuneration which cannot be accommodated
+                 within another segment.
+
+
+00440         Segment group 12: MOA-RNG-FTX
+              A group of segments specifying the type and the amount of the
+              remuneration or a remuneration range required.
+
+00450            MOA, Monetary amount
+                 A segment giving information about the type and the amount
+                 of the remuneration required.
+
+00460            RNG, Range details
+                 A segment to identify a remuneration range when the exact
+                 remuneration of the previous MOA segment is not available.
+                 The remuneration range is related to the type of
+                 remuneration in the MOA segment.
+
+00470            FTX, Free text
+                 A segment in coded and free text form to specify any other
+                 information regarding the remuneration amount.
+
+
+00480      Segment group 13: EMP-LOC-SG14-SG15
+           A group of segments identifying a profession or occupation of an
+           applicant and attributes of a profession or occupation related
+           to the job advertisement.
+
+00490         EMP, Employment details
+              A segment to identify the related area or sector of a
+              qualification and a qualification, in coded or clear form,
+              related to the job advertisement.
+
+00500         LOC, Place/location identification
+              A segment indicating the location or place, where the
+              qualification or job should be performed.
+
+
+00510         Segment group 14: ATT-FTX-PTY
+              A group of segments giving coded information about the
+              attributes of a profession relating to education and
+              experience and, when necessary, priority of the information
+              and additional textual information.
+
+00520            ATT, Attribute
+                 A segment identifying, in coded form, the attributes of a
+                 profession. The codes are related to education, job
+                 experience, special knowledge and qualifications.
+
+00530            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, used when additional information is needed but
+                 cannot be accommodated within other segments. In computer
+                 to computer exchanges such text will normally require the
+                 receiver to process this segment manually.
+
+00540            PTY, Priority
+                 A segment identifying the priority of requirements for a
+                 job offered.
+
+
+00550         Segment group 15: LAN-GEI
+              A group of segments giving information about languages and
+              experiences of languages.
+
+00560            LAN, Language
+                 A segment specifying a language in coded or clear form.
+
+00570            GEI, Processing information
+                 A segment specifying general indicators of the experience
+                 of a language.
+
+00580   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          EMP Employment details
+          FTX Free text
+          GEI Processing information
+          LAN Language
+          LOC Place/location identification
+          MOA Monetary amount
+          NAT Nationality
+          PDI Person demographic information
+          PNA Party identification
+          PTY Priority
+          RCS Requirements and conditions
+          RFF Reference
+          RNG Range details
+          SAL Remuneration type identification
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   2     
+
+00040       ---- Segment group 1  ------------------ M   99---------------+
+00050   PNA Party identification                     M   1                |
+00060   ADR Address                                  C   1                |
+00070   LOC Place/location identification            C   5                |
+00080   DTM Date/time/period                         C   5                |
+                                                                          |
+00090       ---- Segment group 2  ------------------ C   5---------------+|
+00100   CTA Contact information                      M   1               ||
+00110   COM Communication contact                    C   5---------------++
+
+00120       ---- Segment group 3  ------------------ C   5----------------+
+00130   RFF Reference                                M   1                |
+00140   DTM Date/time/period                         C   5----------------+
+
+00150       ---- Segment group 4  ------------------ C   5----------------+
+00160   GEI Processing information                   M   1                |
+00170   FTX Free text                                C   1----------------+
+
+            DETAIL SECTION
+
+00180   UNS Section control                          M   1     
+
+00190       ---- Segment group 5  ------------------ M   999--------------+
+00200   RFF Reference                                M   1                |
+00210   DTM Date/time/period                         C   99               |
+                                                                          |
+00220       ---- Segment group 6  ------------------ C   1---------------+|
+00230   PNA Party identification                     M   1               ||
+00240   DTM Date/time/period                         C   1               ||
+00250   LOC Place/location identification            C   9               ||
+00260   NAT Nationality                              C   9               ||
+00270   PDI Person demographic information           C   1               ||
+00280   DOC Document/message details                 C   9---------------+|
+                                                                          |
+00290       ---- Segment group 7  ------------------ C   5---------------+|
+00300   GEI Processing information                   M   1               ||
+00310   FTX Free text                                C   1---------------+|
+                                                                          |
+00320       ---- Segment group 8  ------------------ M   99--------------+|
+00330   RCS Requirements and conditions              M   1               ||
+00340   FTX Free text                                C   99--------------+|
+                                                                          |
+00350       ---- Segment group 9  ------------------ C   1---------------+|
+00360   SAL Remuneration type identification         M   1               ||
+00370   FTX Free text                                C   1               ||
+                                                                         ||
+00380       ---- Segment group 10 ------------------ C   10-------------+||
+00390   ATT Attribute                                M   1              |||
+00400   FTX Free text                                C   1--------------+||
+                                                                         ||
+00410       ---- Segment group 11 ------------------ C   2--------------+||
+00420   GEI Processing information                   M   1              |||
+00430   FTX Free text                                C   1--------------+||
+                                                                         ||
+00440       ---- Segment group 12 ------------------ C   5--------------+||
+00450   MOA Monetary amount                          M   1              |||
+00460   RNG Range details                            C   1              |||
+00470   FTX Free text                                C   1--------------++|
+                                                                          |
+00480       ---- Segment group 13 ------------------ M   1---------------+|
+00490   EMP Employment details                       M   1               ||
+00500   LOC Place/location identification            C   1               ||
+                                                                         ||
+00510       ---- Segment group 14 ------------------ C   100------------+||
+00520   ATT Attribute                                M   1              |||
+00530   FTX Free text                                C   1              |||
+00540   PTY Priority                                 C   1--------------+||
+                                                                         ||
+00550       ---- Segment group 15 ------------------ C   20-------------+||
+00560   LAN Language                                 M   1              |||
+00570   GEI Processing information                   C   3--------------+++
+00580   UNT Message trailer                          M   1     

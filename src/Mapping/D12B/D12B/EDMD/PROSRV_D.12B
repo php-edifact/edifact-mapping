@@ -1,0 +1,748 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                          Product service message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PROSRV
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 1
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                          Product service message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Product service
+       message (PROSRV) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message providing the information and details to enable servicing
+       and repair centres to report to manufacturers on repairs and other
+       services carried out on products and appliances. The message
+       provides details for claims under guaranty or contract to be
+       reimbursed.
+       
+       The information transmitted gives details of the claimant,
+       manufacturer and seller. It may give details of the purchaser of the
+       product. It can identify the product and specify the date it was
+       purchased and delivered, can specify the problem and describe the
+       labour, parts used and costs incurred in the repair of the product.
+       The message may also be used by the manufacturer or his agent to
+       respond to the claimant.
+
+1.2    Field of application
+
+       The Product service message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The PROSRV message can be used to report on multiple claims, or may
+       be used in respect of a single claim.
+       
+       The message will contain information relevant to whether the claim
+       is covered by warranty or not.
+       
+       The repair or service centre will indicate the details of any
+       repairs undertaken.
+       
+       The details of the repairs may include symptoms and defect
+       identification codes, parts replaced or repaired, charges for
+       labour, material, transport and other charges incurred during the
+       repair or service of the product.
+       
+       Each claim will refer to one product. There may be multiple faults
+       with the product and multiple parts used in the repair of the
+       product.
+       
+       The details of the ultimate customer, the seller and the time and
+       place of purchase may be given per product being repaired.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines apply to the whole message and are intended
+       to facilitate the understanding and implementation of the message:
+       
+       All specified dates/times should be in the format 'ccyymmdd'/'hhmm'
+       unless all parties involved in the transaction agree that there is a
+       functional requirement for an alternative format. Periods should be
+       specified as whole numbers representing the required period as
+       indicated in the format qualifier (weeks, months, etc.)
+       
+       Where a choice of code or text is given, the code element should be
+       used wherever possible.
+       
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken that the segment qualifier in dependent segments
+       does not conflict with the segment qualifier of the trigger segment
+       of a group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Product service message is PROSRV.
+
+        Note: Product service messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 PROSRV
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the message by
+        means of its type, number and, when necessary, its function.
+
+00030   DTM, Date/time/period
+        A segment specifying general dates and, when relevant, times
+        related to the whole message. The segment must be included at least
+        once to identify the message date.
+
+00040   CUX, Currencies
+        A segment identifying the currencies required e.g. the currency of
+        the reimbursement amount. A rate of exchange may be given to
+        convert a reference currency into a target currency.
+
+
+00050   Segment group 1:  RFF-DTM
+        A group of segments giving references and where necessary, their
+        dates, relating to the whole message e.g. contract number, import
+        and/or export license number, reservation number.
+
+00060      RFF, Reference
+           A segment identifying the reference by its number and where
+           appropriate a line number within a document.
+
+00070      DTM, Date/time/period
+           A segment specifying the date and/or time related to the
+           reference.
+
+
+00080   Segment group 2:  NAD-FII-SG3-SG4
+        A group of segments identifying the parties and any associated
+        information.
+
+00090      NAD, Name and address
+           A segment identifying names and addresses of the parties, in
+           coded or clear form, and their functions relevant to the
+           message. Identification of the manufacturer and repair centre is
+           mandatory for the message. It is recommended that where possible
+           only the coded form of the party identification should be
+           specified e.g. the manufacturer and repair centre are known to
+           each other, thus only the coded identification is required.
+
+00100      FII, Financial institution information
+           A segment identifying the financial institution (e.g. bank) and
+           relevant account numbers for reimbursement purposes.
+
+
+00110      Segment group 3:  RFF-DTM
+           A group of segments giving references only relevant to the
+           specified party rather than the Product Service.
+
+00120         RFF, Reference
+              A segment identifying the reference by its number and where
+              appropriate a line number within a document.
+
+00130         DTM, Date/time/period
+              A segment specifying the date and/or time related to the
+              reference.
+
+
+00140      Segment group 4:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified.
+
+00150         CTA, Contact information
+              A segment to identify a person or department, and their
+              function, to whom communications should be directed.
+
+00160         COM, Communication contact
+              A segment to identify a communications type and number for
+              the contact specified.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00170   Segment group 5:  DOC-DTM-STS-MOA-FTX-SG6
+        A group of segments providing details of the individual service
+        claim or report.
+
+00180      DOC, Document/message details
+           A segment to identify a claim document for reimbursement or
+           report of service, issued by a service or repair centre.
+
+00190      DTM, Date/time/period
+           A segment specifying date, time and/or period details relating
+           to the claim.
+
+00200      STS, Status
+           A segment identifying the status of the claim in a response, and
+           the reason for that status.
+
+00210      MOA, Monetary amount
+           A segment specifying amounts relating to the claim.
+
+00220      FTX, Free text
+           A segment with free text information relating to the claim, in
+           coded or clear form, used when additional information is needed
+           but cannot be accommodated within other segments. In computer to
+           computer exchanges such text will normally require the receiver
+           to process this segment manually.
+
+
+00230      Segment group 6:  LIN-PIA-IMD-QTY-DTM-ALI-GIR-SG7-SG8-SG11-SG12-
+                             SG14
+           A group of segments providing identification and a description
+           of the line items within the group. This segment group may be
+           repeated to give sub-line details.
+
+00240         LIN, Line item
+              A segment identifying the line item by the line number and
+              additionally identifying the product being serviced or
+              repaired.
+
+00250         PIA, Additional product id
+              A segment providing either additional identification to the
+              product specified in the line item segment (e.g. model
+              number) or any substitute product identification.
+
+00260         IMD, Item description
+              A segment to further describe the product being serviced or
+              repaired. This segment should be used for products that
+              cannot be fully identified by a product code or article
+              number.
+
+00270         QTY, Quantity
+              A segment identifying the product quantities e.g. the
+              quantity of products repaired, serviced or replaced under a
+              product recall.
+
+00280         DTM, Date/time/period
+              A segment specifying date, time and/or period details
+              relating to the line item only, e.g. date of failure of
+              product.
+
+00290         ALI, Additional information
+              A segment indicating special conditions related to the total
+              claim e.g. Home Repair or Repair Centre Repair
+
+00300         GIR, Related identification numbers
+              A segment providing sets of related identification numbers
+              for a line item e.g. attached equipment, engine numbers,
+              chassis number and transmission number for a vehicle.
+
+
+00310         Segment group 7:  RFF-DTM
+              A group of segments giving references and where necessary,
+              their dates, relating to the line item.
+
+00320            RFF, Reference
+                 A segment identifying the reference by its number and
+                 where appropriate a line number within a document.
+
+00330            DTM, Date/time/period
+                 A segment specifying the date/time related to the
+                 reference.
+
+
+00340         Segment group 8:  NAD-SG9-SG10
+              A group of segments identifying the parties with associated
+              information relevant to the line item only.
+
+00350            NAD, Name and address
+                 A segment identifying names and addresses of the parties,
+                 in coded or clear form, and their functions relevant to
+                 the line item. It is recommended that where possible only
+                 the coded form of the party identification should be
+                 specified e.g. the seller, the retailer and repairer of
+                 the product may be known to each other, thus only the
+                 coded identification is required, but the Owner's address
+                 details may have to be clearly specified, preferably in
+                 structured format.
+
+
+00360            Segment group 9:  RFF-DTM
+                 A group of segments for giving references only relevant to
+                 the specified party rather than the whole line item.
+
+00370               RFF, Reference
+                    A segment identifying the reference by its number and
+                    where appropriate a line number within a document.
+
+00380               DTM, Date/time/period
+                    A segment specifying the date and/or time related to
+                    the reference.
+
+
+00390            Segment group 10: CTA-COM
+                 A group of segments giving contact details of the specific
+                 person or department within the party identified.
+
+00400               CTA, Contact information
+                    A segment to identify a person or department, and their
+                    function, to whom communications should be directed.
+
+00410               COM, Communication contact
+                    A segment to identify a communications type and number
+                    for the contact specified.
+
+
+00420         Segment group 11: CCI-CAV-FTX
+              A group of segments providing product characteristic details.
+
+00430            CCI, Characteristic/class id
+                 A segment to identify characteristics related to the
+                 problem, service or repair of the product e.g. defects,
+                 repair characteristics.
+
+00440            CAV, Characteristic value
+                 A segment to specify common product characteristic by
+                 value in either coded form or in free format.
+
+00450            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, used when additional characteristic information is
+                 needed but cannot be accommodated within other segments.
+                 In computer to computer exchanges such text will normally
+                 require the receiver to process this segment manually.
+
+
+00460         Segment group 12: ALC-QTY-MOA-RTE-SG13
+              A group of segments specifying allowances and charges for the
+              Product Service identified in the line item.
+
+00470            ALC, Allowance or charge
+                 A segment identifying the charge or allowance and, where
+                 necessary, its calculation sequence.
+
+00480            QTY, Quantity
+                 A segment identifying the pertinent quantities to the
+                 allowances and charges, e.g. the quantity of labour hours
+
+00490            MOA, Monetary amount
+                 A segment identifying the monetary amount for the
+                 allowance or charge.
+
+00500            RTE, Rate details
+                 A segment specifying the rate per unit and the basis for
+                 calculation.
+
+
+00510            Segment group 13: TAX-MOA
+                 A group of segments specifying tax related information for
+                 the allowance or charge.
+
+00520               TAX, Duty/tax/fee details
+                    A segment specifying the tax type, category and rate,
+                    or exemption, related to the allowance or charge.
+
+00530               MOA, Monetary amount
+                    A segment specifying the tax amount for the allowance
+                    or charge.
+
+
+00540         Segment group 14: HYN-PIA-IMD-QTY-ALI-PRI-SG15-SG16-SG18
+              A group of segments identifying hierarchical connections from
+              the item given in the line item segment to lower levelled
+              items. This segment group will provide details of the
+              replaced or repaired parts.
+
+00550            HYN, Hierarchy information
+                 This segment identifies hierarchical connections from the
+                 product identified in the line item to lower level items.
+                 This segment which starts the group will be repeated for
+                 each part which was repaired or replaced.
+
+00560            PIA, Additional product id
+                 A segment providing additional identification of the part
+                 which was repaired or replaced.
+
+00570            IMD, Item description
+                 A segment to further describe the part being repaired or
+                 replaced. This segment should be used for parts that
+                 cannot be fully identified by a part code or article
+                 number.
+
+00580            QTY, Quantity
+                 A segment identifying the quantity of parts repaired or
+                 replaced for the product.
+
+00590            ALI, Additional information
+                 A segment indicating special conditions related to the
+                 part identified at this level.
+
+00600            PRI, Price details
+                 A segment to specify the price of the replaced part
+
+
+00610            Segment group 15: RFF-DTM
+                 A group of segments giving references and where necessary,
+                 their dates, relating to the replaced or repaired part.
+
+00620               RFF, Reference
+                    A segment identifying the reference by its number and
+                    where appropriate a line number within a document.
+
+00630               DTM, Date/time/period
+                    A segment specifying the date/time related to the
+                    reference.
+
+
+00640            Segment group 16: ALC-QTY-MOA-RTE-SG17
+                 A group of segments specifying allowances and charges for
+                 the Product Service identified in the line item.
+
+00650               ALC, Allowance or charge
+                    A segment identifying the charge or allowance and,
+                    where necessary, its calculation sequence.
+
+00660               QTY, Quantity
+                    A segment identifying the pertinent quantities to the
+                    allowances and charges, e.g. the quantity of labour
+                    hours
+
+00670               MOA, Monetary amount
+                    A segment identifying the monetary amount for the
+                    allowance or charge.
+
+00680               RTE, Rate details
+                    A segment specifying the rate per unit and the basis
+                    for calculation.
+
+
+00690               Segment group 17: TAX-MOA
+                    A group of segments specifying tax related information
+                    for the allowance or charge.
+
+00700                  TAX, Duty/tax/fee details
+                       A segment specifying the tax type, category and
+                       rate, or exemption, related to the allowance or
+                       charge.
+
+00710                  MOA, Monetary amount
+                       A segment specifying the tax amount for the
+                       allowance or charge.
+
+
+00720            Segment group 18: CCI-CAV-FTX
+                 A group of segments providing product characteristic
+                 details.
+
+00730               CCI, Characteristic/class id
+                    A segment to identify characteristics of the problems
+                    and service or repair of the part e.g. defects, repair
+                    characteristics
+
+00740               CAV, Characteristic value
+                    A segment to specify common part characteristics by
+                    value in either coded form or in free format.
+
+00750               FTX, Free text
+                    A segment with free text information, in coded or clear
+                    form, used when additional characteristic information
+                    is needed but cannot be accommodated within other
+                    segments. In computer to computer exchanges such text
+                    will normally require the receiver to process this
+                    segment manually.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00760   UNS, Section control
+        A service segment placed at the start of the summary section to
+        avoid segment collision.
+
+00770   CNT, Control total
+        A segment by which control totals may be provided by the sender for
+        checking by the receiver.
+
+00780   MOA, Monetary amount
+        A segment giving the total amounts for the message such as total
+        claim/reimbursement amount, total amount of tax
+
+
+00790   Segment group 19: TAX-MOA
+        A group of segments specifying tax totals for the message.
+
+00800      TAX, Duty/tax/fee details
+           A segment specifying the tax type and rate to be summarised.
+
+00810      MOA, Monetary amount
+           A segment specifying the summary amount for the tax specified.
+
+00820   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ALC Allowance or charge
+          ALI Additional information
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          GIR Related identification numbers
+          HYN Hierarchy information
+          IMD Item description
+          LIN Line item
+          MOA Monetary amount
+          NAD Name and address
+          PIA Additional product id
+          PRI Price details
+          QTY Quantity
+          RFF Reference
+          RTE Rate details
+          STS Status
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   99    
+00040   CUX Currencies                               C   9     
+
+00050       ---- Segment group 1  ------------------ C   9999-------------+
+00060   RFF Reference                                M   1                |
+00070   DTM Date/time/period                         C   99---------------+
+
+00080       ---- Segment group 2  ------------------ C   999--------------+
+00090   NAD Name and address                         M   1                |
+00100   FII Financial institution information        C   99               |
+                                                                          |
+00110       ---- Segment group 3  ------------------ C   99--------------+|
+00120   RFF Reference                                M   1               ||
+00130   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00140       ---- Segment group 4  ------------------ C   99--------------+|
+00150   CTA Contact information                      M   1               ||
+00160   COM Communication contact                    C   9---------------++
+
+            DETAIL SECTION
+
+00170       ---- Segment group 5  ------------------ C   99999------------+
+00180   DOC Document/message details                 M   1                |
+00190   DTM Date/time/period                         C   9                |
+00200   STS Status                                   C   9                |
+00210   MOA Monetary amount                          C   9                |
+00220   FTX Free text                                C   9                |
+                                                                          |
+00230       ---- Segment group 6  ------------------ C   99999-----------+|
+00240   LIN Line item                                M   1               ||
+00250   PIA Additional product id                    C   99              ||
+00260   IMD Item description                         C   99              ||
+00270   QTY Quantity                                 C   99              ||
+00280   DTM Date/time/period                         C   99              ||
+00290   ALI Additional information                   C   9               ||
+00300   GIR Related identification numbers           C   99              ||
+                                                                         ||
+00310       ---- Segment group 7  ------------------ C   999------------+||
+00320   RFF Reference                                M   1              |||
+00330   DTM Date/time/period                         C   9--------------+||
+                                                                         ||
+00340       ---- Segment group 8  ------------------ C   999------------+||
+00350   NAD Name and address                         M   1              |||
+                                                                        |||
+00360       ---- Segment group 9  ------------------ C   99------------+|||
+00370   RFF Reference                                M   1             ||||
+00380   DTM Date/time/period                         C   9-------------+|||
+                                                                        |||
+00390       ---- Segment group 10 ------------------ C   9-------------+|||
+00400   CTA Contact information                      M   1             ||||
+00410   COM Communication contact                    C   9-------------++||
+                                                                         ||
+00420       ---- Segment group 11 ------------------ C   9999-----------+||
+00430   CCI Characteristic/class id                  M   1              |||
+00440   CAV Characteristic value                     C   99             |||
+00450   FTX Free text                                C   99-------------+||
+                                                                         ||
+00460       ---- Segment group 12 ------------------ C   999------------+||
+00470   ALC Allowance or charge                      M   1              |||
+00480   QTY Quantity                                 C   9              |||
+00490   MOA Monetary amount                          C   9              |||
+00500   RTE Rate details                             C   9              |||
+                                                                        |||
+00510       ---- Segment group 13 ------------------ C   9-------------+|||
+00520   TAX Duty/tax/fee details                     M   1             ||||
+00530   MOA Monetary amount                          C   9-------------++||
+                                                                         ||
+00540       ---- Segment group 14 ------------------ C   999------------+||
+00550   HYN Hierarchy information                    M   1              |||
+00560   PIA Additional product id                    C   9              |||
+00570   IMD Item description                         C   9              |||
+00580   QTY Quantity                                 C   9              |||
+00590   ALI Additional information                   C   9              |||
+00600   PRI Price details                            C   9              |||
+                                                                        |||
+00610       ---- Segment group 15 ------------------ C   99------------+|||
+00620   RFF Reference                                M   1             ||||
+00630   DTM Date/time/period                         C   9-------------+|||
+                                                                        |||
+00640       ---- Segment group 16 ------------------ C   999-----------+|||
+00650   ALC Allowance or charge                      M   1             ||||
+00660   QTY Quantity                                 C   9             ||||
+00670   MOA Monetary amount                          C   9             ||||
+00680   RTE Rate details                             C   9             ||||
+                                                                       ||||
+00690       ---- Segment group 17 ------------------ C   9------------+||||
+00700   TAX Duty/tax/fee details                     M   1            |||||
+00710   MOA Monetary amount                          C   9------------++|||
+                                                                        |||
+00720       ---- Segment group 18 ------------------ C   9999----------+|||
+00730   CCI Characteristic/class id                  M   1             ||||
+00740   CAV Characteristic value                     C   99            ||||
+00750   FTX Free text                                C   99------------++++
+
+            SUMMARY SECTION
+
+00760   UNS Section control                          M   1     
+00770   CNT Control total                            C   99    
+00780   MOA Monetary amount                          C   99    
+
+00790       ---- Segment group 19 ------------------ C   99---------------+
+00800   TAX Duty/tax/fee details                     M   1                |
+00810   MOA Monetary amount                          C   9----------------+
+00820   UNT Message trailer                          M   1     

@@ -1,0 +1,312 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                         Credit risk cover message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : RECECO
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG5 Finance
+
+
+
+                                  CONTENTS
+
+                         Credit risk cover message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Credit risk cover
+       message (RECECO) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       Factoring companies provide their clients (the seller) protection
+       against the risk of credit losses on sales to the buyers. Credit
+       protection is provided on each approved customer (buyer) of the
+       seller.
+       
+       The message will be used to apply for preliminary credit assessment
+       (used during negotiation with prospective clients); apply for credit
+       protection; reply to credit requests; revise amount and expiry date
+       of credit protection and terms; cancel credit protection.
+       
+       The message will serve at the same time as the request for credit
+       risk cover and as the answer (approval or rejection to that
+       request).
+
+1.2    Field of application
+
+       The Credit risk cover message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+       
+       This message may be applied for both national and international
+       settlements.
+
+1.3    Principles
+
+       The flow of communication is from Seller to Factor (request), and
+       from Factor to Seller (answer). The Seller must provide information
+       regarding the Buyers (name, address, etc.) and information regarding
+       the expected amount of sales to be risk covered. The Factoring
+       company will provide an answer, after due credit investigation.
+       
+       The credit cover may be a 'line cover' or an 'order cover'. A line
+       cover relates to the sales of one seller to one buyer, up to the
+       agreed limit. An order cover relates to a specific order (or
+       shipment).
+       
+       - one credit cover may relate to one or more line covers; 
+       - one credit cover may relate to one or more order covers; 
+       - for each distinct period there is only one line cover; 
+       - one credit cover must relate to one buyer; 
+       - one credit cover must relate to one seller.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Credit risk cover message is RECECO.
+
+        Note: Credit risk cover messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 RECECO
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment specifying the function and status of the message.
+
+00030   RFF, Reference
+        A segment identifying the reference of another message or
+        transaction related to this message.
+
+00040   DTM, Date/time/period
+        A segment specifying the date and, when required, the time at which
+        the message has been created as well as other dates and times
+        relevant to the transactions, e.g. request date.
+
+
+00050   Segment group 1:  NAD-CTA-COM-FII
+        A group of segments identifying the name and address of the parties
+        involved in the transaction, their contacts and financial
+        institution information.
+
+00060      NAD, Name and address
+           A segment identifying the name and address of the parties
+           associated with the credit risk cover message.
+
+00070      CTA, Contact information
+           A segment identifying a person or a department for the party
+           specified in the NAD segment and to whom communication should be
+           directed.
+
+00080      COM, Communication contact
+           A segment providing a communication number for the party
+           identified in the NAD segment and optionally for the contact
+           identified in the associated CTA segment.
+
+00090      FII, Financial institution information
+           A segment identifying the financial institution (e.g. bank) and
+           relevant account numbers for the parties involved, where
+           necessary.
+
+
+00100   Segment group 2:  DOC-MOA-CUX-DTM-CCD-PCD-PYT-FTX-RFF
+        A group of segments identifying the amounts of the credit covers,
+        the currency, the date, the request, the payment terms related to
+        the credit cover.
+
+00110      DOC, Document/message details
+           A segment identifying the credit cover.
+
+00120      MOA, Monetary amount
+           A segment giving the monetary amounts of the current credit
+           cover and one or more new credit covers.
+
+00130      CUX, Currencies
+           A segment identifying the currency of the credit cover.
+
+00140      DTM, Date/time/period
+           A segment specifying the dates related to the credit cover, such
+           as expiration date, date valid from or the order date (latest
+           shipment date).
+
+00150      CCD, Credit cover details
+           A segment specifying a request for a credit cover, a reply to
+           that request and the reasons for the reply.
+
+00160      PCD, Percentage details
+           A segment specifying the percentage of the own risk, related to
+           the credit cover.
+
+00170      PYT, Payment terms
+           A segment specifying the payment terms, as agreed between seller
+           and buyer.
+
+00180      FTX, Free text
+           A segment specifying the response to the request, in coded form.
+
+00190      RFF, Reference
+           A segment identifying the order number, when necessary.
+
+00200   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          CCD Credit cover details
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          MOA Monetary amount
+          NAD Name and address
+          PCD Percentage details
+          PYT Payment terms
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   RFF Reference                                C   9     
+00040   DTM Date/time/period                         C   9     
+
+00050       ---- Segment group 1  ------------------ C   99---------------+
+00060   NAD Name and address                         M   1                |
+00070   CTA Contact information                      C   1                |
+00080   COM Communication contact                    C   5                |
+00090   FII Financial institution information        C   1----------------+
+
+00100       ---- Segment group 2  ------------------ C   99---------------+
+00110   DOC Document/message details                 M   1                |
+00120   MOA Monetary amount                          C   1                |
+00130   CUX Currencies                               C   1                |
+00140   DTM Date/time/period                         C   5                |
+00150   CCD Credit cover details                     C   1                |
+00160   PCD Percentage details                       C   1                |
+00170   PYT Payment terms                            C   1                |
+00180   FTX Free text                                C   1                |
+00190   RFF Reference                                C   1----------------+
+00200   UNT Message trailer                          M   1     

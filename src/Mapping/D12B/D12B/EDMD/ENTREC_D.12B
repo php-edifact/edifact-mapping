@@ -1,0 +1,551 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Accounting entries message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : ENTREC
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG12 Accounting and Auditing, Registration, Financial Information
+        Services
+
+
+                                  CONTENTS
+
+                        Accounting entries message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Accounting entries
+       message (ENTREC) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message used to exchange accounting entries between an enterprise
+       and whoever may use them for the purpose of accounting, auditing,
+       cost accounting, consolidation, financial analysis, etc.
+
+1.2    Field of application
+
+       The Accounting entries message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The accounting entries may be prepared by an enterprise, a service
+       bureau, a chartered accountant or an auditor - referred to as sender
+       - for various parties - known as recipients - such as another
+       enterprise, another service bureau, another chartered accountant or
+       another auditor. 
+       
+       The accounting entries are reflecting the activity of the
+       enterprise. Merged with the chart of accounts, they enable to
+       establish the ledger and consequently the trial balance. 
+       
+       The term accounting entries is taken to mean a set of automated
+       accounting records relating to the same event. A computerized
+       accounting record is an accounting entry item consisting of several
+       logically interrelated data items specifying the value date of an
+       amount, its origin, its account concerned, its debit or credit
+       amount and its references to the relevant document. 
+       
+       The message ENTREC contains information concerning a set of entries
+       for a given journal and period. The frequency of collected data
+       ranges from daily to annually.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Accounting entries message is ENTREC.
+
+        Note: Accounting entries messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 ENTREC
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        Segment identifying the type of accounting entries message.
+
+00030   DTM, Date/time/period
+        A segment containing the opening and closing dates of the
+        accounting period of the accounting entries and the preparation
+        date of the message.
+
+00040   RFF, Reference
+        Segment containing the number of the used chart of accounts linked
+        to the message and its version number.
+
+00050   CUX, Currencies
+        A segment providing currencies which are specific to the accounting
+        entries message.
+
+00060   FTX, Free text
+        A segment with free information, in coded or clear form, for the
+        purpose of providing additional clarification solely concerning the
+        summary section.
+
+
+00070   Segment group 1:  NAD-RFF-SG2
+        A segment group giving information on sender, recipient and
+        intermediary.
+
+00080      NAD, Name and address
+           A segment to identify the sender, recipient or intermediary.
+
+00090      RFF, Reference
+           A segment to provide references which are specific to the
+           concerned party.
+
+
+00100      Segment group 2:  CTA-COM
+           A group of segments to specify contacts and related
+           communication numbers.
+
+00110         CTA, Contact information
+              A segment to provide contacts related to the party.
+
+00120         COM, Communication contact
+              A segment to provide communication numbers of the contact.
+
+
+00130   Segment group 3:  CCI-CAV
+        A group of segments to provide accounting, fiscal, social or legal
+        characteristics of the enterprise accounting.
+
+00140      CCI, Characteristic/class id
+           A segment to identify the accounting, fiscal, social or legal
+           characteristic.
+
+00150      CAV, Characteristic value
+           A segment to provide the value of the above characteristic.
+
+
+00160   Segment group 4:  DTM-SG5-SG11
+        A segment group providing information on accounting entries by
+        period.
+
+00170      DTM, Date/time/period
+           A segment giving detailed information on the periods of the
+           journal.
+
+
+00180      Segment group 5:  RJL-SG6-SG7
+           A segment group providing information on accounting entries by
+           journal.
+
+00190         RJL, Accounting journal identification
+              A segment specifying the source journal and the type of
+              accounting records of accounting entries for a given period.
+
+
+00200         Segment group 6:  QTY-RFF-DTM-MOA
+              A segment group providing information on the totals and the
+              quantities corresponding to the accounting records. For
+              verification purposes, this group summarizes all the monetary
+              amounts by journal and by period.
+
+00210            QTY, Quantity
+                 A segment specifying the number of accounting entries for
+                 a given journal and period.
+
+00220            RFF, Reference
+                 A segment containing references to a journal in a given
+                 period.
+
+00230            DTM, Date/time/period
+                 A segment containing the date of the concerned period.
+
+00240            MOA, Monetary amount
+                 A segment adding up the total amounts of the accounting
+                 records for a given journal and period in local and
+                 foreign currencies. It may also to be used to provide the
+                 total of the journal for the period.
+
+
+00250         Segment group 7:  IND-RFF-FTX-SG8-SG10
+              A segment group providing the following relevant information
+              for a given period and a specified accounting journal :
+              record, account number, references, stated value, date and
+              time, quantity and free text, together comprising an
+              accounting record.
+
+00260            IND, Index details
+                 A segment containing the reference to an order number
+                 inside a folio, or the sequential number allocated to the
+                 entry of an accounting record for a given journal and
+                 period.
+
+00270            RFF, Reference
+                 A segment containing the number of the source document
+                 relating to the accounting record.
+
+00280            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, to give an explanation of the accounting entry.
+
+
+00290            Segment group 8:  LIN-CPT-DTM-FTX-PAI-RFF-QTY-TAX-FII-CUX-
+                                   MOA-SG9
+                 A segment group containing all needed information on an
+                 accounting record.
+
+00300               LIN, Line item
+                    A segment identifying the line item of the accounting
+                    entries information sequence.
+
+00310               CPT, Account identification
+                    A segment containing detailed information identifying
+                    the principal active account number (general,
+                    analytical or budget account) or for subdivision of the
+                    accounting record concerned and the subsidiary account
+                    number of this principal account number.
+
+00320               DTM, Date/time/period
+                    A segment giving the date of accountancy concerning the
+                    accounting record : date of capture, date of source
+                    document, date of accounting validation, etc.
+
+00330               FTX, Free text
+                    A segment with free text information, in clear or coded
+                    form, to give a text for the entry describing whether
+                    the entry is analytical, budgetary or has valuation
+                    purposes.
+
+00340               PAI, Payment instructions
+                    A segment specifying the settlement method of the
+                    accounting record.
+
+00350               RFF, Reference
+                    A segment containing references to documents such as
+                    the number of source document, number of related
+                    document, internal source document reference, checking
+                    reference and European Tax-codes relating to the
+                    accounting record.
+
+00360               QTY, Quantity
+                    A segment specifying the quantity and measure unit
+                    relative to the monetary amount of the accounting
+                    record.
+
+00370               TAX, Duty/tax/fee details
+                    A segment specifying the tax type relative to the
+                    accounting record.
+
+00380               FII, Financial institution information
+                    A segment specifying the bank account numbers relative
+                    to the specified account.
+
+00390               CUX, Currencies
+                    A segment containing the currency details, currencies
+                    or currency rates used in the entry.
+
+00400               MOA, Monetary amount
+                    A segment containing detailed information on the debit
+                    or credit trend of the monetary amount, the monetary
+                    amount itself in the local currency and possibly the
+                    currency code relating to this monetary amount.
+
+
+00410               Segment group 9:  CCI-CAV
+                    A group of segments to provide accounting, fiscal,
+                    social or legal characteristics of the entries.
+
+00420                  CCI, Characteristic/class id
+                       A segment to identify the accounting, fiscal, social
+                       or legal characteristic of the entry.
+
+00430                  CAV, Characteristic value
+                       A segment to provide the value of the above
+                       characteristic.
+
+
+00440            Segment group 10: AUT-DTM
+                 A segment group to provide authentication information to
+                 prevent insertion of an accounting entry between two
+                 accounting entries.
+
+00450               AUT, Authentication result
+                    A segment to provide authentication results.
+
+00460               DTM, Date/time/period
+                    A segment to provide the date of the authentication.
+
+
+00470      Segment group 11: QTY-RFF-DTM-MOA
+           A group of segments giving information on the totals and the
+           quantities corresponding to the accounting records. For
+           verification purposes this group summarizes all the monetary
+           amounts by journal, for all periods.
+
+00480         QTY, Quantity
+              A segment specifying the number of accounting entries for a
+              given journal, for all periods.
+
+00490         RFF, Reference
+              A segment containing references for a given journal, for the
+              sub-period.
+
+00500         DTM, Date/time/period
+              A segment specifying the date of the concerned sub-period.
+
+00510         MOA, Monetary amount
+              A segment adding up the total amounts, in local and foreign
+              currencies, of the accounting records for a given journal,
+              for all periods. It may also be used to provide the total
+              amount of the journal for all periods.
+
+00520   UNS, Section control
+        A service segment used to separate the detail and summary sections
+        of the message.
+
+
+00530   Segment group 12: QTY-RFF-DTM-MOA
+        A group of segments giving information on the totals and the
+        quantities corresponding to the accounting records. For
+        verification purposes, this summarizes all the monetary amounts.
+
+00540      QTY, Quantity
+           A segment specifying the number of subperiods for the total
+           periods concerned relative to the accounting entries message.
+
+00550      RFF, Reference
+           A segment referencing a period using a reference number.
+
+00560      DTM, Date/time/period
+           A segment specifying the dates for the total period.
+
+00570      MOA, Monetary amount
+           A segment adding up the total amounts relating to the accounting
+           entries message.
+
+
+00580   Segment group 13: AUT-DTM
+        A segment group to provide authentication information.
+
+00590      AUT, Authentication result
+           A segment to provide authentication results.
+
+00600      DTM, Date/time/period
+           A segment to provide the date of the authentication.
+
+00610   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AUT Authentication result
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          COM Communication contact
+          CPT Account identification
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          IND Index details
+          LIN Line item
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          QTY Quantity
+          RFF Reference
+          RJL Accounting journal identification
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   99    
+00040   RFF Reference                                C   99    
+00050   CUX Currencies                               C   99    
+00060   FTX Free text                                C   1     
+
+00070       ---- Segment group 1  ------------------ M   99---------------+
+00080   NAD Name and address                         M   1                |
+00090   RFF Reference                                C   9                |
+                                                                          |
+00100       ---- Segment group 2  ------------------ C   99--------------+|
+00110   CTA Contact information                      M   1               ||
+00120   COM Communication contact                    C   9---------------++
+
+00130       ---- Segment group 3  ------------------ C   99---------------+
+00140   CCI Characteristic/class id                  M   1                |
+00150   CAV Characteristic value                     C   1----------------+
+
+00160       ---- Segment group 4  ------------------ M   999--------------+
+00170   DTM Date/time/period                         M   1                |
+                                                                          |
+00180       ---- Segment group 5  ------------------ M   999-------------+|
+00190   RJL Accounting journal identification        M   1               ||
+                                                                         ||
+00200       ---- Segment group 6  ------------------ M   1--------------+||
+00210   QTY Quantity                                 M   1              |||
+00220   RFF Reference                                C   1              |||
+00230   DTM Date/time/period                         C   1              |||
+00240   MOA Monetary amount                          M   9--------------+||
+                                                                         ||
+00250       ---- Segment group 7  ------------------ M   99999----------+||
+00260   IND Index details                            M   1              |||
+00270   RFF Reference                                M   1              |||
+00280   FTX Free text                                M   1              |||
+                                                                        |||
+00290       ---- Segment group 8  ------------------ M   999-----------+|||
+00300   LIN Line item                                M   1             ||||
+00310   CPT Account identification                   C   4             ||||
+00320   DTM Date/time/period                         C   9             ||||
+00330   FTX Free text                                C   1             ||||
+00340   PAI Payment instructions                     C   1             ||||
+00350   RFF Reference                                C   9             ||||
+00360   QTY Quantity                                 C   9             ||||
+00370   TAX Duty/tax/fee details                     C   9             ||||
+00380   FII Financial institution information        C   1             ||||
+00390   CUX Currencies                               C   9             ||||
+00400   MOA Monetary amount                          M   9             ||||
+                                                                       ||||
+00410       ---- Segment group 9  ------------------ C   9------------+||||
+00420   CCI Characteristic/class id                  M   1            |||||
+00430   CAV Characteristic value                     C   1------------++|||
+                                                                        |||
+00440       ---- Segment group 10 ------------------ C   1-------------+|||
+00450   AUT Authentication result                    M   1             ||||
+00460   DTM Date/time/period                         C   1-------------+++|
+                                                                          |
+00470       ---- Segment group 11 ------------------ M   1---------------+|
+00480   QTY Quantity                                 M   1               ||
+00490   RFF Reference                                C   1               ||
+00500   DTM Date/time/period                         C   1               ||
+00510   MOA Monetary amount                          M   9---------------++
+00520   UNS Section control                          M   1     
+
+00530       ---- Segment group 12 ------------------ M   1----------------+
+00540   QTY Quantity                                 M   1                |
+00550   RFF Reference                                C   1                |
+00560   DTM Date/time/period                         C   1                |
+00570   MOA Monetary amount                          M   9----------------+
+
+00580       ---- Segment group 13 ------------------ C   1----------------+
+00590   AUT Authentication result                    M   1                |
+00600   DTM Date/time/period                         C   1----------------+
+00610   UNT Message trailer                          M   1     

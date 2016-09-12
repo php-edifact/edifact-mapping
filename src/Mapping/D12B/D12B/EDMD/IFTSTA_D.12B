@@ -1,0 +1,826 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+              International multimodal status report message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : IFTSTA
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 16
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG3 Transport
+
+
+
+                                  CONTENTS
+
+              International multimodal status report message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the International
+       multimodal status report message (IFTSTA) to be used in Electronic
+       Data Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message to report the transport status and/or a change in the
+       transport status (i.e. event) between agreed parties.
+
+1.2    Field of application
+
+       The International multimodal status report message may be used for
+       both national and international applications. It is based on
+       universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message allows for the exchange of information regarding the
+       status of the physical movement of consignments, goods or equipment
+       at any point (in time or place) within the full transport chain.
+              
+       A status message may be sent:
+       - as the result of request/s for consignment/s or equipment
+       status/es
+       - on a scheduled basis at predetermined times
+       - on the occurrence of a selected event/s
+       - on the occurrence of an exceptional event as agreed by the
+       partners involved.
+              
+       This message can relate to a status (or statuses) that has or have
+       been reached in a transport chain.
+              
+       The transport working group (TBG3) has developed recommendations for
+       a harmonised implementation of this message through its subgroup
+       ITIGG (International Transport Implementation Guidelines Group).
+       Users implementing the message are strongly advised to apply these
+       recommendations, which may be obtained from the TBG3 secretariat.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the International multimodal status report
+        message is IFTSTA.
+
+        Note: International multimodal status report messages conforming to
+        this document must contain the following data in segment UNH,
+        composite S009:
+
+        Data element  0065 IFTSTA
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment indicating the beginning of a message and identifying the
+        consignment for which status is being reported.
+
+00030   DTM, Date/time/period
+        A segment indicating the date of the message.
+
+00040   TSR, Transport service requirements
+        A segment identifying the transport service relating to the
+        consignment.
+
+
+00050   Segment group 1:  NAD-SG2
+        A group of segments to specify a party and its associated contacts
+        with communication numbers.
+
+00060      NAD, Name and address
+           A segment identifying a party to the consignment such as shipper
+           or consignee.
+
+
+00070      Segment group 2:  CTA-COM
+           A group of segments to identify a contact and its communications
+           related to the party.
+
+00080         CTA, Contact information
+              A segment to specify a contact name associated with the
+              party.
+
+00090         COM, Communication contact
+              A segment to specify a communication number related to the
+              contact.
+
+
+00100   Segment group 3:  RFF-DTM
+        To relate a date/time to a reference, such as date of shipment
+        reference number.
+
+00110      RFF, Reference
+           A segment identifying a reference which applies to the entire
+           consignment.
+
+00120      DTM, Date/time/period
+           To relate a date/time to a reference, such as date of shipment
+           reference number.
+
+00130   LOC, Place/location identification
+        A segment identifying a place/location which applies to the
+        consignment such as consignment origin and destination.
+
+00140   FTX, Free text
+        A segment specifying free form or processable supplementary or
+        other information.
+
+00150   CNT, Control total
+        A segment specifying a total for the consignment.
+
+
+00160   Segment group 4:  EQD-STS-MEA-DIM-SEL-RFF-TPL-TMD-SG5-SG6-SG7-SG9-
+                          SG11-SG12
+        A group of segments to identify a piece of transport equipment and
+        status details relating to it.
+
+00170      EQD, Equipment details
+           A segment identifying equipment related to status or event such
+           as a container of a multi-container consignment.
+
+00180      STS, Status
+           A segment specifying the status relating to the equipment.
+
+00190      MEA, Measurements
+           A segment specifying measurements related to the equipment such
+           as gross weight, tare weight, capacity.
+
+00200      DIM, Dimensions
+           A segment specifying the dimensions of the equipment such as
+           height.
+
+00210      SEL, Seal number
+           A segment identifying seal and seal issuer associated with the
+           equipment.
+
+00220      RFF, Reference
+           A segment to specify a reference number to equipment.
+
+00230      TPL, Transport placement
+           A segment to identify the means of transport to which the
+           equipment is inked, necessary in cases where this forms the key
+           to retrieve relevant information.
+
+00240      TMD, Transport movement details
+           A segment to specify transport movement details related to the
+           equipment.
+
+
+00250      Segment group 5:  DGS-FTX
+           A group of segments to specify dangerous goods regulations.
+
+00260         DGS, Dangerous goods
+              A segment to indicate the dangerous goods regulations which
+              apply, the class of the dangerous goods, additional dangerous
+              goods codes, the United Nations Dangerous Goods (UNDG) number
+              and the shipment flash point.
+
+00270         FTX, Free text
+              A segment to specify supplementary details regarding the
+              dangerous goods such as dangerous goods technical name and
+              other additional information
+
+
+00280      Segment group 6:  LOC-DTM
+           A group of segments indicating locations related to the
+           transport equipment.
+
+00290         LOC, Place/location identification
+              A segment indicating locations related to the transport
+              equipment.
+
+00300         DTM, Date/time/period
+              A segment to specify dates and times related to a location.
+
+
+00310      Segment group 7:  EQA-SEL-SG8
+           A group of segments specifying the attached equipment and the
+           associated information.
+
+00320         EQA, Attached equipment
+              A segment identifying attached equipment or related equipment
+              such as a chassis attached to a container.
+
+00330         SEL, Seal number
+              A segment identifying seal and seal issuer associated with
+              the equipment.
+
+
+00340         Segment group 8:  LOC-DTM
+              A group of segments indicating locations related to the
+              attached equipment.
+
+00350            LOC, Place/location identification
+                 A segment indicating locations related to the attached
+                 equipment.
+
+00360            DTM, Date/time/period
+                 A segment to specify dates and times related to a
+                 location.
+
+
+00370      Segment group 9:  TDT-DTM-RFF-SG10
+           A group of segments indicating conveyance details related to the
+           status or event.
+
+00380         TDT, Transport information
+              A segment identifying conveyance related to the status or
+              event such as flight, vessel/voyage.
+
+00390         DTM, Date/time/period
+              A segment indicating date(s) and and time(s) related to the
+              conveyance such as arrival date and time.
+
+00400         RFF, Reference
+              A segment specifying an additional reference related to the
+              conveyance such as transfer manifest number, truck license
+              number.
+
+
+00410         Segment group 10: LOC-DTM
+              A group of segments indicating locations related to the means
+              of transport.
+
+00420            LOC, Place/location identification
+                 A segment indicating locations related to conveyance such
+                 as flight origin/destination.
+
+00430            DTM, Date/time/period
+                 A segment to specify dates and times related to a
+                 location.
+
+
+00440      Segment group 11: TMP-RNG
+           A group of segments to specify temperature relating to the
+           equipment.
+
+00450         TMP, Temperature
+              A segment to specify temperature relating to the equipment.
+
+00460         RNG, Range details
+              A segment to specify a temperature range which relates to the
+              temperature.
+
+
+00470      Segment group 12: DAM-COD
+           A group of segments to specify damage relating to the equipment.
+
+00480         DAM, Damage
+              A segment to specify damage relating to a preceding EQD
+              segment.
+
+00490         COD, Component details
+              A segment to specify component details which relate to the
+              damaged equipment.
+
+
+00500   Segment group 13: CNI-LOC-CNT-SG14
+        A group of segments to identify a consignment and status details
+        relating to it.
+
+00510      CNI, Consignment information
+           A segment to identify a consignment for which status details are
+           given.
+
+00520      LOC, Place/location identification
+           A segment to indicate a location relating to the consignment,
+           such as place/port of origin, place/port of destination.
+
+00530      CNT, Control total
+           A segment to provide a control total for the consignment, such
+           as total number of pieces, total weight.
+
+
+00540      Segment group 14: STS-RFF-DTM-DOC-FTX-SG15-LOC-PCI-SG17-SG19-
+                             SG23
+           A group of segments indicating the status and/or identifying an
+           event and specifying relevant details.
+
+00550         STS, Status
+              A segment specifying the status relating to a consignment
+              (e.g. loaded).
+
+00560         RFF, Reference
+              A segment identifying a reference relating to the status (e.g
+              House Bill of Lading number).
+
+00570         DTM, Date/time/period
+              A segment indicating the date and time of the status or
+              event.
+
+00580         DOC, Document/message details
+              A segment to specify document details related to the status
+              code, such as indication which document is missing (status
+              code: document missing).
+
+00590         FTX, Free text
+              A segment specifying processable information relating to the
+              status.
+
+
+00600         Segment group 15: NAD-SG16
+              A group of segments to identify a party and contact details
+              associated with the event.
+
+00610            NAD, Name and address
+                 A segment specifying the name and/or address associated
+                 with the event such as notify party, terminal address,
+                 trucking company for gate move.
+
+
+00620            Segment group 16: CTA-COM
+                 A group of segments identifying a contact to whom
+                 communication regarding the status event can be directed.
+
+00630               CTA, Contact information
+                    A segment to identify a person or department.
+
+00640               COM, Communication contact
+                    A segment to identify a communication number of a
+                    person or department.
+
+00650         LOC, Place/location identification
+              A segment identifying the location at which the status or
+              event occurs.
+
+00660         PCI, Package identification
+              A segment to specify individual packages (transportable
+              units) relating to the consignment status.
+
+
+00670         Segment group 17: TDT-DTM-RFF-SG18
+              A group of segments indicating conveyance details related to
+              the status or event.
+
+00680            TDT, Transport information
+                 A segment identifying conveyance related to the status or
+                 event such as flight, vessel/voyage.
+
+00690            DTM, Date/time/period
+                 A segment indicating date(s) and time(s) related to the
+                 conveyance such as arrival date and time.
+
+00700            RFF, Reference
+                 A segment specifying an additional reference related to
+                 the conveyance such as transfer manifest number, truck
+                 license number.
+
+
+00710            Segment group 18: LOC-DTM
+                 A group of segments indicating locations related to the
+                 means of transport.
+
+00720               LOC, Place/location identification
+                    A segment indicating locations related to conveyance
+                    such as flight origin/destination.
+
+00730               DTM, Date/time/period
+                    A segment to specify dates and times related to a
+                    location.
+
+
+00740         Segment group 19: EQD-MEA-DIM-SEL-RFF-TPL-TMD-SG20-SG21
+              A group of segments indicating the equipment details relating
+              to the status or event.
+
+00750            EQD, Equipment details
+                 A segment identifying equipment related to status or event
+                 such as a container of a multi-container consignment.
+
+00760            MEA, Measurements
+                 A segment specifying measurements related to the equipment
+                 such as gross weight, tare weight, capacity.
+
+00770            DIM, Dimensions
+                 A segment specifying the dimensions of the equipment such
+                 as height.
+
+00780            SEL, Seal number
+                 A segment identifying seal and seal issuer associated with
+                 the equipment.
+
+00790            RFF, Reference
+                 A segment to specify a reference number to equipment.
+
+00800            TPL, Transport placement
+                 A segment to identify the means of transport to which the
+                 equipment is linked, necessary in cases where this forms
+                 the key to retrieve relevant information.
+
+00810            TMD, Transport movement details
+                 A segment to specify transport movement details related to
+                 the equipment.
+
+
+00820            Segment group 20: LOC-DTM
+                 A group of segments indicating locations related to the
+                 transport equipment.
+
+00830               LOC, Place/location identification
+                    A segment indicating locations related to the transport
+                    equipment.
+
+00840               DTM, Date/time/period
+                    A segment to specify dates and times related to a
+                    location.
+
+
+00850            Segment group 21: EQA-SEL-SG22
+                 A group of segments specifying the attached equipment and
+                 the associated information.
+
+00860               EQA, Attached equipment
+                    A segment identifying attached equipment or related
+                    equipment such as a chassis attached to a container.
+
+00870               SEL, Seal number
+                    A segment identifying seal and seal issuer associated
+                    with the equipment.
+
+
+00880               Segment group 22: LOC-DTM
+                    A group of segments indicating locations related to the
+                    attached equipment.
+
+00890                  LOC, Place/location identification
+                       A segment indicating locations related to the
+                       attached equipment.
+
+00900                  DTM, Date/time/period
+                       A segment to specify dates and times related to a
+                       location.
+
+
+00910         Segment group 23: GID-HAN-SGP-DGS-FTX-GDS-LOC-QTY-SG24-SG25-
+                                SG26-SG27
+              A group of segments describing the goods item related to the
+              status or event.
+
+00920            GID, Goods item details
+                 A segment identifying a goods item.
+
+00930            HAN, Handling instructions
+                 A segment identifying handling instructions.
+
+00940            SGP, Split goods placement
+                 A segment to identify equipment in which (part of) a goods
+                 item is transported.
+
+00950            DGS, Dangerous goods
+                 A segment to specify dangerous goods details related to
+                 the goods item.
+
+00960            FTX, Free text
+                 A segment to describe the goods item, and to provide
+                 additional free text information related to the goods
+                 item.
+
+00970            GDS, Nature of cargo
+                 A segment to identify the type of cargo.
+
+00980            LOC, Place/location identification
+                 A segment to identify a location related to the goods.
+
+00990            QTY, Quantity
+                 A segment to identify a quantity.
+
+
+01000            Segment group 24: MEA-EQN
+                 A group of segments specifying measurements.
+
+01010               MEA, Measurements
+                    A segment specifying measurements, other than
+                    dimension, of a goods item.
+
+01020               EQN, Number of units
+                    A segment specifying the number of units to which the
+                    given measurement is applicable.
+
+
+01030            Segment group 25: DIM-EQN
+                 A group of segments specifying dimensions of a goods item.
+
+01040               DIM, Dimensions
+                    A segment specifying dimensions of a goods item.
+
+01050               EQN, Number of units
+                    A segment specifying the number of units to which the
+                    given dimension is applicable.
+
+
+01060            Segment group 26: PCI-GIN
+                 A group of segments specifying marks and numbers related
+                 to the transport line items.
+
+01070               PCI, Package identification
+                    A segment specifying marks related to the transport
+                    line items.
+
+01080               GIN, Goods identity number
+                    A segment specifying identity numbers related to the
+                    transport line items.
+
+
+01090            Segment group 27: RFF-DTM
+                 A group of segments specifying the references of the goods
+                 related to the status or event.
+
+01100               RFF, Reference
+                    A segment to identify a reference related to the goods.
+
+01110               DTM, Date/time/period
+                    A segment to specify a date/time related to the
+                    reference.
+
+01120   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          CNI Consignment information
+          CNT Control total
+          COD Component details
+          COM Communication contact
+          CTA Contact information
+          DAM Damage
+          DGS Dangerous goods
+          DIM Dimensions
+          DOC Document/message details
+          DTM Date/time/period
+          EQA Attached equipment
+          EQD Equipment details
+          EQN Number of units
+          FTX Free text
+          GDS Nature of cargo
+          GID Goods item details
+          GIN Goods identity number
+          HAN Handling instructions
+          LOC Place/location identification
+          MEA Measurements
+          NAD Name and address
+          PCI Package identification
+          QTY Quantity
+          RFF Reference
+          RNG Range details
+          SEL Seal number
+          SGP Split goods placement
+          STS Status
+          TDT Transport information
+          TMD Transport movement details
+          TMP Temperature
+          TPL Transport placement
+          TSR Transport service requirements
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   9     
+00040   TSR Transport service requirements           C   1     
+
+00050       ---- Segment group 1  ------------------ C   9----------------+
+00060   NAD Name and address                         M   1                |
+                                                                          |
+00070       ---- Segment group 2  ------------------ C   9---------------+|
+00080   CTA Contact information                      M   1               ||
+00090   COM Communication contact                    C   9---------------++
+
+00100       ---- Segment group 3  ------------------ C   9----------------+
+00110   RFF Reference                                M   1                |
+00120   DTM Date/time/period                         C   1----------------+
+00130   LOC Place/location identification            C   9     
+00140   FTX Free text                                C   9     
+00150   CNT Control total                            C   9     
+
+00160       ---- Segment group 4  ------------------ C   99999------------+
+00170   EQD Equipment details                        M   1                |
+00180   STS Status                                   C   9                |
+00190   MEA Measurements                             C   9                |
+00200   DIM Dimensions                               C   9                |
+00210   SEL Seal number                              C   9                |
+00220   RFF Reference                                C   9                |
+00230   TPL Transport placement                      C   9                |
+00240   TMD Transport movement details               C   1                |
+                                                                          |
+00250       ---- Segment group 5  ------------------ C   9---------------+|
+00260   DGS Dangerous goods                          M   1               ||
+00270   FTX Free text                                C   9---------------+|
+                                                                          |
+00280       ---- Segment group 6  ------------------ C   9---------------+|
+00290   LOC Place/location identification            M   1               ||
+00300   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00310       ---- Segment group 7  ------------------ C   99--------------+|
+00320   EQA Attached equipment                       M   1               ||
+00330   SEL Seal number                              C   9               ||
+                                                                         ||
+00340       ---- Segment group 8  ------------------ C   9--------------+||
+00350   LOC Place/location identification            M   1              |||
+00360   DTM Date/time/period                         C   9--------------++|
+                                                                          |
+00370       ---- Segment group 9  ------------------ C   99--------------+|
+00380   TDT Transport information                    M   1               ||
+00390   DTM Date/time/period                         C   9               ||
+00400   RFF Reference                                C   9               ||
+                                                                         ||
+00410       ---- Segment group 10 ------------------ C   9--------------+||
+00420   LOC Place/location identification            M   1              |||
+00430   DTM Date/time/period                         C   9--------------++|
+                                                                          |
+00440       ---- Segment group 11 ------------------ C   1---------------+|
+00450   TMP Temperature                              M   1               ||
+00460   RNG Range details                            C   1---------------+|
+                                                                          |
+00470       ---- Segment group 12 ------------------ C   9---------------+|
+00480   DAM Damage                                   M   1               ||
+00490   COD Component details                        C   9---------------++
+
+00500       ---- Segment group 13 ------------------ C   99999------------+
+00510   CNI Consignment information                  M   1                |
+00520   LOC Place/location identification            C   9                |
+00530   CNT Control total                            C   9                |
+                                                                          |
+00540       ---- Segment group 14 ------------------ M   99--------------+|
+00550   STS Status                                   M   1               ||
+00560   RFF Reference                                C   999             ||
+00570   DTM Date/time/period                         C   9               ||
+00580   DOC Document/message details                 C   1               ||
+00590   FTX Free text                                C   9               ||
+                                                                         ||
+00600       ---- Segment group 15 ------------------ C   9--------------+||
+00610   NAD Name and address                         M   1              |||
+                                                                        |||
+00620       ---- Segment group 16 ------------------ C   9-------------+|||
+00630   CTA Contact information                      M   1             ||||
+00640   COM Communication contact                    C   9-------------++||
+00650   LOC Place/location identification            C   1               ||
+00660   PCI Package identification                   C   99              ||
+                                                                         ||
+00670       ---- Segment group 17 ------------------ C   99-------------+||
+00680   TDT Transport information                    M   1              |||
+00690   DTM Date/time/period                         C   9              |||
+00700   RFF Reference                                C   9              |||
+                                                                        |||
+00710       ---- Segment group 18 ------------------ C   9-------------+|||
+00720   LOC Place/location identification            M   1             ||||
+00730   DTM Date/time/period                         C   9-------------++||
+                                                                         ||
+00740       ---- Segment group 19 ------------------ C   99-------------+||
+00750   EQD Equipment details                        M   1              |||
+00760   MEA Measurements                             C   9              |||
+00770   DIM Dimensions                               C   9              |||
+00780   SEL Seal number                              C   9              |||
+00790   RFF Reference                                C   9              |||
+00800   TPL Transport placement                      C   9              |||
+00810   TMD Transport movement details               C   1              |||
+                                                                        |||
+00820       ---- Segment group 20 ------------------ C   9-------------+|||
+00830   LOC Place/location identification            M   1             ||||
+00840   DTM Date/time/period                         C   9-------------+|||
+                                                                        |||
+00850       ---- Segment group 21 ------------------ C   99------------+|||
+00860   EQA Attached equipment                       M   1             ||||
+00870   SEL Seal number                              C   9             ||||
+                                                                       ||||
+00880       ---- Segment group 22 ------------------ C   9------------+||||
+00890   LOC Place/location identification            M   1            |||||
+00900   DTM Date/time/period                         C   9------------+++||
+                                                                         ||
+00910 *     ---- Segment group 23 ------------------ C   999------------+||
+00920   GID Goods item details                       M   1              |||
+00930   HAN Handling instructions                    C   9              |||
+00940   SGP Split goods placement                    C   99             |||
+00950   DGS Dangerous goods                          C   9              |||
+00960   FTX Free text                                C   9              |||
+00970   GDS Nature of cargo                          C   9              |||
+00980   LOC Place/location identification            C   9              |||
+00990   QTY Quantity                                 C   9              |||
+                                                                        |||
+01000       ---- Segment group 24 ------------------ C   99------------+|||
+01010   MEA Measurements                             M   1             ||||
+01020   EQN Number of units                          C   1-------------+|||
+                                                                        |||
+01030       ---- Segment group 25 ------------------ C   99------------+|||
+01040   DIM Dimensions                               M   1             ||||
+01050   EQN Number of units                          C   1-------------+|||
+                                                                        |||
+01060       ---- Segment group 26 ------------------ C   99------------+|||
+01070   PCI Package identification                   M   1             ||||
+01080   GIN Goods identity number                    C   9999----------+|||
+                                                                        |||
+01090       ---- Segment group 27 ------------------ C   9-------------+|||
+01100   RFF Reference                                M   1             ||||
+01110   DTM Date/time/period                         C   9-------------++++
+01120   UNT Message trailer                          M   1     

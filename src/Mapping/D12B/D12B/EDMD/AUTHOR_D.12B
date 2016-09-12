@@ -1,0 +1,441 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                           Authorization message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : AUTHOR
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG5 Finance
+
+
+
+                                  CONTENTS
+
+                           Authorization message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Authorization
+       message (AUTHOR) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       An Authorization Message is sent by the Ordering Customer (or Payor
+       or Agent on behalf of the Ordering Customer) or by a third party
+       having authority on the Ordering Customer's payments to the Ordered
+       Bank, to authorize the Ordered Bank to execute a given financial
+       transaction.
+       
+       This financial transaction might relate to both multiple messages
+       like PAYMUL and DIRDEB, and single instruction messages like PAYORD
+       and PAYEXT.
+       
+       An Authorization Message could also be sent from the Ordered Bank to
+       the Ordering Customer or its Authorization Authority to request
+       authorization for a given financial transaction.
+       
+       Throughout this document the term 'Original Message' refers to the
+       message to be authorized.
+
+1.2    Field of application
+
+       The Authorization message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       - The authorization carried by the message applies to the whole
+       original message (i.e. to all instructions within the message) or to
+       individual debit transactions and their related credits.
+       
+       -  The AUTHOR message may also authorize a single transaction in a
+       multiple direct debit transaction.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following semantic principles applying to the message are
+       intended to facilitate the understanding of the message.
+       
+       The Authorization message is structured in three levels: A, B, and
+       C.
+       
+       Level A Segment Groups 1, 2, 3 and 9 contains general data related
+       to the whole message.
+       
+       Level B Segment Groups 4 and 5 contains data identifying the message
+       or transaction to be authorized.
+       
+       Level C Segment Groups 6 to 8 contains the authorization.
+       
+       The structure of the message is designed to allow several B levels,
+       each B level being followed by its related C levels.
+       
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Authorization message is AUTHOR.
+
+        Note: Authorization messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 AUTHOR
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment for unique identification of the Authorization message,
+        its type and number and its function, i.e., specifying if it is an
+        authorization or request for authorization.
+
+00030   DTM, Date/time/period
+        A segment containing the creation date of the Authorization
+        Message.
+
+00040   BUS, Business function
+        A segment providing information for routing of the message.
+
+
+00050   Segment group 1:  RFF-DTM
+        A group of segments identifying the message to be authorized and
+        possibly the request for an authorization which has been previously
+        sent.
+
+00060      RFF, Reference
+           A segment referring to the message that has to be authorized or
+           to a previously-sent request for authorization.
+
+00070      DTM, Date/time/period
+           A segment indicating the date and time of creation of the
+           message referenced in the RFF segment or possibly the payment
+           date.
+
+
+00080   Segment group 2:  FII-CTA-COM
+        A group of segments identifying the financial institutions involved
+        in the Authorization message.
+
+00090      FII, Financial institution information
+           A segment identifying the Ordered Bank acting for the Ordering
+           Customer and/or Payor and the relevant account number and
+           currency.
+
+00100      CTA, Contact information
+           A segment identifying a person or department for the financial
+           institution specified in the FII segment and to whom
+           communication should be directed.
+
+00110      COM, Communication contact
+           A segment providing communication numbers for the financial
+           institution identified in the FII segment and optionally for the
+           contact identified in the associated CTA segment.
+
+
+00120   Segment group 3:  NAD-CTA-COM
+        A group of segments identifying the parties involved in the
+        exchange of the message.
+
+00130      NAD, Name and address
+           A segment identifying the name and address of the non-financial
+           parties involved in the exchange of this message. (Sender and
+           Recipient).
+
+00140      CTA, Contact information
+           A segment identifying a person or department for the party
+           specified in the NAD segment and to whom communication should be
+           directed.
+
+00150      COM, Communication contact
+           A segment providing communication numbers for the party
+           identified in the NAD segment and optionally for the contact
+           identified in the associated CTA segment.
+
+
+00160   Segment group 4:  LIN-SG5-SG6-SG7-SG8
+        A group of segments identifying a message or a group of
+        transactions in a message or a specific transaction in a multiple
+        message.
+
+00170      LIN, Line item
+           A segment specifying the beginning of details referring to the
+           message/transaction to be authorized.
+
+
+00180      Segment group 5:  RFF-DTM
+           A groups of segments specifying reference numbers, dates and/or
+           times needed to identify a referenced message or transaction.
+
+00190         RFF, Reference
+              A segment indicating reference number(s) for the message or
+              transaction to be authorized.
+
+00200         DTM, Date/time/period
+              A segment specifying the date/time of the referenced message
+              or transaction.
+
+
+00210      Segment group 6:  SEQ-GEI-DTM-MOA-DOC
+           A group of segments identifying the authorization of the
+           message/transaction.
+
+00220         SEQ, Sequence details
+              A segment identifying the beginning of the details needed to
+              give the authorization.
+
+00230         GEI, Processing information
+              A segment specifying the kind of authorization given to the
+              referenced message/transaction in a coded form.
+
+00240         DTM, Date/time/period
+              A segment identifying dates related to the referenced
+              message/transaction.
+
+00250         MOA, Monetary amount
+              A segment giving the amount of the referenced
+              message/transaction.
+
+00260         DOC, Document/message details
+              A segment identifying referenced numbers of the referenced
+              message/transaction.
+
+
+00270      Segment group 7:  FII-CTA-COM
+           A group of segments identifying the financial institutions
+           associated with the referenced message/transaction.
+
+00280         FII, Financial institution information
+              A segment identifying a financial institution related to the
+              referenced message/transaction.
+
+00290         CTA, Contact information
+              A segment identifying a person or department for the party
+              specified in the FII segment and to whom communication should
+              be directed.
+
+00300         COM, Communication contact
+              A segment providing communication numbers for the party
+              identified in the FII segment and optionally for the contact
+              identified in the associated CTA segment.
+
+
+00310      Segment group 8:  NAD-CTA-COM
+           A group of segments identifying the name and address of non-
+           financial parties associated with the referenced
+           message/transaction.
+
+00320         NAD, Name and address
+              A segment identifying a non-financial party related to the
+              referenced message/transaction.
+
+00330         CTA, Contact information
+              A segment identifying a person or a department for the party
+              identified in the NAD segment and to whom communication
+              should be directed.
+
+00340         COM, Communication contact
+              A segment identifying communications types and numbers for
+              the persons or departments specified in the associated CTA
+              segment.
+
+00350   CNT, Control total
+        A segment identifying the type of control checks and totals.
+
+
+00360   Segment group 9:  AUT-DTM
+        A segment group identifying the authentication procedures used.
+
+00370      AUT, Authentication result
+           A segment specifying the details of any authentication
+           (validation) procedure applied to the Authorisation message.
+
+00380      DTM, Date/time/period
+           A segment defining the validation date/time.
+
+00390   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AUT Authentication result
+          BGM Beginning of message
+          BUS Business function
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          GEI Processing information
+          LIN Line item
+          MOA Monetary amount
+          NAD Name and address
+          RFF Reference
+          SEQ Sequence details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   1     
+00040   BUS Business function                        C   1     
+
+00050       ---- Segment group 1  ------------------ C   2----------------+
+00060   RFF Reference                                M   1                |
+00070   DTM Date/time/period                         C   1----------------+
+
+00080       ---- Segment group 2  ------------------ C   5----------------+
+00090   FII Financial institution information        M   1                |
+00100   CTA Contact information                      C   1                |
+00110   COM Communication contact                    C   5----------------+
+
+00120       ---- Segment group 3  ------------------ C   3----------------+
+00130   NAD Name and address                         M   1                |
+00140   CTA Contact information                      C   1                |
+00150   COM Communication contact                    C   5----------------+
+
+00160       ---- Segment group 4  ------------------ M   9999-------------+
+00170   LIN Line item                                M   1                |
+                                                                          |
+00180       ---- Segment group 5  ------------------ C   5---------------+|
+00190   RFF Reference                                M   1               ||
+00200   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00210       ---- Segment group 6  ------------------ C   9999------------+|
+00220   SEQ Sequence details                         M   1               ||
+00230   GEI Processing information                   M   1               ||
+00240   DTM Date/time/period                         C   2               ||
+00250   MOA Monetary amount                          C   1               ||
+00260   DOC Document/message details                 C   5---------------+|
+                                                                          |
+00270       ---- Segment group 7  ------------------ C   2---------------+|
+00280   FII Financial institution information        M   1               ||
+00290   CTA Contact information                      C   1               ||
+00300   COM Communication contact                    C   5---------------+|
+                                                                          |
+00310       ---- Segment group 8  ------------------ C   2---------------+|
+00320   NAD Name and address                         M   1               ||
+00330   CTA Contact information                      C   1               ||
+00340   COM Communication contact                    C   5---------------++
+00350   CNT Control total                            C   5     
+
+00360       ---- Segment group 9  ------------------ C   5----------------+
+00370   AUT Authentication result                    M   1                |
+00380   DTM Date/time/period                         C   1----------------+
+00390   UNT Message trailer                          M   1     

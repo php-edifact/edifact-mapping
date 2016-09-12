@@ -1,0 +1,704 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                     Justified payment request message
+
+
+
+      This message can only be used with ISO 9735 Version 4 or later.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : JUPREQ
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 4
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                     Justified payment request message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Justified payment
+       request message (JUPREQ) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This message may be sent by an accounts payable service or
+       equivalent to a payment service or equivalent to request the payment
+       of a sum to one or several creditors. The message may provide all
+       the details required for auditability purposes to justify the
+       requested payment sum(s) in order to enable the payment to be made
+       automatically after the necessary automatic validation (i.e., to
+       ensure that all required information is present and is correct).
+
+1.2    Field of application
+
+       The Justified payment request message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       A Justified payment request message is sent by an accounts payable
+       service or equivalent to a payment service or equivalent in order to
+       request that payment be made to one or several creditors.
+       
+       The message may also include a reference to all the documents
+       (electronic and paper) which justify the sum being requested to be
+       paid thus providing the possibility to trace back to specific
+       documents and consequently identify the originator (electronic
+       messages being signed electronically) and the level of debt engaged.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Justified payment request message is
+        JUPREQ.
+
+        Note: Justified payment request messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 JUPREQ
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender uniquely identifies the Justified
+        payment request message by means of its number and type (for
+        example, investment payment, functional payment etc.).
+
+00030   DTM, Date/time/period
+        A segment specifying general dates (accounting year, registration
+        date, etc.) and, when relevant, times related to the whole message.
+        The segment must be specified at least once to identify the date
+        the payment request was issued.
+
+00040   MOA, Monetary amount
+        A segment specifying total monetary amounts for the payment request
+        (for example, total amount remaining to be deducted from future
+        payments).
+
+00050   GEI, Processing information
+        A segment providing general processing information in respect to
+        the whole payment request, such as the budgetary nature of the
+        request, e.g., investment, operational, etc.
+
+00060   FTX, Free text
+        A segment specifying free text information eventually providing a
+        description of the payment justification.
+
+
+00070   Segment group 1:  RFF-DTM
+        A segment group to provide reference information about the payment
+        request such as the contract against which the payment is to be
+        made (budget references, reference documents) and where necessary,
+        their dates.
+
+00080      RFF, Reference
+           A segment identifying reference information about the payment,
+           such as the contract concerned or budgeting information, by
+           their number and where appropriate, the version number.
+
+00090      DTM, Date/time/period
+           A segment specifying the date/time related to the referenced
+           information.
+
+
+00100   Segment group 2:  NAD-CTA-DTM
+        A group of segments identifying the parties relevant to the payment
+        request with associated information such as responsible service or
+        visa date.
+
+00110      NAD, Name and address
+           A segment identifying names and addresses of parties, in coded
+           or clear form, and their relevant function for the payment
+           request. Identification of the sender of the request and the
+           payment service are mandatory for the Justified payment request
+           message. Other parties may also be identified as required.
+
+00120      CTA, Contact information
+           A segment specifying specific contact information such as the
+           service involved related to the referenced information.
+
+00130      DTM, Date/time/period
+           A segment identifying key dates relative to the payment such as
+           visa date of the service in question.
+
+
+00140   Segment group 3:  DOC-GEI-RFF-DTM-MOA-FTX-SG4-SG7-SG8-SG9-SG11
+        A group of segments providing information about the payment
+        requested as well as the documents which are required to justify
+        it. This includes information such as amounts, dates, results
+        formula calculations, article information, tax information, party
+        information and other references.
+
+00150      DOC, Document/message details
+           A segment identifying the documents associated with the payment
+           request such as the payment request documents and their
+           associated justifications.
+
+00160      GEI, Processing information
+           A segment providing general processing information, such as
+           economic indicators or credit categories.
+
+00170      RFF, Reference
+           A segment identifying reference information about the payment,
+           such as budgeting information, by their number and where
+           appropriate, the version number.
+
+00180      DTM, Date/time/period
+           A segment specifying date/time/period details such as the date
+           the request was posted in the accounts or the date of emission
+           of a justification document.
+
+00190      MOA, Monetary amount
+           A segment providing information about the amounts which the
+           document in question justifies. This includes amounts such as
+           credit requests and adjustment amounts.
+
+00200      FTX, Free text
+           A segment specifying free text information eventually providing
+           a description of the document in question.
+
+
+00210      Segment group 4:  NAD-FII-MOA-SG5
+           A group of segments identifying the parties involved in the
+           justification and eventually amounts due and bank account
+           information.
+
+00220         NAD, Name and address
+              A segment identifying the party, such as the beneficiary,
+              factoring party, justification originator or co-contractor.
+
+00230         FII, Financial institution information
+              A segment identifying information such as the beneficiary's
+              bank account.
+
+00240         MOA, Monetary amount
+              A segment identifying monetary amounts, such as the amount
+              payable to the party if the distributed sum is being split
+              between different beneficiaries.
+
+
+00250         Segment group 5:  UGH-SG6-UGT
+              A group of segments identifying the parties involved in the
+              Justification, the amounts due to them, their bank account
+              information along with any eventual related parties and
+              associated banking information.
+
+00260            UGH, Anti-collision segment group header
+                 A segment to head, identify and specify an anti-collision
+                 segment group in order to permit the identification of
+                 beneficiary's, and any eventual related parties such as
+                 factors.
+
+
+00270            Segment group 6:  REL-NAD-FII
+                 A group of segments identifying any eventual related
+                 party, such as a factor, along with his bank information
+                 and the exact relationship between the two parties.
+
+00280               REL, Relationship
+                    A segment identifying the exact relationship between
+                    the two parties.
+
+00290               NAD, Name and address
+                    A segment identifying the related party, such as a
+                    factor.
+
+00300               FII, Financial institution information
+                    A segment identifying information such as the bank
+                    account of the related party.
+
+00310            UGT, Anti-collision segment group trailer
+                 A segment to end and check the completeness of an anti-
+                 collision segment group.
+
+
+00320      Segment group 7:  DMS-RFF-NAD
+           A group of segments identifying complementary documents which
+           may be associated with a justification and eventually other
+           references and any parties associated with it.
+
+00330         DMS, Document/message summary
+              A segment identifying a document associated with a
+              justification by its type and identification, such as related
+              messages from other transmissions.
+
+00340         RFF, Reference
+              A segment identifying other reference information related to
+              the document being described.
+
+00350         NAD, Name and address
+              A segment identifying parties related to the document being
+              described, such as its sender.
+
+
+00360      Segment group 8:  TAX-MOA
+           A group of segments identifying tax and eventually monetary
+           information associated with the document being detailed.
+
+00370         TAX, Duty/tax/fee details
+              A segment identifying the tax information, such as the rate
+              of value added tax (VAT) associated with the document being
+              detailed.
+
+00380         MOA, Monetary amount
+              A segment identifying monetary amounts, such as the amount of
+              VAT, in relation with the tax in question.
+
+
+00390      Segment group 9:  FOR-GEI-DTM-RTE-MOA-TAX-SG10
+           A group of segments identifying justification information about
+           calculation results using specific formulae, such as a price
+           revision formula, a penalty formula, or a bonus formula.
+
+00400         FOR, Formula
+              A segment identifying the formula used for the calculation.
+
+00410         GEI, Processing information
+              A segment identifying general processing information about
+              the formula, such as whether it is a provisional or
+              definitive calculation.
+
+00420         DTM, Date/time/period
+              A segment identifying date and eventually time information,
+              such as the number of days or months late.
+
+00430         RTE, Rate details
+              A segment identifying the value of the coefficient calculated
+              by the formula.
+
+00440         MOA, Monetary amount
+              A segment identifying information such as the amounts
+              calculated, amounts exonerated or the amount on which
+              penalties can be calculated.
+
+00450         TAX, Duty/tax/fee details
+              A segment identifying information such as the rate of VAT
+              applicable to the value resulting from the calculation.
+
+
+00460         Segment group 10: IND-DTM-RTE
+              A group of segments identifying index information and
+              eventually their dates of application and any specific
+              coefficients which were used in the calculation.
+
+00470            IND, Index details
+                 A segment identifying the indexes and eventually the index
+                 values which were used in the formula calculation.
+
+00480            DTM, Date/time/period
+                 A segment identifying date and eventually time
+                 information, such as the date of reading of the indexes.
+
+00490            RTE, Rate details
+                 A segment identifying any coefficient details in relation
+                 with the index, such as the linking coefficient between
+                 index evolutions.
+
+
+00500      Segment group 11: LIN-PIA-QTY-DTM-TAX-RTE-DMS-RFF-GEI-SG12-SG13-
+                             SG14-SG15
+           A group of segments identifying detailed payment request
+           information or information about articles along with the
+           information which is related to them.
+
+00510         LIN, Line item
+              A segment identifying an item and eventually the line number
+              on which the item is to be found in the document. Items can
+              relate to information such as the payment breakdown, specific
+              articles, etc.
+
+00520         PIA, Additional product id
+              A segment identifying an item by an additional identification
+              number such as a manufacturer's article number.
+
+00530         QTY, Quantity
+              A segment identifying the numbers related to the item in
+              question, such as the number of articles delivered or the
+              quantity invoiced.
+
+00540         DTM, Date/time/period
+              A segment identifying date and eventually time information,
+              such as the effective delivery date, associated with the item
+              in question.
+
+00550         TAX, Duty/tax/fee details
+              A segment identifying tax information, such as the applicable
+              rate of tax, associated with the item in question.
+
+00560         RTE, Rate details
+              A segment identifying any rate details, such as the rate of
+              increase or discount, associated with the article in
+              question.
+
+00570         DMS, Document/message summary
+              A segment identifying documents related to the item in
+              question, such as the specific justification documents
+              associated with a payment request.
+
+00580         RFF, Reference
+              A segment identifying any references associated with the item
+              in question, such as the official reference of the
+              beneficiary.
+
+00590         GEI, Processing information
+              A segment identifying general processing information about
+              the item in question such as the nature of the beneficiary.
+
+
+00600         Segment group 12: MOA-CUX-PAI
+              A segment group specifying monetary amounts and eventually
+              their associated currencies and payment instructions.
+
+00610            MOA, Monetary amount
+                 A segment specifying monetary amounts such as the amount
+                 to be paid, the amount for the item with or without VAT,
+                 etc.
+
+00620            CUX, Currencies
+                 A segment specifying the currency and eventually the
+                 exchange rate associated with the monetary amount.
+
+00630            PAI, Payment instructions
+                 A segment specifying any eventual payment instructions for
+                 the amounts in question, such as the payment means.
+
+
+00640         Segment group 13: NAD-FII
+              A group of segments identifying parties and eventually their
+              bank account information in relation to the item in question.
+
+00650            NAD, Name and address
+                 A segment identifying the party associated with the item
+                 in question, such as the beneficiary, or the manufacturer
+                 of the item.
+
+00660            FII, Financial institution information
+                 A segment identifying information such as the party's bank
+                 account.
+
+
+00670         Segment group 14: FOR-GEI-DTM-MOA
+              A group of segments identifying information about
+              calculations using specific formulae associated with the item
+              in question, such as penalties or bonuses.
+
+00680            FOR, Formula
+                 A segment identifying the formula used in a calculation,
+                 such as a bonus or penalty calculation.
+
+00690            GEI, Processing information
+                 A segment identifying general processing information about
+                 the formula, such as whether it is a provisional or
+                 definitive calculation.
+
+00700            DTM, Date/time/period
+                 A segment identifying date and eventually time
+                 information, such as the number of days or months late, in
+                 respect to the formula calculation.
+
+00710            MOA, Monetary amount
+                 A segment identifying information such as the amounts
+                 calculated, amounts exonerated or the amount on which
+                 penalties can be calculated.
+
+
+00720         Segment group 15: ARD-MOA-DTM-TAX-SG16
+              A group of segments identifying monetary information
+              associated with the item in question and eventually a
+              breakdown of the monetary information such as a budget
+              breakdown.
+
+00730            ARD, Monetary amount function
+                 A segment identifying the relationship between monetary
+                 amounts, such as principal, interests or adjustment
+                 amounts.
+
+00740            MOA, Monetary amount
+                 A segment identifying monetary amounts, such as the amount
+                 of the principal.
+
+00750            DTM, Date/time/period
+                 A segment identifying date and eventually time
+                 information, such as the number of days or months late in
+                 payment.
+
+00760            TAX, Duty/tax/fee details
+                 A segment identifying tax information such as the rate of
+                 VAT applied.
+
+
+00770            Segment group 16: SEQ-GEI-DTM-MOA-RFF
+                 A group of segments identifying information such as a
+                 detailed budget breakdown.
+
+00780               SEQ, Sequence details
+                    A segment identifying sequence breakdown of the
+                    monetary amount identified previously.
+
+00790               GEI, Processing information
+                    A segment general processing indicators related to the
+                    monetary amount breakdown, such as various budgetary
+                    indications.
+
+00800               DTM, Date/time/period
+                    A segment identifying dates and eventually times
+                    related to the monetary amount breakdown, such as the
+                    budgetary year.
+
+00810               MOA, Monetary amount
+                    A segment specifying monetary amounts such as the
+                    budgeted amount.
+
+00820               RFF, Reference
+                    A segment identifying references, such as the different
+                    budget references.
+
+00830   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ARD Monetary amount function
+          BGM Beginning of message
+          CTA Contact information
+          CUX Currencies
+          DMS Document/message summary
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FOR Formula
+          FTX Free text
+          GEI Processing information
+          IND Index details
+          LIN Line item
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          PIA Additional product id
+          QTY Quantity
+          REL Relationship
+          RFF Reference
+          RTE Rate details
+          SEQ Sequence details
+          TAX Duty/tax/fee details
+          UGH Anti-collision segment group header
+          UGT Anti-collision segment group trailer
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   99    
+00040   MOA Monetary amount                          C   99    
+00050   GEI Processing information                   C   99    
+00060   FTX Free text                                C   99    
+
+00070       ---- Segment group 1  ------------------ C   99---------------+
+00080   RFF Reference                                M   1                |
+00090   DTM Date/time/period                         C   99---------------+
+
+00100       ---- Segment group 2  ------------------ M   99---------------+
+00110   NAD Name and address                         M   1                |
+00120   CTA Contact information                      C   99               |
+00130   DTM Date/time/period                         C   99---------------+
+
+00140       ---- Segment group 3  ------------------ C   999--------------+
+00150   DOC Document/message details                 M   1                |
+00160   GEI Processing information                   C   99               |
+00170   RFF Reference                                C   99               |
+00180   DTM Date/time/period                         C   99               |
+00190   MOA Monetary amount                          C   99               |
+00200   FTX Free text                                C   99               |
+                                                                          |
+00210       ---- Segment group 4  ------------------ M   99--------------+|
+00220   NAD Name and address                         M   1               ||
+00230   FII Financial institution information        C   99              ||
+00240   MOA Monetary amount                          C   99              ||
+                                                                         ||
+00250       ---- Segment group 5  ------------------ M   1--------------+||
+00260   UGH Anti-collision segment group header      M   1              |||
+                                                                        |||
+00270       ---- Segment group 6  ------------------ M   99------------+|||
+00280   REL Relationship                             M   1             ||||
+00290   NAD Name and address                         C   99            ||||
+00300   FII Financial institution information        C   99------------+|||
+00310   UGT Anti-collision segment group trailer     M   1--------------++|
+                                                                          |
+00320       ---- Segment group 7  ------------------ M   99--------------+|
+00330   DMS Document/message summary                 M   1               ||
+00340   RFF Reference                                C   99              ||
+00350   NAD Name and address                         C   99--------------+|
+                                                                          |
+00360       ---- Segment group 8  ------------------ M   99--------------+|
+00370   TAX Duty/tax/fee details                     M   1               ||
+00380   MOA Monetary amount                          C   99--------------+|
+                                                                          |
+00390       ---- Segment group 9  ------------------ C   99--------------+|
+00400   FOR Formula                                  M   1               ||
+00410   GEI Processing information                   C   99              ||
+00420   DTM Date/time/period                         C   99              ||
+00430   RTE Rate details                             C   99              ||
+00440   MOA Monetary amount                          C   99              ||
+00450   TAX Duty/tax/fee details                     C   99              ||
+                                                                         ||
+00460       ---- Segment group 10 ------------------ C   99-------------+||
+00470   IND Index details                            M   1              |||
+00480   DTM Date/time/period                         C   99             |||
+00490   RTE Rate details                             C   99-------------++|
+                                                                          |
+00500       ---- Segment group 11 ------------------ C   999-------------+|
+00510   LIN Line item                                M   1               ||
+00520   PIA Additional product id                    C   99              ||
+00530   QTY Quantity                                 C   99              ||
+00540   DTM Date/time/period                         C   99              ||
+00550   TAX Duty/tax/fee details                     C   99              ||
+00560   RTE Rate details                             C   99              ||
+00570   DMS Document/message summary                 C   99              ||
+00580   RFF Reference                                C   99              ||
+00590   GEI Processing information                   C   99              ||
+                                                                         ||
+00600       ---- Segment group 12 ------------------ C   99-------------+||
+00610   MOA Monetary amount                          M   1              |||
+00620   CUX Currencies                               C   99             |||
+00630   PAI Payment instructions                     C   99-------------+||
+                                                                         ||
+00640       ---- Segment group 13 ------------------ C   99-------------+||
+00650   NAD Name and address                         M   1              |||
+00660   FII Financial institution information        C   99-------------+||
+                                                                         ||
+00670       ---- Segment group 14 ------------------ C   99-------------+||
+00680   FOR Formula                                  M   1              |||
+00690   GEI Processing information                   C   99             |||
+00700   DTM Date/time/period                         C   99             |||
+00710   MOA Monetary amount                          C   99-------------+||
+                                                                         ||
+00720       ---- Segment group 15 ------------------ M   99-------------+||
+00730   ARD Monetary amount function                 M   1              |||
+00740   MOA Monetary amount                          C   99             |||
+00750   DTM Date/time/period                         C   99             |||
+00760   TAX Duty/tax/fee details                     C   99             |||
+                                                                        |||
+00770       ---- Segment group 16 ------------------ C   99------------+|||
+00780   SEQ Sequence details                         M   1             ||||
+00790   GEI Processing information                   C   99            ||||
+00800   DTM Date/time/period                         C   99            ||||
+00810   MOA Monetary amount                          C   99            ||||
+00820   RFF Reference                                C   99------------++++
+00830   UNT Message trailer                          M   1     

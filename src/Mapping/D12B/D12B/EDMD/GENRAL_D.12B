@@ -1,0 +1,385 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                          General purpose message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : GENRAL
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                          General purpose message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the General purpose
+       message (GENRAL) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message to enable the transmission of textual information.
+
+1.2    Field of application
+
+       The General purpose message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message:
+       - may be used to send general application support information to one
+       or multiple addresses.
+       
+       - may be used to send required data for which there is no specific
+       standard message.
+       
+       - MUST not be used as a substitute for an existing UNSM under
+       development, under trial or at approved status. Nor should it be
+       used to avoid the development of a more specific application
+       message.
+       
+       - is not designed or intended to be used as a replacement for
+       existing electronic mail systems.
+       
+       The GENRAL message was designed primarily to
+       
+       . facilitate early transmission testing between new EDI partners;
+       
+       . broadcasting of known problem areas to EDI partners;
+       
+       . transmission of text (preferably structured or coded) to
+       supplement or further clarify previously transmitted EDI standard
+       messages, e.g. to stress that provision data is for test purposes
+       only contains known errors to test out error routines.
+       
+       . transmission of small amounts of structured text where no existing
+       messages exist, e.g. computer listings.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+       All specified dates/times should be in the format 'yymmdd'/'hhmm'
+       unless all parties involved in the transaction agree that there is a
+       functional requirement for an alternative format. Periods should be
+       specified as whole numbers representing the required period as
+       indicated in the format qualifier (weeks, months, etc.)
+       
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+       
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken to ensure that the segment qualifier in dependent
+       segments do not conflict with the segment qualifier of the trigger
+       segment of a group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the General purpose message is GENRAL.
+
+        Note: General purpose messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 GENRAL
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the type and function of the GENRAL message
+        and to transmit its unique identifying number.
+
+00030   DTM, Date/time/period
+        A segment specifying general dates, and when relevant, times
+        related to the whole message.
+
+
+00040   Segment group 1:  RFF-DTM
+        A group of segments giving references where necessary, their dates
+        relating to the whole message, e.g. despatch advice, contract
+        number.
+
+00050      RFF, Reference
+           A segment for referencing documents relating to the whole
+           message, e.g. despatch advice, purchase orders, delivery
+           instructions.
+
+00060      DTM, Date/time/period
+           Date/time/period as applied to the referenced document.
+
+
+00070   Segment group 2:  NAD-LOC-SG3-SG4
+        A group of segments identifying names, addresses and locations, and
+        referred documents relevant for the whole message.
+
+00080      NAD, Name and address
+           A segment for identifying name and addresses of a party and
+           their functions relevant for the whole message. Identification
+           of the sender and receiver parties are mandatory for the
+           message.
+           It is recommended that where possible only the coded form of the
+           party ID should be specified.
+
+00090      LOC, Place/location identification
+           A segment indicating more details regarding specific
+           place/location related to the party specified in the NAD
+           segment, e.g. internal site/building number.
+
+
+00100      Segment group 3:  RFF-DTM
+           A group of segments giving references only relevant to the
+           specified party rather than to the whole message.
+
+00110         RFF, Reference
+              A segment for referencing documents relating to the party
+              specified by the NAD segment.
+
+00120         DTM, Date/time/period
+              A segment for date/time/period as related to the referred
+              document.
+
+
+00130      Segment group 4:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in the NAD
+           segment.
+
+00140         CTA, Contact information
+              A segment to identify the person, function, department to
+              whom communication should be directed.
+
+00150         COM, Communication contact
+              A segment to identify communication types and numbers for
+              person, function, department identified in CTA.
+
+
+00160   Segment group 5:  FTX-SG6
+        A group of segments enabling the specification of the text and
+        optionally, the identification of other parties or locations to
+        whom the information should be directed.
+
+00170      FTX, Free text
+           A segment to identify the text type and reason, and to specify
+           the relevant agreed information.
+
+
+00180      Segment group 6:  NAD-LOC-SG7-SG8
+           A group of segments allowing the specification of the name and
+           address of a party, within the receiving party identified in the
+           heading section, to whom the preceding text should be
+           distributed. It also allows to specify the name and address of a
+           party advised as copyreader of this text.
+
+00190         NAD, Name and address
+              A segment for identifying names and addresses.
+              It is recommended that where possible the coded form of the
+              party identification should be specified.
+
+00200         LOC, Place/location identification
+              A segment indicating more details regarding specific
+              place/location related to the party specified in the NAD
+              segment, e.g. internal site/building number.
+
+
+00210         Segment group 7:  RFF-DTM
+              A group of segments giving references only relevant to the
+              specified party rather than the whole message.
+
+00220            RFF, Reference
+                 A segment for referencing documents relating to the party
+                 specified by the NAD segment.
+
+00230            DTM, Date/time/period
+                 A segment for date/time/period as related to the
+                 referenced document.
+
+
+00240         Segment group 8:  CTA-COM
+              A group of segments giving contact details of the specific
+              person or department within the party identified in the NAD
+              segment.
+
+00250            CTA, Contact information
+                 A segment to identify person, function, department to whom
+                 communication should be directed.
+
+00260            COM, Communication contact
+                 A segment to identify communication types and numbers for
+                 person, function, department identified in CTA.
+
+00270   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DTM Date/time/period
+          FTX Free text
+          LOC Place/location identification
+          NAD Name and address
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   1     
+
+00040       ---- Segment group 1  ------------------ C   10---------------+
+00050   RFF Reference                                M   1                |
+00060   DTM Date/time/period                         C   10---------------+
+
+00070       ---- Segment group 2  ------------------ C   2----------------+
+00080   NAD Name and address                         M   1                |
+00090   LOC Place/location identification            C   5                |
+                                                                          |
+00100       ---- Segment group 3  ------------------ C   10--------------+|
+00110   RFF Reference                                M   1               ||
+00120   DTM Date/time/period                         C   10--------------+|
+                                                                          |
+00130       ---- Segment group 4  ------------------ C   5---------------+|
+00140   CTA Contact information                      M   1               ||
+00150   COM Communication contact                    C   9---------------++
+
+00160       ---- Segment group 5  ------------------ C   100--------------+
+00170   FTX Free text                                M   1                |
+                                                                          |
+00180       ---- Segment group 6  ------------------ C   100-------------+|
+00190   NAD Name and address                         M   1               ||
+00200   LOC Place/location identification            C   5               ||
+                                                                         ||
+00210       ---- Segment group 7  ------------------ C   10-------------+||
+00220   RFF Reference                                M   1              |||
+00230   DTM Date/time/period                         C   10-------------+||
+                                                                         ||
+00240       ---- Segment group 8  ------------------ C   5--------------+||
+00250   CTA Contact information                      M   1              |||
+00260   COM Communication contact                    C   5--------------+++
+00270   UNT Message trailer                          M   1     

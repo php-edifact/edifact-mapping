@@ -1,0 +1,1063 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                      Medical service report message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : MEDRPT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG10 Healthcare
+
+
+
+                                  CONTENTS
+
+                      Medical service report message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Medical service
+       report message (MEDRPT) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A Medical Service Report message is sent from a service provider to
+       the service requester to report new results on performed
+       investigations, to modify a previous result item or a complete
+       result report or to cancel a previous result report.
+
+1.2    Field of application
+
+       The Medical service report message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The message fulfils the requirements of the European pre-standard
+       concerning messages for exchange of laboratory information within
+       clinical chemistry, clinical biochemistry, toxicology, clinical
+       immunology, immunohaematology, haematology and clinical
+       microbiology. The message may, however, also be used for other
+       purposes as long as the user requirements are met.
+       
+       The CEN prENV New Laboratory Service Report message and the CEN
+       prENV Laboratory Service Report Cancellation message may be
+       considered as special cases of the CEN prENV Laboratory Service
+       Report Modification message. The Laboratory Service Report
+       Modification message may contain a mixture of new, change, cancel
+       and other service types for the report itself and for the various
+       result items whereas the New Laboratory Service Report message only
+       contains the new service type for the report itself and the various
+       result items and the Laboratory Service Report Cancellation message
+       only contains the cancel service type for a complete report.
+       
+       The overall structure of the message is:
+       - One message may include one or more service reports.
+       - Every report may relate to zero, one or more service orders.
+       - Every service report may contain one or more result items for the
+       subject of investigation, each result item may be composed of zero,
+       one or more other result items.
+       - Every service report is related to one main subject of
+       investigation (patient, animal or material), but may also include
+       information about related subjects of investigation.
+       - One message may report on one or more samples (from the same
+       subject of investigation) or the subject of investigation itself.
+       - An investigation may be connected to one or more samples or to the
+       subject of investigation itself.
+       - Every investigation may have one result.
+       - Every result item may have zero, one or more related service
+       providers.
+       
+       Most of the information sent from the requester to the receiving
+       service provider may be returned to the requester in this message.
+       
+       With the exception of information in FTX segments, all information
+       should primarily be expressed as codes.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Medical service report message is MEDRPT.
+
+        Note: Medical service report messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 MEDRPT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment for unique identification of the message and
+        specification of its function.
+
+00030   DTM, Date/time/period
+        A segment identifying the date and/or time of message generation
+        and/or other dates and/or times concerning the whole message.
+
+00040   FTX, Free text
+        A segment giving free text information, in coded or clear form, for
+        specifying information concerning the whole message.
+
+
+00050   Segment group 1:  PNA-ADR-COM-FTX-RFF-SEQ-LAN-SPR-QUA-EMP
+        A group of segments giving information about involved healthcare
+        parties like the service requester, the service provider, parties
+        to get copies of the results, related service providers, origin of
+        clinical information, supervising healthcare party, healthcare
+        administrative information, sample collector, sample collector
+        location and/or other parties related to the message.
+
+00060      PNA, Party identification
+           A segment for specifying the identification, name and address of
+           involved healthcare organisations or professionals.
+
+00070      ADR, Address
+           A segment for specifying the address of the actual healthcare
+           party.
+
+00080      COM, Communication contact
+           A segment giving communication numbers for the actual healthcare
+           party.
+
+00090      FTX, Free text
+           A segment with free text information, in coded or clear form,
+           for specifying unstructured telecommunication numbers of the
+           actual healthcare party including electronic mail address.
+
+00100      RFF, Reference
+           A segment for specifying alternative identification numbers of
+           the actual healthcare party assigned by the involved healthcare
+           parties.
+           
+           This segment also keeps a reference to another party if the
+           current party is related to another party such as department in
+           a hospital, a physician in a department, etc.
+
+00110      SEQ, Sequence details
+           A segment for allocating a sequence number to the individual
+           healthcare party allowing each healthcare party to be referenced
+           from within the message.
+
+00120      LAN, Language
+           A segment for specifying the language used by the actual
+           healthcare party.
+
+00130      SPR, Organisation classification details
+           A segment for specifying the type and medical speciality of a
+           healthcare organisation.
+
+00140      QUA, Qualification
+           A segment for specifying the professional medical qualifications
+           of a person.
+
+00150      EMP, Employment details
+           A segment for specifying the type, medical speciality and the
+           position or military rank of a healthcare professional.
+
+
+00160   Segment group 2:  IRQ-GEI-RFF-DTM-STS-PTY-LAN-FTX-TEM-SG3-SG4-SG6
+        A group of segments giving information concerning a medical service
+        report.
+
+00170      IRQ, Information required
+           A segment for specifying the requirements concerning
+           acknowledgment of the report.
+
+00180      GEI, Processing information
+           A segment for specifying the service type of the actual report,
+           i.e. whether this is a new report, a modification to a
+           previously issued report, etc.
+
+00190      RFF, Reference
+           A segment for specifying the identification of the service
+           report as provided by the service provider.
+           
+           This segment also keeps a reference to a healthcare party
+           related to this service report which is specified in segment
+           group 1.
+
+00200      DTM, Date/time/period
+           A segment for specifying the issue date and/or time of the
+           report and/or other dates and/or times relevant to the report.
+
+00210      STS, Status
+           A segment for specifying the status of the service report, i.e.
+           whether it is a partial report, a complete report, etc.
+
+00220      PTY, Priority
+           A segment for specifying the reporting priority of the service
+           report.
+
+00230      LAN, Language
+           A segment specifying the language of the actual report.
+
+00240      FTX, Free text
+           A segment with free text information, in coded or clear form,
+           for specifying the comments of the service provider concerning
+           the complete report and/or the reason for cancellation.
+
+00250      TEM, Test method
+           A segment for specifying the reason for cancellation of the
+           complete report.
+
+
+00260      Segment group 3:  RFF-DTM
+           A group of segments for specifying a reference to another
+           service report.
+
+00270         RFF, Reference
+              A segment for specifying the identification number of the
+              referenced service report.
+
+00280         DTM, Date/time/period
+              A segment specifying the issue date and/or time of the
+              referenced service report.
+
+
+00290      Segment group 4:  FCA-RFF-GEI-DTM-PTY-CIN-FTX-TEM-SG5
+           A group of segments specifying a service order related to the
+           actual service report.
+
+00300         FCA, Financial charges allocation
+              A segment giving information concerning payment category for
+              this order.
+
+00310         RFF, Reference
+              A segment for specifying the identification number of the
+              order allocated by various healthcare parties, such as
+              service requester, service provider, etc.
+              
+              The segment is also used for referencing a related healthcare
+              party specified in segment group 1.
+
+00320         GEI, Processing information
+              A segment to provide the service type of the service order,
+              i.e. new order, order modification, etc.
+
+00330         DTM, Date/time/period
+              A segment specifying the dates and/or times concerning the
+              order such as issue date of order, date of receipt, due date
+              of report, etc.
+
+00340         PTY, Priority
+              A segment specifying the requested reporting priority for the
+              whole order.
+
+00350         CIN, Clinical information
+              A segment for specifying the reason for request as well as
+              comments from the requester as a diagnosis concerning this
+              order.
+
+00360         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              for specifying the reason for request as well as comments
+              from the requester concerning this order.
+
+00370         TEM, Test method
+              A segment for specifying the reason for the request.
+
+
+00380         Segment group 5:  DOC-RFF-DTM
+              A group of segments for specifying a reference to another
+              service order.
+
+00390            DOC, Document/message details
+                 A segment for specifying the document name.
+
+00400            RFF, Reference
+                 A segment for specifying the identification number of the
+                 referenced order.
+
+00410            DTM, Date/time/period
+                 A segment for specifying the issue date and/or time of the
+                 referenced order.
+
+
+00420      Segment group 6:  ATT-RFF-ADR-COM-REL-IMD-FTX-PNA-DTM-PDI-NAT-
+                             LAN-HAN-CCI-SG7-SG8-SG14-SG16
+           A group of segments specifying the subject of investigation.
+
+00430         ATT, Attribute
+              A segment for specifying the type of subject of
+              investigation.
+
+00440         RFF, Reference
+              A segment for specifying the identification numbers of the
+              actual subject of investigation.
+
+00450         ADR, Address
+              A segment for specifying the address details of the subject
+              of investigation.
+
+00460         COM, Communication contact
+              A segment providing a telecommunication number of the subject
+              or investigation.
+
+00470         REL, Relationship
+              A segment for specifying the association between subjects of
+              investigation such as donor, foetus, etc. as well as the
+              relationship of a related person to the patient.
+
+00480         IMD, Item description
+              A segment for specifying the description of the material
+              being investigated if the subject of investigation is a
+              material.
+
+00490         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              for specifying additional information about the material as
+              well as an unstructured telecommunication number of the
+              subject of investigation.
+
+00500         PNA, Party identification
+              A segment for identifying the patient and related person or
+              name by specifying various patient name details and official
+              patient ID.
+
+00510         DTM, Date/time/period
+              A segment for specifying relevant date and/or times for the
+              patient such as date of birth, date of death, etc.
+
+00520         PDI, Person demographic information
+              A segment for specifying demographic information such as sex,
+              marital status and religion.
+
+00530         NAT, Nationality
+              A segment for specifying the nationality of a person.
+
+00540         LAN, Language
+              A segment for specifying the language used by the person.
+
+00550         HAN, Handling instructions
+              A segment for specifying the confidentiality constraints on
+              patient data.
+
+00560         CCI, Characteristic/class id
+              A segment for specifying the species or breed of an animal.
+
+
+00570         Segment group 7:  PAS-LOC-DTM-RFF
+              A group of segments for specifying healthcare administrative
+              information concerning the actual subject of investigation.
+
+00580            PAS, Attendance
+                 A segment for specifying patient administrative
+                 information such as administrative status concerning
+                 actual hospital stay or out-patient visit or ward stay
+                 related to the subject of investigation.
+
+00590            LOC, Place/location identification
+                 A segment for specifying the physical patient care
+                 location in terms of ward, room, bed, etc.
+
+00600            DTM, Date/time/period
+                 A segment for specifying admission and/or discharge date
+                 and time or start and/or end date and time of a ward stay.
+
+00610            RFF, Reference
+                 This segment keeps a reference to a healthcare party for
+                 specifying healthcare administrative information such as
+                 hospital, department, etc. where patient is admitted,
+                 located, etc.
+
+
+00620         Segment group 8:  CAV-CIN-LAN-DTM-FTX-RFF-SG9-SG12
+              A group of segments giving information about a clinical
+              observation including the origin of the clinical information.
+              The clinical information may be a symptom, physical sign,
+              anamnesis (medical history), clinical observation, diagnosis,
+              etc.
+
+00630            CAV, Characteristic value
+                 A segment for specifying the type of clinical information.
+
+00640            CIN, Clinical information
+                 A segment for specifying the type of clinical observation,
+                 description of the clinical observation itself as well as
+                 the degree of certainty concerning the clinical
+                 observation.
+
+00650            LAN, Language
+                 A segment for specifying the language related to the
+                 clinical observation.
+
+00660            DTM, Date/time/period
+                 A segment for specifying date and times related to the
+                 clinical information, the clinical observation itself and
+                 the origin of clinical information.
+
+00670            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, for description of the clinical information.
+
+00680            RFF, Reference
+                 This segment keeps a reference to a healthcare party for
+                 specifying origin of clinical information.
+
+
+00690            Segment group 9:  STS-SEQ-GEI-RSL-CCI-CIN-DTM-FTX-RFF-
+                                   SG10-SG11
+                 A group of segments for specifying a clinical
+                 investigation result item and the clinical investigation
+                 itself.
+
+00700               STS, Status
+                    A segment for specifying the status of the clinical
+                    investigation, e.g. preliminary results, final results,
+                    etc.
+
+00710               SEQ, Sequence details
+                    A segment for allocating a sequence number to a
+                    clinical investigation result item to allow referencing
+                    from within this message to a specific clinical
+                    investigation result item.
+
+00720               GEI, Processing information
+                    A segment for specifying the service type of the
+                    clinical investigation result item, e.g. new result
+                    item.
+
+00730               RSL, Result
+                    A segment for specifying the numerical value or a coded
+                    text value of a clinical investigation result item
+                    including unit of measurement, arithmetic comparator
+                    and the deviating result indicator.
+
+00740               CCI, Characteristic/class id
+                    A segment for identifying the clinical investigation
+                    and to describe specifications to the clinical
+                    investigation.
+
+00750               CIN, Clinical information
+                    A segment giving a text value of a clinical
+                    investigation result item as well as a comment to the
+                    clinical investigation result item as a diagnosis.
+
+00760               DTM, Date/time/period
+                    A segment for specifying relevant date and times
+                    concerning the investigation such as date and time for
+                    investigation performed, last status change and a date
+                    value of a clinical observation.
+
+00770               FTX, Free text
+                    A segment with free text information, in coded or clear
+                    form, for specifying the text value of a clinical
+                    investigation as well as comments to the clinical
+                    investigation and the investigation result item.
+
+00780               RFF, Reference
+                    This segment keeps a reference to the "parent" clinical
+                    investigation result item if needed.
+
+
+00790               Segment group 10: RSL-FTX-CCI
+                    A group of segments giving the reference limits of a
+                    clinical investigation result item.
+
+00800                  RSL, Result
+                       A segment for specifying the numerical reference
+                       interval of an investigation result item and the
+                       type of reference interval.
+
+00810                  FTX, Free text
+                       A segment with free text information, in coded or
+                       clear form, for specifying the textual reference
+                       limits of an investigation result item.
+
+00820                  CCI, Characteristic/class id
+                       A segment for specifying a reference population,
+                       e.g. age, sex, smokers, etc.
+
+
+00830               Segment group 11: REL-RFF
+                    A group of segments for identifying the persons and/or
+                    organisations involved in producing an investigation
+                    result.
+
+00840                  REL, Relationship
+                       A segment for specifying the type of relationship of
+                       a related healthcare service provider to the
+                       clinical investigation result item.
+
+00850                  RFF, Reference
+                       A segment for specifying a reference to healthcare
+                       parties in segment group 1 where the related
+                       healthcare professional or organisation is
+                       identified.
+
+
+00860            Segment group 12: CLI-SG13
+                 A group of segments for specifying a clinical
+                 intervention.
+
+00870               CLI, Clinical intervention
+                    A segment for specifying the type of intervention and
+                    the intervention itself.
+
+
+00880               Segment group 13: IMD-DSG-FTX-INP
+                    A group of segments to describe interventions involving
+                    drugs.
+
+00890                  IMD, Item description
+                       A segment for identifying a drug.
+
+00900                  DSG, Dosage administration
+                       A segment for specifying the dosage and
+                       administration specifications of a drug.
+
+00910                  FTX, Free text
+                       A segment with free text information, in coded or
+                       clear form, for specifying dosage and administration
+                       specification of a drug.
+
+00920                  INP, Parties and instruction
+                       A segment for specifying the dosage regime.
+
+
+00930         Segment group 14: SEQ-IMD-PRC-RFF-QTY-DTM-PAC-FTX-TDT-HAN-
+                                LOC-ADR-SG15
+              A group of segments containing information about the samples
+              collected or to be collected concerning the requested
+              investigation.
+
+00940            SEQ, Sequence details
+                 A segment for allocating a sequence number to the sample
+                 to allow referencing from within this message to a
+                 specific sample.
+
+00950            IMD, Item description
+                 A segment for specifying the characteristics of a sample
+                 like type of sample, anatomical origin and sample
+                 preservation material.
+
+00960            PRC, Process identification
+                 A segment for specifying information about type of
+                 collection procedure and subsequent handling of the
+                 sample.
+
+00970            RFF, Reference
+                 A segment for specifying the identification numbers of the
+                 actual sample allocated by service requester and service
+                 provider.
+                 
+                 This segment also keeps a reference to healthcare parties
+                 related to this actual sample such as the sample collector
+                 and sample collection location.
+                 
+                 This segment in addition keeps a reference to the "parent"
+                 sample if this sample is part of or derived from another
+                 sample.
+
+00980            QTY, Quantity
+                 A segment for specifying information about sample volume
+                 or weight.
+
+00990            DTM, Date/time/period
+                 A segment for specifying relevant dates and times
+                 concerning the sample such as start and/or end date and
+                 time or period for sample collection, sample receipt date
+                 and time, etc.
+
+01000            PAC, Package
+                 A segment specifying the number of sample containers this
+                 sample consists of.
+
+01010            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, expressing the comments of the sample collector, the
+                 comments of the requester or service provider to the
+                 sample, anatomical origin of sample, sample location
+                 description, etc.
+
+01020            TDT, Transport information
+                 A segment for specifying the transport logistics of the
+                 collected sample.
+
+01030            HAN, Handling instructions
+                 A segment for specifying sample handling warning.
+
+01040            LOC, Place/location identification
+                 A segment for specifying the location for sample
+                 collection in terms of hospital ward, room and bed number.
+
+01050            ADR, Address
+                 A segment for specifying the address for the sample
+                 collection.
+
+
+01060            Segment group 15: CLI-IMD-DSG-DTM-FTX-QTY-INP
+                 A group of segments for specifying the pre-treatment
+                 performed relating to a sample.
+
+01070               CLI, Clinical intervention
+                    A segment for describing the pre-treatment
+                    administered.
+
+01080               IMD, Item description
+                    A segment for specifying the substance administered for
+                    pre-treatment.
+
+01090               DSG, Dosage administration
+                    A segment for specifying the route of administration of
+                    the pre-treatment.
+
+01100               DTM, Date/time/period
+                    A segment for specifying relevant date and times for
+                    the pre-treatment like start, end or duration of
+                    administration.
+
+01110               FTX, Free text
+                    A segment with free text information, in coded or clear
+                    form, for describing the pre-treatment.
+
+01120               QTY, Quantity
+                    A segment for specifying amount of substance
+                    administered.
+
+01130               INP, Parties and instruction
+                    A segment for specifying the dosage regime.
+
+
+01140         Segment group 16: LIN-GEI-RSL-CCI-CIN-SEQ-STS-DTM-FTX-MOA-
+                                RFF-EQD-SG17-SG18
+              A group of segments for specifying a requested investigation
+              and the result of this investigation.
+
+01150            LIN, Line item
+                 A segment for specifying the line number of the laboratory
+                 investigation result item.
+
+01160            GEI, Processing information
+                 A segment for specifying the service type of the result of
+                 this investigation, e.g. new result, corrected result,
+                 etc.
+
+01170            RSL, Result
+                 A segment for specifying the numerical value or a coded
+                 text value of an investigation result item including unit
+                 of measurement, arithmetic comparator and the deviating
+                 result indicator.
+
+01180            CCI, Characteristic/class id
+                 A segment for specifying the characteristics of the
+                 investigation. The characteristics may concern system,
+                 component or property examined as well as method of
+                 measurement, etc.
+
+01190            CIN, Clinical information
+                 A segment for specifying the result of an investigation or
+                 comments to a result item as a diagnosis.
+
+01200            SEQ, Sequence details
+                 A segment for allocating a sequence number to this result
+                 item to allow for referencing from within this message to
+                 a specific result item.
+
+01210            STS, Status
+                 A segment for specifying the status of an investigation or
+                 investigation result item, e.g. unverified result,
+                 preliminary result, etc.
+
+01220            DTM, Date/time/period
+                 A segment for specifying date and times relevant for this
+                 investigation result item such as date and time of
+                 investigation performed, status change, etc.
+                 
+                 The segment may also carry the result of an investigation
+                 if this is expressed as a date or period such as clinical
+                 dates.
+
+01230            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, for specifying a result item as a text value as well
+                 as comments to the result item or the investigation
+                 itself.
+
+01240            MOA, Monetary amount
+                 A segment for specifying the type of cost, the amount of
+                 cost and possibly currency unit used concerning the
+                 investigation.
+
+01250            RFF, Reference
+                 This segment keeps a reference to one or more samples
+                 related to this actual result item such as the sample(s)
+                 involved in obtaining this result item.
+                 
+                 This segment also keeps a reference to another
+                 investigation result item related to this actual
+                 investigation result item such as the investigation result
+                 item which this investigation result item is part of.
+
+01260            EQD, Equipment details
+                 A segment for specifying the measuring equipment used for
+                 obtaining this investigation result item.
+
+
+01270            Segment group 17: REL-RFF
+                 A group of segments for specifying a related laboratory
+                 service provider involved in producing this investigation
+                 result item.
+
+01280               REL, Relationship
+                    A segment for specifying the type of relationship a
+                    service provider has to the produced investigation
+                    result item.
+
+01290               RFF, Reference
+                    This segment keeps a reference to a healthcare party
+                    (healthcare professional or healthcare organisation)
+                    which is identified in segment group 1 for specifying a
+                    related person or organisation.
+
+
+01300            Segment group 18: RSL-FTX-CCI
+                 A group of segments for specifying the reference limits of
+                 an investigation result item.
+
+01310               RSL, Result
+                    A segment for specifying the reference interval for the
+                    investigation and the type of reference interval such
+                    as physiological, therapeutical, etc.
+
+01320               FTX, Free text
+                    A segment with free text information, in coded or clear
+                    form, for specifying textual reference limits
+                    concerning the investigation.
+
+01330               CCI, Characteristic/class id
+                    A segment for specifying the reference population.
+
+
+01340   Segment group 19: AUT-DTM
+        A group of segments for specifying authentication details.
+
+01350      AUT, Authentication result
+           A segment for specifying results of an authentication procedure.
+
+01360      DTM, Date/time/period
+           A segment for specifying the date and time for the validity of
+           the authentication.
+
+01370   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          AUT Authentication result
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          CIN Clinical information
+          CLI Clinical intervention
+          COM Communication contact
+          DOC Document/message details
+          DSG Dosage administration
+          DTM Date/time/period
+          EMP Employment details
+          EQD Equipment details
+          FCA Financial charges allocation
+          FTX Free text
+          GEI Processing information
+          HAN Handling instructions
+          IMD Item description
+          INP Parties and instruction
+          IRQ Information required
+          LAN Language
+          LIN Line item
+          LOC Place/location identification
+          MOA Monetary amount
+          NAT Nationality
+          PAC Package
+          PAS Attendance
+          PDI Person demographic information
+          PNA Party identification
+          PRC Process identification
+          PTY Priority
+          QTY Quantity
+          QUA Qualification
+          REL Relationship
+          RFF Reference
+          RSL Result
+          SEQ Sequence details
+          SPR Organisation classification details
+          STS Status
+          TDT Transport information
+          TEM Test method
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   9     
+00040   FTX Free text                                C   9     
+
+00050       ---- Segment group 1  ------------------ M   99---------------+
+00060   PNA Party identification                     M   1                |
+00070   ADR Address                                  C   9                |
+00080   COM Communication contact                    C   9                |
+00090   FTX Free text                                C   9                |
+00100   RFF Reference                                C   9                |
+00110   SEQ Sequence details                         C   1                |
+00120   LAN Language                                 C   9                |
+00130   SPR Organisation classification details      C   1                |
+00140   QUA Qualification                            C   9                |
+00150   EMP Employment details                       C   9----------------+
+
+00160       ---- Segment group 2  ------------------ M   99---------------+
+00170   IRQ Information required                     M   1                |
+00180   GEI Processing information                   M   1                |
+00190   RFF Reference                                M   9                |
+00200   DTM Date/time/period                         M   1                |
+00210   STS Status                                   C   1                |
+00220   PTY Priority                                 C   1                |
+00230   LAN Language                                 C   1                |
+00240   FTX Free text                                C   99               |
+00250   TEM Test method                              C   1                |
+                                                                          |
+00260       ---- Segment group 3  ------------------ C   99--------------+|
+00270   RFF Reference                                M   1               ||
+00280   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00290       ---- Segment group 4  ------------------ C   99--------------+|
+00300   FCA Financial charges allocation             M   1               ||
+00310   RFF Reference                                M   9               ||
+00320   GEI Processing information                   C   1               ||
+00330   DTM Date/time/period                         C   9               ||
+00340   PTY Priority                                 C   1               ||
+00350   CIN Clinical information                     C   9               ||
+00360   FTX Free text                                C   9               ||
+00370   TEM Test method                              C   9               ||
+                                                                         ||
+00380       ---- Segment group 5  ------------------ C   99-------------+||
+00390   DOC Document/message details                 M   1              |||
+00400   RFF Reference                                M   9              |||
+00410   DTM Date/time/period                         C   1--------------++|
+                                                                          |
+00420       ---- Segment group 6  ------------------ C   99--------------+|
+00430   ATT Attribute                                M   1               ||
+00440   RFF Reference                                C   9               ||
+00450   ADR Address                                  C   9               ||
+00460   COM Communication contact                    C   9               ||
+00470   REL Relationship                             C   1               ||
+00480   IMD Item description                         C   9               ||
+00490   FTX Free text                                C   9               ||
+00500   PNA Party identification                     C   9               ||
+00510   DTM Date/time/period                         C   9               ||
+00520   PDI Person demographic information           C   1               ||
+00530   NAT Nationality                              C   9               ||
+00540   LAN Language                                 C   9               ||
+00550   HAN Handling instructions                    C   9               ||
+00560   CCI Characteristic/class id                  C   9               ||
+                                                                         ||
+00570       ---- Segment group 7  ------------------ C   9--------------+||
+00580   PAS Attendance                               M   1              |||
+00590   LOC Place/location identification            C   9              |||
+00600   DTM Date/time/period                         C   9              |||
+00610   RFF Reference                                C   1--------------+||
+                                                                         ||
+00620       ---- Segment group 8  ------------------ C   999------------+||
+00630   CAV Characteristic value                     M   1              |||
+00640   CIN Clinical information                     C   9              |||
+00650   LAN Language                                 C   9              |||
+00660   DTM Date/time/period                         C   9              |||
+00670   FTX Free text                                C   99             |||
+00680   RFF Reference                                C   9              |||
+                                                                        |||
+00690       ---- Segment group 9  ------------------ C   99------------+|||
+00700   STS Status                                   M   1             ||||
+00710   SEQ Sequence details                         C   1             ||||
+00720   GEI Processing information                   C   1             ||||
+00730   RSL Result                                   C   1             ||||
+00740   CCI Characteristic/class id                  M   9             ||||
+00750   CIN Clinical information                     C   9             ||||
+00760   DTM Date/time/period                         C   99            ||||
+00770   FTX Free text                                C   99            ||||
+00780   RFF Reference                                C   99            ||||
+                                                                       ||||
+00790       ---- Segment group 10 ------------------ C   99-----------+||||
+00800   RSL Result                                   M   1            |||||
+00810   FTX Free text                                C   9            |||||
+00820   CCI Characteristic/class id                  C   9------------+||||
+                                                                       ||||
+00830       ---- Segment group 11 ------------------ C   99-----------+||||
+00840   REL Relationship                             M   1            |||||
+00850   RFF Reference                                C   99-----------++|||
+                                                                        |||
+00860       ---- Segment group 12 ------------------ C   99------------+|||
+00870   CLI Clinical intervention                    M   1             ||||
+                                                                       ||||
+00880       ---- Segment group 13 ------------------ C   99-----------+||||
+00890   IMD Item description                         M   1            |||||
+00900   DSG Dosage administration                    C   9            |||||
+00910   FTX Free text                                C   9            |||||
+00920   INP Parties and instruction                  C   9------------+++||
+                                                                         ||
+00930       ---- Segment group 14 ------------------ C   99-------------+||
+00940   SEQ Sequence details                         M   1              |||
+00950   IMD Item description                         M   9              |||
+00960   PRC Process identification                   C   9              |||
+00970   RFF Reference                                C   9              |||
+00980   QTY Quantity                                 C   1              |||
+00990   DTM Date/time/period                         C   99             |||
+01000   PAC Package                                  C   1              |||
+01010   FTX Free text                                C   9              |||
+01020   TDT Transport information                    C   9              |||
+01030   HAN Handling instructions                    C   9              |||
+01040   LOC Place/location identification            C   9              |||
+01050   ADR Address                                  C   9              |||
+                                                                        |||
+01060       ---- Segment group 15 ------------------ C   99------------+|||
+01070   CLI Clinical intervention                    M   1             ||||
+01080   IMD Item description                         C   1             ||||
+01090   DSG Dosage administration                    C   1             ||||
+01100   DTM Date/time/period                         C   9             ||||
+01110   FTX Free text                                C   9             ||||
+01120   QTY Quantity                                 C   1             ||||
+01130   INP Parties and instruction                  C   9-------------++||
+                                                                         ||
+01140       ---- Segment group 16 ------------------ M   99-------------+||
+01150   LIN Line item                                M   1              |||
+01160   GEI Processing information                   M   1              |||
+01170   RSL Result                                   C   1              |||
+01180   CCI Characteristic/class id                  M   99             |||
+01190   CIN Clinical information                     C   9              |||
+01200   SEQ Sequence details                         C   1              |||
+01210   STS Status                                   C   1              |||
+01220   DTM Date/time/period                         C   9              |||
+01230   FTX Free text                                C   99             |||
+01240   MOA Monetary amount                          C   9              |||
+01250   RFF Reference                                C   99             |||
+01260   EQD Equipment details                        C   9              |||
+                                                                        |||
+01270       ---- Segment group 17 ------------------ C   99------------+|||
+01280   REL Relationship                             M   1             ||||
+01290   RFF Reference                                C   99------------+|||
+                                                                        |||
+01300       ---- Segment group 18 ------------------ C   99------------+|||
+01310   RSL Result                                   M   1             ||||
+01320   FTX Free text                                C   9             ||||
+01330   CCI Characteristic/class id                  C   9-------------++++
+
+01340       ---- Segment group 19 ------------------ C   99---------------+
+01350   AUT Authentication result                    M   1                |
+01360   DTM Date/time/period                         C   9----------------+
+01370   UNT Message trailer                          M   1     

@@ -1,0 +1,475 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+           Intermediary system enablement or disablement message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : ISENDS
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG8 Insurance
+
+
+
+                                  CONTENTS
+
+           Intermediary system enablement or disablement message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Intermediary
+       system enablement or disablement message (ISENDS) to be used in
+       Electronic Data Interchange (EDI) between trading partners involved
+       in administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Intermediary system enablement or disablement message is a
+       multi-functional message designed specifically for insurance
+       intermediary systems administration allowing trading agreements
+       between insurance companies and their agents (intermediaries) for
+       insurer products to be initially authorised and consequently
+       controlled by the insurer. This encompasses the enabling (or
+       disabling) of separately identifiable software driven business
+       functions (new business, mid-term adjustment, renewal etc.) and thus
+       administering the authorisation for point of sale usage for the
+       individual components of the function. Associated ranges of numbers
+       for insurer products can be initially allocated and maintained via
+       the use of this message.
+
+1.2    Field of application
+
+       The Intermediary system enablement or disablement message may be
+       used for both national and international applications. It is based
+       on universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       The message contains information relating to the agreement between
+       one insurance intermediary (using software supplied by one software
+       house) and one insurer. 
+       
+       The message can be used for the following scenarios: 
+       
+       - Request for initial authorisation from the intermediary -
+       application for agency etc.
+       
+       - Authorisation from insurer - includes allocation of agency number,
+       enablement of business functions etc.
+       
+       - Request for further number ranges from intermediary - covernotes
+       for instance.
+       
+       - Confirmation that a request has been received (to compensate for
+       processing delays) or that an authorisation has been applied.
+       
+       - New instruction - unsolicited and always from the insurer. Usually
+       to change existing trading agreements, for instance annual update of
+       policy ranges and disablement of business functions.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Intermediary system enablement or
+        disablement message is ISENDS.
+
+        Note: Intermediary system enablement or disablement messages
+        conforming to this document must contain the following data in
+        segment UNH, composite S009:
+
+        Data element  0065 ISENDS
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        To specify the function of the message as being an enablement or
+        disablement.
+
+00030   ATT, Attribute
+        To specify the type of an enablement or disablement, e.g.
+        authorisation, new instruction etc.
+
+00040   DTM, Date/time/period
+        To specify the creation date of the message.
+
+
+00050   Segment group 1:  PNA-ADR-SG2
+        A group of segments used to identify all the parties involved in
+        the transaction.
+
+00060      PNA, Party identification
+           To identify both the sender and intended receiver of the
+           message, and the insurer and the intermediary in every case. The
+           software house need only be identified when the sending party is
+           the intermediary or software house itself. The marketing group
+           should be identified where the Intermediary has membership of
+           the marketing group
+
+00070      ADR, Address
+           To identify the network address of the party. This may only be
+           required when the message is to notify network address change.
+
+
+00080      Segment group 2:  CTA-COM-GEI-SEQ-ATT
+           A group of segments to identify any contacts for the insurance
+           company whether a representative for the whole company or for
+           one product. These may be contacts for underwriting referral,
+           general product support or EDI Help Desk etc.
+
+00090         CTA, Contact information
+              To specify the name and department details of one contact for
+              the party.
+
+00100         COM, Communication contact
+              To specify the contact number and applicable communication
+              channel.
+
+00110         GEI, Processing information
+              To specify the action to be taken as regards the contact
+              information.
+
+00120         SEQ, Sequence details
+              To specify the order of preference for contacts if there is
+              more than one.
+
+00130         ATT, Attribute
+              To specify the class of insurance product relevant to the
+              contact.
+
+
+00140   Segment group 3:  RFF-DTM
+        A group of segments to specify one component of the software used
+        to produce the message.
+
+00150      RFF, Reference
+           To specify the identity of the software product and version
+           number.
+
+00160      DTM, Date/time/period
+           To specify the dates relating to the software product. These are
+           the date the software was released from the software house and
+           the date the software was applied to the intermediaries system.
+
+
+00170   Segment group 4:  ICD-RFF-DTM-MKS-SG5
+        A group of segments to identify one policy accounting and/or
+        reporting class or one insurer product relating to the insurer
+        identified in the party group, depending on the transaction type.
+
+00180      ICD, Insurance cover description
+           To specify the business class and identifier for the insurer
+           product.
+
+00190      RFF, Reference
+           To specify the agency reference and the policy booklet version
+           for the intermediary for the insurer product. This may be
+           required when the message is an authorisation. When the message
+           is a new instruction, this information is only required if there
+           is a change to the agency number and/or policy booklet version.
+           This segment is used in conjunction with the date segment.
+
+00200      DTM, Date/time/period
+           To specify the date that the data in the corresponding reference
+           segment becomes effective. No associated date segment with the
+           reference identifies that it is effective immediately.
+
+00210      MKS, Market/sales channel information
+           To specify the insurer product scheme and/or marketing group
+           identifier.
+
+
+00220      Segment group 5:  PRC-GEI-DTM-SG6-SG7
+           A group of segments to identify the business functions for one
+           insurer product. For a request message, the functions identified
+           will indicate what is available for the software loaded by the
+           intermediary's system. For every subsequent authorisation of new
+           instruction message from the insurer, there will be instructions
+           related to the functions. The group should be used when the
+           message is a request or authorisation and only in new
+           instruction if the instruction relates to business
+           functionality.
+
+00230         PRC, Process identification
+              To specify one business function, e.g. new business, mid term
+              adjustment etc.
+
+00240         GEI, Processing information
+              To specify the actions to be performed relative to the
+              authorities and documents for a business function.
+
+00250         DTM, Date/time/period
+              To specify the date and time that an authority comes into
+              effect, also supplies the expiry date and time of an
+              authority - for instance EDI, for a given business function.
+
+
+00260         Segment group 6:  ATT-MOA-PCD-RCS
+              A group of segments to identify individual attributes of a
+              business function that the intermediary has available on a
+              system when used from intermediary to insurer and
+              additionally indicates whether authority has been granted to
+              use these attributes and any conditions associated when used
+              from insurer to intermediary. The group should be used when
+              the message is a request or an authorisation and only in a
+              new instruction if the instruction relates to the attributes
+              of business functionality, e.g. premium override.
+
+00270            ATT, Attribute
+                 A segment to specify one attribute of a business function,
+                 e.g. quote, EDI, etc.
+
+00280            MOA, Monetary amount
+                 To specify monetary amounts associated with the business
+                 function attribute.
+
+00290            PCD, Percentage details
+                 To specify percentage information associated with the
+                 business function attribute.
+
+00300            RCS, Requirements and conditions
+                 To specify information on how to use the preceding
+                 segments.
+
+
+00310         Segment group 7:  DOC-QRS
+              A group of segments to identify documents at point of sale
+              for one business function e.g. new business. In a request
+              message this will identify the documents currently available
+              on the Intermediary's system. When used from insurer to
+              intermediary this will be able to identify whether authority
+              is granted, refused or revoked to produce the document at
+              point of sale.
+
+00320            DOC, Document/message details
+                 To specify one document.
+
+00330            QRS, Query and response
+                 To request use of document or grant or deny or revoke
+                 authority to use the document.
+
+
+00340   Segment group 8:  RNG-GEI-MOA-RFF-DTM-MKS-ICD
+        A group of segments providing information on amounts, ranges, and
+        numbering associated with an insurer. Product identification,
+        scheme identification and associated marketing group are all
+        restated (if necessary) within this group. Group used in request
+        when new ranges etc. are identified as being required by the
+        intermediary, otherwise used in an authorisation and a new
+        instruction.
+
+00350      RNG, Range details
+           To specify one insurance consumable and its number range, if
+           applicable, that the range is for, e.g. covernotes.
+
+00360      GEI, Processing information
+           To specify the action to be taken within the range stated.
+
+00370      MOA, Monetary amount
+           To cater for monetary amounts instead of range numbers.
+
+00380      RFF, Reference
+           To specify the prefix of a document number.
+
+00390      DTM, Date/time/period
+           To specify the effective date and time and/or the expiry date
+           and time for one range identified.
+
+00400      MKS, Market/sales channel information
+           To specify the marketing group or scheme to which the range
+           applies if not applicable to all marketing groups or all
+           schemes.
+
+00410      ICD, Insurance cover description
+           To identify a specific insurer product to be associated with the
+           range. The absence of this segment indicates that the range
+           applies across all of the identified insurer's products.
+
+00420   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          GEI Processing information
+          ICD Insurance cover description
+          MKS Market/sales channel information
+          MOA Monetary amount
+          PCD Percentage details
+          PNA Party identification
+          PRC Process identification
+          QRS Query and response
+          RCS Requirements and conditions
+          RFF Reference
+          RNG Range details
+          SEQ Sequence details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   ATT Attribute                                M   1     
+00040   DTM Date/time/period                         C   9     
+
+00050       ---- Segment group 1  ------------------ M   9----------------+
+00060   PNA Party identification                     M   1                |
+00070   ADR Address                                  C   9                |
+                                                                          |
+00080       ---- Segment group 2  ------------------ C   9---------------+|
+00090   CTA Contact information                      M   1               ||
+00100   COM Communication contact                    C   9               ||
+00110   GEI Processing information                   C   9               ||
+00120   SEQ Sequence details                         C   1               ||
+00130   ATT Attribute                                C   9---------------++
+
+00140       ---- Segment group 3  ------------------ C   9----------------+
+00150   RFF Reference                                M   1                |
+00160   DTM Date/time/period                         C   9----------------+
+
+00170       ---- Segment group 4  ------------------ C   99---------------+
+00180   ICD Insurance cover description              M   1                |
+00190   RFF Reference                                C   9                |
+00200   DTM Date/time/period                         C   9                |
+00210   MKS Market/sales channel information         C   9                |
+                                                                          |
+00220       ---- Segment group 5  ------------------ C   9---------------+|
+00230   PRC Process identification                   M   1               ||
+00240   GEI Processing information                   C   1               ||
+00250   DTM Date/time/period                         C   9               ||
+                                                                         ||
+00260       ---- Segment group 6  ------------------ C   9--------------+||
+00270   ATT Attribute                                M   1              |||
+00280   MOA Monetary amount                          C   1              |||
+00290   PCD Percentage details                       C   1              |||
+00300   RCS Requirements and conditions              C   9--------------+||
+                                                                         ||
+00310       ---- Segment group 7  ------------------ C   9--------------+||
+00320   DOC Document/message details                 M   1              |||
+00330   QRS Query and response                       C   1--------------+++
+
+00340       ---- Segment group 8  ------------------ C   9----------------+
+00350   RNG Range details                            M   1                |
+00360   GEI Processing information                   C   9                |
+00370   MOA Monetary amount                          C   9                |
+00380   RFF Reference                                C   9                |
+00390   DTM Date/time/period                         C   9                |
+00400   MKS Market/sales channel information         C   9                |
+00410   ICD Insurance cover description              C   9----------------+
+00420   UNT Message trailer                          M   1     

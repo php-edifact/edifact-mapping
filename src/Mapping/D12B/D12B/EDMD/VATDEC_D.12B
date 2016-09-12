@@ -1,0 +1,529 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                          Value added tax message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : VATDEC
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG4 Customs
+
+
+
+                                  CONTENTS
+
+                          Value added tax message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Value added tax
+       message (VATDEC) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This VAT Declaration Message (VATDEC) permits the transfer of data
+       from a declarant to a national VAT collecting authority for the
+       purpose of meeting legislative and/or operational requirements in
+       respect of the declarations of VAT.
+       
+       The declarant may be a taxpayer who is obliged to send VAT returns
+       the authorities, or an accountant or others who on behalf of one
+       several taxpayers send VAT returns to the authorities and who is
+       mandated to do so by the authorities and the taxpayer.
+       
+       The declaration may contain one or several returns.
+       
+       The message may also be used, for example:
+       
+       - within the European Union, to transmit VAT summary information for
+       the Value Added Tax Information Exchange System (VIES) from a
+       declarant to the relevant national VIES collecting authorities.
+       
+       - to transmit other related or comparable VAT information from a
+       declarant to the relevant authorities.
+
+1.2    Field of application
+
+       The Value added tax message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message is designed to be as flexible as possible, taking into
+       consideration the different needs and practices for the transmission
+       of VAT data.
+       
+       It is expected that most administrations who wish to use this
+       message will not require the full structure (i.e. subsets will be
+       used).
+       Segments which are conditional may be omitted at the discretion of
+       the implementor.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Value added tax message is VATDEC.
+
+        Note: Value added tax messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 VATDEC
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the beginning of the message, identify the
+        declaration type and to transmit a unique message identifying
+        number.
+
+00030   DTM, Date/time/period
+        A segment identifying dates, times or periods relevant to the whole
+        message, e.g. time of preparation of the declaration.
+
+00040   LOC, Place/location identification
+        A segment identifying a place or location relevant to the entire
+        message, e.g. place of preparation of the declaration.
+
+
+00050   Segment group 1:  NAD-SG2-SG3-FII-PAI-GEI-LOC-SG4
+        A group of segments identifying the declarant with communication
+        numbers, contacts, related references, and financial institution
+        information. Furthermore, the group of segments identifies the
+        individual taxpayer(s) with communication numbers, contacts,
+        related references, and financial institution information. And the
+        group of segments identifies detailed pieces of information about
+        the individual taxpayer's returns within the declaration such as
+        tax scheme, period in question, type of return, amounts of
+        transactions, deductions, calculation of VAT to be paid, related or
+        comparable VAT amounts, payment of VAT, etc.
+
+00060      NAD, Name and address
+           A segment identifying the declarant and or the taxpayer(s).
+
+
+00070      Segment group 2:  CTA-COM
+           A group of segments identifying communication and contact
+           information related to the party of the declarant and or the
+           taxpayer(s).
+
+00080         CTA, Contact information
+              A segment identifying contact person(s) or department(s)
+              related to the declarant and or the taxpayer(s).
+
+00090         COM, Communication contact
+              A segment identifying the phone number, fax number or other
+              communications numbers of the declarant and or the
+              taxpayer(s).
+
+
+00100      Segment group 3:  RFF-FTX
+           A group of segments identifying references related to the party
+           of the declarant and or the taxpayer(s).
+
+00110         RFF, Reference
+              A segment identifying references related to the declarant and
+              or the taxpayer(s), e.g. additional identification numbers,
+              registration number in traders association, etc.
+
+00120         FTX, Free text
+              A segment describing in narrative form the references
+              identified in above RFF segment.
+
+00130      FII, Financial institution information
+           A segment identifying an account and a related financial
+           institution relevant to the party of the declarant and or the
+           taxpayer(s).
+
+00140      PAI, Payment instructions
+           A segment specifying the conditions, method and channel of
+           payment.
+
+00150      GEI, Processing information
+           A segment identifying the scheme under which the return is
+           transmitted, e.g. VAT return, VIES return, etc.
+
+00160      LOC, Place/location identification
+           A segment identifying a place or location relevant to the entry,
+           e.g. place of presentation (local or regional tax office).
+
+
+00170      Segment group 4:  DTM-GEI-MEA-SG5-SG6-SG11
+           A group of segments identifying VAT period, type and status of
+           return, details of a related document and return line details.
+
+00180         DTM, Date/time/period
+              A segment identifying dates, times and or periods relevant to
+              the return, e.g. VAT period.
+
+00190         GEI, Processing information
+              A segment identifying the type and status of the return, e.g.
+              normal return, correction, nil return, etc. The segment may
+              also be used to give required indications of business
+              relationships.
+
+00200         MEA, Measurements
+              A segment specifying measurements in related document(s),
+              e.g. agriculture area.
+
+
+00210         Segment group 5:  DMS-MOA-MEA-PCD-GEI
+              A group of segments identifying details of related
+              document(s).
+
+00220            DMS, Document/message summary
+                 A segment identifying the related document(s).
+
+00230            MOA, Monetary amount
+                 A segment specifying monetary amount(s) of related
+                 document(s).
+
+00240            MEA, Measurements
+                 A segment specifying measurements in related document(s)
+                 e.g. agriculture area.
+
+00250            PCD, Percentage details
+                 A segment identifying percentage details of related
+                 documents(s).
+
+00260            GEI, Processing information
+                 A segment identifying special indications of the monetary
+                 amount(s) of the related document(s).
+
+
+00270         Segment group 6:  LIN-SG7-GEI-SG9
+              A group of segments identifying line item details of the
+              return.
+
+00280            LIN, Line item
+                 A trigger segment separating and identifying line numbers
+                 within the return.
+
+
+00290            Segment group 7:  NAD-SG8-RFF-FII
+                 A group of segments specifying and identifying details
+                 about parties relevant to a return with their related
+                 references, contacts, communication line item within a
+                 return with their related references, contacts,
+                 communication numbers and financial institution
+                 information, e.g. required details about business
+                 relationships.
+
+00300               NAD, Name and address
+                    A segment specifying and identifying a party relevant
+                    to a line item within a return.
+
+
+00310               Segment group 8:  CTA-COM
+                    A group of segments identifying the contact and
+                    communication details of the party specified above.
+
+00320                  CTA, Contact information
+                       A segment identifying a person or a department in
+                       the party specified above and to whom communication
+                       should be directed.
+
+00330                  COM, Communication contact
+                       A segment providing a communication details for the
+                       party identified above and optionally for the
+                       contact identified in the associated CTA segment.
+
+00340               RFF, Reference
+                    A segment identifying references related to the party
+                    specified above.
+
+00350               FII, Financial institution information
+                    A segment identifying an account and a related
+                    financial institution relating to the party specified
+                    above.
+
+00360            GEI, Processing information
+                 A segment providing indications in relation to a line
+                 item, e.g. if goods covered by the actual line were sent
+                 for processing or for in the VIES system, to indicate if
+                 goods covered by the actual line were sent for processing
+                 or for normal sale.
+
+
+00370            Segment group 9:  MOA-ARD-PCD-GEI-SG10
+                 A group of segments specifying the monetary amounts and
+                 the related details for a line item.
+
+00380               MOA, Monetary amount
+                    A segment identifying and giving monetary amounts.
+
+00390               ARD, Monetary amount function
+                    A segment to provide details of the function of the
+                    monetary amount.
+
+00400               PCD, Percentage details
+                    A segment specifying percentage details related to the
+                    monetary amount.
+
+00410               GEI, Processing information
+                    A segment giving special indications related to the
+                    monetary amount.
+
+
+00420               Segment group 10: DMS-MOA-MEA-PCD-GEI
+                    A group of segments identifying required details of a
+                    related document to the line item in question.
+
+00430                  DMS, Document/message summary
+                       A segment identifying related document(s).
+
+00440                  MOA, Monetary amount
+                       A segment identifying a monetary amount(s) of
+                       related document(s).
+
+00450                  MEA, Measurements
+                       A segment specifying measurements in the related
+                       document(s), e.g. agriculture area.
+
+00460                  PCD, Percentage details
+                       A segment identifying percentage details of related
+                       document(s).
+
+00470                  GEI, Processing information
+                       A segment identifying special indications of the
+                       monetary amount(s) of the related document(s).
+
+
+00480         Segment group 11: CNT-MOA
+              A group of segments specifying amount totals relative to the
+              VIES declaration corresponding to the period.
+
+00490            CNT, Control total
+                 A segment to specify a total number of items relative to
+                 the VIES period.
+
+00500            MOA, Monetary amount
+                 A segment to identify the total value of supplies relative
+                 to the VIES period.
+
+
+00510   Segment group 12: AUT-DTM-RFF
+        A group of segments permitting the verification of the authenticity
+        of the sender and the integrity of the data.
+
+00520      AUT, Authentication result
+           A segment containing the result of the algorithm permitting the
+           verification of the authenticity of the sender and the integrity
+           of the data.
+
+00530      DTM, Date/time/period
+           A segment identifying a date associated with the preceding AUT.
+
+00540      RFF, Reference
+           A segment identifying references associated with the preceding
+           AUT.
+
+00550   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ARD Monetary amount function
+          AUT Authentication result
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          DMS Document/message summary
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          PCD Percentage details
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   1     
+00040   LOC Place/location identification            C   1     
+
+00050       ---- Segment group 1  ------------------ M   9999-------------+
+00060   NAD Name and address                         M   1                |
+                                                                          |
+00070       ---- Segment group 2  ------------------ C   9---------------+|
+00080   CTA Contact information                      M   1               ||
+00090   COM Communication contact                    C   9---------------+|
+                                                                          |
+00100       ---- Segment group 3  ------------------ C   9---------------+|
+00110   RFF Reference                                M   1               ||
+00120   FTX Free text                                C   9---------------+|
+00130   FII Financial institution information        C   9                |
+00140   PAI Payment instructions                     C   9                |
+00150   GEI Processing information                   C   9                |
+00160   LOC Place/location identification            C   9                |
+                                                                          |
+00170       ---- Segment group 4  ------------------ C   99--------------+|
+00180   DTM Date/time/period                         M   1               ||
+00190   GEI Processing information                   C   9               ||
+00200   MEA Measurements                             C   9               ||
+                                                                         ||
+00210       ---- Segment group 5  ------------------ C   9--------------+||
+00220   DMS Document/message summary                 M   1              |||
+00230   MOA Monetary amount                          C   1              |||
+00240   MEA Measurements                             C   1              |||
+00250   PCD Percentage details                       C   1              |||
+00260   GEI Processing information                   C   1--------------+||
+                                                                         ||
+00270       ---- Segment group 6  ------------------ M   9999-----------+||
+00280   LIN Line item                                M   1              |||
+                                                                        |||
+00290       ---- Segment group 7  ------------------ C   9999----------+|||
+00300   NAD Name and address                         M   1             ||||
+                                                                       ||||
+00310       ---- Segment group 8  ------------------ C   9999---------+||||
+00320   CTA Contact information                      M   1            |||||
+00330   COM Communication contact                    C   9------------+||||
+00340   RFF Reference                                C   9             ||||
+00350   FII Financial institution information        C   1-------------+|||
+00360   GEI Processing information                   C   9              |||
+                                                                        |||
+00370       ---- Segment group 9  ------------------ M   9999----------+|||
+00380   MOA Monetary amount                          M   1             ||||
+00390   ARD Monetary amount function                 C   1             ||||
+00400   PCD Percentage details                       C   1             ||||
+00410   GEI Processing information                   C   9             ||||
+                                                                       ||||
+00420       ---- Segment group 10 ------------------ C   9------------+||||
+00430   DMS Document/message summary                 M   1            |||||
+00440   MOA Monetary amount                          C   1            |||||
+00450   MEA Measurements                             C   1            |||||
+00460   PCD Percentage details                       C   1            |||||
+00470   GEI Processing information                   M   1------------+++||
+                                                                         ||
+00480       ---- Segment group 11 ------------------ C   1--------------+||
+00490   CNT Control total                            M   1              |||
+00500   MOA Monetary amount                          M   1--------------+++
+
+00510       ---- Segment group 12 ------------------ C   1----------------+
+00520   AUT Authentication result                    M   1                |
+00530   DTM Date/time/period                         C   1                |
+00540   RFF Reference                                C   1----------------+
+00550   UNT Message trailer                          M   1     

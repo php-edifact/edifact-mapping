@@ -1,0 +1,554 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                Equipment damage and repair estimate message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : DESTIM
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 5
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG3 Transport
+
+
+
+                                  CONTENTS
+
+                Equipment damage and repair estimate message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Equipment damage
+       and repair estimate message (DESTIM) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message for use by the container repair, shipping and leasing
+       industry. It may be used by a container equipment repair depot to
+       send an owner or user a description of damages to the equipment, as
+       an estimate of the repair actions and costs needed to rectify such
+       damages. A recipient owner may forward the estimate to a lessee. The
+       message may also be used by an owner or lessee as an authorization
+       message to the repair depot to perform the repairs indicated in the
+       estimate, and as an acknowledgment of his willingness to pay for
+       those repairs indicated in the estimate for his account.
+
+1.2    Field of application
+
+       The Equipment damage and repair estimate message may be used for
+       both national and international applications. It is based on
+       universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       It is envisaged that the Equipment Damage and Repair Estimate
+       Message may be used as follows:
+       
+       1. By an equipment depot to the owner or lessee of damaged equipment
+       after the equipment has been returned by a lessee, in order to
+       indicate needed repairs and to request authorization to perform
+       repair work.
+       
+       2. By an equipment owner to a lessee to provide repair cost
+       estimates, and to request the lessee's acknowledgment of willingness
+       to pay costs allocated to lessee's account.
+       
+       3. By an equipment owner or lessee to a repair depot to give
+       authorization to have the damaged equipment repaired.
+       
+       The transport sub-working group (D4) has developed recommendations
+       for a harmonised implementation of this message through its subgroup
+       ITIGG (International Transport Implementation Guidelines Group).
+       Users implementing the message are strongly advised to apply these
+       recommendations, which may be obtained from the D4 secretariat.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Equipment damage and repair estimate
+        message is DESTIM.
+
+        Note: Equipment damage and repair estimate messages conforming to
+        this document must contain the following data in segment UNH,
+        composite S009:
+
+        Data element  0065 DESTIM
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the beginning of a message and to transmit
+        identifying number and type of message.
+
+00030   DTM, Date/time/period
+        A segment to indicate date and time of the event being reported or
+        requested by the message.
+
+00040   GEI, Processing information
+        A segment to indicate whether the container is damaged and not
+        available for leasing or still available for leasing (i.e. without
+        damages that require repair).
+
+00050   CUX, Currencies
+        A segment to specify various currencies associated with the message
+        such as labor currency, material currency and Damage Protection
+        Plan currency.
+
+00060   RFF, Reference
+        A segment indicating a reference number applicable to the entire
+        estimate, such as customer reference, lease number, etc.
+
+00070   FTX, Free text
+        A segment to specify free form or processable supplementary
+        information (such as coverage of equipment under an Approved
+        Continuous Examination Program [ACEP] complying with the
+        International Convention for Safe Containers [CSC]) that applies to
+        the entire message.
+
+
+00080   Segment group 1:  EQD-DIM-IMD
+        A group of segments to identify equipment-related data, including
+        equipment number, type, size, etc.
+
+00090      EQD, Equipment details
+           A segment to specify equipment-related data, including equipment
+           number, type, size, etc.
+
+00100      DIM, Dimensions
+           A segment indicating the actual dimensions of the equipment, if
+           the size and type is not known.
+
+00110      IMD, Item description
+           A segment to specify material of which the equipment is and
+           other specialized data (such as maximum gross weight, tare
+           weight, etc.).
+
+
+00120   Segment group 2:  NAD-MOA-SG3
+        A group of segments to identify parties, such as owners, lessors,
+        users, lessees, equipment depots, agents, etc., sending or
+        receiving the estimate. The group also summarizes responsibility
+        for repair costs by party, with a detailed enumeration and
+        allocation of such costs, including labor, tax on labor, materials,
+        tax on materials, subtotal labor and materials, subtotal tax, and
+        grand totals for the estimate.
+
+00130      NAD, Name and address
+           A segment to identify the name, address, and function of parties
+           to whom the estimate is sent.
+
+00140      MOA, Monetary amount
+           A segment used to indicate labor, materials, and tax cost
+           attributable to a party pertaining to the entire estimate.
+
+
+00150      Segment group 3:  CTA-COM
+           A group of segments to identify individuals or departments to
+           whose attention the estimate will be directed.
+
+00160         CTA, Contact information
+              A segment to identify a person or department to whom
+              communications should be directed.
+
+00170         COM, Communication contact
+              A segment to identify telephone, fax, etc. numbers at which
+              the person or department to receive the estimate may be
+              contacted.
+
+
+00180   Segment group 4:  TDT-DTM-SG5
+        A group of segments identifying details of the transport, if any,
+        such as carrier, mode and means of transport, locations and related
+        date(s) and time(s).
+
+00190      TDT, Transport information
+           A segment to specify details of transport such as carrier, the
+           means of transport, voyage number etc.
+
+00200      DTM, Date/time/period
+           A segment to specify date(s) and time(s) associated with the
+           transport details.
+
+
+00210      Segment group 5:  LOC-DTM
+           A group of segments to specify any location related to the
+           transport details.
+
+00220         LOC, Place/location identification
+              A segment to specify any locations related to the transport
+              details such as ports, terminals, etc.
+
+00230         DTM, Date/time/period
+              A segment to specify date(s) and time(s) related to a
+              location.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00240   UNS, Section control
+        A segment to avoid segment collision.
+
+
+00250   Segment group 6:  DTM-LOC-NAD
+        A group of segments identifying dates and locations of current and
+        previous inspections, and may include the date of the next safety
+        inspection due as required under the International Convention for
+        Safe Containers (CSC) or the U.S. Federal Highway Administration
+        (FHWA), if indicated on the equipment. It may also indicate the
+        date and location of manufacture, and name of manufacturer.
+
+00260      DTM, Date/time/period
+           A segment to specify the date and time of the current or
+           previous inspection, or of manufacture.
+
+00270      LOC, Place/location identification
+           A segment to specify the location at which the event described
+           in the previous DTM occurred.
+
+00280      NAD, Name and address
+           A segment to indicate the name and address of the inspection
+           company, manufacturer, etc. relating to the event described in
+           the previous DTM.
+
+
+00290   Segment group 7:  RFF-DTM-NAD-MOA
+        A group of segments indicating information relating to
+        authorization for repair to proceed and acceptance of
+        responsibility for respective charges for such repairs. The
+        approval number, date, and name and address of the approving party,
+        and the monetary amount authorized are included within the group.
+
+00300      RFF, Reference
+           A segment indicating the authorization number attributable to
+           all or part of the estimate, which is provided by the party.
+
+00310      DTM, Date/time/period
+           A segment indicating the date and time at which the
+           authorization is provided.
+
+00320      NAD, Name and address
+           A segment indicating the name and address of the authorizing
+           party.
+
+00330      MOA, Monetary amount
+           A segment indicating the amount of money authorized to be
+           expended to the account of the authorizing party.
+
+
+00340   Segment group 8:  LIN-DIM-QTY-FTX-SG9-SG10-SG11
+        A group of segments indicating the type and amount of damage found
+        on the equipment during an inspection, and a description of, and
+        allocation of responsibility for, amount, type, extent, and
+        estimated cost of repairs needed to rectify such damage.
+
+00350      LIN, Line item
+           A segment indicating a number for each damage line-item in the
+           message. The line number corresponding to a damage and repair
+           will remain constant throughout all versions of the message, so
+           that subsequent versions of the repair estimate may be compared
+           to previous versions. Items to be deleted or altered in
+           subsequent versions may also be highlighted in this segment.
+
+00360      DIM, Dimensions
+           A segment used to indicate the dimensions of the repaired area.
+
+00370      QTY, Quantity
+           A segment used to indicate the number of repairs of the
+           identical type to be performed.
+
+00380      FTX, Free text
+           A segment to specify free form or processable supplementary
+           information (such as an indication of conjunctive or alternate
+           repair) that apply to a single damage and repair line item.
+
+
+00390      Segment group 9:  DAM-COD
+           A group of segments describing damages, involved components
+           (including material for such components), and action to be taken
+           due to presence of the damage (such as repair).
+
+00400         DAM, Damage
+              A segment to specify equipment damages, such as location,
+              type, and size of damage; and repair or other action taken.
+
+00410         COD, Component details
+              A segment to specify components involved in the repair, by
+              type of material.
+
+
+00420      Segment group 10: RTE-QTY
+           A group of segments indicating the labor rate per hour (or other
+           unit time), and the number of hours (or time units) needed to
+           perform the repair.
+
+00430         RTE, Rate details
+              A segment indicating the labor rate per unit of time (e.g.
+              hour) at which the repair will be charged.
+
+00440         QTY, Quantity
+              A segment indicating the number of time units (e.g. hours) of
+              labor to be charged for the repair.
+
+
+00450      Segment group 11: NAD-SG12
+           A group of segments indicating parties responsible for the
+           repair described, and the allocation of charges, broken down
+           category, applicable to such repairs, including any tax or
+           discount.
+
+00460         NAD, Name and address
+              A segment indicating the name and address of the party to
+              whose account the repair will be charged.
+
+
+00470         Segment group 12: MOA-TAX-MEA
+              A group of segments indicating the monetary amount of charges
+              for, the repair, and any tax and or discounts and surcharges
+              associated with labor and or materials charges for the
+              repair.
+
+00480            MOA, Monetary amount
+                 A segment indicating the monetary amount of labour,
+                 materials, or tax applicable to the repair for which the
+                 indicated party is responsible.
+
+00490            TAX, Duty/tax/fee details
+                 A segment indicating the rate of tax applicable to the
+                 associated labor or materials charges.
+
+00500            MEA, Measurements
+                 A segment indicating a multiplier associated with charges
+                 for labor or materials. If a discount applies, the
+                 multiplier will be less than one; if a surcharge applies,
+                 the multiplier will be greater than one.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00510   CNT, Control total
+        A segment to provide message control totals.
+
+00520   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          CNT Control total
+          COD Component details
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DAM Damage
+          DIM Dimensions
+          DTM Date/time/period
+          EQD Equipment details
+          FTX Free text
+          GEI Processing information
+          IMD Item description
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAD Name and address
+          QTY Quantity
+          RFF Reference
+          RTE Rate details
+          TAX Duty/tax/fee details
+          TDT Transport information
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+00040   GEI Processing information                   C   1     
+00050   CUX Currencies                               C   9     
+00060   RFF Reference                                C   9     
+00070   FTX Free text                                C   9     
+
+00080       ---- Segment group 1  ------------------ M   1----------------+
+00090   EQD Equipment details                        M   1                |
+00100   DIM Dimensions                               C   1                |
+00110   IMD Item description                         C   9----------------+
+
+00120       ---- Segment group 2  ------------------ C   9----------------+
+00130   NAD Name and address                         M   1                |
+00140   MOA Monetary amount                          C   9                |
+                                                                          |
+00150       ---- Segment group 3  ------------------ C   9---------------+|
+00160   CTA Contact information                      M   1               ||
+00170   COM Communication contact                    C   9---------------++
+
+00180       ---- Segment group 4  ------------------ C   1----------------+
+00190   TDT Transport information                    M   1                |
+00200   DTM Date/time/period                         C   9                |
+                                                                          |
+00210       ---- Segment group 5  ------------------ C   9---------------+|
+00220   LOC Place/location identification            M   1               ||
+00230   DTM Date/time/period                         C   9---------------++
+
+            DETAIL SECTION
+
+00240   UNS Section control                          M   1     
+
+00250       ---- Segment group 6  ------------------ C   9----------------+
+00260   DTM Date/time/period                         M   1                |
+00270   LOC Place/location identification            C   1                |
+00280   NAD Name and address                         C   9----------------+
+
+00290       ---- Segment group 7  ------------------ C   9----------------+
+00300   RFF Reference                                M   1                |
+00310   DTM Date/time/period                         C   1                |
+00320   NAD Name and address                         C   9                |
+00330   MOA Monetary amount                          C   1----------------+
+
+00340       ---- Segment group 8  ------------------ C   999--------------+
+00350   LIN Line item                                M   1                |
+00360   DIM Dimensions                               C   1                |
+00370   QTY Quantity                                 C   1                |
+00380   FTX Free text                                C   9                |
+                                                                          |
+00390       ---- Segment group 9  ------------------ C   1---------------+|
+00400   DAM Damage                                   M   1               ||
+00410   COD Component details                        C   1---------------+|
+                                                                          |
+00420       ---- Segment group 10 ------------------ C   9---------------+|
+00430   RTE Rate details                             M   1               ||
+00440   QTY Quantity                                 M   1---------------+|
+                                                                          |
+00450       ---- Segment group 11 ------------------ C   9---------------+|
+00460   NAD Name and address                         M   1               ||
+                                                                         ||
+00470       ---- Segment group 12 ------------------ M   9--------------+||
+00480   MOA Monetary amount                          M   1              |||
+00490   TAX Duty/tax/fee details                     C   1              |||
+00500   MEA Measurements                             C   1--------------+++
+
+            SUMMARY SECTION
+
+00510   CNT Control total                            C   9     
+00520   UNT Message trailer                          M   1     

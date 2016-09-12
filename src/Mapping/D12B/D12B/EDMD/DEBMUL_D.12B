@@ -1,0 +1,996 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                       Multiple debit advice message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : DEBMUL
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG5 Finance
+
+
+
+                                  CONTENTS
+
+                       Multiple debit advice message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Multiple debit
+       advice message (DEBMUL) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A DEBMUL message is sent by an Account Servicing Financial
+       Institution to the Account Owner or to a third party, which has
+       agreed bilaterally in advance, that its account (s) has been or will
+       be debited for specified amount (s) on the date (s) indicated, in
+       settlement of the referenced business transaction (s).
+
+1.2    Field of application
+
+       The Multiple debit advice message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       - A DEBMUL may cover the financial settlement of one or more
+       commercial trade transactions, such as invoices, credit notes, debit
+       notes, etc. It is not intended for use in securities trading.
+       
+       - Several debit accounts, value dates, entry dates and currencies
+       may be specified.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following semantic principles apply to the message and are
+       intended to facilitate the understanding and implementation of the
+       message:
+       
+       The Multiple Debit Advice message is structured in three levels: A,
+       B and C.
+       
+       - Level A Segment Groups 1,2,3 and 28 contains general data related
+       to the whole message.
+       
+       - Level B Segment groups 4 to 9 is based on the following rules:
+         Level B contains data which applies to all the dependent C levels,
+       such as,
+       
+         Same area Code:
+       When the BUS segment is used, domestic and international items
+       should not be mixed in the same sequence of B and C levels.
+       
+         Same currency and same account:
+         The items to be grouped must refer to the same account. The
+       currency to be booked must be the same as that of the account.
+       
+         Same value date:
+         The items must have the same value date.
+       
+         Same entry date:
+         The items must be booked on the same day.
+       
+         Same bank operation code:
+         The items must bear the same bank operation code.
+       
+         Remark: If, for the same receiver, one of these 5 basic pieces of
+       information changes, a new level B is required.
+       
+       - Level C Segment groups 10 to 27 contains the individual
+       transactions, which are related to the data stored on level B.
+       
+       - The structure of the message is designed to allow several B and C
+       levels, each level B being followed by one or several C levels.
+       
+       - Where a choice of code or text is given only the code element
+       should be used wherever possible.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Multiple debit advice message is DEBMUL.
+
+        Note: Multiple debit advice messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 DEBMUL
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by means of which the sender must uniquely identify the
+        DEBMUL message using its type and number and its function. It is an
+        information of items advised in advance, of items pending to be
+        booked or of items, which have been booked.
+
+00030   DTM, Date/time/period
+        A segment specifying the date and, if required, the time the
+        message is created.
+
+00040   BUS, Business function
+        A segment identifying certain characteristics of the Multiple Debit
+        Advice, such as, its business function. In so doing, it provides
+        information about the message that may be used to route the message
+        within an institution, for tariffing, or for the provision of some
+        statistical information.
+
+
+00050   Segment group 1:  RFF-DTM
+        A group of segments identifying a previously-sent message.
+
+00060      RFF, Reference
+           A segment specifying the reference of the previously-sent
+           message.
+
+00070      DTM, Date/time/period
+           A segment identifying the creation date of the referenced
+           message.
+
+
+00080   Segment group 2:  FII-CTA-COM
+        A group of segments identifying the financial institutions involved
+        in the multiple debit advice, their function and their contacts.
+
+00090      FII, Financial institution information
+           A segment identifying the financial institutions associated with
+           the transaction, in coded or uncoded form and their function.
+
+00100      CTA, Contact information
+           A segment identifying a person or a department for the party
+           specified in the leading FII segment to whom communication
+           should be directed.
+
+00110      COM, Communication contact
+           A segment identifying communication type (s) and number (s) of
+           person (s) or department (s) specified in the associated CTA
+           segment.
+
+
+00120   Segment group 3:  NAD-CTA-COM
+        A group of segments identifying the name(s) and address(es) of non-
+        financial parties involved in the transaction, their function and
+        their contacts.
+
+00130      NAD, Name and address
+           A segment identifying the names and addresses of the non-
+           financial parties associated with the multiple debit advice, in
+           coded or uncoded form, and their function.
+
+00140      CTA, Contact information
+           A segment identifying a person or a department for the party
+           specified in the leading NAD segment to whom communication
+           should be directed.
+
+00150      COM, Communication contact
+           A segment identifying communication type(s) and number (s) of
+           person (s) or department (s) specified in the associated CTA
+           segment.
+
+
+00160   Segment group 4:  LIN-DTM-BUS-MOA-SG5-SG6-SG7-SG10
+        A group of segments containing information details which are
+        relevant to all transactions specified.
+
+00170      LIN, Line item
+           A segment indicating, by a sequential line number, the beginning
+           of the specification of details related to all transactions
+           specified.
+
+00180      DTM, Date/time/period
+           A segment specifying the entry and/or value date.
+
+00190      BUS, Business function
+           A segment identifying certain characteristics of the debits
+           stored as individual transactions in level C, such as the bank
+           operation, i.e., the method of transferring the funds, in order
+           to sort the dependent debits according to their category.
+
+00200      MOA, Monetary amount
+           A segment specifying the total amount of all debits stored as
+           individual transactions in level C and/or the total amount of
+           all debits stored in level C plus the total fee amount.
+
+
+00210      Segment group 5:  RFF-DTM
+           A segment group containing references related to the payments,
+           as well as relevant dates.
+
+00220         RFF, Reference
+              A segment specifying reference numbers for the payments
+              involved in the transaction.
+
+00230         DTM, Date/time/period
+              A segment specifying dates relevant to the related
+              references.
+
+
+00240      Segment group 6:  FII-CTA-COM
+           A group of segments identifying the account that has been or
+           will be debited.
+
+00250         FII, Financial institution information
+              A segment identifying the financial institutions and relevant
+              account number associated with the transaction, in coded or
+              uncoded form and their function.
+
+00260         CTA, Contact information
+              A segment identifying a person or a department for the
+              financial institution specified in the leading FII segment to
+              whom communication should be directed.
+
+00270         COM, Communication contact
+              A segment identifying communication type(s) and number(s) of
+              person(s) or department(s) specified in the associated CTA
+              segment.
+
+
+00280      Segment group 7:  FCA-MOA-SG8
+           A group of segments providing full details of all charges or
+           allowances, and associated taxes, that apply to the total
+           amount, together with information as to who bears the charges
+           and to which account they have been directed. Where charges are
+           subject to taxation this may also be specified.
+
+00290         FCA, Financial charges allocation
+              A segment specifying the method for allocation of charges and
+              allowances and identifying an account to which such charges
+              or allowances were directed where it is different from the
+              principal account.
+
+00300         MOA, Monetary amount
+              A segment identifying the basis amount from which charges are
+              calculated, if different from the total amount. It is also
+              giving the total value of charges and/or allowances, and
+              associated taxes.
+
+
+00310         Segment group 8:  ALC-PCD-MOA-CUX-DTM-SG9
+              A group of segments providing a detailed breakdown of all
+              charges (or allowances) and associated charges (or
+              allowances).
+
+00320            ALC, Allowance or charge
+                 A segment used to provide full details of each charge or
+                 allowance for which the Payor is liable. Included are full
+                 details of the method of calculating the charge.
+
+00330            PCD, Percentage details
+                 A segment specifying the percentage used for calculating
+                 the charges (or allowances).
+
+00340            MOA, Monetary amount
+                 A segment identifying the amount of charges (or
+                 allowances) and/or specifying the basis amount from which
+                 charges (or allowances) may be calculated if different
+                 from the FCA segment.
+
+00350            CUX, Currencies
+                 A segment specifying rates related to the charges and
+                 allowances.
+
+00360            DTM, Date/time/period
+                 A segment identifying the effective date and/or time the
+                 rate of exchange was fixed.
+
+
+00370            Segment group 9:  TAX-MOA-CUX-DTM
+                 A group of segments describing any taxes associated with
+                 charges and their amount.
+
+00380               TAX, Duty/tax/fee details
+                    A segment identifying any taxes related to a specific
+                    charge.
+
+00390               MOA, Monetary amount
+                    A segment specifying the total amount of the tax and
+                    the basis of calculation.
+
+00400               CUX, Currencies
+                    A segment specifying exchange rates.
+
+00410               DTM, Date/time/period
+                    A segment identifying the effective date and/ or time
+                    the rate of exchange was fixed.
+
+
+00420      Segment group 10: SEQ-DTM-BUS-FII-SG11-SG12-SG13-SG14-SG15-SG16-
+                             SG17-SG20
+           A segment group providing details regarding the individual
+           transactions, such as dates, financial institutions, account
+           numbers.
+
+00430         SEQ, Sequence details
+              A segment identifying the beginning of the specification of
+              individual transactions (C level) by a sequential number.
+
+00440         DTM, Date/time/period
+              A segment specifying value dates and other dates passed on
+              from a preceding payment order.
+
+00450         BUS, Business function
+              A segment specifying additional details regarding the
+              individual debit, such as its business function.
+
+00460         FII, Financial institution information
+              A segment identifying the financial institutions and relevant
+              account number associated with the transaction, in coded or
+              uncoded form and their function.
+
+
+00470         Segment group 11: RFF-DTM
+              A group of segments containing references of other messages
+              and transactions, with relevant date(s)/time(s).
+
+00480            RFF, Reference
+                 A segment identifying references of other messages or
+                 transactions related to this transaction.
+
+00490            DTM, Date/time/period
+                 A segment specifying the date and/or time of the
+                 referenced messages or transactions.
+
+
+00500         Segment group 12: PAI-FTX
+              A group of segments specifying conditions, guarantees, method
+              and channel of payment used.
+
+00510            PAI, Payment instructions
+                 A segment specifying the conditions, guarantee, method and
+                 channel of payment used.
+
+00520            FTX, Free text
+                 A segment providing free form additional information.
+
+
+00530         Segment group 13: MOA-CUX-DTM-RFF
+              A group of segments identifying the monetary amounts and, if
+              necessary, the currencies, exchange rate and date for the
+              amount of the transaction.
+
+00540            MOA, Monetary amount
+                 A segment giving the amount of the individual transaction.
+
+00550            CUX, Currencies
+                 A segment identifying the source currency and the target
+                 currency of the transaction, when they are different.
+
+00560            DTM, Date/time/period
+                 A segment identifying the effective date and/or time the
+                 rate of exchange was fixed.
+
+00570            RFF, Reference
+                 A segment identifying other transactions to which funds
+                 associated with the transaction are related such as a
+                 separate foreign exchange deal.
+
+
+00580         Segment group 14: NAD-CTA-COM
+              A group of segments identifying the name and address of non-
+              financial parties involved in the message, their function and
+              their contacts.
+
+00590            NAD, Name and address
+                 A segment identifying the names and addresses of the
+                 parties associated with the exchange of the message, in
+                 coded or uncoded form, and their function.
+
+00600            CTA, Contact information
+                 A segment identifying a person or a department for the
+                 party specified in the leading NAD segment and to whom
+                 communication should be directed.
+
+00610            COM, Communication contact
+                 A segment identifying a person or a department for the
+                 party specified in the leading NAD segment and to whom
+                 communication should be directed.
+
+
+00620         Segment group 15: INP-FTX-DTM
+              A group of segments containing instructions relating to
+              parties identified in the NAD and FII segments in Segment
+              Group 2 and/or Segment Group 3. It specifies action taken or
+              to be taken by the identified parties, and the date (and
+              optionally time) by which such action was taken or needs to
+              be taken.
+
+00630            INP, Parties and instruction
+                 A segment identifying the party to enact the instruction,
+                 the parties contacted or to be contacted at or by the
+                 associated financial institution on matters concerning the
+                 execution of the payment. It specifies where appropriate
+                 the instruction in coded form.
+
+00640            FTX, Free text
+                 A segment providing free text instructions related to the
+                 associated INP segment.
+
+00650            DTM, Date/time/period
+                 A segment specifying the earliest and latest dates and/or
+                 times by which the specified instructions must be carried
+                 out.
+
+
+00660         Segment group 16: GEI-MOA-LOC-NAD-RCS-FTX
+              A group of segments providing information for subsequent use
+              by regulatory authorities requiring statistical and other
+              types of data. It also identifies the regulatory authority
+              for which the information is intended followed by the
+              information itself.
+
+00670            GEI, Processing information
+                 A segment identifying what processing should be completed
+                 for regulatory authorities.
+
+00680            MOA, Monetary amount
+                 A segment giving the amount and the currency of each
+                 transaction to be reported.
+
+00690            LOC, Place/location identification
+                 A segment giving the different origins/destinations
+                 (places) of goods/investment/services.
+
+00700            NAD, Name and address
+                 A segment identifying the recipient of the associated
+                 informative text.
+
+00710            RCS, Requirements and conditions
+                 A segment giving the nature (e.g. goods, transport
+                 services) and direction of each transaction to be recorded
+                 in coded form.
+
+00720            FTX, Free text
+                 A segment giving information, in coded or clear form, to
+                 provide information relevant to regulatory authorities
+                 requirements.
+
+
+00730         Segment group 17: FCA-MOA-SG18
+              A group of segments providing full details of all charges or
+              allowances, and associated taxes, that apply to a particular
+              transaction, together with information as to who bears the
+              charges and to which account they have been directed. A total
+              value of all charges plus allowances may be given for every
+              account to which charges may be directed. Where charges are
+              subject to taxation this may also be specified.
+
+00740            FCA, Financial charges allocation
+                 A segment specifying the method for allocation of charges
+                 and allowances and identifying an account to which such
+                 charges or allowances were directed where it is different
+                 from the principal account.
+
+00750            MOA, Monetary amount
+                 A segment identifying the basis amount from which charges
+                 are calculated, if different from the overall amount of
+                 the original order. It also gives the total value of
+                 charges and/or allowances, and associated taxes, that
+                 relate to an account for charges/allowances.
+
+
+00760            Segment group 18: ALC-PCD-MOA-CUX-DTM-SG19
+                 A group of segments providing a detailed breakdown of all
+                 charges (or allowances) and associated charges (or
+                 allowances).
+
+00770               ALC, Allowance or charge
+                    A segment providing full details of each charge or
+                    allowance for which the Payor is liable. Included are
+                    full details of the method of calculating the charge.
+
+00780               PCD, Percentage details
+                    A segment specifying the percentage used for
+                    calculating the charges (or allowances).
+
+00790               MOA, Monetary amount
+                    A segment identifying the amount of charges (or
+                    allowances) and/or specifying the basis amount from
+                    which charges (or allowances) may be calculated if
+                    different from the FCA segment.
+
+00800               CUX, Currencies
+                    A segment specifying rates related to the charges and
+                    allowances.
+
+00810               DTM, Date/time/period
+                    A segment identifying the effective date and/or time
+                    the rate of exchange was fixed.
+
+
+00820               Segment group 19: TAX-MOA-CUX-DTM
+                    A group of segments describing any taxes associated
+                    with charges and their amount.
+
+00830                  TAX, Duty/tax/fee details
+                       A segment identifying any taxes related to a
+                       specific charge.
+
+00840                  MOA, Monetary amount
+                       A segment specifying the total amount of the tax and
+                       the basis for calculation.
+
+00850                  CUX, Currencies
+                       A segment specifying exchange rates.
+
+00860                  DTM, Date/time/period
+                       A segment identifying the effective date and/or time
+                       the rate of exchange was fixed.
+
+
+00870         Segment group 20: PRC-FTX-SG21-SG27
+              A group of segments containing the details of payment. The
+              content of these segments is passed through the banking chain
+              from the Ordering Customer to the Beneficiary.
+
+00880            PRC, Process identification
+                 A segment identifying the kind of process at the
+                 beneficiary's side.
+
+00890            FTX, Free text
+                 A segment providing free text information from the
+                 ordering customer to the beneficiary.
+
+
+00900            Segment group 21: DOC-MOA-DTM-RFF-NAD-SG22-SG23-SG24
+                 A group of segments providing details of all documents,
+                 e.g. invoices, statements, despatch advices, etc., to
+                 which the Multiple Debit Advice refers. It includes
+                 information on the monetary amounts for each document and
+                 on any adjustments (with an indication of the reason for
+                 adjustments) and discounts. For information purposes an
+                 indication of the tax element can be provided.
+
+00910               DOC, Document/message details
+                    A segment identifying the reference document against
+                    which payment is being made.
+
+00920               MOA, Monetary amount
+                    A segment giving the monetary amounts of each reference
+                    document (e.g., original amount, discount amount etc.).
+                    The amount due and the amount remitted are mandatory.
+
+00930               DTM, Date/time/period
+                    A segment specifying the date of the referenced
+                    document and indicating any other relevant dates
+                    applicable.
+
+00940               RFF, Reference
+                    A segment for the inclusion of any additional
+                    references related to the reference document.
+
+00950               NAD, Name and address
+                    A segment identifying a party name and address, either
+                    by coded identification or in a clear form.
+
+
+00960               Segment group 22: CUX-DTM
+                    A group of segments specifying the currencies and the
+                    related dates/periods valid to the referenced document
+                    where different to the reference currency.
+
+00970                  CUX, Currencies
+                       A segment identifying the currency and associated
+                       exchange rate of the referenced document where
+                       different to the remittance currency.
+
+00980                  DTM, Date/time/period
+                       A segment specifying the date/time/period related to
+                       the rate of exchange.
+
+
+00990               Segment group 23: AJT-MOA-RFF-FTX
+                    A group of segments indicating adjustment amounts and
+                    their referenced documents.
+
+01000                  AJT, Adjustment details
+                       A segment indicating any adjustments to the amounts
+                       originally specified in the referenced document, and
+                       to which items such adjustment apply with the
+                       associated reason for adjustment.
+
+01010                  MOA, Monetary amount
+                       A segment giving the monetary amounts of the
+                       adjustments of each reference document (e.g.
+                       original amounts, discount amount, etc.). The
+                       currency data elements should not be used.
+
+01020                  RFF, Reference
+                       A segment for the inclusion of any additional
+                       references related to the reference documents.
+
+01030                  FTX, Free text
+                       A segment providing free text information related to
+                       the payment details.
+
+
+01040               Segment group 24: DLI-MOA-PIA-DTM-SG25-SG26
+                    A group of segments which may be used when required to
+                    provide details of individual line items in the
+                    reference document.
+
+01050                  DLI, Document line identification
+                       A segment identifying a specific line item within
+                       the referenced document.
+
+01060                  MOA, Monetary amount
+                       A segment giving the monetary amounts for this line
+                       item.
+
+01070                  PIA, Additional product id
+                       A segment specifying item identification codes where
+                       required.
+
+01080                  DTM, Date/time/period
+                       A segment specifying the date/time/period related to
+                       the line item.
+
+
+01090                  Segment group 25: CUX-DTM
+                       A group of segments specifying the currency and the
+                       related dates/periods for the line item where
+                       different to the remittance and document currency.
+
+01100                     CUX, Currencies
+                          A segment identifying the currency and associated
+                          exchange rate of the line item where different to
+                          the source and target currency.
+
+01110                     DTM, Date/time/period
+                          A segment specifying the effective date and/or
+                          time the rate of exchange was fixed.
+
+
+01120                  Segment group 26: AJT-MOA-RFF-FTX
+                       A group of segments indicating adjustment amounts
+                       and their referenced documents for this line item.
+
+01130                     AJT, Adjustment details
+                          A segment indicating any adjustments to the
+                          amounts originally specified for this line item
+                          and the reason for adjustment.
+
+01140                     MOA, Monetary amount
+                          A segment giving the monetary amount of the
+                          adjustment for the line item.
+
+01150                     RFF, Reference
+                          A segment for the inclusion of any additional
+                          references related to the line item.
+
+01160                     FTX, Free text
+                          A segment providing free text information related
+                          to the payment details.
+
+
+01170            Segment group 27: GEI-MOA
+                 A group of segments indicating the end of the details of
+                 payment and specifying hash total amounts for control
+                 purposes.
+
+01180               GEI, Processing information
+                    A segment identifying the end of the details of
+                    payment.
+
+01190               MOA, Monetary amount
+                    A segment indicating total amounts for control
+                    purposes.
+
+01200   CNT, Control total
+        A segment identifying the kind of control checks and the totals
+        according to the coded form.
+
+
+01210   Segment group 28: AUT-DTM
+        A group of segments specifying the details of any authentication
+        (validation) procedures applied to the DEBMUL message.
+
+01220      AUT, Authentication result
+           A segment specifying details of any authentication (validation)
+           procedures applied to the DEBMUL message.
+
+01230      DTM, Date/time/period
+           A segment identifying the validation date/time.
+
+01240   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AJT Adjustment details
+          ALC Allowance or charge
+          AUT Authentication result
+          BGM Beginning of message
+          BUS Business function
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DLI Document line identification
+          DOC Document/message details
+          DTM Date/time/period
+          FCA Financial charges allocation
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          INP Parties and instruction
+          LIN Line item
+          LOC Place/location identification
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          PCD Percentage details
+          PIA Additional product id
+          PRC Process identification
+          RCS Requirements and conditions
+          RFF Reference
+          SEQ Sequence details
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   1     
+00040   BUS Business function                        C   1     
+
+00050       ---- Segment group 1  ------------------ C   2----------------+
+00060   RFF Reference                                M   1                |
+00070   DTM Date/time/period                         C   1----------------+
+
+00080       ---- Segment group 2  ------------------ C   5----------------+
+00090   FII Financial institution information        M   1                |
+00100   CTA Contact information                      C   1                |
+00110   COM Communication contact                    C   5----------------+
+
+00120       ---- Segment group 3  ------------------ C   3----------------+
+00130   NAD Name and address                         M   1                |
+00140   CTA Contact information                      C   1                |
+00150   COM Communication contact                    C   5----------------+
+
+00160       ---- Segment group 4  ------------------ M   9999-------------+
+00170   LIN Line item                                M   1                |
+00180   DTM Date/time/period                         C   3                |
+00190   BUS Business function                        C   1                |
+00200   MOA Monetary amount                          M   2                |
+                                                                          |
+00210       ---- Segment group 5  ------------------ M   3---------------+|
+00220   RFF Reference                                M   1               ||
+00230   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00240       ---- Segment group 6  ------------------ M   1---------------+|
+00250   FII Financial institution information        M   1               ||
+00260   CTA Contact information                      C   1               ||
+00270   COM Communication contact                    C   5---------------+|
+                                                                          |
+00280       ---- Segment group 7  ------------------ C   5---------------+|
+00290   FCA Financial charges allocation             M   1               ||
+00300   MOA Monetary amount                          C   2               ||
+                                                                         ||
+00310       ---- Segment group 8  ------------------ C   6--------------+||
+00320   ALC Allowance or charge                      M   1              |||
+00330   PCD Percentage details                       C   1              |||
+00340   MOA Monetary amount                          C   2              |||
+00350   CUX Currencies                               C   1              |||
+00360   DTM Date/time/period                         C   1              |||
+                                                                        |||
+00370       ---- Segment group 9  ------------------ C   5-------------+|||
+00380   TAX Duty/tax/fee details                     M   1             ||||
+00390   MOA Monetary amount                          C   2             ||||
+00400   CUX Currencies                               C   1             ||||
+00410   DTM Date/time/period                         C   1-------------+++|
+                                                                          |
+00420       ---- Segment group 10 ------------------ C   999999----------+|
+00430   SEQ Sequence details                         M   1               ||
+00440   DTM Date/time/period                         C   3               ||
+00450   BUS Business function                        C   1               ||
+00460   FII Financial institution information        M   2               ||
+                                                                         ||
+00470       ---- Segment group 11 ------------------ C   5--------------+||
+00480   RFF Reference                                M   1              |||
+00490   DTM Date/time/period                         C   1--------------+||
+                                                                         ||
+00500       ---- Segment group 12 ------------------ C   1--------------+||
+00510   PAI Payment instructions                     M   1              |||
+00520   FTX Free text                                C   1--------------+||
+                                                                         ||
+00530       ---- Segment group 13 ------------------ M   4--------------+||
+00540   MOA Monetary amount                          M   1              |||
+00550   CUX Currencies                               C   1              |||
+00560   DTM Date/time/period                         C   2              |||
+00570   RFF Reference                                C   1--------------+||
+                                                                         ||
+00580       ---- Segment group 14 ------------------ C   3--------------+||
+00590   NAD Name and address                         M   1              |||
+00600   CTA Contact information                      C   1              |||
+00610   COM Communication contact                    C   5--------------+||
+                                                                         ||
+00620       ---- Segment group 15 ------------------ C   3--------------+||
+00630   INP Parties and instruction                  M   1              |||
+00640   FTX Free text                                C   1              |||
+00650   DTM Date/time/period                         C   2--------------+||
+                                                                         ||
+00660       ---- Segment group 16 ------------------ C   10-------------+||
+00670   GEI Processing information                   M   1              |||
+00680   MOA Monetary amount                          C   1              |||
+00690   LOC Place/location identification            C   2              |||
+00700   NAD Name and address                         C   1              |||
+00710   RCS Requirements and conditions              C   1              |||
+00720   FTX Free text                                C   10-------------+||
+                                                                         ||
+00730       ---- Segment group 17 ------------------ C   5--------------+||
+00740   FCA Financial charges allocation             M   1              |||
+00750   MOA Monetary amount                          C   2              |||
+                                                                        |||
+00760       ---- Segment group 18 ------------------ C   20------------+|||
+00770   ALC Allowance or charge                      M   1             ||||
+00780   PCD Percentage details                       C   1             ||||
+00790   MOA Monetary amount                          C   2             ||||
+00800   CUX Currencies                               C   1             ||||
+00810   DTM Date/time/period                         C   1             ||||
+                                                                       ||||
+00820       ---- Segment group 19 ------------------ C   5------------+||||
+00830   TAX Duty/tax/fee details                     M   1            |||||
+00840   MOA Monetary amount                          C   2            |||||
+00850   CUX Currencies                               C   1            |||||
+00860   DTM Date/time/period                         C   1------------+++||
+                                                                         ||
+00870       ---- Segment group 20 ------------------ C   1--------------+||
+00880   PRC Process identification                   M   1              |||
+00890   FTX Free text                                C   5              |||
+                                                                        |||
+00900       ---- Segment group 21 ------------------ C   9999----------+|||
+00910   DOC Document/message details                 M   1             ||||
+00920   MOA Monetary amount                          C   5             ||||
+00930   DTM Date/time/period                         C   5             ||||
+00940   RFF Reference                                C   5             ||||
+00950   NAD Name and address                         C   2             ||||
+                                                                       ||||
+00960       ---- Segment group 22 ------------------ C   5------------+||||
+00970   CUX Currencies                               M   1            |||||
+00980   DTM Date/time/period                         C   1------------+||||
+                                                                       ||||
+00990       ---- Segment group 23 ------------------ C   100----------+||||
+01000   AJT Adjustment details                       M   1            |||||
+01010   MOA Monetary amount                          C   1            |||||
+01020   RFF Reference                                C   1            |||||
+01030   FTX Free text                                C   5------------+||||
+                                                                       ||||
+01040       ---- Segment group 24 ------------------ C   9999---------+||||
+01050   DLI Document line identification             M   1            |||||
+01060   MOA Monetary amount                          C   5            |||||
+01070   PIA Additional product id                    C   5            |||||
+01080   DTM Date/time/period                         C   5            |||||
+                                                                      |||||
+01090       ---- Segment group 25 ------------------ C   5-----------+|||||
+01100   CUX Currencies                               M   1           ||||||
+01110   DTM Date/time/period                         C   1-----------+|||||
+                                                                      |||||
+01120       ---- Segment group 26 ------------------ C   10----------+|||||
+01130   AJT Adjustment details                       M   1           ||||||
+01140   MOA Monetary amount                          C   1           ||||||
+01150   RFF Reference                                C   1           ||||||
+01160   FTX Free text                                C   5-----------+++|||
+                                                                        |||
+01170       ---- Segment group 27 ------------------ C   1-------------+|||
+01180   GEI Processing information                   M   1             ||||
+01190   MOA Monetary amount                          C   5-------------++++
+01200   CNT Control total                            C   5     
+
+01210       ---- Segment group 28 ------------------ C   5----------------+
+01220   AUT Authentication result                    M   1                |
+01230   DTM Date/time/period                         C   1----------------+
+01240   UNT Message trailer                          M   1     

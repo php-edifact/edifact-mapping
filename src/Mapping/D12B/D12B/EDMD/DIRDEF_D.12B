@@ -1,0 +1,562 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Directory definition message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : DIRDEF
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 6
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG16 Entry Point
+
+
+
+                                  CONTENTS
+
+                        Directory definition message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Directory
+       definition message (DIRDEF) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This Directory definition message (DIRDEF) permits the transfer of
+       the contents of a UN/EDIFACT or American National Standards
+       Institute (ANSI) Accredited Standards Committee (ASC) X12 Directory
+       set or parts thereof.
+
+1.2    Field of application
+
+       The Directory definition message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The Message allows the transmission of a UN/EDIFACT or X12 Directory
+       set, or parts thereof. A UN/EDIFACT or ANSI ASC X12 Directory Set
+       comprises:
+       
+       -Message type or Transaction Set directory 
+       -Segment directory 
+       -Composite data element directory 
+       -Simple data element directory 
+       -Code list directory
+       
+       One occurrence of the message can contain only one version of a
+       UN/EDIFACT or ANSI ASC X12 Directory set, or parts thereof.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Directory definition message is DIRDEF.
+
+        Note: Directory definition messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 DIRDEF
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the beginning of the message and to transmit
+        function, type and number of the message.
+
+00030   DII, Directory identification
+        A segment specifying the identity of the directory set and giving
+        its language and maintenance operation.
+
+00040   DTM, Date/time/period
+        A segment specifying dates related to the directory set, such as
+        date of approval, date of submission or WP.4 acceptance date.
+
+00050   FTX, Free text
+        A segment providing free text information related to the directory
+        set.
+
+
+00060   Segment group 1:  NAD-SG2
+        A group of segments identifying the parties involved in the
+        transaction with associated information.
+
+00070      NAD, Name and address
+           A segment identifying the parties involved in the transaction,
+           e.g. originator, requestor or secretariat.
+
+
+00080      Segment group 2:  CTA-COM
+           A group of segments identifying a person or a department and
+           identifying communication type(s) and number(s).
+
+00090         CTA, Contact information
+              A segment identifying a person or a department for the party
+              specified in the leading NAD segment to whom the
+              communication should be directed.
+
+00100         COM, Communication contact
+              A segment identifying communication type(s) and number(s) of
+              person(s) or department(s) specified in the associated CTA
+              segment.
+
+
+00110   Segment group 3:  MSG-ATT-FTX-DTM-SG4-SG6
+        A group of segments providing a message type directory.
+
+00120      MSG, Message type identification
+           A segment identifying a message type to be specified.
+
+00130      ATT, Attribute
+           A segment used to specify an attribute related to a message
+           type. It may indicate whether the message is a batch or an
+           interactive message, or may indicate the specific type of
+           maintenance applied to the message in the current release of the
+           message type directory.
+
+00140      FTX, Free text
+           A segment providing textual information related to the message
+           type, namely: message type name, Introduction, Scope, Functional
+           definition, Principles, References and Terms and definitions.
+
+00150      DTM, Date/time/period
+           This segment is used to indicate the release date of a message,
+           as indicated on the cover page of the boilerplate.
+
+
+00160      Segment group 4:  SGU-ATT-FTX-SG5
+           A group of segments specifying a message type structure and its
+           related functional definition.
+
+00170         SGU, Segment usage details
+              A segment specifying the usage of a segment in a message type
+              structure.
+
+00180         ATT, Attribute
+              A segment used to specify an attribute related to the usage
+              of a segment in a message type structure. It may indicate the
+              specific type of maintenance applied to the segment within
+              the message structure in the current release of the message
+              type directory.
+
+00190         FTX, Free text
+              A segment providing textual information about segment usage.
+              This information comprises part of the 'Data segment
+              clarification' section.
+
+
+00200         Segment group 5:  GRU-ATT-FTX
+              A group of segments identifying a segment group and providing
+              details about segment group usage.
+
+00210            GRU, Segment group usage details
+                 A segment specifying the usage of a segment group in a
+                 message type structure.
+
+00220            ATT, Attribute
+                 A segment used to specify an attribute related to the
+                 usage of a segment group in a message type structure. It
+                 may indicate the specific type of maintenance applied to
+                 the segment group within the message structure in the
+                 current release of the message type directory.
+
+00230            FTX, Free text
+                 A segment providing the textual information about segment
+                 group usage. This information comprises part of the 'Data
+                 Segment Clarification' section.
+
+
+00240      Segment group 6:  FNT-REL-GIR-ATT-FTX
+           A group of segments used to specify dependency notes or other
+           notes about the usage of segments and/or segment groups in a
+           message type structure.
+
+00250         FNT, Footnote
+              A segment to provide the footnote identification for a
+              dependency note or other note that is applicable to one or
+              more segments and/or segment groups in the message type
+              structure.
+
+00260         REL, Relationship
+              A segment to provide the type of dependency relationship,
+              where one exists.
+
+00270         GIR, Related identification numbers
+              A segment to provide the position number(s) for segments
+              and/or segment groups to which a dependency note or other
+              note applies.
+
+00280         ATT, Attribute
+              A segment to provide the change indicators at the note level.
+
+00290         FTX, Free text
+              A segment to provide a free text description of the
+              dependency note or other note.
+
+
+00300   Segment group 7:  SEG-ATT-FTX-ELU-SG8
+        A group of segments providing a segment directory.
+
+00310      SEG, Segment identification
+           A segment identifying a segment type and specifying its class
+           and maintenance operation.
+
+00320      ATT, Attribute
+           A segment used to specify an attribute related to a segment
+           type. It may indicate whether the segment is a batch or an
+           interactive segment, or may indicate the specific type of
+           maintenance applied to the segment in the current release of the
+           segment directory.
+
+00330      FTX, Free text
+           A segment specifying the name and functional definition of a
+           segment type.
+
+00340      ELU, Data element usage details
+           A segment specifying the contents of data elements in a segment
+           type.
+
+
+00350      Segment group 8:  FNT-REL-GIR-ATT-FTX
+           A group of segments used to specify dependency notes or other
+           notes about the usage of data elements in a segment type.
+
+00360         FNT, Footnote
+              A segment to provide the footnote identification for a
+              dependency note or other note that is applicable to one or
+              more data elements in a segment type.
+
+00370         REL, Relationship
+              A segment to provide the type of dependency relationship,
+              where one exists.
+
+00380         GIR, Related identification numbers
+              A segment to provide the position number(s) for a data
+              element to which a dependency note or other note applies.
+
+00390         ATT, Attribute
+              A segment to provide the change indicators at the note level.
+
+00400         FTX, Free text
+              A segment to provide a free text description of the
+              dependency note or other note.
+
+
+00410   Segment group 9:  CMP-ATT-FTX-ELU-SG10
+        A group of segments providing a composite data element directory.
+
+00420      CMP, Composite data element identification
+           A segment identifying a composite data element and specifying
+           its class and maintenance operation.
+
+00430      ATT, Attribute
+           A segment used to specify an attribute related to a composite
+           data element type. It may indicate whether the composite data
+           element is a batch or an interactive composite data element, or
+           may indicate the specific type of maintenance applied to the
+           composite data element in the current release of the composite
+           data element directory.
+
+00440      FTX, Free text
+           A segment specifying the name and functional definition of a
+           composite data element type.
+
+00450      ELU, Data element usage details
+           A segment specifying component data elements in a composite data
+           element and its related information.
+
+
+00460      Segment group 10: FNT-REL-GIR-ATT-FTX
+           A group of segments used to specify dependency notes or other
+           notes about the usage of component data elements in a composite
+           data element type.
+
+00470         FNT, Footnote
+              A segment to provide the footnote identification for a
+              dependency note or other note that is applicable to one or
+              more component data elements in a composite data element
+              type.
+
+00480         REL, Relationship
+              A segment to provide the type of dependency relationship,
+              where one exists.
+
+00490         GIR, Related identification numbers
+              A segment to provide the position number(s) for a data
+              element to which a dependency note or other note applies.
+
+00500         ATT, Attribute
+              A segment to provide the change indicators at the note level.
+
+00510         FTX, Free text
+              A segment to provide a free text description of the
+              dependency note or other note.
+
+
+00520   Segment group 11: ELM-ATT-FTX
+        A group of segments providing a data element directory.
+
+00530      ELM, Simple data element details
+           A segment identifying a simple data element and giving related
+           information.
+
+00540      ATT, Attribute
+           A segment used to specify an attribute related to a simple data
+           element type. It may indicate whether the data element is a
+           batch, or an interactive, or both a batch and an interactive
+           simple data element. It may indicate the specific type of
+           maintenance applied to the data element in the current release
+           of the simple data element directory.
+
+00550      FTX, Free text
+           A segment specifying the name and functional definition of a
+           simple data element.
+
+
+00560   Segment group 12: CDS-FTX-SG13
+        A group of segments providing a code list directory.
+
+00570      CDS, Code set identification
+           A segment specifying a code set. In DIRDEF data element 9434
+           shall not be used.
+
+00580      FTX, Free text
+           A segment providing textual information related to the code
+           list.
+
+
+00590      Segment group 13: CDV-ATT-FTX
+           A group of segments specifying a code value and its functional
+           definition.
+
+00600         CDV, Code value definition
+              A segment specifying a code value.
+
+00610         ATT, Attribute
+              A segment used to specify an attribute related to a code
+              value. It may indicate the specific type of maintenance
+              applied to the code value in the current release of the code
+              list directory.
+
+00620         FTX, Free text
+              A segment specifying the name and functional definition of a
+              code value.
+
+00630   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ATT Attribute
+          BGM Beginning of message
+          CDS Code set identification
+          CDV Code value definition
+          CMP Composite data element identification
+          COM Communication contact
+          CTA Contact information
+          DII Directory identification
+          DTM Date/time/period
+          ELM Simple data element details
+          ELU Data element usage details
+          FNT Footnote
+          FTX Free text
+          GIR Related identification numbers
+          GRU Segment group usage details
+          MSG Message type identification
+          NAD Name and address
+          REL Relationship
+          SEG Segment identification
+          SGU Segment usage details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DII Directory identification                 M   1     
+00040   DTM Date/time/period                         C   9     
+00050   FTX Free text                                C   9     
+
+00060       ---- Segment group 1  ------------------ C   9----------------+
+00070   NAD Name and address                         M   1                |
+                                                                          |
+00080       ---- Segment group 2  ------------------ C   9---------------+|
+00090   CTA Contact information                      M   1               ||
+00100   COM Communication contact                    C   9---------------++
+
+00110       ---- Segment group 3  ------------------ C   9999-------------+
+00120   MSG Message type identification              M   1                |
+00130   ATT Attribute                                C   99               |
+00140   FTX Free text                                C   999              |
+00150   DTM Date/time/period                         M   1                |
+                                                                          |
+00160       ---- Segment group 4  ------------------ C   999-------------+|
+00170   SGU Segment usage details                    M   1               ||
+00180   ATT Attribute                                C   9               ||
+00190   FTX Free text                                C   99              ||
+                                                                         ||
+00200       ---- Segment group 5  ------------------ C   1--------------+||
+00210   GRU Segment group usage details              M   1              |||
+00220   ATT Attribute                                C   9              |||
+00230   FTX Free text                                C   99-------------++|
+                                                                          |
+00240       ---- Segment group 6  ------------------ C   99--------------+|
+00250   FNT Footnote                                 M   1               ||
+00260   REL Relationship                             C   1               ||
+00270   GIR Related identification numbers           C   9               ||
+00280   ATT Attribute                                C   9               ||
+00290   FTX Free text                                C   9---------------++
+
+00300       ---- Segment group 7  ------------------ C   9999-------------+
+00310   SEG Segment identification                   M   1                |
+00320   ATT Attribute                                C   9                |
+00330   FTX Free text                                C   9                |
+00340   ELU Data element usage details               C   99               |
+                                                                          |
+00350       ---- Segment group 8  ------------------ C   99--------------+|
+00360   FNT Footnote                                 M   1               ||
+00370   REL Relationship                             C   1               ||
+00380   GIR Related identification numbers           C   9               ||
+00390   ATT Attribute                                C   9               ||
+00400   FTX Free text                                C   9---------------++
+
+00410       ---- Segment group 9  ------------------ C   9999-------------+
+00420   CMP Composite data element identification    M   1                |
+00430   ATT Attribute                                C   9                |
+00440   FTX Free text                                C   9                |
+00450   ELU Data element usage details               C   99               |
+                                                                          |
+00460       ---- Segment group 10 ------------------ C   99--------------+|
+00470   FNT Footnote                                 M   1               ||
+00480   REL Relationship                             C   1               ||
+00490   GIR Related identification numbers           C   9               ||
+00500   ATT Attribute                                C   9               ||
+00510   FTX Free text                                C   9---------------++
+
+00520       ---- Segment group 11 ------------------ C   9999-------------+
+00530   ELM Simple data element details              M   1                |
+00540   ATT Attribute                                C   9                |
+00550   FTX Free text                                C   9----------------+
+
+00560       ---- Segment group 12 ------------------ C   9999-------------+
+00570   CDS Code set identification                  M   1                |
+00580   FTX Free text                                C   9                |
+                                                                          |
+00590       ---- Segment group 13 ------------------ C   9999------------+|
+00600   CDV Code value definition                    M   1               ||
+00610   ATT Attribute                                C   9               ||
+00620   FTX Free text                                C   9---------------++
+00630   UNT Message trailer                          M   1     

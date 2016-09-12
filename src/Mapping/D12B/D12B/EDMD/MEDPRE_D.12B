@@ -1,0 +1,1045 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Medical prescription message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : MEDPRE
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG10 Healthcare
+
+
+
+                                  CONTENTS
+
+                        Medical prescription message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+       3.2   Message terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Medical
+       prescription message (MEDPRE) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The MEDPRE message is sent from a prescriber (issuer) of
+       prescriptions (healthcare professionals, i.e. physician, dentist, or
+       veterinarian) to a dispensing agent (i.e. pharmacy) in order to
+       allow the dispenser to deliver dispensed medicines(s) for the
+       treatment of a subject of care (patient, patient group, animal or
+       animal group).
+       
+       The MEDPRE message may also be sent via a relaying agent for storage
+       until it is requested by a dispenser. Copies of the message may also
+       be sent to parties entitled to receive a copy.
+       
+       The MEDPRE message can also be used as a request for a prescription
+       from a dispensing agent to a prescriber.
+
+1.2    Field of application
+
+       The Medical prescription message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       A Medical prescription is an order to a dispenser to prepare
+       prescribed medicines for a patient or animal and either to send them
+       to a specific address or to await collection at the pharmacy.
+       
+       The following principles apply:
+       
+       - A Medical prescription message is issued to one subject of care:
+       one patient, a group of patients, an animal, a group of animals, or
+       for use by the issuer himself.
+       
+       - A Medical prescription message contains one prescription set which
+       contains one or more prescription items, each of these for one
+       medicinal product and/or appliance.
+       
+       - The prescribed medicinal product(s) can be identified by
+       registered name, industry code, or a generic drug name.
+       
+       - The prescription may also be used for non-prescription medicinal
+       products and/or appliances and other material from the pharmacy
+       according to national regulations and local rules.
+       
+       - A prescription may contain extemporaneously dispensed medicines
+       identified by a recipe.
+       
+       - The individual prescription item may contain information
+       concerning repeat dispensing.
+       
+       - The individual prescription item as well as a complete
+       prescription set may contain information concerning payment
+       guarantor and payment details.
+       
+       - The dispensed medicine(s) can be delivered to the party at the
+       pharmacy or alternatively sent to a specific address. All
+       prescription items in a prescription set have the same delivery
+       information.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+3.2    Message terms and definitions
+
+       The word "prescription" is used for the prescribing of one single
+       prescribed medicine. The word "prescription set" is used for one or
+       more prescriptions for prescribed medicines generated at the same
+       time.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Medical prescription message is MEDPRE.
+
+        Note: Medical prescription messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 MEDPRE
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        To indicate the type and function of a message and to transmit the
+        identification of the message.
+
+00030   DTM, Date/time/period
+        To specify date and/or time relating to the message, such as the
+        date and time the message is generated.
+
+00040   FTX, Free text
+        A segment with free text information, in coded or clear form, to
+        provide information related to the message.
+
+
+00050   Segment group 1:  SEQ-PNA-IDE-SPR-QUA-EMP-ADR-COM-RFF-SG2
+        To represent information about involved healthcare parties.
+
+00060      SEQ, Sequence details
+           To allocate a unique reference number to an individual party
+           allowing each party to be referenced from other locations within
+           the message.
+
+00070      PNA, Party identification
+           To specify information necessary to establish the identity of a
+           healthcare party.
+           
+           One occurrence of the segment is used to specify the identity
+           details at one level. If both organisation, department and/or
+           physician are to be specified then a separate occurrence of this
+           segment has to be used for each of them.
+
+00080      IDE, Identity
+           To specify alternative identification numbers of a healthcare
+           party.
+
+00090      SPR, Organisation classification details
+           To specify the medical speciality and type of a healthcare
+           organisation.
+
+00100      QUA, Qualification
+           To specify the qualification of a healthcare professional.
+
+00110      EMP, Employment details
+           A segment to specify the type, medical speciality and the
+           position or military rank of a healthcare professional.
+
+00120      ADR, Address
+           To specify an address of a healthcare party.
+
+00130      COM, Communication contact
+           To specify a communication number of a party.
+
+00140      RFF, Reference
+           A segment to specify a link to a higher level healthcare
+           organisation which the actual healthcare organisation or
+           healthcare professional is a part of.
+           
+           This segment is only used if multiple occurrences of this
+           segment group is needed to express the information of a
+           healthcare party.
+
+
+00150      Segment group 2:  DOC-COM
+           To specify a document or message to be returned to the actual
+           party as a response to this message.
+
+00160         DOC, Document/message details
+              To specify the type of the requested document or message.
+
+00170         COM, Communication contact
+              To identify the requested communication method.
+
+
+00180   Segment group 3:  ATT-PNA-PDI-IDE-DTM-NAT-AGR-CCI-STS-FTX-LAN-CAV-
+                          SG4-SG5-SG6-SG7
+        A group of segments to describe the subject of care.
+
+00190      ATT, Attribute
+           To specify the type of subject of care such as a person, group
+           of persons, an animal or a group of animals.
+
+00200      PNA, Party identification
+           To specify the name and official ID of the person or the
+           identification of a group of persons, animal or animal group.
+
+00210      PDI, Person demographic information
+           To specify the gender of the person or animal.
+
+00220      IDE, Identity
+           To specify an alternative identification numbers for the subject
+           of care.
+
+00230      DTM, Date/time/period
+           To specify a date and/or time related to the subject of care
+           such as date and time of birth or age.
+
+00240      NAT, Nationality
+           To specify the nationality of the person.
+
+00250      AGR, Agreement identification
+           To specify the basis of entitlement to health services and  any
+           confidentiality constraint that applies to the handling of
+           information about the subject of care.
+
+00260      CCI, Characteristic/class id
+           To specify the breed and species of an animal.
+
+00270      STS, Status
+           To specify the authenticity of the person's identity by the
+           prescriber, such as person known by prescriber, person unknown,
+           etc.
+
+00280      FTX, Free text
+           A segment with free text information, in coded or clear form, to
+           provide information relating to the subject of care, such as a
+           confidentiality constraint concerning a person or age of a group
+           of animals.
+
+00290      LAN, Language
+           To specify the language of the person.
+
+00300      CAV, Characteristic value
+           To specify the person's ability in the language.
+
+
+00310      Segment group 4:  HAN-FTX-DTM
+           A group of segments to specify any precaution advice concerning
+           the subject of care.
+
+00320         HAN, Handling instructions
+              To specify a precaution as a code.
+
+00330         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              to specify a precaution.
+
+00340         DTM, Date/time/period
+              To specify an associated date for the precaution such as
+              start or end date and/or time.
+
+
+00350      Segment group 5:  ADR-COM
+           A group of segments to specify an address and related
+           communication number(s) of the actual party.
+
+00360         ADR, Address
+              To specify an address of the subject of care.
+
+00370         COM, Communication contact
+              To specify a communication number for the subject of care at
+              the specific address.
+
+
+00380      Segment group 6:  REL-PNA-PDI-ADR-COM-LAN-CAV
+           A segment group to provide information about a related party
+           such as next-of-kin or animal carer.
+
+00390         REL, Relationship
+              To specify the type of relationship between the subject of
+              care and the related party.
+
+00400         PNA, Party identification
+              To specify information necessary to establish the identity of
+              a related party.
+
+00410         PDI, Person demographic information
+              To specify the gender of the person.
+
+00420         ADR, Address
+              To specify an address of a patient related party.
+
+00430         COM, Communication contact
+              To specify a communication number of a patient related party.
+
+00440         LAN, Language
+              To specify a language of the person.
+
+00450         CAV, Characteristic value
+              To specify the person's ability in the language.
+
+
+00460      Segment group 7:  LIN-CIN-DTM-PNA-LAN-FTX-RSL-CLI-CCI-SG8
+           This segment group contains clinical information about the
+           patient such as medical history, investigation results,
+           medication records or allergies.
+           
+           Each occurrence of this segment group provides information
+           concerning a single clinical information item.
+
+00470         LIN, Line item
+              To allocate an identification number to the clinical
+              information item.
+
+00480         CIN, Clinical information
+              To specify the type of clinical information item and possibly
+              a medical diagnosis.
+
+00490         DTM, Date/time/period
+              To specify start and/or end date and/or time for the clinical
+              information item and/or date and/or time of the origin of the
+              clinical information item.
+
+00500         PNA, Party identification
+              To specify information necessary to establish the identity of
+              the party providing the clinical information item.
+              
+              One occurrence of the segment is used to specify the identity
+              details at one level. If both organisation, department and/or
+              physician are to be specified then a separate occurrence of
+              this segment has to be used for each of them.
+
+00510         LAN, Language
+              To specify the language of the clinical information item.
+
+00520         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              to specify an item of clinical information.
+
+00530         RSL, Result
+              To specify a clinical investigation result item, such as the
+              height or weight of the subject of care or the result of a
+              laboratory investigation.
+
+00540         CLI, Clinical intervention
+              To specify a clinical examination such as a height
+              measurement.
+              
+              Multiple occurrences of this segment may be needed if a
+              multi-axial coding scheme is being used.
+
+00550         CCI, Characteristic/class id
+              To specify a characteristic of a laboratory investigation.
+              
+              Multiple occurrences of this segment may be needed if a
+              multi-axial coding scheme is being used.
+
+
+00560         Segment group 8:  IMD-STS-DSG-INP-FTX-SCC-QTY
+              A group of segments to specify current or past medication or
+              known allergy.
+
+00570            IMD, Item description
+                 A segment to identify a medicinal product item.
+
+00580            STS, Status
+                 To specify the medicinal treatment status such as
+                 commenced, stopped or a patient allergy.
+
+00590            DSG, Dosage administration
+                 To specify the form of presentation or the route of
+                 administration of the medicinal product as well as dosage
+                 administration or trigger for administration.
+
+00600            INP, Parties and instruction
+                 To specify an instruction for use.
+
+00610            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, to provide comments to dosage administration.
+
+00620            SCC, Scheduling conditions
+                 To specify a dosage pattern as structured information.
+
+00630            QTY, Quantity
+                 To specify a quantity concerning the medicine such as a
+                 single dose or strength of tablet.
+
+
+00640   Segment group 9:  GEI-IDE-DTM-PTY-AGR-LAN-STS-FTX-SG10-SG11-SG12-
+                          SG14
+        A group of segments to specify a set of prescriptions issued for a
+        subject of care.
+
+00650      GEI, Processing information
+           To specify the service type of the prescription set such as a
+           new prescription, a modification of an earlier prescription or
+           cancellation of a prescription.
+
+00660      IDE, Identity
+           To identify the prescription set and the coding scheme used for
+           identification of the medicinal product(s).
+
+00670      DTM, Date/time/period
+           A segment to specify a date and/or time relevant for the
+           prescription set such as issue date of prescription set or
+           requested date and time of dispensing.
+
+00680      PTY, Priority
+           A segment to specify the requested priority for dispensing.
+
+00690      AGR, Agreement identification
+           To specify the agreed disposal of the prescribed medicinal
+           product(s) such as to be used by the client or for distribution.
+
+00700      LAN, Language
+           A segment to specify the language of the prescription set.
+
+00710      STS, Status
+           To specify the status of the prescription set such as requested,
+           prescribed or dispensed.
+
+00720      FTX, Free text
+           A segment with free text information, in coded or clear form, to
+           provide comments to the prescription set.
+
+
+00730      Segment group 10: DOC-IDE-DTM
+           A group of segments to specify a reference to a related message
+           or document.
+
+00740         DOC, Document/message details
+              To specify the type of message or document being referenced.
+
+00750         IDE, Identity
+              To identify a referenced message or document.
+
+00760         DTM, Date/time/period
+              To specify issue date and/or time for a referenced message or
+              document.
+
+
+00770      Segment group 11: TOD-TDT-FTX-DTM-ADR-COM-PNA-PTY-PAC
+           A group of segments to specify where the dispensed medicine is
+           to be delivered or collected.
+
+00780         TOD, Terms of delivery or transport
+              To specify how the dispensed medicine(s) will be delivered or
+              collected.
+
+00790         TDT, Transport information
+              A segment to specify the mode of transport for the delivery
+              of dispensed medicine(s).
+
+00800         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              to specify the delivery of the dispensed medicine(s).
+
+00810         DTM, Date/time/period
+              A segment to specify a date and/or time relevant for the
+              delivery of the dispensed medicine(s) such as date and time
+              of delivery.
+
+00820         ADR, Address
+              A segment to specify the address for delivery of the
+              dispensed medicine(s).
+
+00830         COM, Communication contact
+              A segment to identify a telecommunication number for the
+              receiver at the dispensed medicine delivery point.
+
+00840         PNA, Party identification
+              A segment to identify the receiver of a dispensed medicine.
+
+00850         PTY, Priority
+              A segment to specify the requested priority for the delivery
+              of the dispensed medicine(s).
+
+00860         PAC, Package
+              To specify if special packaging is required.
+
+
+00870      Segment group 12: FCA-PNA-IDE-RCS-SG13
+           A group of segments to specify the party responsible in part or
+           in whole for the payment and the related payment conditions for
+           the dispensed medicine(s) in the actual prescription set.
+
+00880         FCA, Financial charges allocation
+              To specify the responsibility for the settlement of charges,
+              i.e. whether the costs are to be paid by the patient, by
+              private insurance, etc.
+
+00890         PNA, Party identification
+              To specify information necessary to establish the identity of
+              the payer.
+              
+              One occurrence of the segment is used to specify the identity
+              details at one level. Thus two occurrences of this segment
+              may be needed if both organisation and department are being
+              used.
+
+00900         IDE, Identity
+              To identify a payer.
+
+00910         RCS, Requirements and conditions
+              To specify a national requirement or condition.
+
+
+00920         Segment group 13: ICD-ALC-PCD-MOA-IDE-DTM
+              A group of segments to specify a payment condition.
+
+00930            ICD, Insurance cover description
+                 To specify insurance cover type and care coverage.
+
+00940            ALC, Allowance or charge
+                 To specify a reason for reduced or no payment.
+
+00950            PCD, Percentage details
+                 To specify percentage to be paid as the contribution of
+                 the payer.
+
+00960            MOA, Monetary amount
+                 To specify a monetary amount as the contribution of the
+                 payer.
+
+00970            IDE, Identity
+                 To specify a reference for the authorisation of this
+                 service.
+
+00980            DTM, Date/time/period
+                 A segment to specify a date and/or time relevant to this
+                 payment condition such as date of authorisation.
+
+
+00990      Segment group 14: LIN-DSG-IMD-QTY-PGI-PNA-PAC-IDE-DLM-EQN-PRC-
+                             DTM-STS-CIN-FTX-SG15-SG16-SG17
+           A group of segments to specify the information about a single
+           prescription item.
+
+01000         LIN, Line item
+              A segment to specify a prescription item identification and
+              request for notification information related to variation in
+              delivery such as a substituted item or delivery failure.
+
+01010         DSG, Dosage administration
+              A segment to specify the form of presentation of the
+              medicinal product.
+
+01020         IMD, Item description
+              A segment to identify a medicinal product item and the type
+              of the item.
+
+01030         QTY, Quantity
+              To specify a quantity concerning the medicine regime such as
+              number of units of supply or strength of tablet.
+
+01040         PGI, Product group information
+              A segment to specify the group in which the medicine belongs
+              such as legal category or price category.
+
+01050         PNA, Party identification
+              A segment to specify the supplier of the medicinal product,
+              the manufacturer of the medicinal product or the initial
+              prescriber of the treatment.
+
+01060         PAC, Package
+              A segment to specify the type of package and the number of
+              physical units.
+
+01070         IDE, Identity
+              To identify the package or to give an alternative
+              identification of the initial authoriser.
+
+01080         DLM, Delivery limitations
+              To specify limitations on dispensing such as allowed
+              substitution type if any.
+
+01090         EQN, Number of units
+              To specify the number of times dispensing to be repeated.
+
+01100         PRC, Process identification
+              A segment to specify information about the preparation of an
+              extemporaneously dispensed medicine.
+
+01110         DTM, Date/time/period
+              A segment to specify a date and/or time or period concerning
+              the prescribing of the dispensed medicine such as dispensing
+              interval or initial date of treatment.
+
+01120         STS, Status
+              To specify the status of the dispensed medicine provided such
+              as requested, dispensed, etc.
+
+01130         CIN, Clinical information
+              To specify the indication for the prescribed item and/or
+              comments concerning the prescribed item expressed as a
+              clinical code.
+
+01140         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              expressing the indication for the prescribed item, package
+              description, comments concerning the prescribed item or other
+              information about this prescription item.
+
+
+01150         Segment group 15: CAV-IMD-QTY-FTX
+              A group of segments to specify information about a single
+              ingredient.
+
+01160            CAV, Characteristic value
+                 A segment to specify the function of the ingredient such
+                 as active or excipient ingredient.
+
+01170            IMD, Item description
+                 A segment to identify the ingredient.
+
+01180            QTY, Quantity
+                 A segment to specify the quantity for an ingredient.
+
+01190            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, to provide comments about the ingredient.
+
+
+01200         Segment group 16: SEQ-DSG-QTY-INP-DTM-FTX-SCC-CIN-PCI-LAN-EQA
+              A group of segments to specify how the dispensed medicine
+              should be administered and used.
+
+01210            SEQ, Sequence details
+                 To allocate a sequential regimen phase number.
+
+01220            DSG, Dosage administration
+                 To specify how the dispensed medicine is administered.
+                 
+                 If this information is provided in a structured way then
+                 this segment is used for route of administration or
+                 trigger for administration.
+
+01230            QTY, Quantity
+                 A segment to specify a quantity related to dosage of the
+                 dispensed medicine such as the single dose or maximum
+                 daily dose.
+
+01240            INP, Parties and instruction
+                 To instruct the dispenser that an exceptional dosage
+                 regimen is intended.
+
+01250            DTM, Date/time/period
+                 A segment to specify a date and/or time or period
+                 concerning dosage of the dispensed medicine such as
+                 duration of treatment or time of administration.
+
+01260            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, to provide information relating to the medicine
+                 dosage and administration.
+
+01270            SCC, Scheduling conditions
+                 To specify a dosage pattern and dosage frequency as
+                 structured information.
+
+01280            CIN, Clinical information
+                 A segment to specify the indication for the use of the
+                 dispensed medicine.
+
+01290            PCI, Package identification
+                 To specify a cautionary or advisory label.
+
+01300            LAN, Language
+                 A segment to specify the language of the instructions.
+
+01310            EQA, Attached equipment
+                 To specify device or equipment to be used for the
+                 administration of the dispensed medicine.
+
+
+01320         Segment group 17: FCA-PNA-IDE-RCS-SG18
+              A group of segments to specify the party that is responsible
+              in part or in whole for the payment of the actual
+              prescription item and the related payment conditions.
+
+01330            FCA, Financial charges allocation
+                 To specify the responsibility for the settlement of
+                 charges, i.e. whether the costs are to be paid by the
+                 patient, by private insurance, etc.
+
+01340            PNA, Party identification
+                 To specify information necessary to establish the identity
+                 of the payer.
+                 
+                 One occurrence of the segment is used to specify the
+                 identity details at one level. Thus two occurrences of
+                 this segment may be needed if both organisation and
+                 department are being used.
+
+01350            IDE, Identity
+                 To identify a payer.
+
+01360            RCS, Requirements and conditions
+                 To specify a national requirement or condition.
+
+
+01370            Segment group 18: ICD-ALC-PCD-MOA-IDE-DTM
+                 A group of segments to specify a payment condition.
+
+01380               ICD, Insurance cover description
+                    To specify the insurance cover type and care coverage.
+
+01390               ALC, Allowance or charge
+                    To specify a reason for reduced or no payment.
+
+01400               PCD, Percentage details
+                    To specify percentage to be paid as the contribution of
+                    the payer.
+
+01410               MOA, Monetary amount
+                    To specify a monetary amount as the contribution of the
+                    payer.
+
+01420               IDE, Identity
+                    To specify a reference for the authorisation of this
+                    service.
+
+01430               DTM, Date/time/period
+                    A segment to specify a date and/or time relevant to
+                    this payment condition such as date of authorisation.
+
+01440   CNT, Control total
+        A segment to provide the number of prescription items in the
+        message.
+
+01450   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          AGR Agreement identification
+          ALC Allowance or charge
+          ATT Attribute
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          CIN Clinical information
+          CLI Clinical intervention
+          CNT Control total
+          COM Communication contact
+          DLM Delivery limitations
+          DOC Document/message details
+          DSG Dosage administration
+          DTM Date/time/period
+          EMP Employment details
+          EQA Attached equipment
+          EQN Number of units
+          FCA Financial charges allocation
+          FTX Free text
+          GEI Processing information
+          HAN Handling instructions
+          ICD Insurance cover description
+          IDE Identity
+          IMD Item description
+          INP Parties and instruction
+          LAN Language
+          LIN Line item
+          MOA Monetary amount
+          NAT Nationality
+          PAC Package
+          PCD Percentage details
+          PCI Package identification
+          PDI Person demographic information
+          PGI Product group information
+          PNA Party identification
+          PRC Process identification
+          PTY Priority
+          QTY Quantity
+          QUA Qualification
+          RCS Requirements and conditions
+          REL Relationship
+          RFF Reference
+          RSL Result
+          SCC Scheduling conditions
+          SEQ Sequence details
+          SPR Organisation classification details
+          STS Status
+          TDT Transport information
+          TOD Terms of delivery or transport
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   9     
+00040   FTX Free text                                C   9     
+
+00050       ---- Segment group 1  ------------------ M   99---------------+
+00060   SEQ Sequence details                         M   1                |
+00070   PNA Party identification                     C   9                |
+00080   IDE Identity                                 C   9                |
+00090   SPR Organisation classification details      C   9                |
+00100   QUA Qualification                            C   9                |
+00110   EMP Employment details                       C   1                |
+00120   ADR Address                                  C   1                |
+00130   COM Communication contact                    C   9                |
+00140   RFF Reference                                C   1                |
+                                                                          |
+00150       ---- Segment group 2  ------------------ C   9---------------+|
+00160   DOC Document/message details                 M   1               ||
+00170   COM Communication contact                    C   1---------------++
+
+00180       ---- Segment group 3  ------------------ C   1----------------+
+00190   ATT Attribute                                M   1                |
+00200   PNA Party identification                     C   9                |
+00210   PDI Person demographic information           C   1                |
+00220   IDE Identity                                 C   9                |
+00230   DTM Date/time/period                         C   2                |
+00240   NAT Nationality                              C   1                |
+00250   AGR Agreement identification                 C   9                |
+00260   CCI Characteristic/class id                  C   2                |
+00270   STS Status                                   C   1                |
+00280   FTX Free text                                C   9                |
+00290   LAN Language                                 C   1                |
+00300   CAV Characteristic value                     C   1                |
+                                                                          |
+00310       ---- Segment group 4  ------------------ C   9---------------+|
+00320   HAN Handling instructions                    M   1               ||
+00330   FTX Free text                                C   9               ||
+00340   DTM Date/time/period                         C   2---------------+|
+                                                                          |
+00350       ---- Segment group 5  ------------------ C   9---------------+|
+00360   ADR Address                                  M   1               ||
+00370   COM Communication contact                    C   9---------------+|
+                                                                          |
+00380       ---- Segment group 6  ------------------ C   99--------------+|
+00390   REL Relationship                             M   1               ||
+00400   PNA Party identification                     M   9               ||
+00410   PDI Person demographic information           C   1               ||
+00420   ADR Address                                  C   1               ||
+00430   COM Communication contact                    C   9               ||
+00440   LAN Language                                 C   1               ||
+00450   CAV Characteristic value                     C   1---------------+|
+                                                                          |
+00460       ---- Segment group 7  ------------------ C   999-------------+|
+00470   LIN Line item                                M   1               ||
+00480   CIN Clinical information                     C   9               ||
+00490   DTM Date/time/period                         C   9               ||
+00500   PNA Party identification                     C   9               ||
+00510   LAN Language                                 C   1               ||
+00520   FTX Free text                                C   99              ||
+00530   RSL Result                                   C   1               ||
+00540   CLI Clinical intervention                    C   9               ||
+00550   CCI Characteristic/class id                  C   9               ||
+                                                                         ||
+00560       ---- Segment group 8  ------------------ C   1--------------+||
+00570   IMD Item description                         M   1              |||
+00580   STS Status                                   M   1              |||
+00590   DSG Dosage administration                    C   9              |||
+00600   INP Parties and instruction                  C   9              |||
+00610   FTX Free text                                C   9              |||
+00620   SCC Scheduling conditions                    C   9              |||
+00630   QTY Quantity                                 C   9--------------+++
+
+00640       ---- Segment group 9  ------------------ M   1----------------+
+00650   GEI Processing information                   M   1                |
+00660   IDE Identity                                 M   9                |
+00670   DTM Date/time/period                         M   9                |
+00680   PTY Priority                                 C   1                |
+00690   AGR Agreement identification                 C   1                |
+00700   LAN Language                                 C   1                |
+00710   STS Status                                   C   1                |
+00720   FTX Free text                                C   99               |
+                                                                          |
+00730       ---- Segment group 10 ------------------ C   9---------------+|
+00740   DOC Document/message details                 M   1               ||
+00750   IDE Identity                                 C   1               ||
+00760   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00770       ---- Segment group 11 ------------------ C   1---------------+|
+00780   TOD Terms of delivery or transport           M   1               ||
+00790   TDT Transport information                    C   1               ||
+00800   FTX Free text                                C   9               ||
+00810   DTM Date/time/period                         C   9               ||
+00820   ADR Address                                  C   1               ||
+00830   COM Communication contact                    C   9               ||
+00840   PNA Party identification                     C   9               ||
+00850   PTY Priority                                 C   1               ||
+00860   PAC Package                                  C   1---------------+|
+                                                                          |
+00870       ---- Segment group 12 ------------------ C   9---------------+|
+00880   FCA Financial charges allocation             M   1               ||
+00890   PNA Party identification                     C   9               ||
+00900   IDE Identity                                 C   9               ||
+00910   RCS Requirements and conditions              C   9               ||
+                                                                         ||
+00920       ---- Segment group 13 ------------------ C   9--------------+||
+00930   ICD Insurance cover description              M   1              |||
+00940   ALC Allowance or charge                      C   9              |||
+00950   PCD Percentage details                       C   1              |||
+00960   MOA Monetary amount                          C   9              |||
+00970   IDE Identity                                 C   9              |||
+00980   DTM Date/time/period                         C   9--------------++|
+                                                                          |
+00990       ---- Segment group 14 ------------------ C   99--------------+|
+01000   LIN Line item                                M   1               ||
+01010   DSG Dosage administration                    C   9               ||
+01020   IMD Item description                         M   1               ||
+01030   QTY Quantity                                 C   9               ||
+01040   PGI Product group information                C   9               ||
+01050   PNA Party identification                     C   9               ||
+01060   PAC Package                                  C   1               ||
+01070   IDE Identity                                 C   9               ||
+01080   DLM Delivery limitations                     C   9               ||
+01090   EQN Number of units                          C   1               ||
+01100   PRC Process identification                   C   9               ||
+01110   DTM Date/time/period                         C   9               ||
+01120   STS Status                                   C   1               ||
+01130   CIN Clinical information                     C   99              ||
+01140   FTX Free text                                C   99              ||
+                                                                         ||
+01150       ---- Segment group 15 ------------------ C   99-------------+||
+01160   CAV Characteristic value                     M   1              |||
+01170   IMD Item description                         M   1              |||
+01180   QTY Quantity                                 C   9              |||
+01190   FTX Free text                                C   99-------------+||
+                                                                         ||
+01200       ---- Segment group 16 ------------------ C   99-------------+||
+01210   SEQ Sequence details                         M   1              |||
+01220   DSG Dosage administration                    C   9              |||
+01230   QTY Quantity                                 C   9              |||
+01240   INP Parties and instruction                  C   9              |||
+01250   DTM Date/time/period                         C   9              |||
+01260   FTX Free text                                C   9              |||
+01270   SCC Scheduling conditions                    C   9              |||
+01280   CIN Clinical information                     C   9              |||
+01290   PCI Package identification                   C   9              |||
+01300   LAN Language                                 C   1              |||
+01310   EQA Attached equipment                       C   9--------------+||
+                                                                         ||
+01320       ---- Segment group 17 ------------------ C   9--------------+||
+01330   FCA Financial charges allocation             M   1              |||
+01340   PNA Party identification                     C   9              |||
+01350   IDE Identity                                 C   9              |||
+01360   RCS Requirements and conditions              C   9              |||
+                                                                        |||
+01370       ---- Segment group 18 ------------------ C   9-------------+|||
+01380   ICD Insurance cover description              M   1             ||||
+01390   ALC Allowance or charge                      C   9             ||||
+01400   PCD Percentage details                       C   1             ||||
+01410   MOA Monetary amount                          C   9             ||||
+01420   IDE Identity                                 C   9             ||||
+01430   DTM Date/time/period                         C   9-------------++++
+01440   CNT Control total                            C   1     
+01450   UNT Message trailer                          M   1     

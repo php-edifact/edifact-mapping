@@ -1,0 +1,880 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                      Project cost reporting message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PROCST
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 1
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG6 Architecture, Engineering and Construction
+
+
+
+                                  CONTENTS
+
+                      Project cost reporting message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+       3.2   Message terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Project cost
+       reporting message (PROCST) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Project cost reporting message is used in various industry
+       sectors when there is a requirement for all parties involved in a
+       project to formally establish and exchange budget baseline, actual,
+       progress, and estimate to complete cost information; technical
+       performance measurement information; and related funding
+       information. This information exchange is typically going from a
+       contractor performing the work to the end customer.
+       
+       The purpose of this information exchange is to provide the end
+       customer with data that describes the work that must be completed,
+       who is doing the work, and establishes the cost budget baseline for
+       the project. This information exchange also provides data that
+       describes how the work is progressing against the cost baseline to
+       determine if the project will complete on time and within budget.
+       The work in process measurement data provides key management
+       information to ensure the project is progressing as planned and
+       highlights any problem areas that need correcting. Technical
+       performance measurement data is used to determine if the project is
+       meeting specific design or functional objectives. Periodic funding
+       data reporting is used to track future funding requirements for the
+       work in process.
+
+1.2    Field of application
+
+       The Project cost reporting message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+       
+       The industry sectors that typically exchange project cost
+       information include construction, aerospace, aircraft, defense, and
+       software or support services. Various government entities such as
+       transportation, energy, space, and defense exchange project cost
+       information with their contractors related to construction, software
+       development, research and development, and production. For these
+       various government entities, this project cost information is
+       typically part of the contractual requirements for the preparation,
+       status, and completion of a project, particularly for departments or
+       ministries of defense for weapon system acquisition.
+       
+       Although various regional and international differences do exist in
+       the business terms used for project cost reporting, the underlying
+       business requirements are similar. Various ministries of defense
+       around the world have formed an international performance
+       measurement council that has established similar policy and
+       principles for project cost performance measurement and reporting.
+       These international policies and principles are the underlying
+       foundation for the data content in the Project cost reporting
+       message.
+
+1.3    Principles
+
+       This message is designed to convey budget, actual, earned value, and
+       estimate to complete cost data; technical performance measurement
+       data; and related funding data about a project in a neutral data
+       format.
+       
+       This information exchange provides data on how work is progressing
+       against the original plan or budget baseline as well as specific
+       design or functional objectives and to provide funding status
+       related to the project. This progress information provides key
+       management information needed to verify that work is progressing as
+       planned, that work will complete on time and within budget, and meet
+       project objectives. Progress payments can also be tied to the amount
+       of work the contractor completes on the project; this reporting
+       information can serve as the basis for these progress payments.
+       
+       This message can be used to exchange project cost information
+       between commercial off the shelf or company unique program
+       management software applications. Typically this data exchange is
+       external to a company. This data is exchanged with a company's
+       customers which could be a government entity, another contractor, or
+       with one or more teaming partner doing work on a project.
+       
+       Data exchanged in the PROCST message can also relate to information
+       conveyed in the Project Tasks Planning (PROTAP) message which
+       provides more information about the tasks to be performed, who is
+       doing the work, and when it will be done. This PROCST message
+       provides the related cost data (budget, actual, earned value,
+       estimate to complete and related funding requirements) and any
+       related technical performance measurements for the work activities
+       required to complete a project. Many times the work schedule, the
+       focus of the PROTAP message, provides the foundation to build the
+       cost budget baseline. This cost budget baseline serves as the
+       foundation to measure how work is progressing against the plan
+       (actual and earned value costs) and to develop the estimate to
+       complete costs and related completion dates.
+       
+       This message does use externally maintained code lists for such
+       details related to the contract type, program type, security
+       references, appropriation, and funding notations. An external code
+       list is also used to note the specific reporting formats as required
+       by the various ministries of defense or other government agencies.
+       
+       Data Content
+       
+       This message was designed to convey high level, general information
+       about a project and related reporting structure detail.
+       
+       The header section of this message is designed to convey project
+       attributes such as contract and program type, references,
+       descriptions, related documents, total contract monetary and percent
+       details, end item deliverable details (how many and what is being
+       delivered to the end customer), and contractor contact information.
+       
+       The detail section of this message is designed to convey information
+       at three levels of detail. The highest level of detail is the report
+       level. For example, the cost performance data may need to be
+       conveyed using different reporting structures, focus on baseline
+       changes, or forecast labor requirements. Line item information is
+       used to indicate what report format is being conveyed. In addition,
+       for a given report, a segment group is included in the detail
+       section to describe out-year time frames when reporting data needs
+       to be compressed for a project that spans many years.
+       
+       Within a report, the detail is further broken down by specific
+       reporting structure elements. This is the second level of detail.
+       This is where the budget, actual, earned value, estimate, and where
+       needed, technical performance measurement and funding data is
+       provided by specific reporting element references.
+       
+       Within a reporting structure, depending on contract requirements,
+       the reporting structure information may need to be broken down by
+       cost elements such as labor or material detail or more specific
+       detail such as engineering labor. This is the third level of detail.
+       When the third level of detail is used, generally, the budget,
+       actual, earned value, and estimate detail data is included at this
+       level instead of at level two (reporting structure only). However,
+       the two levels can be combined to provide summary reporting
+       structure cost data and detail cost element cost data.
+       
+       Typically the data sent is status information (weekly, monthly, or
+       quarterly). The data will generally be used to update an application
+       with new periodic data. In the event a contractor needs to
+       retransmit a report, the receiving application or receiving party's
+       business environment will dictate how the new data is managed. In
+       some instances, the contractor may need to replan their project. In
+       that event, it may be necessary to transmit new baseline data.
+       Again, the receiving application or receiving party's business
+       environment will dictate how the new data is managed.
+       
+       Multiple Report Formats
+       
+       This message has been designed to indicate the general category of
+       cost data at the header level with the ability to indicate the
+       various report formats at the detail level. This structure allows
+       the message to contain one or more report formats for a given cost
+       report category. This also allows the contractor to submit some of
+       the required formats at one time and others at a later time, as
+       needed.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+3.2    Message terms and definitions
+
+       EARNED VALUE:
+       Earned value represents a fundamental data component for cost
+       performance reporting purposes. It provides the foundation to
+       determine if work is progressing as planned.
+       
+       Earned value costs identify how much work has been completed for the
+       money spent. When earned value costs are compared to the budget
+       baseline costs, it provides an objective measure to determine how
+       much work was actually accomplished or the schedule variance (ahead
+       or behind) in cost terms. When earned value costs are compared to
+       the actual costs spent on the work completed, it provides an
+       objective measure to determine how much it cost to complete the work
+       or the cost variance (over or under). These cost and schedule
+       indicators highlight problem areas in a project and provides
+       objective, statistical measures to determine if a project will
+       complete on time and within budget.
+       
+       REPORTING STRUCTURES:
+       Reporting structures represent the various coding structures used to
+       identify work being done a project. They serve as the foundation to
+       plan, manage, and measure work completed. Generally, the reporting
+       structures include a Work Breakdown Structure (what) and an
+       Organizational Breakdown Structure (who) or a combination of the two
+       such as integrated process teams. The reporting structure coding
+       scheme may be significant or non-significant in nature.
+       
+       A reporting structure that is significant in nature indicates that
+       the next higher level in the reporting structure tree can be
+       determined by dropping one or more characters from the end of the
+       structure code.
+       
+       A reporting structure that is non-significant in nature indicates
+       that the reporting structure uses a unique scheme of coding at each
+       level. The next higher level code in the reporting structure tree
+       cannot be determined by dropping one or more characters from the end
+       of the structure code.
+       
+       TECHNICAL PERFORMANCE MEASUREMENT:
+       Technical performance measurements are used to quantify specific
+       design or functional objectives that a project must meet to satisfy
+       contract requirements. This can include such statistical
+       measurements as speed, range, reliability factors, or other
+       quantifiable product or process metrics. Technical performance
+       measurements also provide an early warning about the adequacy of a
+       design to satisfy critical technical requirements of an end product.
+       
+       OUT-YEAR:
+       Many contracts that will use the PROCST message to exchange project
+       cost information between a contractor and their customer span many
+       years. For a large production type of contract, it can span 10, 20,
+       or more years. For reporting purposes, many times the cost data for
+       future years are lumped into specific period based groups such as
+       quarters, semi-annual, annual, or remainder of contract. These
+       future year period based groups are the out-year categories for the
+       contract. As the contract progresses, the future year period groups
+       are broken down into more detail to provide visibility into past,
+       current, and near-term effort, typically into monthly reporting
+       periods.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The header section for this message includes project unique
+       identifying details, general project information, details about the
+       parties exchanging data, and any related external files. Information
+       in the header section applies to the entire message.
+       
+       The detail section for this message includes the report format and
+       reporting element cost, technical performance measurement, and
+       funding data. The detail section is structured into three levels of
+       detail. The highest level of detail is the report format and any
+       associated out-year data compression details. The second level of
+       detail is the reporting structure element. This reporting structure
+       element can be further broken down into a third level of detail, the
+       cost elements. Budget, earned value, actual, estimate to complete
+       data, and technical performance measurement data can be conveyed at
+       the reporting structure element level (level two), at the cost
+       element level within a reporting structure element (level three), or
+       both.
+       
+       The summary section provides an optional control total segment for
+       checking purposes.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Project cost reporting message is PROCST.
+
+        Note: Project cost reporting messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 PROCST
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to identify a single project cost reporting document
+        category, its unique identifier, and specific message function.
+
+00030   PRI, Price details
+        A segment to identify contract pricing details including the
+        monetary unit of measure for all monetary amounts in the message.
+
+00040   CUX, Currencies
+        A segment to identify the currencies relevant to all monetary
+        amounts in the message.
+
+00050   ATT, Attribute
+        A segment to identify the contract type, program type, and security
+        level notation.
+
+00060   MOA, Monetary amount
+        A segment to identify total contract monetary amounts such as the
+        negotiated cost, contract ceiling, and target price.
+
+00070   PCD, Percentage details
+        A segment to identify total contract percentages such as target fee
+        or profit percentage or share ratio percentages when there is a
+        contract cost overrun.
+
+00080   DTM, Date/time/period
+        A segment to identify total contract dates such as the contract
+        start date, last time delivery date, or contract completion date.
+
+
+00090   Segment group 1:  RFF-IMD
+        A group of segments to provide information about the project, and
+        to identify unique reference numbers for the message along with any
+        related descriptions.
+
+00100      RFF, Reference
+           A segment to identify reference numbers related to the project
+           such as a program, contract, contract addendum, or contract data
+           requirements list.
+
+00110      IMD, Item description
+           A segment to provide a description of a reference number, such
+           as a program name or contract name.
+
+
+00120   Segment group 2:  QTY-IMD-CCI-ATT
+        A group of segments to provide information about the item under
+        contract such as how many items are being built or delivered, a
+        description, characteristics, and related attributes.
+
+00130      QTY, Quantity
+           A segment to provide the quantity of item(s) being built or
+           delivered under a contract.
+
+00140      IMD, Item description
+           A segment to provide a description of the item(s) being built or
+           delivered under a contract.
+
+00150      CCI, Characteristic/class id
+           A segment to provide characteristic details for the item(s)
+           being built or delivered under a contract.
+
+00160      ATT, Attribute
+           A segment to provide program type information such as research
+           and development phase or production phase for the item(s) being
+           built or delivered under a contract.
+
+
+00170   Segment group 3:  PNA-ADR-SG4
+        A group of segments to identify the parties relevant to the entire
+        message with related contact and communication information.
+
+00180      PNA, Party identification
+           A segment to provide message sender and receiver information.
+
+00190      ADR, Address
+           A segment to provide address information for each named party.
+
+
+00200      Segment group 4:  CTA-COM-DTM
+           A group of segments to identify the contact, communication
+           numbers, and related dates for each named party.
+
+00210         CTA, Contact information
+              A segment to provide an authorized representative or contact
+              person's name and department for each named party.
+
+00220         COM, Communication contact
+              A segment to identify the phone number, fax number, e-mail,
+              or other communication number for the contact party.
+
+00230         DTM, Date/time/period
+              A segment to identify dates associated with the authorized
+              representative such as approved and submission dates.
+
+
+00240   Segment group 5:  EFI-CED-DTM
+        A group of segments to provide information about other documents or
+        files that related to the entire message such as schedule,
+        technical, text, or graphical files that provide additional project
+        reference or management control information. Also provides details
+        about the computing environment and related dates if needed.
+
+00250      EFI, External file link identification
+           A segment to identify a related file or message along with
+           details, such as the file name, file format, version, and data
+           format.
+
+00260      CED, Computer environment details
+           A segment to describe the data processing environment used to
+           create the named file such as the name of the software
+           application, version and release.
+
+00270      DTM, Date/time/period
+           A segment to provide the created, effective, processing, or
+           other date stamp for the named file.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00280   Segment group 6:  LIN-ATT-DTM-SG7-SG8
+        A group of segments to convey the report line item information
+        (level one) and reporting structure (level two) cost and hour
+        details. At the report line item level, provides segments to
+        identify which report format, contract funding and appropriation
+        notations, and period grouping details for contracts that span many
+        years. At the reporting structure level, provides segments to
+        identify additional information, reference numbers, and cost and
+        hour details.
+
+00290      LIN, Line item
+           A segment used to identify the specific report line item and
+           format the data represents. Generally relates to specific
+           contractual data items required for the receiving customer. May
+           use an external code list to identify the reporting line item,
+           generally for a specific government entity.
+
+00300      ATT, Attribute
+           A segment used at the report level to identify contract funding
+           and appropriation information specific to a given report.
+
+00310      DTM, Date/time/period
+           A segment used at the report level to provide specific report
+           start and stop dates or funds effective dates.
+
+
+00320      Segment group 7:  RFF-QTY-DTM-IMD
+           A group of segments used at the report level to describe the
+           out-year time frames used to condense time phased reporting
+           details for contracts that span many years.
+
+00330         RFF, Reference
+              A segment to identify the out-year period reference number.
+
+00340         QTY, Quantity
+              A segment to identify the number of reporting periods
+              condensed into one out-year period reference.
+
+00350         DTM, Date/time/period
+              A segment used to identify the span of dates condensed into
+              one out-year period reference.
+
+00360         IMD, Item description
+              A segment to provide a description of the condensed out-year
+              period reference.
+
+
+00370      Segment group 8:  IDE-REL-IMD-RCS-CCI-RFF-DTM-STA-FTX-SG9-SG10-
+                             SG11-SG12-SG13
+           A group of segments to provide reporting structure element
+           codes, relationship information, descriptions, conditions,
+           characteristics about the work item, other reference numbers,
+           dates, responsible person contact information, statistical
+           information, and associated costs and quantities. Also describes
+           the lower level cost element details (level three) for each
+           reporting structure along with associated statistics, costs, and
+           quantities.
+
+00380         IDE, Identity
+              A segment to identify the type of reporting structure such as
+              a work breakdown or organizational breakdown, and structure
+              element code.
+
+00390         REL, Relationship
+              A segment to identify the reporting structure element code
+              relationship details such as a significant or non-significant
+              reporting structure.
+
+00400         IMD, Item description
+              A segment to provide a description for the reporting
+              structure code or to provide an item characteristic
+              reference.
+
+00410         RCS, Requirements and conditions
+              A segment to provide condition information about the
+              reporting structure element, such as recurring, non-
+              recurring, add, and non-add.
+
+00420         CCI, Characteristic/class id
+              A segment to provide information about a product or assembly
+              associated with a reporting structure element.
+
+00430         RFF, Reference
+              A segment to provide reference numbers associated with a
+              reporting structure element, such as appropriation number,
+              contract line item number, or statement of work number.
+
+00440         DTM, Date/time/period
+              A segment to provide contract period and funding start and
+              stop dates.
+
+00450         STA, Statistics
+              A segment to provide technical performance measurement
+              statistics associated with a reporting structure element.
+
+00460         FTX, Free text
+              A segment to provide additional text for the reporting
+              structure element. Generally used to provide additional
+              details about baseline changes or problem resolution.
+
+
+00470         Segment group 9:  CTA-COM
+              A group of segments to provide a responsible person's name
+              and communication numbers for the reporting structure
+              element.
+
+00480            CTA, Contact information
+                 A segment to provide a responsible person's name and
+                 department.
+
+00490            COM, Communication contact
+                 A segment to identify the phone number, fax number, e-
+                 mail, or other communication number for the responsible
+                 person.
+
+
+00500         Segment group 10: MOA-DTM
+              A group of segments to provide monetary amounts associated
+              with a reporting structure element and any related dates.
+
+00510            MOA, Monetary amount
+                 A segment to provide monetary amounts, such as budget,
+                 earned value, actual, budget at complete, and estimate at
+                 complete.
+
+00520            DTM, Date/time/period
+                 A segment to provide start and end dates for any time
+                 phased monetary amounts.
+
+
+00530         Segment group 11: QTY-DTM
+              A group of segments to provide quantities associated with a
+              reporting structure element and any related dates.
+
+00540            QTY, Quantity
+                 A segment to provide hour or working month quantities such
+                 as budget, earned value, actual, budget at complete, and
+                 estimate at complete.
+
+00550            DTM, Date/time/period
+                 A segment to provide start and end dates for any time
+                 phased quantity.
+
+
+00560         Segment group 12: PCD-DTM
+              A group of segments to provide percentages associated with a
+              reporting structure element and any related dates.
+
+00570            PCD, Percentage details
+                 A segment to provide percentages such as technical
+                 performance measurement metrics or cost fees.
+
+00580            DTM, Date/time/period
+                 A segment to provide start and end dates for any time
+                 based percentages.
+
+
+00590         Segment group 13: CAV-PRC-IMD-RFF-DTM-STA-SG14-SG15-SG16
+              A group of segments to identify cost element details
+              associated with a reporting structure element. Provides
+              segments to describe the cost element and associated
+              statistics, costs, and quantities.
+
+00600            CAV, Characteristic value
+                 A segment to provide a characteristic value of a cost
+                 element in coded form such as labor, material, other
+                 direct costs, or subcontract costs. Can be adapted to
+                 identify standard cost elements for any given industry
+                 sector.
+
+00610            PRC, Process identification
+                 A segment to identify a specific functional process, such
+                 as engineering or manufacturing.
+
+00620            IMD, Item description
+                 A segment to provide a description of the cost element.
+
+00630            RFF, Reference
+                 A segment to provide reference numbers for the cost
+                 element, such as a cost account or work package number.
+
+00640            DTM, Date/time/period
+                 A segment to provide start and stop dates for the cost
+                 element.
+
+00650            STA, Statistics
+                 A segment to provide technical performance measurement
+                 statistics associated with a cost element.
+
+
+00660            Segment group 14: MOA-DTM
+                 A group of segments to provide monetary amounts associated
+                 with a cost element and any related dates.
+
+00670               MOA, Monetary amount
+                    A segment to provide monetary amounts, such as budget,
+                    earned value, actual, budget at complete, and estimate
+                    at complete.
+
+00680               DTM, Date/time/period
+                    A segment to provide start and end dates for any time
+                    phased monetary amounts.
+
+
+00690            Segment group 15: QTY-DTM
+                 A group of segments to provide quantities associated with
+                 a cost element and any related dates.
+
+00700               QTY, Quantity
+                    A segment to provide hour or working month quantities,
+                    such as budget, earned value, actual, budget at
+                    complete, and estimate at complete.
+
+00710               DTM, Date/time/period
+                    A segment to provide start and end dates for any time
+                    phased quantity.
+
+
+00720            Segment group 16: PCD-DTM
+                 A group of segments to provide percentages associated with
+                 a cost element and any related dates.
+
+00730               PCD, Percentage details
+                    A segment to provide percentages such as technical
+                    performance measurement metrics or cost fees.
+
+00740               DTM, Date/time/period
+                    A segment to provide start and end dates for any time
+                    based percentages.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00750   CNT, Control total
+        A segment to provide control totals for the message, such as the
+        total number of reporting structure elements.
+
+00760   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          CED Computer environment details
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          EFI External file link identification
+          FTX Free text
+          IDE Identity
+          IMD Item description
+          LIN Line item
+          MOA Monetary amount
+          PCD Percentage details
+          PNA Party identification
+          PRC Process identification
+          PRI Price details
+          QTY Quantity
+          RCS Requirements and conditions
+          REL Relationship
+          RFF Reference
+          STA Statistics
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   PRI Price details                            C   1     
+00040   CUX Currencies                               C   1     
+00050   ATT Attribute                                C   99    
+00060   MOA Monetary amount                          C   99    
+00070   PCD Percentage details                       C   99    
+00080   DTM Date/time/period                         C   99    
+
+00090       ---- Segment group 1  ------------------ C   99---------------+
+00100   RFF Reference                                M   1                |
+00110   IMD Item description                         C   9----------------+
+
+00120       ---- Segment group 2  ------------------ C   99---------------+
+00130   QTY Quantity                                 M   1                |
+00140   IMD Item description                         C   1                |
+00150   CCI Characteristic/class id                  C   1                |
+00160   ATT Attribute                                C   9----------------+
+
+00170       ---- Segment group 3  ------------------ C   99---------------+
+00180   PNA Party identification                     M   1                |
+00190   ADR Address                                  C   1                |
+                                                                          |
+00200       ---- Segment group 4  ------------------ C   9---------------+|
+00210   CTA Contact information                      M   1               ||
+00220   COM Communication contact                    C   9               ||
+00230   DTM Date/time/period                         C   9---------------++
+
+00240       ---- Segment group 5  ------------------ C   99---------------+
+00250   EFI External file link identification        M   1                |
+00260   CED Computer environment details             C   1                |
+00270   DTM Date/time/period                         C   1----------------+
+
+            DETAIL SECTION
+
+00280       ---- Segment group 6  ------------------ M   99---------------+
+00290   LIN Line item                                M   1                |
+00300   ATT Attribute                                C   9                |
+00310   DTM Date/time/period                         C   9                |
+                                                                          |
+00320       ---- Segment group 7  ------------------ C   9---------------+|
+00330   RFF Reference                                M   1               ||
+00340   QTY Quantity                                 C   1               ||
+00350   DTM Date/time/period                         C   1               ||
+00360   IMD Item description                         C   1---------------+|
+                                                                          |
+00370       ---- Segment group 8  ------------------ C   9999------------+|
+00380   IDE Identity                                 M   1               ||
+00390   REL Relationship                             C   1               ||
+00400   IMD Item description                         C   1               ||
+00410   RCS Requirements and conditions              C   9               ||
+00420   CCI Characteristic/class id                  C   9               ||
+00430   RFF Reference                                C   9               ||
+00440   DTM Date/time/period                         C   9               ||
+00450   STA Statistics                               C   99              ||
+00460   FTX Free text                                C   99              ||
+                                                                         ||
+00470       ---- Segment group 9  ------------------ C   9--------------+||
+00480   CTA Contact information                      M   1              |||
+00490   COM Communication contact                    C   9--------------+||
+                                                                         ||
+00500       ---- Segment group 10 ------------------ C   99-------------+||
+00510   MOA Monetary amount                          M   1              |||
+00520   DTM Date/time/period                         C   9--------------+||
+                                                                         ||
+00530       ---- Segment group 11 ------------------ C   99-------------+||
+00540   QTY Quantity                                 M   1              |||
+00550   DTM Date/time/period                         C   9--------------+||
+                                                                         ||
+00560       ---- Segment group 12 ------------------ C   99-------------+||
+00570   PCD Percentage details                       M   1              |||
+00580   DTM Date/time/period                         C   9--------------+||
+                                                                         ||
+00590       ---- Segment group 13 ------------------ C   999------------+||
+00600   CAV Characteristic value                     M   1              |||
+00610   PRC Process identification                   C   1              |||
+00620   IMD Item description                         C   1              |||
+00630   RFF Reference                                C   9              |||
+00640   DTM Date/time/period                         C   9              |||
+00650   STA Statistics                               C   99             |||
+                                                                        |||
+00660       ---- Segment group 14 ------------------ C   99------------+|||
+00670   MOA Monetary amount                          M   1             ||||
+00680   DTM Date/time/period                         C   9-------------+|||
+                                                                        |||
+00690       ---- Segment group 15 ------------------ C   99------------+|||
+00700   QTY Quantity                                 M   1             ||||
+00710   DTM Date/time/period                         C   9-------------+|||
+                                                                        |||
+00720       ---- Segment group 16 ------------------ C   99------------+|||
+00730   PCD Percentage details                       M   1             ||||
+00740   DTM Date/time/period                         C   9-------------++++
+
+            SUMMARY SECTION
+
+00750   CNT Control total                            C   9     
+00760   UNT Message trailer                          M   1     

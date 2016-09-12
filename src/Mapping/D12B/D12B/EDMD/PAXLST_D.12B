@@ -1,0 +1,466 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                          Passenger list message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PAXLST
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 9
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG4 Customs
+
+
+
+                                  CONTENTS
+
+                          Passenger list message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Passenger list
+       message (PAXLST) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This Passenger List Message (PAXLST) permits the transfer of
+       passenger/crew data from a Customs, Immigration or other designated
+       authority in the country of departure to the appropriate authorities
+       in the country of arrival of the means of transport.
+       
+       Where national privacy legislation permits, and with the agreement
+       of all parties involved, this message may also be exchanged between
+       carriers and Customs, Immigration, Police or any designated
+       authorities.
+       
+       This transfer of data may occur upon departure from the sending
+       agency and prior to arrival of the vessel/ flight at the receiving
+       agency. This is to permit the designated authority at the place of
+       destination to screen this data and take timely decisions related to
+       the clearance of passengers and crew.
+       
+       The transfer of data may also occur prior to departure, carriers may
+       transmit passenger listings to customs and immigration for pre-
+       arrival clearance.
+       
+       Endorsement of this message by the Customs Cooperation Council does
+       not necessarily mean endorsement by national Immigration or Police
+       authorities, nor does it place any obligations on parties to apply
+       the message.
+
+1.2    Field of application
+
+       The Passenger list message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+       
+       This message may be applied for international passenger movement and
+       is not dependent on the mode of transport.
+
+1.3    Principles
+
+       It is envisaged that the message will:
+       
+       (a) facilitate the clearance of low risk passengers/crew.
+       
+       (b) allow Customs, Immigration or police authorities to more
+       effectively and efficiently concentrate resources on areas of
+       highest risk.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+        - Where a choice of code or text is given only the code element
+       should be used wherever possible.
+       
+       - Data that is not necessary to meet the functional requirements of
+       the message should not be included.
+       
+       - Free text information within the message should be avoided as this
+       inhibits automatic processing.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Passenger list message is PAXLST.
+
+        Note: Passenger list messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 PAXLST
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the type and function of the message.
+
+00030   RFF, Reference
+        A segment to specify message reference.
+
+00040   DTM, Date/time/period
+        A segment to specify associated dates/times as required related to
+        the message.
+
+00050   LOC, Place/location identification
+        Locations related to the passenger list
+
+
+00060   Segment group 1:  NAD-CTA-COM
+        A group of segments to specify name and/or address, person or
+        department in the originating administration who can provide
+        further information about the data in the message.
+
+00070      NAD, Name and address
+           A segment to identify the name, address and related function.
+
+00080      CTA, Contact information
+           A segment to identify a person or department in the sending
+           administration to contact.
+
+00090      COM, Communication contact
+           A segment to identify communication numbers of departments or
+           persons to whom communication should be directed (e.g. telephone
+           and/or fax number).
+
+
+00100   Segment group 2:  TDT-DTM-SG3
+        A group of segments to indicate information related to each leg of
+        the mode of transport.
+
+00110      TDT, Transport information
+           A segment to specify details of transport related to each leg,
+           including means of transport, mode of transport name and/or
+           number of vessel and/or vehicle and/or flight.
+
+00120      DTM, Date/time/period
+           A segment to specify associated dates and/or times as required
+           related to details of transport.
+
+
+00130      Segment group 3:  LOC-DTM
+           A group of segments indicating associated locations and dates.
+
+00140         LOC, Place/location identification
+              A segment to specify locations such as place of departure,
+              place of destination, country of ultimate destination,
+              country and/or place of transit, country of transit
+              termination, etc. of a passenger/crew.
+
+00150         DTM, Date/time/period
+              A segment to specify associated dates and/or times as
+              required related to locations.
+
+
+00160   Segment group 4:  NAD-ATT-DTM-MEA-GEI-FTX-LOC-COM-EMP-NAT-RFF-SG5-
+                          SG6-SG7
+        A group of segments to indicate if passenger or crew member,
+        personal details (name, title, sex and marital status), date of
+        birth, attributes such as height, hair and eye colour, and other
+        related details.
+
+00170      NAD, Name and address
+           A segment specifying name of the passenger or crew member.
+
+00180      ATT, Attribute
+           A segment specifying passenger's and/or crew attributes such as
+           complexion and build.
+
+00190      DTM, Date/time/period
+           A segment to specify date of birth.
+
+00200      MEA, Measurements
+           To specify physical measurements, (e.g. height).
+
+00210      GEI, Processing information
+           A segment to specify indicators such as risk assessment.
+
+00220      FTX, Free text
+           A segment specifying other related passenger/crew information
+           (e.g. ticketing information).
+
+00230      LOC, Place/location identification
+           A segment indicating country of birth and port/place of origin
+           (embarkation), transit and destination (disembarkation) of a
+           passenger and/or crew.
+
+00240      COM, Communication contact
+           A segment to identify a communication number of a department or
+           a person to whom communication should be directed (e.g.
+           passenger telephone details).
+
+00250      EMP, Employment details
+           A segment to indicate the occupation of a passenger or the rank
+           of crew.
+
+00260      NAT, Nationality
+           A segment to indicate the nationality of a passenger and/or
+           crew.
+
+00270      RFF, Reference
+           A segment specifying the number assigned by a supplier that
+           identifies a passenger's reservation.
+
+
+00280      Segment group 5:  DOC-DTM-GEI-RFF-LOC-CPI-QTY
+           A group of segments to indicate the travel document details,
+           date and time, reference, place and/or location identification,
+           charge payment instructions and quantity.
+
+00290         DOC, Document/message details
+              A segment identifying passenger and/or crew travel documents,
+              such as passports, visas etc.
+
+00300         DTM, Date/time/period
+              A segment to specify associated dates/times related to
+              documents.
+
+00310         GEI, Processing information
+              A segment to specify processing indicators, such as document
+              holder, alias, endorsee etc.
+
+00320         RFF, Reference
+              A segment to specify document reference.
+
+00330         LOC, Place/location identification
+              A segment indicating the country that issued the document
+              and/or the city where a related document was issued.
+
+00340         CPI, Charge payment instructions
+              A segment to identify methods of payment for transport
+              charges.
+
+00350         QTY, Quantity
+              A segment to identify passenger type counts (e.g. child,
+              adult, infant, etc.).
+
+
+00360      Segment group 6:  GID-FTX-QTY
+           A group of segments indicating the personal effects associated
+           with a passenger or crew member.
+
+00370         GID, Goods item details
+              A segment to identify the line item number, as well as the
+              type and number of packages.
+
+00380         FTX, Free text
+              A segment to indicate the description of the effects.
+
+00390         QTY, Quantity
+              A segment to indicate the quantity of the effects.
+
+
+00400      Segment group 7:  TDT-FTX
+           A group of segments identifying transport details related to the
+           passenger or crew member.
+
+00410         TDT, Transport information
+              A segment to identify transport details related to the NAD
+              segment.
+
+00420         FTX, Free text
+              A segment to identify free text information on passenger
+              transport details.
+
+00430   CNT, Control total
+        A segment specifying control totals such as the total number of
+        passengers/ crew members in the message.
+
+00440   AUT, Authentication result
+        A segment to specify the results of the application of an
+        authentication procedure, including the authenticity of sender to
+        ensure integrity of data.
+
+00450   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ATT Attribute
+          AUT Authentication result
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CPI Charge payment instructions
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          EMP Employment details
+          FTX Free text
+          GEI Processing information
+          GID Goods item details
+          LOC Place/location identification
+          MEA Measurements
+          NAD Name and address
+          NAT Nationality
+          QTY Quantity
+          RFF Reference
+          TDT Transport information
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   RFF Reference                                C   1     
+00040   DTM Date/time/period                         C   9     
+00050   LOC Place/location identification            C   9     
+
+00060       ---- Segment group 1  ------------------ C   5----------------+
+00070   NAD Name and address                         M   1                |
+00080   CTA Contact information                      C   1                |
+00090   COM Communication contact                    C   9----------------+
+
+00100       ---- Segment group 2  ------------------ M   10---------------+
+00110   TDT Transport information                    M   1                |
+00120   DTM Date/time/period                         M   1                |
+                                                                          |
+00130       ---- Segment group 3  ------------------ C   99--------------+|
+00140   LOC Place/location identification            M   1               ||
+00150   DTM Date/time/period                         C   5---------------++
+
+00160       ---- Segment group 4  ------------------ C   99999------------+
+00170   NAD Name and address                         M   1                |
+00180   ATT Attribute                                C   9                |
+00190   DTM Date/time/period                         C   9                |
+00200   MEA Measurements                             C   9                |
+00210   GEI Processing information                   C   5                |
+00220   FTX Free text                                C   99               |
+00230   LOC Place/location identification            C   25               |
+00240   COM Communication contact                    C   1                |
+00250   EMP Employment details                       C   9                |
+00260   NAT Nationality                              C   9                |
+00270   RFF Reference                                C   99999            |
+                                                                          |
+00280       ---- Segment group 5  ------------------ C   5---------------+|
+00290   DOC Document/message details                 M   1               ||
+00300   DTM Date/time/period                         C   5               ||
+00310   GEI Processing information                   C   9               ||
+00320   RFF Reference                                C   9               ||
+00330   LOC Place/location identification            C   2               ||
+00340   CPI Charge payment instructions              C   1               ||
+00350   QTY Quantity                                 C   9---------------+|
+                                                                          |
+00360       ---- Segment group 6  ------------------ C   99--------------+|
+00370   GID Goods item details                       M   1               ||
+00380   FTX Free text                                C   9               ||
+00390   QTY Quantity                                 C   9---------------+|
+                                                                          |
+00400       ---- Segment group 7  ------------------ C   1---------------+|
+00410   TDT Transport information                    M   1               ||
+00420   FTX Free text                                C   1---------------++
+00430   CNT Control total                            C   1     
+00440   AUT Authentication result                    C   1     
+00450   UNT Message trailer                          M   1     

@@ -1,0 +1,752 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Generic statistical message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : GESMES
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG7 Statistics
+
+
+
+                                  CONTENTS
+
+                        Generic statistical message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Generic
+       statistical message (GESMES) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The compilation of statistics is a continuous chain starting with
+       raw data collection, followed by a number of harmonization and
+       aggregation processes leading to aggregated statistical data.
+       Raw data collection is realized by means of surveys, sampling,
+       direct reporting from individuals, economic operators. Harmonization
+       and aggregation processes are very often handled by statistical
+       bodies or authorized economic operators in case of direct reporting.
+       A Generic Statistical Message (GESMES) is used by an organisation
+       involved in this elaboration process to transmit a statistical data
+       set.
+       It permits the transmission of the following, either in the same
+       and/or different messages:
+       -the statistical concepts comprising the data set and their
+       structure
+       -if required, all related information ( code sets, labels,
+       methodological notes, footnotes, etc.),
+       -the statistical figures of the data set.
+       This message could be used by producers and users of statistical
+       information such as: National Statistical Offices, ministries,
+       private and public administrations, private companies etc.
+
+1.2    Field of application
+
+       The Generic statistical message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The structure of statistical information to be exchanged is quite
+       simple and could be defined as multidimensional array or
+       chronological series. The difficulty of using or exchanging
+       statistical data comes the varieties of interpretations of those
+       structures. The interpretation varies from one statistical domain to
+       another depending on the content.
+       Another key factor is the volume: statistical indicators have many
+       dimensions (e.g. time, classifications depending on statistical
+       nomenclatures), dense and sparse series of matrices could be present
+       simultaneously for the same indicator.
+       The GESMES message may be used to exchange statistical data for all
+       statistical domains in a variety of formats together with their
+       descriptions.
+       
+       The data in the data set (i.e. the array) is contained in a generic
+       segment (ARR - Array). The interpretation of the ARR segment is
+       provided in segment group 8. GESMES is designed to support all types
+       of statistical exchange, including time-series, which can be
+       described by means of statistical concepts (i.e. statistical terms
+       or objects).
+       Associated with statistical data are textual information defining
+       comprehensively the series and matrices, the underlying statistical
+       concept or methodology. This is often referred to as meta-data and
+       corresponds to associated information which is required to interpret
+       basic data, such as headlines, stubs, comments and footnotes.
+       
+       The acronym, GESMES, stands for Generic Statistical Message and
+       comprises a number of parts:
+       
+       i) Identification of administrative information concerning the
+       interchange partners (Gr. 2)
+       
+       ii) Footnotes associated with value lists, statistical concepts and
+       data set structures (Gr. 1)
+       
+       iii) Value lists of coded or non coded items to be used in this
+       message or in a future message (Gr. 4)
+       
+       iv) Definition of statistical concepts to be used in this message or
+       in a future message (Gr. 7).
+       
+       v) Definition of the structure of array data to be used in this
+       message or in a future message, and the allocation of a unique
+       identity to this definition (Gr. 8).
+       
+       vi) Identification of one or more data sets (Gr. 11). For each data
+       set: the identity of the structure definition to be used to
+       interpret the array data (Gr. 12); the scope, value lists or fixed
+       values which are local to the data set (Gr. 13 and 14); the array
+       data (ARR); footnotes associated with the data set (Gr. 18, 19 and
+       20).
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Generic statistical message is GESMES.
+
+        Note: Generic statistical messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 GESMES
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment specifying the functional use (e.g. sub-set) of the
+        Generic Statistical Message and identifying the message sent.
+
+00030   DTM, Date/time/period
+        A segment identifying dates which are relevant to the whole of the
+        message.
+
+
+00040   Segment group 1:  FNT-FTX
+        A group of segments containing textual footnotes related to value
+        lists or definitions of the content and structure of an array.
+
+00050      FNT, Footnote
+           A segment containing the unique identifier of the footnote.
+
+00060      FTX, Free text
+           A segment containing the text relevant to the footnote.
+
+
+00070   Segment group 2:  NAD-IDE-SG3
+        A group of segments identifying the sender and other relevant
+        parties, their reference and the communication contact inside the
+        corresponding organisations.
+
+00080      NAD, Name and address
+           A segment identifying the name and address of a party.
+
+00090      IDE, Identity
+           A segment giving the identity number of the data transmitted as
+           it is known by the organisation described in the NAD segment.
+
+
+00100      Segment group 3:  CTA-COM
+           A group of segments giving contact information.
+
+00110         CTA, Contact information
+              A segment identifying a person or a department for the party
+              specified in the NAD segment and to whom communication should
+              be directed.
+
+00120         COM, Communication contact
+              A segment providing a communication number for the contact
+              identified in the CTA segment.
+
+
+00130   Segment group 4:  VLI-DTM-FTX-SG5-SG6-SG7
+        A group of segments containing either a coded or non coded list of
+        items and related information.
+
+00140      VLI, Value list identification
+           A segment identifying the value list.
+
+00150      DTM, Date/time/period
+           A segment identifying the period of validity of the value list
+           and, if the value list is a date list, then a date value in that
+           list.
+
+00160      FTX, Free text
+           A segment containing text associated with the value list.
+
+
+00170      Segment group 5:  IDE-DTM
+           A group of segments containing the identification of an object
+           related to the value list and the period of validity.
+
+00180         IDE, Identity
+              A segment containing an identifier of an object related to
+              the value list (e.g. a statistical nomenclature from which
+              the codes in the list are derived, or a footnote).
+
+00190         DTM, Date/time/period
+              A segment containing date information related to the
+              identified object of the value list such as validity date or
+              date range.
+
+
+00200      Segment group 6:  GIR-DTM
+           A group of segments containing the related identification number
+           and the period of validity.
+
+00210         GIR, Related identification numbers
+              A segment containing additional identifiers associated with
+              the value list (e.g. for a statistical nomenclature this
+              could be a revision number or level number).
+
+00220         DTM, Date/time/period
+              A segment identifying the period of validity relating to the
+              object identified in the GIR of this group.
+
+
+00230      Segment group 7:  CDV-FTX-SG8
+           A group of segments containing the codes or names in a value
+           list.
+
+00240         CDV, Code value definition
+              A segment identifying a particular value of a code.
+
+00250         FTX, Free text
+              A segment containing the textual description of the code.
+              Multi-lingual definitions may be present in different
+              occurrences of this segment.
+
+
+00260         Segment group 8:  IDE-DTM
+              A group of segments containing the identification of an
+              object related to the code value and the period of validity.
+
+00270            IDE, Identity
+                 A segment containing an identifier of an object related to
+                 the code value (e.g. a related code list containing a list
+                 of code values for the code, or a footnote).
+
+00280            DTM, Date/time/period
+                 A segment identifying the period of validity relating to
+                 the object identification.
+
+
+00290   Segment group 9:  STC-FTX-IDE
+        A group of segments specifying a statistical concept.
+
+00300      STC, Statistical concept
+           A segment identifying a statistical concept.
+
+00310      FTX, Free text
+           A segment containing the name, definition or description of the
+           statistical concept.
+
+00320      IDE, Identity
+           A segment containing the identity of a footnote relevant to the
+           statistical concept.
+
+
+00330   Segment group 10: ASI-GEI-FTX-IDE-SG11
+        A group of segments which identifies and defines the structure of
+        an array.
+
+00340      ASI, Array structure identification
+           A segment containing the unique identifier of the array
+           structure.
+
+00350      GEI, Processing information
+           A segment containing a processing indicator associated with the
+           array structure.
+
+00360      FTX, Free text
+           A segment containing a name/title or description of the
+           structure of an array.
+
+00370      IDE, Identity
+           A segment containing the identity of a footnote relevant to the
+           structure.
+
+
+00380      Segment group 11: SCD-ATT-SG12
+           A group of segments which defines the structure of an array.
+
+00390         SCD, Structure component definition
+              A segment that defines a statistical concept or other object
+              (such as a value list) used by an array and its position in
+              the array.
+
+00400         ATT, Attribute
+              A segment containing an attribute that further defines the
+              structure component (e.g. type of value, type of measurement,
+              etc.).
+
+
+00410         Segment group 12: IDE-ATT-DTM
+              A group of segments identifying a value list or a value in a
+              value list which is used by the statistical concept.
+
+00420            IDE, Identity
+                 A segment identifying the value list or value.
+
+00430            ATT, Attribute
+                 A segment containing an attribute that further defines the
+                 value (e.g. type of value, type of measurement etc.).
+
+00440            DTM, Date/time/period
+                 A segment identifying period of validity of the value list
+                 or other dates relevant to the value list.
+
+
+00450   Segment group 13: DSI-STS-DTM-FTX-GIR-SG14-ARR-SG18-SG20-SG25
+        A group of segments identifying the data set, its status, the
+        source of the data, the array data itself, the structure definition
+        of the data set and definition of the scope of the data and local
+        values, details on the originator of a data, and footnotes
+        associated with the array data.
+
+00460      DSI, Data set identification
+           A segment containing the unique identifier of the data set.
+
+00470      STS, Status
+           A segment containing information on the status of the
+           information in the data set, e.g. its elaboration or privacy
+           status.
+
+00480      DTM, Date/time/period
+           A segment identifying a date relevant to the data set, e.g. date
+           of original elaboration.
+
+00490      FTX, Free text
+           A segment containing a textual description of the data set.
+
+00500      GIR, Related identification numbers
+           A segment containing additional identifiers associated with the
+           data set (e.g. identification of the source or destination of
+           the data in the data set).
+
+
+00510      Segment group 14: IDE-GEI-DTM-SG15-SG16
+           A group of segments containing an identifier relevant to the
+           data set, a processing indicator and a date.
+
+00520         IDE, Identity
+              A segment containing an identifier relevant to the data set,
+              such as the scope or structure definition used by the data
+              set.
+
+00530         GEI, Processing information
+              A segment containing a processing indicator associated with
+              the array data.
+
+00540         DTM, Date/time/period
+              A segment identifying a date relevant to the identity e.g.
+              date relating to the scope of the data.
+
+
+00550         Segment group 15: CDV-FTX
+              A group of segments containing the codes or names in a value
+              list that are relevant to the object identified in the IDE
+              segment of the group e.g. one or more codes that specify the
+              scope of the data set.
+
+00560            CDV, Code value definition
+                 A segment identifying a particular value of a code.
+
+00570            FTX, Free text
+                 A segment containing the textual description of the code.
+                 Multi-lingual definitions may be present in different
+                 occurrences of this segment.
+
+
+00580         Segment group 16: SCD-ATT-DTM-SG17
+              A group of segments which identifies a structure component of
+              the array and defines attributes or codes which are local to
+              the data set identified in the DSI segment.
+
+00590            SCD, Structure component definition
+                 A segment that identifies the structure component.
+
+00600            ATT, Attribute
+                 A segment containing an attribute that further defines the
+                 structure component (e.g. type of value, type of
+                 measurement etc.).
+
+00610            DTM, Date/time/period
+                 A segment specifying a date relevant to the structure
+                 component e.g. a date for time series data.
+
+
+00620            Segment group 17: CDV-FTX
+                 A group of segments containing the codes or names in a
+                 value list that are relevant to the structure component
+                 identified in the SCD segment.
+
+00630               CDV, Code value definition
+                    A segment identifying a particular value of a code.
+
+00640               FTX, Free text
+                    A segment containing the textual description of the
+                    code.
+                    Multi-lingual definitions may be present in different
+                    occurrences of this segment.
+
+00650      ARR, Array information
+           A segment containing the data in the data set.
+
+
+00660      Segment group 18: NAD-IDE-SG19
+           A group of segments identifying the department and contact
+           person within the sending organisation responsible for a
+           particular aspect of the data set (e.g. compilation).
+
+00670         NAD, Name and address
+              A segment identifying a particular department in an
+              organisation responsible for the data set.
+
+00680         IDE, Identity
+              A segment containing an identifier used by the sender or
+              receiver to identify the data set.
+
+
+00690         Segment group 19: CTA-COM
+              A group of segments giving contact information.
+
+00700            CTA, Contact information
+                 A segment identifying a person or a department for the
+                 party specified in the NAD segment and to whom
+                 communication should be directed.
+
+00710            COM, Communication contact
+                 A segment providing a communication number for the contact
+                 identified in the CTA segment.
+
+
+00720      Segment group 20: FNS-SG21
+           A group of segments identifying the location in the data set to
+           which a footnote is relevant.
+
+00730         FNS, Footnote set
+              A segment identifying a set of footnotes, which are either
+              defined in this group or have been defined previously.
+
+
+00740         Segment group 21: REL-SG22
+              A group of segments identifying the scope of the footnote,
+              the location in the data set to which a footnote is relevant,
+              and the identity number of that footnote.
+
+00750            REL, Relationship
+                 A segment defining the scope of a footnote in terms of the
+                 relationship between the data in the ARR segment in
+                 segment group 22 and the data in the ARR segment in
+                 segment group 13.
+
+
+00760            Segment group 22: ARR-FTX-SG23
+                 A group of segments which identifies the set of values in
+                 the array to which the footnotes or attributes apply, and
+                 which give the data value of the footnotes or attributes.
+
+00770               ARR, Array information
+                    A segment containing data values that identify the
+                    location in the data set to which a footnote is
+                    relevant.
+
+00780               FTX, Free text
+                    A segment containing a footnote value.
+
+
+00790               Segment group 23: IDE-FTX-SG24
+                    A group of segments which identify an attribute and
+                    give its value.
+
+00800                  IDE, Identity
+                       A segment containing the identity of a footnote
+                       relevant to the data in the data set.
+
+00810                  FTX, Free text
+                       A segment containing an uncoded attribute value.
+
+
+00820                  Segment group 24: CDV-FTX
+                       A group of segments which specifies a coded
+                       attribute value and its name, description, or
+                       definition.
+
+00830                     CDV, Code value definition
+                          A segment which specifies a coded attribute
+                          value.
+
+00840                     FTX, Free text
+                          A segment which specifies the name, description
+                          or definition of a coded attribute value.
+
+
+00850      Segment group 25: FNT-FTX
+           A group of segments containing textual footnotes related to data
+           in the data set.
+
+00860         FNT, Footnote
+              A segment containing the unique identifier of the footnote.
+
+00870         FTX, Free text
+              A segment containing the text of the footnote.
+
+00880   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ARR Array information
+          ASI Array structure identification
+          ATT Attribute
+          BGM Beginning of message
+          CDV Code value definition
+          COM Communication contact
+          CTA Contact information
+          DSI Data set identification
+          DTM Date/time/period
+          FNS Footnote set
+          FNT Footnote
+          FTX Free text
+          GEI Processing information
+          GIR Related identification numbers
+          IDE Identity
+          NAD Name and address
+          REL Relationship
+          SCD Structure component definition
+          STC Statistical concept
+          STS Status
+          UNH Message header
+          UNT Message trailer
+          VLI Value list identification
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     C   1     
+00030   DTM Date/time/period                         C   9     
+
+00040       ---- Segment group 1  ------------------ C   9999-------------+
+00050   FNT Footnote                                 M   1                |
+00060   FTX Free text                                C   9999-------------+
+
+00070       ---- Segment group 2  ------------------ C   9----------------+
+00080   NAD Name and address                         M   1                |
+00090   IDE Identity                                 C   1                |
+                                                                          |
+00100       ---- Segment group 3  ------------------ C   5---------------+|
+00110   CTA Contact information                      M   1               ||
+00120   COM Communication contact                    C   5---------------++
+
+00130       ---- Segment group 4  ------------------ C   99---------------+
+00140   VLI Value list identification                M   1                |
+00150   DTM Date/time/period                         C   9999             |
+00160   FTX Free text                                C   9999             |
+                                                                          |
+00170       ---- Segment group 5  ------------------ C   9---------------+|
+00180   IDE Identity                                 M   1               ||
+00190   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00200       ---- Segment group 6  ------------------ C   5---------------+|
+00210   GIR Related identification numbers           M   1               ||
+00220   DTM Date/time/period                         C   2---------------+|
+                                                                          |
+00230       ---- Segment group 7  ------------------ C   9999------------+|
+00240   CDV Code value definition                    M   1               ||
+00250   FTX Free text                                C   999             ||
+                                                                         ||
+00260       ---- Segment group 8  ------------------ C   9--------------+||
+00270   IDE Identity                                 M   1              |||
+00280   DTM Date/time/period                         C   9--------------+++
+
+00290       ---- Segment group 9  ------------------ C   999--------------+
+00300   STC Statistical concept                      M   1                |
+00310   FTX Free text                                C   5                |
+00320   IDE Identity                                 C   5----------------+
+
+00330       ---- Segment group 10 ------------------ C   9999-------------+
+00340   ASI Array structure identification           M   1                |
+00350   GEI Processing information                   C   5                |
+00360   FTX Free text                                C   9                |
+00370   IDE Identity                                 C   5                |
+                                                                          |
+00380       ---- Segment group 11 ------------------ C   999-------------+|
+00390   SCD Structure component definition           M   1               ||
+00400   ATT Attribute                                C   99              ||
+                                                                         ||
+00410       ---- Segment group 12 ------------------ C   9999-----------+||
+00420   IDE Identity                                 M   1              |||
+00430   ATT Attribute                                C   99             |||
+00440   DTM Date/time/period                         C   2--------------+++
+
+00450       ---- Segment group 13 ------------------ C   999--------------+
+00460   DSI Data set identification                  M   1                |
+00470   STS Status                                   C   9                |
+00480   DTM Date/time/period                         C   5                |
+00490   FTX Free text                                C   5                |
+00500   GIR Related identification numbers           C   2                |
+                                                                          |
+00510       ---- Segment group 14 ------------------ C   99--------------+|
+00520   IDE Identity                                 M   1               ||
+00530   GEI Processing information                   C   5               ||
+00540   DTM Date/time/period                         C   5               ||
+                                                                         ||
+00550       ---- Segment group 15 ------------------ C   999------------+||
+00560   CDV Code value definition                    M   1              |||
+00570   FTX Free text                                C   99-------------+||
+                                                                         ||
+00580       ---- Segment group 16 ------------------ C   999------------+||
+00590   SCD Structure component definition           M   1              |||
+00600   ATT Attribute                                C   9              |||
+00610   DTM Date/time/period                         C   9999           |||
+                                                                        |||
+00620       ---- Segment group 17 ------------------ C   9999----------+|||
+00630   CDV Code value definition                    M   1             ||||
+00640   FTX Free text                                C   99------------+++|
+00650   ARR Array information                        C   999999           |
+                                                                          |
+00660       ---- Segment group 18 ------------------ C   5---------------+|
+00670   NAD Name and address                         M   1               ||
+00680   IDE Identity                                 C   1               ||
+                                                                         ||
+00690       ---- Segment group 19 ------------------ C   5--------------+||
+00700   CTA Contact information                      M   1              |||
+00710   COM Communication contact                    C   5--------------++|
+                                                                          |
+00720       ---- Segment group 20 ------------------ C   999-------------+|
+00730   FNS Footnote set                             M   1               ||
+                                                                         ||
+00740       ---- Segment group 21 ------------------ C   9999-----------+||
+00750   REL Relationship                             M   1              |||
+                                                                        |||
+00760       ---- Segment group 22 ------------------ C   9999----------+|||
+00770   ARR Array information                        M   1             ||||
+00780   FTX Free text                                C   9999          ||||
+                                                                       ||||
+00790       ---- Segment group 23 ------------------ C   9999---------+||||
+00800   IDE Identity                                 M   1            |||||
+00810   FTX Free text                                C   9999         |||||
+                                                                      |||||
+00820       ---- Segment group 24 ------------------ C   9999--------+|||||
+00830   CDV Code value definition                    M   1           ||||||
+00840   FTX Free text                                C   9999--------+++++|
+                                                                          |
+00850       ---- Segment group 25 ------------------ C   9999------------+|
+00860   FNT Footnote                                 M   1               ||
+00870   FTX Free text                                C   9999------------++
+00880   UNT Message trailer                          M   1     

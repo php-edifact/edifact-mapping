@@ -1,0 +1,316 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+            Balance of payment information from customer message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : BOPINF
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG7 Statistics
+
+
+
+                                  CONTENTS
+
+            Balance of payment information from customer message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Balance of payment
+       information from customer message (BOPINF) to be used in Electronic
+       Data Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Balance of payment information from customer message is sent
+       from a customer to the customer's bank in order to inform the
+       customer's bank of information relating to one or more external
+       payments which have been received in settlement of transactions with
+       non-residents and which must be reported on by the bank to the
+       responsible authority for Balance of Payment reporting purposes.
+
+1.2    Field of application
+
+       The Balance of payment information from customer message may be used
+       for both national and international applications. It is based on
+       universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       In some countries the receipt of an external payment by a customer
+       has to be reported to the authority responsible for the compilation
+       of Balance of Payments (BOP) statistics via the customer's resident
+       bank.
+       
+       It is assumed that the customer has previously been informed of the
+       external payment receipt by means of a credit advice (CREADV)
+       message sent by the customer's bank. This means that the customer
+       need only report in the BOPINF message any required Balance of
+       Payment information relating to the transaction which was not
+       contained in the credit advice message as long as a reference to the
+       received credit advice message is included. The main function of the
+       BOPINF message therefore is to provide additional Balance of Payment
+       information related to the external payment and which is unknown by
+       the customer's bank.
+       
+       For onwards periodic reporting to the authority responsible for the
+       compilation of Balance of Payments statistics the customer's bank
+       has to combine the contents of any referenced CREADV messages with
+       the related BOPINF messages in order to prepare the Balance of
+       payment customer transaction report message (BOPCUS).
+       
+       The message has been designed with a main detail loop each
+       repetition of which should be used to provide information related to
+       a single credit advice.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Balance of payment information from
+        customer message is BOPINF.
+
+        Note: Balance of payment information from customer messages
+        conforming to this document must contain the following data in
+        segment UNH, composite S009:
+
+        Data element  0065 BOPINF
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the type and function of the message and to
+        transmit its identifying number.
+
+00030   DTM, Date/time/period
+        A segment to specify the date and, when required, the time of the
+        creation of the message and optionally to specify other process
+        dates which apply to the whole message.
+
+
+00040   Segment group 1:  RFF-DTM
+        A group of segments to specify references which apply to the whole
+        message and optionally to specify related dates.
+
+00050      RFF, Reference
+           A segment to specify a reference for the message.
+
+00060      DTM, Date/time/period
+           A segment to specify dates related to the reference.
+
+
+00070   Segment group 2:  NAD-CTA-COM-FTX
+        A group of segments to identify the parties associated with the
+        message.
+
+00080      NAD, Name and address
+           A segment to identify the reporting party and in addition to
+           identify the customer when the reporting party is a third party.
+
+00090      CTA, Contact information
+           A segment to identify a person or a department for the party to
+           whom communication should be directed.
+
+00100      COM, Communication contact
+           A segment to specify a communication number for the party.
+
+00110      FTX, Free text
+           A segment to specify free text information relating to the
+           party.
+
+
+00120   Segment group 3:  RFF-DTM-SG4
+        A group of segments to identify a referenced credit advice message
+        together with any associated transaction details.
+
+00130      RFF, Reference
+           A segment to specify the reference number of the referenced
+           credit advice message.
+
+00140      DTM, Date/time/period
+           A segment to specify any dates relating to the referenced credit
+           advice message.
+
+
+00150      Segment group 4:  RCS-FTX-MOA-LOC
+           A group of segments to specify the nature of transactions
+           associated with the referenced credit advice, together with any
+           associated amounts and geographical details.
+
+00160         RCS, Requirements and conditions
+              A segment to specify the nature of a transaction.
+
+00170         FTX, Free text
+              A segment to specify additional free text information
+              relating to the nature of the transaction.
+
+00180         MOA, Monetary amount
+              A segment to specify an amount and associated currency for
+              the transaction such as the debit flow amount or the credit
+              flow amount.
+
+00190         LOC, Place/location identification
+              A segment to identify a country involved in the transaction
+              such as country of origin or country of destination.
+
+00200   CNT, Control total
+        A segment to specify total values for control purposes such as
+        total value of credit items.
+
+00210   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          DTM Date/time/period
+          FTX Free text
+          LOC Place/location identification
+          MOA Monetary amount
+          NAD Name and address
+          RCS Requirements and conditions
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+
+00040       ---- Segment group 1  ------------------ C   9----------------+
+00050   RFF Reference                                M   1                |
+00060   DTM Date/time/period                         C   1----------------+
+
+00070       ---- Segment group 2  ------------------ M   9----------------+
+00080   NAD Name and address                         M   1                |
+00090   CTA Contact information                      C   1                |
+00100   COM Communication contact                    C   9                |
+00110   FTX Free text                                C   99---------------+
+
+00120       ---- Segment group 3  ------------------ C   999--------------+
+00130   RFF Reference                                M   1                |
+00140   DTM Date/time/period                         C   1                |
+                                                                          |
+00150       ---- Segment group 4  ------------------ M   99--------------+|
+00160   RCS Requirements and conditions              M   1               ||
+00170   FTX Free text                                C   99              ||
+00180   MOA Monetary amount                          C   1               ||
+00190   LOC Place/location identification            C   9---------------++
+00200   CNT Control total                            C   9     
+00210   UNT Message trailer                          M   1     

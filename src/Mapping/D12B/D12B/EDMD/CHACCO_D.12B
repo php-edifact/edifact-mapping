@@ -1,0 +1,414 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                         Chart of accounts message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : CHACCO
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG12 Accounting and Auditing, Registration, Financial Information
+        Services
+
+
+                                  CONTENTS
+
+                         Chart of accounts message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Chart of accounts
+       message (CHACCO) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This message deals with the communication of charts of accounts
+       between an organization and whoever may use them for the purpose of
+       accounting, auditing, cost accounting, consolidation, financial
+       analysis, etc.
+
+1.2    Field of application
+
+       The Chart of accounts message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The chart of accounts may be set up by an enterprise, a service
+       bureau, a chartered accountant or an auditor - referred to as sender
+       - for appropriate parties - known as recipient - such another
+       enterprise, another service bureau, another chartered accountant or
+       another auditor. 
+       
+       The chart of accounts is a systematically organized list of accounts
+       that is sufficiently detailed to allow the recording of operations
+       affecting the financial conditions of an organization. The chart of
+       accounts can be either in accordance with sector-based accounting
+       standards, national or international, or those established by an
+       organization. 
+       
+       The message CHACCO contains information about a set of accounts for
+       a given period. The frequency of data collection ranges from daily
+       to annually.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Chart of accounts message is CHACCO.
+
+        Note: Chart of accounts messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 CHACCO
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment identifying the type of chart of accounts.
+
+00030   DTM, Date/time/period
+        A segment containing the date of the opening and closing period of
+        the chart of accounts message, and its preparation date.
+
+00040   RFF, Reference
+        A segment containing the chart of accounts references (type and
+        version number).
+
+00050   CUX, Currencies
+        A segment providing currencies which are specific to the chart of
+        accounts message.
+
+00060   FTX, Free text
+        A segment with free text information, in coded or clear form, for
+        the purpose of providing additional clarification.
+
+
+00070   Segment group 1:  NAD-RFF-SG2
+        A segment group giving information on sender, recipient and
+        intermediary.
+
+00080      NAD, Name and address
+           A segment to identify the sender, recipient or intermediary.
+
+00090      RFF, Reference
+           A segment to provide references which are specific to the
+           concerned party.
+
+
+00100      Segment group 2:  CTA-COM
+           A group of segments to identify contacts and related
+           communication numbers.
+
+00110         CTA, Contact information
+              A segment to provide contacts related to the party.
+
+00120         COM, Communication contact
+              A segment to provide communication numbers of the contact.
+
+
+00130   Segment group 3:  CCI-CAV
+        A group of segments to provide accounting features of the chart of
+        accounts and the type of chart of accounts that has been used as
+        reference.
+
+00140      CCI, Characteristic/class id
+           A segment to identify an accounting characteristic of the chart
+           of accounts.
+
+00150      CAV, Characteristic value
+           A segment to provide the value of the above characteristic.
+
+
+00160   Segment group 4:  LIN-CPT-FTX-TAX-DTM-SG5-SG7
+        A segment group giving account related information.
+
+00170      LIN, Line item
+           A segment indicating the chart of accounts line number within
+           the message.
+
+00180      CPT, Account identification
+           A segment containing detailed information identifying the
+           principal account number (general, subsidiary, analytical or
+           budget account).
+
+00190      FTX, Free text
+           A segment to provide the source of the account and information
+           about the creation of the account.
+
+00200      TAX, Duty/tax/fee details
+           A segment used to provide tax related information. Mainly used
+           to provide the tax rate.
+
+00210      DTM, Date/time/period
+           A segment giving detailed information on the opening and closing
+           dates of an account of the chart of accounts message.
+
+
+00220      Segment group 5:  REL-CPT-FII-PYT-PAI-SG6
+           A segment group used to provide the legal status of the account
+           holder or settlement of an account.
+
+00230         REL, Relationship
+              A segment to identify the relationship between a principal
+              account and other associated entities (sub-account, bank
+              account, etc.).
+
+00240         CPT, Account identification
+              A segment containing detailed information identifying the
+              account (general, subsidiary, analytical or budget account)
+              linked to the principal account.
+
+00250         FII, Financial institution information
+              A segment identifying the associated bank account.
+
+00260         PYT, Payment terms
+              A segment providing associated payment terms.
+
+00270         PAI, Payment instructions
+              A segment specifying instructions related to payment.
+
+
+00280         Segment group 6:  CCI-CAV
+              A segment group to provide legal or accounting
+              characteristics of the account.
+
+00290            CCI, Characteristic/class id
+                 A segment to identify a legal or accounting characteristic
+                 of an account.
+
+00300            CAV, Characteristic value
+                 A segment to provide the value of the above
+                 characteristic.
+
+
+00310      Segment group 7:  NAD-RFF-SG8
+           A segment group identify parties related to the account. It may
+           be used to identify the accountant who is in charge of the
+           account in the account holder company.
+
+00320         NAD, Name and address
+              A segment identifying the concerned party.
+
+00330         RFF, Reference
+              A segment providing references related to the party. It can
+              be used to provide numbers such as the VAT number of the
+              account holder company.
+
+
+00340         Segment group 8:  CTA-COM
+              A segment group to identify contacts and related
+              communication numbers.
+
+00350            CTA, Contact information
+                 A segment to provide contacts related to the party.
+
+00360            COM, Communication contact
+                 A segment to provide communication numbers of the contact.
+
+00370   EQN, Number of units
+        A segment specifying the number of accounts in the chart of
+        accounts message.
+
+
+00380   Segment group 9:  AUT-DTM
+        A segment group to provide authentication information.
+
+00390      AUT, Authentication result
+           A segment to provide results of the accounting application of an
+           authentication procedure.
+
+00400      DTM, Date/time/period
+           A segment to provide the date of the authentication.
+
+00410   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AUT Authentication result
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          COM Communication contact
+          CPT Account identification
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          EQN Number of units
+          FII Financial institution information
+          FTX Free text
+          LIN Line item
+          NAD Name and address
+          PAI Payment instructions
+          PYT Payment terms
+          REL Relationship
+          RFF Reference
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   99    
+00040   RFF Reference                                C   99    
+00050   CUX Currencies                               C   99    
+00060   FTX Free text                                C   1     
+
+00070       ---- Segment group 1  ------------------ M   99---------------+
+00080   NAD Name and address                         M   1                |
+00090   RFF Reference                                C   9                |
+                                                                          |
+00100       ---- Segment group 2  ------------------ C   99--------------+|
+00110   CTA Contact information                      M   1               ||
+00120   COM Communication contact                    C   9---------------++
+
+00130       ---- Segment group 3  ------------------ C   99---------------+
+00140   CCI Characteristic/class id                  M   1                |
+00150   CAV Characteristic value                     C   1----------------+
+
+00160       ---- Segment group 4  ------------------ M   99999------------+
+00170   LIN Line item                                M   1                |
+00180   CPT Account identification                   M   1                |
+00190   FTX Free text                                C   1                |
+00200   TAX Duty/tax/fee details                     C   1                |
+00210   DTM Date/time/period                         C   1                |
+                                                                          |
+00220       ---- Segment group 5  ------------------ C   99--------------+|
+00230   REL Relationship                             M   1               ||
+00240   CPT Account identification                   C   1               ||
+00250   FII Financial institution information        C   1               ||
+00260   PYT Payment terms                            C   1               ||
+00270   PAI Payment instructions                     C   1               ||
+                                                                         ||
+00280       ---- Segment group 6  ------------------ C   9--------------+||
+00290   CCI Characteristic/class id                  M   1              |||
+00300   CAV Characteristic value                     C   1--------------++|
+                                                                          |
+00310       ---- Segment group 7  ------------------ C   9---------------+|
+00320   NAD Name and address                         M   1               ||
+00330   RFF Reference                                C   9               ||
+                                                                         ||
+00340       ---- Segment group 8  ------------------ C   9--------------+||
+00350   CTA Contact information                      M   1              |||
+00360   COM Communication contact                    C   9--------------+++
+00370   EQN Number of units                          M   1     
+
+00380       ---- Segment group 9  ------------------ C   1----------------+
+00390   AUT Authentication result                    M   1                |
+00400   DTM Date/time/period                         C   1----------------+
+00410   UNT Message trailer                          M   1     

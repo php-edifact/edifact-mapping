@@ -1,0 +1,531 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+               Direct balance of payment declaration message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : BOPDIR
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG7 Statistics
+
+
+
+                                  CONTENTS
+
+               Direct balance of payment declaration message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Direct balance of
+       payment declaration message (BOPDIR) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Direct balance of payments declaration message (BOPDIR) can be
+       sent by non-bank residents to report directly to the Balance of
+       Payments (BOP) compiler on:
+       * transactions via bank accounts held at a resident bank
+       * transactions via bank accounts held at a non-resident bank
+       * transactions and clearing via accounts with non-bank non-
+       residents
+       * foreign assets and liabilities
+       * information in the context of a BOP-related survey (stock and
+       flows); for those countries which base their compilation of the
+       Balance of Payments on surveys.
+
+1.2    Field of application
+
+       The Direct balance of payment declaration message may be used for
+       both national and international applications. It is based on
+       universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       The message contains 2 parts:
+       
+       In the first part of the message, it is used to supply information
+       on amounts received from non-residents via resident banks. This is
+       an alternative route to sending a BOPINF message to the bank.
+       
+       In the second part, this message can also be used for reporting on
+       settlements via external bank accounts, current accounts held abroad
+       with non-banks or participation in an international clearing system.
+       
+       Further, this message part can also be used for reporting results
+       for all types of BOP-related surveys: either for reporting results
+       of general questionnaires or for specific questionnaires such as the
+       reports on positions (foreign assets and liabilities).
+       
+       Each part is independent from each other. A message can contain
+       either or both of them.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Direct balance of payment declaration
+        message is BOPDIR.
+
+        Note: Direct balance of payment declaration messages conforming to
+        this document must contain the following data in segment UNH,
+        composite S009:
+
+        Data element  0065 BOPDIR
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the type and function of the message and to
+        transmit its identifying number.
+
+00030   DTM, Date/time/period
+        A segment to specify the date and, when required, the time of the
+        creation of the message and optionally to specify other process
+        dates which apply to the whole message.
+
+
+00040   Segment group 1:  RFF-DTM
+        A group of segments to specify references which apply to the whole
+        message and optionally to specify related dates.
+
+00050      RFF, Reference
+           A segment to specify a reference for the message.
+
+00060      DTM, Date/time/period
+           A segment to specify dates related to the reference.
+
+
+00070   Segment group 2:  NAD-CTA-COM-FTX
+        A group of segments to identify the parties associated with the
+        message.
+
+00080      NAD, Name and address
+           A segment to identify the reporting party or to identify the
+           party on behalf of which the declaration is made when the
+           reporting party is a third party.
+
+00090      CTA, Contact information
+           A segment to identify a person or a department for the party to
+           whom communication should be directed.
+
+00100      COM, Communication contact
+           A segment to specify a communication number for the party, such
+           as phone number, E-mail address, fax number or X400 address.
+
+00110      FTX, Free text
+           A segment to specify complementary information on the party.
+           
+           Part 1: direct reporting of transactions via resident bank
+           accounts.
+           
+           This part of the message specifies the requested information for
+           all the resident bank accounts and for all the accounts held
+           abroad with banks or non-banks and can also be used for
+           reporting about netting operations.
+
+
+00120   Segment group 3:  RFF-ATT-FII-NAD-MOA-CUX-SG4
+        A group of segments to accommodate the details relevant to the
+        transactions performed via one account (or a group of accounts)
+        during the relevant period.
+
+00130      RFF, Reference
+           A segment identifying each declaration on an account (or group
+           of accounts).
+
+00140      ATT, Attribute
+           A segment identifying the type of the reported account.
+
+00150      FII, Financial institution information
+           A segment identifying the resident's financial institution
+           involved or the non-resident financial institution where the
+           resident's external account is held.
+
+00160      NAD, Name and address
+           A segment to identify the name and address of related parties
+           such as the resident, the non-resident non-financial institution
+           where the resident's account is held (group or third party
+           company) or the co-holders of a shared account.
+
+00170      MOA, Monetary amount
+           A segment to specify the opening balance or the closing balance
+           of the account for the reported period.
+
+00180      CUX, Currencies
+           A segment to specify the currency of the reported account.
+
+
+00190      Segment group 4:  RCS-FTX-DTM-FII-NAD-SPR-LOC-SG5-SG6-SG7
+           A group of segments to specify the details of the set of
+           transactions processed via the financial account.
+
+00200         RCS, Requirements and conditions
+              A segment to specify the reason for the transaction.
+
+00210         FTX, Free text
+              A segment to specify information in clear and free form about
+              the reason for the transaction.
+
+00220         DTM, Date/time/period
+              A segment to specify the date of an event related to the
+              transaction, such as processing date, contract date, payment
+              date or settlement date.
+
+00230         FII, Financial institution information
+              A segment to specify the identity of the domestic financial
+              institution related to a specific flow of amount related to
+              the transaction.
+
+00240         NAD, Name and address
+              A segment to specify the identification of the transaction
+              counterpart.
+
+00250         SPR, Organisation classification details
+              A segment to specify the industrial sector of activity of the
+              transaction counterpart.
+
+00260         LOC, Place/location identification
+              A segment to specify countries related to the transaction,
+              such as the country of origin or destination of goods, the
+              direct investment country, the donation acting country, the
+              payment transaction country (creditor or debtor) or the
+              country in which the construction work is done.
+
+
+00270         Segment group 5:  RFF-DTM
+              A group of segments to specify references and reference dates
+              related to the transaction or to the loan.
+
+00280            RFF, Reference
+                 A segment to specify the reference number of a document
+                 related to the transaction.
+
+00290            DTM, Date/time/period
+                 A segment to specify the date and time of the reference of
+                 the document related to the transaction.
+
+
+00300         Segment group 6:  MOA-CUX
+              A group of segments to specify the transaction amount and any
+              related currencies.
+
+00310            MOA, Monetary amount
+                 A segment to specify the amount of the transaction and the
+                 relevant currency.
+
+00320            CUX, Currencies
+                 A segment to specify the reference currency and the target
+                 currency of the transaction when they are different.
+
+
+00330         Segment group 7:  GIR-QTY-PRI
+              A group of segments to specify the details related to
+              transactions on financial securities.
+
+00340            GIR, Related identification numbers
+                 A segment to identify the type of security (shares, bonds,
+                 etc).
+
+00350            QTY, Quantity
+                 A segment to specify the quantity of the security.
+
+00360            PRI, Price details
+                 A segment to specify the face value of the security.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00370   UNS, Section control
+        A service segment placed at the start of the detail section to
+        avoid collisions.
+        
+        Part 2: direct reporting of transactions via accounts held with
+        non-residents, reporting of BOP-related surveys and of foreign
+        assets and liabilities.
+
+
+00380   Segment group 8:  RFF-SG9
+        A group of segments to accommodate the details relevant either for
+        all types of reporting forms on positions (foreign assets and
+        liabilities) or for all types of BOP related surveys.
+
+00390      RFF, Reference
+           A segment to specify either the type of reporting form (e.g. on
+           trade credits) or the type of survey.
+
+
+00400      Segment group 9:  RCS-FTX-CUX-SG10
+           A group of segments to specify relevant information either for a
+           type of reporting form on a position (foreign assets and
+           liabilities) or for a type of BOP related survey.
+
+00410         RCS, Requirements and conditions
+              A segment to specify the type of the account or the type of
+              reporting form.
+
+00420         FTX, Free text
+              A segment to specify free text information relating to the
+              type of information or report.
+
+00430         CUX, Currencies
+              A segment to specify the currency of the reported account.
+
+
+00440         Segment group 10: MOA-NAD-LOC-SG11
+              A group of segments to specify the amount and other details
+              relevant to the account position or to any related Balance of
+              Payment surveys.
+
+00450            MOA, Monetary amount
+                 A segment specifying the monetary amount of the position
+                 or flow that has been requested.
+
+00460            NAD, Name and address
+                 A segment to specify the identification of a party related
+                 to the transaction.
+
+00470            LOC, Place/location identification
+                 A segment to specify the country of the debtor or
+                 creditor.
+
+
+00480            Segment group 11: GIR-QTY-PRI
+                 A group of segments to specify the details related to
+                 transactions on financial securities.
+
+00490               GIR, Related identification numbers
+                    A segment to identify the type of security such as
+                    shares or bonds.
+
+00500               QTY, Quantity
+                    A segment to specify the quantity of the security.
+
+00510               PRI, Price details
+                    A segment to specify the face value of the security.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00520   CNT, Control total
+        A segment to specify total values for control purposes.
+
+00530   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ATT Attribute
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          GIR Related identification numbers
+          LOC Place/location identification
+          MOA Monetary amount
+          NAD Name and address
+          PRI Price details
+          QTY Quantity
+          RCS Requirements and conditions
+          RFF Reference
+          SPR Organisation classification details
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+
+00040       ---- Segment group 1  ------------------ C   9----------------+
+00050   RFF Reference                                M   1                |
+00060   DTM Date/time/period                         C   1----------------+
+
+00070       ---- Segment group 2  ------------------ M   9----------------+
+00080   NAD Name and address                         M   1                |
+00090   CTA Contact information                      C   1                |
+00100   COM Communication contact                    C   9                |
+00110   FTX Free text                                C   99---------------+
+
+00120       ---- Segment group 3  ------------------ C   999--------------+
+00130   RFF Reference                                M   1                |
+00140   ATT Attribute                                C   1                |
+00150   FII Financial institution information        C   1                |
+00160   NAD Name and address                         C   99               |
+00170   MOA Monetary amount                          C   9                |
+00180   CUX Currencies                               C   1                |
+                                                                          |
+00190       ---- Segment group 4  ------------------ M   9999------------+|
+00200   RCS Requirements and conditions              M   1               ||
+00210   FTX Free text                                C   99              ||
+00220   DTM Date/time/period                         C   9               ||
+00230   FII Financial institution information        C   1               ||
+00240   NAD Name and address                         C   9               ||
+00250   SPR Organisation classification details      C   1               ||
+00260   LOC Place/location identification            C   9               ||
+                                                                         ||
+00270       ---- Segment group 5  ------------------ C   9--------------+||
+00280   RFF Reference                                M   1              |||
+00290   DTM Date/time/period                         C   1--------------+||
+                                                                         ||
+00300       ---- Segment group 6  ------------------ M   9--------------+||
+00310   MOA Monetary amount                          M   1              |||
+00320   CUX Currencies                               C   1--------------+||
+                                                                         ||
+00330       ---- Segment group 7  ------------------ C   1--------------+||
+00340   GIR Related identification numbers           M   1              |||
+00350   QTY Quantity                                 C   1              |||
+00360   PRI Price details                            C   1--------------+++
+
+            DETAIL SECTION
+
+00370   UNS Section control                          M   1     
+
+00380       ---- Segment group 8  ------------------ C   99---------------+
+00390   RFF Reference                                M   1                |
+                                                                          |
+00400       ---- Segment group 9  ------------------ M   99--------------+|
+00410   RCS Requirements and conditions              M   1               ||
+00420   FTX Free text                                C   1               ||
+00430   CUX Currencies                               C   1               ||
+                                                                         ||
+00440       ---- Segment group 10 ------------------ M   9999-----------+||
+00450   MOA Monetary amount                          M   1              |||
+00460   NAD Name and address                         C   1              |||
+00470   LOC Place/location identification            C   1              |||
+                                                                        |||
+00480       ---- Segment group 11 ------------------ C   1-------------+|||
+00490   GIR Related identification numbers           M   1             ||||
+00500   QTY Quantity                                 C   1             ||||
+00510   PRI Price details                            C   1-------------++++
+
+            SUMMARY SECTION
+
+00520   CNT Control total                            C   9     
+00530   UNT Message trailer                          M   1     

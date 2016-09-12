@@ -1,0 +1,369 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+        Bank transactions and portfolio transactions report message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : BOPBNK
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG7 Statistics
+
+
+
+                                  CONTENTS
+
+        Bank transactions and portfolio transactions report message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Bank transactions
+       and portfolio transactions report message (BOPBNK) to be used in
+       Electronic Data Interchange (EDI) between trading partners involved
+       in administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Bank transactions and portfolio transactions report message
+       (BOPBNK) can be sent by banks to the BOP compiler for reporting the
+       banks' own transactions, aggregated individual customer transactions
+       and portfolio transactions. The message can also be used for
+       reporting the asset and liability positions of the banks.
+
+1.2    Field of application
+
+       The Bank transactions and portfolio transactions report message may
+       be used for both national and international applications. It is
+       based on universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       All reports (on the banks' own transactions, on their aggregated
+       customer transactions, or on their own assets and liabilities
+       position) are handled within the same structure. The difference
+       between the types of report are specified by the use of appropriate
+       qualifier codes.
+       
+       In consequence the message is structured in nested loops giving
+       successively all the requested reports one after the other. The
+       first loop is for providing the type of report and the nested loops
+       within are for providing all the relevant details.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Bank transactions and portfolio
+        transactions report message is BOPBNK.
+
+        Note: Bank transactions and portfolio transactions report messages
+        conforming to this document must contain the following data in
+        segment UNH, composite S009:
+
+        Data element  0065 BOPBNK
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the type and function of the message and to
+        transmit its identifying number.
+
+00030   DTM, Date/time/period
+        A segment to specify the date and, when required, the time of the
+        creation of the message and optionally to specify other process
+        dates which apply to the whole message.
+
+
+00040   Segment group 1:  RFF-DTM
+        A group of segments to specify references which apply to the whole
+        message and optionally to specify related dates.
+
+00050      RFF, Reference
+           A segment to specify a reference for the message.
+
+00060      DTM, Date/time/period
+           A segment to specify dates related to the reference.
+
+
+00070   Segment group 2:  NAD-CTA-COM-FTX
+        A group of segments to identify the parties associated with the
+        message.
+
+00080      NAD, Name and address
+           A segment to identify the resident bank.
+
+00090      CTA, Contact information
+           A segment to identify a person or a department for the party to
+           whom communication should be directed.
+
+00100      COM, Communication contact
+           A segment to specify a communication number for the party, such
+           as phone or fax number.
+
+00110      FTX, Free text
+           A segment to specify additional free text information related to
+           the party.
+
+
+00120   Segment group 3:  RFF-CUX-MOA-LOC-SG4
+        A group of segments to specify the details of the reported account
+        and the details of the reported individual transactions.
+
+00130      RFF, Reference
+           A segment to specify the reference of the reported account.
+
+00140      CUX, Currencies
+           A segment to specify the currency of the reported account.
+
+00150      MOA, Monetary amount
+           A segment to specify the opening balance and the closing balance
+           of the reported account.
+
+00160      LOC, Place/location identification
+           A segment to specify the relevant country related to the
+           reported account.
+
+
+00170      Segment group 4:  RCS-FTX-SG5
+           A group of segments to specify information relating to a
+           transaction or position.
+
+00180         RCS, Requirements and conditions
+              A segment to specify the reason for the transaction or the
+              type of position.
+
+00190         FTX, Free text
+              A segment to specify information in clear and free form to
+              provide explanations about the reason for the transaction or
+              the position.
+
+
+00200         Segment group 5:  MOA-ATT-NAD-SG6-SG7-LOC
+              A group of segments to specify the amount and details
+              associated with each different reason of transaction or
+              position.
+
+00210            MOA, Monetary amount
+                 A segment to specify the amount, and if necessary the
+                 currency, of the transaction or of the position.
+
+00220            ATT, Attribute
+                 A segment to specify the type of the reported amount.
+
+00230            NAD, Name and address
+                 A segment to specify the identification of additional
+                 related parties such as the Payor, the Payee or a third
+                 party).
+
+
+00240            Segment group 6:  GIR-QTY-PRI
+                 A group of segments to specify the details related to
+                 transactions on financial securities.
+
+00250               GIR, Related identification numbers
+                    A segment to identify the type of securities (shares,
+                    bonds, etc).
+
+00260               QTY, Quantity
+                    A segment to specify the quantity of the security.
+
+00270               PRI, Price details
+                    A segment to specify the face value of the security.
+
+
+00280            Segment group 7:  RFF-DTM
+                 A group of segments to specify the references and dates of
+                 the transaction.
+
+00290               RFF, Reference
+                    A segment to specify the serial number of the
+                    transaction.
+
+00300               DTM, Date/time/period
+                    A segment to specify the date of the transaction.
+
+00310            LOC, Place/location identification
+                 A segment to identify countries involved in the
+                 transaction, such country of origin or destination of the
+                 goods, direct investment country, donation acting country,
+                 payment transaction country (creditor or debtor) or the
+                 country in which the construction work is done.
+
+00320   CNT, Control total
+        A segment to specify total values for control purposes.
+
+00330   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ATT Attribute
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          FTX Free text
+          GIR Related identification numbers
+          LOC Place/location identification
+          MOA Monetary amount
+          NAD Name and address
+          PRI Price details
+          QTY Quantity
+          RCS Requirements and conditions
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+
+00040       ---- Segment group 1  ------------------ C   9----------------+
+00050   RFF Reference                                M   1                |
+00060   DTM Date/time/period                         C   1----------------+
+
+00070       ---- Segment group 2  ------------------ M   9----------------+
+00080   NAD Name and address                         M   1                |
+00090   CTA Contact information                      C   1                |
+00100   COM Communication contact                    C   9                |
+00110   FTX Free text                                C   99---------------+
+
+00120       ---- Segment group 3  ------------------ M   999--------------+
+00130   RFF Reference                                M   1                |
+00140   CUX Currencies                               C   1                |
+00150   MOA Monetary amount                          C   9                |
+00160   LOC Place/location identification            C   1                |
+                                                                          |
+00170       ---- Segment group 4  ------------------ M   999-------------+|
+00180   RCS Requirements and conditions              M   1               ||
+00190   FTX Free text                                C   1               ||
+                                                                         ||
+00200       ---- Segment group 5  ------------------ M   9999-----------+||
+00210   MOA Monetary amount                          M   1              |||
+00220   ATT Attribute                                C   1              |||
+00230   NAD Name and address                         C   1              |||
+                                                                        |||
+00240       ---- Segment group 6  ------------------ C   1-------------+|||
+00250   GIR Related identification numbers           M   1             ||||
+00260   QTY Quantity                                 C   1             ||||
+00270   PRI Price details                            C   1-------------+|||
+                                                                        |||
+00280       ---- Segment group 7  ------------------ C   1-------------+|||
+00290   RFF Reference                                M   1             ||||
+00300   DTM Date/time/period                         C   1-------------+|||
+00310   LOC Place/location identification            M   9--------------+++
+00320   CNT Control total                            C   9     
+00330   UNT Message trailer                          M   1     

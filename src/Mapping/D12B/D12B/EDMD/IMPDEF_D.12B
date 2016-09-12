@@ -1,0 +1,760 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                EDI implementation guide definition message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : IMPDEF
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG16 Entry Point
+
+
+
+                                  CONTENTS
+
+                EDI implementation guide definition message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+       3.2   Message terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the EDI implementation
+       guide definition message (IMPDEF) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The EDI implementation guideline definition message (IMPDEF) permits
+       the exchange of implementation details of an EDI message, including
+       its usage and its presentation.
+
+1.2    Field of application
+
+       The EDI implementation guide definition message may be used for both
+       national and international applications. It is based on universal
+       practice related to administration, commerce and transport, and is
+       not dependent on the type of business or industry.
+
+1.3    Principles
+
+       The IMPDEF message provides an EDI mechanism for describing the
+       contents of a specific Message Implementation Guideline (MIG) or
+       Implementation Convention (IC) for an EDI message that is capable of
+       being specified in the Directory Definition message (DIRDEF). One
+       occurrence of the message shall contain only one MIG. An IMPDEF
+       message for the message being implemented may contain:
+       
+       a. the specification of the implementation usage
+       b. additional implementation guidance
+       c. presentation and processing guidance
+       
+       The IMPDEF message shall describe usage of all necessary components
+       (segment groups, segments, composite data elements, simple data
+       elements and code values) from an identified source message,
+       together with additional components (non-coded data values or
+       ranges), to effect an implementation of the target message. 
+       
+       The IMPDEF message may describe those components which are not used.
+       By default, those components of the source message which are not
+       referenced, are not used in the implementation.
+       
+       The IMPDEF message shall identify the source message upon which it
+       is based. This identification may reference the source message
+       contained either in a standard directory or in a separate DIRDEF
+       message.
+       
+       The IMPDEF message shall contain a complete MIG or IC and it shall
+       not be used for update or maintenance purposes.
+       
+       The hierarchical nature of both the source and target message
+       structure must be preserved in the IMPDEF message. For example, this
+       means that segment group information must be located immediately
+       after the segment context of the trigger segment is established.
+       Similarly, constituent element information must immediately follow
+       the establishment of a segment or composite context, as must coded
+       or non-coded values their element context.
+       
+       The main body of the MIG is carried by repeated instances of the DFN
+       loop. This loop can be used to encapsulate blocks of components and
+       place them in any given prevailing context. It can also be used to
+       define aliases or constraint blocks. In ordinary use, the DFN
+       segment acts as a device to allow the logic flow to cycle through
+       the optional segment groups inside the DFN-triggered segment group
+       in the correct order to follow the hierarchical message structure.
+       The segment groups within the DFN-triggered segment group are
+       ordered so as to minimise the number of repeats within ordinary use.
+       
+       The IMPDEF message maintains a context through the use of the
+       segment groups within the DFN-triggered segment group. The DFN
+       segment provides a means to redefine or re-establish the current
+       context. The segment group that follows the DFN segment (and its
+       associated FTX segment[s]) determines which context is being
+       changed. For example, in normal message hierarchy sequence, codes
+       are defined for elements within segments. To revert back to the
+       segment context, a DFN segment would be followed by an ELU segment;
+       similarly, to change the segment context, a DFN segment would be
+       followed by an SGU segment. However, components such as repeats,
+       references or relationships are considered to be applied in the
+       context at which they are defined. Thus repeats, references,
+       relationships or data representations may be applied to the whole
+       message, individual segments, elements or composites.
+       
+       When the DFN is used to perform encapsulation, the current context
+       is considered to be stacked upon entry, inherited within, and
+       restored upon exit. However, any encapsulated block may establish
+       its own context at any time, either retaining or discarding any or
+       all of the inherited context. Upon exit, the previous context is re-
+       established, but may be immediately modified, in whole or part, by
+       the components that follow the closing DFN segment.
+       
+       The ordering of the components is governed by the source message
+       hierarchy. Whilst the components at any particular level may be
+       carried in any order, the message hierarchy must be maintained. This
+       means that usage requirements of data elements within a segment must
+       follow the usage requirements of that segment, but may themselves be
+       presented in any order. Similarly, usage requirements of individual
+       segments within a segment group must follow the trigger segment and
+       the group definition and be presented together, but in any order.
+       
+       Where constraints are used, and a constraint is active either
+       because the constraint expression at the start of the constraint is
+       true or because the implicit context of the constraint definition is
+       active, then the usage specifications inside the constraint block
+       shall prevail against those which would apply were the constraint
+       not active. For example, if a segment is implicitly 'Not Used' by
+       not being mentioned in the main body of the MIG or IC, but is
+       explicitly tagged as 'Required' within an active constraint, then
+       the prevailing usage shall be 'Required'. Conversely, if a segment
+       is explicitly used in the main body of the MIG or IC, and also
+       explicitly tagged as 'Not Used' within an active constraint then the
+       prevailing usage shall be 'Not Used'.
+       
+       The Interchange header shall specify character set level C.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+3.2    Message terms and definitions
+
+       The following additional definitions are for constituent parts of a
+       message whose implementation is being described within an IMPDEF
+       message:
+       
+       Alias: this is used to describe a group of components collected
+       together and named for frequent or repetitive use.
+       
+       Component: this is used in a generic sense to apply to any item
+       which may be a part of, or referenced by a part of a MIG. Thus it
+       may refer to a segment, a segment group, a simple or composite
+       element, a code list or individual code or non-coded value. It may
+       also refer to structures such as an alias or a constraint within a
+       MIG.
+       
+       Constraint: this is used to describe a group of components with
+       either an explicit or implicit constraint expression, which may be
+       named for error reporting and context determination.
+       
+       Source Message: this is used to refer to the original message
+       specification as published in the relevant standard by the
+       responsible authority.
+       
+       Target Message: this is used to refer to the resultant message
+       specification produced by applying the restrictions, clarifications
+       and constraints contained within the MIG to the Source Message.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the EDI implementation guide definition
+        message is IMPDEF.
+
+        Note: EDI implementation guide definition messages conforming to
+        this document must contain the following data in segment UNH,
+        composite S009:
+
+        Data element  0065 IMPDEF
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the beginning of the message and to transmit
+        function, type and number of the message.
+
+00030   MSG, Message type identification
+        A segment identifying a message type to which the implementation
+        details apply.
+
+00040   RCS, Requirements and conditions
+        A segment specifying the distribution conditions for the
+        implementation.
+
+00050   DII, Directory identification
+        A segment specifying the identity of the source directory set and
+        giving its language and maintenance operation. This identifies the
+        underlying standard from which the standard message is drawn.
+
+00060   RFF, Reference
+        A segment carrying reference information for the implementation as
+        a whole. This may specify the unique registration identifier of
+        this implementation guide; it may carry references to graphical
+        information to be used or displayed whenever the implementation is
+        physically displayed.
+
+00070   DTM, Date/time/period
+        A segment specifying dates related to the implementation guide,
+        such as date of issue or date of approval.
+
+00080   FTX, Free text
+        A segment providing implementation guide notes which relate to the
+        implementation as a whole. It may also carry various legal or
+        contractual phrases which may apply to the ownership or copyright
+        of the implementation guide, or contractual terms which will be
+        incorporated by reference into any contract of which a data
+        transmission using this implementation is a part.
+
+
+00090   Segment group 1:  PNA-ADR-SG2
+        A group of segments identifying the parties involved in the
+        transaction with associated information. For publicly available
+        implementation guides this includes details of the ownership and
+        origination of the guide.
+
+00100      PNA, Party identification
+           A segment identifying the names of the parties involved in the
+           transaction, e.g., originator, requester, author or secretariat.
+
+00110      ADR, Address
+           A segment identifying the address of the party.
+
+
+00120      Segment group 2:  CTA-COM
+           A group of segments identifying a person or a department and
+           identifying communication type and number.
+
+00130         CTA, Contact information
+              A segment identifying a person or a department for the party
+              to whom the communication should be directed.
+
+00140         COM, Communication contact
+              A segment identifying communication type and number of the
+              person.
+
+
+00150   Segment group 3:  DFN-FTX-SG4-SG5-SG6-SG7-SG8-SG9-SG10-SG11-SG12
+        A group of segments to describe the usage of a segment, a segment
+        group, a composite or an element, an alias, or a constraint in a
+        MIG or IC. The iterations of this segment group form the bulk of
+        the MIG or IC.
+        
+        The MIG or IC consists of a series of iterations of this segment
+        group which describe the target message hierarchy. Within the
+        hierarchy, additional occurrences of this segment group may specify
+        the conditions or relationships between the components.
+        
+        Only the appropriate parts of this segment group should be used as
+        necessary on any particular iteration. The other contained segment
+        groups are ordered to minimise the number of iterations of this
+        segment group. The 'Alias' and 'Constraint' instances of this
+        segment group provide a mechanism for grouping or encapsulating
+        blocks of components. An 'Alias' has no context, and therefore
+        takes on the context of the point at which it is used. A
+        'Constraint' inherits the context in which it is defined, but may
+        redefine any part of its context by using the appropriate optional
+        segment groups within the main segment loop. 
+        
+        As well as its defining function, each component may also be used
+        in a constraining manner. For example, a repeating segment may not
+        only define its components, but also the number of times it is
+        allowed to repeat; then, within each instance, a different
+        combination of element requirements may be expressed. This
+        conditionality may be based on either ordering or content criteria.
+        
+        Once defined, an 'Alias' may be used throughout the MIG where
+        required, by "using" the definition which is identified by its
+        'name'. Similarly, in error reporting, an active constraint may be
+        identified by its 'name'.
+
+00160      DFN, Definition function
+           A segment identifying the object of the definition, and
+           containing an optional 'name' or identifier.
+
+00170      FTX, Free text
+           A segment providing implementation guide notes pertaining to the
+           preceding definition, or to carry the text of a constraint
+           expression.
+
+
+00180      Segment group 4:  GRU-FTX
+           A group of segments identifying a segment group and providing
+           details about segment group usage. This segment group depends on
+           a segment context having been established by an instance of a
+           segment group describing segment usage.
+           
+           This segment group defines a segment group context for the
+           target message, and will immediately follow the definition of
+           the trigger segment context, preceding the constituent elements
+           within the trigger segment.
+           
+           Several instances of the same segment group may be described,
+           with the MEA segment group distinguishing which range or
+           instance of the target message segment is being described.
+
+00190         GRU, Segment group usage details
+              A segment specifying the usage of a segment group in a
+              definition. The segment may identify one or more instances of
+              a target segment group.
+
+00200         FTX, Free text
+              A segment providing implementation guide notes or textual
+              information related to the specific group in the underlying
+              message.
+
+
+00210      Segment group 5:  SGU-FTX
+           A group of segments specifying segment usage within the
+           definition. There will be at least one instance of this segment
+           group for each segment described in the implementation guide.
+           
+           This segment group defines a segment context, and all the
+           following components are deemed to be within the context of the
+           segment whose usage is being defined until a subsequent segment
+           context is defined.
+           
+           Several instances of the same segment may be described, with the
+           MEA segment group distinguishing which range or instance of the
+           target message segment is being described.
+
+00220         SGU, Segment usage details
+              A segment specifying the usage of a segment in a message type
+              structure for this definition. As well as defining the
+              specific usage of a particular target segment, this segment
+              also provides the segment context for the following element
+              usage details. The segment may identify one or more instances
+              of usage for any particular segment in the target data
+              message.
+
+00230         FTX, Free text
+              A segment providing implementation guide notes, or textual
+              information relating to the specific segment in the
+              underlying message.
+
+
+00240      Segment group 6:  FNT-REL-GIR-FTX
+           A group of segments specifying formalised relationships among
+           the various components of this implementation at a particular
+           context, such as additional rules concerning syntax and
+           semantics which are specific to an implementation.
+           
+           The relationships may be both intra-component, such as between
+           elements in a segment, or inter-component, such as between
+           elements in different segments.
+           
+           Depending on the context in which this segment group is used, it
+           may specify relationships between segments or segment groups in
+           a message, between data elements in a segment, or between data
+           elements in a composite.
+
+00250         FNT, Footnote
+              A segment specifying a footnote identification number that
+              may place the relationship in the current context.
+
+00260         REL, Relationship
+              A segment specifying a relationship between the various
+              components, typically data elements in a segment, in the
+              current context.
+
+00270         GIR, Related identification numbers
+              A segment identifying the various components in a
+              relationship, typically data elements in a segment, in the
+              current context.
+
+00280         FTX, Free text
+              A segment carrying text notes to the preceding relationship.
+
+
+00290      Segment group 7:  RFF-FTX
+           A group of segments carrying references, or constraints whose
+           default context applies to the containing segment. This segment
+           group may be used to change the constraint mechanism at the
+           current and deeper levels in the message hierarchy.
+           Additionally, this segment group may be used to carry legal and
+           contractual terms which relate, either by way of explanation or
+           to be incorporated by reference, in the particular context at
+           which the group appears.
+           
+           Depending on the context, the references may be applied to the
+           target message as a whole, the current segment or element
+           context, or the current code value context.
+
+00300         RFF, Reference
+              A segment identifying a reference document or a following
+              constraint expression.
+
+00310         FTX, Free text
+              A segment carrying the text of a constraint expression or
+              providing implementation guide notes pertaining to the
+              preceding constraint.
+
+
+00320      Segment group 8:  ELU-ELM-EDT-IMD-GEI-FTX
+           A group of segments specifying implementation requirements for
+           data elements in the current segment or composite context.
+           Multiple instances of this segment group will typically be used
+           to describe the usage of all the elements in any given segment
+           or composite context. There will be at least one instance of
+           this segment group for each element used, although a constraint
+           structure may override or further define the specification in
+           any particular context or sub-context. The MEA segment group may
+           be used to provide repeat range or specific instance information
+           for repeating data elements.
+           
+           This segment group defines an element or composite context which
+           will remain in force until the next element or composite context
+           is defined, or a new segment context is established.
+
+00330         ELU, Data element usage details
+              A segment identifying the usage of a simple or composite data
+              element in the current context. This segment starts a block
+              of information about any one particular contextualised usage
+              of a data element in a target data message.
+              
+              The data element usage determines whether this segment is
+              defining a composite context, a simple element context or a
+              component element context.
+
+00340         ELM, Simple data element details
+              A segment providing details of any variation or restriction
+              of the current data element as used in this context.
+              Typically this segment will convey details of restricted size
+              or character representation.
+
+00350         EDT, Editing details
+              A segment providing details of any editing information such
+              as maximum field length and status that would be used by a
+              screen-based editor, forms input or data output process when
+              physical representation of the data carried in a data message
+              using this implementation guide is required.
+
+00360         IMD, Item description
+              A segment providing further details of presentational
+              information such as text alignment and style that might be
+              used by a screen-based editor, forms input or data output
+              process when physical representation of the data carried in a
+              data message using this implementation guide is required.
+
+00370         GEI, Processing information
+              A segment providing further details of processing information
+              such as data handling, positioning or control that might be
+              used by a screen-based editor, forms input or data output
+              process when data is carried, stored or collected by a data
+              message using this implementation guide is required.
+
+00380         FTX, Free text
+              A segment providing implementation guide notes, or other
+              textual information relating to this element usage. The
+              segment will also be used to carry the final set of
+              information that would be used by a screen-based editor;
+              forms input or data output process; a legend or user-
+              recognisable description; and a help text.
+
+
+00390      Segment group 9:  MEA-FTX
+           A group of segments specifying implementation requirements for
+           the number of instances of repeating segments, segment groups or
+           elements in the current context. Multiple instances of this
+           segment group will typically be used to describe both the
+           overall limits of usage and to identify individual instances in
+           any given context.
+
+00400         MEA, Measurements
+              A segment to measure the number of instances of usage of a
+              component in a message. The segment may specify minima,
+              maxima, range or instance criteria.
+
+00410         FTX, Free text
+              A segment providing implementation guide notes, or other
+              textual information relating to this measurement.
+
+
+00420      Segment group 10: ELV-FTX
+           A group of segments specifying the usage of values for a non-
+           coded data element. Multiple instances of this segment group may
+           be used to provide a complete set of ranges or specific values,
+           including preferences. It can be used for any other type of data
+           element, such as strings, numerics, dates and times. It can also
+           specify a default value and associated implementation notes for
+           a specific element in a particular context. 
+           
+           A simple element or component element context must have been
+           established before this segment group is used.
+
+00430         ELV, Element value definition
+              A segment identifying one or more components of an element
+              value constraint series. It also may provide a default value
+              for the current element context. This is expressed in a
+              single text field so as to be used by or applicable to the
+              broadest range of applications.
+
+00440         FTX, Free text
+              A segment providing implementation guide notes, or other
+              textual information related to the particular context. Such a
+              context may include implementation guide notes for the
+              default value.
+
+
+00450      Segment group 11: CDV-FTX
+           A group of segments specifying the usage of code values for a
+           coded data element. Multiple instances of this segment group may
+           be used to provide a complete set of code values, including
+           preferences.
+           
+           A simple element or component element context must have been
+           established before this segment group is used.
+
+00460         CDV, Code value definition
+              A segment identifying the code value, its source and usage
+              preference.
+
+00470         FTX, Free text
+              A segment providing implementation guide notes, or other
+              textual information related to the particular context.
+
+
+00480      Segment group 12: DRD-FTX
+           A group of segments specifying data representation details for a
+           component of the message. This segment group may be used in a
+           segment, group, composite or simple data element context to
+           describe the data representation that the implementation guide
+           author intends to use to hold, store or represent the structure
+           or data in a non-EDI environment.
+
+00490         DRD, Data representation details
+              A segment identifying an underlying data representation by
+              tag, basic data type and size. This is the representation
+              itself, and not a pointer to an external document.
+
+00500         FTX, Free text
+              A segment providing implementation guide notes, or other
+              relevant textual information.
+
+
+00510   Segment group 13: AUT-DTM
+        A group of segments to provide authentication for the message.
+
+00520      AUT, Authentication result
+           A segment specifying the details of any authentication
+           (validation) procedure applied to the IMPDEF message.
+
+00530      DTM, Date/time/period
+           A segment specifying the date of authentication.
+
+00540   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          AUT Authentication result
+          BGM Beginning of message
+          CDV Code value definition
+          COM Communication contact
+          CTA Contact information
+          DFN Definition function
+          DII Directory identification
+          DRD Data representation details
+          DTM Date/time/period
+          EDT Editing details
+          ELM Simple data element details
+          ELU Data element usage details
+          ELV Element value definition
+          FNT Footnote
+          FTX Free text
+          GEI Processing information
+          GIR Related identification numbers
+          GRU Segment group usage details
+          IMD Item description
+          MEA Measurements
+          MSG Message type identification
+          PNA Party identification
+          RCS Requirements and conditions
+          REL Relationship
+          RFF Reference
+          SGU Segment usage details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   MSG Message type identification              M   1     
+00040   RCS Requirements and conditions              C   1     
+00050   DII Directory identification                 M   1     
+00060   RFF Reference                                C   99    
+00070   DTM Date/time/period                         C   9     
+00080   FTX Free text                                C   999   
+
+00090       ---- Segment group 1  ------------------ C   5----------------+
+00100   PNA Party identification                     M   1                |
+00110   ADR Address                                  C   1                |
+                                                                          |
+00120       ---- Segment group 2  ------------------ C   9999------------+|
+00130   CTA Contact information                      M   1               ||
+00140   COM Communication contact                    C   5---------------++
+
+00150       ---- Segment group 3  ------------------ C   99999------------+
+00160   DFN Definition function                      M   1                |
+00170   FTX Free text                                C   99               |
+                                                                          |
+00180       ---- Segment group 4  ------------------ C   1---------------+|
+00190   GRU Segment group usage details              M   1               ||
+00200   FTX Free text                                C   99--------------+|
+                                                                          |
+00210       ---- Segment group 5  ------------------ C   999-------------+|
+00220   SGU Segment usage details                    M   1               ||
+00230   FTX Free text                                C   99--------------+|
+                                                                          |
+00240       ---- Segment group 6  ------------------ C   99--------------+|
+00250   FNT Footnote                                 M   1               ||
+00260   REL Relationship                             C   1               ||
+00270   GIR Related identification numbers           C   9               ||
+00280   FTX Free text                                C   99--------------+|
+                                                                          |
+00290       ---- Segment group 7  ------------------ C   99--------------+|
+00300   RFF Reference                                M   1               ||
+00310   FTX Free text                                C   99--------------+|
+                                                                          |
+00320       ---- Segment group 8  ------------------ C   99--------------+|
+00330   ELU Data element usage details               M   1               ||
+00340   ELM Simple data element details              C   1               ||
+00350   EDT Editing details                          C   1               ||
+00360   IMD Item description                         C   9               ||
+00370   GEI Processing information                   C   9               ||
+00380   FTX Free text                                C   99--------------+|
+                                                                          |
+00390       ---- Segment group 9  ------------------ C   999-------------+|
+00400   MEA Measurements                             M   1               ||
+00410   FTX Free text                                C   99--------------+|
+                                                                          |
+00420       ---- Segment group 10 ------------------ C   99999-----------+|
+00430   ELV Element value definition                 M   1               ||
+00440   FTX Free text                                C   99--------------+|
+                                                                          |
+00450       ---- Segment group 11 ------------------ C   99999-----------+|
+00460   CDV Code value definition                    M   1               ||
+00470   FTX Free text                                C   99--------------+|
+                                                                          |
+00480       ---- Segment group 12 ------------------ C   99999-----------+|
+00490   DRD Data representation details              M   1               ||
+00500   FTX Free text                                C   99--------------++
+
+00510       ---- Segment group 13 ------------------ C   1----------------+
+00520   AUT Authentication result                    M   1                |
+00530   DTM Date/time/period                         C   1----------------+
+00540   UNT Message trailer                          M   1     

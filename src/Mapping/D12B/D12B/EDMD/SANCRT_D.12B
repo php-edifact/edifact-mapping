@@ -1,0 +1,903 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+      International movement of goods governmental regulatory message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : SANCRT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 5
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG4 Customs
+
+
+
+                                  CONTENTS
+
+      International movement of goods governmental regulatory message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the International
+       movement of goods governmental regulatory message (SANCRT) to be
+       used in Electronic Data Interchange (EDI) between trading partners
+       involved in administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The SANCRT message permits a commercial operator to apply to a
+       national agency for the issue of a certificate, permit,
+       authorization etc. in respect of products to be imported or
+       exported. It further permits the issuing authority to transmit to
+       the applicant and to the exporting or importing country's relevant
+       national authority, (e.g. Customs, Agriculture etc.) the details of
+       the certificate, permit or authorization in respect of those
+       products thus facilitating the import/export clearance of the
+       consignment whilst ensuring that all certificate, permit,
+       authorization requirements are met.
+
+1.2    Field of application
+
+       The International movement of goods governmental regulatory message
+       may be used for both national and international applications. It is
+       based on universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message may be used nationally and internationally by
+       government authorities and commercial entities requesting, issuing
+       or verifying permits, certificates, authorizations, licences, etc.
+       in respect of imported and exported goods. Typically the message
+       would be used:
+       
+       a) by an importer or exporter to request an issuing authority to
+       issue a certificate, permit, etc.;
+       
+       b) by an issuing authority to inform the applicant that a
+       certificate, permit, etc. has been issued;
+       
+       c) by an issuing authority to inform the national Customs authority
+       of the details of the consignment that has been certified, licensed,
+       etc.;
+       
+       d) by an issuing authority to inform an overseas authority (e.g.
+       Food and Drug, Agriculture etc.) of the details of a consignment
+       that has been certified, licensed, etc.
+       
+       The message is intended to cover a wide range of products requiring
+       authorization, certification, etc. for a wide variety of reasons
+       (e.g. sanitary/phytosanitary certification, certificate of origin,
+       certificate of authenticity, import and export permits or licenses
+       for various goods).
+       
+       - The message may be used for either imported or exported products.
+       In both cases a single message is used for a product type consigned
+       from a single consignor to a single consignee.
+       
+       - A certificate may cover several product items. A certificate
+       should however be limited to product items of the same type or
+       category.
+       
+       - All products covered by a certificate are transported together on
+       the same transport vehicle or vehicle set at the same time.
+       Transport can however occur over more than one stage.
+       
+       - The product may be in zero, one or more containers.
+       
+       - Inclusion of standard endorsements or generic textual declarations
+       in the certificate is discouraged. It is recommended that these and
+       other certification protocol requirements be accounted for outside
+       the certificate in individual trading partner agreements.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the International movement of goods
+        governmental regulatory message is SANCRT.
+
+        Note: International movement of goods governmental regulatory
+        messages conforming to this document must contain the following
+        data in segment UNH, composite S009:
+
+        Data element  0065 SANCRT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment uniquely identifying the type of document (e.g.
+        certificate of origin, export licence, application for licence),
+        its function and the document reference number.
+
+00030   DTM, Date/time/period
+        A segment identifying dates relevant to the document specified in
+        the above BGM (e.g. date of issue, the validity period, the date on
+        which licence is available for inspection, the date goods are
+        available for inspection, the authentication date, time of the
+        document).
+
+00040   STS, Status
+        A segment specifying status information relevant to the entire
+        message (e.g. the status of a request or operational process
+        relating to the certificate, permit, etc.).
+
+00050   LOC, Place/location identification
+        A segment identifying a location relevant to the entire message
+        (e.g. country of origin, country of ultimate destination, country
+        of destination, present location of goods, identification of
+        transit countries, country of export, region of export).
+
+00060   RFF, Reference
+        A segment identifying references related to the entire message
+        (e.g. Customs declaration number, exporters textile control
+        registration number, form A reference number, certificate number,
+        slaughter plant licence number, processing plant licence number).
+
+00070   FTX, Free text
+        A segment specifying textual information in code or clear form, to
+        give further clarification where required to the entire message
+        (e.g. special comments, certification statements, goods
+        description).
+
+00080   MEA, Measurements
+        A segment identifying measurements relevant to the products covered
+        by the entire message (e.g. net weights of goods, quantity of
+        goods, quantity covered by quota).
+
+00090   MOA, Monetary amount
+        A segment identifying monetary amounts related to the whole message
+        (e.g. invoice value, special handling charges, transport charges,
+        customs value).
+
+00100   GEI, Processing information
+        A segment identifying how processing of the message is to be
+        qualified.
+
+00110   CST, Customs status of goods
+        A segment identifying the Commodity code which relates to the whole
+        message.
+
+
+00120   Segment group 1:  DOC-DTM-LOC
+        A group of segments identifying documentary requirements where they
+        are needed as supporting information for the entire message.
+
+00130      DOC, Document/message details
+           A segment identifying a specific document required as supporting
+           information for the entire message.
+
+00140      DTM, Date/time/period
+           A segment identifying a date related to the document specified
+           in the above DOC (e.g. date of issue of the document or the
+           presentation period within which the document must be
+           presented).
+
+00150      LOC, Place/location identification
+           A segment identifying locations related to a document (e.g. the
+           place of issue of document identified in the above DOC).
+
+
+00160   Segment group 2:  PNA-ADR-SG3
+        A group of segments identifying parties relevant to the entire
+        certificate, with any related contacts and communication numbers.
+
+00170      PNA, Party identification
+           A segment identifying the name or other references of a party
+           associated with the message (e.g. importer, consignor,
+           consignee, exporter, applicant, transport company, manufacturer,
+           company to which product is to be transferred, certificate
+           issuing authority, authenticating party).
+
+00180      ADR, Address
+           A segment identifying the address of a party associated with the
+           message (e.g. importer, consignor, consignee, exporter,
+           applicant, transport company, manufacturer, company to which
+           product is to be transferred, certificate issuing authority,
+           authenticating party).
+
+
+00190      Segment group 3:  CTA-COM
+           A group of segments identifying a contact and communication
+           numbers for the party specified in the above PNA.
+
+00200         CTA, Contact information
+              A segment giving additional contact information for the
+              person or department specified as a relevant party, to whom
+              communication should be directed.
+
+00210         COM, Communication contact
+              A segment identifying the phone number, fax number or other
+              communications number of the contact specified for the
+              relevant party.
+
+
+00220   Segment group 4:  TDT-DTM-LOC-RFF
+        A group of segments specifying how products described on the
+        message are transported, possibly in multiple stages.
+
+00230      TDT, Transport information
+           A segment identifying the mode and means of transport, and the
+           transport vehicle used (e.g. vessel voyage number or aircraft
+           flight number, vessel or aircraft name, vessel or aircraft
+           registration number).
+
+00240      DTM, Date/time/period
+           A segment identifying a date related to the transport of product
+           (e.g. date of departure and date of arrival of each transport
+           stage).
+
+00250      LOC, Place/location identification
+           A segment identifying a location relevant to a transport stage.
+
+00260      RFF, Reference
+           A segment identifying an additional document or regulatory
+           references relevant to a transport stage.
+
+
+00270   Segment group 5:  PAC-PCI-MEA
+        A group of segments specifying the number, characteristics, and
+        identification markings of packaging relevant to the entire
+        message.
+
+00280      PAC, Package
+           A segment identifying the number and type of packages relevant
+           to the entire message.
+
+00290      PCI, Package identification
+           A segment identifying markings and labels on packages relevant
+           to the entire message.
+
+00300      MEA, Measurements
+           A segment identifying measurements relevant to packaging of the
+           product covered by the entire message (e.g. weights of inner and
+           outer packages).
+
+
+00310   Segment group 6:  EQD-TMP-SG7
+        A group of segments identifying equipment used to transport of
+        product covered by the entire message.
+
+00320      EQD, Equipment details
+           A segment identifying a unit of equipment used to transport the
+           product covered by the entire message (e.g. container or ships
+           hold).
+
+00330      TMP, Temperature
+           A segment to identify temperature details related to the
+           equipment unit specified in EQD.
+
+
+00340      Segment group 7:  SEL-DTM-LOC
+           A group of segments identifying seals applied a unit of
+           equipment used to transport the product covered by the entire
+           message.
+
+00350         SEL, Seal number
+              A segment identifying a seal and the seal issuer for the unit
+              of equipment.
+
+00360         DTM, Date/time/period
+              A segment identifying a date relevant to the sealing of the
+              unit of equipment.
+
+00370         LOC, Place/location identification
+              A segment identifying a location relevant to the sealing of
+              the unit of equipment (e.g. place where seal applied).
+
+
+00380   Segment group 8:  PRC-IMD-MEA-DTM-LOC-DOC-RFF-TMP-GEI-FTX-SG9
+        A group of segments identifying a process applied to the product,
+        packaging or transport equipment covered by the entire message, and
+        related names, addresses, dates, measurements, references,
+        processing indicators and textual information.
+
+00390      PRC, Process identification
+           A segment identifying a process relevant to the entire message
+           (e.g. pest treatment, slaughtering, packing, storage, testing,
+           preservation and materials such as chemicals associated with the
+           process).
+
+00400      IMD, Item description
+           A segment used to indicate chemicals, active ingredients etc.
+           used in processing.
+
+00410      MEA, Measurements
+           A segment identifying various measurement factors for the
+           process (e.g. temperature during storage or chemical
+           concentrations during treatment).
+
+00420      DTM, Date/time/period
+           A segment identifying a date and or time relevant to the process
+           (e.g. duration of a specific process).
+
+00430      LOC, Place/location identification
+           A segment identifying a location relevant to the process.
+
+00440      DOC, Document/message details
+           A segment identifying a specific document required as supporting
+           information for the process.
+
+00450      RFF, Reference
+           A segment identifying an additional reference or regulation
+           relevant to the process.
+
+00460      TMP, Temperature
+           A segment to identify temperature details related to the
+           process.
+
+00470      GEI, Processing information
+           A segment to specify processing indicators related to the
+           process.
+
+00480      FTX, Free text
+           A segment to specify textual information in code or clear form,
+           related to the process.
+
+
+00490      Segment group 9:  PNA-ADR-SG10
+           A group of segments identifying a party relevant to a process
+           applied to all product, packaging or transport equipment covered
+           by the entire message, together with any related addresses,
+           contacts and communication numbers.
+
+00500         PNA, Party identification
+              A segment identifying the name or other reference to a party
+              associated with a process applied to product or associated
+              equipment (e.g. the identifier of a treatment, packing,
+              storage, inspection or testing organisation).
+
+00510         ADR, Address
+              A segment identifying the address of a party associated with
+              a process applied to a product or associated equipment (e.g.
+              the address of a treatment, packing, storage, inspection or
+              testing organisation).
+
+
+00520         Segment group 10: CTA-COM
+              A group of segments identifying contact and communication
+              numbers for the party specified in the above PNA.
+
+00530            CTA, Contact information
+                 A segment giving additional contact information for the
+                 person or department specified as a relevant party, to
+                 whom communication should be directed.
+
+00540            COM, Communication contact
+                 A segment identifying the phone number, fax number or
+                 other communications number of the contact specified as
+                 relevant party.
+
+
+00550   Segment group 11: LIN-CST-MEA-PIA-IMD-GIN-RFF-ATT-DTM-LOC-FTX-QTY-
+                          MOA-SG12-SG13-SG15-SG16-SG18
+        A group of segments identifying line item details for a
+        certificate, permit, authorization, etc.
+
+00560      LIN, Line item
+           A segment identifying product item details for a line on the
+           message.
+
+00570      CST, Customs status of goods
+           A segment identifying the Commodity code at item level.
+
+00580      MEA, Measurements
+           A segment identifying measurements relevant to the product item
+           (e.g. net and gross weights, number of items or age).
+
+00590      PIA, Additional product id
+           A segment specifying additional or substitutional product item
+           identifiers. The segment should be used for example to specify
+           any tariff classification relevant to the product item.
+
+00600      IMD, Item description
+           A segment describing the product item in an industry or free
+           format. The segment could also be used to describe attributes
+           such as species or breed.
+
+00610      GIN, Goods identity number
+           A segment specifying additional identifiers related to the
+           product item (e.g. animal tag numbers).
+
+00620      RFF, Reference
+           A segment identifying references related to the product item
+           (e.g. quota reference number, export authorization number,
+           permit holder reference number, product serial number).
+
+00630      ATT, Attribute
+           A segment further identifying attributes of the product item
+           (e.g. product sex).
+
+00640      DTM, Date/time/period
+           A segment identifying a date relevant to the product item (e.g.
+           the use by date).
+
+00650      LOC, Place/location identification
+           A segment identifying a location relevant to the product item
+           (e.g. country of origin where different to country of export).
+
+00660      FTX, Free text
+           A segment specifying textual information in code or clear form,
+           to give further clarification where required for the product
+           item (e.g. scientific name of the product item, any declarations
+           or comments specific to the product item, and the names of
+           product contaminates).
+
+00670      QTY, Quantity
+           A segment identifying quantity details relevant to the product
+           item (e.g. quantity manufactured, quantity in commercial units,
+           quantity in control units, quantity in quota units, quantity
+           shipped).
+
+00680      MOA, Monetary amount
+           A segment identifying monetary amounts related to the product
+           item (e.g. customs value, item price).
+
+
+00690      Segment group 12: DOC-DTM-LOC
+           A group of segments identifying related documents specific to a
+           licence, certificate, permit, etc. line.
+
+00700         DOC, Document/message details
+              A segment identifying a specific document required as
+              supporting information for a certificate, permit,
+              authorization line.
+
+00710         DTM, Date/time/period
+              A segment identifying a date related to the document (e.g.
+              date of issue of the document, the presentation period within
+              which the document must be presented).
+
+00720         LOC, Place/location identification
+              A segment identifying a location related to the document
+              (e.g. place of issue of the document).
+
+
+00730      Segment group 13: PNA-ADR-SG14
+           A group of segments identifying a party relevant to a line item,
+           together with any related addresses, contacts and communication
+           numbers.
+
+00740         PNA, Party identification
+              A segment identifying the name or other reference to a party
+              relevant to a line item.
+
+00750         ADR, Address
+              A segment identifying the address of a party relevant to a
+              line item.
+
+
+00760         Segment group 14: CTA-COM
+              A group of segments identifying contact and communication
+              numbers for the party specified in the above PNA.
+
+00770            CTA, Contact information
+                 A segment giving additional contact information for the
+                 person or department specified as a relevant party to whom
+                 communication should be directed.
+
+00780            COM, Communication contact
+                 A segment identifying the phone number, fax number or
+                 other communications number of the contact specified as
+                 the relevant party.
+
+
+00790      Segment group 15: PAC-PCI-MEA
+           A group of segments specifying the number, characteristics, and
+           identification markings of individual packages.
+
+00800         PAC, Package
+              A segment identifying the number and type of packages
+              relevant to the product item.
+
+00810         PCI, Package identification
+              A segment identifying markings and labels on packages
+              relevant to the product item.
+
+00820         MEA, Measurements
+              A segment identifying measurements relevant to packaging of
+              the product item (e.g. weights of inner and outer packages).
+
+
+00830      Segment group 16: EQD-TMP-SG17
+           A group of segments identifying equipment used to transport the
+           product item.
+
+00840         EQD, Equipment details
+              A segment identifying a unit of equipment used to transport
+              the product item (e.g. container or ships hold).
+
+00850         TMP, Temperature
+              A segment to identify temperature details related to the
+              equipment.
+
+
+00860         Segment group 17: SEL-DTM-LOC
+              A group of segments identifying seals applied a unit of
+              equipment used to transport the product item.
+
+00870            SEL, Seal number
+                 A segment identifying a seal and the seal issuer for the
+                 unit of equipment.
+
+00880            DTM, Date/time/period
+                 A segment identifying a date relevant to the sealing of
+                 the unit of equipment.
+
+00890            LOC, Place/location identification
+                 A segment identifying a location relevant to the sealing
+                 of the unit of equipment.
+
+
+00900      Segment group 18: PRC-IMD-MEA-DTM-LOC-DOC-RFF-TMP-GEI-FTX-SG19
+           A group of segments identifying a process applied to a product
+           item, and related names, addresses, dates, measurements,
+           references, processing indicators and textual information.
+
+00910         PRC, Process identification
+              A segment identifying a process relevant to the product item
+              (e.g. pest treatment, slaughtering, packing, storage,
+              testing, reservation and materials such as chemicals
+              associated with the process).
+
+00920         IMD, Item description
+              A segment used to indicate chemicals, active ingredients etc.
+              used in processing.
+
+00930         MEA, Measurements
+              A segment identifying various measurement factors for the
+              process.
+
+00940         DTM, Date/time/period
+              A segment identifying a date relevant to the process (e.g.
+              duration of a specific process).
+
+00950         LOC, Place/location identification
+              A segment identifying a location relevant to the process.
+
+00960         DOC, Document/message details
+              A segment identifying a specific document required as
+              supporting information for the process.
+
+00970         RFF, Reference
+              A segment identifying an additional reference or regulation
+              relevant to the process.
+
+00980         TMP, Temperature
+              A segment to identify temperature details related to the
+              process.
+
+00990         GEI, Processing information
+              A segment to specify processing indicators related to the
+              process.
+
+01000         FTX, Free text
+              A segment to specify textual information in code or clear
+              form, related to the process.
+
+
+01010         Segment group 19: PNA-ADR-SG20
+              A group of segments identifying a party relevant to a product
+              item process, together with any related addresses, contacts
+              and communication numbers.
+
+01020            PNA, Party identification
+                 A segment identifying the name or other reference to a
+                 party relevant to a product item process.
+
+01030            ADR, Address
+                 A segment identifying the address of a party relevant to a
+                 product item process.
+
+
+01040            Segment group 20: CTA-COM
+                 A group of segments identifying contact and communication
+                 numbers for the party specified in the above PNA.
+
+01050               CTA, Contact information
+                    A segment giving additional contact information for the
+                    person or department specified as a relevant party to
+                    whom communication should be directed.
+
+01060               COM, Communication contact
+                    A segment identifying the phone number, fax number or
+                    other communication number of the contact specified as
+                    the relevant party.
+
+01070   CNT, Control total
+        A segment to provide message control totals as required (e.g. total
+        number of line items, total number of containers, total quantity
+        shipped).
+
+
+01080   Segment group 21: AUT-DTM
+        A group of segments permitting the verification of the authenticity
+        of the sender and the integrity of the data.
+
+01090      AUT, Authentication result
+           A segment containing the result of the algorithm permitting the
+           verification of the authenticity of the sender and the integrity
+           of the data.
+
+01100      DTM, Date/time/period
+           A segment identifying a date associated with the preceding AUT.
+
+01110   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          AUT Authentication result
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CST Customs status of goods
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          EQD Equipment details
+          FTX Free text
+          GEI Processing information
+          GIN Goods identity number
+          IMD Item description
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          PAC Package
+          PCI Package identification
+          PIA Additional product id
+          PNA Party identification
+          PRC Process identification
+          QTY Quantity
+          RFF Reference
+          SEL Seal number
+          STS Status
+          TDT Transport information
+          TMP Temperature
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   99    
+00040   STS Status                                   C   99    
+00050   LOC Place/location identification            C   99    
+00060   RFF Reference                                C   99    
+00070   FTX Free text                                C   99    
+00080   MEA Measurements                             C   99    
+00090   MOA Monetary amount                          C   99    
+00100   GEI Processing information                   C   99    
+00110   CST Customs status of goods                  C   1     
+
+00120       ---- Segment group 1  ------------------ C   99---------------+
+00130   DOC Document/message details                 M   1                |
+00140   DTM Date/time/period                         C   9                |
+00150   LOC Place/location identification            C   9----------------+
+
+00160       ---- Segment group 2  ------------------ C   99---------------+
+00170   PNA Party identification                     M   1                |
+00180   ADR Address                                  C   9                |
+                                                                          |
+00190       ---- Segment group 3  ------------------ C   9---------------+|
+00200   CTA Contact information                      M   1               ||
+00210   COM Communication contact                    C   9---------------++
+
+00220       ---- Segment group 4  ------------------ C   99---------------+
+00230   TDT Transport information                    M   1                |
+00240   DTM Date/time/period                         C   9                |
+00250   LOC Place/location identification            C   9                |
+00260   RFF Reference                                C   9----------------+
+
+00270       ---- Segment group 5  ------------------ C   99---------------+
+00280   PAC Package                                  M   1                |
+00290   PCI Package identification                   C   9                |
+00300   MEA Measurements                             C   9----------------+
+
+00310       ---- Segment group 6  ------------------ C   99---------------+
+00320   EQD Equipment details                        M   1                |
+00330   TMP Temperature                              C   9                |
+                                                                          |
+00340       ---- Segment group 7  ------------------ C   99--------------+|
+00350   SEL Seal number                              M   1               ||
+00360   DTM Date/time/period                         C   9               ||
+00370   LOC Place/location identification            C   9---------------++
+
+00380       ---- Segment group 8  ------------------ C   99---------------+
+00390   PRC Process identification                   M   1                |
+00400   IMD Item description                         C   9                |
+00410   MEA Measurements                             C   9                |
+00420   DTM Date/time/period                         C   9                |
+00430   LOC Place/location identification            C   9                |
+00440   DOC Document/message details                 C   9                |
+00450   RFF Reference                                C   9                |
+00460   TMP Temperature                              C   9                |
+00470   GEI Processing information                   C   99               |
+00480   FTX Free text                                C   99               |
+                                                                          |
+00490       ---- Segment group 9  ------------------ C   99--------------+|
+00500   PNA Party identification                     M   1               ||
+00510   ADR Address                                  C   9               ||
+                                                                         ||
+00520       ---- Segment group 10 ------------------ C   9--------------+||
+00530   CTA Contact information                      M   1              |||
+00540   COM Communication contact                    C   9--------------+++
+
+00550       ---- Segment group 11 ------------------ C   9999-------------+
+00560   LIN Line item                                M   1                |
+00570   CST Customs status of goods                  C   9                |
+00580   MEA Measurements                             C   9                |
+00590   PIA Additional product id                    C   9                |
+00600   IMD Item description                         C   9                |
+00610   GIN Goods identity number                    C   9999             |
+00620   RFF Reference                                C   9                |
+00630   ATT Attribute                                C   9                |
+00640   DTM Date/time/period                         C   9                |
+00650   LOC Place/location identification            C   9                |
+00660   FTX Free text                                C   9                |
+00670   QTY Quantity                                 C   9                |
+00680   MOA Monetary amount                          C   9                |
+                                                                          |
+00690       ---- Segment group 12 ------------------ C   99--------------+|
+00700   DOC Document/message details                 M   1               ||
+00710   DTM Date/time/period                         C   9               ||
+00720   LOC Place/location identification            C   9---------------+|
+                                                                          |
+00730       ---- Segment group 13 ------------------ C   99--------------+|
+00740   PNA Party identification                     M   1               ||
+00750   ADR Address                                  C   9               ||
+                                                                         ||
+00760       ---- Segment group 14 ------------------ C   9--------------+||
+00770   CTA Contact information                      M   1              |||
+00780   COM Communication contact                    C   9--------------++|
+                                                                          |
+00790       ---- Segment group 15 ------------------ C   99--------------+|
+00800   PAC Package                                  M   1               ||
+00810   PCI Package identification                   C   9               ||
+00820   MEA Measurements                             C   9---------------+|
+                                                                          |
+00830       ---- Segment group 16 ------------------ C   99--------------+|
+00840   EQD Equipment details                        M   1               ||
+00850   TMP Temperature                              C   9               ||
+                                                                         ||
+00860       ---- Segment group 17 ------------------ C   99-------------+||
+00870   SEL Seal number                              M   1              |||
+00880   DTM Date/time/period                         C   9              |||
+00890   LOC Place/location identification            C   9--------------++|
+                                                                          |
+00900       ---- Segment group 18 ------------------ C   99--------------+|
+00910   PRC Process identification                   M   1               ||
+00920   IMD Item description                         C   9               ||
+00930   MEA Measurements                             C   9               ||
+00940   DTM Date/time/period                         C   9               ||
+00950   LOC Place/location identification            C   9               ||
+00960   DOC Document/message details                 C   9               ||
+00970   RFF Reference                                C   9               ||
+00980   TMP Temperature                              C   9               ||
+00990   GEI Processing information                   C   99              ||
+01000   FTX Free text                                C   99              ||
+                                                                         ||
+01010       ---- Segment group 19 ------------------ C   99-------------+||
+01020   PNA Party identification                     M   1              |||
+01030   ADR Address                                  C   9              |||
+                                                                        |||
+01040       ---- Segment group 20 ------------------ C   9-------------+|||
+01050   CTA Contact information                      M   1             ||||
+01060   COM Communication contact                    C   9-------------++++
+01070   CNT Control total                            C   9     
+
+01080       ---- Segment group 21 ------------------ C   99---------------+
+01090   AUT Authentication result                    M   1                |
+01100   DTM Date/time/period                         C   9----------------+
+01110   UNT Message trailer                          M   1     

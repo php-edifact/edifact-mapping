@@ -1,0 +1,656 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                          Pricing history message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PRIHIS
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                          Pricing history message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Pricing history
+       message (PRIHIS) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message furnishing the Pricing History and related information of
+       goods previously ordered under conditions agreed to between a seller
+       and a buyer.
+
+1.2    Field of application
+
+       The Pricing history message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       Pricing history and related information may be furnished for one or
+       more goods items.
+       
+       Typically, the detailed pricing history of an item will contain the
+       item description, the quantity ordered, unit price paid, and related
+       information.  
+       
+       Any individual set of pricing history data may contain more or less
+       data depending on the nature of the historical file, nature of the
+       previous purchases if any, and the needs of the party to whom the
+       data will be transmitted.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Pricing history message is PRIHIS.
+
+        Note: Pricing history messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 PRIHIS
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the Pricing
+        History by means of its name and number, and when necessary, its
+        function.
+
+00030   DTM, Date/time/period
+        A segment specifying a date and/or time associated with the
+        message.
+
+00040   RFF, Reference
+        A segment that identifies references that apply to the whole
+        message.
+
+00050   CUX, Currencies
+        A segment to specify currencies and relevant details for the rate
+        of exchange.
+
+
+00060   Segment group 1:  NAD-LOC-SG2-SG3
+        A group of segments identifying the parties with associated
+        information.
+
+00070      NAD, Name and address
+           A segment identifying names and addresses of the parties, in
+           coded or clear form, and their functions relative to the Pricing
+           History. Identification of the requesting and responding parties
+           is mandatory for the pricing history message.
+           It is recommended that where possible, only the coded form of
+           the party identification should be specified, e.g., when the
+           requesting party and the responding party are known to each
+           other, only the coded identification is required.
+
+00080      LOC, Place/location identification
+           A segment identifying locations relevant to the parties.
+
+
+00090      Segment group 2:  RFF-DTM
+           A group of segments for giving references and where necessary,
+           their dates.
+
+00100         RFF, Reference
+              A segment identifying the reference to a previous request for
+              Pricing History information by its unique identification
+              number.
+
+00110         DTM, Date/time/period
+              A segment specifying the date or date and time of the request
+              for information.
+
+
+00120      Segment group 3:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in the NAD
+           segment.
+
+00130         CTA, Contact information
+              A segment to identify a person or department, and their
+              function, to whom communications should be directed.
+
+00140         COM, Communication contact
+              A segment to identify a communications type and number for
+              the contact specified in the CTA segment.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00150   Segment group 4:  LIN-PIA-RFF-IMD-MEA-PCD-ALI-GIR-SG5
+        A group of segments providing details of the individual items for
+        which Pricing History information was requested. This segment group
+        can be repeated to give details of additional items ordered.
+
+00160      LIN, Line item
+           A segment identifying the line item by the line number and
+           additionally, identifying the product. Other product
+           identification numbers, e.g., substitute stock number, can be
+           specified within the following PIA segment.
+
+00170      PIA, Additional product id
+           A segment providing additional identification to the product
+           specified in the LIN segment, e.g., any substitute product
+           identification.
+
+00180      RFF, Reference
+           A segment identifying the reference to a previous purchase to
+           the product or service specified in the LIN segment.
+
+00190      IMD, Item description
+           A segment for describing the product or service specified in the
+           LIN segment as well as product characteristics. This segment
+           should be used for products or services that cannot be fully
+           identified by a product code or article number.
+
+00200      MEA, Measurements
+           A segment enabling the physical measurements of the item
+           specified in the LIN segment to be specified where this is
+           required for full identification of the item. Any measurements
+           must refer to the item in its unpacked form, e.g., thickness of
+           plastic film, length, weight, etc.
+
+00210      PCD, Percentage details
+           A segment specifying the strength or yield of an item as a
+           percentage, e.g., 80% to indicate the strength of an acid.
+
+00220      ALI, Additional information
+           A segment indicating that the item is subject to special
+           conditions owing to origin, customs preference, embargo
+           regulations or commercial factors.
+
+00230      GIR, Related identification numbers
+           A segment providing sets of related identification numbers for
+           the item specified in the LIN segment.
+
+
+00240      Segment group 5:  NAD-LOC-STS-PIA-SG6-SG7
+           A group of segments providing the party and related details of
+           an item previously ordered. This segment group can be repeated
+           to give details of additional orders for the same item.
+
+00250         NAD, Name and address
+              A segment identifying names and addresses of the parties, in
+              coded or clear form, and their functions relative to the
+              pricing history.
+
+00260         LOC, Place/location identification
+              A segment identifying locations relevant to the party.
+
+00270         STS, Status
+              A segment specifying the status of the party.
+
+00280         PIA, Additional product id
+              A segment providing additional identification to the product
+              specified in the LIN segment, relevant to the party cited in
+              the NAD segment, e.g., a selling party's unique product
+              identification.
+
+
+00290         Segment group 6:  CTA-COM
+              A group of segments giving contact details of the specific
+              person or department within the party identified in the NAD
+              segment.
+
+00300            CTA, Contact information
+                 A segment to identify a person or department, and their
+                 function, to whom communications related to a contract or
+                 order should be directed.
+
+00310            COM, Communication contact
+                 A segment to identify a communications type and number for
+                 the contact specified in the CTA segment.
+
+
+00320         Segment group 7:  RFF-DTM-AGR-SG8
+              A group of segments giving details of a specific order for
+              the product identified in the LIN segment.
+
+00330            RFF, Reference
+                 A segment identifying contract or order on which the cited
+                 goods or services were ordered.
+
+00340            DTM, Date/time/period
+                 A segment specifying the date or date and time of the
+                 contract or order.
+
+00350            AGR, Agreement identification
+                 A segment to specify coded details of the contract or
+                 order on which the cited goods or services were ordered.
+
+
+00360            Segment group 8:  QTY-DTM-TAX-FTX-SG9-SG10-SG11-SG17
+                 A group of segments giving details of specific previous
+                 orders for the item specified in the LIN segment.
+
+00370               QTY, Quantity
+                    A segment to specify the total number of units
+                    previously purchased, on a contract or order.
+
+00380               DTM, Date/time/period
+                    A segment specifying the date or date and time of
+                    purchase of the previously purchased items.
+
+00390               TAX, Duty/tax/fee details
+                    A segment specifying duty, tax or fee charges relating
+                    to the previously purchased units.
+
+00400               FTX, Free text
+                    A segment with free text information in clear form,
+                    used when additional information is needed but cannot
+                    be accommodated within other segments. In computer to
+                    computer exchanges, such text will normally require the
+                    receiver to process this segment manually.
+
+
+00410               Segment group 9:  PYT-DTM-PCD-MOA
+                    A group of segments specifying the terms of payment for
+                    the line item specified in the LIN segment.
+
+00420                  PYT, Payment terms
+                       A segment specifying the payment terms and date/time
+                       basis.
+
+00430                  DTM, Date/time/period
+                       A segment giving the specific date/time/period, if
+                       needed, of any payments, discounts, instalments,
+                       etc.
+
+00440                  PCD, Percentage details
+                       A segment specifying discount, interest, penalty or
+                       instalment percentage.
+
+00450                  MOA, Monetary amount
+                       A segment specifying amounts related to payment
+                       discounts, penalties or instalments.
+
+
+00460               Segment group 10: TOD-LOC
+                    A group of segments specifying the terms of delivery to
+                    a specified location.
+
+00470                  TOD, Terms of delivery or transport
+                       A segment identifying the delivery terms used.
+
+00480                  LOC, Place/location identification
+                       A segment identifying locations relevant to the
+                       delivery terms specified in the TOD segment.
+
+
+00490               Segment group 11: ALC-ALI-DTM-SG12-SG13-SG14-SG15-SG16
+                    A group of segments specifying allowances and charges
+                    for previous orders for the line item specified in the
+                    LIN segment.
+
+00500                  ALC, Allowance or charge
+                       A segment identifying the charge or allowance type.
+
+00510                  ALI, Additional information
+                       A segment indicating the allowance or charge
+                       specified is subject to special conditions owing to
+                       origin, customs preferences or commercial factors.
+
+00520                  DTM, Date/time/period
+                       A segment giving the specific date/time/period, if
+                       needed of any allowances and charges for previous
+                       orders for the line item specified in the LIN
+                       segment.
+
+
+00530                  Segment group 12: QTY-RNG
+                       A group of segments specifying the quantity of the
+                       allowance or charge with its measure unit specifier.
+                       A range to which the allowance or charge applies may
+                       be specified, e.g., an allowance of a free quantity
+                       when a minimum quantity of items is ordered.
+
+00540                     QTY, Quantity
+                          A segment identifying the type of quantity and
+                          the quantity related to the allowance or charge.
+
+00550                     RNG, Range details
+                          A segment specifying, if required, the quantity
+                          range to which the charge or allowance applies.
+
+
+00560                  Segment group 13: PCD-RNG
+                       A group of segments specifying the percentage for
+                       the allowance or charge, e.g., the allowance or
+                       charge amount is calculated as 5% of the goods value
+                       or a price reduction of 5% may be specified if the
+                       goods quantity ordered was within the range 50 kilos
+                       to 100 kilos.
+
+00570                     PCD, Percentage details
+                          A segment identifying the percentage and the
+                          percentage basis for the calculation of the
+                          allowance or charge.
+
+00580                     RNG, Range details
+                          A segment specifying, if required, a range for
+                          the application of the percentage.
+
+
+00590                  Segment group 14: MOA-RNG
+                       A group of segments specifying a monetary amount for
+                       an allowance or charge. A range to which the
+                       allowance or charge applies may be specified, e.g.,
+                       an allowance of 5,000 ECU may be specified if the
+                       goods value ordered is greater than 100,000 ECU.
+
+00600                     MOA, Monetary amount
+                          A segment identifying the monetary amount for the
+                          allowance or charge.
+
+00610                     RNG, Range details
+                          A segment specifying, if required, a range for
+                          the application of the allowance or charge
+                          amount.
+
+
+00620                  Segment group 15: RTE-RNG
+                       A group of segments specifying the rate per unit and
+                       basis to which the charge or allowance applies,
+                       e.g., the allowance or charge amount is 3 ECU per 10
+                       tons.
+
+00630                     RTE, Rate details
+                          A segment specifying the rate per unit and the
+                          basis for calculation.
+
+00640                     RNG, Range details
+                          A segment specifying, if required, the range for
+                          the application of the allowance or charge rate.
+
+
+00650                  Segment group 16: TAX-MOA
+                       A group of segments specifying the tax type,
+                       category and rate, or exemption, related to the
+                       allowance or charge.
+
+00660                     TAX, Duty/tax/fee details
+                          A segment specifying the tax type, category and
+                          rate, or exemption, related to the allowance or
+                          charge.
+
+00670                     MOA, Monetary amount
+                          A segment specifying the amount for the allowance
+                          or charge.
+
+
+00680               Segment group 17: PRI-DTM-CUX-RNG
+                    A group of segments giving details of prices and the
+                    applicable currencies for orders of the specified item.
+
+00690                  PRI, Price details
+                       A segment to specify the price type and amount.
+
+00700                  DTM, Date/time/period
+                       A segment specifying the date or date and time of
+                       previous orders for the specified item.
+
+00710                  CUX, Currencies
+                       A segment to allow specification of the price in a
+                       different currency.
+
+00720                  RNG, Range details
+                       A segment specifying, if required, the range for the
+                       price type and amount.
+
+00730   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AGR Agreement identification
+          ALC Allowance or charge
+          ALI Additional information
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          FTX Free text
+          GIR Related identification numbers
+          IMD Item description
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAD Name and address
+          PCD Percentage details
+          PIA Additional product id
+          PRI Price details
+          PYT Payment terms
+          QTY Quantity
+          RFF Reference
+          RNG Range details
+          RTE Rate details
+          STS Status
+          TAX Duty/tax/fee details
+          TOD Terms of delivery or transport
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   1     
+00040   RFF Reference                                C   9     
+00050   CUX Currencies                               C   9     
+
+00060       ---- Segment group 1  ------------------ C   9----------------+
+00070   NAD Name and address                         M   1                |
+00080   LOC Place/location identification            C   9                |
+                                                                          |
+00090       ---- Segment group 2  ------------------ C   9---------------+|
+00100   RFF Reference                                M   1               ||
+00110   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00120       ---- Segment group 3  ------------------ C   9---------------+|
+00130   CTA Contact information                      M   1               ||
+00140   COM Communication contact                    C   9---------------++
+
+            DETAIL SECTION
+
+00150       ---- Segment group 4  ------------------ C   99999------------+
+00160   LIN Line item                                M   1                |
+00170   PIA Additional product id                    C   9                |
+00180   RFF Reference                                C   9                |
+00190   IMD Item description                         C   9                |
+00200   MEA Measurements                             C   9                |
+00210   PCD Percentage details                       C   9                |
+00220   ALI Additional information                   C   9                |
+00230   GIR Related identification numbers           C   9                |
+                                                                          |
+00240       ---- Segment group 5  ------------------ C   999-------------+|
+00250   NAD Name and address                         M   1               ||
+00260   LOC Place/location identification            C   9               ||
+00270   STS Status                                   C   9               ||
+00280   PIA Additional product id                    C   9               ||
+                                                                         ||
+00290       ---- Segment group 6  ------------------ C   9--------------+||
+00300   CTA Contact information                      M   1              |||
+00310   COM Communication contact                    C   9--------------+||
+                                                                         ||
+00320       ---- Segment group 7  ------------------ C   9--------------+||
+00330   RFF Reference                                M   1              |||
+00340   DTM Date/time/period                         C   9              |||
+00350   AGR Agreement identification                 C   9              |||
+                                                                        |||
+00360       ---- Segment group 8  ------------------ C   99------------+|||
+00370   QTY Quantity                                 M   1             ||||
+00380   DTM Date/time/period                         C   9             ||||
+00390   TAX Duty/tax/fee details                     C   9             ||||
+00400   FTX Free text                                C   9             ||||
+                                                                       ||||
+00410       ---- Segment group 9  ------------------ C   9------------+||||
+00420   PYT Payment terms                            M   1            |||||
+00430   DTM Date/time/period                         C   9            |||||
+00440   PCD Percentage details                       C   9            |||||
+00450   MOA Monetary amount                          C   9------------+||||
+                                                                       ||||
+00460       ---- Segment group 10 ------------------ C   9------------+||||
+00470   TOD Terms of delivery or transport           M   1            |||||
+00480   LOC Place/location identification            C   9------------+||||
+                                                                       ||||
+00490       ---- Segment group 11 ------------------ C   99-----------+||||
+00500   ALC Allowance or charge                      M   1            |||||
+00510   ALI Additional information                   C   9            |||||
+00520   DTM Date/time/period                         C   9            |||||
+                                                                      |||||
+00530       ---- Segment group 12 ------------------ C   9-----------+|||||
+00540   QTY Quantity                                 M   1           ||||||
+00550   RNG Range details                            C   1-----------+|||||
+                                                                      |||||
+00560       ---- Segment group 13 ------------------ C   9-----------+|||||
+00570   PCD Percentage details                       M   1           ||||||
+00580   RNG Range details                            C   1-----------+|||||
+                                                                      |||||
+00590       ---- Segment group 14 ------------------ C   9-----------+|||||
+00600   MOA Monetary amount                          M   1           ||||||
+00610   RNG Range details                            C   1-----------+|||||
+                                                                      |||||
+00620       ---- Segment group 15 ------------------ C   9-----------+|||||
+00630   RTE Rate details                             M   1           ||||||
+00640   RNG Range details                            C   1-----------+|||||
+                                                                      |||||
+00650       ---- Segment group 16 ------------------ C   9-----------+|||||
+00660   TAX Duty/tax/fee details                     M   1           ||||||
+00670   MOA Monetary amount                          C   1-----------++||||
+                                                                       ||||
+00680       ---- Segment group 17 ------------------ M   9------------+||||
+00690   PRI Price details                            M   1            |||||
+00700   DTM Date/time/period                         C   9            |||||
+00710   CUX Currencies                               C   9            |||||
+00720   RNG Range details                            C   9------------+++++
+00730   UNT Message trailer                          M   1     

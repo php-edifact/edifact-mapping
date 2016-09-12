@@ -1,0 +1,1082 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                       Reinsurance core data message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : RECORD
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 1
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG8 Insurance
+
+
+
+                                  CONTENTS
+
+                       Reinsurance core data message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+       3.2   Message terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Reinsurance core
+       data message (RECORD) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The RECORD message will convey to partners involved in the placing
+       of a reinsurance contract or endorsement in a structured format all
+       the required core data that form the basis of the negotiation
+       process and of the ensuing contract (such as : contract sections and
+       their criteria, clauses, coverages, deductibles, deductions and
+       premiums, parties involved).
+
+1.2    Field of application
+
+       The Reinsurance core data message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The RECORD message has been built up from a set of flexible modules
+       which allow the specification of the function of the message, the
+       contract details, the subdivisions within it and for each, its main
+       characteristics (coverages, deductibles, deductions, premiums and
+       applicable clauses), the party(ies) involved with tier involvement,
+       special conditions and the response to them. The message can either
+       be used in a "minimalist" manner - in which case only few data need
+       to be provided (e.g. when first submitting a risk or when declining
+       a risk), or in a "maximalist" way - in which case all applicable
+       data can be provided (normally towards the end of the placing
+       process). In addition to these business functions, the RECORD also
+       links or points to various types of supporting documentation
+       requested or available to supplement the EDI document.
+       
+       RECORD is one of a complimentary pair of messages that support the
+       placing of reinsurance business. RECORD carries the core business
+       data related to the contract, whilst RELIST carries the list of
+       items covered under the terms of the contract.
+       
+       1.3.1 Scope and composition
+       
+       The RECORD message performs multiple functions in the placing
+       process, and therefore consists of a set of flexible components
+       which can either be switched on or off - depending on the type of
+       transaction within a specified scenario. These components include:
+       
+       - a header that allows to identify the transaction function, to
+       reference the reinsurance contract version with its relevant data,
+       and the parties involved in the transaction;
+       
+       - a group that allows to identify contractual or section criteria
+       (class of business, type of peril, type of activity, location,
+       clauses, currencies, etc.) and other characteristics (period, type
+       of cover, etc.);
+       
+       - the major subgroup within this section allows to identify
+       coverages, deductibles, premiums, deductions and other relevant
+       provisions per section or for the whole contract. Each can be either
+       expressed as an amount, a rate, a quantity (e.g. number of lines,
+       number of reinstatements) or a duration (e.g. indemnity duration),
+       and they can be linked to more specific sub-criteria (e.g. a section
+       for class of business 'aviation', with coverages relating to
+       'luggage', 'passenger liability', etc.); 
+       
+       - a further group allows to refer to information that supports the
+       placement process and that is either related to the whole contract
+       or to one or more sections in it; it can be used both to request and
+       to supply additional information.
+       
+       - the last major information component in the RECORD contains party
+       information; here again, multiple functions are foreseen:
+       
+       a) rendering of information about the parties involved in the
+       original policy (policy holder, insurer, co-insurers, broker);
+       
+       b) rendering of information about the parties involved in the
+       reinsurance contract (brokers, reinsurers); this functionality is
+       sometimes referred to as the 'market list', and it is mainly used by
+       brokers to inform cedents of the progress of the placement
+       (reinsurers with share and conditions); at the end of the placing
+       process, this list becomes the final placement list. Such a list can
+       however perform others functions as well: a cedent may supply it to
+       the broker as his 'preferred marketing list', a broker may present
+       it to the cedent as his 'proposed marketing list', a cedent or
+       broker may include it in his offer to reinsurers to show which other
+       reinsurers have already signed on, etc. For this functionality, a
+       small group with market specific details needs to be used.
+       
+       c) an interesting aspect is that it is possible to report on
+       'composites' of reinsurers and their decomposition: a 'pool' with
+       all its partners, a 'stamp' with the reinsurers behind it, a broker
+       in a foreign market with the reinsurers that have signed via him,
+       etc.
+       
+       d) requesting a participation from a party - either as an amount, a
+       percentage, a quantity (e.g. number of lines) or as a mixture of
+       them; various options exist here: either only the format is
+       expressed, the expected participation is given or a minimum-maximum
+       range is offered. Additionally, previous written and signed lines
+       can be specified for information.
+       
+       e) responding to an offer - either by a quotation or an order which
+       may either be conditional or unconditional; in case of a conditional
+       order, a set of conditions can be specified for each potential order
+       (e.g. I take 8% if condition A & B are fulfilled or 6% if only
+       condition B is fulfilled).
+       
+       f) responding to conditions; this is primarily done by quoting back
+       the condition reference, supplemented with free text or by resending
+       a new offer package with the condition references attached and a
+       flag 'condition met' against each.
+       
+       
+       1.3.2 Functions covered
+       
+       The functions that the RECORD currently caters for are: 
+       
+       pre-quotation cycle:
+       
+       - authorisation to build quotation request proposal
+       - propose quotation request proposal
+       - decline to build quotation request proposal
+       - accept quotation request proposal
+       - decline quotation request proposal
+       - request to modify quotation request proposal
+       
+       quotation cycle:
+       
+       - quotation request
+       - quotation
+       - decline to quote
+       - accept quotation
+       - decline quotation
+       
+       order cycle:
+       
+       - order offer proposal
+       - order offer proposal acceptance
+       - decline order offer proposal
+       - request to modify order offer proposal
+       - request for participation
+       - decline to participate
+       - unconditional participation
+       - conditional participation
+       - accept participation
+       - accept conditions
+       - decline participation
+       - request to negotiate participation
+       - signed line advice
+       - request to modify contract synopsis, contract wording, closing,
+       etc.
+       - accept contract synopsis, contract wording.
+       - closing
+       
+       endorsement cycle: 
+       - endorsement request
+       - cancellation notice - provisional
+       - cancellation notice - definite
+       - decline endorsement request
+       - (unconditional) acceptance of endorsement request
+       - conditional acceptance of endorsement request
+       - endorsement notice
+       - request to negotiate endorsement
+       - decline all conditions
+       - withdrawal notice of cancellation
+       - advice cancellation method
+       
+       generic:
+       
+       - request additional information
+       - supply additional information (including wording, certificate and
+       RELIST)
+       - request to modify additional information
+       - decline acceptance of supporting information
+       - party involvement report (proposed or actual)
+       - final bid request
+       - placement on hold
+       - placement cancelled-NTU (not taken up)
+       - placement released
+       - placement closed
+       - last bid offer expected
+       - final acceptance
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+3.2    Message terms and definitions
+
+       Introduction
+       
+       'Placing' is basically the term used for the whole negotiation cycle
+       to get a risk or a set of risks reinsured in the form of a
+       reinsurance contract. As this process is identical to the
+       endorsement cycle (whereby modifications to a contract such as
+       extensions in time, in number or value of risks to be covered, in
+       special conditions go through a negotiation cycle), this cycle has
+       also been included in the placing process. Some other similar
+       business cycles such as the cancellation, renewal have equally been
+       covered.
+       
+       The placing process is essentially not different from any buyer-
+       supplier bidding process, although this simple fact is too often
+       dissimulated behind complex procedures and specific terminology: the
+       objective of the process is to find 'suppliers' that are acceptable
+       for the buyer and that meet his requirements.
+       
+       In this sense, the RECORD message could be used by any other
+       industry in which a contract is negotiated. 
+       
+       Placing sub-processes
+       
+       Bidding round 1: the process is initiated by the prospective buyer
+       who composes a package that consists of his tentative requirements
+       along with any information that may help the prospective supplier to
+       make his bid. This additional documentation may take any form and
+       may comprise statistics, plans, bidding terms, original policy
+       documentation, etc. This 'package' is transmitted to selected
+       potential suppliers for a first bidding round. This sub-process is
+       closed off upon reception of the bids from the suppliers. It is
+       generally referred to as the 'quotation stage'.
+       
+       Bidding round 2: the buyer has at this point two options: either he
+       has received one or more firm bids that fulfil his requirements, in
+       which case he confirms the acceptability of the bids to the relevant
+       supplier(s); or else he uses the received bids to re-formulate his
+       requirements, thus initiating a second bidding round.
+       
+       This second round - generally referred to as the 'order' stage -
+       follows essentially the same pattern as the quotation stage, and it
+       may very well be the only stage in the placing process; this is e.g.
+       the case when a contract is renewed without obtaining a quotation
+       first.
+       
+       The process is closed off when the order offer is either accepted or
+       rejected - possibly after more bidding or negotiation rounds.
+       
+       The process may consist of a double loop instead of a single one in
+       case the buyer requests another party (broker) to perform the
+       placing process on his behalf; again, there is no essential
+       difference: the buyer will first select in an initial bidding
+       process the party to which he wishes to confer this duty.
+       Afterwards, the process continues as described above with an
+       additional feed-back loop from the broker to the buyer. 
+       
+       The endorsement process
+       
+       The endorsement process is the one that is used to agree any type of
+       change to the originally agreed contract; this may range from simple
+       period extensions or cancellations to quite complex process types
+       such as mid-term market changes. The process may be such that one
+       type of endorsement request leads to another type of endorsement
+       (e.g. a request for change in conditions may lead to a market
+       change).
+       
+       The endorsement process largely follows the same pattern as the
+       placing process: the buyer (or supplier) requests the change from
+       the other party, who in one or more discussion rounds agrees or
+       refuses.
+       
+       Main parties involved
+       
+       - Cedent/ceding company/reinsured/retrocedent
+       
+       The insurance or reinsurance company that seeks protection against a
+       risk in the form of reinsurance or retrocession buying; hence the
+       term 'buyer' is sometimes equally used; where the cedent is a
+       reinsurer who retrocedes (i.e. re-sells) accepted business, the term
+       'retroceding company' is more commonly used - but the flows are
+       identical, and therefore both are considered in the underlying
+       document.
+       
+       - Reinsurer
+       
+       Company supplying reinsurance protection for agreed terms and
+       conditions (the terms 'underwriter' and 'assuming company' are
+       equally covered by this definition); if the reinsurer protects risks
+       coming from another reinsurer, the flow is called 'retrocession'.
+       Apart from these terms, there is little or no difference between the
+       flow for 'cession' or 'retrocession' placing.
+       
+       - Broker
+       
+       Intermediary between cedent and reinsurer. His function in the
+       placing flows is essentially to ensure that a contract or
+       endorsement with acceptable terms and conditions for the required
+       cover is established, and that acceptable reinsurers are found to
+       take part. Additionally, he will establish and facilitate the
+       communication between the parties involved in the placing process.
+       In return, he is paid a part of the premium that the cedent pays to
+       the reinsurer, called the 'brokerage'.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Reinsurance core data message is RECORD.
+
+        Note: Reinsurance core data messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 RECORD
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        To indicate the type of message, its function and its identifying
+        reference.
+
+00030   DTM, Date/time/period
+        To specify dates and times relating to the transaction and to the
+        process stage. The 'transaction creation date and time' and the
+        'contract version date and time' are required. The use of the other
+        values depends on the type of transaction.
+
+00040   AGR, Agreement identification
+        A segment primarily used to specify the placing stage (i.e.
+        quotation, order, endorsement) and - in case of an endorsement -
+        the endorsement type. It can also be used to give some high- level
+        indicators regarding the nature of the risk (e.g. contract type).
+
+00050   RFF, Reference
+        The segment must be used to specify the risk reference: this is the
+        key reference that the risk will carry from the start to finish
+        throughout each of the cycles - supplemented with the placing stage
+        type and the contract version date/time stamp which can both
+        change. Other references that may be specified at this level
+        include: the 'link reference' which links this specific placement
+        to the placement of one or more other contracts (required to
+        indicate that a previous contract is renewed as a set of linked
+        contracts); the 'password access reference' which may be required
+        in some implementations to access the risk data; the 'authorising
+        market reference' which is required in some implementations of the
+        endorsement process (London practice only).
+
+00060   GEI, Processing information
+        Used to specify at header level whether information has been
+        modified. If both underlying policy and contract have the same
+        data, then there is no need to specify all the insurance policy
+        data: they are simply listed under the reinsurance contract, and a
+        flag here indicates this fact. The segment can equally be used to
+        indicate - specifically for an endorsement - if the data need to be
+        made available to the bureau members (London practice only). The
+        'reason for declining' can be specified here in a coded format.
+        A further code can be used to identify the character of the
+        transaction. Lastly, codes can be used to indicate the scope of the
+        requested common account protection.
+
+00070   FTX, Free text
+        Mainly used to specify the reason of the transaction in textual
+        format. Additionally, it can be used to specify the contract name
+        and to explain the nature of the revision or the endorsement. Even
+        though the message allows for text, it should be used sparsely.
+
+
+00080   Segment group 1:  PNA-BUS-RFF-SG2
+        This group must be used to specify sender and receiver.
+        Additionally and when relevant, the information originator and
+        third parties receiving a copy of the message can equally be
+        specified.
+
+00090      PNA, Party identification
+           To specify the sender and receiver of the transaction, and
+           optionally third parties such as the information originator (in
+           case the message is simply passed on) and courtesy copy
+           receivers.
+
+00100      BUS, Business function
+           To describe the business function of the party named.
+
+00110      RFF, Reference
+           To specify contract references for the party named. In case of
+           placement or endorsement of a single contract, the contract
+           reference will be specified. In case of a process that involves
+           a group of contracts (in reinsurance terms: set of layers or
+           bouquet), the contract group reference will be specified. In
+           case of renewal, the previous contract reference(s) need to be
+           specified. The original policy reference will only be used in
+           case of a facultative (i.e. individual risk) placement whereby
+           the policy details are not given as they are a subset of the
+           contract data. The parent contract reference is specified when a
+           declaration is placed. A reference may equally be specified in a
+           response flow to indicate the reference number of the
+           transaction to which this RECORD is a reply or addition.
+
+
+00120      Segment group 2:  CTA-COM
+           This group is used to specify contact persons or departments
+           within the named party.
+
+00130         CTA, Contact information
+              To specify the contact within the named party.
+
+00140         COM, Communication contact
+              To specify the means of communicating with the named party
+              contact.
+
+
+00150   Segment group 3:  IDE-GEI-ICD-RFF-ATT-CUX-FTX-SG4-SG6-SG7-SG8-SG14
+        This group is used to perform all basic reporting either at
+        contract level or per section, i.e.
+        - section criteria for sections; 
+        - clauses; 
+        - coverages, deductibles, premiums and deductions; 
+        - other types of provision (settlement terms, account submission
+        terms, deposit use terms, etc.); 
+        - parties and their involvement.
+        Clarification: The maximum of 99 repeats has been introduced for
+        practical reasons, and is to be understood as an overall limit on
+        the total number of sections and subsections in any one contract.
+        Even though in theory some data could be provided at contract level
+        (e.g. commission, brokerage) and others at section level (e.g.
+        coverages, deductibles), it is strongly advised to provide
+        coverage, deductible, deduction and premium data per section - even
+        when this represents a certain amount of duplication - in order to
+        ease treatment by computer systems.
+
+00160      IDE, Identity
+           To identify the contract and/or section level.
+
+00170      GEI, Processing information
+           To indicate what type of general conditions apply and to what
+           the amounts in the section relate (e.g. 100 % of policy, cedent
+           share of original risk, ceded share of risk, etc.). The segment
+           can also be used to indicate whether the primary source of the
+           information is paper-based or electronic.
+
+00180      ICD, Insurance cover description
+           To describe the cover for the section.
+
+00190      RFF, Reference
+           To specify the contract reference in case a contract group
+           reference was given in the header. It can also be used to
+           indicate the layer/surplus number of the cover if relevant. The
+           policy reference can be specified if a section is used to
+           describe a policy.
+
+00200      ATT, Attribute
+           To specify the class(es) of business, the type(s) of occupancy,
+           the peril(s), the subject(s) of insurance and/or the origin of
+           business that have been used as section or contract level
+           criteria. The segment may also be used to specify the technical
+           nature of the (part of the) contract within this section.
+
+00210      CUX, Currencies
+           If all amounts in the section or contract are expressed in the
+           same currency, the segment can be used to specify this by means
+           of the reference currency; in case conversion agreements are
+           pre-arranged, further repeats can also be used to specify
+           original currencies (calculation base currency) and their
+           exchange rate.
+
+00220      FTX, Free text
+           To specify the criterion used for the section or contract in
+           textual form, and/or to give further cover details. It can
+           equally be used to render a section heading.
+
+
+00230      Segment group 4:  PER-SG5
+           This group is used to specify any period relating to the section
+           or contract - in particular various coverage periods.
+
+00240         PER, Period related details
+              To identify any periods relating to this section or contract.
+
+
+00250         Segment group 5:  DTM-GEI
+              This group allows to specify dates or durations of the
+              coverage period.
+
+00260            DTM, Date/time/period
+                 To indicate dates and/or duration for the contract
+                 coverage. The first repeat of the date/time/period segment
+                 will typically be used to render the 'start date' of the
+                 period. It can however also be used to specify the period
+                 duration. The second repeat is typically to be used to
+                 render the end date of the period. In case the first
+                 segment was used to specify the duration, then the second
+                 one will be used to specify the (estimated) end date and
+                 time.
+
+00270            GEI, Processing information
+                 To give date or period related indicators such as 'date
+                 included', 'date not known', etc.
+
+
+00280      Segment group 6:  LOC-MEA-ADR
+           This group allows to specify covered locations in terms of
+           country and address or (additionally) in terms of longitude and
+           latitude.
+
+00290         LOC, Place/location identification
+              To identify the geographical scope(s) or specific coverage
+              location(s) that are used as selection criteria for this
+              section. In case the section is in respect of a voyage, the
+              various ports may be specified here as well.
+
+00300         MEA, Measurements
+              To express a location in terms of longitude and latitude.
+
+00310         ADR, Address
+              To express the risk location in address format if more
+              appropriate.
+
+
+00320      Segment group 7:  CLA-APP-MOA-PCD-DTM-GEI-FTX
+           To specify clauses related to the section or contract and
+           important related information.
+
+00330         CLA, Clause identification
+              To identify which clause(s) are related to the contract or
+              policy.
+
+00340         APP, Applicability
+              To specify the applicability of the clause.
+
+00350         MOA, Monetary amount
+              To express amounts for the clause.
+
+00360         PCD, Percentage details
+              To express the rates applicable for the clause.
+
+00370         DTM, Date/time/period
+              To indicate the clause reference data (e.g. the date from
+              which cancellation starts), and/or the clause duration. The
+              exact meaning will depend on the type of clause, e.g.
+              retroactive date (sunrise clause), cessation date (sunset
+              clause), etc.
+
+00380         GEI, Processing information
+              To indicate that full details are to be found in the
+              contractual documentation.
+
+00390         FTX, Free text
+              To provide a clause description.
+
+
+00400      Segment group 8:  PRV-APP-MOA-RTE-DTM-QTY-FOR-CUX-CLA-GEI-FTX-
+                             SG9-SG10-SG11-SG12-SG13
+           This group is used to render all the basic data that are
+           involved in a contract or section: coverages, deductibles,
+           deductions and premiums. Additionally, it can be used to specify
+           other types of proviso such as settlement terms, bordereau and
+           account submission terms etc.
+
+00410         PRV, Proviso details
+              To render proviso data of any nature.
+
+00420         APP, Applicability
+              To describe how the proviso applies.
+
+00430         MOA, Monetary amount
+              To express the proviso and/or the proviso basis as an amount.
+
+00440         RTE, Rate details
+              To express the proviso as a rate.
+
+00450         DTM, Date/time/period
+              To express the proviso as a duration or period.
+
+00460         QTY, Quantity
+              To express the proviso and/or proviso basis (mainly for
+              premium) as a quantity. Additionally, it can be used to
+              specify the total number of reinstatements if the proviso =
+              'reinstatement coverage'.
+
+00470         FOR, Formula
+              To specify the formula used in calculating the proviso.
+
+00480         CUX, Currencies
+              To render original currencies and pre-arranged exchange
+              rates.
+
+00490         CLA, Clause identification
+              To specify the clause(s) to which the proviso relates.
+
+00500         GEI, Processing information
+              To indicate that full details are to be found in supporting
+              documentation. It can also be used in case the proviso =
+              reinstatement coverage to express that the number of
+              reinstatements is unlimited, and/or that the reinstatement
+              premiums need to be calculated in the loss currency. It may
+              also be used to specify general indicators related to the
+              proviso such as reserve deposit release method, proviso
+              frequency, loss adjustment expenses modality, reserve deposit
+              use, etc.
+
+00510         FTX, Free text
+              To provide textual details relating to the proviso.
+
+
+00520         Segment group 9:  BAS-APP
+              A group of segments to provide details of the basis of the
+              proviso and how the basis is applied.
+
+00530            BAS, Basis
+                 To specify one basis for the proviso.
+
+00540            APP, Applicability
+                 To specify how the basis is to be applied.
+
+
+00550         Segment group 10: ATT-PCD
+              The group will be used to link specific perils, classes of
+              business, subject of insurance amongst other to a proviso.
+
+00560            ATT, Attribute
+                 To specify the class of business, origin of business,
+                 subject of insurance, peril or type of occupancy that the
+                 proviso is in respect of.
+
+00570            PCD, Percentage details
+                 To specify the percentage that the accounting class
+                 represents in the total reporting.
+
+
+00580         Segment group 11: LOC-MEA-ADR
+              To specify one or more locations linked to the proviso.
+
+00590            LOC, Place/location identification
+                 To specify one location linked to the proviso.
+
+00600            MEA, Measurements
+                 To describe a location in terms of longitude and latitude.
+
+00610            ADR, Address
+                 To describe the location to which the coverage, deductible
+                 or premium relates as an address.
+
+
+00620         Segment group 12: PYT-PCD
+              The group will typically be used to specify settlement terms
+              when settlement terms or reserve is the proviso. The group
+              can also be used if parts of the amounts due need to be
+              settled using various methods (e.g. 20 % of loss reserve
+              deposit via Letter of Credit, 80 % via bank transfer).
+
+00630            PYT, Payment terms
+                 To specify settlement terms.
+
+00640            PCD, Percentage details
+                 To specify the percentage of the total due that needs to
+                 be settled.
+
+
+00650         Segment group 13: RFF-MOA-PCD-DTM
+              This group serves multiple purposes : Each proviso must be
+              assigned a number in order to make identification easier. The
+              group may also be used to indicate the reinstated cover
+              number for which details are given. The group as such can be
+              used to specify instalment details in case that settlement
+              terms is the proviso. Finally, the group can also be used to
+              render commission related tables - particularly when they are
+              using variable steps.
+
+00660            RFF, Reference
+                 To specify the relevant references.
+
+00670            MOA, Monetary amount
+                 To specify the amount of the instalment.
+
+00680            PCD, Percentage details
+                 In case instalments are reported, the segment may be used
+                 to specify the percentage of the total amount to be
+                 settled in the instalment. The other usages are for
+                 commission tables as outlined in the group usage
+                 clarification.
+
+00690            DTM, Date/time/period
+                 To specify instalment related dates.
+
+
+00700      Segment group 14: PNA-ATT-ADR-CTA-COM-RFF-SG15
+           To specify parties involved in the contract or policy, their
+           shares and conditions.
+
+00710         PNA, Party identification
+              To identify the name of any party related to the reinsurance
+              contract or policy.
+
+00720         ATT, Attribute
+              To specify further attributes of the party.
+
+00730         ADR, Address
+              To indicate one or more addresses of the party.
+
+00740         CTA, Contact information
+              To specify the name of the authorising underwriter.
+
+00750         COM, Communication contact
+              To identify means of communication with the authorising
+              underwriter.
+
+00760         RFF, Reference
+              For responding parties to specify their quote reference or
+              (previous) contract references.
+
+
+00770         Segment group 15: STS-RFF-DTM-MOA-PCD-QTY-FTX-SG16
+              This group is used to describe the share of the party in the
+              section. This can either be the requested, the previous or
+              the firm involvement or 'line', and it can either be attached
+              to conditions or not.
+
+00780            STS, Status
+                 To describe the involvement of the party.
+
+00790            RFF, Reference
+                 To be used to indicate the line identification and when
+                 relevant the line number (the sequential number this
+                 specific line will have on the contract). Additionally,
+                 this segment may carry the 'broker system id', which is an
+                 identifying unique reference of the individual who
+                 accepted the reinsurers's conditions.
+
+00800            DTM, Date/time/period
+                 To indicate the authorisation period linked to the line.
+                 It may be used when the message is used as a market status
+                 report to specify the response date/time of each party on
+                 the list.
+
+00810            MOA, Monetary amount
+                 To express the involvement as an amount or to request it
+                 to be expressed in these terms.
+
+00820            PCD, Percentage details
+                 To express the involvement as a percentage or to indicate
+                 that the line is expected in this format. Additionally, it
+                 can be used to report specific condition percentages
+                 attached to the party's line in a 'party involvement
+                 report'.
+
+00830            QTY, Quantity
+                 To express the line as a quantity, or to request the line
+                 to be written in such a format.
+
+00840            FTX, Free text
+                 To give additional information regarding the format of the
+                 line. Additionally, it can be used to clarify the reason
+                 why a party declined interest in the risk.
+
+
+00850            Segment group 16: RCS-FTX-ATT-RFF-PCD
+                 Used to specify the condition(s) attached to the line.
+
+00860               RCS, Requirements and conditions
+                    To specify the general type of condition and its
+                    reference.
+
+00870               FTX, Free text
+                    To render the condition in a textual form and
+                    optionally the description of the response (to be)
+                    given.
+
+00880               ATT, Attribute
+                    To specify the accounting class.
+
+00890               RFF, Reference
+                    To specify the reference for the accounting
+                    requirements.
+
+00900               PCD, Percentage details
+                    To specify the percentage split the underwriter wants
+                    to see for the specified accounting class.
+
+
+00910   Segment group 17: DOC-RFF-IDE-COM-EFI-PNA-DTM
+        Used to reference supporting information related to the contract,
+        policy or a section of either.
+
+00920      DOC, Document/message details
+           To identify supporting documents in the widest sense of the term
+           and details directly related to them.
+
+00930      RFF, Reference
+           To provide a reference to a password which enables access to
+           supporting information.
+
+00940      IDE, Identity
+           To identify whether the information is related to the contract
+           or to one of more specific sections, and if so, which ones.
+
+00950      COM, Communication contact
+           To specify the (possibly various) means of communication by
+           which the information can, will or should be put at the disposal
+           of the other parties involved.
+
+00960      EFI, External file link identification
+           To specify the link of a non-EDI document to an UN/EDIFACT
+           message.
+
+00970      PNA, Party identification
+           To specify the originator of the supporting information.
+
+00980      DTM, Date/time/period
+           To identify the date and time that the supporting information
+           was created and put at the disposal of the partners.
+
+00990   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          AGR Agreement identification
+          APP Applicability
+          ATT Attribute
+          BAS Basis
+          BGM Beginning of message
+          BUS Business function
+          CLA Clause identification
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DOC Document/message details
+          DTM Date/time/period
+          EFI External file link identification
+          FOR Formula
+          FTX Free text
+          GEI Processing information
+          ICD Insurance cover description
+          IDE Identity
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          PCD Percentage details
+          PER Period related details
+          PNA Party identification
+          PRV Proviso details
+          PYT Payment terms
+          QTY Quantity
+          RCS Requirements and conditions
+          RFF Reference
+          RTE Rate details
+          STS Status
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+00040   AGR Agreement identification                 M   9     
+00050   RFF Reference                                M   9     
+00060   GEI Processing information                   C   9     
+00070   FTX Free text                                C   9     
+
+00080       ---- Segment group 1  ------------------ M   99---------------+
+00090   PNA Party identification                     M   1                |
+00100   BUS Business function                        C   1                |
+00110   RFF Reference                                C   9                |
+                                                                          |
+00120       ---- Segment group 2  ------------------ C   9---------------+|
+00130   CTA Contact information                      M   1               ||
+00140   COM Communication contact                    C   9---------------++
+
+00150       ---- Segment group 3  ------------------ C   99---------------+
+00160   IDE Identity                                 M   1                |
+00170   GEI Processing information                   C   9                |
+00180   ICD Insurance cover description              C   1                |
+00190   RFF Reference                                C   9                |
+00200   ATT Attribute                                C   99               |
+00210   CUX Currencies                               C   9                |
+00220   FTX Free text                                C   9                |
+                                                                          |
+00230       ---- Segment group 4  ------------------ C   9---------------+|
+00240   PER Period related details                   M   1               ||
+                                                                         ||
+00250       ---- Segment group 5  ------------------ C   2--------------+||
+00260   DTM Date/time/period                         M   1              |||
+00270   GEI Processing information                   C   1--------------++|
+                                                                          |
+00280       ---- Segment group 6  ------------------ C   99--------------+|
+00290   LOC Place/location identification            M   1               ||
+00300   MEA Measurements                             C   2               ||
+00310   ADR Address                                  C   1---------------+|
+                                                                          |
+00320       ---- Segment group 7  ------------------ C   99--------------+|
+00330   CLA Clause identification                    M   1               ||
+00340   APP Applicability                            C   1               ||
+00350   MOA Monetary amount                          C   9               ||
+00360   PCD Percentage details                       C   9               ||
+00370   DTM Date/time/period                         C   9               ||
+00380   GEI Processing information                   C   1               ||
+00390   FTX Free text                                C   1---------------+|
+                                                                          |
+00400       ---- Segment group 8  ------------------ C   999-------------+|
+00410   PRV Proviso details                          M   1               ||
+00420   APP Applicability                            C   9               ||
+00430   MOA Monetary amount                          C   9               ||
+00440   RTE Rate details                             C   9               ||
+00450   DTM Date/time/period                         C   9               ||
+00460   QTY Quantity                                 C   9               ||
+00470   FOR Formula                                  C   1               ||
+00480   CUX Currencies                               C   9               ||
+00490   CLA Clause identification                    C   99              ||
+00500   GEI Processing information                   C   9               ||
+00510   FTX Free text                                C   9               ||
+                                                                         ||
+00520       ---- Segment group 9  ------------------ C   9--------------+||
+00530   BAS Basis                                    M   1              |||
+00540   APP Applicability                            C   1--------------+||
+                                                                         ||
+00550       ---- Segment group 10 ------------------ C   99-------------+||
+00560   ATT Attribute                                M   1              |||
+00570   PCD Percentage details                       C   1--------------+||
+                                                                         ||
+00580       ---- Segment group 11 ------------------ C   99-------------+||
+00590   LOC Place/location identification            M   1              |||
+00600   MEA Measurements                             C   2              |||
+00610   ADR Address                                  C   1--------------+||
+                                                                         ||
+00620       ---- Segment group 12 ------------------ C   9--------------+||
+00630   PYT Payment terms                            M   1              |||
+00640   PCD Percentage details                       C   1--------------+||
+                                                                         ||
+00650       ---- Segment group 13 ------------------ M   99-------------+||
+00660   RFF Reference                                M   1              |||
+00670   MOA Monetary amount                          C   1              |||
+00680   PCD Percentage details                       C   9              |||
+00690   DTM Date/time/period                         C   9--------------++|
+                                                                          |
+00700       ---- Segment group 14 ------------------ C   999-------------+|
+00710   PNA Party identification                     M   1               ||
+00720   ATT Attribute                                M   9               ||
+00730   ADR Address                                  C   9               ||
+00740   CTA Contact information                      C   1               ||
+00750   COM Communication contact                    C   9               ||
+00760   RFF Reference                                C   9               ||
+                                                                         ||
+00770       ---- Segment group 15 ------------------ C   99-------------+||
+00780   STS Status                                   M   1              |||
+00790   RFF Reference                                C   9              |||
+00800   DTM Date/time/period                         C   9              |||
+00810   MOA Monetary amount                          C   9              |||
+00820   PCD Percentage details                       C   9              |||
+00830   QTY Quantity                                 C   9              |||
+00840   FTX Free text                                C   9              |||
+                                                                        |||
+00850       ---- Segment group 16 ------------------ C   999-----------+|||
+00860   RCS Requirements and conditions              M   1             ||||
+00870   FTX Free text                                C   9             ||||
+00880   ATT Attribute                                C   1             ||||
+00890   RFF Reference                                C   1             ||||
+00900   PCD Percentage details                       C   1-------------++++
+
+00910       ---- Segment group 17 ------------------ C   99---------------+
+00920   DOC Document/message details                 M   1                |
+00930   RFF Reference                                C   9                |
+00940   IDE Identity                                 C   1                |
+00950   COM Communication contact                    C   1                |
+00960   EFI External file link identification        C   1                |
+00970   PNA Party identification                     C   1                |
+00980   DTM Date/time/period                         C   9----------------+
+00990   UNT Message trailer                          M   1     

@@ -1,0 +1,570 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                    Commercial account summary message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : COACSU
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                    Commercial account summary message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Commercial account
+       summary message (COACSU) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A commercial account summary message enables the transmission of
+       commercial data concerning payments made and outstanding items on an
+       account over a period of time. The message may be sent at specific
+       agreed fixed intervals or on demand, and may be sent to and, or,
+       from trading parties and, or, their authorised agents.
+
+1.2    Field of application
+
+       The Commercial account summary message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       A commercial account summary may:
+       - refer to invoices, credit notes, debit notes, or payments over a
+       period of time.
+       - refer to only one account, in one currency.
+       - be initiated at any time by a party, depending upon agreement
+       between the parties involved.
+       - provide information on an account over a period of time. When the
+       message is used in this way both payments made and amounts
+       outstanding may be detailed.
+       - may contain additional information for customs and/or statistical
+       purposes/services.
+       - be used as a reminder of payment due for the current accounting
+       period.
+       - be used as a request for payment of outstanding invoices and
+       detail penalties for amounts outstanding from previous accounting
+       periods.
+       - be used in the reconciliation of accounts when detailing payments
+       made.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding an implementation
+       of the message:
+       
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+       
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken that the segment qualifier in dependent segments
+       do not conflict with the segment qualifier of the trigger segment of
+       a group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing. It is only used when additional
+       information that cannot be accommodated within the other segments is
+       required.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Commercial account summary message is
+        COACSU.
+
+        Note: Commercial account summary messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 COACSU
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the commercial
+        account summary.
+
+00030   DTM, Date/time/period
+        A segment specifying the dates, and when relevant, the times
+        related to the whole message. The segment must be specified at
+        least once to specify the message date as allocated by the sender.
+
+00040   ALI, Additional information
+        A segment to provide additional information related to the complete
+        commercial account summary.
+
+00050   FTX, Free text
+        A segment with free text information, in coded or clear form, used
+        when additional information is needed but cannot be accommodated
+        within other segments. In computer to computer exchanges such text
+        will normally require the receiver to process this segment
+        manually.
+
+
+00060   Segment group 1:  RFF-DTM
+        A group of segments specifying references applicable to the
+        complete commercial account summary message.
+
+00070      RFF, Reference
+           A segment for the inclusion of any references which are valid
+           for the complete commercial account summary message.
+
+00080      DTM, Date/time/period
+           A segment specifying the date and where necessary the time of
+           the reference.
+
+
+00090   Segment group 2:  NAD-FII-FTX-SG3-SG4
+        A group of segments identifying the parties involved in the
+        transaction, financial information for the parties, and the contact
+        points and numbers.
+
+00100      NAD, Name and address
+           A segment to identify a party name and address, either by coded
+           identification or in clear form. It is recommended that where
+           possible only the coded form of the party ID should be specified
+           e.g. the Buyer and Seller are known to each other, thus only the
+           coded ID is required.
+
+00110      FII, Financial institution information
+           A segment to specify the financial institution details of the
+           identified party.
+
+00120      FTX, Free text
+           A segment with free text information, in coded or clear form,
+           used when additional information is needed but cannot be
+           accommodated within other segments. In computer to computer
+           exchanges such text will normally require the receiver to
+           process this segment manually.
+
+
+00130      Segment group 3:  RFF-DTM
+           A group of segments for specifying any references relating to
+           the identified party.
+
+00140         RFF, Reference
+              A segment for the inclusion of any references related to the
+              current party.
+
+00150         DTM, Date/time/period
+              A segment specifying the date and where necessary the time of
+              the reference.
+
+
+00160      Segment group 4:  CTA-COM
+           A group of segments identifying the contact person or department
+           for a trading party and specifying the communication channel and
+           number.
+
+00170         CTA, Contact information
+              A segment to identify a person or department and their
+              function, to whom communications should be directed.
+
+00180         COM, Communication contact
+              A segment specifying the communication channel and number for
+              the specified contact.
+
+
+00190   Segment group 5:  CUX-DTM
+        A group of segments specifying the currencies and related
+        dates/periods valid for the whole commercial account summary.
+        Currency data may be omitted in national applications but will be
+        required for international transactions.
+
+00200      CUX, Currencies
+           A segment identifying the currencies required in the commercial
+           account summary. A rate of exchange may be given to convert a
+           reference currency into a target currency.
+
+00210      DTM, Date/time/period
+           A segment specifying the date/time/period related to the rate of
+           exchange.
+
+
+00220   Segment group 6:  PYT-MOA-PCD-DTM-FII-PAI
+        A group of segments specifying the payment and penalty terms for
+        the commercial account summary message.
+
+00230      PYT, Payment terms
+           A segment identifying the payment terms and date/time basis.
+
+00240      MOA, Monetary amount
+           A segment specifying amounts related to payment discount
+           penalties or instalments.
+
+00250      PCD, Percentage details
+           A segment specifying the discount, interest, penalty as well as
+           instalment percentages.
+
+00260      DTM, Date/time/period
+           This segment giving the specific date and/or time, or period, if
+           needed, of any payments, discounts or instalments.
+
+00270      FII, Financial institution information
+           A segment for identifying financial institution information
+           relevant to the current payment terms.
+
+00280      PAI, Payment instructions
+           A segment detailing the instructions for payment for amounts
+           specified in the message.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00290   Segment group 7:  DOC-DTM-SG8-SG10
+        A group of segments identifying documents and their numbers, e.g.
+        invoices or credit notes to which the commercial account summary
+        refers. The group may contain details of the monetary values
+        associated with the documents and any relevant dates. There must be
+        at least one occurrence of this group within the commercial account
+        summary message.
+
+00300      DOC, Document/message details
+           A segment identifying a specific document and its number, e.g.
+           invoice, credit note or remittance advice for which commercial
+           account summary information is being provided.
+
+00310      DTM, Date/time/period
+           A segment to specify dates related to the document and to
+           indicate any other relevant dates applicable, e.g. due date or
+           tax point date.
+
+
+00320      Segment group 8:  NAD-SG9
+           A group of segments to identify parties and any associated
+           references related to the current document.
+
+00330         NAD, Name and address
+              A segment to identify a party related to the current
+              document.
+
+
+00340         Segment group 9:  RFF-DTM
+              A group of segments for specifying any references relating to
+              the party.
+
+00350            RFF, Reference
+                 A segment for the inclusion of any references related to
+                 the current party.
+
+00360            DTM, Date/time/period
+                 A segment specifying the date and where necessary the time
+                 of the reference.
+
+
+00370      Segment group 10: MOA-TAX-DTM-PAI-PYT-STS-SG11
+           A group of segments providing total monetary values, tax
+           information, date and or time, and or period information, and
+           adjustment details for the currently referenced document.
+
+00380         MOA, Monetary amount
+              A segment to specify amounts related to the currently
+              referenced document, e.g. amount due, discount amount,
+              payment amount.
+
+00390         TAX, Duty/tax/fee details
+              A segment specifying a tax type, category and rate or
+              exemption, relating to the monetary amount detailed for the
+              currently identified document.
+
+00400         DTM, Date/time/period
+              A segment for specifying dates and where necessary the time
+              or periods related to the current monetary value.
+
+00410         PAI, Payment instructions
+              A segment requesting or confirming conditions of payment,
+              guarantee and method of payment.
+
+00420         PYT, Payment terms
+              A segment identifying the payment terms and date/time basis.
+
+00430         STS, Status
+              A segment indicating the status of a payment.
+
+
+00440         Segment group 11: AJT-MOA-RFF-FTX
+              A group of segments providing adjustment details related to
+              the monetary value for the currently referenced document.
+
+00450            AJT, Adjustment details
+                 A segment for identifying the reason for an adjustment.
+
+00460            MOA, Monetary amount
+                 A segment to specify adjustment amounts.
+
+00470            RFF, Reference
+                 A segment for the inclusion of any references related to
+                 the adjustment details.
+
+00480            FTX, Free text
+                 A segment with free text information, in coded or clear
+                 form, used when additional information is needed about the
+                 adjustments.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00490   UNS, Section control
+        A service segment separating the detail section of the message from
+        the summary section.
+
+
+00500   Segment group 12: MOA-QTY-TAX-DTM
+        A group of segments specifying the total amounts, tax information,
+        and any pertinent dates for the complete commercial account
+        summary.
+
+00510      MOA, Monetary amount
+           A segment to specify the total amounts related to the entire
+           message. Values contained in here could be total amounts paid,
+           total amount due or total amount overdue.
+
+00520      QTY, Quantity
+           A segment to indicate the number of invoices related to the
+           total amount.
+
+00530      TAX, Duty/tax/fee details
+           This segment is used to indicate the rate of tax or duty
+           applicable to the amount specified.
+
+00540      DTM, Date/time/period
+           This segment is used to indicate any dates related to the total
+           amount specified.
+
+00550   CNT, Control total
+        A segment to provide message control totals.
+
+00560   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AJT Adjustment details
+          ALI Additional information
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          PCD Percentage details
+          PYT Payment terms
+          QTY Quantity
+          RFF Reference
+          STS Status
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+00040   ALI Additional information                   C   9     
+00050   FTX Free text                                C   99    
+
+00060       ---- Segment group 1  ------------------ C   9----------------+
+00070   RFF Reference                                M   1                |
+00080   DTM Date/time/period                         C   9----------------+
+
+00090       ---- Segment group 2  ------------------ C   99---------------+
+00100   NAD Name and address                         M   1                |
+00110   FII Financial institution information        C   9                |
+00120   FTX Free text                                C   99               |
+                                                                          |
+00130       ---- Segment group 3  ------------------ C   9---------------+|
+00140   RFF Reference                                M   1               ||
+00150   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00160       ---- Segment group 4  ------------------ C   9---------------+|
+00170   CTA Contact information                      M   1               ||
+00180   COM Communication contact                    C   9---------------++
+
+00190       ---- Segment group 5  ------------------ C   9----------------+
+00200   CUX Currencies                               M   1                |
+00210   DTM Date/time/period                         C   9----------------+
+
+00220       ---- Segment group 6  ------------------ C   9----------------+
+00230   PYT Payment terms                            M   1                |
+00240   MOA Monetary amount                          C   9                |
+00250   PCD Percentage details                       C   9                |
+00260   DTM Date/time/period                         C   9                |
+00270   FII Financial institution information        C   1                |
+00280   PAI Payment instructions                     C   9----------------+
+
+            DETAIL SECTION
+
+00290       ---- Segment group 7  ------------------ C   99999------------+
+00300   DOC Document/message details                 M   1                |
+00310   DTM Date/time/period                         C   9                |
+                                                                          |
+00320       ---- Segment group 8  ------------------ C   9---------------+|
+00330   NAD Name and address                         M   1               ||
+                                                                         ||
+00340       ---- Segment group 9  ------------------ C   99-------------+||
+00350   RFF Reference                                M   1              |||
+00360   DTM Date/time/period                         C   9--------------++|
+                                                                          |
+00370       ---- Segment group 10 ------------------ C   99--------------+|
+00380   MOA Monetary amount                          M   1               ||
+00390   TAX Duty/tax/fee details                     C   9               ||
+00400   DTM Date/time/period                         C   9               ||
+00410   PAI Payment instructions                     C   1               ||
+00420   PYT Payment terms                            C   1               ||
+00430   STS Status                                   C   9               ||
+                                                                         ||
+00440       ---- Segment group 11 ------------------ C   9--------------+||
+00450   AJT Adjustment details                       M   1              |||
+00460   MOA Monetary amount                          M   1              |||
+00470   RFF Reference                                C   1              |||
+00480   FTX Free text                                C   9--------------+++
+
+            SUMMARY SECTION
+
+00490   UNS Section control                          M   1     
+
+00500       ---- Segment group 12 ------------------ C   99---------------+
+00510   MOA Monetary amount                          M   1                |
+00520   QTY Quantity                                 C   1                |
+00530   TAX Duty/tax/fee details                     C   9                |
+00540   DTM Date/time/period                         C   9----------------+
+00550   CNT Control total                            C   1     
+00560   UNT Message trailer                          M   1     

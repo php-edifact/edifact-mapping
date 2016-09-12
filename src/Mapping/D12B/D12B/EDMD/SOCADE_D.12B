@@ -1,0 +1,583 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                       Social administration message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : SOCADE
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG11 Social Security, Employment and Education
+
+
+
+                                  CONTENTS
+
+                       Social administration message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Social
+       administration message (SOCADE) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message is sent by an employer to an organisation to report
+       information regarding to person(s) who get wages or advantages, as
+       goods granted by an employee, from an employer. It may relate about
+       an event concerning one or more employee(s) or report on staff
+       activities during a specific period of employment.
+
+1.2    Field of application
+
+       The Social administration message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message may be used to transmit information:
+        - regarding individuals who receive wages or advantages from an
+       employer during a given period and who are entitled to a working
+       contract.
+        - regarding the status of one or more person(s) who receive wages
+       or advantages from an employer.
+        - regarding a particular event concerning one or more employee(s).
+        The employer, responsible for declaration may request a third party
+       to declare for its own.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Social administration message is SOCADE.
+
+        Note: Social administration messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 SOCADE
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender uniquely identifies the declaration
+        by means of its type and number and when necessary its function.
+
+00030   DTM, Date/time/period
+        A segment specifying dates and, and when relevant, time for the
+        whole message. If the function of the message is to modify or to
+        delete a previous message, the date and time of modification or
+        deletion must be specified.
+
+00040   RFF, Reference
+        A segment providing an additional reference relating to this
+        message and if necessary, the reference of a previous message that
+        has been modified or deleted.
+
+
+00050   Segment group 1:  PNA-RFF-CTA-COM-SG2
+        A group of segments identifying parties involved in the
+        transmission.
+
+00060      PNA, Party identification
+           A segment identifying names of parties and their functions
+           regarding the exchange of the message.
+
+00070      RFF, Reference
+           A segment identifying references of the message for the relating
+           party identified in the previous PNA segment.
+
+00080      CTA, Contact information
+           A segment identifying the person or the department to whom the
+           communication should be directed.
+
+00090      COM, Communication contact
+           A segment identifying a communication type and number for the
+           contact specified in the previous CTA segment, if CTA is not
+           present the contact is the party specified in the previous PNA
+           segment.
+
+
+00100      Segment group 2:  ADR-FTX
+           A group of segments identifying parties identified in the
+           previous PNA segment.
+
+00110         ADR, Address
+              A segment identifying the address of the relating party.
+
+00120         FTX, Free text
+              A segment providing additional text information to the
+              previous ADR segment.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00130   UNS, Section control
+        A mandatory service segment placed before the first user segment in
+        the detail section to avoid segment collision.
+
+
+00140   Segment group 3:  PNA-FTX-PDI-REL-DTM-NAT-LOC-FII-ATT-EMP-MOA-QTY-
+                          CTA-COM-SG4-SG5-SG6
+        A group of segments giving all required information relating to a
+        company or a person and, if relevant, for all of its local units,
+        responsible for declared information.
+
+00150      PNA, Party identification
+           A segment giving the identity of an employer responsible for the
+           production of the message or the person who receives wages or an
+           advantage from the employer.
+
+00160      FTX, Free text
+           A segment providing any additional information with regard to
+           the name of the employer or the person who receives wages or an
+           advantage from the employer (e.g. if the length of a name
+           exceeds the available number of characters within the PNA).
+
+00170      PDI, Person demographic information
+           A segment indicating the marital status of a person.
+
+00180      REL, Relationship
+           A segment indicating a hierarchical relationship inside a
+           company (e.g. headquarter, local units) or a relation between
+           two declared persons.
+
+00190      DTM, Date/time/period
+           A segment providing any relating dates regarding the person or
+           the employer (e.g. date of birth for the described person).
+
+00200      NAT, Nationality
+           A segment giving the nationality of an employer responsible for
+           the production of the message or the concerned person.
+
+00210      LOC, Place/location identification
+           A segment providing place of birth of the person described.
+
+00220      FII, Financial institution information
+           A segment indicating the bank account of an employee.
+
+00230      ATT, Attribute
+           A segment specifying any personal attributes regarding the
+           person described.
+
+00240      EMP, Employment details
+           A segment indicating the main activity of the employer or the
+           person who receives wages or an advantage from an employer.
+
+00250      MOA, Monetary amount
+           A segment giving the total of amounts concerning a wage earner
+           charges paid by the employer (e.g. salaries, fees, etc). It also
+           indicates the reference level salary that is used for
+           contribution of a natural person, and any amounts registered for
+           a particular person who receives wages or an advantage from the
+           employer.
+
+00260      QTY, Quantity
+           A segment giving any total for each type of amounts or
+           quantities regarding each wage earner (e.g. number of full time
+           workers, number of working days, etc) and totals for each type
+           of amount or quantities regarding an employer.
+
+00270      CTA, Contact information
+           A segment identifying the person or department responsible of
+           the declaration or concerned by the declaration may be
+           contacted.
+
+00280      COM, Communication contact
+           A segment identifying communication type and number for the
+           person or the department identified in the previous CTA segment.
+
+
+00290      Segment group 4:  RFF-DTM
+           A group of segments specifying additional references related to
+           the employer or the person and associated dates.
+
+00300         RFF, Reference
+              A segment specifying additional references related to the
+              employer or the described person.
+
+00310         DTM, Date/time/period
+              A segment indicating dates and time, if necessary, relating
+              to the reference.
+
+
+00320      Segment group 5:  ADR-FTX
+           A group of segments giving information about pertinent addresses
+           of employer and concerned persons.
+
+00330         ADR, Address
+              A segment indicating an address relating to the employer or
+              the person concerned by the declaration.
+
+00340         FTX, Free text
+              A segment specifying additional information regarding the
+              address of the employer or the concerned person.
+
+
+00350      Segment group 6:  PRC-FTX-ATT-DTM-EMP-ADR-DOC-IND-STS-LOC-SG7-
+                             SG8-SG9-SG10
+           A group of segments describing a contract or a procedure
+           regarding wage earners in which the employer is involved. It may
+           also detail any contract or procedure available for a particular
+           person concerned by the Social administrative message.
+
+00360         PRC, Process identification
+              A segment identifying a contract or a procedure that involves
+              the employer or a particular person who receives wages or an
+              advantage from an employer.
+
+00370         FTX, Free text
+              A segment providing textual information relating to the
+              contract or the procedure concerning the person or the
+              employer.
+
+00380         ATT, Attribute
+              A segment providing any attribute relating to the contract or
+              the procedure described in the previous PRC segment.
+
+00390         DTM, Date/time/period
+              A segment indicating dates, and relevant times, regarding the
+              contract and the procedure identified in the previous PRC
+              segment.
+
+00400         EMP, Employment details
+              A segment indicating the employment or employer details as
+              described in the contract or the procedure.
+
+00410         ADR, Address
+              A segment identifying address applying to the contract or the
+              procedure.
+
+00420         DOC, Document/message details
+              A segment indicating requested documents to be provided to
+              apply the contract or the procedure.
+
+00430         IND, Index details
+              A segment indicating index of an employee regarding a
+              particular procedure.
+
+00440         STS, Status
+              A segment indicating the status of an advantage received by
+              an employee.
+
+00450         LOC, Place/location identification
+              A segment giving a location regarding the procedure
+              identified in the previous PRC segment (e.g. location of an
+              accident).
+
+
+00460         Segment group 7:  QTY-DTM
+              A group of segments indicating quantities and dates regarding
+              an employee, for example: the number of working days during a
+              given period.
+
+00470            QTY, Quantity
+                 A segment specifying quantities and dates regarding the
+                 contract or the procedure.
+
+00480            DTM, Date/time/period
+                 A segment specifying date and time relating to quantities.
+
+
+00490         Segment group 8:  RFF-DTM-GEI
+              A group of segments identifying reference(s) relating to the
+              contract or the procedure and the corresponding period of
+              validity.
+
+00500            RFF, Reference
+                 A segment identifying any reference(s) relating to the
+                 contract or the procedure and the corresponding period of
+                 validity.
+
+00510            DTM, Date/time/period
+                 A segment indicating the period of validity of the
+                 referenced contract or procedure.
+
+00520            GEI, Processing information
+                 A segment specifying indicators relating to a specific
+                 reference.
+
+
+00530         Segment group 9:  MOA-RFF-DTM
+              A group of segments specifying for a given contract or
+              procedure amounts and related references and dates.
+
+00540            MOA, Monetary amount
+                 A segment specifying an amount and amount type basis
+                 relating to the contract or the procedure.
+
+00550            RFF, Reference
+                 A segment indicating references relating to an amount.
+
+00560            DTM, Date/time/period
+                 A segment indication relating dates or periods of payment
+                 (e.g. last month of payment, date of payment, etc)
+                 relating to the previous MOA segment.
+
+
+00570         Segment group 10: PCD-SG11
+              A group of segments specifying any related percentages or
+              related amounts regarding the contract or the procedure.
+
+00580            PCD, Percentage details
+                 A segment specifying a percentage that applies to the
+                 contract or the procedure.
+
+
+00590            Segment group 11: MOA-DTM
+                 A group of segments identifying an amount and relating
+                 periods for which a percentage applies.
+
+00600               MOA, Monetary amount
+                    A segment indicating amounts for which the percentage
+                    is available.
+
+00610               DTM, Date/time/period
+                    A segment indicating periods relating to the previous
+                    amounts.
+
+
+00620   Segment group 12: AUT-DTM
+        A group of segments specifying the details of authentication.
+
+00630      AUT, Authentication result
+           A segment specifying the details of authentication.
+
+00640      DTM, Date/time/period
+           A segment identifying the date and when necessary, the time of
+           authentication.
+
+00650   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          AUT Authentication result
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          EMP Employment details
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          IND Index details
+          LOC Place/location identification
+          MOA Monetary amount
+          NAT Nationality
+          PCD Percentage details
+          PDI Person demographic information
+          PNA Party identification
+          PRC Process identification
+          QTY Quantity
+          REL Relationship
+          RFF Reference
+          STS Status
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   5     
+00040   RFF Reference                                C   2     
+
+00050       ---- Segment group 1  ------------------ M   9----------------+
+00060   PNA Party identification                     M   1                |
+00070   RFF Reference                                C   9                |
+00080   CTA Contact information                      C   1                |
+00090   COM Communication contact                    C   5                |
+                                                                          |
+00100       ---- Segment group 2  ------------------ C   5---------------+|
+00110   ADR Address                                  M   1               ||
+00120   FTX Free text                                M   9---------------++
+
+            DETAIL SECTION
+
+00130   UNS Section control                          M   1     
+
+00140       ---- Segment group 3  ------------------ M   99999------------+
+00150   PNA Party identification                     M   1                |
+00160   FTX Free text                                C   9                |
+00170   PDI Person demographic information           C   1                |
+00180   REL Relationship                             C   1                |
+00190   DTM Date/time/period                         C   9                |
+00200   NAT Nationality                              C   1                |
+00210   LOC Place/location identification            C   1                |
+00220   FII Financial institution information        C   1                |
+00230   ATT Attribute                                C   9                |
+00240   EMP Employment details                       C   1                |
+00250   MOA Monetary amount                          C   99               |
+00260   QTY Quantity                                 C   99               |
+00270   CTA Contact information                      C   1                |
+00280   COM Communication contact                    C   5                |
+                                                                          |
+00290       ---- Segment group 4  ------------------ C   99--------------+|
+00300   RFF Reference                                M   1               ||
+00310   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00320       ---- Segment group 5  ------------------ C   9---------------+|
+00330   ADR Address                                  M   1               ||
+00340   FTX Free text                                C   1---------------+|
+                                                                          |
+00350       ---- Segment group 6  ------------------ C   99--------------+|
+00360   PRC Process identification                   M   1               ||
+00370   FTX Free text                                C   99              ||
+00380   ATT Attribute                                C   9               ||
+00390   DTM Date/time/period                         C   99              ||
+00400   EMP Employment details                       C   9               ||
+00410   ADR Address                                  C   9               ||
+00420   DOC Document/message details                 C   9               ||
+00430   IND Index details                            C   9               ||
+00440   STS Status                                   C   9               ||
+00450   LOC Place/location identification            C   9               ||
+                                                                         ||
+00460       ---- Segment group 7  ------------------ C   99-------------+||
+00470   QTY Quantity                                 M   1              |||
+00480   DTM Date/time/period                         C   1--------------+||
+                                                                         ||
+00490       ---- Segment group 8  ------------------ C   99-------------+||
+00500   RFF Reference                                M   1              |||
+00510   DTM Date/time/period                         C   1              |||
+00520   GEI Processing information                   C   9--------------+||
+                                                                         ||
+00530       ---- Segment group 9  ------------------ C   99-------------+||
+00540   MOA Monetary amount                          M   1              |||
+00550   RFF Reference                                C   9              |||
+00560   DTM Date/time/period                         C   9--------------+||
+                                                                         ||
+00570       ---- Segment group 10 ------------------ C   9--------------+||
+00580   PCD Percentage details                       M   1              |||
+                                                                        |||
+00590       ---- Segment group 11 ------------------ C   9-------------+|||
+00600   MOA Monetary amount                          M   1             ||||
+00610   DTM Date/time/period                         C   9-------------++++
+
+00620       ---- Segment group 12 ------------------ C   1----------------+
+00630   AUT Authentication result                    M   1                |
+00640   DTM Date/time/period                         C   1----------------+
+00650   UNT Message trailer                          M   1     

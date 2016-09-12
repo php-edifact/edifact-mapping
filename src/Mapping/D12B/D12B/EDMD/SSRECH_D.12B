@@ -1,0 +1,421 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                    Worker's insurance history message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : SSRECH
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG11 Social Security, Employment and Education
+
+
+
+                                  CONTENTS
+
+                    Worker's insurance history message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Worker's insurance
+       history message (SSRECH) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The SSRECH message is sent by a designated body in one State to the
+       equivalent body in another State giving details of a worker's Social
+       Security insurance history as requested by the latter State.
+
+1.2    Field of application
+
+       The Worker's insurance history message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       When an institution receives from a foreign institution a message
+       SSREGW requesting details of a worker's Social Security insurance
+       history, it answers to this request sending a SSRECH message. This
+       message gives for each period of insurance the scheme, nature and
+       type of the period (if relevant), the dates related to the period
+       and, eventually, the employment and employer during this period.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Worker's insurance history message is
+        SSRECH.
+
+        Note: Worker's insurance history messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 SSRECH
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment identifying the function of the message (details on the
+        worker's insurance history) and, if necessary, the number of the
+        message.
+
+00030   DTM, Date/time/period
+        A segment indicating the date of preparation of the message.
+
+00040   GEI, Processing information
+        A segment indicating the type of process the message is belonging
+        to.
+
+
+00050   Segment group 1:  RFF-DTM
+        A group of segments identifying a previous message sent regarding
+        the person.
+
+00060      RFF, Reference
+           A segment identifying the reference of a previously sent or
+           received message related to the current message (for instance,
+           the reference of a received SSREGW message to which the current
+           message is answering).
+
+00070      DTM, Date/time/period
+           A segment indicating the date of preparation of the previous
+           message whose reference is given in the above RFF segment.
+
+
+00080   Segment group 2:  PNA-ADR-GIR
+        A group of segments identifying the parties and giving the worker's
+        insurance number for each party.
+
+00090      PNA, Party identification
+           A segment identifying names of the parties, and their functions
+           relevant to a Worker's insurance history message (sending
+           institution, receiving institution, ...).
+
+00100      ADR, Address
+           A segment indicating the country of the party.
+
+00110      GIR, Related identification numbers
+           A segment indicating the Insurance or identification numbers of
+           the worker in the country identified in the related ADR segment.
+
+
+00120   Segment group 3:  IND-DTM-COT-SG4
+        A group of segments used to describe a period of insurance.
+
+00130      IND, Index details
+           A segment giving the index value relevant to the period
+           described in the current group.
+
+00140      DTM, Date/time/period
+           A segment indicating dates related to the period (starting
+           and/or ending dates, year of reference, ...) and duration of a
+           period of insurance.
+
+00150      COT, Contribution details
+           A segment describing the social regulations applied during this
+           period of insurance (scheme, nature or type of insurance).
+
+
+00160      Segment group 4:  EMP-PNA-ADR
+           A group of segments describing the insured person's employment
+           during this period of insurance.
+
+00170         EMP, Employment details
+              A segment giving details on the job.
+
+00180         PNA, Party identification
+              A segment indicating the name of the employer.
+
+00190         ADR, Address
+              A segment indicating the address of the employer.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00200   UNS, Section control
+        A mandatory service segment placed before the first user segment in
+        the detail section to avoid segment collision.
+
+
+00210   Segment group 5:  PNA-NAT-DOC-ADR-ATT-SG6-SG7
+        A group of segments identifying the worker and his relatives and
+        giving related information.
+
+00220      PNA, Party identification
+           A segment giving a person's surnames and forenames and his
+           function in the message (worker, worker's mother, father,
+           spouse).
+
+00230      NAT, Nationality
+           A segment indicating the nationality of the person identified in
+           the related PNA segment.
+
+00240      DOC, Document/message details
+           A segment specifying the type and the number of an identity
+           document (identity card or passport) belonging to the person
+           identified in the related PNA segment.
+
+00250      ADR, Address
+           A segment indicating current and previous addresses of the
+           person.
+
+00260      ATT, Attribute
+           A segment specifying person's natural, professional or academic
+           titles.
+
+
+00270      Segment group 6:  DTM-ADR
+           A group of segments giving the person's birth or death details.
+
+00280         DTM, Date/time/period
+              A segment indicating date of birth or date of death of the
+              person.
+
+00290         ADR, Address
+              A segment indicating place of birth or place of death. This
+              segment can be used to identify the country, province or
+              department and city of birth and/or death.
+
+
+00300      Segment group 7:  PDI-DTM
+           A group of segments giving details on the person's gender and/or
+           marital status.
+
+00310         PDI, Person demographic information
+              A segment specifying the gender, the marital status (married,
+              divorced, ...)of the person identified in the related PNA
+              segment.
+
+00320         DTM, Date/time/period
+              A segment indicating relevant dates related to the civil
+              status (date of marriage, date of divorce, ...).
+
+
+00330   Segment group 8:  COT-CNT
+        A group of segments indicating for each type of social regulation,
+        the total of periods concerned by the regulation.
+
+00340      COT, Contribution details
+           A segment identifying a regulation.
+
+00350      CNT, Control total
+           A segment indicating the total duration of periods concerned by
+           the regulation described in the related COT segment.
+
+00360   FTX, Free text
+        A segment giving additional information regarding the insured
+        person.
+
+
+00370   Segment group 9:  AUT-DTM
+        A group of segments specifying the details of authentication.
+
+00380      AUT, Authentication result
+           A segment specifying details of any authentication (validation)
+           procedure applied to the SSRECH message.
+
+00390      DTM, Date/time/period
+           A segment identifying the date and where necessary, the time of
+           authentication.
+
+00400   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          AUT Authentication result
+          BGM Beginning of message
+          CNT Control total
+          COT Contribution details
+          DOC Document/message details
+          DTM Date/time/period
+          EMP Employment details
+          FTX Free text
+          GEI Processing information
+          GIR Related identification numbers
+          IND Index details
+          NAT Nationality
+          PDI Person demographic information
+          PNA Party identification
+          RFF Reference
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   1     
+00040   GEI Processing information                   M   1     
+
+00050       ---- Segment group 1  ------------------ C   1----------------+
+00060   RFF Reference                                M   1                |
+00070   DTM Date/time/period                         C   1----------------+
+
+00080       ---- Segment group 2  ------------------ M   2----------------+
+00090   PNA Party identification                     M   1                |
+00100   ADR Address                                  C   1                |
+00110   GIR Related identification numbers           C   1----------------+
+
+00120       ---- Segment group 3  ------------------ M   99---------------+
+00130   IND Index details                            M   1                |
+00140   DTM Date/time/period                         M   6                |
+00150   COT Contribution details                     M   3                |
+                                                                          |
+00160       ---- Segment group 4  ------------------ C   1---------------+|
+00170   EMP Employment details                       M   1               ||
+00180   PNA Party identification                     C   1               ||
+00190   ADR Address                                  C   1---------------++
+
+            DETAIL SECTION
+
+00200   UNS Section control                          M   1     
+
+00210       ---- Segment group 5  ------------------ M   6----------------+
+00220   PNA Party identification                     M   1                |
+00230   NAT Nationality                              C   1                |
+00240   DOC Document/message details                 C   1                |
+00250   ADR Address                                  C   2                |
+00260   ATT Attribute                                C   5                |
+                                                                          |
+00270       ---- Segment group 6  ------------------ C   2---------------+|
+00280   DTM Date/time/period                         M   1               ||
+00290   ADR Address                                  C   1---------------+|
+                                                                          |
+00300       ---- Segment group 7  ------------------ C   2---------------+|
+00310   PDI Person demographic information           M   1               ||
+00320   DTM Date/time/period                         C   2---------------++
+
+00330       ---- Segment group 8  ------------------ C   9----------------+
+00340   COT Contribution details                     M   1                |
+00350   CNT Control total                            M   5----------------+
+00360   FTX Free text                                C   2     
+
+00370       ---- Segment group 9  ------------------ C   1----------------+
+00380   AUT Authentication result                    M   1                |
+00390   DTM Date/time/period                         C   1----------------+
+00400   UNT Message trailer                          M   1     

@@ -1,0 +1,434 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                     Insurance premium payment message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PRPAID
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG8 Insurance
+
+
+
+                                  CONTENTS
+
+                     Insurance premium payment message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Insurance premium
+       payment message (PRPAID) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Insurance Premium Payment message is used by communicating
+       parties to notify the recipient about premium or claim amounts to be
+       collected, evaluated, paid, not paid or partly paid, either
+       individually or in series via bordereau or statements.
+       
+       The message may be exchanged between insurers or between insurers
+       and insurance intermediaries.
+
+1.2    Field of application
+
+       The Insurance premium payment message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+       
+       The Insurance Premium Payment message is applicable for both
+       national and international insurance.
+
+1.3    Principles
+
+       - The Insurance Premium Payment Message refers to insurance premium
+       or claim amounts.
+       
+       - The Insurance Premium Payment Message covers all types of premium
+       collection or claim settlement.
+       
+       - The Insurance Premium Payment Message can be used for:
+       
+       a. premium bordereau
+       
+       b. claims bordereau
+       
+       c. statement
+        
+       d. response to statement
+       
+       e. response to Insurance Premium message.
+       
+       - The Insurance Premium Payment message is not a fund transfer
+       message.
+       
+       - The Insurance Premium Payment message structure is as follows: 
+       
+       a. general information valid for the whole message
+        
+       b. information about the involved parties
+        
+       c. information about paid, partly paid or not paid insurance
+       premiums or claim amounts
+        
+       d. total amounts valid for the whole message.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Insurance premium payment message is
+        PRPAID.
+
+        Note: Insurance premium payment messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 PRPAID
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment for specifying message name and function.
+
+00030   GEI, Processing information
+        A segment containing the indication of the type of the Insurance
+        Premium Payment message.
+
+00040   RFF, Reference
+        A segment containing identifying numbers of the Insurance Premium
+        Payment message or of the statement or the bordereau.
+
+00050   DTM, Date/time/period
+        A segment specifying dates related to the Insurance Premium Payment
+        message or to the statement or the bordereau.
+
+00060   ICD, Insurance cover description
+        The main class of business for premiums or claims within the
+        message.
+
+
+00070   Segment group 1:  NAD-CTA-COM-RFF
+        A group of segments providing identification, names and addresses,
+        contacts and references of the parties involved in the exchange of
+        the message.
+
+00080      NAD, Name and address
+           A segment for identifying either by names and addresses, or by
+           codes, the parties and their function in the exchange of the
+           Insurance Premium Payment message.
+
+00090      CTA, Contact information
+           A segment giving additional contact information of the party
+           specified in the NAD segment.
+
+00100      COM, Communication contact
+           A segment specifying the communication channel and number for
+           the contact specified in the CTA.
+
+00110      RFF, Reference
+           A segment for additional identifying references of the party
+           specified in the NAD.
+
+
+00120   Segment group 2:  DOC-SG3-DTM-NAD-SG4-RFF-SG5-SG6-CUX
+        A group of segments providing detailed information concerning
+        individual insurance premiums.
+
+00130      DOC, Document/message details
+           A segment providing a unique identification of an Insurance
+           Premium message or a statement line.
+
+
+00140      Segment group 3:  GEI-FTX
+           A group of segments providing the paid/partly paid/not paid
+           indicator and the reason for partly or non payment.
+
+00150         GEI, Processing information
+              A segment providing the paid/partly paid/not paid indicator.
+
+00160         FTX, Free text
+              A segment providing the reason for partly or non payment.
+
+00170      DTM, Date/time/period
+           A segment specifying dates related to the insurance premium.
+
+00180      NAD, Name and address
+           A segment specifying the policy holder or the insured.
+
+
+00190      Segment group 4:  MOA-DTM-PCD
+           A group of segments providing total amounts of an Insurance
+           Premium message or of a statement line. These amounts are
+           detailed amounts for the bordereau or for the statement.
+
+00200         MOA, Monetary amount
+              A segment specifying premiums, taxes, fees, commissions and
+              other amounts coming from the Insurance Premium message or
+              from the statement line.
+
+00210         DTM, Date/time/period
+              A segment specifying dates related to the insurance premium.
+
+00220         PCD, Percentage details
+              A segment specifying the commission rate for commission
+              amounts.
+
+00230      RFF, Reference
+           A segment specifying references to documents to which the
+           insurance premium relates.
+
+
+00240      Segment group 5:  ICD-MOA-RFF-PCD
+           To specify the covers that apply to the bordereau line.
+
+00250         ICD, Insurance cover description
+              A segment specifying the main class of business of the
+              insurance premium.
+
+00260         MOA, Monetary amount
+              To specify the monetary amount associated with the cover such
+              as claim amounts.
+
+00270         RFF, Reference
+              A segment to specify references for the cover.
+
+00280         PCD, Percentage details
+              To specify the percentage of co-insurance for the cover.
+
+
+00290      Segment group 6:  ATT-PCD
+           A group of segments providing details about the collection of
+           the insurance premium.
+
+00300         ATT, Attribute
+              A segment providing the type of insurance premium, the
+              collection details and the co-insurance information.
+
+00310         PCD, Percentage details
+              A segment specifying the percentage of the total premium of a
+              co-insurance contract, covered by this insurance premium.
+
+00320      CUX, Currencies
+           A segment specifying currencies and relevant details for the
+           rate of exchange.
+
+00330   UNS, Section control
+        A mandatory service segment to be placed before the first user
+        segment in the summary section to avoid segment collision.
+
+
+00340   Segment group 7:  MOA-GEI-DTM-RFF-ATT-ICD-CUX
+        A group of segments providing total amounts of the bordereau or of
+        the statement.
+
+00350      MOA, Monetary amount
+           A segment specifying total amounts.
+
+00360      GEI, Processing information
+           A segment specifying the totalization criterion paid/partly
+           paid/not paid.
+
+00370      DTM, Date/time/period
+           A segment specifying the totalization criterion expressed by a
+           date.
+
+00380      RFF, Reference
+           A segment specifying a policy number as totalisation criterion.
+
+00390      ATT, Attribute
+           A segment specifying the type of premium and/or collection
+           specifications as totalization criterion.
+
+00400      ICD, Insurance cover description
+           A segment specifying the type of insurance as totalization
+           criterion.
+
+00410      CUX, Currencies
+           A segment specifying the currency as a totalization criterion.
+
+00420   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ATT Attribute
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DOC Document/message details
+          DTM Date/time/period
+          FTX Free text
+          GEI Processing information
+          ICD Insurance cover description
+          MOA Monetary amount
+          NAD Name and address
+          PCD Percentage details
+          RFF Reference
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     C   1     
+00030   GEI Processing information                   M   1     
+00040   RFF Reference                                M   9     
+00050   DTM Date/time/period                         M   9     
+00060   ICD Insurance cover description              C   1     
+
+00070       ---- Segment group 1  ------------------ M   9----------------+
+00080   NAD Name and address                         M   1                |
+00090   CTA Contact information                      C   1                |
+00100   COM Communication contact                    C   3                |
+00110   RFF Reference                                C   9----------------+
+
+00120       ---- Segment group 2  ------------------ C   9999-------------+
+00130   DOC Document/message details                 M   1                |
+                                                                          |
+00140       ---- Segment group 3  ------------------ C   1---------------+|
+00150   GEI Processing information                   M   1               ||
+00160   FTX Free text                                C   1---------------+|
+00170   DTM Date/time/period                         C   9                |
+00180   NAD Name and address                         C   9                |
+                                                                          |
+00190       ---- Segment group 4  ------------------ C   99--------------+|
+00200   MOA Monetary amount                          M   1               ||
+00210   DTM Date/time/period                         C   1               ||
+00220   PCD Percentage details                       C   1---------------+|
+00230   RFF Reference                                M   9                |
+                                                                          |
+00240       ---- Segment group 5  ------------------ C   99--------------+|
+00250   ICD Insurance cover description              M   1               ||
+00260   MOA Monetary amount                          C   99              ||
+00270   RFF Reference                                C   9               ||
+00280   PCD Percentage details                       C   1---------------+|
+                                                                          |
+00290       ---- Segment group 6  ------------------ C   9---------------+|
+00300   ATT Attribute                                M   1               ||
+00310   PCD Percentage details                       C   1---------------+|
+00320   CUX Currencies                               C   1----------------+
+00330   UNS Section control                          M   1     
+
+00340       ---- Segment group 7  ------------------ C   99---------------+
+00350   MOA Monetary amount                          M   1                |
+00360   GEI Processing information                   C   1                |
+00370   DTM Date/time/period                         C   1                |
+00380   RFF Reference                                C   1                |
+00390   ATT Attribute                                C   1                |
+00400   ICD Insurance cover description              C   1                |
+00410   CUX Currencies                               C   1----------------+
+00420   UNT Message trailer                          M   1     

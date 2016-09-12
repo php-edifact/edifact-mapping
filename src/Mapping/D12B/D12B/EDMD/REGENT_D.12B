@@ -1,0 +1,674 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                    Registration of enterprise message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : REGENT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 1
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG12 Accounting and Auditing, Registration, Financial Information
+        Services
+
+
+                                  CONTENTS
+
+                    Registration of enterprise message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Registration of
+       enterprise message (REGENT) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This message is designed to transmit legal, administrative and
+       statutory information concerning the creation, change or cessation
+       of a business activity within an enterprise. It can be exchanged
+       between an enterprise and an authority responsible for registration
+       or between any relevant body and its partners.
+
+1.2    Field of application
+
+       The Registration of enterprise message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message permits the transfer of information declared by an
+       enterprise regardless of its legal status (self-employed person,
+       company, corporation).
+       
+       The structure of the REGENT message is event oriented and may
+       cover one or more events concerning the business activity of an
+       enterprise.
+       
+       This structure is composed of three main levels:
+       - the first one corresponds to the identification of the enterprise
+       which is affected by the events,
+       - the second one describes these events,
+       - the third one provides detailed information related to an event.
+       At that last level many different entities of the enterprise
+       may be described, such as:
+       - legal entity,
+       - managers,
+       - capital characteristics,
+       - activity related information.
+       
+       The REGENT message may be used to transmit changes and updates.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Registration of enterprise message is
+        REGENT.
+
+        Note: Registration of enterprise messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 REGENT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to identify the function of the message and to transmit
+        its identification number.
+
+00030   CUX, Currencies
+        A segment to specify the default currency used to express the
+        monetary amounts contained in the whole message.
+
+
+00040   Segment group 1:  PNA-RFF-ATT-ADR-COM
+        A segment group identifying and providing details relating to
+        parties at message level, such as message sender and receiver,
+        declarant and signatory.
+
+00050      PNA, Party identification
+           A segment providing the names and identifier of the parties
+           involved in the transmission of the message or in a transaction
+           associated to the message.
+
+00060      RFF, Reference
+           A segment providing additional references related to the
+           parties.
+
+00070      ATT, Attribute
+           A segment to indicate attributes of the parties.
+
+00080      ADR, Address
+           A segment to specify addresses related to the parties.
+
+00090      COM, Communication contact
+           A segment to indicate communication numbers relevant to the
+           described parties.
+
+
+00100   Segment group 2:  DOC-RFF-DTM-ATT-ADR-LOC-COM-GEI-FTX
+        A segment group to identify supporting documents at message and
+        declaration level.
+
+00110      DOC, Document/message details
+           A segment identifying and providing information relating to the
+           documents.
+
+00120      RFF, Reference
+           A segment to provide additional references related to the
+           documents.
+
+00130      DTM, Date/time/period
+           A segment to indicate dates related to the documents.
+
+00140      ATT, Attribute
+           A segment to specify attributes of the documents.
+
+00150      ADR, Address
+           A segment to provide addresses associated with the documents
+           such as a postal address.
+
+00160      LOC, Place/location identification
+           A segment to describe locations associated with the documents
+           such as place of signature or place of delivery.
+
+00170      COM, Communication contact
+           A segment to provide communication numbers related to the
+           documents, such as the one used to transmit a document via a
+           specified channel.
+
+00180      GEI, Processing information
+           A segment to specify an indicator related to the processing of
+           the documents.
+
+00190      FTX, Free text
+           A segment to provide additional free text information concerning
+           the documents.
+
+
+00200   Segment group 3:  MOA-PAI-FII-DTM
+        A segment group to specify details about the payment related to the
+        cost of a formality, such as registration fees.
+
+00210      MOA, Monetary amount
+           A segment to indicate the paid amount.
+
+00220      PAI, Payment instructions
+           A segment to detail instructions for the payment, such as
+           payment means.
+
+00230      FII, Financial institution information
+           A segment to identify an account and the related financial
+           institution relevant for the payment.
+
+00240      DTM, Date/time/period
+           A segment to provide dates related to the payment.
+
+
+00250   Segment group 4:  EVE-ATT-DTM-FTX
+        A segment group to identify and describe the events reported in the
+        message. This group may provide a summary of the events described
+        in details in the rest of the message.
+
+00260      EVE, Event
+           A segment to identify the event reported in the message.
+
+00270      ATT, Attribute
+           A segment to indicate attributes associated with the events.
+
+00280      DTM, Date/time/period
+           A segment to specify dates related to the events.
+
+00290      FTX, Free text
+           A segment to provide free text information related to the
+           events.
+
+
+00300   Segment group 5:  DSI-PNA-REL-RFF-SG6
+        A segment group to provide information on relevant entities
+        belonging to an enterprise to which events apply. An entity
+        designates a component of the structure of an enterprise such as
+        its legal entity, a branch or an agency. This group may describe
+        entities referring to different enterprises when events affect them
+        all together.
+
+00310      DSI, Data set identification
+           A segment to identify a data set referring to an entity within
+           an enterprise.
+
+00320      PNA, Party identification
+           A segment to provide the names and identifier of the parties
+           associated with the entity of the enterprise currently
+           described.
+
+00330      REL, Relationship
+           A segment to indicate the relationship between the entity
+           currently described and others previously provided.
+
+00340      RFF, Reference
+           A segment to provide references related to the entity described
+           such as a unique identifier of the entity which is in relation
+           with it.
+
+
+00350      Segment group 6:  EVE-ATT-DTM-FTX-SG7
+           A segment group to identify and provide information related to
+           events applying to the entity of the enterprise.
+
+00360         EVE, Event
+              A segment to identify events applying to the entity of the
+              enterprise.
+
+00370         ATT, Attribute
+              A segment to provide attributes associated with the events.
+
+00380         DTM, Date/time/period
+              A segment to indicate dates associated with the events.
+
+00390         FTX, Free text
+              A segment to provide free text information related to the
+              events.
+
+
+00400         Segment group 7:  REL-PNA-RFF-NAT-PDI-DTM-ADR-LOC-COM-QTY-
+                                FTX-SG8-SG9-SG10-SG11-SG12-SG13
+              A segment group to provide detailed information related to
+              the events applying to the described entity of the
+              enterprise.
+
+00410            REL, Relationship
+                 A segment to identify the relationship between data
+                 contained in this group.
+
+00420            PNA, Party identification
+                 A segment to provide the names and the identifier of a
+                 related party.
+
+00430            RFF, Reference
+                 A segment to indicate references associated with the
+                 information described in the group, such as additional
+                 reference numbers of a related party.
+
+00440            NAT, Nationality
+                 A segment to provide the nationality of a related party.
+
+00450            PDI, Person demographic information
+                 A segment to indicate the marital status of a related
+                 party.
+
+00460            DTM, Date/time/period
+                 A segment to provide dates associated with event-related
+                 information described in the group, such as the related
+                 party date of birth or accounting dates.
+
+00470            ADR, Address
+                 A segment to provide addresses associated with the event-
+                 related information described in the group.
+
+00480            LOC, Place/location identification
+                 A segment to provide locations associated with the event-
+                 related information described in the group, such as the
+                 place of birth of a related party or the operating place
+                 of an enterprise.
+
+00490            COM, Communication contact
+                 A segment to provide communication numbers associated with
+                 the event-related information described in the group.
+
+00500            QTY, Quantity
+                 A segment to provide quantities associated with the event-
+                 related information described in the group, such as a
+                 number of employees.
+
+00510            FTX, Free text
+                 A segment to provide additional free text information
+                 concerning the event-related information described in the
+                 group.
+
+
+00520            Segment group 8:  ATT-GEI-DTM-MEA-FTX
+                 A segment group to provide relevant attributes applying to
+                 the event-related information described in the group, such
+                 as a business activity characteristic.
+
+00530               ATT, Attribute
+                    A segment to identify attributes associated with the
+                    event-related information described in the group.
+
+00540               GEI, Processing information
+                    A segment to specify a processing indicator associated
+                    with the described attribute.
+
+00550               DTM, Date/time/period
+                    A segment to provide dates associated with the
+                    described attribute.
+
+00560               MEA, Measurements
+                    A segment to specify a measurement applicable to the
+                    described attribute.
+
+00570               FTX, Free text
+                    A segment to provide additional free text information
+                    concerning the described attribute.
+
+
+00580            Segment group 9:  MOA-ATT-DTM-QTY-FTX
+                 A segment group to provide details on relevant monetary
+                 amounts associated with the event-related information
+                 described in the group, such as capital amount or share
+                 holding amount.
+
+00590               MOA, Monetary amount
+                    A segment to provide details on a monetary amount
+                    associated with the event-related information described
+                    in the group.
+
+00600               ATT, Attribute
+                    A segment to specify relevant attributes applicable to
+                    the provided monetary amount.
+
+00610               DTM, Date/time/period
+                    A segment to indicate dates associated with the
+                    provided monetary amount.
+
+00620               QTY, Quantity
+                    A segment to indicate relevant quantities associated
+                    with the provided monetary amount.
+
+00630               FTX, Free text
+                    A segment to specify any additional free text
+                    information associated with the provided monetary
+                    amount.
+
+
+00640            Segment group 10: DOC-ATT-LOC-DTM
+                 A segment group to provide details on documents
+                 associated with the event-related information
+                 described in the group, such as:
+                 - supporting document,
+                 - written proof,
+                 - specific authorization.
+
+00650               DOC, Document/message details
+                    A segment to identify the related documents.
+
+00660               ATT, Attribute
+                    A segment to specify attributes applicable to the
+                    related documents.
+
+00670               LOC, Place/location identification
+                    A segment to provide locations associated with the
+                    related documents.
+
+00680               DTM, Date/time/period
+                    A segment to indicate dates applicable to the related
+                    documents.
+
+
+00690            Segment group 11: TAX-ATT-LOC-FTX
+                 A segment group to provide tax related information.
+
+00700               TAX, Duty/tax/fee details
+                    A segment to identify and describe the tax information.
+
+00710               ATT, Attribute
+                    A segment to provide any tax related attribute such as
+                    a tax system characteristic or a periodicity of
+                    payment.
+
+00720               LOC, Place/location identification
+                    A segment to provide any tax related locations.
+
+00730               FTX, Free text
+                    A segment to provide any tax related free text
+                    information.
+
+
+00740            Segment group 12: EMP-ATT-LOC-DTM
+                 A segment group to provide employment related information.
+
+00750               EMP, Employment details
+                    A segment to identify the employment type and category.
+
+00760               ATT, Attribute
+                    A segment to provide employment related attributes.
+
+00770               LOC, Place/location identification
+                    A segment to provide employment related locations.
+
+00780               DTM, Date/time/period
+                    A segment to provide employment related dates.
+
+
+00790            Segment group 13: ICD-SG14
+                 A segment group to provide insurance coverage related
+                 information.
+
+00800               ICD, Insurance cover description
+                    A segment to identify and describe the related
+                    insurance coverage.
+
+
+00810               Segment group 14: PNA-ADR-LOC
+                    A segment group to identify and describe parties
+                    involved in the insurance coverage, such as an health
+                    insurance organization or a pension scheme.
+
+00820                  PNA, Party identification
+                       A segment to provide names and identifier of a party
+                       involved in the insurance coverage.
+
+00830                  ADR, Address
+                       A segment to provide addresses related to the party
+                       involved in the insurance coverage.
+
+00840                  LOC, Place/location identification
+                       A segment to provide locations related to the party
+                       involved in the insurance coverage.
+
+00850   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          BGM Beginning of message
+          COM Communication contact
+          CUX Currencies
+          DOC Document/message details
+          DSI Data set identification
+          DTM Date/time/period
+          EMP Employment details
+          EVE Event
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          ICD Insurance cover description
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAT Nationality
+          PAI Payment instructions
+          PDI Person demographic information
+          PNA Party identification
+          QTY Quantity
+          REL Relationship
+          RFF Reference
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   CUX Currencies                               C   1     
+
+00040       ---- Segment group 1  ------------------ M   99---------------+
+00050   PNA Party identification                     M   1                |
+00060   RFF Reference                                C   9                |
+00070   ATT Attribute                                C   9                |
+00080   ADR Address                                  C   9                |
+00090   COM Communication contact                    C   9----------------+
+
+00100       ---- Segment group 2  ------------------ C   99---------------+
+00110   DOC Document/message details                 M   1                |
+00120   RFF Reference                                C   9                |
+00130   DTM Date/time/period                         C   9                |
+00140   ATT Attribute                                C   9                |
+00150   ADR Address                                  C   9                |
+00160   LOC Place/location identification            C   9                |
+00170   COM Communication contact                    C   9                |
+00180   GEI Processing information                   C   1                |
+00190   FTX Free text                                C   99---------------+
+
+00200       ---- Segment group 3  ------------------ C   9----------------+
+00210   MOA Monetary amount                          M   1                |
+00220   PAI Payment instructions                     C   1                |
+00230   FII Financial institution information        C   1                |
+00240   DTM Date/time/period                         C   9----------------+
+
+00250       ---- Segment group 4  ------------------ M   99---------------+
+00260   EVE Event                                    M   1                |
+00270   ATT Attribute                                C   9                |
+00280   DTM Date/time/period                         C   9                |
+00290   FTX Free text                                C   9----------------+
+
+00300       ---- Segment group 5  ------------------ M   99999------------+
+00310   DSI Data set identification                  M   1                |
+00320   PNA Party identification                     C   9                |
+00330   REL Relationship                             C   1                |
+00340   RFF Reference                                C   9                |
+                                                                          |
+00350       ---- Segment group 6  ------------------ M   999-------------+|
+00360   EVE Event                                    M   1               ||
+00370   ATT Attribute                                C   9               ||
+00380   DTM Date/time/period                         C   9               ||
+00390   FTX Free text                                C   99              ||
+                                                                         ||
+00400       ---- Segment group 7  ------------------ M   9999-----------+||
+00410   REL Relationship                             M   1              |||
+00420   PNA Party identification                     C   9              |||
+00430   RFF Reference                                C   999            |||
+00440   NAT Nationality                              C   2              |||
+00450   PDI Person demographic information           C   1              |||
+00460   DTM Date/time/period                         C   9              |||
+00470   ADR Address                                  C   9              |||
+00480   LOC Place/location identification            C   9              |||
+00490   COM Communication contact                    C   9              |||
+00500   QTY Quantity                                 C   99             |||
+00510   FTX Free text                                C   999            |||
+                                                                        |||
+00520       ---- Segment group 8  ------------------ C   99------------+|||
+00530   ATT Attribute                                M   1             ||||
+00540   GEI Processing information                   C   1             ||||
+00550   DTM Date/time/period                         C   9             ||||
+00560   MEA Measurements                             C   1             ||||
+00570   FTX Free text                                C   99------------+|||
+                                                                        |||
+00580       ---- Segment group 9  ------------------ C   99------------+|||
+00590   MOA Monetary amount                          M   1             ||||
+00600   ATT Attribute                                C   9             ||||
+00610   DTM Date/time/period                         C   9             ||||
+00620   QTY Quantity                                 C   9             ||||
+00630   FTX Free text                                C   99------------+|||
+                                                                        |||
+00640       ---- Segment group 10 ------------------ C   99------------+|||
+00650   DOC Document/message details                 M   1             ||||
+00660   ATT Attribute                                C   9             ||||
+00670   LOC Place/location identification            C   9             ||||
+00680   DTM Date/time/period                         C   9-------------+|||
+                                                                        |||
+00690       ---- Segment group 11 ------------------ C   9-------------+|||
+00700   TAX Duty/tax/fee details                     M   1             ||||
+00710   ATT Attribute                                C   9             ||||
+00720   LOC Place/location identification            C   9             ||||
+00730   FTX Free text                                C   9-------------+|||
+                                                                        |||
+00740       ---- Segment group 12 ------------------ C   9-------------+|||
+00750   EMP Employment details                       M   1             ||||
+00760   ATT Attribute                                C   9             ||||
+00770   LOC Place/location identification            C   9             ||||
+00780   DTM Date/time/period                         C   9-------------+|||
+                                                                        |||
+00790       ---- Segment group 13 ------------------ C   9-------------+|||
+00800   ICD Insurance cover description              M   1             ||||
+                                                                       ||||
+00810       ---- Segment group 14 ------------------ C   9------------+||||
+00820   PNA Party identification                     M   1            |||||
+00830   ADR Address                                  C   9            |||||
+00840   LOC Place/location identification            C   9------------+++++
+00850   UNT Message trailer                          M   1     

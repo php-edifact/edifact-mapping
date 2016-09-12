@@ -1,0 +1,430 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                  Work item quantity determination message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : CONWQD
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG6 Architecture, Engineering and Construction
+
+
+
+                                  CONTENTS
+
+                  Work item quantity determination message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Work item quantity
+       determination message (CONWQD) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+       There are occasions during the construction process when it is
+       required to substantiate the quantities associated with specific
+       sections of work. This message will be needed by various parties
+       involved in the project to determine these quantity details.
+
+1.1    Functional definition
+
+       Typically this message will be used between a contractor and the
+       client's representative or other partners within the construction
+       process, for justifying the work item quantities given in messages
+       that describe the work items or their progress valuations.
+
+1.2    Field of application
+
+       The Work item quantity determination message may be used for both
+       national and international applications. It is based on universal
+       practice related to administration, commerce and transport, and is
+       not dependent on the type of business or industry.
+
+1.3    Principles
+
+       There are several examples within the construction process where one
+       party is required to justify to another party the quantities per
+       work item he has already given in earlier messages.
+       
+       A project may be subdivided into individual groupings of work,
+       referred to as items and it is against the quantities of these items
+       that a justification has to be given.
+       
+       Within the Construction industry there are numerous rules which
+       govern this part of the process. Although efforts have been made to
+       keep the design of the message generic, other potential users of
+       this message are cautioned about the specific and original role for
+       which it has been designed.
+       
+       This is only one of a number of messages being designed for the
+       construction industry. This particular message refers to already
+       described items of work or their progress valuation in earlier sent
+       construction messages.
+       
+       This message is for verifiable and provable quantities per work item
+       which include individual calculations with sub- and intermediate
+       totals. The message contains the quantities and how they are
+       assessed for each of the work items. For every work item the
+       quantity per unit must be determined (except those with a flat rate,
+       which are paid according to payment schedules). The unit of quantity
+       is defined by common technical rules. Rules describe the way in
+       which quantities are calculated. These use standard formulae.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Work item quantity determination message
+        is CONWQD.
+
+        Note: Work item quantity determination messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 CONWQD
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment for unique identification of the Work Item Quantity
+        Determination document name, number and function.
+
+00030   DTM, Date/time/period
+        A segment specifying the dates that apply, e.g. date of valuation,
+        date of submission, acceptance date, etc.
+
+00040   AUT, Authentication result
+        A segment used to authenticate the message by exchanging a password
+        or some other form of identification agreed between the trading
+        partners.
+
+00050   FTX, Free text
+        A segment with free text information, in coded or clear form, used
+        for any textual qualification. In computer to computer exchanges,
+        such text will require the receiver to process this segment
+        manually.
+
+
+00060   Segment group 1:  RFF-DTM
+        A group of segments for quoting references and their relevant dates
+        that are applicable to the message.
+
+00070      RFF, Reference
+           A segment for quoting references that are applicable to this
+           message. e.g. contract identity, operational references,
+           determination reference number of a former message.
+
+00080      DTM, Date/time/period
+           Date of references quoted in the previous RFF segment.
+
+
+00090   Segment group 2:  NAD-LOC-FII-SG3-SG4-SG5
+        A group of segments identifying the parties with associated
+        information.
+
+00100      NAD, Name and address
+           A segment identifying names and addresses of the parties, in
+           coded or clear form, and their functions relevant to the Work
+           Item Quantity Determination Message. Identification of the
+           contractor and client parties is mandatory for the Work Item
+           Quantity Determination Message. It is recommended that where
+           possible only the coded form of the party ID should be
+           specified.
+
+00110      LOC, Place/location identification
+           A segment giving more specific location information of the party
+           specified in the NAD segment e.g. internal site/building number.
+
+00120      FII, Financial institution information
+           A segment identifying the financial institution (e.g. bank) and
+           relevant account numbers for the contractor, client and where
+           necessary other parties.
+
+
+00130      Segment group 3:  RFF-DTM
+           A group of segments giving references only relevant to the
+           specified party rather than the whole message.
+
+00140         RFF, Reference
+              A segment identifying the reference by its number and where
+              appropriate a line number within a document.
+
+00150         DTM, Date/time/period
+              A segment specifying the date and/or time related to the
+              reference.
+
+
+00160      Segment group 4:  DOC-DTM
+           A group of segments identifying the documentary requirements of
+           the specified party.
+
+00170         DOC, Document/message details
+              A segment identifying and providing information relating to
+              the documents required by the party specified by the NAD.
+
+00180         DTM, Date/time/period
+              A segment specifying the date and/or time of the document.
+
+
+00190      Segment group 5:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in the NAD
+           segment.
+
+00200         CTA, Contact information
+              A segment to identify a person or department, and associated
+              function, to whom communications should be directed.
+
+00210         COM, Communication contact
+              A segment to identify a communication type and number for the
+              contact specified in the CTA segment.
+
+
+00220   Segment group 6:  BII-QTY-SG7-SG8
+        A group of segments providing the quantity determination for each
+        work item. A quantity determination can consist of several
+        "calculation lines".
+
+00230      BII, Structure identification
+           A segment to identify the item of work to which this quantity
+           determination applies.
+
+00240      QTY, Quantity
+           A segment giving control totals for this work item.
+
+
+00250      Segment group 7:  RFF-FTX-DTM
+           A segment group enabling a reference for the work item.
+
+00260         RFF, Reference
+              A segment giving a reference for the work item within the
+              whole project.
+
+00270         FTX, Free text
+              A segment giving a narrative description of the reference.
+
+00280         DTM, Date/time/period
+              A segment giving a date when the reference in this segment
+              group was related to project documentation.
+
+
+00290      Segment group 8:  LIN-GEI-FTX-SG9
+           A segment group giving the calculation lines and their values
+           for the work item identified in the BII segment.
+
+00300         LIN, Line item
+              A segment identifying a calculation line within a work item.
+
+00310         GEI, Processing information
+              A segment indicating how this calculation must be
+              interpreted.
+
+00320         FTX, Free text
+              A narrative description concerning the whole work item or
+              only the calculation given in segment group 9.
+
+
+00330         Segment group 9:  QTY-GEI-RFF-FTX
+              A segment group giving the details of the calculation lines.
+
+00340            QTY, Quantity
+                 A segment giving the values and factor of this calculation
+                 line.
+
+00350            GEI, Processing information
+                 A segment indicating, when necessary, mathematical signs
+                 for the values given in the QTY segment.
+
+00360            RFF, Reference
+                 A segment giving either:
+                 - the reference of an existing calculation line for this
+                 work item, identified in the BII segment, when its result
+                 is used in the current calculation line, or
+                 - when a standard formula is used, its reference number.
+
+00370            FTX, Free text
+                 Where a calculation line is not based upon a standard
+                 formula, the free and unstructured calculation and its
+                 values can be given in this segment.
+
+00380   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AUT Authentication result
+          BGM Beginning of message
+          BII Structure identification
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          LIN Line item
+          LOC Place/location identification
+          NAD Name and address
+          QTY Quantity
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   2     
+00040   AUT Authentication result                    C   2     
+00050   FTX Free text                                C   5     
+
+00060       ---- Segment group 1  ------------------ C   10---------------+
+00070   RFF Reference                                M   1                |
+00080   DTM Date/time/period                         C   5----------------+
+
+00090       ---- Segment group 2  ------------------ C   10---------------+
+00100   NAD Name and address                         M   1                |
+00110   LOC Place/location identification            C   99               |
+00120   FII Financial institution information        C   5                |
+                                                                          |
+00130       ---- Segment group 3  ------------------ C   10--------------+|
+00140   RFF Reference                                M   1               ||
+00150   DTM Date/time/period                         C   5---------------+|
+                                                                          |
+00160       ---- Segment group 4  ------------------ C   5---------------+|
+00170   DOC Document/message details                 M   1               ||
+00180   DTM Date/time/period                         C   5---------------+|
+                                                                          |
+00190       ---- Segment group 5  ------------------ C   5---------------+|
+00200   CTA Contact information                      M   1               ||
+00210   COM Communication contact                    C   5---------------++
+
+00220       ---- Segment group 6  ------------------ M   9999-------------+
+00230   BII Structure identification                 M   1                |
+00240   QTY Quantity                                 C   3                |
+                                                                          |
+00250       ---- Segment group 7  ------------------ C   99--------------+|
+00260   RFF Reference                                M   1               ||
+00270   FTX Free text                                C   1               ||
+00280   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00290       ---- Segment group 8  ------------------ C   999-------------+|
+00300   LIN Line item                                M   1               ||
+00310   GEI Processing information                   M   1               ||
+00320   FTX Free text                                C   1               ||
+                                                                         ||
+00330       ---- Segment group 9  ------------------ C   10-------------+||
+00340   QTY Quantity                                 M   1              |||
+00350   GEI Processing information                   C   1              |||
+00360   RFF Reference                                C   1              |||
+00370   FTX Free text                                C   1--------------+++
+00380   UNT Message trailer                          M   1     

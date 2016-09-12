@@ -1,0 +1,876 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                          Debts recovery message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : DEBREC
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG11 Social Security, Employment and Education
+
+
+
+                                  CONTENTS
+
+                          Debts recovery message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Debts recovery
+       message (DEBREC) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message to exchange detailed information relating to debts
+       recovery cases between appropriate parties (principal, enacting
+       party). This message may cover one or more event (e.g. submission,
+       status information) for one or more debts recovery cases.
+
+1.2    Field of application
+
+       The Debts recovery message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       A debts recovery is a process started by a party to recover money
+       from a debtor (e.g. social security contributions not paid by a
+       company).
+       
+       The debts recovery message may be used:
+       a. when issued by the principal, to:
+       - submit new debts recovery cases,
+       - update debts recovery cases,
+       - request processing actions for debts recovery cases,
+       - request status of debts recovery cases
+       b. when issued by the enacting party, to:
+       - acknowledge debts recovery case submissions,
+       - give status information about debts recovery cases,
+       - request information about debts recovery cases,
+       - request instructions for debts recovery cases,
+       - update debts recovery cases.
+       
+       In both cases (issuing party is principal or enacting party) each
+       message relates to one principal and one or more debt recovery
+       cases. Each debts recovery case relates to one debt. Each debt may
+       be split into one or more debt components (set of monetary amounts
+       related to the debts recovery case).
+       
+       The way the content of the message is used depends on and is
+       triggered by the possible events previously described (e.g.
+       submission, update of debts recovery cases).
+       
+       The DEBREC message is not meant to be used for invoicing or payment
+       activities.
+       
+       Note: It could happen that the principal of a debts recovery case is
+       the enacting party of another debts recovery case (e.g. case
+       transmission from one enacting party to another for geographical
+       reasons).
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Debts recovery message is DEBREC.
+
+        Note: Debts recovery messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 DEBREC
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        To identify the function of the message and the type of document it
+        corresponds to.
+
+00030   DTM, Date/time/period
+        To provide document related dates, times or periods such as the
+        creation date of the document.
+
+
+00040   Segment group 1:  PNA-ADR-RFF-EMP-COM-SG2-SG4
+        A group of segments used to provide information related to parties
+        involved at message level (e.g. issuing party, recipient, signing
+        party).
+
+00050      PNA, Party identification
+           To identify a party and describe its function at message level.
+
+00060      ADR, Address
+           To provide the address of the party.
+
+00070      RFF, Reference
+           To provide additional references related to the party. It could
+           be references used by another party (e.g. Identification of a
+           legal person at the Chamber of Commerce).
+
+00080      EMP, Employment details
+           To provide employment details in case the party is a natural
+           person (in opposite to legal person).
+
+00090      COM, Communication contact
+           To provide communication information related to the party
+           described in the PNA segment.
+
+
+00100      Segment group 2:  CTA-DTM-SG3
+           A group of segments used to provide contact information and
+           related communication numbers.
+
+00110         CTA, Contact information
+              To provide contact information (department or person) within
+              the party.
+
+00120         DTM, Date/time/period
+              To provide contact related dates, times or periods.
+
+
+00130         Segment group 3:  COM-DTM
+              A group of segments used to provide communication information
+              linked to validity periods.
+
+00140            COM, Communication contact
+                 To provide communication information related to the
+                 contact.
+
+00150            DTM, Date/time/period
+                 To provide communication and contact related dates, times
+                 or periods such as availability periods.
+
+
+00160      Segment group 4:  AUT-DTM
+           A group of segments used to describe authentication information
+           and dates related to the party.
+
+00170         AUT, Authentication result
+              To provide the authentication result related to the Party.
+
+00180         DTM, Date/time/period
+              To provide authentication related dates, times or periods
+              such as the date of authentication.
+
+
+00190   Segment group 5:  GIR-SG6-SG7
+        A group of segments used to describe a debts recovery case and to
+        provide related information.
+
+00200      GIR, Related identification numbers
+           To identify the debts recovery case (case identification
+           numbers: principal and the enacting party ones).
+           
+           Note: In the submission phase of a debts recovery case the only
+           case identification number known is the one assigned by the
+           principal.
+
+
+00210      Segment group 6:  ATT-DTM
+           A group of segments to provide attributes of the debts recovery
+           case and related dates, times or periods.
+
+00220         ATT, Attribute
+              To provide an attribute related to the debts recovery case
+              such as the type of debt to which the debts recovery case
+              relates.
+
+00230         DTM, Date/time/period
+              To provide attributes related dates, times or periods.
+
+
+00240      Segment group 7:  EVE-DTM-IRQ-FTX-SG8-SG9-SG15-SG17-SG22
+           A group of segments used to describe events related to the debts
+           recovery case processing and to provide related information such
+           as associated reasons and requirements.
+           
+           Note: It could be that more than one event is declared for one
+           case (e.g. information that part of the debt has been paid and
+           that the debtor is allowed to postpone the next payment).
+
+00250         EVE, Event
+              To identify an event.
+
+00260         DTM, Date/time/period
+              To provide dates related to the event such as the date when
+              the event occurred.
+
+00270         IRQ, Information required
+              To identify required information in relation with the event.
+
+00280         FTX, Free text
+              To provide additional textual information related to the
+              event.
+
+
+00290         Segment group 8:  ATT-DTM
+              A group of segments used to describe attributes and related
+              dates.
+
+00300            ATT, Attribute
+                 To provide an attribute related to an event such as extra
+                 instructions.
+
+00310            DTM, Date/time/period
+                 To provide dates, times or periods to the attribute.
+
+
+00320         Segment group 9:  PNA-RFF-ATT-EMP-PDI-FII-DTM-MOA-QTY-PCD-
+                                COM-SG10-SG12-SG14
+              A group of segments to identify all involved parties in debts
+              recovery cases and provide related information.
+
+00330            PNA, Party identification
+                 To identify a party and his function.
+
+00340            RFF, Reference
+                 To provide additional reference numbers used to identify
+                 the party.
+
+00350            ATT, Attribute
+                 To provide attributes related to the party such as the
+                 legal form or the legal status of a legal person.
+
+00360            EMP, Employment details
+                 To identify the employment or profession of the party.
+
+00370            PDI, Person demographic information
+                 To provide the marital status of the party when it is a
+                 natural person.
+
+00380            FII, Financial institution information
+                 To provide financial and banking information related to
+                 the party.
+
+00390            DTM, Date/time/period
+                 To provide dates, times or periods related to the party
+                 such as the date of birth for a natural person or the
+                 creation date for a legal person.
+
+00400            MOA, Monetary amount
+                 To provide monetary amounts related to the party such as
+                 the registered capital or share holding amount in the case
+                 of a legal person.
+
+00410            QTY, Quantity
+                 To provide quantities related to the party such as the
+                 number of employees for a legal person.
+
+00420            PCD, Percentage details
+                 To provide percentages related to the party such as the
+                 percentage of legal aid.
+
+00430            COM, Communication contact
+                 To provide communication information about the party.
+
+
+00440            Segment group 10: CTA-DTM-FTX-SG11
+                 A group of segments to describe contacts and related
+                 information of the party.
+
+00450               CTA, Contact information
+                    To provide contact information (department or person)
+                    of the party.
+
+00460               DTM, Date/time/period
+                    To provide contact related dates, times or periods.
+
+00470               FTX, Free text
+                    To provide additional textual information related to
+                    the contact.
+
+
+00480               Segment group 11: COM-DTM
+                    A group of segments to provide communication
+                    information about the contact.
+
+00490                  COM, Communication contact
+                       To provide communication information of the contact.
+
+00500                  DTM, Date/time/period
+                       To provide dates related to the communication
+                       information.
+
+
+00510            Segment group 12: ADR-DTM-SG13
+                 A group of segments to describe the addresses and related
+                 information of the party.
+
+00520               ADR, Address
+                    To provide the address of the party.
+
+00530               DTM, Date/time/period
+                    To provide dates related to the address.
+
+
+00540               Segment group 13: COM-DTM
+                    A group of segments to provide communication
+                    information related to the address of the party.
+
+00550                  COM, Communication contact
+                       To provide communication information related to the
+                       address of the party.
+
+00560                  DTM, Date/time/period
+                       To provide dates related to the address.
+
+
+00570            Segment group 14: REL-RFF
+                 A group of segments to describe the relationship between
+                 the party and other parties (also described in the
+                 message).
+
+00580               REL, Relationship
+                    To identify the type of relationship which exists
+                    between the currently described party and the party
+                    referenced (e.g. one party is the debtor, another party
+                    is a bank of the debtor).
+
+00590               RFF, Reference
+                    To provide the reference number of the party which has
+                    a relationship with the currently described party.
+
+
+00600         Segment group 15: DOC-DTM-FTX-ATT-MOA-SG16
+              A group of segments used to provide information about the
+              justifying documents related to the debts recovery case such
+              as titles.
+
+00610            DOC, Document/message details
+                 To describe the justifying document by providing its type
+                 and number.
+
+00620            DTM, Date/time/period
+                 To provide dates, times or periods related to the
+                 document.
+
+00630            FTX, Free text
+                 To provide textual information related to the document
+                 such as a summary.
+
+00640            ATT, Attribute
+                 To provide attributes related to the document such as
+                 scope, legal value or notification channel of the
+                 document.
+
+00650            MOA, Monetary amount
+                 To provide monetary amounts involved in the document.
+
+
+00660            Segment group 16: PNA-RFF-ADR
+                 A group of segments to identify parties related to the
+                 document such as issuing, certifying or third parties.
+
+00670               PNA, Party identification
+                    To identify a party and his function related to the
+                    document.
+
+00680               RFF, Reference
+                    To provide additional reference numbers used to
+                    identify the party.
+
+00690               ADR, Address
+                    To provide the address of the party.
+
+
+00700         Segment group 17: IMD-STS-FTX-ATT-SG18-SG19-SG21
+              A group of segments to describe goods related to the debt
+              recovery case. A distinction is made between:
+              - real estate goods (e.g. buildings, houses),
+              - other goods that can be described in a structured way (e.g.
+              car, boat),
+              - any good (e.g. computers) described in a textual way.
+              
+              Note: - Goods described in this group of segments are part of
+              the reason of the debts recovery case,
+              - An occurrence of this group of segments relates to one good
+              (e.g. a car, a computer),
+              - An occurrence of this group describes the concerned good
+              item either in a structured way, in a textual way (free text)
+              or by referencing a document which contains the description
+              of the good.
+
+00710            IMD, Item description
+                 To provide information related to the goods being
+                 described such as their type, reference or short
+                 description.
+
+00720            STS, Status
+                 To provide the status of goods within the debt recovery
+                 case such as to mention that the goods have been stolen.
+
+00730            FTX, Free text
+                 To provide a textual description of the goods.
+
+00740            ATT, Attribute
+                 To provide an attribute related to the goods being
+                 described such as a complement to its type.
+
+
+00750            Segment group 18: RFF-PIA-LOC-DTM-MEA-ATT-FTX
+                 A group of segments to give a structured description of
+                 any good except real estate goods which are described in a
+                 dedicated group of segments.
+
+00760               RFF, Reference
+                    To provide the reference of the goods being described
+                    such as the registration/license number for a car.
+
+00770               PIA, Additional product id
+                    To provide additional identification numbers of the
+                    goods such as the serial number for a car.
+
+00780               LOC, Place/location identification
+                    To provide location information of the goods.
+
+00790               DTM, Date/time/period
+                    To provide dates, times or periods related to the goods
+                    such as the year for a car.
+
+00800               MEA, Measurements
+                    To provide measures related to the goods such as the
+                    power of an engine in kW.
+
+00810               ATT, Attribute
+                    To provide attributes of the goods such the color or
+                    the type (private, commercial) of a car.
+
+00820               FTX, Free text
+                    To provide additional textual information about the
+                    Goods.
+
+
+00830            Segment group 19: ADR-SG20
+                 A group of segments to give a structured description of
+                 real estate goods.
+
+00840               ADR, Address
+                    To provide the address of a real estate good.
+
+
+00850               Segment group 20: RFF-FTX-MEA
+                    A group of segments to provide detailed information
+                    about a real estate good.
+
+00860                  RFF, Reference
+                       To provide a reference of the real estate good such
+                       as section numbers.
+
+00870                  FTX, Free text
+                       To provide additional textual information such as
+                       the nature, designation of the real estate good.
+
+00880                  MEA, Measurements
+                       To provide measures of the real estate good such as
+                       the size of a section.
+
+
+00890            Segment group 21: DOC-DTM-FTX
+                 A group of segments to refer to a document that contains a
+                 detailed description of the goods.
+
+00900               DOC, Document/message details
+                    To provide the reference and type of the document which
+                    details the goods.
+
+00910               DTM, Date/time/period
+                    To provide dates, times or periods related to the
+                    document such as the issuing date.
+
+00920               FTX, Free text
+                    To provide textual information related to the document
+                    such as a summary.
+
+
+00930         Segment group 22: GEI-DTM-FTX-SG23-SG24
+              A group of segments to describe all debt components (sets of
+              monetary amounts) related to the debts recovery case.
+              
+              Note: - Each occurrence of this group of segments corresponds
+              to one monetary component.
+              - When using this group of segments one of its sub-groups is
+              mandatory.
+
+00940            GEI, Processing information
+                 To provide the type of structure used for describing the
+                 debt component in the following sub-groups:
+                 - reference to a document which contains all relevant
+                 information,
+                 - all amounts are detailed in the message,
+                 - reference to a document and detailed amounts are both
+                 given in the message.
+
+00950            DTM, Date/time/period
+                 To provide dates, times or periods related to the debt
+                 component such as the beginning or end of a debt component
+                 period.
+
+00960            FTX, Free text
+                 To provide textual information about the debt component.
+
+
+00970            Segment group 23: DOC-DTM-FTX
+                 A group of segments used to provide information related to
+                 the document describing the debt component.
+
+00980               DOC, Document/message details
+                    To provide information about the document by providing
+                    its type and number.
+
+00990               DTM, Date/time/period
+                    To provide dates, times or periods related to the
+                    document such as the issuing date.
+
+01000               FTX, Free text
+                    To provide textual information about the document such
+                    as a summary.
+
+
+01010            Segment group 24: ARD-MOA-DTM-TAX-FTX-ATT-SG25-SG26
+                 A group of segments to provide a detailed description of
+                 all monetary amounts that are part of the debt component.
+
+01020               ARD, Monetary amount function
+                    To qualify the monetary amount within the debt
+                    component.
+
+01030               MOA, Monetary amount
+                    To identify the purpose of the monetary amount such as
+                    amount paid or revised amount.
+
+01040               DTM, Date/time/period
+                    To provide amount related dates, times or periods.
+
+01050               TAX, Duty/tax/fee details
+                    To provide tax information related to the amount.
+
+01060               FTX, Free text
+                    To provide textual information related to the amounts.
+
+01070               ATT, Attribute
+                    To provide attributes related to the amounts.
+
+
+01080               Segment group 25: PCD-DTM
+                    A group of segment to describe percentages related to
+                    the monetary amount.
+
+01090                  PCD, Percentage details
+                       To provide percentage information related to the
+                       amount.
+
+01100                  DTM, Date/time/period
+                       To provide a date, a time or a period related to the
+                       percentage.
+
+
+01110               Segment group 26: PAI-RFF
+                    To provide payment information related to the amounts.
+
+01120                  PAI, Payment instructions
+                       To provide payment details such as payment
+                       conditions, means or channel.
+
+01130                  RFF, Reference
+                       To provide references related to payment
+                       instructions such as credit transfer reference
+                       number.
+
+01140   CNT, Control total
+        To provide message control totals such as the total of all due
+        amounts in all debts recovery cases mentioned in the message.
+
+01150   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ARD Monetary amount function
+          ATT Attribute
+          AUT Authentication result
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          EMP Employment details
+          EVE Event
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          GIR Related identification numbers
+          IMD Item description
+          IRQ Information required
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          PAI Payment instructions
+          PCD Percentage details
+          PDI Person demographic information
+          PIA Additional product id
+          PNA Party identification
+          QTY Quantity
+          REL Relationship
+          RFF Reference
+          STS Status
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   5     
+
+00040       ---- Segment group 1  ------------------ C   99---------------+
+00050   PNA Party identification                     M   1                |
+00060   ADR Address                                  C   1                |
+00070   RFF Reference                                C   5                |
+00080   EMP Employment details                       C   1                |
+00090   COM Communication contact                    C   9                |
+                                                                          |
+00100       ---- Segment group 2  ------------------ C   9---------------+|
+00110   CTA Contact information                      M   1               ||
+00120   DTM Date/time/period                         C   1               ||
+                                                                         ||
+00130       ---- Segment group 3  ------------------ C   5--------------+||
+00140   COM Communication contact                    M   1              |||
+00150   DTM Date/time/period                         C   9--------------++|
+                                                                          |
+00160       ---- Segment group 4  ------------------ C   1---------------+|
+00170   AUT Authentication result                    M   1               ||
+00180   DTM Date/time/period                         C   1---------------++
+
+00190       ---- Segment group 5  ------------------ C   9999-------------+
+00200   GIR Related identification numbers           M   1                |
+                                                                          |
+00210       ---- Segment group 6  ------------------ C   1---------------+|
+00220   ATT Attribute                                M   1               ||
+00230   DTM Date/time/period                         C   3---------------+|
+                                                                          |
+00240       ---- Segment group 7  ------------------ C   999-------------+|
+00250   EVE Event                                    M   1               ||
+00260   DTM Date/time/period                         C   9               ||
+00270   IRQ Information required                     C   99              ||
+00280   FTX Free text                                C   99              ||
+                                                                         ||
+00290       ---- Segment group 8  ------------------ C   9--------------+||
+00300   ATT Attribute                                M   1              |||
+00310   DTM Date/time/period                         C   3--------------+||
+                                                                         ||
+00320       ---- Segment group 9  ------------------ C   99-------------+||
+00330   PNA Party identification                     M   1              |||
+00340   RFF Reference                                C   9              |||
+00350   ATT Attribute                                C   9              |||
+00360   EMP Employment details                       C   1              |||
+00370   PDI Person demographic information           C   1              |||
+00380   FII Financial institution information        C   9              |||
+00390   DTM Date/time/period                         C   9              |||
+00400   MOA Monetary amount                          C   5              |||
+00410   QTY Quantity                                 C   9              |||
+00420   PCD Percentage details                       C   1              |||
+00430   COM Communication contact                    C   1              |||
+                                                                        |||
+00440       ---- Segment group 10 ------------------ C   9-------------+|||
+00450   CTA Contact information                      M   1             ||||
+00460   DTM Date/time/period                         C   1             ||||
+00470   FTX Free text                                C   9             ||||
+                                                                       ||||
+00480       ---- Segment group 11 ------------------ C   5------------+||||
+00490   COM Communication contact                    M   1            |||||
+00500   DTM Date/time/period                         C   9------------++|||
+                                                                        |||
+00510       ---- Segment group 12 ------------------ C   5-------------+|||
+00520   ADR Address                                  M   1             ||||
+00530   DTM Date/time/period                         C   1             ||||
+                                                                       ||||
+00540       ---- Segment group 13 ------------------ C   1------------+||||
+00550   COM Communication contact                    M   1            |||||
+00560   DTM Date/time/period                         C   9------------++|||
+                                                                        |||
+00570       ---- Segment group 14 ------------------ C   1-------------+|||
+00580   REL Relationship                             M   1             ||||
+00590   RFF Reference                                C   1-------------++||
+                                                                         ||
+00600       ---- Segment group 15 ------------------ C   99-------------+||
+00610   DOC Document/message details                 M   1              |||
+00620   DTM Date/time/period                         C   9              |||
+00630   FTX Free text                                C   99             |||
+00640   ATT Attribute                                C   9              |||
+00650   MOA Monetary amount                          C   9              |||
+                                                                        |||
+00660       ---- Segment group 16 ------------------ C   9-------------+|||
+00670   PNA Party identification                     M   1             ||||
+00680   RFF Reference                                C   9             ||||
+00690   ADR Address                                  C   5-------------++||
+                                                                         ||
+00700       ---- Segment group 17 ------------------ C   999------------+||
+00710   IMD Item description                         M   1              |||
+00720   STS Status                                   C   1              |||
+00730   FTX Free text                                C   9              |||
+00740   ATT Attribute                                C   1              |||
+                                                                        |||
+00750       ---- Segment group 18 ------------------ C   1-------------+|||
+00760   RFF Reference                                M   1             ||||
+00770   PIA Additional product id                    C   1             ||||
+00780   LOC Place/location identification            C   2             ||||
+00790   DTM Date/time/period                         C   9             ||||
+00800   MEA Measurements                             C   9             ||||
+00810   ATT Attribute                                C   99            ||||
+00820   FTX Free text                                C   1-------------+|||
+                                                                        |||
+00830       ---- Segment group 19 ------------------ C   1-------------+|||
+00840   ADR Address                                  M   1             ||||
+                                                                       ||||
+00850       ---- Segment group 20 ------------------ C   9------------+||||
+00860   RFF Reference                                M   1            |||||
+00870   FTX Free text                                C   9            |||||
+00880   MEA Measurements                             C   1------------++|||
+                                                                        |||
+00890       ---- Segment group 21 ------------------ C   1-------------+|||
+00900   DOC Document/message details                 M   1             ||||
+00910   DTM Date/time/period                         C   9             ||||
+00920   FTX Free text                                C   9-------------++||
+                                                                         ||
+00930       ---- Segment group 22 ------------------ C   99-------------+||
+00940   GEI Processing information                   M   1              |||
+00950   DTM Date/time/period                         C   3              |||
+00960   FTX Free text                                C   9              |||
+                                                                        |||
+00970       ---- Segment group 23 ------------------ C   1-------------+|||
+00980   DOC Document/message details                 M   1             ||||
+00990   DTM Date/time/period                         C   9             ||||
+01000   FTX Free text                                C   9-------------+|||
+                                                                        |||
+01010       ---- Segment group 24 ------------------ C   99------------+|||
+01020   ARD Monetary amount function                 M   1             ||||
+01030   MOA Monetary amount                          C   2             ||||
+01040   DTM Date/time/period                         C   5             ||||
+01050   TAX Duty/tax/fee details                     C   9             ||||
+01060   FTX Free text                                C   9             ||||
+01070   ATT Attribute                                C   9             ||||
+                                                                       ||||
+01080       ---- Segment group 25 ------------------ C   9------------+||||
+01090   PCD Percentage details                       M   1            |||||
+01100   DTM Date/time/period                         C   1------------+||||
+                                                                       ||||
+01110       ---- Segment group 26 ------------------ C   9------------+||||
+01120   PAI Payment instructions                     M   1            |||||
+01130   RFF Reference                                C   9------------+++++
+01140   CNT Control total                            C   99    
+01150   UNT Message trailer                          M   1     

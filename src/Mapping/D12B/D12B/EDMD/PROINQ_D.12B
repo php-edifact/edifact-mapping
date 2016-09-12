@@ -1,0 +1,436 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                          Product inquiry message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PROINQ
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                          Product inquiry message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Product inquiry
+       message (PROINQ) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message enabling the sender to inquire on a product or a group of
+       products from a master product catalogue or file according to
+       criteria defined in the message.
+
+1.2    Field of application
+
+       The Product inquiry message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The message usually relates to a manufacturer and/or a supplier of
+       goods and a buyer, or their respective agents.
+       
+       The buyer may specify in the message the attributes of a product or
+       group of products for which additional information is required. This
+       will allow a manufacturer and/or supplier to send the requester only
+       information for those products the requester is specifically
+       interested in rather than the entire product catalogue.
+       
+       The Product inquiry message may request information in order to:
+       
+       - select a specific group or family or products from a supplier
+       entire product catalogue, e.g. a buyer requesting a supplier of
+       medical equipment all product information related to sterilized
+       products.
+       
+       - select a product or group of products according to attributes or
+       product characteristics as defined by the sender in the message,
+       e.g. a retailer requesting a clothing manufacturer to send product
+       information for all blue, white or stripped men's shirts, sizes
+       medium to extra-large.
+       
+       - determine the availability, lead-time and/or general commercial
+       and/or sales conditions for a specific product.
+       
+       The response to a product inquiry message will be either a
+       Price/sales catalogue (PRICAT) or Product data message (PRODAT).
+       
+       PROINQ shall not be used to request a code.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+       - All specified dates and/or times should be in the format
+       'ccyymmdd'/'hhmm' unless all parties involved in the transaction
+       agree that there is a functional requirement for an alternative
+       format.
+       
+       - Periods should be specified as whole numbers representing the
+       required period as indicated in the format qualifier (weeks, months,
+       etc.).
+       
+       - Where a choice of code or text is given only the code element
+       should be used wherever possible.
+       
+       - Conditional data that is not required in the message should not be
+       included.
+       
+       - Care must be taken that the segment qualifier in dependent
+       segments do not conflict with the segment qualifier of the trigger
+       segment of a group.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Product inquiry message is PROINQ.
+
+        Note: Product inquiry messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 PROINQ
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the Product
+        inquiry message by means of its number.
+
+00030   DTM, Date/time/period
+        A segment specifying general dates and, when relevant, times
+        related to the whole message. The Product Inquiry message
+        preparation date must be specified using this segment.
+
+00040   CUX, Currencies
+        A segment identifying the currency in which all product prices are
+        expressed in the Product inquiry message.
+
+
+00050   Segment group 1:  NAD-SG2
+        A group of segments identifying the parties with associated
+        information relevant to the whole Product inquiry message.
+
+00060      NAD, Name and address
+           A segment identifying names and addresses of the parties, in
+           coded or clear form, and their functions relevant to the Product
+           inquiry message. Identification of the requesting party and the
+           party asked for information is mandatory for the Product inquiry
+           message. It is recommended that where possible only the coded
+           form of the party ID should be specified e.g. the sender and
+           receiver of the report are known to each other, thus only the
+           coded ID is required, but when a new address might have to be
+           clearly specified, this should be done preferably in structured
+           format.
+
+
+00070      Segment group 2:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in NAD segment.
+
+00080         CTA, Contact information
+              A segment to identify a person or department, and their
+              function, to whom communications should be directed.
+
+00090         COM, Communication contact
+              A segment to identify a communications type and number for
+              the contact specified in the CTA segment.
+
+
+00100   Segment group 3:  RFF-DTM
+        A group of segments for giving references and where necessary,
+        their dates, relating to the whole message e.g. contract number.
+
+00110      RFF, Reference
+           A segment identifying the reference by its number and where
+           appropriate a line number within the document.
+
+00120      DTM, Date/time/period
+           A segment specifying the date and/or time related to the
+           reference.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00130   Segment group 4:  LIN-SG5-SG6
+        A group of segments identifying the product or attributes of the
+        product for which information is required.
+
+00140      LIN, Line item
+           A segment specifying the inquiry request line and if available,
+           the identification of the product or service for which the
+           inquiry is being made.
+
+
+00150      Segment group 5:  CCI-CAV-MEA
+           A group of segments providing product characteristics and values
+           or measurements associated with the characteristics. Repeating
+           CCI segments provide additional characteristics e.g. colour,
+           size, pattern (AND linkage).
+           Repeating CCI segments provide a choice of characteristic values
+           (OR linkage).
+
+00160         CCI, Characteristic/class id
+              A segment to identify a product characteristic and/or the
+              characteristic name and characteristic relevance for the
+              business process.
+
+00170         CAV, Characteristic value
+              A segment to specify product characteristic by value in
+              either coded form or in free format.
+
+00180         MEA, Measurements
+              A segment indicating characteristic values being physical
+              measurements (including measurable quantities and
+              percentages) related to specific product characteristic (e.g.
+              voltage, percentage of material contained) and where relevant
+              measurement ranges.
+              The MEA segment is repeatable to allow the indication of a
+              number of applicable measurable values, for example one
+              electric appliance may be suitable for different voltages:
+              110V, 220V, 240V and 380V.
+
+
+00190      Segment group 6:  IRQ-PIA-IMD-MEA-NAD-PGI-DTM-SG7
+           A group of segments specifying the type of requested information
+           and optionally product identification(s), measurements, parties
+           related to the product, dates and price ranges.
+
+00200         IRQ, Information required
+              A segment specifying the type of information requested by the
+              Product inquiry message, e.g. a price/sales catalogue,
+              allowances and charges information, delivery lead times, etc.
+
+00210         PIA, Additional product id
+              A segment providing either additional identification to the
+              product specified in the LIN segment or providing a
+              substitute product identification.
+
+00220         IMD, Item description
+              A segment for describing the product or service inquired.
+              This segment should be used for products that cannot be fully
+              identified by an article number.
+
+00230         MEA, Measurements
+              A segment specifying the physical measurements for a product.
+
+00240         NAD, Name and address
+              A segment identifying the name and address of a party related
+              to the product for which an inquiry is being made, e.g.
+              supplier, ultimate customer, etc.
+
+00250         PGI, Product group information
+              A segment specifying product or price group information
+              requested for the current product.
+
+00260         DTM, Date/time/period
+              A segment identifying relevant dates or periods for a
+              product, e.g. availability date, lead time, delivery date,
+              etc.
+
+
+00270         Segment group 7:  PRI-RNG
+              A group of segments providing pricing information and price
+              ranges for the product identified in the detail section.
+
+00280            PRI, Price details
+                 A segment to specify the price type and amount, e.g.
+                 proposed purchase price, suggested retail price, etc.
+
+00290            RNG, Range details
+                 A segment providing range information related to prices,
+                 e.g. price range between 1000 - 1500 BEF.
+
+00300   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          IMD Item description
+          IRQ Information required
+          LIN Line item
+          MEA Measurements
+          NAD Name and address
+          PGI Product group information
+          PIA Additional product id
+          PRI Price details
+          RFF Reference
+          RNG Range details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+00040   CUX Currencies                               C   1     
+
+00050       ---- Segment group 1  ------------------ M   99---------------+
+00060   NAD Name and address                         M   1                |
+                                                                          |
+00070       ---- Segment group 2  ------------------ C   9---------------+|
+00080   CTA Contact information                      M   1               ||
+00090   COM Communication contact                    C   9---------------++
+
+00100       ---- Segment group 3  ------------------ C   9----------------+
+00110   RFF Reference                                M   1                |
+00120   DTM Date/time/period                         C   9----------------+
+
+            DETAIL SECTION
+
+00130       ---- Segment group 4  ------------------ M   9999-------------+
+00140   LIN Line item                                M   1                |
+                                                                          |
+00150       ---- Segment group 5  ------------------ C   999-------------+|
+00160   CCI Characteristic/class id                  M   1               ||
+00170   CAV Characteristic value                     C   10              ||
+00180   MEA Measurements                             C   10--------------+|
+                                                                          |
+00190       ---- Segment group 6  ------------------ C   9999------------+|
+00200   IRQ Information required                     M   1               ||
+00210   PIA Additional product id                    C   10              ||
+00220   IMD Item description                         C   10              ||
+00230   MEA Measurements                             C   10              ||
+00240   NAD Name and address                         C   10              ||
+00250   PGI Product group information                C   9               ||
+00260   DTM Date/time/period                         C   5               ||
+                                                                         ||
+00270       ---- Segment group 7  ------------------ C   10-------------+||
+00280   PRI Price details                            M   1              |||
+00290   RNG Range details                            C   1--------------+++
+00300   UNT Message trailer                          M   1     

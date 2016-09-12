@@ -1,0 +1,691 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Order status report message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : OSTRPT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 4
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                        Order status report message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Order status
+       report message (OSTRPT) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message between a buyer or buyer's agent and a seller or seller's
+       agent reporting status information on the current status of a
+       previously sent order(s). This may be a reply to an order status
+       enquiry or a report as agreed between the partners.
+
+1.2    Field of application
+
+       The Order status report message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message covers one seller and one buyer and may relate to:
+       
+       - one enquiry
+       
+       - one or more purchase orders
+       
+       - specific lines within purchase orders
+       
+       The status can not trigger any action by the receiver of the
+       message. For example, if the status is 'ready for shipment', it can
+       not be used as a despatch advice information. A DESADV message, or
+       an equivalent document, has to be sent as well.
+       
+       This message can only be used to provide status information.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+       - All specified dates/times should be in the format
+       'ccyymmdd'/'hhmm' unless all parties involved in the transaction
+       agree that there is a functional requirement for an alternative
+       format. Periods should be specified as whole numbers representing
+       the required period as indicated in the format qualifier (weeks,
+       months, etc.)
+       
+       - Where a choice of code or text is given only the code element
+       should be used wherever possible. 
+       
+       - Conditional data that is required in the message should be
+       omitted.
+       
+       - Care must be taken that the segment qualifier in dependent
+       segments does not conflict with the segment qualifier of the trigger
+       segment of a group.
+       
+       - Free text information within the message should be avoided as this
+       inhibits automatic processing.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Order status report message is OSTRPT.
+
+        Note: Order status report messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 OSTRPT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the order
+        status report by means of its type and number and when necessary
+        it's function.
+
+00030   DTM, Date/time/period
+        A segment specifying general dates and, when relevant, times
+        related to the whole message. The segment must be specified at
+        least once to identify the request date.
+
+00040   RFF, Reference
+        A segment identifying which enquiry document this message is
+        responding to.
+
+00050   IRQ, Information required
+        To indicate which information is being transmitted as requested in
+        the Order status enquiry message.
+
+00060   FTX, Free text
+        A segment for free text information, in coded or clear form, used
+        when additional information is needed but cannot be accommodated
+        within other segments. In computer to computer exchanges such text
+        will normally require the receiver to process this segment
+        manually.
+
+
+00070   Segment group 1:  NAD-LOC-SG2
+        A group of segments identifying the parties with associated
+        information.
+
+00080      NAD, Name and address
+           A segment identifying names and addresses of the parties, in
+           coded or clear form, and their functions relevant to the
+           message. Identification of the sender (normally the seller) is
+           mandatory for a report. It is recommended that where possible
+           only the coded form of the party ID should be specified.
+
+00090      LOC, Place/location identification
+           This segment is used to identify a location related to the
+           current party, e.g. place of delivery.
+
+
+00100      Segment group 2:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in the NAD
+           segment.
+
+00110         CTA, Contact information
+              A segment to identify a person or department, and their
+              function, to whom communication should be directed.
+
+00120         COM, Communication contact
+              A segment to identify a communications type and number for
+              the contact specified in the CTA segment.
+
+
+00130   Segment group 3:  DOC-DTM-CNT-RFF-TOD-SG4-SG6
+        A group of segments providing details of the individual order(s).
+
+00140      DOC, Document/message details
+           A segment giving references to the order(s) reported. Other
+           references may also be given, e.g. seller's reference number.
+
+00150      DTM, Date/time/period
+           A segment specifying the date/time related to the reference.
+
+00160      CNT, Control total
+           This segment is used to provide control totals related to the
+           current document.
+
+00170      RFF, Reference
+           This segment is used to specify a reference related to the
+           current document.
+
+00180      TOD, Terms of delivery or transport
+           This segment is used to specify terms of delivery applicable to
+           the current document.
+
+
+00190      Segment group 4:  STS-DTM-PCD-QTY-SG5
+           A group of segments providing status details related to the
+           individual order.
+
+00200         STS, Status
+              A segment giving the status of the referred order.
+
+00210         DTM, Date/time/period
+              A segment specifying the date/time related to the order
+              status.
+
+00220         PCD, Percentage details
+              A segment used to indicate the percentage of completion
+              related to the order status.
+
+00230         QTY, Quantity
+              A segment used to indicate the quantity of completion related
+              to the order status.
+
+
+00240         Segment group 5:  NAD-LOC
+              This segment group is used to specify name and address, and
+              location information related to the current status.
+
+00250            NAD, Name and address
+                 This segment is used to specify name and address and their
+                 related function, either by code and/or structure.
+
+00260            LOC, Place/location identification
+                 This segment is used to specify location information.
+
+
+00270      Segment group 6:  LIN-PIA-IMD-MEA-GIN-RCS-FTX-SG7-SG8-SG16
+           A group of segments providing details of the individual order(s)
+           lines being reported.
+
+00280         LIN, Line item
+              A segment used to identify a line item.
+
+00290         PIA, Additional product id
+              A segment providing additional identification on the product
+              specified in the LIN segment. E.g. To give seller's item
+              number, EAN number, technical specification number.
+
+00300         IMD, Item description
+              A segment for describing the product as well as product
+              characteristic. This segment should be used for products or
+              services that cannot be fully identified by a product code or
+              article number.
+
+00310         MEA, Measurements
+              A segment enabling the physical measurements of the ordered
+              item to be specified where this is required for full
+              identification of the product. Any measurements must refer to
+              the product in its unpacked form e.g. thickness of plastic
+              film, length, weight, etc.
+
+00320         GIN, Goods identity number
+              A segment providing identity numbers to be applied to the
+              items being queried e.g. serial numbers for assembled
+              equipment.
+
+00330         RCS, Requirements and conditions
+              A segment to enable industry or national requirements to be
+              specified.
+
+00340         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              used when additional information is needed but cannot be
+              accommodated within other segments. In computer to computer
+              exchanges such text will normally require the receiver to
+              process this segment manually.
+
+
+00350         Segment group 7:  RFF-DTM
+              A group of segments giving references related to the order
+              line(s) and, where relevant, their dates.
+
+00360            RFF, Reference
+                 A segment giving references to seller's reference number,
+                 contract numbers, etc.
+
+00370            DTM, Date/time/period
+                 A segment specifying the date/time related to the
+                 reference.
+
+
+00380         Segment group 8:  STS-DTM-PCD-QTY-SG9-SG11-SG12-SG13-SG14
+              A group of segments providing status details and related
+              information for a line item.
+
+00390            STS, Status
+                 A segment giving the status of the referred order line.
+
+00400            DTM, Date/time/period
+                 A segment specifying the date and/or time related to the
+                 line item status.
+
+00410            PCD, Percentage details
+                 A segment used to indicate the percentage of completion
+                 related to the line item status.
+
+00420            QTY, Quantity
+                 A segment used to indicate the quantity of completion
+                 related to the line item status.
+
+
+00430            Segment group 9:  NAD-RFF-LOC-SG10
+                 A group of segments identifying the parties with
+                 associated information, relevant to the line item only.
+
+00440               NAD, Name and address
+                    A segment identifying names and addresses of parties,
+                    in coded or clear form, and their functions relevant to
+                    the item being queried. It is recommended that where
+                    possible only the coded form of the party ID should be
+                    specified. e.g. the buyer and seller are known to each
+                    other, thus only the coded ID is required, but the
+                    consignee or delivery address may vary and would have
+                    to be clearly specified, preferably in structured
+                    format.
+
+00450               RFF, Reference
+                    A segment identifying the reference relevant to a party
+                    by its number and where appropriate a line number
+                    within a document.
+
+00460               LOC, Place/location identification
+                    This segment is used to specify location information
+                    related to the NAD.
+
+
+00470               Segment group 10: CTA-COM
+                    A group of segments giving contact details of the
+                    specific person or department within the party
+                    identified in the NAD segment.
+
+00480                  CTA, Contact information
+                       A segment to identify a person or department, and
+                       their function, to whom communication should be
+                       directed for the party.
+
+00490                  COM, Communication contact
+                       A segment to identify a communication type and
+                       number for the contact specified in the CTA segment.
+
+
+00500            Segment group 11: TDT-LOC
+                 A group of segments identifying the mode and means of
+                 transport, location and relevant dates and times for
+                 transportation, relating to the line item.
+
+00510               TDT, Transport information
+                    A segment specifying the mode, means and identification
+                    of the transport for the line item being queried.
+
+00520               LOC, Place/location identification
+                    A segment identifying the locations relevant to the
+                    transport specified in the TDT segment.
+
+
+00530            Segment group 12: TOD-LOC
+                 A group of segments indicating the terms of delivery which
+                 are relevant to the line item.
+
+00540               TOD, Terms of delivery or transport
+                    A segment identifying the delivery terms to be used.
+
+00550               LOC, Place/location identification
+                    A segment indicating the location relevant to the
+                    delivery terms specified in the TOD segment.
+
+
+00560            Segment group 13: EQD-HAN
+                 A group of segments providing information relating to
+                 equipment identification and ownership, handling and
+                 notification of hazardous materials, relating to the line
+                 item.
+
+00570               EQD, Equipment details
+                    A segment to define fixed information regarding
+                    equipment to be used in conjunction with the line item
+                    being queried, and if required, to indicate
+                    responsibility for supply of the equipment e.g. a
+                    container identification.
+
+00580               HAN, Handling instructions
+                    A segment providing information on required handling of
+                    materials and additionally, if required, identifying
+                    hazardous materials in the item being queried.
+
+
+00590            Segment group 14: PAC-QTY-SG15
+                 A group of segments identifying the packaging, physical
+                 dimensions, and marks and numbers for goods referenced in
+                 the line or sub-line item.
+
+00600               PAC, Package
+                    A segment specifying the number of packages and the
+                    physical type of packaging for the line item e.g.
+                    pallet type.
+
+00610               QTY, Quantity
+                    A segment specifying the maximum quantity number of
+                    packages which can be stacked safely on another and/or
+                    the number of items normally contained within the
+                    package.
+
+
+00620               Segment group 15: PCI-RFF-GIN
+                    A group of segments specifying the markings and labels
+                    on individual physical units.
+
+00630                  PCI, Package identification
+                       A segment specifying markings and labels used on
+                       individual physical units (packages) described in
+                       the PAC segment.
+
+00640                  RFF, Reference
+                       A segment identifying the master label number.
+
+00650                  GIN, Goods identity number
+                       This segment is used to provide identification
+                       numbers, either as single numbers or ranges, which
+                       are marked on the packaging of the current product.
+
+
+00660         Segment group 16: SCC-SG17
+              A group of segments specifying the delivery schedules and
+              related locations, quantities and dates/times of a specific
+              delivery.
+
+00670            SCC, Scheduling conditions
+                 A segment specifying the type and status of the schedule.
+
+
+00680            Segment group 17: LOC-DTM-QTY-SG18
+                 A group of segments providing quantity details and related
+                 dates/times of a specific delivery.
+
+00690               LOC, Place/location identification
+                    A segment indicating the location to which part of the
+                    consignment is to be delivered.
+
+00700               DTM, Date/time/period
+                    A segment specifying the date and/or time related to
+                    the product quantities.
+
+00710               QTY, Quantity
+                    A segment identifying the product quantities.
+
+
+00720               Segment group 18: STS-DTM-PCD-QTY-NAD
+                    A group of segments providing status details or a
+                    specific delivery.
+
+00730                  STS, Status
+                       A segment giving the status of the referred
+                       delivery.
+
+00740                  DTM, Date/time/period
+                       A segment specifying the date and/or time related to
+                       the status of the specific delivery.
+
+00750                  PCD, Percentage details
+                       A segment used to indicate the percentage of
+                       completion related to the status of the specific
+                       delivery.
+
+00760                  QTY, Quantity
+                       A segment used to indicate the quantity of
+                       completion related to the status of the specific
+                       delivery.
+
+00770                  NAD, Name and address
+                       A segment identifying names and addresses of
+                       parties, in coded or clear form, and their functions
+                       related to the status reported.
+
+00780   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          EQD Equipment details
+          FTX Free text
+          GIN Goods identity number
+          HAN Handling instructions
+          IMD Item description
+          IRQ Information required
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          NAD Name and address
+          PAC Package
+          PCD Percentage details
+          PCI Package identification
+          PIA Additional product id
+          QTY Quantity
+          RCS Requirements and conditions
+          RFF Reference
+          SCC Scheduling conditions
+          STS Status
+          TDT Transport information
+          TOD Terms of delivery or transport
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   5     
+00040   RFF Reference                                C   1     
+00050   IRQ Information required                     C   1     
+00060   FTX Free text                                C   99    
+
+00070       ---- Segment group 1  ------------------ M   99---------------+
+00080   NAD Name and address                         M   1                |
+00090   LOC Place/location identification            C   999              |
+                                                                          |
+00100       ---- Segment group 2  ------------------ C   5---------------+|
+00110   CTA Contact information                      M   1               ||
+00120   COM Communication contact                    C   5---------------++
+
+00130       ---- Segment group 3  ------------------ M   999--------------+
+00140   DOC Document/message details                 M   1                |
+00150   DTM Date/time/period                         C   5                |
+00160   CNT Control total                            C   9                |
+00170   RFF Reference                                C   99               |
+00180   TOD Terms of delivery or transport           C   99               |
+                                                                          |
+00190       ---- Segment group 4  ------------------ C   99--------------+|
+00200   STS Status                                   M   1               ||
+00210   DTM Date/time/period                         C   5               ||
+00220   PCD Percentage details                       C   1               ||
+00230   QTY Quantity                                 C   1               ||
+                                                                         ||
+00240       ---- Segment group 5  ------------------ C   99-------------+||
+00250   NAD Name and address                         M   1              |||
+00260   LOC Place/location identification            C   9--------------++|
+                                                                          |
+00270       ---- Segment group 6  ------------------ C   999999----------+|
+00280   LIN Line item                                M   1               ||
+00290   PIA Additional product id                    C   99              ||
+00300   IMD Item description                         C   99              ||
+00310   MEA Measurements                             C   5               ||
+00320   GIN Goods identity number                    C   99              ||
+00330   RCS Requirements and conditions              C   5               ||
+00340   FTX Free text                                C   99              ||
+                                                                         ||
+00350       ---- Segment group 7  ------------------ C   999------------+||
+00360   RFF Reference                                M   1              |||
+00370   DTM Date/time/period                         C   1--------------+||
+                                                                         ||
+00380       ---- Segment group 8  ------------------ C   99-------------+||
+00390   STS Status                                   M   1              |||
+00400   DTM Date/time/period                         C   5              |||
+00410   PCD Percentage details                       C   1              |||
+00420   QTY Quantity                                 C   1              |||
+                                                                        |||
+00430       ---- Segment group 9  ------------------ C   99------------+|||
+00440   NAD Name and address                         M   1             ||||
+00450   RFF Reference                                C   5             ||||
+00460   LOC Place/location identification            C   9             ||||
+                                                                       ||||
+00470       ---- Segment group 10 ------------------ C   5------------+||||
+00480   CTA Contact information                      M   1            |||||
+00490   COM Communication contact                    C   5------------++|||
+                                                                        |||
+00500       ---- Segment group 11 ------------------ C   5-------------+|||
+00510   TDT Transport information                    M   1             ||||
+00520   LOC Place/location identification            C   1-------------+|||
+                                                                        |||
+00530       ---- Segment group 12 ------------------ C   5-------------+|||
+00540   TOD Terms of delivery or transport           M   1             ||||
+00550   LOC Place/location identification            C   1-------------+|||
+                                                                        |||
+00560       ---- Segment group 13 ------------------ C   5-------------+|||
+00570   EQD Equipment details                        M   1             ||||
+00580   HAN Handling instructions                    C   5-------------+|||
+                                                                        |||
+00590       ---- Segment group 14 ------------------ C   1-------------+|||
+00600   PAC Package                                  M   1             ||||
+00610   QTY Quantity                                 C   1             ||||
+                                                                       ||||
+00620       ---- Segment group 15 ------------------ C   10-----------+||||
+00630   PCI Package identification                   M   1            |||||
+00640   RFF Reference                                C   99           |||||
+00650   GIN Goods identity number                    C   99-----------+++||
+                                                                         ||
+00660       ---- Segment group 16 ------------------ C   99-------------+||
+00670   SCC Scheduling conditions                    M   1              |||
+                                                                        |||
+00680       ---- Segment group 17 ------------------ C   99------------+|||
+00690   LOC Place/location identification            M   1             ||||
+00700   DTM Date/time/period                         C   5             ||||
+00710   QTY Quantity                                 C   1             ||||
+                                                                       ||||
+00720       ---- Segment group 18 ------------------ C   99-----------+||||
+00730   STS Status                                   M   1            |||||
+00740   DTM Date/time/period                         C   5            |||||
+00750   PCD Percentage details                       C   1            |||||
+00760   QTY Quantity                                 C   1            |||||
+00770   NAD Name and address                         C   1------------+++++
+00780   UNT Message trailer                          M   1     

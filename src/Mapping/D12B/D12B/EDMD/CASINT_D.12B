@@ -1,0 +1,445 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+    Request for legal administration action in civil proceedings message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : CASINT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG11 Social Security, Employment and Education
+
+
+
+                                  CONTENTS
+
+    Request for legal administration action in civil proceedings message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Request for legal
+       administration action in civil proceedings message (CASINT) to be
+       used in Electronic Data Interchange (EDI) between trading partners
+       involved in administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A request for lodgement of data to commence or enforce a civil
+       proceeding.
+
+1.2    Field of application
+
+       The Request for legal administration action in civil proceedings
+       message may be used for both national and international
+       applications. It is based on universal practice related to
+       administration, commerce and transport, and is not dependent on the
+       type of business or industry.
+
+1.3    Principles
+
+       - Request for legal administration action provides detailed
+       information about a civil dispute among a number of parties.
+       
+       - The requested action is on behalf of one or more complaining
+       parties.
+        
+       - The requested action is against one or more defending parties.
+        
+       - The dispute may involve multiple amounts of money.
+       
+       - The dispute may be defined by a range of dates.
+        
+       - The requested action may be a registration of a civil order from
+       another jurisdiction or a request for an order to be made.
+        
+       - An order may involve multiple amounts of money and terms of
+       payment may be specified.
+       
+       - The request for lodgement of data is governed by the rules of
+       court in the relevant jurisdiction.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Request for legal administration action
+        in civil proceedings message is CASINT.
+
+        Note: Request for legal administration action in civil proceedings
+        messages conforming to this document must contain the following
+        data in segment UNH, composite S009:
+
+        Data element  0065 CASINT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment for unique identification of the message type, its
+        function, and the reference number for the request.
+
+00030   DTM, Date/time/period
+        A segment identifying the relevant dates and times associated with
+        the action to be initiated in a court or tribunal, e.g. date of
+        incident, date of hearing.
+
+00040   LOC, Place/location identification
+        A segment identifying the jurisdiction and court or tribunal
+        location for initiating the action.
+
+00050   RFF, Reference
+        A segment to specify a particular reference associated with the
+        request when required, e.g. reference number for a legal case.
+
+00060   ATT, Attribute
+        A segment specifying relevant attributes for the requested action,
+        e.g. the mode of trial, interpreter requirement.
+
+00070   FTX, Free text
+        A segment for free text information in coded or clear form, to give
+        further clarification to the request for legal action, e.g. the
+        type of complaint, the nature of complaint.
+
+
+00080   Segment group 1:  NAD-LOC
+        A group of segments identifying an address relevant to the request
+        for legal action in a court or tribunal.
+
+00090      NAD, Name and address
+           A segment identifying the address of the incident that gave rise
+           to the request for legal action.
+
+00100      LOC, Place/location identification
+           A segment giving more specific location information (if
+           appropriate) of the address specified in the NAD segment within
+           this group, e.g. property name, building sub-section.
+
+
+00110   Segment group 2:  MOA-DTM-FCA
+        A group of segments specifying relevant details of the monetary
+        values associated with the request for legal action.
+
+00120      MOA, Monetary amount
+           A segment identifying a monetary amount involved in the dispute.
+
+00130      DTM, Date/time/period
+           A segment identifying a date associated with the monetary
+           amount, e.g. date of a part payment.
+
+00140      FCA, Financial charges allocation
+           A segment specifying the allocation of charge amount, e.g.
+           interest payable.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00150   UNS, Section control
+        A service segment placed at the start of the detail section to
+        avoid segment collision.
+
+
+00160   Segment group 3:  NAD-SEQ-LOC-CTA-COM-RFF-ATT-PRC-MEA-DTM-EMP-FTX
+        A group of segments identifying the particulars of a party involved
+        in the request for legal action.
+
+00170      NAD, Name and address
+           A segment identifying the name and address of a party.
+
+00180      SEQ, Sequence details
+           A segment to provide for the allocation of a sequence number
+           (referenced in the GIR of Segment group 4) to a party involved
+           in the request.
+
+00190      LOC, Place/location identification
+           A segment giving more specific location information (if
+           appropriate) of the address specified in the NAD segment within
+           this group, e.g. property name, building sub-section.
+
+00200      CTA, Contact information
+           A segment specifying contact information.
+
+00210      COM, Communication contact
+           A segment specifying communication contact channel and number
+           for a party.
+
+00220      RFF, Reference
+           A segment to provide a reference identification of a party, e.g.
+           driver licence number.
+
+00230      ATT, Attribute
+           A segment to identify a specific attribute of a party, e.g. sex.
+
+00240      PRC, Process identification
+           A segment specifying the relevant process, e.g. the method of
+           delivery (service) of legal documents.
+
+00250      MEA, Measurements
+           A segment to specify certain measurements associated with the
+           performance of the process, e.g. distance travelled.
+
+00260      DTM, Date/time/period
+           A segment to identify a specific date associated with a party,
+           e.g. date of birth.
+
+00270      EMP, Employment details
+           A segment to identify employment details of a party, e.g.
+           occupation.
+
+00280      FTX, Free text
+           A segment for free text information in coded or clear form, to
+           give further clarification when required of a party, e.g.
+           'trading as' and other legal descriptions.
+
+
+00290   Segment group 4:  DOC-GIR-PYT-DTM-FTX-SG5-SG6
+        A group of segments identifying the particular details applicable
+        to a court or tribunal order.
+
+00300      DOC, Document/message details
+           A segment to provide relevant descriptive information relating
+           to a court or tribunal order (certificate).
+
+00310      GIR, Related identification numbers
+           A segment to identify a group of parties (via the sequence
+           numbers allocated in Segment group 3) related to an order, e.g.
+           all the parties that the order is on behalf of, or all the
+           parties to which the order applies.
+
+00320      PYT, Payment terms
+           A segment identifying the terms of payment, e.g. by instalment.
+
+00330      DTM, Date/time/period
+           A segment identifying the relevant date, time or period
+           associated with the order identified in the DOC segment, e.g.
+           date order made, instalment periods.
+
+00340      FTX, Free text
+           A segment for free text information in coded or clear form, to
+           give further clarification when required to a court or tribunal
+           order.
+
+
+00350      Segment group 5:  NAD-LOC
+           A group of segments specifying an address relevant to the order
+           identified in the DOC segment.
+
+00360         NAD, Name and address
+              A segment identifying the address where the order was issued.
+
+00370         LOC, Place/location identification
+              A segment giving more specific location information (if
+              appropriate) of the address specified in the NAD segment
+              within this group, e.g. property name, building sub-section.
+
+
+00380      Segment group 6:  MOA-DTM-FCA
+           A group of segments specifying relevant details of the monetary
+           values associated with the order identified in the DOC segment.
+
+00390         MOA, Monetary amount
+              A segment identifying a monetary amount involved in the
+              order.
+
+00400         DTM, Date/time/period
+              A segment identifying a date associated with the monetary
+              amount, e.g. date of each instalment.
+
+00410         FCA, Financial charges allocation
+              A segment specifying the allocation of charge amount, e.g.
+              interest payable.
+
+00420   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ATT Attribute
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          EMP Employment details
+          FCA Financial charges allocation
+          FTX Free text
+          GIR Related identification numbers
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAD Name and address
+          PRC Process identification
+          PYT Payment terms
+          RFF Reference
+          SEQ Sequence details
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   9     
+00040   LOC Place/location identification            C   9     
+00050   RFF Reference                                C   9     
+00060   ATT Attribute                                C   9     
+00070   FTX Free text                                C   9     
+
+00080       ---- Segment group 1  ------------------ C   1----------------+
+00090   NAD Name and address                         M   1                |
+00100   LOC Place/location identification            C   9----------------+
+
+00110       ---- Segment group 2  ------------------ C   99---------------+
+00120   MOA Monetary amount                          M   1                |
+00130   DTM Date/time/period                         C   1                |
+00140   FCA Financial charges allocation             C   1----------------+
+
+            DETAIL SECTION
+
+00150   UNS Section control                          M   1     
+
+00160       ---- Segment group 3  ------------------ M   99---------------+
+00170   NAD Name and address                         M   1                |
+00180   SEQ Sequence details                         C   1                |
+00190   LOC Place/location identification            C   9                |
+00200   CTA Contact information                      C   1                |
+00210   COM Communication contact                    C   9                |
+00220   RFF Reference                                C   9                |
+00230   ATT Attribute                                C   9                |
+00240   PRC Process identification                   C   1                |
+00250   MEA Measurements                             C   9                |
+00260   DTM Date/time/period                         C   9                |
+00270   EMP Employment details                       C   9                |
+00280   FTX Free text                                C   9----------------+
+
+00290       ---- Segment group 4  ------------------ C   99---------------+
+00300   DOC Document/message details                 M   1                |
+00310   GIR Related identification numbers           C   99               |
+00320   PYT Payment terms                            C   1                |
+00330   DTM Date/time/period                         C   9                |
+00340   FTX Free text                                C   9                |
+                                                                          |
+00350       ---- Segment group 5  ------------------ C   1---------------+|
+00360   NAD Name and address                         M   1               ||
+00370   LOC Place/location identification            C   9---------------+|
+                                                                          |
+00380       ---- Segment group 6  ------------------ C   99--------------+|
+00390   MOA Monetary amount                          M   1               ||
+00400   DTM Date/time/period                         C   1               ||
+00410   FCA Financial charges allocation             C   1---------------++
+00420   UNT Message trailer                          M   1     

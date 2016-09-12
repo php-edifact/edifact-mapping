@@ -1,0 +1,376 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Request for document message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : REQDOC
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 4
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                        Request for document message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Request for
+       document message (REQDOC) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message to enable a party request the sending, or re-sending, of
+       data, either as a document or message, or in some other agreed form.
+
+1.2    Field of application
+
+       The Request for document message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       The message is used to request a document to be sent, either
+       electronically or otherwise. Its use should be limited to requesting
+       documents, for which there is no other more specific message already
+       provided (e.g. Request for Quotation).
+       
+       Parties can request documents on their own behalf, or on behalf of
+       third parties.
+       
+       The message can be used to request individual documents by identity,
+       or by specifying product and/or other related data to retrieve all
+       relevant documents.
+       
+       Typical uses of the Request for Document Message are to request
+       information from a data base (e.g. requesting a copy of a test
+       certificate), requesting catalogue data, and requesting statements
+       of account.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Request for document message is REQDOC.
+
+        Note: Request for document messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 REQDOC
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the request
+        for document by means of its type and number.
+
+00030   DOC, Document/message details
+        A segment indicating the type of document that is required, how
+        many copies, and in what form it is required, e.g. EDI, mail, etc.
+
+00040   DTM, Date/time/period
+        A segment specifying general dates and, when relevant, times
+        related to the whole message. The request preparation date must be
+        specified using this segment.
+
+00050   FTX, Free text
+        A segment with free text information, in coded or clear form, used
+        when additional information is needed but cannot be accommodated
+        within other segments. In computer to computer exchanges such text
+        will normally require the receiver to process this segment
+        manually.
+
+
+00060   Segment group 1:  RFF-DTM
+        A group of segments for giving references and where necessary,
+        their dates, relating to the whole message.
+
+00070      RFF, Reference
+           A segment identifying the reference by its number and where
+           appropriate a line number within the document.
+
+00080      DTM, Date/time/period
+           A segment specifying the date/time related to the reference.
+
+
+00090   Segment group 2:  NAD-LOC-SG3
+        A group of segments identifying the parties with associated
+        information.
+
+00100      NAD, Name and address
+           A segment identifying names and addresses of the parties, in
+           coded or clear form, and their functions relevant to the request
+           for document message. Identification of the sender of the
+           request and the recipient is mandatory for the request for
+           document message. It is recommended that where possible only the
+           coded form of the party ID should be specified e.g. the sender
+           and receiver of the report are known to each other, thus only
+           the coded ID is required, but when a new address might have to
+           be clearly specified, e.g. where the document is to be sent to a
+           third party, this should be done preferably in structured
+           format.
+
+00110      LOC, Place/location identification
+           A segment to identify a location within the above name and
+           address.
+
+
+00120      Segment group 3:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in the NAD
+           segment.
+
+00130         CTA, Contact information
+              A segment to identify a person or department, and their
+              function, to whom communications should be directed.
+
+00140         COM, Communication contact
+              A segment to identify a communications type and number for
+              the contact specified in the CTA segment.
+
+
+00150   Segment group 4:  LIN-GEI-DTM-PIA-IMD-MEA-SG5-SG6
+        A group of segments providing details of what information is
+        required to be included in the document.
+        There must be at least one occurrence of Segment group 4 within a
+        request for document message.
+
+00160      LIN, Line item
+           A segment identifying the line item of the message by the line
+           number and optionally identifying the product or service to be
+           included in the document/message.
+
+00170      GEI, Processing information
+           A segment allowing the user to specify any special processing
+           requirements, e.g. that all related documents are also required.
+
+00180      DTM, Date/time/period
+           A segment identifying the date that pertain to the document,
+           e.g. original date, required by date.
+
+00190      PIA, Additional product id
+           A segment providing additional identification of the product to
+           which the document pertains.
+
+00200      IMD, Item description
+           A segment used to identify the product by free format or semi-
+           structured description. Used when no appropriate code is
+           available in the PIA segment to fully describe the product.
+
+00210      MEA, Measurements
+           A segment to describe the physical measurements of the required
+           product, e.g. length, height, weight.
+
+
+00220      Segment group 5:  RFF-DTM
+           A group of segments providing references, and if required
+           applicable dates, pertaining to the above document.
+
+00230         RFF, Reference
+              A segment to identify applicable references to be included in
+              the document, e.g. order number, certificate number.
+
+00240         DTM, Date/time/period
+              A segment to provide dates/times applicable to the above
+              references.
+
+
+00250      Segment group 6:  NAD-LOC-SG7
+           A group of segments allowing documents to be individually
+           addressed to either particular places, and or particular people
+           within locations.
+
+00260         NAD, Name and address
+              A segment to identify other parties requiring the document.
+
+00270         LOC, Place/location identification
+              A segment to further qualify the above address.
+
+
+00280         Segment group 7:  CTA-COM
+              A group of segments to identify individual contacts relevant
+              to the above party.
+
+00290            CTA, Contact information
+                 A segment to specify contact person or department.
+
+00300            COM, Communication contact
+                 A segment to specify the communication channel and
+                 identifier for the above person / department.
+
+00310   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DOC Document/message details
+          DTM Date/time/period
+          FTX Free text
+          GEI Processing information
+          IMD Item description
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          NAD Name and address
+          PIA Additional product id
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DOC Document/message details                 M   1     
+00040   DTM Date/time/period                         M   9     
+00050   FTX Free text                                C   20    
+
+00060       ---- Segment group 1  ------------------ C   99---------------+
+00070   RFF Reference                                M   1                |
+00080   DTM Date/time/period                         C   5----------------+
+
+00090       ---- Segment group 2  ------------------ M   99---------------+
+00100   NAD Name and address                         M   1                |
+00110   LOC Place/location identification            C   9                |
+                                                                          |
+00120       ---- Segment group 3  ------------------ C   9---------------+|
+00130   CTA Contact information                      M   1               ||
+00140   COM Communication contact                    C   9---------------++
+
+00150       ---- Segment group 4  ------------------ M   999--------------+
+00160   LIN Line item                                M   1                |
+00170   GEI Processing information                   C   9                |
+00180   DTM Date/time/period                         C   9                |
+00190   PIA Additional product id                    C   9                |
+00200   IMD Item description                         C   9                |
+00210   MEA Measurements                             C   9                |
+                                                                          |
+00220       ---- Segment group 5  ------------------ C   99--------------+|
+00230   RFF Reference                                M   1               ||
+00240   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00250       ---- Segment group 6  ------------------ C   99--------------+|
+00260   NAD Name and address                         M   1               ||
+00270   LOC Place/location identification            C   9               ||
+                                                                         ||
+00280       ---- Segment group 7  ------------------ C   9--------------+||
+00290   CTA Contact information                      M   1              |||
+00300   COM Communication contact                    C   9--------------+++
+00310   UNT Message trailer                          M   1     

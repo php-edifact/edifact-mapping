@@ -1,0 +1,872 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                      Announcement for returns message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : RETANN
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 4
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                      Announcement for returns message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Announcement for
+       returns message (RETANN) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message by which a party announces to another party details of
+       goods for return due to specified reasons (e.g. returns for repair,
+       returns at end of leasing period, returns because of damage).
+
+1.2    Field of application
+
+       The Announcement for returns message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message may be used by the message sender to request credit for
+       goods, or the replacement of goods from the message recipient.
+       
+       This message should stimulate the message recipient to instruct on
+       how the named goods should be returned, destroyed, or disposed of.
+       
+       In the case where the recipient of the announcement refuses to
+       accept the return of goods the sender would expect to receive
+       notification of this decision and also instructions on what should
+       happen instead of the return. This process will usually be handled
+       using the Instruction for Return message.
+       
+       The announcement for returns can be used by a party to inform
+       another party on the requested return of:
+       
+       -    goods received in bad condition;
+       -    goods received but not ordered;
+       -    goods for repair;
+       -    goods which have to be returned due to the end of a leasing
+       contract;
+       -    goods which have exceeded their expiry date without being sold;
+       -    goods on commission;
+       -    goods from sale on approval;
+       -    sale or return goods;
+       -    returnable transport or packaging containers;
+       -    obsolete goods.
+       
+       The announcement for returns may be used to return received goods
+       for which receipt of delivery may already have been acknowledged by
+       way of the Receiving Advice message (where this message is being
+       used), e.g., the faulty goods are only discovered on opening a
+       container for which a receiving advice has been issued.
+       
+       The announcement for returns may also be used to specify additional
+       information regarding the return of goods such as handling
+       instructions or hazardous material information.
+       
+       The recipient of the announcement for returns is requested to decide
+       the final disposition of the goods for return:
+       
+       -    whether the goods shall be returned, repaired, destroyed, or
+       disposed of;
+       -    which transport means and mode should be used;
+       -    on or by which date the return should take place;
+       -    which party is responsible for the cost of return.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+       All specified dates/times should be in the format 'ccyymmdd' /'hhmm'
+       unless all parties involved in the transaction agree that there is a
+       functional requirement for an alternative format. Periods should be
+       specified as whole numbers representing the required period as
+       indicated in the format qualifier (weeks, months, etc.)
+       
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+       
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken that the segment qualifier in dependent segments
+       do not conflict with the segment qualifier of the trigger segment of
+       a group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing. It is only used when additional
+       information that cannot be accommodated within the other segments is
+       required.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Announcement for returns message is
+        RETANN.
+
+        Note: Announcement for returns messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 RETANN
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the
+        Announcement For Returns message.
+
+00030   DTM, Date/time/period
+        A segment specifying the dates, and when relevant, the times
+        related to the whole message. The segment must be specified at
+        least once to specify the message date as allocated by the sender.
+
+00040   FTX, Free text
+        A segment with free text information, in coded or clear form, used
+        when additional information is needed but cannot be accommodated
+        within other segments. In computer to computer exchanges such text
+        will normally require the receiver to process this segment
+        manually.
+
+00050   CUX, Currencies
+        A segment to specify currencies and relevant details for the rate
+        of exchange.
+
+
+00060   Segment group 1:  DOC-DTM
+        A group of segments identifying documents which the message sender
+        requests to receive, and if necessary when he wishes to receive
+        them, as a result of the announcement of returns message, e.g.
+        returns instruction, credit note.
+
+00070      DOC, Document/message details
+           A segment by which the sender of the message indicates to the
+           receiver what type of document or message is required in return
+           (e.g. returns instruction, credit note).
+
+00080      DTM, Date/time/period
+           A segment specifying the date and where necessary the time
+           related to the current document. This segment may be used to
+           indicate required document receipt dates, times, or periods.
+
+
+00090   Segment group 2:  RFF-DTM
+        A group of segments providing references and where necessary
+        associated dates related to the current message, e.g. despatch note
+        number, invoice, etc.
+
+00100      RFF, Reference
+           A segment for identifying a reference by its type and number.
+
+00110      DTM, Date/time/period
+           A segment specifying the date and where necessary the time of
+           the reference.
+
+
+00120   Segment group 3:  NAD-LOC-SG4-SG5
+        A group of segments identifying the parties involved in the
+        announcement for returns message and any associated information.
+
+00130      NAD, Name and address
+           A segment to identify a party name and address, either by coded
+           identification or in clear form. It is recommended that where
+           possible only the coded form of the party identification should
+           be specified, e.g. the Buyer and Seller are known to each other,
+           thus only the coded identification is required. It is
+           recommended that the party announcing the return and the party
+           to whom the announcement is directed are identified in this
+           segment.
+
+00140      LOC, Place/location identification
+           A segment to allow the further identification of locations
+           related to the current party, e.g. the location of the goods for
+           return.
+
+
+00150      Segment group 4:  RFF-DTM
+           A group of segments for specifying any references related to the
+           current.
+
+00160         RFF, Reference
+              A segment for identifying a reference related to the current
+              party by its type and number.
+
+00170         DTM, Date/time/period
+              A segment specifying the date and where necessary the time of
+              the reference.
+
+
+00180      Segment group 5:  CTA-COM
+           A group of segments identifying the contact person or department
+           for the current party.
+
+00190         CTA, Contact information
+              A segment to identify a person or department and their
+              function, to whom communications should be directed.
+
+00200         COM, Communication contact
+              A segment specifying the communication channel and number for
+              the specified contact.
+
+
+00210   Segment group 6:  TOD-LOC
+        A group of segments indicating the terms of delivery for the whole
+        announcement for returns.
+
+00220      TOD, Terms of delivery or transport
+           A segment identifying the delivery terms used, e.g. INCOTERMS
+           code could be used to specify the delivery terms.
+
+00230      LOC, Place/location identification
+           A segment identifying locations relevant to the delivery terms.
+
+
+00240   Segment group 7:  TDT-LOC-DTM
+        A group of segments identifying the mode and means of transport,
+        location and relevant dates and times for transportation, relating
+        to the whole announcement for returns.
+
+00250      TDT, Transport information
+           A segment specifying the mode and means of the transport for the
+           goods being announced for return.
+
+00260      LOC, Place/location identification
+           A segment identifying locations relevant to the transport
+           details.
+
+00270      DTM, Date/time/period
+           A segment identifying any dates associated with the transport
+           details.
+
+
+00280   Segment group 8:  EQD-MEA-FTX
+        A group of segments to specify equipment necessary for transport.
+
+00290      EQD, Equipment details
+           A segment to specify equipment, equipment size and type used in
+           the transport.
+
+00300      MEA, Measurements
+           A segment to specify measurements associated with the equipment,
+           such as weight.
+
+00310      FTX, Free text
+           A segment to specify processable supplementary information
+           associated with the equipment.
+
+
+00320   Segment group 9:  ALC-ALI-DTM-MOA-SG10
+        A group of segments specifying allowances and, or charges for the
+        whole announcement for returns message. Information specified in
+        this segment group may be used to identify charges which will be
+        imposed or allowances which will be requested by the message sender
+        to cover the cost of storing the goods for return. Additional
+        information, dates and times, monetary amounts and tax details
+        which are related to the allowances or charges may also be
+        specified.
+
+00330      ALC, Allowance or charge
+           A segment identifying the charge or allowance and where
+           necessary its calculation sequence.
+
+00340      ALI, Additional information
+           A segment indicating that allowance or charge specified is
+           subject to special conditions owing to origin, customs
+           preference or commercial factors.
+
+00350      DTM, Date/time/period
+           A segment specifying any dates and, or times which are related
+           to the allowances or charges.
+
+00360      MOA, Monetary amount
+           A segment to specify any monetary amounts related to the current
+           allowances or charges.
+
+
+00370      Segment group 10: TAX-MOA
+           A group of segments specifying tax related information for the
+           allowances or charges.
+
+00380         TAX, Duty/tax/fee details
+              A segment specifying the tax type, category and rate, or
+              exemption, related to the allowances or charges.
+
+00390         MOA, Monetary amount
+              A segment specifying amounts related to the tax details for
+              the allowance or charge.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00400   Segment group 11: LIN-PIA-IMD-MEA-DTM-PRI-FTX-LOC-MOA-SG12-SG13-
+                          SG14-SG15-SG16-SG17-SG18-SG20-SG21-SG22
+        A group of segments providing details of the individual items which
+        are being announced for return. There must be at least one
+        occurrence of this segment group within an announcement for
+        returns.
+
+00410      LIN, Line item
+           A segment identifying a line item by the line item number and
+           configuration level, and additionally, identifying the return
+           product. Other product identification numbers, e.g. supplier
+           product number etc., can be specified within the following PIA
+           segment.
+
+00420      PIA, Additional product id
+           A segment to provide additional identification to the product
+           specified in the LIN segment (e.g. Harmonized System number).
+
+00430      IMD, Item description
+           A segment for describing the current line item as well as
+           product characteristic. This segment should be used for products
+           that cannot be fully identified by an article number.
+
+00440      MEA, Measurements
+           A segment enabling the physical measurements of the current item
+           to be specified where this is required for full identification
+           of the product.
+
+00450      DTM, Date/time/period
+           A segment specifying date and or time, or period details
+           relating to the current line item only, e.g. receipt date,
+           requested pick-up date.
+
+00460      PRI, Price details
+           A segment to provide the details of the price of the product
+           which is being announced for return.
+
+00470      FTX, Free text
+           A segment with free text information, in coded or clear form,
+           used when additional information is needed but cannot be
+           accommodated within other segments. In computer to computer
+           exchanges such text will normally require the receiver to
+           process this segment manually.
+
+00480      LOC, Place/location identification
+           A segment to allow the further identification of locations
+           related to the current line item, e.g. location of product for
+           return.
+
+00490      MOA, Monetary amount
+           A segment specifying any monetary amounts relating to the
+           product, e.g. credit note amount.
+
+
+00500      Segment group 12: TAX-MOA
+           A group of segments specifying tax related information for the
+           currently identified product, e.g. tax amount, etc.
+
+00510         TAX, Duty/tax/fee details
+              A segment specifying the tax type, category and rate, or
+              exemption, for the current product.
+
+00520         MOA, Monetary amount
+              A segment specifying amounts related to the tax details for
+              the current product.
+
+
+00530      Segment group 13: QTY-CDI
+           A group of segments specifying quantities for return and states
+           related to the quantities being returned, e.g. never ordered,
+           damaged.
+
+00540         QTY, Quantity
+              A segment identifying the product quantities, e.g. requested
+              return quantity.
+
+00550         CDI, Physical or logical state
+              A segment to indicate the physical or logical state of the
+              quantity detailed in the QTY segment for the current line
+              item, e.g. never ordered, damaged.
+
+
+00560      Segment group 14: DOC-DTM
+           A group of segments identifying documents which the message
+           sender requests to receive, and if necessary when he wishes to
+           receive them, for the current line item only as a result of the
+           announcement of returns message, e.g. returns instruction,
+           credit note.
+
+00570         DOC, Document/message details
+              A segment by which the sender of the message indicates to the
+              receiver what type of document or message is required in
+              return (e.g. returns instruction, credit note).
+
+00580         DTM, Date/time/period
+              A segment specifying the date and where necessary the time
+              related to the current document.
+
+
+00590      Segment group 15: RFF-DTM
+           A group of segments for specifying any references relating to
+           the current line item only, e.g. invoice number, etc.
+
+00600         RFF, Reference
+              A segment for the inclusion of any references related to the
+              current line item.
+
+00610         DTM, Date/time/period
+              A segment specifying the date and where necessary the time of
+              the reference.
+
+
+00620      Segment group 16: DGS-QTY-FTX
+           A group of segments giving information about dangerous goods.
+
+00630         DGS, Dangerous goods
+              A segment to indicate the class of dangerous goods.
+
+00640         QTY, Quantity
+              A segment to specify quantity of the given dangerous goods.
+
+00650         FTX, Free text
+              A segment to describe dangerous goods.
+
+
+00660      Segment group 17: HAN-FTX
+           A group of segments identifying handling instructions relevant
+           to the current line item only.
+
+00670         HAN, Handling instructions
+              A segment providing information on required handling and
+              notification of hazardous materials relevant to the current
+              line item only.
+
+00680         FTX, Free text
+              A segment with free text information relevant to the handling
+              instructions, in coded or clear form, used when additional
+              handling information is needed. In computer to computer
+              exchanges such text will normally require the receiver to
+              process this segment manually.
+
+
+00690      Segment group 18: PAC-SG19
+           A group of segments identifying packaging, marks and numbers,
+           date and time information for the product which is announced for
+           return.
+
+00700         PAC, Package
+              A segment specifying the number and type of the packages and,
+              or physical units and the type of packaging for the current
+              line item.
+
+
+00710         Segment group 19: PCI-DTM-GIN
+              A group of segments specifying markings, labels, and packing
+              numbers for the current package.
+
+00720            PCI, Package identification
+                 A segment specifying markings and or labels used on the
+                 current package.
+
+00730            DTM, Date/time/period
+                 A segment for specifying date and or time, or period
+                 related to the package.
+
+00740            GIN, Goods identity number
+                 A segment providing the identity numbers of the current
+                 package.
+
+
+00750      Segment group 20: TDT-LOC-DTM
+           A group of segments identifying the mode and means of transport,
+           location and relevant dates and times for transportation,
+           relating to the current line item.
+
+00760         TDT, Transport information
+              A segment specifying the mode and means of the transport for
+              the current line item.
+
+00770         LOC, Place/location identification
+              A segment identifying locations relevant to the transport
+              details.
+
+00780         DTM, Date/time/period
+              A segment identifying any dates associated with the transport
+              details.
+
+
+00790      Segment group 21: EQD-MEA-FTX
+           A group of segments to specify equipment related to the
+           transport of the current line item.
+
+00800         EQD, Equipment details
+              A segment to specify equipment, equipment size and type used
+              in the transport.
+
+00810         MEA, Measurements
+              A segment to specify measurements, other than dimensions,
+              associated with the equipment, such as weight.
+
+00820         FTX, Free text
+              A segment to specify processable supplementary information
+              associated with the equipment.
+
+
+00830      Segment group 22: ALC-ALI-DTM-MOA-PCD-SG23
+           A group of segments specifying allowances and or charges for the
+           current line item only. Information specified in this segment
+           group may be used to identify charges which will be imposed or
+           allowances which will be requested by the message sender to
+           cover the cost of storing the goods for return. Additional
+           information, dates and times, monetary amounts and tax details
+           which are related to the allowances or charges may also be
+           specified.
+
+00840         ALC, Allowance or charge
+              A segment identifying the charge or allowance and where
+              necessary its calculation sequence.
+
+00850         ALI, Additional information
+              A segment indicating that allowance or charge specified is
+              subject to special conditions owing to origin, customs
+              preference or commercial factors.
+
+00860         DTM, Date/time/period
+              A segment specifying any dates and, or times which are
+              related to the allowances or charges.
+
+00870         MOA, Monetary amount
+              A segment to specify any monetary amounts related to the
+              current allowances or charges.
+
+00880         PCD, Percentage details
+              A segment to specify any percentage values related to the
+              current allowances or charges.
+
+
+00890         Segment group 23: TAX-MOA
+              A group of segments specifying tax related information for
+              the allowances or charges.
+
+00900            TAX, Duty/tax/fee details
+                 A segment specifying the tax type, category and rate, or
+                 exemption, related to the allowances or charges.
+
+00910            MOA, Monetary amount
+                 A segment specifying amounts related to the tax details
+                 for the allowance or charge.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00920   UNS, Section control
+        A segment placed at the start of the summary section to separate
+        the detail and summary sections.
+
+00930   CNT, Control total
+        A segment by which control totals may be provided by the sender for
+        checking by the receiver.
+
+00940   MOA, Monetary amount
+        A segment to specify total monetary amounts for the complete
+        message, e.g. credit note amount.
+
+
+00950   Segment group 24: TAX-MOA
+        A group of segments specifying tax totals for the announcement for
+        returns message.
+
+00960      TAX, Duty/tax/fee details
+           A segment specifying the tax type to be summarized.
+
+00970      MOA, Monetary amount
+           A segment specifying the summary amount for the tax specified.
+
+00980   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ALC Allowance or charge
+          ALI Additional information
+          BGM Beginning of message
+          CDI Physical or logical state
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DGS Dangerous goods
+          DOC Document/message details
+          DTM Date/time/period
+          EQD Equipment details
+          FTX Free text
+          GIN Goods identity number
+          HAN Handling instructions
+          IMD Item description
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAD Name and address
+          PAC Package
+          PCD Percentage details
+          PCI Package identification
+          PIA Additional product id
+          PRI Price details
+          QTY Quantity
+          RFF Reference
+          TAX Duty/tax/fee details
+          TDT Transport information
+          TOD Terms of delivery or transport
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   9     
+00040   FTX Free text                                C   9     
+00050   CUX Currencies                               C   9     
+
+00060       ---- Segment group 1  ------------------ C   9----------------+
+00070   DOC Document/message details                 M   1                |
+00080   DTM Date/time/period                         C   9----------------+
+
+00090       ---- Segment group 2  ------------------ C   9----------------+
+00100   RFF Reference                                M   1                |
+00110   DTM Date/time/period                         C   9----------------+
+
+00120       ---- Segment group 3  ------------------ C   9----------------+
+00130   NAD Name and address                         M   1                |
+00140   LOC Place/location identification            C   999              |
+                                                                          |
+00150       ---- Segment group 4  ------------------ C   9---------------+|
+00160   RFF Reference                                M   1               ||
+00170   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00180       ---- Segment group 5  ------------------ C   9---------------+|
+00190   CTA Contact information                      M   1               ||
+00200   COM Communication contact                    C   9---------------++
+
+00210       ---- Segment group 6  ------------------ C   9----------------+
+00220   TOD Terms of delivery or transport           M   1                |
+00230   LOC Place/location identification            C   9----------------+
+
+00240       ---- Segment group 7  ------------------ C   9----------------+
+00250   TDT Transport information                    M   1                |
+00260   LOC Place/location identification            C   9                |
+00270   DTM Date/time/period                         C   9----------------+
+
+00280       ---- Segment group 8  ------------------ C   9----------------+
+00290   EQD Equipment details                        M   1                |
+00300   MEA Measurements                             C   9                |
+00310   FTX Free text                                C   9----------------+
+
+00320       ---- Segment group 9  ------------------ C   9----------------+
+00330   ALC Allowance or charge                      M   1                |
+00340   ALI Additional information                   C   9                |
+00350   DTM Date/time/period                         C   9                |
+00360   MOA Monetary amount                          C   9                |
+                                                                          |
+00370       ---- Segment group 10 ------------------ C   9---------------+|
+00380   TAX Duty/tax/fee details                     M   1               ||
+00390   MOA Monetary amount                          C   9---------------++
+
+            DETAIL SECTION
+
+00400       ---- Segment group 11 ------------------ M   9999-------------+
+00410   LIN Line item                                M   1                |
+00420   PIA Additional product id                    C   9                |
+00430   IMD Item description                         C   9                |
+00440   MEA Measurements                             C   9                |
+00450   DTM Date/time/period                         C   9                |
+00460   PRI Price details                            C   9                |
+00470   FTX Free text                                C   9                |
+00480   LOC Place/location identification            C   9                |
+00490   MOA Monetary amount                          C   9                |
+                                                                          |
+00500       ---- Segment group 12 ------------------ C   9---------------+|
+00510   TAX Duty/tax/fee details                     M   1               ||
+00520   MOA Monetary amount                          C   9---------------+|
+                                                                          |
+00530       ---- Segment group 13 ------------------ C   9---------------+|
+00540   QTY Quantity                                 M   1               ||
+00550   CDI Physical or logical state                C   9---------------+|
+                                                                          |
+00560       ---- Segment group 14 ------------------ C   9---------------+|
+00570   DOC Document/message details                 M   1               ||
+00580   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00590       ---- Segment group 15 ------------------ C   9---------------+|
+00600   RFF Reference                                M   1               ||
+00610   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00620       ---- Segment group 16 ------------------ C   9---------------+|
+00630   DGS Dangerous goods                          M   1               ||
+00640   QTY Quantity                                 C   9               ||
+00650   FTX Free text                                C   9---------------+|
+                                                                          |
+00660       ---- Segment group 17 ------------------ C   9---------------+|
+00670   HAN Handling instructions                    M   1               ||
+00680   FTX Free text                                C   9---------------+|
+                                                                          |
+00690       ---- Segment group 18 ------------------ C   9---------------+|
+00700   PAC Package                                  M   1               ||
+                                                                         ||
+00710       ---- Segment group 19 ------------------ C   9--------------+||
+00720   PCI Package identification                   M   1              |||
+00730   DTM Date/time/period                         C   9              |||
+00740   GIN Goods identity number                    C   9--------------++|
+                                                                          |
+00750       ---- Segment group 20 ------------------ C   9---------------+|
+00760   TDT Transport information                    M   1               ||
+00770   LOC Place/location identification            C   9               ||
+00780   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00790       ---- Segment group 21 ------------------ C   9---------------+|
+00800   EQD Equipment details                        M   1               ||
+00810   MEA Measurements                             C   9               ||
+00820   FTX Free text                                C   9---------------+|
+                                                                          |
+00830       ---- Segment group 22 ------------------ C   9---------------+|
+00840   ALC Allowance or charge                      M   1               ||
+00850   ALI Additional information                   C   9               ||
+00860   DTM Date/time/period                         C   9               ||
+00870   MOA Monetary amount                          C   9               ||
+00880   PCD Percentage details                       C   9               ||
+                                                                         ||
+00890       ---- Segment group 23 ------------------ C   9--------------+||
+00900   TAX Duty/tax/fee details                     M   1              |||
+00910   MOA Monetary amount                          C   1--------------+++
+
+            SUMMARY SECTION
+
+00920   UNS Section control                          M   1     
+00930   CNT Control total                            C   9     
+00940   MOA Monetary amount                          C   9     
+
+00950       ---- Segment group 24 ------------------ C   9----------------+
+00960   TAX Duty/tax/fee details                     M   1                |
+00970   MOA Monetary amount                          C   9----------------+
+00980   UNT Message trailer                          M   1     

@@ -1,0 +1,1445 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+              Insurance claim assessment and reporting message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : ICASRP
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG8 Insurance
+
+
+
+                                  CONTENTS
+
+              Insurance claim assessment and reporting message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Insurance claim
+       assessment and reporting message (ICASRP) to be used in Electronic
+       Data Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+       The Insurance claim assessment and reporting message may be used for
+       both national and international applications. It is based on
+       universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.1    Functional definition
+
+       The Insurance claim assessment and reporting message is exchanged
+       between all parties involved in the claims handling process. Claims
+       handling parties include insurers, intermediaries, assessors and
+       repairers. The claims handling process includes the functions, claim
+       notification, assessment request, assessment report, repair
+       estimate, repair authorisation, claim progress reporting.
+
+1.2    Field of application
+
+       The Insurance claim assessment and reporting message may be used for
+       both national and international applications. It is based on
+       universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       Each message contains information relating to one insurance claim
+       against one policy only, although any related claims may be
+       referenced. A claim results from one incident, although that
+       incident may have many sub-incidents. For example the claim may
+       result from storm damage, but that may include lightning strike,
+       flood damage and fire damage caused by electrical short circuit. The
+       message supports all types of claims, including motor, household,
+       commercial. The specific type of object which is the subject of the
+       claim is specified within the risk object details group. A generic
+       'component' group is positioned below the risk object and is used to
+       describe information relating to the risk object. The actual content
+       of the component group will vary depending on the type of risk
+       object, for example if the object is a motor vehicle the components
+       may include modifications and security devices, but if the object is
+       a house the components may include construction and occupancy. The
+       type of component is specified by a code within the component
+       details segment which identifies a type of entity from the insurance
+       data model. The re-usable component group is also used elsewhere in
+       the message to provide the flexibility needed to describe the other
+       main information blocks, such as incident, party and insurance
+       history. Inside each of the segment groups an identity segment is
+       positioned to allow the provision of unique identifiers for each
+       instance of the group. The identifiers may then appear inside other
+       segment groups as 'keys' that provide a relational link e.g. linking
+       each object to its appropriate insurance cover, linking parties to
+       documents or linking child objects to their parent object. Some of
+       the information in the message appears twice, in a 'before' and
+       'after' state. The insurer will provide information on cover as
+       defined in the policy, together with any conditions and limitations
+       for example there may be a minimum and maximum excess amount written
+       into the policy. The information is then used by the person
+       assessing the claim to derive the covers and amounts that apply to
+       the circumstances of the claim e.g. the amount of excess to be paid
+       on this claim
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Insurance claim assessment and reporting
+        message is ICASRP.
+
+        Note: Insurance claim assessment and reporting messages conforming
+        to this document must contain the following data in segment UNH,
+        composite S009:
+
+        Data element  0065 ICASRP
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        To specify the function of the message, such as claim notification,
+        assessment request, assessment report.
+
+00030   ATT, Attribute
+        To specify the type of transaction within the specified message
+        function.
+
+00040   CUX, Currencies
+        To specify the currency of the transaction.
+
+00050   DTM, Date/time/period
+        To specify dates related to the transaction, such as the date
+        processed.
+
+00060   QRS, Query and response
+        To provide the response to coded questions related to the
+        transaction.
+
+00070   FTX, Free text
+        To provide additional text information related to the transaction,
+        such as transaction description.
+
+
+00080   Segment group 1:  PNA-SG2
+        A group of segments to specify parties related to the transaction
+        communication together with any related references.
+
+00090      PNA, Party identification
+           To specify one party related to the business transaction, such
+           as message originator, ultimate recipient and software supplier.
+
+
+00100      Segment group 2:  RFF-DTM
+           A group of segments to identify components of software used in
+           the application system that created the business transaction
+           contained within this message, together with any relevant dates.
+
+00110         RFF, Reference
+              To provide a reference that identifies one software component
+              provided by the software supplier together with the version
+              of the software.
+
+00120         DTM, Date/time/period
+              To specify dates related to the software component, such as
+              effective date and date applied to system.
+
+
+00130   Segment group 3:  EVE-IDE-ATT-DTM-RFF-PCD-QRS-QTY-FTX-SG4-SG6
+        A group of segments to describe an event or incident that gave rise
+        to the claim as well as the claim itself. One claim results from
+        one major incident, but there may be many sub-incidents that need
+        to be defined, e.g. during a storm there may be lightning damage,
+        flood damage and fire damage caused by electrical short circuit
+        etc.
+
+00140      EVE, Event
+           To identify and describe one event or incident related to the
+           claim.
+
+00150      IDE, Identity
+           To provide identification numbers for the incident which may be
+           used to link the incident to specific items of damage.
+
+00160      ATT, Attribute
+           To specify coded attributes relating to the incident, such as
+           incident scale.
+
+00170      DTM, Date/time/period
+           To specify dates relating to the incident, such as incident date
+           or start and end date when the incident occurred over a period
+           of time.
+
+00180      RFF, Reference
+           To specify references relating to the incident such as
+           intermediary's claim reference, insurer's claim number.
+
+00190      PCD, Percentage details
+           To specify percentages relating to the incident such as
+           percentage of responsibility.
+
+00200      QRS, Query and response
+           To specify the response to coded questions about the incident.
+
+00210      QTY, Quantity
+           To specify quantities relating to the incident, such as number
+           of injured parties, number of witnesses.
+
+00220      FTX, Free text
+           To provide text information about the incident, such as incident
+           description.
+
+
+00230      Segment group 4:  TCC-IDE-ATT-MOA-PCD-FTX-SG5
+           A group of segments to specify and describe the costs and
+           charges relating to the incident.
+
+00240         TCC, Charge/rate calculations
+              To specify one type of cost or charge relating to the
+              incident.
+
+00250         IDE, Identity
+              To specify one type of cost or charge relating to the
+              incident.
+
+00260         ATT, Attribute
+              To specify coded attributes relating to the cost charge, such
+              as method of calculation.
+
+00270         MOA, Monetary amount
+              To specify monetary amounts for the cost or charge, such as
+              amount including tax, discount amount.
+
+00280         PCD, Percentage details
+              To specify percentages relating to the cost or charge, such
+              as tax percentage.
+
+00290         FTX, Free text
+              To provide text information about the cost or charge, such as
+              explanation of cost or charge.
+
+
+00300         Segment group 5:  COT-IDE-ATT-MOA-PCD-RFF-FTX
+              A group of segments to identify and describe contributions
+              and/or recoveries relating to a cost or charge, and to
+              identify who the recovery is to be made against.
+
+00310            COT, Contribution details
+                 To identify one contribution or recovery relating to the
+                 cost or charge.
+
+00320            IDE, Identity
+                 To specify the identity number of a party to whom this
+                 contribution or recovery applies.
+
+00330            ATT, Attribute
+                 To provide coded attributes relating to the contribution
+                 or recovery, such as contribution or recovery status.
+
+00340            MOA, Monetary amount
+                 To specify monetary amounts relating to the contribution
+                 or recovery, such as amount of contribution to the cost
+                 charge.
+
+00350            PCD, Percentage details
+                 To specify percentages relating to the contribution or
+                 recovery, such as percentage of contribution to the cost
+                 charge.
+
+00360            RFF, Reference
+                 To specify references for the contribution or recovery.
+
+00370            FTX, Free text
+                 To provide text information about the contribution or
+                 recovery.
+
+
+00380      Segment group 6:  COD-IDE-ADR-ATT-COM-DTM-MOA-PCD-QRS-QTY-RFF-
+                             FTX-SG7
+           To provide text information about the contribution or recovery.
+
+00390         COD, Component details
+              Provides a coded identification of one type of claim or
+              incident component, such as policy cover, addresses.
+
+00400         IDE, Identity
+              To reference the object or party to which the cover applies.
+
+00410         ADR, Address
+              To specify a geographic limit on a policy cover, which may be
+              expressed as a location, an address or a country or the
+              address(es) of the incident.
+
+00420         ATT, Attribute
+              To specify coded attributes related to the cover component,
+              such as cover type, usage.
+
+00430         COM, Communication contact
+              To specify communication numbers for the address.
+
+00440         DTM, Date/time/period
+              To specify dates related to the cover, such as cover
+              inception date, end date.
+
+00450         MOA, Monetary amount
+              To specify monetary amounts related to the cover, such as
+              cover limit.
+
+00460         PCD, Percentage details
+              To specify percentages related to the cover, such as cover
+              index.
+
+00470         QRS, Query and response
+              To specify the response to coded questions concerning the
+              cover.
+
+00480         QTY, Quantity
+              To specify quantities related to the cover, such as number of
+              claims allowed.
+
+00490         RFF, Reference
+              To specify references related to the cover.
+
+00500         FTX, Free text
+              To specify text information about the cover, such as cover
+              description, usage description.
+
+
+00510         Segment group 7:  PCC-ATT-DTM-MOA-PCD-QRS-QTY-FTX-SG8
+              A group of segments to describe the components relating to
+              the cover which are used to calculate the claim.
+
+00520            PCC, Premium calculation component details
+                 To specify one type of component used in the claim
+                 calculation, such as excess, cover condition.
+
+00530            ATT, Attribute
+                 To specify coded attributes related to the claim
+                 calculation component, such as claim calculated by code.
+
+00540            DTM, Date/time/period
+                 To specify dates relating to the claim calculation, such
+                 as condition valid date.
+
+00550            MOA, Monetary amount
+                 To specify monetary amounts relating to the claim
+                 calculation, such as excess amount.
+
+00560            PCD, Percentage details
+                 To specify percentages related to the claim calculation
+                 component, such as excess percentage.
+
+00570            QRS, Query and response
+                 To specify the response to coded questions about the claim
+                 calculation component.
+
+00580            QTY, Quantity
+                 To specify quantities relating to the claim calculation
+                 component.
+
+00590            FTX, Free text
+                 To provide text information about the claim calculation
+                 component, such as condition wording.
+
+
+00600            Segment group 8:  TCC-IDE-ATT-MOA-PCD-FTX-SG9
+                 A group of segments to specify and describe the costs and
+                 charges resulting from the claim calculation.
+
+00610               TCC, Charge/rate calculations
+                    To specify one type of cost or charge relating to the
+                    cover.
+
+00620               IDE, Identity
+                    To reference the object or party that the cost or
+                    charge applies to.
+
+00630               ATT, Attribute
+                    To specify coded attributes relating to the claim
+                    calculation, such as method of calculation.
+
+00640               MOA, Monetary amount
+                    To specify monetary amounts for the claim calculation
+                    component, such as cost or charge amount, discount
+                    amount.
+
+00650               PCD, Percentage details
+                    To specify percentages relating to the claim
+                    calculation component, such as cost or charge discount
+                    percentage.
+
+00660               FTX, Free text
+                    To provide text information about the claim calculation
+                    component, such as explanation of cost or charge.
+
+
+00670               Segment group 9:  COT-IDE-ATT-MOA-PCD-RFF-FTX
+                    A group of segments to identify and describe
+                    contributions or recoveries relating to a claim
+                    calculation component.
+
+00680                  COT, Contribution details
+                       To identify one contribution or recovery relating to
+                       the claim calculation.
+
+00690                  IDE, Identity
+                       To reference a party to whom this contribution or
+                       recovery relates.
+
+00700                  ATT, Attribute
+                       To provide coded attributes related to the
+                       contribution or recovery, such as contribution or
+                       recovery status.
+
+00710                  MOA, Monetary amount
+                       To specify monetary amounts related to the
+                       contribution or recovery, such as amount of
+                       contribution to the cost charge.
+
+00720                  PCD, Percentage details
+                       To specify percentages relating to the contribution
+                       or recovery, such as percentage of contribution to
+                       the cost charge.
+
+00730                  RFF, Reference
+                       To specify references relating to the contribution
+                       or recovery.
+
+00740                  FTX, Free text
+                       To provide text information about the contribution
+                       or recovery.
+
+
+00750   Segment group 10: ICD-IDE-ATT-DTM-MOA-RFF-QRS-FTX
+        A group of segments to identify and describe the policy which is
+        the subject of the claim.
+
+00760      ICD, Insurance cover description
+           To identify the insurance product specified in the policy.
+
+00770      IDE, Identity
+           To provide identification numbers for the policy as specified by
+           the intermediary, insurer and client.
+
+00780      ATT, Attribute
+           To specify coded attributes related to the policy, such as
+           policy product code, scheme code.
+
+00790      DTM, Date/time/period
+           To specify dates related to the policy, such as inception date,
+           expiry date.
+
+00800      MOA, Monetary amount
+           To specify monetary amounts related to the policy, such as
+           indemnity limit.
+
+00810      RFF, Reference
+           To specify references related to the policy, such as policy
+           number, policy wording version number.
+
+00820      QRS, Query and response
+           To provide the response to coded questions relating to the
+           policy.
+
+00830      FTX, Free text
+           To provide text information related to the policy.
+
+
+00840   Segment group 11: DOC-IDE-ATT-ADR-EFI-RFF-DTM-MOA-QRS-QTY-FTX
+        A group of segments to identify and describe external documents
+        relating to the claim. The information within this group describe
+        the characteristics of the document not the content of the
+        document.
+
+00850      DOC, Document/message details
+           To specify one type of document which is external to the
+           message.
+
+00860      IDE, Identity
+           To reference a party or object to which the document relates.
+
+00870      ATT, Attribute
+           To specify coded attributes relating to the document, such as
+           document status code.
+
+00880      ADR, Address
+           To specify addresses relating to the document, such as place of
+           issue.
+
+00890      EFI, External file link identification
+           To specify a link to an external file that is related to the
+           document.
+
+00900      RFF, Reference
+           To specify references relating to the document, such as document
+           reference, previous document reference.
+
+00910      DTM, Date/time/period
+           To specify dates relating to the document, such as date
+           requested, date received.
+
+00920      MOA, Monetary amount
+           To specify monetary amounts relating to the document.
+
+00930      QRS, Query and response
+           To specify the response to coded questions relating to the
+           document.
+
+00940      QTY, Quantity
+           To specify quantities relating to the document, such as number
+           of pages, number of copies.
+
+00950      FTX, Free text
+           To provide text information about the document, such as document
+           description.
+
+
+00960   Segment group 12: PNA-IDE-ATT-DTM-MEA-RFF-QRS-PCD-FTX-SG13
+        A group of segments to describe parties related to the claim, such
+        as the insured, intermediary, insurer.
+
+00970      PNA, Party identification
+           To identify one party related to a claim described within this
+           message.
+
+00980      IDE, Identity
+           To specify identification numbers for the party which are used
+           to link the party to other entities within the message.
+
+00990      ATT, Attribute
+           To specify coded attributes related to the party, such as value
+           added tax status code, marital status code.
+
+01000      DTM, Date/time/period
+           To specify dates related to the party, such as date of birth,
+           date of death.
+
+01010      MEA, Measurements
+           To provide measurements relating to the party, such as level of
+           blood alcohol.
+
+01020      RFF, Reference
+           To specify references related to the party, such as value added
+           tax registration number.
+
+01030      QRS, Query and response
+           To provide the response to coded questions about the party.
+
+01040      PCD, Percentage details
+           To specify percentages related to the party, such as party
+           proportion of risk.
+
+01050      FTX, Free text
+           To provide text information relating to the party.
+
+
+01060      Segment group 13: COD-IDE-ADR-FII-ATT-COM-DTM-EMP-MOA-QRS-QTY-
+                             RFF-FTX
+           A group of segments to describe components relating to the party
+           that may be used in validating the claim, such as addresses,
+           employment, convictions, financial account.
+
+01070         COD, Component details
+              Provides a coded identification of one type of input or
+              output component related to the party.
+
+01080         IDE, Identity
+              To provide identification numbers for the party component
+              that may be used to link the component to other entities.
+
+01090         ADR, Address
+              To specify address details for a party.
+
+01100         FII, Financial institution information
+              To provide a set of financial account details for a party.
+
+01110         ATT, Attribute
+              To specify coded attributes relating to the party component,
+              such as offence code, type of blood alcohol test code.
+
+01120         COM, Communication contact
+              To provide communication details relating to a party
+              component, such as telephone and fax numbers at address.
+
+01130         DTM, Date/time/period
+              To specify dates relating to the party component, such as
+              start date at address, length of sentence.
+
+01140         EMP, Employment details
+              To provide one set of employment details for a party.
+
+01150         MOA, Monetary amount
+              To specify monetary amounts relating to the party component,
+              such as fine amount.
+
+01160         QRS, Query and response
+              To provide the response to coded questions relating to the
+              party component.
+
+01170         QTY, Quantity
+              To specify quantities relating to the party component, such
+              as total licence penalty points.
+
+01180         RFF, Reference
+              To specify references relating to the party component, such
+              as conviction reference, financial account number.
+
+01190         FTX, Free text
+              To provide text information relating to the party component,
+              such as offence description, employment description.
+
+
+01200   Segment group 14: ROD-IDE-RFF-MOA-PCD-TAX-DTM-LOC-ATT-MEA-QTY-QRS-
+                          RTE-FTX-SG15-SG17
+        A group of segments to describe the risk objects that are the
+        subject of the claim.
+
+01210      ROD, Risk object type
+           To identify one risk object that is the subject of the claim.
+
+01220      IDE, Identity
+           To provide identification numbers for the risk object that may
+           be used to link the object to other entities within the message,
+           such as cover.
+
+01230      RFF, Reference
+           To specify reference numbers for the risk object, such as
+           vehicle identification number, chassis number.
+
+01240      MOA, Monetary amount
+           To specify monetary amounts relating to the risk object, such as
+           sum insured, replacement value.
+
+01250      PCD, Percentage details
+           To specify percentages relating to the risk object.
+
+01260      TAX, Duty/tax/fee details
+           To specify tax/fee details relating to the risk object.
+
+01270      DTM, Date/time/period
+           To specify dates relating to the risk object, such as date first
+           registered, date inspected.
+
+01280      LOC, Place/location identification
+           To specify a place/location related to the risk object.
+
+01290      ATT, Attribute
+           To specify coded attributes relating to the risk object, such as
+           body type code, nature of occupancy.
+
+01300      MEA, Measurements
+           To specify measurements relating to the risk object, such as
+           length, width, floor area.
+
+01310      QTY, Quantity
+           To specify quantities relating to the risk object, such as
+           number of occupants, number of seats.
+
+01320      QRS, Query and response
+           To provide the response to coded questions about the risk
+           object.
+
+01330      RTE, Rate details
+           To specify rate details relating to the risk object.
+
+01340      FTX, Free text
+           To provide text descriptions relating to the risk object, such
+           as object description, business usage of building description.
+
+
+01350      Segment group 15: TCC-IDE-ATT-MOA-PCD-FTX-SG16
+           A group of segments to specify and describe the cost and charges
+           relating to the risk object.
+
+01360         TCC, Charge/rate calculations
+              To identify one charge or cost related to the risk object. To
+              identify one charge or cost related to the risk object.
+
+01370         IDE, Identity
+              To reference a party to whom the charge relates.
+
+01380         ATT, Attribute
+              To specify coded attributes relating to the cost or charge,
+              such as method of calculation.
+
+01390         MOA, Monetary amount
+              To specify monetary amounts relating to the cost or charge,
+              such as tax amount, discount amount.
+
+01400         PCD, Percentage details
+              To specify percentages relating to the cost or charge.
+
+01410         FTX, Free text
+              To provide text descriptions relating to the cost or charge.
+
+
+01420         Segment group 16: COT-IDE-ATT-MOA-PCD-RFF-FTX
+              A group of segments to identify and describe contributions or
+              recoveries relating to the risk object cost or charge.
+
+01430            COT, Contribution details
+                 To identify one contribution or recovery related to the
+                 cost or charge.
+
+01440            IDE, Identity
+                 To reference a party to whom this contribution or recovery
+                 relates.
+
+01450            ATT, Attribute
+                 To specify coded attributes relating to the contribution
+                 or recovery, such as contribution or recovery status code.
+
+01460            MOA, Monetary amount
+                 To specify monetary amounts relating to the contribution
+                 or recovery, such as contribution or recovery amount.
+
+01470            PCD, Percentage details
+                 To specify percentages relating to the contribution or
+                 recovery, such as percentage of insurer's responsibility.
+
+01480            RFF, Reference
+                 To specify references relating to the contribution or
+                 recovery.
+
+01490            FTX, Free text
+                 To provide text descriptions relating to the contribution
+                 or recovery.
+
+
+01500      Segment group 17: COD-IDE-ADR-ATT-COM-DAM-DTM-MEA-MOA-PCD-QRS-
+                             QTY-RFF-FTX-SG18-SG20
+           A group of segments to describe components relating to the risk
+           object and its assessment, such as address, part/task detail,
+           loss/damage, valuation, security, interest.
+
+01510         COD, Component details
+              Provides a coded identification of one type of component
+              related to the risk object.
+
+01520         IDE, Identity
+              To provide identification numbers for the risk object
+              component which may be used to link the component to other
+              entities.
+
+01530         ADR, Address
+              To specify addresses relating to the risk object.
+
+01540         ATT, Attribute
+              To specify coded attributes relating to the risk object
+              component, such as severity of damage code, security device
+              code.
+
+01550         COM, Communication contact
+              To specify communication numbers for the address, such as
+              telephone, fax numbers.
+
+01560         DAM, Damage
+              To specify the damage to the risk object.
+
+01570         DTM, Date/time/period
+              To specify dates relating to the risk object component, such
+              as start date at address.
+
+01580         MEA, Measurements
+              To specify measurements relating to the risk object
+              component.
+
+01590         MOA, Monetary amount
+              To specify monetary amounts relating to the risk object
+              component, such as pre-incident value, resultant value.
+
+01600         PCD, Percentage details
+              To specify percentages relating to the risk object component,
+              such as percentage of under insurance, percentage of cost
+              allocation.
+
+01610         QRS, Query and response
+              To specify the response to coded questions relating to the
+              risk object component.
+
+01620         QTY, Quantity
+              To specify quantities relating to the risk object component.
+
+01630         RFF, Reference
+              To specify references relating to the risk object component.
+
+01640         FTX, Free text
+              To provide text information for the risk object component,
+              such as specialist valuation description, explanation of a
+              video image.
+
+
+01650         Segment group 18: TCC-IDE-ATT-MOA-PCD-FTX-SG19
+              A group of segments to identify and describe costs and
+              charges relating to the loss or damage.
+
+01660            TCC, Charge/rate calculations
+                 To identify one charge relating to the loss or damage.
+
+01670            IDE, Identity
+                 To reference a party to whom this cost or charge relates.
+
+01680            ATT, Attribute
+                 To specify coded attributes relating to the cost or
+                 charge, such as method of calculation.
+
+01690            MOA, Monetary amount
+                 To specify monetary amounts relating to the cost or charge
+                 component, such as tax amount, discount amount.
+
+01700            PCD, Percentage details
+                 To specify percentages relating to the cost or charge
+                 component, such as cost or charge discount percentage.
+
+01710            FTX, Free text
+                 To provide text information about the cost or charge
+                 component.
+
+
+01720            Segment group 19: COT-IDE-ATT-MOA-PCD-RFF-FTX
+                 A group of segments to identify and describe contribution
+                 and recovery details relating to the risk object component
+                 cost or charge.
+
+01730               COT, Contribution details
+                    To identify one contribution or recovery component
+                    relating to the risk object component cost or charge.
+
+01740               IDE, Identity
+                    To reference a party to whom this contribution or
+                    recovery relates.
+
+01750               ATT, Attribute
+                    To specify coded attributes relating to the
+                    contribution or recovery component, such as
+                    contribution or recovery status code.
+
+01760               MOA, Monetary amount
+                    To specify monetary amounts relating to the
+                    contribution or recovery component, such as
+                    contribution or recovery amount.
+
+01770               PCD, Percentage details
+                    To specify percentages relating to the contribution or
+                    recovery component, such as percentage of insurer's
+                    liability.
+
+01780               RFF, Reference
+                    To provide references relating to the contribution or
+                    recovery component.
+
+01790               FTX, Free text
+                    To provide text information about the contribution or
+                    recovery component.
+
+
+01800         Segment group 20: IMD-IDE-ATT-DTM-MEA-PCD-QRS-QTY-RFF-FTX-
+                                SG21
+              A group of segments to identify and describe part or task
+              details relating to the risk object loss/damage component.
+
+01810            IMD, Item description
+                 To identify one part or task that relates to the risk
+                 object loss/damage component.
+
+01820            IDE, Identity
+                 To reference a party that relates to this part or task
+                 such as service provider.
+
+01830            ATT, Attribute
+                 To specify coded attributes relating to the part or task
+                 item, such as paint system code, category of labour code.
+
+01840            DTM, Date/time/period
+                 To specify dates relating to the part or task item, such
+                 as task/service start date.
+
+01850            MEA, Measurements
+                 To specify measurements relating to the part or task item,
+                 such as tyre pressure, tyre tread depth.
+
+01860            PCD, Percentage details
+                 To specify percentages relating to the part or task.
+
+01870            QRS, Query and response
+                 To specify the response to coded questions about the part
+                 or task item.
+
+01880            QTY, Quantity
+                 To specify quantities relating to the part or task.
+
+01890            RFF, Reference
+                 To specify references relating to the part or task.
+
+01900            FTX, Free text
+                 To provide text information relating to the part or task,
+                 such as evidence of personal injury.
+
+
+01910            Segment group 21: TCC-IDE-ATT-MOA-PCD-FTX-SG22
+                 A group of segments to identify and describe costs and
+                 charges relating to a part or task item.
+
+01920               TCC, Charge/rate calculations
+                    To identify one charge related to the part or task
+                    item.
+
+01930               IDE, Identity
+                    To reference a party to whom this cost or charge
+                    relates.
+
+01940               ATT, Attribute
+                    To specify coded attributes relating to the cost or
+                    charge, such as method of calculation.
+
+01950               MOA, Monetary amount
+                    To specify monetary amounts relating to the cost or
+                    charge component, such as tax amount, discount amount.
+
+01960               PCD, Percentage details
+                    To specify percentages relating to the cost or charge
+                    component, such as cost or charge discount percentage.
+
+01970               FTX, Free text
+                    To provide text information about the cost or charge
+                    component.
+
+
+01980               Segment group 22: COT-IDE-ATT-MOA-PCD-RFF-FTX
+                    A group of segments to identify and describe
+                    contribution and recovery details related to the risk
+                    object component cost or charge.
+
+01990                  COT, Contribution details
+                       To identify one contribution or recovery component
+                       relating to the risk object cost or charge.
+
+02000                  IDE, Identity
+                       To reference a party to whom this contribution or
+                       recovery relates.
+
+02010                  ATT, Attribute
+                       To specify coded attributes relating to the
+                       contribution or recovery component, such as
+                       contribution or recovery status code.
+
+02020                  MOA, Monetary amount
+                       To provide monetary amounts relating to the
+                       contribution or recovery component, such as
+                       contribution or recovery amount.
+
+02030                  PCD, Percentage details
+                       To specify percentages relating to the contribution
+                       or recovery component, such as percentage of
+                       insurer's responsibility.
+
+02040                  RFF, Reference
+                       To specify references relating to the contribution
+                       or recovery component.
+
+02050                  FTX, Free text
+                       To provide text information relating to the
+                       contribution or recovery component.
+
+
+02060   Segment group 23: PRC-IDE-ATT-DTM-MOA-QRS-RFF-FTX
+        A group of segments to identify and describe an action relating to
+        the claim, such as assessment, financial settlement, progress
+        report.
+
+02070      PRC, Process identification
+           To identify one action related to the claim.
+
+02080      IDE, Identity
+           To reference parties related to the claim.
+
+02090      ATT, Attribute
+           To specify coded attributes relating to the action, such as
+           assessment report type, manner of settlement.
+
+02100      DTM, Date/time/period
+           To specify dates related to the action, such as date of report,
+           date inspection to be performed.
+
+02110      MOA, Monetary amount
+           To specify monetary amounts related to the action, such as
+           settlement amount.
+
+02120      QRS, Query and response
+           To provide the response to coded questions about the action.
+
+02130      RFF, Reference
+           To specify references related to the action, such as
+           instructor's assessment reference, assessor's assessment
+           reference.
+
+02140      FTX, Free text
+           To provide text information about the action, such as progress
+           description, verdict description.
+
+
+02150   Segment group 24: SEQ-IDE-ATT-DTM-RFF-SG25
+        A group of segments to describe the previous insurance history for
+        the risk associated with this claim. The previous insurance is
+        expressed as a sequence of periods of insurance.
+
+02160      SEQ, Sequence details
+           Identifies the sequence of this period of previous insurance.
+
+02170      IDE, Identity
+           To reference parties related to this period of insurance
+           history.
+
+02180      ATT, Attribute
+           To specify coded attributes relating to the previous insurance
+           history, such as policy class.
+
+02190      DTM, Date/time/period
+           To specify dates relating to the period of insurance history,
+           such as inception date, expiry date.
+
+02200      RFF, Reference
+           To specify references relating to the period of previous
+           insurance history, such as policy number.
+
+
+02210      Segment group 25: COD-IDE-ATT-DTM-MOA-QRS-RFF-FTX
+           A group of segments to identify and describe components relating
+           to the period of previous insurance history, such as prior loss.
+
+02220         COD, Component details
+              To identify one prior loss that relates to the period of
+              previous insurance.
+
+02230         IDE, Identity
+              To reference party numbers for the prior loss as specified by
+              the intermediary, insurer and client.
+
+02240         ATT, Attribute
+              To specify coded attributes relating to the prior loss, such
+              as loss type, incident type.
+
+02250         DTM, Date/time/period
+              To specify dates relating to the prior loss, such as loss
+              date, settlement date.
+
+02260         MOA, Monetary amount
+              To specify monetary amounts relating to the prior loss, such
+              as loss amount.
+
+02270         QRS, Query and response
+              To specify the response to coded questions relating to the
+              prior loss.
+
+02280         RFF, Reference
+              To specify references for the prior loss, such as insurer’s
+              historical claim reference.
+
+02290         FTX, Free text
+              To provide free text about the prior loss, such as prior loss
+              description.
+
+02300   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          BGM Beginning of message
+          COD Component details
+          COM Communication contact
+          COT Contribution details
+          CUX Currencies
+          DAM Damage
+          DOC Document/message details
+          DTM Date/time/period
+          EFI External file link identification
+          EMP Employment details
+          EVE Event
+          FII Financial institution information
+          FTX Free text
+          ICD Insurance cover description
+          IDE Identity
+          IMD Item description
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          PCC Premium calculation component details
+          PCD Percentage details
+          PNA Party identification
+          PRC Process identification
+          QRS Query and response
+          QTY Quantity
+          RFF Reference
+          ROD Risk object type
+          RTE Rate details
+          SEQ Sequence details
+          TAX Duty/tax/fee details
+          TCC Charge/rate calculations
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   ATT Attribute                                C   9     
+00040   CUX Currencies                               C   1     
+00050   DTM Date/time/period                         C   9     
+00060   QRS Query and response                       C   9     
+00070   FTX Free text                                C   9     
+
+00080       ---- Segment group 1  ------------------ M   9----------------+
+00090   PNA Party identification                     M   1                |
+                                                                          |
+00100       ---- Segment group 2  ------------------ C   9---------------+|
+00110   RFF Reference                                M   1               ||
+00120   DTM Date/time/period                         C   9---------------++
+
+00130       ---- Segment group 3  ------------------ M   99---------------+
+00140   EVE Event                                    M   1                |
+00150   IDE Identity                                 C   9                |
+00160   ATT Attribute                                C   9                |
+00170   DTM Date/time/period                         C   9                |
+00180   RFF Reference                                C   9                |
+00190   PCD Percentage details                       C   9                |
+00200   QRS Query and response                       C   9                |
+00210   QTY Quantity                                 C   9                |
+00220   FTX Free text                                C   9                |
+                                                                          |
+00230       ---- Segment group 4  ------------------ C   9---------------+|
+00240   TCC Charge/rate calculations                 M   1               ||
+00250   IDE Identity                                 C   9               ||
+00260   ATT Attribute                                C   9               ||
+00270   MOA Monetary amount                          C   9               ||
+00280   PCD Percentage details                       C   9               ||
+00290   FTX Free text                                C   9               ||
+                                                                         ||
+00300       ---- Segment group 5  ------------------ C   99-------------+||
+00310   COT Contribution details                     M   1              |||
+00320   IDE Identity                                 C   9              |||
+00330   ATT Attribute                                C   9              |||
+00340   MOA Monetary amount                          C   9              |||
+00350   PCD Percentage details                       C   9              |||
+00360   RFF Reference                                C   9              |||
+00370   FTX Free text                                C   9--------------++|
+                                                                          |
+00380       ---- Segment group 6  ------------------ C   99--------------+|
+00390   COD Component details                        M   1               ||
+00400   IDE Identity                                 C   9               ||
+00410   ADR Address                                  C   1               ||
+00420   ATT Attribute                                C   9               ||
+00430   COM Communication contact                    C   9               ||
+00440   DTM Date/time/period                         C   9               ||
+00450   MOA Monetary amount                          C   9               ||
+00460   PCD Percentage details                       C   9               ||
+00470   QRS Query and response                       C   9               ||
+00480   QTY Quantity                                 C   9               ||
+00490   RFF Reference                                C   9               ||
+00500   FTX Free text                                C   9               ||
+                                                                         ||
+00510       ---- Segment group 7  ------------------ C   999------------+||
+00520   PCC Premium calculation component details    M   1              |||
+00530   ATT Attribute                                C   9              |||
+00540   DTM Date/time/period                         C   9              |||
+00550   MOA Monetary amount                          C   9              |||
+00560   PCD Percentage details                       C   9              |||
+00570   QRS Query and response                       C   9              |||
+00580   QTY Quantity                                 C   9              |||
+00590   FTX Free text                                C   9              |||
+                                                                        |||
+00600       ---- Segment group 8  ------------------ C   99------------+|||
+00610   TCC Charge/rate calculations                 M   1             ||||
+00620   IDE Identity                                 C   9             ||||
+00630   ATT Attribute                                C   9             ||||
+00640   MOA Monetary amount                          C   9             ||||
+00650   PCD Percentage details                       C   9             ||||
+00660   FTX Free text                                C   9             ||||
+                                                                       ||||
+00670       ---- Segment group 9  ------------------ C   99-----------+||||
+00680   COT Contribution details                     M   1            |||||
+00690   IDE Identity                                 C   9            |||||
+00700   ATT Attribute                                C   9            |||||
+00710   MOA Monetary amount                          C   9            |||||
+00720   PCD Percentage details                       C   9            |||||
+00730   RFF Reference                                C   9            |||||
+00740   FTX Free text                                C   9------------+++++
+
+00750       ---- Segment group 10 ------------------ C   999--------------+
+00760   ICD Insurance cover description              M   1                |
+00770   IDE Identity                                 C   9                |
+00780   ATT Attribute                                C   9                |
+00790   DTM Date/time/period                         C   9                |
+00800   MOA Monetary amount                          C   9                |
+00810   RFF Reference                                C   9                |
+00820   QRS Query and response                       C   9                |
+00830   FTX Free text                                C   9----------------+
+
+00840       ---- Segment group 11 ------------------ C   99---------------+
+00850   DOC Document/message details                 M   1                |
+00860   IDE Identity                                 C   9                |
+00870   ATT Attribute                                C   9                |
+00880   ADR Address                                  C   9                |
+00890   EFI External file link identification        C   1                |
+00900   RFF Reference                                C   9                |
+00910   DTM Date/time/period                         C   9                |
+00920   MOA Monetary amount                          C   9                |
+00930   QRS Query and response                       C   9                |
+00940   QTY Quantity                                 C   9                |
+00950   FTX Free text                                C   9----------------+
+
+00960       ---- Segment group 12 ------------------ M   99---------------+
+00970   PNA Party identification                     M   1                |
+00980   IDE Identity                                 C   9                |
+00990   ATT Attribute                                C   99               |
+01000   DTM Date/time/period                         C   9                |
+01010   MEA Measurements                             C   9                |
+01020   RFF Reference                                C   9                |
+01030   QRS Query and response                       C   9                |
+01040   PCD Percentage details                       C   9                |
+01050   FTX Free text                                C   9                |
+                                                                          |
+01060       ---- Segment group 13 ------------------ C   99--------------+|
+01070   COD Component details                        M   1               ||
+01080   IDE Identity                                 C   9               ||
+01090   ADR Address                                  C   1               ||
+01100   FII Financial institution information        C   1               ||
+01110   ATT Attribute                                C   9               ||
+01120   COM Communication contact                    C   9               ||
+01130   DTM Date/time/period                         C   9               ||
+01140   EMP Employment details                       C   9               ||
+01150   MOA Monetary amount                          C   9               ||
+01160   QRS Query and response                       C   9               ||
+01170   QTY Quantity                                 C   9               ||
+01180   RFF Reference                                C   9               ||
+01190   FTX Free text                                C   9---------------++
+
+01200       ---- Segment group 14 ------------------ M   99---------------+
+01210   ROD Risk object type                         M   1                |
+01220   IDE Identity                                 C   9                |
+01230   RFF Reference                                C   9                |
+01240   MOA Monetary amount                          C   99               |
+01250   PCD Percentage details                       C   9                |
+01260   TAX Duty/tax/fee details                     C   1                |
+01270   DTM Date/time/period                         C   99               |
+01280   LOC Place/location identification            C   9                |
+01290   ATT Attribute                                C   99               |
+01300   MEA Measurements                             C   9                |
+01310   QTY Quantity                                 C   9                |
+01320   QRS Query and response                       C   99               |
+01330   RTE Rate details                             C   9                |
+01340   FTX Free text                                C   9                |
+                                                                          |
+01350       ---- Segment group 15 ------------------ C   99--------------+|
+01360   TCC Charge/rate calculations                 M   1               ||
+01370   IDE Identity                                 C   9               ||
+01380   ATT Attribute                                C   9               ||
+01390   MOA Monetary amount                          C   9               ||
+01400   PCD Percentage details                       C   9               ||
+01410   FTX Free text                                C   9               ||
+                                                                         ||
+01420       ---- Segment group 16 ------------------ C   99-------------+||
+01430   COT Contribution details                     M   1              |||
+01440   IDE Identity                                 C   9              |||
+01450   ATT Attribute                                C   9              |||
+01460   MOA Monetary amount                          C   9              |||
+01470   PCD Percentage details                       C   9              |||
+01480   RFF Reference                                C   9              |||
+01490   FTX Free text                                C   9--------------++|
+                                                                          |
+01500       ---- Segment group 17 ------------------ C   999-------------+|
+01510   COD Component details                        M   1               ||
+01520   IDE Identity                                 C   9               ||
+01530   ADR Address                                  C   1               ||
+01540   ATT Attribute                                C   9               ||
+01550   COM Communication contact                    C   9               ||
+01560   DAM Damage                                   C   9               ||
+01570   DTM Date/time/period                         C   9               ||
+01580   MEA Measurements                             C   9               ||
+01590   MOA Monetary amount                          C   9               ||
+01600   PCD Percentage details                       C   9               ||
+01610   QRS Query and response                       C   9               ||
+01620   QTY Quantity                                 C   9               ||
+01630   RFF Reference                                C   9               ||
+01640   FTX Free text                                C   9               ||
+                                                                         ||
+01650       ---- Segment group 18 ------------------ C   99-------------+||
+01660   TCC Charge/rate calculations                 M   1              |||
+01670   IDE Identity                                 C   9              |||
+01680   ATT Attribute                                C   9              |||
+01690   MOA Monetary amount                          C   9              |||
+01700   PCD Percentage details                       C   9              |||
+01710   FTX Free text                                C   9              |||
+                                                                        |||
+01720       ---- Segment group 19 ------------------ C   99------------+|||
+01730   COT Contribution details                     M   1             ||||
+01740   IDE Identity                                 C   9             ||||
+01750   ATT Attribute                                C   9             ||||
+01760   MOA Monetary amount                          C   9             ||||
+01770   PCD Percentage details                       C   5             ||||
+01780   RFF Reference                                C   9             ||||
+01790   FTX Free text                                C   9-------------++||
+                                                                         ||
+01800       ---- Segment group 20 ------------------ C   99-------------+||
+01810   IMD Item description                         M   1              |||
+01820   IDE Identity                                 C   9              |||
+01830   ATT Attribute                                C   9              |||
+01840   DTM Date/time/period                         C   9              |||
+01850   MEA Measurements                             C   9              |||
+01860   PCD Percentage details                       C   9              |||
+01870   QRS Query and response                       C   9              |||
+01880   QTY Quantity                                 C   9              |||
+01890   RFF Reference                                C   9              |||
+01900   FTX Free text                                C   9              |||
+                                                                        |||
+01910       ---- Segment group 21 ------------------ C   9-------------+|||
+01920   TCC Charge/rate calculations                 M   1             ||||
+01930   IDE Identity                                 C   9             ||||
+01940   ATT Attribute                                C   9             ||||
+01950   MOA Monetary amount                          C   9             ||||
+01960   PCD Percentage details                       C   9             ||||
+01970   FTX Free text                                C   9             ||||
+                                                                       ||||
+01980       ---- Segment group 22 ------------------ C   99-----------+||||
+01990   COT Contribution details                     M   1            |||||
+02000   IDE Identity                                 C   9            |||||
+02010   ATT Attribute                                C   9            |||||
+02020   MOA Monetary amount                          C   9            |||||
+02030   PCD Percentage details                       C   9            |||||
+02040   RFF Reference                                C   9            |||||
+02050   FTX Free text                                C   9------------+++++
+
+02060       ---- Segment group 23 ------------------ C   99---------------+
+02070   PRC Process identification                   M   1                |
+02080   IDE Identity                                 C   9                |
+02090   ATT Attribute                                C   9                |
+02100   DTM Date/time/period                         C   99               |
+02110   MOA Monetary amount                          C   9                |
+02120   QRS Query and response                       C   99               |
+02130   RFF Reference                                C   9                |
+02140   FTX Free text                                C   9----------------+
+
+02150       ---- Segment group 24 ------------------ C   99---------------+
+02160   SEQ Sequence details                         M   1                |
+02170   IDE Identity                                 C   9                |
+02180   ATT Attribute                                C   9                |
+02190   DTM Date/time/period                         C   9                |
+02200   RFF Reference                                C   9                |
+                                                                          |
+02210       ---- Segment group 25 ------------------ C   99--------------+|
+02220   COD Component details                        M   1               ||
+02230   IDE Identity                                 C   9               ||
+02240   ATT Attribute                                C   9               ||
+02250   DTM Date/time/period                         C   9               ||
+02260   MOA Monetary amount                          C   9               ||
+02270   QRS Query and response                       C   9               ||
+02280   RFF Reference                                C   9               ||
+02290   FTX Free text                                C   9---------------++
+02300   UNT Message trailer                          M   1     

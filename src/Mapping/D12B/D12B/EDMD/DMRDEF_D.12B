@@ -1,0 +1,652 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                Data maintenance request definition message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : DMRDEF
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG16 Entry Point
+
+
+
+                                  CONTENTS
+
+                Data maintenance request definition message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Data maintenance
+       request definition message (DMRDEF) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This Data maintenance request definition message (DMRDEF) permits
+       the transfer of a data maintenance request action among parties
+       involved in the preparation, processing, assessment, resolution and
+       directory production processes.
+
+1.2    Field of application
+
+       The Data maintenance request definition message may be used for both
+       national and international applications. It is based on universal
+       practice related to administration, commerce and transport, and is
+       not dependent on the type of business or industry.
+
+1.3    Principles
+
+       The message permits the transmission of a Data Maintenance Request
+       (DMR).
+       
+       The message may be exchanged at the regional or national level
+       between the DMR submitter and the secretariat that acts as the entry
+       point for DMR submissions to the submitter's technical assessment
+       group. It may also be exchanged at an international level among the
+       secretariats for the assessment function as well as those
+       participating in the production of the directories.
+       
+       At the regional or national level the first DMRDEF sent for a given
+       DMR will be from the submitter to the entry point secretariat
+       utilizing the submitter's own reference number.
+       
+       On an international level the first DMRDEF sent for a given DMR will
+       be from the entry point secretariat to the central secretariat
+       utilizing the entry point secretariat's own unique reference (Log)
+       number. All DMRDEF messages initiated after registration at the
+       entry point secretariat will use the entry point secretariat Log
+       numbers. All DMRDEF messages initiated after registration at the
+       international level will use the central secretariat's Log number.
+       The Data maintenance status report/query(DMSTAT) message will be
+       used to notify all applicable parties of the latest log number
+       assignments and other necessary status information.
+       
+       The DMRDEF message shall contain only a single Data maintenance
+       request.
+       
+       For submissions of messages that allow the inclusion of substructure
+       maintenance requirements in the same DMR, the segment identification
+       segment group, the composite data element identification segment
+       group, the simple data element segment group, and the code set
+       identification segment group are to be used to provide the modified
+       substructure relative to the message's boilerplate. A structure
+       defined below the message level, as part of a Message submission,
+       must include a change indicator in the associated attribute segment
+       of the structure to indicate that the structure is being detailed as
+       a proposed modification in association with the message.
+       
+       The reference segment shall identify all related parent and child
+       DMRs one level above and one level below the current level.
+       
+       DMRs which change an existing entry must provide a complete
+       replacement entry with the changed parts identified via the change
+       indicators. All changes to message structure must also include all
+       resultant changes to boilerplate text.
+       
+       Use of the default service characters is required and the
+       Interchange header shall specify character set level C.
+       
+       Proper use of the DMRDEF message within supporting applications
+       assumes the availability and use of the EDI standard in conjunction
+       with originator data entry mechanisms in order to ensure the
+       accurate association of data maintenance actions with the standard.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Data maintenance request definition
+        message is DMRDEF.
+
+        Note: Data maintenance request definition messages conforming to
+        this document must contain the following data in segment UNH,
+        composite S009:
+
+        Data element  0065 DMRDEF
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the beginning of the message and to transmit
+        function, type and number of the message.
+
+00030   DII, Directory identification
+        A segment specifying the identity of the reference directory set
+        used in creating the DMR.
+
+00040   DTM, Date/time/period
+        A segment specifying date information, e.g., the date the submitter
+        forwarded the DMR, preparation date, technical assessment review
+        date, final approval date, etc. Date information is to be provided
+        in CCYYMMDD format.
+
+00050   FTX, Free text
+        A segment specifying text information outlining the business
+        requirement for this DMR. This segment may also be used by the
+        originating technical assessment group to convey any explanations
+        or comments which should accompany the DMR through the
+        international assessment process. Other assessment groups will
+        comment on a DMR via the DMSTAT message.
+
+00060   RFF, Reference
+        A segment identifying the type of and reference log number of this
+        request, as well as any related DMRs.
+        
+        In order to ensure proper identification of related DMRs, this
+        segment shall identify, if existing, any parent and child DMRs one
+        level above or below the current level. This segment shall not
+        identify grand-parents and grand-children at any level. (Although a
+        related DMR may have multiple parent DMRs and/or multiple child
+        DMRs, the parent and child DMRs for these related DMRs will not be
+        identified in the current DMR.)
+        
+        A related DMR(s) at the highest level, will have no parent DMR(s).
+        A related DMR(s) at the lowest level will have no child DMR(s).
+        
+        The actual DMR reference log number type may be: Original
+        submitter, Entry point assessment log number, Central secretariat
+        log number, or International assessment log number.
+        
+        The related reference log number type may be:
+        
+        Original submitter, parent DMR
+        Original submitter, child DMR
+        Entry point assessment log number, parent DMR
+        Entry point assessment log number, child DMR
+        Central secretariat log number, parent DMR
+        Central secretariat log number, child DMR
+        International assessment log number, parent DMR
+        International assessment log number, child DMR
+        
+        Also, the submitter must identify a message design group with which
+        the DMR should be associated. This message design group will be
+        consulted by technical assessment for functional evaluations.
+
+00070   EFI, External file link identification
+        A segment identifying associated documentation, including document
+        reference and document type.
+
+
+00080   Segment group 1:  PNA-ADR-SG2
+        A group of segments identifying the party(ies) filing the Data
+        maintenance request. In case of a jointly submitted DMR all parties
+        shall be identified.
+
+00090      PNA, Party identification
+           A segment identifying the originator of the Data maintenance
+           request, e.g., the DMR submitter, Secretariat, etc. At least one
+           occurrence is required to identify the submitter's organization
+           name. When forwarding a DMR to the central secretariat the
+           sender must identify which entry point is forwarding the DMR.
+
+00100      ADR, Address
+           A segment identifying the DMR originator's address information.
+
+
+00110      Segment group 2:  CTA-COM
+           A group of segments identifying the DMR originator's
+           communication type(s) and number(s).
+
+00120         CTA, Contact information
+              A segment identifying a person or a department for the party
+              specified in the leading PNA segment to whom the
+              communication should be directed.
+
+00130         COM, Communication contact
+              A segment identifying communication type(s) and number(s) of
+              person(s) or department(s) specified in the associated CTA
+              segment.
+
+
+00140   Segment group 3:  MSG-ATT-FTX-SG4-SG6
+        A group of segments providing a message type directory.
+
+00150      MSG, Message type identification
+           A segment identifying a message type to be specified.
+
+00160      ATT, Attribute
+           A segment used to specify if the message is for use with the
+           batch or interactive message directories. It also may indicate
+           what modifications the DMR will make to the message.
+
+00170      FTX, Free text
+           A segment providing textual information related to the message
+           type, namely: Message type name, Introduction, Scope, Functional
+           definition, Field of application, Principles, References, Terms
+           and definitions, Standard terms and definitions, and Message
+           terms and conditions.
+
+
+00180      Segment group 4:  SGU-ATT-FTX-SG5
+           A group of segments specifying a message type structure and its
+           related functional definition.
+
+00190         SGU, Segment usage details
+              A segment specifying the usage of a segment in a message type
+              structure. The segment names for component segments are to be
+              defined in the segment identification segment group. The
+              segment names are provided once for each segment tag in the
+              message and are the basis for all occurrences of the segment
+              name in the message boilerplate.
+
+00200         ATT, Attribute
+              A segment to indicate what modifications the DMR will make to
+              the clarification text for the segment.
+
+00210         FTX, Free text
+              A segment providing textual information about segment usage.
+              This information comprises part of the data segment
+              clarification section.
+
+
+00220         Segment group 5:  GRU-ATT-FTX
+              A group of segments identifying a segment group and providing
+              details about segment group usage.
+
+00230            GRU, Segment group usage details
+                 A segment specifying the usage of a segment group in a
+                 message type structure.
+
+00240            ATT, Attribute
+                 A segment to indicate what modifications the DMR will make
+                 to the segment group's clarification text.
+
+00250            FTX, Free text
+                 A segment providing the textual information about segment
+                 group usage. This information comprises part of the data
+                 segment clarification section.
+
+
+00260      Segment group 6:  FNT-REL-GIR-ATT-FTX
+           A group of segments to provide the relationship of segments
+           and/or segment groups through dependency notes or other notes
+           about the usage of segments or segment groups at identified
+           positions in the message.
+
+00270         FNT, Footnote
+              A segment to provide the footnote identification for a
+              dependency note or other note to be applied against one or
+              more segments and/or segment groups of a message.
+
+00280         REL, Relationship
+              A segment to provide the type of dependency relationship,
+              where one exists.
+
+00290         GIR, Related identification numbers
+              A segment to provide the position number(s) for segments
+              and/or segment groups to which a note applies.
+
+00300         ATT, Attribute
+              A segment to provide the change indicators at the note level.
+
+00310         FTX, Free text
+              A segment to provide free text for a position relative note.
+
+
+00320   Segment group 7:  SEG-ATT-FTX-ELU-SG8
+        A group of segments providing a segment directory.
+
+00330      SEG, Segment identification
+           A segment identifying a segment type and specifying its class
+           and maintenance operation.
+
+00340      ATT, Attribute
+           A segment used to indicate what modifications the DMR will make
+           to the segment.
+
+00350      FTX, Free text
+           A segment specifying the name and functional definition of a
+           segment type.
+
+00360      ELU, Data element usage details
+           A segment specifying the simple and/or component data elements
+           in a segment type. The component element names are to be defined
+           in either the composite data element identification segment
+           group or the simple data element identification segment group,
+           as appropriate for the component structure. The component
+           element names are provided once for each component element tag
+           in the segment and are the basis for all occurrences of the
+           component element name in the segment structure.
+
+
+00370      Segment group 8:  FNT-REL-GIR-ATT-FTX
+           A group of segments to provide the relationship of composites
+           and/or simple data elements through dependency notes or other
+           notes about the usage of elements at identified positions in the
+           segment.
+
+00380         FNT, Footnote
+              A segment to provide the footnote identification for a
+              dependency note or other note to be applied against one or
+              more elements of a segment.
+
+00390         REL, Relationship
+              A segment to provide the type of dependency relationship,
+              where one exists.
+
+00400         GIR, Related identification numbers
+              A segment to provide the position number(s) for composites
+              and/or simple data elements to which a note applies.
+
+00410         ATT, Attribute
+              A segment to provide the change indicators at the note level.
+
+00420         FTX, Free text
+              A segment to provide free text for a position relative note.
+
+
+00430   Segment group 9:  CMP-ATT-FTX-ELU-SG10
+        A group of segments providing a composite data element directory.
+
+00440      CMP, Composite data element identification
+           A segment identifying a composite data element and specifying
+           its class and maintenance operation.
+
+00450      ATT, Attribute
+           A segment used to indicate what modifications the DMR will make
+           to the composite.
+
+00460      FTX, Free text
+           A segment specifying the name and functional definition of a
+           composite data element type.
+
+00470      ELU, Data element usage details
+           A segment specifying component data elements in a composite data
+           element and its related information. The simple data element
+           names are to be given in the simple data element identification
+           segment group. The simple data element names are provided once
+           for each simple data element tag in the composite and are the
+           basis for all occurrences of the simple data element name in the
+           composite structure.
+
+
+00480      Segment group 10: FNT-REL-GIR-ATT-FTX
+           A group of segments to provide the relationship of simple data
+           elements through dependency notes or other notes about the usage
+           of the elements at identified positions in the composite.
+
+00490         FNT, Footnote
+              A segment to provide the footnote identification for a
+              dependency note or other note to be applied against one or
+              more elements of a composite.
+
+00500         REL, Relationship
+              A segment to provide the type of dependency relationship,
+              where one exists.
+
+00510         GIR, Related identification numbers
+              A segment to provide the position number(s) for simple data
+              elements to which a note applies.
+
+00520         ATT, Attribute
+              A segment to provide the change indicators at the note level.
+
+00530         FTX, Free text
+              A segment to provide free text for a position relative note.
+
+
+00540   Segment group 11: ELM-ATT-FTX
+        A group of segments providing a data element directory.
+
+00550      ELM, Simple data element details
+           A segment identifying a simple data element and giving related
+           information.
+
+00560      ATT, Attribute
+           A segment used to indicate what modifications the DMR will make
+           to the simple data element.
+
+00570      FTX, Free text
+           A segment specifying the name and functional definition of a
+           simple data element.
+
+
+00580   Segment group 12: CDS-FTX-SG13
+        A group of segments providing a code list directory.
+
+00590      CDS, Code set identification
+           A segment specifying a code set.
+
+00600      FTX, Free text
+           A segment providing textual information related to the code
+           list.
+
+
+00610      Segment group 13: CDV-ATT-FTX
+           A group of segments specifying a code value and its functional
+           definition.
+
+00620         CDV, Code value definition
+              A segment specifying a code value. In DMRDEF use the
+              associated free text segment to provide the code value's
+              name.
+
+00630         ATT, Attribute
+              A segment used to indicate what modifications the DMR will
+              make to the code.
+
+00640         FTX, Free text
+              A segment specifying the name and functional definition of a
+              code value.
+
+00650   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          ATT Attribute
+          BGM Beginning of message
+          CDS Code set identification
+          CDV Code value definition
+          CMP Composite data element identification
+          COM Communication contact
+          CTA Contact information
+          DII Directory identification
+          DTM Date/time/period
+          EFI External file link identification
+          ELM Simple data element details
+          ELU Data element usage details
+          FNT Footnote
+          FTX Free text
+          GIR Related identification numbers
+          GRU Segment group usage details
+          MSG Message type identification
+          PNA Party identification
+          REL Relationship
+          RFF Reference
+          SEG Segment identification
+          SGU Segment usage details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DII Directory identification                 M   1     
+00040   DTM Date/time/period                         M   9     
+00050   FTX Free text                                M   99    
+00060   RFF Reference                                C   999   
+00070   EFI External file link identification        C   9     
+
+00080       ---- Segment group 1  ------------------ M   99---------------+
+00090   PNA Party identification                     M   1                |
+00100   ADR Address                                  C   1                |
+                                                                          |
+00110       ---- Segment group 2  ------------------ C   9---------------+|
+00120   CTA Contact information                      M   1               ||
+00130   COM Communication contact                    C   9---------------++
+
+00140       ---- Segment group 3  ------------------ M   1----------------+
+00150   MSG Message type identification              M   1                |
+00160   ATT Attribute                                C   99               |
+00170   FTX Free text                                C   999              |
+                                                                          |
+00180       ---- Segment group 4  ------------------ C   999-------------+|
+00190   SGU Segment usage details                    M   1               ||
+00200   ATT Attribute                                C   9               ||
+00210   FTX Free text                                C   99              ||
+                                                                         ||
+00220       ---- Segment group 5  ------------------ C   1--------------+||
+00230   GRU Segment group usage details              M   1              |||
+00240   ATT Attribute                                C   9              |||
+00250   FTX Free text                                C   99-------------++|
+                                                                          |
+00260       ---- Segment group 6  ------------------ C   99--------------+|
+00270   FNT Footnote                                 M   1               ||
+00280   REL Relationship                             C   1               ||
+00290   GIR Related identification numbers           C   9               ||
+00300   ATT Attribute                                C   9               ||
+00310   FTX Free text                                C   9---------------++
+
+00320       ---- Segment group 7  ------------------ C   9999-------------+
+00330   SEG Segment identification                   M   1                |
+00340   ATT Attribute                                C   9                |
+00350   FTX Free text                                C   9                |
+00360   ELU Data element usage details               C   99               |
+                                                                          |
+00370       ---- Segment group 8  ------------------ C   99--------------+|
+00380   FNT Footnote                                 M   1               ||
+00390   REL Relationship                             C   1               ||
+00400   GIR Related identification numbers           C   9               ||
+00410   ATT Attribute                                C   9               ||
+00420   FTX Free text                                C   9---------------++
+
+00430       ---- Segment group 9  ------------------ C   9999-------------+
+00440   CMP Composite data element identification    M   1                |
+00450   ATT Attribute                                C   9                |
+00460   FTX Free text                                C   9                |
+00470   ELU Data element usage details               C   99               |
+                                                                          |
+00480       ---- Segment group 10 ------------------ C   99--------------+|
+00490   FNT Footnote                                 M   1               ||
+00500   REL Relationship                             C   1               ||
+00510   GIR Related identification numbers           C   9               ||
+00520   ATT Attribute                                C   9               ||
+00530   FTX Free text                                C   9---------------++
+
+00540       ---- Segment group 11 ------------------ C   9999-------------+
+00550   ELM Simple data element details              M   1                |
+00560   ATT Attribute                                C   9                |
+00570   FTX Free text                                C   9----------------+
+
+00580       ---- Segment group 12 ------------------ C   9999-------------+
+00590   CDS Code set identification                  M   1                |
+00600   FTX Free text                                C   9                |
+                                                                          |
+00610       ---- Segment group 13 ------------------ C   9999------------+|
+00620   CDV Code value definition                    M   1               ||
+00630   ATT Attribute                                C   9               ||
+00640   FTX Free text                                C   9---------------++
+00650   UNT Message trailer                          M   1     

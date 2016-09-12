@@ -1,0 +1,682 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                      Instruction to despatch message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : INSDES
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                      Instruction to despatch message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Instruction to
+       despatch message (INSDES) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message from a party to another party who has control over ordered
+       goods, providing instructions to put on hold or to despatch a
+       consignment according to conditions specified in the message.
+
+1.2    Field of application
+
+       The Instruction to despatch message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       Depending on circumstances the Instruction to Despatch message may
+       be sent either from a buyer to a supplier (see point 1.3.1 below),
+       or from a supplier or buyer to a third party service provider (see
+       point 1.3.2 below).
+       
+       The Instruction to Despatch message may be used to;
+       
+       - request the delivery of goods being held by a third party (e.g.,
+       warehouse, logistic service provider) on behalf of a buyer or
+       supplier.
+       - request the delivery of goods being held by the supplier until the
+       buyer is in a position to receive them. For example, when ordering
+       equipment for a new building the purchase order for the equipment
+       will be issued before the start of physical building. As the
+       building progresses equipment will be requested for delivery, for
+       installation before the next phase of building starts, e.g., the
+       heating system.
+       - identify the exact delivery location;
+       - identify the date on which delivery should take place;
+       - etc.
+       
+       The Instruction to Despatch message must not be used to;
+       
+       - change information previously agreed on an order, e.g., price,
+       ordered quantities, etc. The Purchase Order Change message must be
+       used for this purpose.
+       - order transport services for the despatch of the goods identified
+       in the message. The message Transport Instruction must be used for
+       this purpose.
+       
+       1.3.1 Buyer to Supplier
+       
+       The Instruction to Despatch message may be used by a buyer to inform
+       his seller to release the despatch of goods previously ordered. In
+       addition the message may be used to instruct the seller to hold the
+       despatch of goods which have been previously reported as being ready
+       for despatch.
+       
+       1.3.2 Buyer or Supplier to Third Party Service Provider.
+       
+       When the message is sent from a supplier or a buyer to a third party
+       service provider it may be used to request the service provider to
+       despatch specified goods, identify the delivery location, identify
+       the date on which delivery should take place, and, or indicate that
+       the despatch is subject to cash on delivery, etc.
+       
+       Because the third party service provider is outside the normal buyer
+       to supplier order process the Instruction to Despatch message may be
+       used by the supplier or buyer to inform the third party service
+       provider of information stated in the order which is required for
+       the effective despatch of the goods, e.g., terms of delivery,
+       transport equipment required for the delivery, etc.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Instruction to despatch message is
+        INSDES.
+
+        Note: Instruction to despatch messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 INSDES
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment for unique identification of the Instruction To Despatch
+        message, by means of its name and its number.
+
+00030   DTM, Date/time/period
+        Date and or time, or period related to the whole message, e.g., the
+        date on which delivery should take place. This segment must be
+        specified at least once to identify the Instruction To Despatch
+        message date.
+
+00040   INP, Parties and instruction
+        A segment to identify any instructions related to the delivery of
+        goods which are relevant to the whole message, e.g., hold for
+        quality control, release goods for despatch.
+
+00050   FTX, Free text
+        A segment providing additional free text pertinent to the complete
+        Instruction to Despatch message. In computer to computer exchanges
+        such text will normally require the receiver to process this
+        segment manually.
+
+
+00060   Segment group 1:  RFF-DTM
+        A group of segments giving references where necessary, their dates
+        relating to the whole message, e.g., contract number, purchase
+        order number, etc.
+
+00070      RFF, Reference
+           A segment for identifying references relating to the whole
+           Instruction to Despatch message, e.g., purchase orders, delivery
+           instructions, import license, export license.
+
+00080      DTM, Date/time/period
+           A segment for specifying dates and or times, or periods related
+           to the reference.
+
+
+00090   Segment group 2:  NAD-LOC-SG3-SG4
+        A group of segments identifying names, addresses, locations, and
+        references relevant to the identified parties used for the whole
+        message.
+
+00100      NAD, Name and address
+           A segment for identifying names, addresses, and their functions
+           relevant to the whole Instruction to Despatch message.
+           Identification of the parties involved is recommended for the
+           Instruction to Despatch message and is to be given in this
+           segment. It is recommended that where possible, only the coded
+           form of the party identification should be specified, e.g., the
+           buyer and seller are known to each other, thus only the coded
+           identification is required. The consignee or delivery address
+           may vary and would have to be clearly specified, preferably in
+           structured format.
+
+00110      LOC, Place/location identification
+           A segment indicating more details regarding specific places and,
+           or locations related to the currently identified party, e.g.,
+           internal site and, or building number. This segment may be used
+           to identify locations relevant to all items detailed in the
+           message.
+
+
+00120      Segment group 3:  RFF-DTM
+           A group of segments giving references relevant only to the
+           specified party rather than the whole message.
+
+00130         RFF, Reference
+              A segment for referencing documents relating to the currently
+              identified party.
+
+00140         DTM, Date/time/period
+              A segment for specifying date and, or time, and, or period of
+              the referred document.
+
+
+00150      Segment group 4:  CTA-COM
+           A group of segments identifying the contact person or the
+           department for the currently identified party and if required
+           specifying the communications channel and number.
+
+00160         CTA, Contact information
+              A segment to identify the person, function or department
+              within the current party where communications should be
+              directed.
+
+00170         COM, Communication contact
+              A segment to identify communication types and numbers for the
+              currently identified person, function or department.
+
+
+00180   Segment group 5:  TOD-LOC-FTX
+        A group of segments indicating terms of delivery. The terms of
+        delivery will be required by a third party service provider in
+        order to arrange delivery according to the terms agreed in the
+        order.
+
+00190      TOD, Terms of delivery or transport
+           A segment indicating the terms of delivery and transfer for the
+           whole Instruction to Despatch message.
+
+00200      LOC, Place/location identification
+           A segment indicating locations relevant to the terms of
+           delivery.
+
+00210      FTX, Free text
+           Additional free text pertinent to terms of delivery. In computer
+           to computer exchanges such text will normally require the
+           receiver to process this segment manually.
+
+
+00220   Segment group 6:  TDT-PCD-SG7
+        A group of segments specifying details of the mode and means of
+        transport and date and, or time of departure and destination
+        relevant to the whole Instruction to Despatch message. The
+        transport details will be required by a third party service
+        provider in order to arrange delivery according to the terms agreed
+        in the order.
+
+00230      TDT, Transport information
+           A segment specifying the mode and means of transport for the
+           whole Instruction to Despatch message.
+
+00240      PCD, Percentage details
+           A segment specifying the percentage of utilization of the
+           capacity of the means of transport.
+
+
+00250      Segment group 7:  LOC-DTM
+           A group of segments giving the location and date, and, or time
+           information relative to the transportation.
+
+00260         LOC, Place/location identification
+              A segment indicating locations relevant to the currently
+              identified transport.
+
+00270         DTM, Date/time/period
+              A segment giving the date and or time, or period information
+              of departure and, or arrival of the transported goods for the
+              specified location.
+
+
+00280   Segment group 8:  EQD-MEA-EQA-SG9
+        A group of segments providing information relative to the equipment
+        used for the transportation of goods relevant to the whole
+        Instruction to Despatch message. The equipment details will be
+        required by a third party service provider in order to arrange
+        delivery according to the terms agreed in the order.
+
+00290      EQD, Equipment details
+           A segment to define fixed information regarding equipment used
+           in conjunction with the whole Instruction to Despatch message,
+           and if required, to indicate responsibility for supply of the
+           equipment.
+
+00300      MEA, Measurements
+           A segment specifying physical measurements of the currently
+           described equipment.
+
+00310      EQA, Attached equipment
+           A segment identifying equipment which is attached to the
+           currently described equipment.
+
+
+00320      Segment group 9:  HAN-FTX
+           A group of segments providing information on hazardous goods and
+           their handling.
+
+00330         HAN, Handling instructions
+              A segment providing information on handling and notification
+              of hazardous materials in the specified equipment.
+
+00340         FTX, Free text
+              A segment with free text information in coded or clear form
+              to give further clarification, when required, for hazardous
+              material.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00350   Segment group 10: LIN-PIA-IMD-QTY-GIN-INP-DTM-FTX-MOA-ALI-SG11-
+                          SG12-SG13-SG14
+        A group of segments providing details of individual line items for
+        which Instruction to Despatch message information is being
+        provided.
+
+00360      LIN, Line item
+           A segment identifying the line item for which Instruction to
+           Despatch message information is being provided. All other
+           segments in the detail section following this segment refer to
+           this line item.
+
+00370      PIA, Additional product id
+           A segment providing additional product identification to that
+           currently provided.
+
+00380      IMD, Item description
+           A segment for describing the line item for which Instruction to
+           Despatch message information is being provided. This segment
+           should be used for products that cannot be identified by a
+           product code or article number.
+
+00390      QTY, Quantity
+           A segment to give quantity information related to the current
+           line item.
+
+00400      GIN, Goods identity number
+           A segment providing identity numbers of the line item for which
+           despatch instruction information is being provided, e.g., serial
+           numbers of goods to be despatched or put on hold.
+
+00410      INP, Parties and instruction
+           A segment to identify any instructions related to the delivery
+           of the current line item, e.g., hold until further notice.
+
+00420      DTM, Date/time/period
+           A segment providing date, and or time information related to the
+           line item, e.g., requested delivery date.
+
+00430      FTX, Free text
+           A segment with free text information in coded or clear form to
+           give further clarification, when required, to the line item. In
+           computer to computer exchanges such text will normally require
+           the receiver to process this segment manually.
+
+00440      MOA, Monetary amount
+           A segment identifying monetary amounts related to the current
+           line item for which a Instruction to Despatch message is being
+           given, e.g., customs value, insurance value, cash on delivery
+           amount.
+
+00450      ALI, Additional information
+           This segment is used to indicate the country of origin of the
+           line item, special conditions due to origin, customs preference,
+           fiscal or commercial factors are applicable.
+
+
+00460      Segment group 11: RFF-DTM
+           A group of segments to give reference numbers and dates related
+           to the current line item.
+
+00470         RFF, Reference
+              A segment identifying references related to the current line
+              item.
+
+00480         DTM, Date/time/period
+              A segment for specifying date and or time, or period relative
+              to the current reference.
+
+
+00490      Segment group 12: NAD-QTY-DTM-LOC
+           A group of segments providing party information related to the
+           current line item and where relevant, quantities, date and time,
+           and additional locations within the party.
+
+00500         NAD, Name and address
+              A segment for identifying names and addresses and their
+              functions relevant to the Instruction to Despatch message for
+              the current line item. It is recommended that where possible
+              only the coded form of the party identification should be
+              specified, e.g., the buyer and seller are known to each
+              other, thus only the coded identification is required. The
+              consignee or delivery address may vary and would have to be
+              clearly specified, preferably in structured format.
+
+00510         QTY, Quantity
+              A segment to specify a quantity related to the identified
+              party for the current line item. The total value of the
+              quantities specified in the repeats of this segment should
+              equal the quantity value specified at the line item level.
+
+00520         DTM, Date/time/period
+              A segment providing date and, or time information related to
+              the quantity specified for the current party.
+
+00530         LOC, Place/location identification
+              A segment identifying a specific location related to a
+              quantity for the currently identified party.
+
+
+00540      Segment group 13: PCI-GIN
+           A group of segments identifying the marks and numbers on the
+           package for the current line item.
+
+00550         PCI, Package identification
+              A segment specifying marking and labels on the packaging for
+              the current line item.
+
+00560         GIN, Goods identity number
+              A segment providing identification numbers marked on the
+              packaging for the current line item.
+
+
+00570      Segment group 14: DGS-FTX-SG15
+           A group of segments to specify information about dangerous
+           goods.
+
+00580         DGS, Dangerous goods
+              A segment to indicate the dangerous goods regulations which
+              apply, the class of the dangerous goods, additional dangerous
+              goods codes, the United Nations Dangerous Goods (UNDG) number
+              and the shipment flash point.
+
+00590         FTX, Free text
+              A segment to specify supplementary details regarding the
+              dangerous goods such as dangerous goods technical name and
+              other additional information.
+
+
+00600         Segment group 15: CTA-COM
+              A group of segments to specify contact information.
+
+00610            CTA, Contact information
+                 A segment to identify a person or department to be
+                 contacted regarding dangerous goods.
+
+00620            COM, Communication contact
+                 A segment to specify communication details of the
+                 dangerous goods contact.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00630   UNS, Section control
+        A service segment separating the detail section of the message from
+        the summary section.
+
+00640   MOA, Monetary amount
+        A segment identifying monetary amounts related to the complete
+        Instruction to Despatch message, e.g., customs value, insurance
+        value, cash on delivery amount.
+
+00650   CNT, Control total
+        A segment by which control totals may be provided by sender for
+        checking by the receiver.
+
+00660   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ALI Additional information
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          DGS Dangerous goods
+          DTM Date/time/period
+          EQA Attached equipment
+          EQD Equipment details
+          FTX Free text
+          GIN Goods identity number
+          HAN Handling instructions
+          IMD Item description
+          INP Parties and instruction
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAD Name and address
+          PCD Percentage details
+          PCI Package identification
+          PIA Additional product id
+          QTY Quantity
+          RFF Reference
+          TDT Transport information
+          TOD Terms of delivery or transport
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+00040   INP Parties and instruction                  C   99    
+00050   FTX Free text                                C   9     
+
+00060       ---- Segment group 1  ------------------ C   9----------------+
+00070   RFF Reference                                M   1                |
+00080   DTM Date/time/period                         C   9----------------+
+
+00090       ---- Segment group 2  ------------------ C   9----------------+
+00100   NAD Name and address                         M   1                |
+00110   LOC Place/location identification            C   9                |
+                                                                          |
+00120       ---- Segment group 3  ------------------ C   9---------------+|
+00130   RFF Reference                                M   1               ||
+00140   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00150       ---- Segment group 4  ------------------ C   9---------------+|
+00160   CTA Contact information                      M   1               ||
+00170   COM Communication contact                    C   9---------------++
+
+00180       ---- Segment group 5  ------------------ C   9----------------+
+00190   TOD Terms of delivery or transport           M   1                |
+00200   LOC Place/location identification            C   9                |
+00210   FTX Free text                                C   9----------------+
+
+00220       ---- Segment group 6  ------------------ C   9----------------+
+00230   TDT Transport information                    M   1                |
+00240   PCD Percentage details                       C   1                |
+                                                                          |
+00250       ---- Segment group 7  ------------------ C   9---------------+|
+00260   LOC Place/location identification            M   1               ||
+00270   DTM Date/time/period                         C   9---------------++
+
+00280       ---- Segment group 8  ------------------ C   9----------------+
+00290   EQD Equipment details                        M   1                |
+00300   MEA Measurements                             C   9                |
+00310   EQA Attached equipment                       C   9                |
+                                                                          |
+00320       ---- Segment group 9  ------------------ C   9---------------+|
+00330   HAN Handling instructions                    M   1               ||
+00340   FTX Free text                                C   9---------------++
+
+            DETAIL SECTION
+
+00350       ---- Segment group 10 ------------------ C   9999-------------+
+00360   LIN Line item                                M   1                |
+00370   PIA Additional product id                    C   9                |
+00380   IMD Item description                         C   99               |
+00390   QTY Quantity                                 C   9                |
+00400   GIN Goods identity number                    C   99               |
+00410   INP Parties and instruction                  C   99               |
+00420   DTM Date/time/period                         C   9                |
+00430   FTX Free text                                C   9                |
+00440   MOA Monetary amount                          C   99               |
+00450   ALI Additional information                   C   99               |
+                                                                          |
+00460       ---- Segment group 11 ------------------ C   9---------------+|
+00470   RFF Reference                                M   1               ||
+00480   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00490       ---- Segment group 12 ------------------ C   99--------------+|
+00500   NAD Name and address                         M   1               ||
+00510   QTY Quantity                                 C   1               ||
+00520   DTM Date/time/period                         C   1               ||
+00530   LOC Place/location identification            C   99--------------+|
+                                                                          |
+00540       ---- Segment group 13 ------------------ C   9999------------+|
+00550   PCI Package identification                   M   1               ||
+00560   GIN Goods identity number                    C   9---------------+|
+                                                                          |
+00570       ---- Segment group 14 ------------------ C   99--------------+|
+00580   DGS Dangerous goods                          M   1               ||
+00590   FTX Free text                                C   9               ||
+                                                                         ||
+00600       ---- Segment group 15 ------------------ C   9--------------+||
+00610   CTA Contact information                      M   1              |||
+00620   COM Communication contact                    C   9--------------+++
+
+            SUMMARY SECTION
+
+00630   UNS Section control                          M   1     
+00640   MOA Monetary amount                          C   99    
+00650   CNT Control total                            C   9     
+00660   UNT Message trailer                          M   1     

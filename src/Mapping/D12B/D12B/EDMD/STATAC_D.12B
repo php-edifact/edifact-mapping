@@ -1,0 +1,337 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Statement of account message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : STATAC
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 4
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                        Statement of account message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Statement of
+       account message (STATAC) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A Statement of Account is a communication from a Seller or his agent
+       to a Buyer or his agent, providing information about the status of
+       an account at a specific point in time. It is used as an aid to
+       reconciliation. At the same time it may be a reminder of payment
+       due.
+
+1.2    Field of application
+
+       The Statement of account message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       - A Statement of Account may refer to only one account, in one
+       currency.
+       
+       - A statement of Account contains only outstanding debts and does
+       not specify any debts which have been cleared since the previous
+       Statement.
+       
+       - A Statement of Account may be initiated at any time by the Seller,
+       depending upon agreement between the Buyer and the Seller.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+        All specified dates/times should be in the format 'ccyymmdd'/'hhmm'
+       unless all parties involved in the transaction agree that there is a
+       functional requirement for an alternative format. Periods should be
+       specified as whole numbers representing the required period as
+       indicated in the format qualifier (weeks, months, etc.) 
+       
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken that the segment qualifier in dependent segments
+       do not conflict with the segment qualifier of the trigger segment of
+       a group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing. It is only used when additional
+       information that cannot be accommodated within the other segments is
+       required.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Statement of account message is STATAC.
+
+        Note: Statement of account messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 STATAC
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the Statement
+        of Account.
+
+00030   DTM, Date/time/period
+        A segment specifying the dates, and when relevant, the times
+        related to the whole message. The segment must be specified at
+        least once to specify the message date as allocated by the sender.
+
+00040   RFF, Reference
+        A segment for referencing documents which relate to the whole
+        message.
+
+00050   CUX, Currencies
+        A segment identifying the currency of the Statement of Account. The
+        payment currency is the default currency for all amounts, it must
+        be specified in international transactions.
+
+
+00060   Segment group 1:  NAD-SG2
+        A group of segments identifying the parties involved in the
+        transaction and, optionally the contact points and numbers.
+
+00070      NAD, Name and address
+           A segment to identify a party name and address, either by coded
+           identification or in clear form.
+
+
+00080      Segment group 2:  CTA-COM
+           A group of segments identifying the contact person or department
+           for a trading party and specifying the communication channel and
+           number.
+
+00090         CTA, Contact information
+              A segment to identify a person or department and their
+              function, to whom communications should be directed.
+
+00100         COM, Communication contact
+              A segment specifying the communications channel and number
+              for the specified contact.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00110   Segment group 3:  DOC-MOA-DTM-RFF
+        A group of segments providing details of all documents, e.g.
+        invoices, credit notes, etc., to which the Statement of Account
+        refers. It contains details of the monetary values associated with
+        the documents and of relevant dates. There must be at least one
+        occurrence of this group within the Statement of Account Message.
+
+00120      DOC, Document/message details
+           A segment identifying the reference document against which
+           payment is to be made.
+
+00130      MOA, Monetary amount
+           A segment to specify the required amounts for the referenced
+           document e.g. amount due, discount amount, payment amount.
+
+00140      DTM, Date/time/period
+           A segment to specify the date of the referenced document and to
+           indicate any other relevant dates applicable, e.g. Due date, Tax
+           point date, etc.
+
+00150      RFF, Reference
+           A segment for the inclusion of any additional references related
+           to the reference document.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00160   UNS, Section control
+        A service segment placed at the start of the summary section to
+        avoid segment collision.
+
+00170   MOA, Monetary amount
+        A segment specifying the total amount pertaining to the message.
+        The outstanding balance amount is mandatory and is taken as given,
+        i.e. it is not subject to recalculation.
+
+00180   FTX, Free text
+        A segment for free text information, in coded or clear form.
+
+00190   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DOC Document/message details
+          DTM Date/time/period
+          FTX Free text
+          MOA Monetary amount
+          NAD Name and address
+          RFF Reference
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   5     
+00040   RFF Reference                                C   5     
+00050   CUX Currencies                               C   1     
+
+00060       ---- Segment group 1  ------------------ M   99---------------+
+00070   NAD Name and address                         M   1                |
+                                                                          |
+00080       ---- Segment group 2  ------------------ C   5---------------+|
+00090   CTA Contact information                      M   1               ||
+00100   COM Communication contact                    C   5---------------++
+
+            DETAIL SECTION
+
+00110       ---- Segment group 3  ------------------ M   200000-----------+
+00120   DOC Document/message details                 M   1                |
+00130   MOA Monetary amount                          M   5                |
+00140   DTM Date/time/period                         C   5                |
+00150   RFF Reference                                C   5----------------+
+
+            SUMMARY SECTION
+
+00160   UNS Section control                          M   1     
+00170   MOA Monetary amount                          M   9     
+00180   FTX Free text                                C   99    
+00190   UNT Message trailer                          M   1     

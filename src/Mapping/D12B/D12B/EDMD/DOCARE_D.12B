@@ -1,0 +1,303 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+          Response to an amendment of a documentary credit message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : DOCARE
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG5 Finance
+
+
+
+                                  CONTENTS
+
+          Response to an amendment of a documentary credit message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Response to an
+       amendment of a documentary credit message (DOCARE) to be used in
+       Electronic Data Interchange (EDI) between trading partners involved
+       in administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Response to an Amendment of a Documentary Credit originated by
+       the Beneficiary and sent to the parties involved in the documentary
+       credit. It is issued to advise the acceptance or non acceptance of
+       an amendment.
+
+1.2    Field of application
+
+       The Response to an amendment of a documentary credit message may be
+       used for both national and international applications. It is based
+       on universal practice related to administration, commerce and
+       transport, and is not dependent on the type of business or industry.
+
+1.3    Principles
+
+       Unless otherwise specified, the documentary credit amendment is
+       subject to the Uniform Customs and Practices for Documentary
+       Credits, International Chamber of Commerce, Paris, France, which are
+       in effect on the date of origination.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       Qualification to the Response to an Amendment of a Documentary
+       Credit message is achieved through the values placed in the
+       following data elements:
+       
+       
+       Segment       DE     Value   Description/Meaning
+       
+       BGM           1001           Must have the same code as in the
+                                    message to which this response is 
+                                    being made.
+       
+                     1225   27      NOT ACCEPTED
+                                    A code to indicate that the
+                                    referenced message is not accepted
+                                    by the recipient.
+       
+                            29      ACCEPTED WITHOUT AMENDMENT
+                                    A code to indicate that the
+                                    referenced message is entirely
+                                    accepted by the recipient.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Response to an amendment of a documentary
+        credit message is DOCARE.
+
+        Note: Response to an amendment of a documentary credit messages
+        conforming to this document must contain the following data in
+        segment UNH, composite S009:
+
+        Data element  0065 DOCARE
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by means of which the sender must uniquely identify the
+        DOCARE message using its type and number and when necessary its
+        function.
+
+00030   RFF, Reference
+        A segment identifying the number of the referenced documentary
+        credit. It also indicates the number of the amendment. This number
+        should be the latest in the series of all amendments made.
+
+00040   DTM, Date/time/period
+        A segment specifying the date and/or time the message is created.
+
+
+00050   Segment group 1:  FII-RFF-CTA-COM
+        A group of segments identifying the financial institutions and
+        account numbers involved in the documentary credit, their functions
+        and notification references.
+
+00060      FII, Financial institution information
+           A segment identifying the financial institution(s) associated
+           with the documentary credit, in coded or uncoded form, their
+           functions and account numbers involved.
+
+00070      RFF, Reference
+           A segment specifying reference numbers of parties specified in
+           the leading FII segment.
+
+00080      CTA, Contact information
+           A segment identifying a person or a department for the party
+           specified in the leading FII segment to whom communication
+           should be directed.
+
+00090      COM, Communication contact
+           A segment identifying communication type(s) and number(s) of
+           person(s) or department(s) specified in the associated CTA
+           segment.
+
+
+00100   Segment group 2:  NAD-RFF-CTA-COM
+        A group of segments identifying the name and address of each non-
+        financial party involved in the transaction, their functions and
+        notification references.
+
+00110      NAD, Name and address
+           A segment identifying names and addresses of the parties
+           associated with the documentary credit, in coded or uncoded
+           form, and their functions.
+
+00120      RFF, Reference
+           A segment specifying reference numbers of parties specified in
+           the leading NAD segment.
+
+00130      CTA, Contact information
+           A segment identifying a person or a department for the party
+           specified in the leading NAD segment to whom communication
+           should be directed.
+
+00140      COM, Communication contact
+           A segment identifying communication type(s) and number(s) of
+           person(s) or department(s) specified in the associated CTA
+           segment.
+
+
+00150   Segment group 3:  AUT-DTM
+        A group of segments specifying details of any authentication
+        (validation) procedures applied to the DOCARE message.
+
+00160      AUT, Authentication result
+           A segment specifying details of any authentication (validation)
+           procedures applied to the DOCARE message.
+
+00170      DTM, Date/time/period
+           A segment identifying the validation date/time.
+
+00180   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AUT Authentication result
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DTM Date/time/period
+          FII Financial institution information
+          NAD Name and address
+          RFF Reference
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   RFF Reference                                M   2     
+00040   DTM Date/time/period                         C   1     
+
+00050       ---- Segment group 1  ------------------ M   5----------------+
+00060   FII Financial institution information        M   1                |
+00070   RFF Reference                                C   2                |
+00080   CTA Contact information                      C   1                |
+00090   COM Communication contact                    C   5----------------+
+
+00100       ---- Segment group 2  ------------------ M   9----------------+
+00110   NAD Name and address                         M   1                |
+00120   RFF Reference                                C   1                |
+00130   CTA Contact information                      C   1                |
+00140   COM Communication contact                    C   5----------------+
+
+00150       ---- Segment group 3  ------------------ C   1----------------+
+00160   AUT Authentication result                    M   1                |
+00170   DTM Date/time/period                         C   1----------------+
+00180   UNT Message trailer                          M   1     

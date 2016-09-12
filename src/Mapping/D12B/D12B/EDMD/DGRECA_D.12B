@@ -1,0 +1,337 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                  Dangerous goods recapitulation message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : DGRECA
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 1
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG3 Transport
+
+
+
+                                  CONTENTS
+
+                  Dangerous goods recapitulation message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Dangerous goods
+       recapitulation message (DGRECA) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message to specify recapitulations pertaining to the dangerous
+       goods on board of a means of transport, e.g. a vessel.
+
+1.2    Field of application
+
+       The Dangerous goods recapitulation message may be used for both
+       national and international applications. It is based on universal
+       practice related to administration, commerce and transport, and is
+       not dependent on the type of business or industry.
+
+1.3    Principles
+
+       The message has been designed to enable control of pollution caused
+       by a means of transport, e.g. in the maritime and port environment.
+       
+       * The message relates to one means of transport.
+       
+       * The message contains summary information of all dangerous goods on
+       board of the means of transport.
+       
+       * Summary information is given as a recapitulation across all
+       consignments on board of the means of transport, for the dangerous
+       goods that adhere to a certain combination of IMO code (i.e.
+       International Maritime Organisation), IMO page number, UNDG number
+       (i.e. United Nations Dangerous Goods number) and flashpoint.
+       
+       Business area: control of pollution by a means of transport (e.g.
+       maritime pollution)
+       
+       Sending function: authority (e.g. port), centralised database of
+       authorities
+       
+       Receiving function: authority, search and rescue organisation.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Dangerous goods recapitulation message is
+        DGRECA.
+
+        Note: Dangerous goods recapitulation messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 DGRECA
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to indicate the beginning of a message and to transmit
+        the identifying number.
+
+00030   DTM, Date/time/period
+        A segment to provide the date and time of the message.
+
+
+00040   Segment group 1:  RFF-DTM
+        A group of segments to specify a reference applying to the whole
+        message.
+
+00050      RFF, Reference
+           A segment to specify a reference, e.g. reference to previous
+           message.
+
+00060      DTM, Date/time/period
+           A segment to indicate a date and time related to the reference.
+
+
+00070   Segment group 2:  TDT-DTM-LOC-RFF-MEA
+        A group of segments to indicate the details of the means of
+        transport, with related locations, arrival dates and times,
+        measurement, etc.
+
+00080      TDT, Transport information
+           A segment to identify the means of transport (e.g. by Lloyd's
+           Register number of a vessel, or by the license plate number of a
+           truck) and the type of the means of transport.
+
+00090      DTM, Date/time/period
+           A segment to indicate the estimated date and time of arrival,
+           and the date and time of departure.
+
+00100      LOC, Place/location identification
+           A segment to indicate a location relating to the means of
+           transport, such as: - place or port of departure - next place or
+           port of call.
+
+00110      RFF, Reference
+           A segment to specify a reference as an additional identification
+           of the means of transport, e.g. radio call sign of a vessel.
+
+00120      MEA, Measurements
+           A segment to specify a measurement of the means of transport,
+           e.g. gross tonnage (of a vessel).
+
+
+00130   Segment group 3:  NAD-SG4
+        A group of segments to identify a party which could give further
+        information on the conveyance of the means of transport.
+
+00140      NAD, Name and address
+           A segment to identify a party's name, address and function from
+           which further information can be obtained (e.g. port authority,
+           harbour master).
+
+
+00150      Segment group 4:  CTA-COM
+           A group of segment to indicate a contact within the party.
+
+00160         CTA, Contact information
+              A segment to identify a person or department within the
+              party.
+
+00170         COM, Communication contact
+              A segment to identify a communication number of the contact
+              to whom communication should be directed.
+
+
+00180   Segment group 5:  DGS-FTX-MEA-LOC-SGP
+        A group of segments to specify dangerous goods. The group is meant
+        to be a recapitulation across all consignments on board of the
+        means of transport, for dangerous goods that adhere to a certain
+        combination of IMO code (i.e. International Maritime Organisation),
+        IMO page number, UNDG number (i.e. United Nations Dangerous Goods
+        number) and flashpoint.
+
+00190      DGS, Dangerous goods
+           A segment to indicate the selection criteria for which a
+           recapitulation is given, according to the appropriate regulation
+           (e.g. IMO).
+
+00200      FTX, Free text
+           A segment to specify the dangerous goods technical name related
+           to the detailed dangerous goods classification as given in the
+           DGS segment, and to provide additional dangerous goods
+           information.
+
+00210      MEA, Measurements
+           A segment to specify the gross weight of the recapitulation for
+           the detailed dangerous goods classification as given in the DGS
+           segment.
+
+00220      LOC, Place/location identification
+           A segment to specify the location on the means of transport
+           where the dangerous goods are stowed, e.g. stowage cell on a
+           container vessel.
+
+00230      SGP, Split goods placement
+           A segment to identify the equipment (e.g. container number) in
+           which the dangerous goods are placed.
+
+00240   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          DGS Dangerous goods
+          DTM Date/time/period
+          FTX Free text
+          LOC Place/location identification
+          MEA Measurements
+          NAD Name and address
+          RFF Reference
+          SGP Split goods placement
+          TDT Transport information
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         C   9     
+
+00040       ---- Segment group 1  ------------------ C   9----------------+
+00050   RFF Reference                                M   1                |
+00060   DTM Date/time/period                         C   9----------------+
+
+00070       ---- Segment group 2  ------------------ M   1----------------+
+00080   TDT Transport information                    M   1                |
+00090   DTM Date/time/period                         M   2                |
+00100   LOC Place/location identification            M   2                |
+00110   RFF Reference                                C   2                |
+00120   MEA Measurements                             C   1----------------+
+
+00130       ---- Segment group 3  ------------------ M   1----------------+
+00140   NAD Name and address                         M   1                |
+                                                                          |
+00150       ---- Segment group 4  ------------------ C   1---------------+|
+00160   CTA Contact information                      M   1               ||
+00170   COM Communication contact                    C   3---------------++
+
+00180       ---- Segment group 5  ------------------ M   999--------------+
+00190   DGS Dangerous goods                          M   1                |
+00200   FTX Free text                                M   9                |
+00210   MEA Measurements                             M   1                |
+00220   LOC Place/location identification            C   99               |
+00230   SGP Split goods placement                    C   99---------------+
+00240   UNT Message trailer                          M   1     

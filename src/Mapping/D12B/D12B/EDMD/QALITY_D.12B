@@ -1,0 +1,1198 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                            Quality data message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : QALITY
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 5
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                            Quality data message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Quality data
+       message (QALITY) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message to enable the transmission of the results of tests
+       performed to satisfy a specified product or process requirement. The
+       content includes, but is not limited to, test data and measurements,
+       statistical information, and the testing methods employed.
+
+1.2    Field of application
+
+       The Quality data message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       - A Quality Data Message detail line may refer to either goods items
+       or services.
+       
+       - The values within a Quality Data Message may refer to: 
+       
+       . a product/service, 
+       . a product via batch references,
+       . process type information of a product.
+       
+       - A Quality Data Message may contain discrete or statistical values
+       as well as product specification values.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+       All specified dates/times should be in the format 'ccyymmdd'/'hhmm'
+       unless all parties involved in the transaction agree that there is a
+       functional requirement for an alternative format. Periods should be
+       specified as whole numbers representing the required period as
+       indicated in the format qualifier (weeks, months, etc.) 
+       
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+       
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken that the segment qualifier in dependent segments
+       do not conflict with the segment qualifier of the trigger segment of
+       a group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Quality data message is QALITY.
+
+        Note: Quality data messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 QALITY
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender uniquely identifies the Quality Data
+        Message by means of its type and number.
+
+00030   DTM, Date/time/period
+        A segment specifying general dates and, when relevant, times
+        related to the whole message. The segment must be specified at
+        least once to identify the quality data message date.
+        
+        Example of the use of this DTM-segment is : date/time frame of
+        reported data that apply to the whole quality data message.
+        
+        The Date/time/period segment within other segment groups should be
+        used whenever the date/time/period requires to be logically related
+        to another specified data item; e.g. date of measurement must be
+        specified within the measurement segment group.
+
+00040   IMD, Item description
+        A segment for describing the product involved.
+
+00050   MEA, Measurements
+        A segment to allow physical measurements and dimensions to be
+        stated, where this is required for identification of the product.
+
+00060   FTX, Free text
+        A segment with free text information, in coded or clear form, to
+        give further clarification, when required, to the whole message. In
+        computer to computer exchanges such text will normally require the
+        receiver to handle this segment manually.
+
+
+00070   Segment group 1:  RFF-DTM
+        A segment group for referencing documents and where necessary,
+        their dates, relating to the whole message, e.g. purchase order,
+        shipment/consignment number.
+
+00080      RFF, Reference
+           A segment identifying the referenced document by its number and
+           where appropriate, a line number within that document.
+
+00090      DTM, Date/time/period
+           A segment specifying the date/time of the referenced document.
+
+
+00100   Segment group 2:  NAD-LOC-SG3-SG4
+        A group of segments identifying the parties relevant to the whole
+        Quality Data Message, with associated information.
+
+00110      NAD, Name and address
+           A segment identifying names and addresses of parties, in coded
+           or clear form, and their function relevant for the whole Quality
+           Data Message. Identification of the Sender and Receiver party is
+           mandatory for the Quality Data Message. They are to be given in
+           the NAD segment.
+
+00120      LOC, Place/location identification
+           A segment indicating more details regarding specific locations
+           related to the party specified in the NAD- segment, e.g.
+           internal site/building number.
+
+
+00130      Segment group 3:  RFF-DTM
+           A segment group giving references and where necessary, date
+           information only relevant to the specified party.
+
+00140         RFF, Reference
+              A segment identifying the reference by its number and where
+              appropriate a line number within a document.
+
+00150         DTM, Date/time/period
+              A segment specifying the date/time of the reference.
+
+
+00160      Segment group 4:  CTA-COM
+           A group of segments giving contact details of the specific
+           person or department within the party identified in the NAD
+           segment.
+
+00170         CTA, Contact information
+              A segment to identify a person or department, and their
+              function, to whom communications should be directed.
+
+00180         COM, Communication contact
+              A segment to identify a communication type and number for the
+              contact specified in the CTA segment.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00190   Segment group 5:  LIN-PIA-IMD-MEA-PSD-SPS-DTM-QTY-FTX-SG6-SG7-SG10-
+                          SG12-SG20-SG30
+        A group of segments providing the relevant quality data for the
+        specified product.
+
+00200      LIN, Line item
+           A segment identifying the line item by its number and
+           additionally, identifying the product involved by a product
+           identification number.
+           Other product identification numbers are specified in the
+           following PIA segment, e.g. Customer part number, etc.
+
+00210      PIA, Additional product id
+           A segment providing additional product identification to that
+           specified in the LIN segment, e.g. Buyer part number.
+
+00220      IMD, Item description
+           A segment for describing the product involved. This segment
+           should be used for products that cannot be identified by a
+           product code or article number.
+
+00230      MEA, Measurements
+           A segment to allow physical measurements and dimensions to be
+           stated, where this is required for identification of the
+           product.
+
+00240      PSD, Physical sample description
+           A segment to define the physical sample parameters, associated
+           with a test, resulting in discrete measurements. If used in this
+           position, the values apply to all following values of product
+           properties.
+
+00250      SPS, Sampling parameters for summary statistics
+           A segment to define the sampling parameters associated with
+           summary statistics reported. If used in this position, the
+           values apply to all following values of product properties.
+
+00260      DTM, Date/time/period
+           A segment specifying date/time/period details to the line item
+           only.
+
+00270      QTY, Quantity
+           A segment to enable quantity information to be specified.
+
+00280      FTX, Free text
+           A segment with free text in coded or clear form, to give further
+           clarification, when required, for the line item. In computer to
+           computer exchanges such text will normally require the receiver
+           to handle this segment manually.
+
+
+00290      Segment group 6:  RFF-DTM
+           A segment group for referencing documents relating to the line
+           item and where necessary, their dates.
+
+00300         RFF, Reference
+              A segment identifying the referenced document by its number
+              and where appropriate, a line number within that document.
+
+00310         DTM, Date/time/period
+              A segment specifying the date/time of the referenced
+              document.
+
+
+00320      Segment group 7:  NAD-LOC-SG8-SG9
+           A group of segments identifying the parties with associated
+           information, relevant to the line item only.
+
+00330         NAD, Name and address
+              A segment identifying names and addresses of parties, in
+              coded or clear form, and their function relevant for the line
+              item.
+
+00340         LOC, Place/location identification
+              A segment indicating more details regarding specific
+              locations related to the party specified in the NAD- segment,
+              e.g. internal site/building number.
+
+
+00350         Segment group 8:  RFF-DTM
+              A segment group giving references and where necessary, date
+              information only relevant to the specified party.
+
+00360            RFF, Reference
+                 A segment identifying the reference by its number and
+                 where appropriate a line number within a document.
+
+00370            DTM, Date/time/period
+                 A segment specifying the date and/or time of the
+                 reference.
+
+
+00380         Segment group 9:  CTA-COM
+              A group of segments giving contact details of the specific
+              person or department within the party identified in the NAD
+              segment.
+
+00390            CTA, Contact information
+                 A segment to identify a person or department, and their
+                 function, to whom communications should be directed.
+
+00400            COM, Communication contact
+                 A segment to identify a communication type and number for
+                 the contact specified in the CTA segment.
+
+
+00410      Segment group 10: TEM-MEA-DTM-SG11
+           A group of segments to provide details of the test methods,
+           employed including any circumstances, test devices, references
+           and dates.
+
+00420         TEM, Test method
+              A segment to describe the nature of the test performed.
+
+00430         MEA, Measurements
+              A segment to provide the necessary values of the various
+              circumstances related to the tests, e.g. temperature reading
+              when test performed.
+
+00440         DTM, Date/time/period
+              A segment specifying the date, and when relevant, the time of
+              an activity identified by the date/time qualifier, e.g. test
+              date/time.
+
+
+00450         Segment group 11: RFF-DTM
+              A segment group of referencing documents relating to the test
+              method and where necessary, their dates, e.g. device number.
+
+00460            RFF, Reference
+                 A segment identifying the referenced document by its
+                 number and where appropriate, a line number within that
+                 document.
+
+00470            DTM, Date/time/period
+                 A segment specifying the date/time of the referenced
+                 document.
+
+
+00480      Segment group 12: CCI-PSD-SPS-DTM-FTX-SG13-SG14-SG16-SG18
+           A group of segments to be used to define a class of properties,
+           the individual properties within that class and the related data
+           (e.g. discrete values, statistical information, test methods).
+           When this segment group is used, the data is directly related to
+           the product specified.
+
+00490         CCI, Characteristic/class id
+              To specify the general class and/or the individual properties
+              on which the Quality Data is being reported. Note: within the
+              CCI-segment Class type code (7059) or Measured attribute code
+              (6313) or Characteristic description code (7037) must be
+              present.
+              
+              If Class type code (7059) AND Measured attribute code (6313)
+              are present, then Characteristic description code (7037) is
+              not allowed.
+              
+              If only Class type code is used within the CCI-segment, then
+              the individual properties must be specified within the
+              related STA/MEA-segments.
+              
+              The data element Characteristic description (7036) should
+              only be used to enhance the meaning of the code value (e.g.
+              if no specific code available and code value ZZ (mutually
+              defined) is used then Description can be used to further
+              describe the Product Characteristics.
+              
+              NB: The Class identification element in this segment is only
+              used to specify the product characteristic class, e.g.
+              Chemistry or Physical Dimensions.
+
+00500         PSD, Physical sample description
+              A segment to define the physical sample parameters associated
+              with a test resulting in discrete measurements. If used in
+              this position, the values only apply to data within the same
+              analysis group.
+
+00510         SPS, Sampling parameters for summary statistics
+              A segment to define the sampling parameters associated with
+              summary statistics reported. If used in this position, the
+              values only apply to data within the same analysis group.
+
+00520         DTM, Date/time/period
+              A segment specifying the date, and when relevant, the time of
+              an activity identified by the date/time qualifier, e.g.
+              date/time, test performed.
+
+00530         FTX, Free text
+              A segment with free text information to give further
+              clarification within Segment group 12: the Analysis Group.
+
+
+00540         Segment group 13: RFF-DTM
+              A segment group of referencing documents relating to the
+              Analysis Section and where necessary, their dates, e.g.
+              Purchase order, shipment note.
+
+00550            RFF, Reference
+                 A segment identifying the referenced document by its
+                 number and where appropriate, a line number within that
+                 document.
+
+00560            DTM, Date/time/period
+                 A segment specifying the date/time of the referenced
+                 document.
+
+
+00570         Segment group 14: MEA-DTM-SG15
+              A group of segments to allow measurement values or
+              specification values to be specified along with their
+              associated references and dates. The data element Measurement
+              purpose code qualifier (6311) indicates the type of the
+              values.
+
+00580            MEA, Measurements
+                 A segment to specify discrete values, other measurement
+                 results or specification values. These values may be
+                 specified as a range and may be qualified by the
+                 significance and/or the attribute codes.
+
+00590            DTM, Date/time/period
+                 A segment specifying the date, and when relevant, the time
+                 of an activity identified by the date/time qualifier, e.g.
+                 test date/time.
+
+
+00600            Segment group 15: RFF-DTM
+                 A Segment group of referencing documents relating to the
+                 specifications and values and where necessary, their
+                 dates.
+
+00610               RFF, Reference
+                    A segment identifying the referenced document by its
+                    number and where appropriate, a line number within that
+                    document.
+
+00620               DTM, Date/time/period
+                    A segment specifying the date/time of the referenced
+                    document.
+
+
+00630         Segment group 16: STA-DTM-SG17
+              A group of segments to provide the necessary information for
+              summary statistics with any related references and dates.
+
+00640            STA, Statistics
+                 A segment to specify the values required for statistics
+                 including codes to define the type of statistics and the
+                 measure unit employed.
+
+00650            DTM, Date/time/period
+                 A segment specifying the date, and when relevant, the time
+                 of an activity identified by the date/time qualifier, e.g.
+                 time frame of statistical period.
+
+
+00660            Segment group 17: RFF-DTM
+                 A Segment group of referencing documents relating to the
+                 statistics and where necessary, their dates.
+
+00670               RFF, Reference
+                    A segment identifying the referenced document by its
+                    number and where appropriate, a line number within that
+                    document.
+
+00680               DTM, Date/time/period
+                    A segment specifying the date/time of the referenced
+                    document.
+
+
+00690         Segment group 18: TEM-MEA-DTM-SG19
+              A group of segments to provide details of the test methods,
+              employed including any circumstances, test devices,
+              references and dates.
+
+00700            TEM, Test method
+                 A segment to describe the nature of the test performed.
+
+00710            MEA, Measurements
+                 A segment to provide the necessary values of the various
+                 circumstances related to the tests, e.g. temperature
+                 reading when test performed.
+
+00720            DTM, Date/time/period
+                 A segment specifying the date, and when relevant, the time
+                 of an activity identified by the date/time qualifier.
+
+
+00730            Segment group 19: RFF-DTM
+                 A Segment group of referencing documents relating to the
+                 test method and where necessary, their dates.
+
+00740               RFF, Reference
+                    A segment identifying the referenced document by its
+                    number and where appropriate, a line number within that
+                    document.
+
+00750               DTM, Date/time/period
+                    A segment specifying the date/time of the referenced
+                    document.
+
+
+00760      Segment group 20: GIN-DTM-SG21-SG22
+           A group of segments to enable batch related information to be
+           specified.
+
+00770         GIN, Goods identity number
+              A segment providing specific serial or batch numbers,
+              relating to the specified product. These may be single
+              numbers or ranges of numbers.
+
+00780         DTM, Date/time/period
+              A segment specifying the date, and when relevant, the time of
+              an activity identified by the date/time qualifier, e.g. batch
+              process date.
+
+
+00790         Segment group 21: RFF-DTM
+              A Segment group of referencing documents relating to the
+              batch and where necessary, their dates.
+
+00800            RFF, Reference
+                 A segment identifying the referenced document by its
+                 number and where appropriate, a line number within that
+                 document.
+
+00810            DTM, Date/time/period
+                 A segment specifying the date/time of the referenced
+                 document.
+
+
+00820         Segment group 22: CCI-PSD-SPS-DTM-FTX-SG23-SG24-SG26-SG28
+              A group of segments to be used to define a class of
+              properties, the individual properties within that class and
+              the related data (e.g. discrete values, statistical
+              information, test methods). When this segment group is used,
+              the data is directly related to the product specified.
+
+00830            CCI, Characteristic/class id
+                 To specify the general class and/or the individual
+                 properties on which the Quality Data is being reported.
+                 Note: within the CCI-segment Class type code (7059) or
+                 Measured attribute code (6313) or Characteristic
+                 description code (7037) must be present.
+                 
+                 If Class type code (7059) AND Measured attribute code
+                 (6313) are present, then Characteristic description code
+                 (7037) is not allowed.
+                 
+                 If only Class type code is used within the CCI-segment,
+                 then the individual properties must be specified within
+                 the related STA/MEA-segments.
+                 
+                 The Characteristic description (data element 7036) should
+                 only be used to enhance the meaning of the code value. If
+                 no specific code available, use code value ZZ (mutually
+                 defined) in DE 7037 and use DE 7036 to describe the
+                 Product Characteristics.
+                 
+                 NB: The Class identification element in this segment is
+                 only used to specify the product characteristic class,
+                 e.g. Chemistry or Physical Dimensions.
+
+00840            PSD, Physical sample description
+                 A segment to define the physical sample parameters
+                 associated with a test resulting in discrete measurements.
+                 If used in this position, the values only apply to data
+                 within the same analysis group.
+
+00850            SPS, Sampling parameters for summary statistics
+                 A segment to define the sampling parameters associated
+                 with summary statistics reported. If used in this
+                 position, the values only apply to data within the same
+                 analysis group.
+
+00860            DTM, Date/time/period
+                 A segment specifying the date, and when relevant, the time
+                 of an activity identified by the date/time qualifier, e.g.
+                 date/time, test performed.
+
+00870            FTX, Free text
+                 A segment with free text information to give further
+                 clarification.
+
+
+00880            Segment group 23: RFF-DTM
+                 A segment group of referencing documents relating to the
+                 Analysis section and where necessary, their dates, e.g.
+                 Purchase order, shipment note.
+
+00890               RFF, Reference
+                    A segment identifying the referenced document by its
+                    number and where appropriate, a line number within that
+                    document.
+
+00900               DTM, Date/time/period
+                    A segment specifying the date/time of the referenced
+                    document.
+
+
+00910            Segment group 24: MEA-DTM-SG25
+                 A group of segments to allow measurement values or
+                 specification values to be specified along with their
+                 associated references and dates. The data element
+                 Measurement purpose code qualifier (6311) indicates the
+                 type of the values.
+
+00920               MEA, Measurements
+                    A segment to specify discrete values, other measurement
+                    results or specification values. These values may be
+                    specified as a range and may be qualified by the
+                    significance and/or the attribute codes.
+
+00930               DTM, Date/time/period
+                    A segment specifying the date, and when relevant, the
+                    time of an activity identified by the date/time
+                    qualifier, e.g. test date/time.
+
+
+00940               Segment group 25: RFF-DTM
+                    A Segment group of referencing documents relating to
+                    the specifications and values and where necessary,
+                    their dates.
+
+00950                  RFF, Reference
+                       A segment identifying the referenced document by its
+                       number and where appropriate, a line number within
+                       that document.
+
+00960                  DTM, Date/time/period
+                       A segment specifying the date/time of the referenced
+                       document.
+
+
+00970            Segment group 26: STA-DTM-SG27
+                 A group of segments to provide the necessary information
+                 for summary statistics with any related references and
+                 dates.
+
+00980               STA, Statistics
+                    A segment to specify the values required for statistics
+                    including codes to define the type of statistics and
+                    the measure unit employed.
+
+00990               DTM, Date/time/period
+                    A segment specifying the date, and when relevant, the
+                    time of an activity identified by the date/time
+                    qualifier, e.g. time frame of statistical period.
+
+
+01000               Segment group 27: RFF-DTM
+                    A Segment group of referencing documents relating to
+                    the statistics and where necessary, their dates.
+
+01010                  RFF, Reference
+                       A segment identifying the referenced document by its
+                       number and where appropriate, a line number within
+                       that document.
+
+01020                  DTM, Date/time/period
+                       A segment specifying the date/time of the referenced
+                       document.
+
+
+01030            Segment group 28: TEM-MEA-DTM-SG29
+                 A group of segments to provide details of the test
+                 methods, employed including any circumstances, test
+                 devices, references and dates.
+
+01040               TEM, Test method
+                    A segment to describe the nature of the test performed.
+
+01050               MEA, Measurements
+                    A segment to provide the necessary values of the
+                    various circumstances related to the tests, e.g.
+                    temperature reading when test performed.
+
+01060               DTM, Date/time/period
+                    A segment specifying the date, and when relevant, the
+                    time of an activity identified by the date/time
+                    qualifier.
+
+
+01070               Segment group 29: RFF-DTM
+                    A Segment group of referencing documents relating to
+                    the test method and where necessary, their dates.
+
+01080                  RFF, Reference
+                       A segment identifying the referenced document by its
+                       number and where appropriate, a line number within
+                       that document.
+
+01090                  DTM, Date/time/period
+                       A segment specifying the date/time of the referenced
+                       document.
+
+
+01100      Segment group 30: PRC-SG31-SG32
+           A group of segments to allow process related quality data to be
+           specified.
+
+01110         PRC, Process identification
+              A segment to specify the process/sub-process type and
+              description to which the data is related.
+
+
+01120         Segment group 31: NAD-LOC
+              A group of segments identifying Names, Addresses and
+              Locations relevant to the process.
+
+01130            NAD, Name and address
+                 A segment identifying names and addresses of parties, in
+                 coded or clear form, and their function relevant for the
+                 process.
+
+01140            LOC, Place/location identification
+                 A segment indicating more details regarding specific
+                 locations related to the party specified in the NAD-
+                 segment, e.g. internal site/building number.
+
+
+01150         Segment group 32: CCI-PSD-SPS-DTM-FTX-SG33-SG34-SG36-SG38
+              A group of segments to be used to define a class of
+              properties, the individual properties within that class and
+              the related data (e.g. discrete values, statistical
+              information, test methods). When this segment group is used,
+              the data is directly related to the product specified.
+
+01160            CCI, Characteristic/class id
+                 To specify the general class and/or the individual
+                 properties on which the Quality Data is being reported.
+                 Note: within the CCI-segment Class type code (7059) or
+                 Measured attribute code (6313) or Characteristic
+                 description code (7037) must be present.
+                 
+                 If Class type code (7059) AND Measured attribute code
+                 (6313) are present, then Characteristic description code
+                 (7037) is not allowed.
+                 
+                 If only Class type code is used within the CCI-segment,
+                 then the individual properties must be specified within
+                 the related STA/MEA-segments.
+                 
+                 The data element Characteristic description (7036) should
+                 only be used to enhance the meaning of the code value
+                 (e.g. if no specific code available and code value ZZ
+                 (mutually defined) is used then Description can be used to
+                 further describe the Product Characteristics.
+                 
+                 NB: The Class identification element in this segment is
+                 only used to specify the product characteristic class,
+                 e.g. Chemistry or Physical Dimensions.
+
+01170            PSD, Physical sample description
+                 A segment to define the physical sample parameters
+                 associated with a test resulting in discrete measurements.
+                 If used in this position, the values only apply to data
+                 within the same analysis group.
+
+01180            SPS, Sampling parameters for summary statistics
+                 A segment to define the sampling parameters associated
+                 with summary statistics reported. If used in this
+                 position, the values only apply to data within the same
+                 analysis group.
+
+01190            DTM, Date/time/period
+                 A segment specifying the date, and when relevant, the time
+                 of an activity identified by the date/time qualifier, e.g.
+                 date/time, test performed.
+
+01200            FTX, Free text
+                 A segment with free text information to give further
+                 clarification within Segment group 32: the Analysis Group.
+
+
+01210            Segment group 33: RFF-DTM
+                 A segment group of referencing documents relating to the
+                 Analysis Section and where necessary, their dates, e.g.
+                 Purchase order, shipment note.
+
+01220               RFF, Reference
+                    A segment identifying the referenced document by its
+                    number and where appropriate, a line number within that
+                    document.
+
+01230               DTM, Date/time/period
+                    A segment specifying the date/time of the referenced
+                    document.
+
+
+01240            Segment group 34: MEA-DTM-SG35
+                 A group of segments to allow measurement values or
+                 specification values to be specified along with their
+                 associated references and dates. The data element
+                 Measurement purpose code qualifier (6311) indicates the
+                 type of the values.
+
+01250               MEA, Measurements
+                    A segment to specify discrete values, other measurement
+                    results or specification values. These values may be
+                    specified as a range and may be qualified by the
+                    significance and/or the attribute codes.
+
+01260               DTM, Date/time/period
+                    A segment specifying the date, and when relevant, the
+                    time of an activity identified by the date/time
+                    qualifier, e.g. test date/time.
+
+
+01270               Segment group 35: RFF-DTM
+                    A Segment group of referencing documents relating to
+                    the specifications and values and where necessary,
+                    their dates.
+
+01280                  RFF, Reference
+                       A segment identifying the referenced document by its
+                       number and where appropriate, a line number within
+                       that document.
+
+01290                  DTM, Date/time/period
+                       A segment specifying the date/time of the referenced
+                       document.
+
+
+01300            Segment group 36: STA-DTM-SG37
+                 A group of segments to provide the necessary information
+                 for summary statistics with any related references and
+                 dates.
+
+01310               STA, Statistics
+                    A segment to specify the values required for statistics
+                    including codes to define the type of statistics and
+                    the measure unit employed.
+
+01320               DTM, Date/time/period
+                    A segment specifying the date, and when relevant, the
+                    time of an activity identified by the date/time
+                    qualifier, e.g. time frame of statistical period.
+
+
+01330               Segment group 37: RFF-DTM
+                    A Segment group of referencing documents relating to
+                    the statistics and where necessary, their dates.
+
+01340                  RFF, Reference
+                       A segment identifying the referenced document by its
+                       number and where appropriate, a line number within
+                       that document.
+
+01350                  DTM, Date/time/period
+                       A segment specifying the date/time of the referenced
+                       document.
+
+
+01360            Segment group 38: TEM-MEA-DTM-SG39
+                 A group of segments to provide details of the test
+                 methods, employed including any circumstances, test
+                 devices, references and dates.
+
+01370               TEM, Test method
+                    A segment to describe the nature of the test performed.
+
+01380               MEA, Measurements
+                    A segment to provide the necessary values of the
+                    various circumstances related to the tests, e.g.
+                    temperature reading when test performed.
+
+01390               DTM, Date/time/period
+                    A segment specifying the date, and when relevant, the
+                    time of an activity identified by the date/time
+                    qualifier.
+
+
+01400               Segment group 39: RFF-DTM
+                    A Segment group of referencing documents relating to
+                    the test method and where necessary, their dates.
+
+01410                  RFF, Reference
+                       A segment identifying the referenced document by its
+                       number and where appropriate, a line number within
+                       that document.
+
+01420                  DTM, Date/time/period
+                       A segment specifying the date/time of the referenced
+                       document.
+
+01430   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          BGM Beginning of message
+          CCI Characteristic/class id
+          COM Communication contact
+          CTA Contact information
+          DTM Date/time/period
+          FTX Free text
+          GIN Goods identity number
+          IMD Item description
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          NAD Name and address
+          PIA Additional product id
+          PRC Process identification
+          PSD Physical sample description
+          QTY Quantity
+          RFF Reference
+          SPS Sampling parameters for summary statistics
+          STA Statistics
+          TEM Test method
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   10    
+00040   IMD Item description                         C   10    
+00050   MEA Measurements                             C   10    
+00060   FTX Free text                                C   5     
+
+00070       ---- Segment group 1  ------------------ C   10---------------+
+00080   RFF Reference                                M   1                |
+00090   DTM Date/time/period                         C   2----------------+
+
+00100       ---- Segment group 2  ------------------ C   10---------------+
+00110   NAD Name and address                         M   1                |
+00120   LOC Place/location identification            C   5                |
+                                                                          |
+00130       ---- Segment group 3  ------------------ C   10--------------+|
+00140   RFF Reference                                M   1               ||
+00150   DTM Date/time/period                         C   2---------------+|
+                                                                          |
+00160       ---- Segment group 4  ------------------ C   5---------------+|
+00170   CTA Contact information                      M   1               ||
+00180   COM Communication contact                    C   5---------------++
+
+            DETAIL SECTION
+
+00190       ---- Segment group 5  ------------------ C   200--------------+
+00200   LIN Line item                                M   1                |
+00210   PIA Additional product id                    C   10               |
+00220   IMD Item description                         C   10               |
+00230   MEA Measurements                             C   10               |
+00240   PSD Physical sample description              C   1                |
+00250   SPS Sampling parameters for summary                               |
+               statistics                            C   1                |
+00260   DTM Date/time/period                         C   10               |
+00270   QTY Quantity                                 C   99               |
+00280   FTX Free text                                C   5                |
+                                                                          |
+00290       ---- Segment group 6  ------------------ C   10--------------+|
+00300   RFF Reference                                M   1               ||
+00310   DTM Date/time/period                         C   2---------------+|
+                                                                          |
+00320       ---- Segment group 7  ------------------ C   10--------------+|
+00330   NAD Name and address                         M   1               ||
+00340   LOC Place/location identification            C   5               ||
+                                                                         ||
+00350       ---- Segment group 8  ------------------ C   10-------------+||
+00360   RFF Reference                                M   1              |||
+00370   DTM Date/time/period                         C   2--------------+||
+                                                                         ||
+00380       ---- Segment group 9  ------------------ C   5--------------+||
+00390   CTA Contact information                      M   1              |||
+00400   COM Communication contact                    C   5--------------++|
+                                                                          |
+00410       ---- Segment group 10 ------------------ C   100-------------+|
+00420   TEM Test method                              M   1               ||
+00430   MEA Measurements                             C   100             ||
+00440   DTM Date/time/period                         C   10              ||
+                                                                         ||
+00450       ---- Segment group 11 ------------------ C   10-------------+||
+00460   RFF Reference                                M   1              |||
+00470   DTM Date/time/period                         C   2--------------++|
+                                                                          |
+00480       ---- Segment group 12 ------------------ C   200-------------+|
+00490   CCI Characteristic/class id                  M   1               ||
+00500   PSD Physical sample description              C   10              ||
+00510   SPS Sampling parameters for summary                              ||
+               statistics                            C   10              ||
+00520   DTM Date/time/period                         C   10              ||
+00530   FTX Free text                                C   10              ||
+                                                                         ||
+00540       ---- Segment group 13 ------------------ C   10-------------+||
+00550   RFF Reference                                M   1              |||
+00560   DTM Date/time/period                         C   2--------------+||
+                                                                         ||
+00570       ---- Segment group 14 ------------------ C   999------------+||
+00580   MEA Measurements                             M   1              |||
+00590   DTM Date/time/period                         C   10             |||
+                                                                        |||
+00600       ---- Segment group 15 ------------------ C   10------------+|||
+00610   RFF Reference                                M   1             ||||
+00620   DTM Date/time/period                         C   2-------------++||
+                                                                         ||
+00630       ---- Segment group 16 ------------------ C   100------------+||
+00640   STA Statistics                               M   1              |||
+00650   DTM Date/time/period                         C   10             |||
+                                                                        |||
+00660       ---- Segment group 17 ------------------ C   10------------+|||
+00670   RFF Reference                                M   1             ||||
+00680   DTM Date/time/period                         C   2-------------++||
+                                                                         ||
+00690       ---- Segment group 18 ------------------ C   100------------+||
+00700   TEM Test method                              M   1              |||
+00710   MEA Measurements                             C   100            |||
+00720   DTM Date/time/period                         C   10             |||
+                                                                        |||
+00730       ---- Segment group 19 ------------------ C   10------------+|||
+00740   RFF Reference                                M   1             ||||
+00750   DTM Date/time/period                         C   2-------------+++|
+                                                                          |
+00760       ---- Segment group 20 ------------------ C   100-------------+|
+00770   GIN Goods identity number                    M   1               ||
+00780   DTM Date/time/period                         C   10              ||
+                                                                         ||
+00790       ---- Segment group 21 ------------------ C   10-------------+||
+00800   RFF Reference                                M   1              |||
+00810   DTM Date/time/period                         C   2--------------+||
+                                                                         ||
+00820       ---- Segment group 22 ------------------ C   200------------+||
+00830   CCI Characteristic/class id                  M   1              |||
+00840   PSD Physical sample description              C   10             |||
+00850   SPS Sampling parameters for summary                             |||
+               statistics                            C   10             |||
+00860   DTM Date/time/period                         C   10             |||
+00870   FTX Free text                                C   10             |||
+                                                                        |||
+00880       ---- Segment group 23 ------------------ C   10------------+|||
+00890   RFF Reference                                M   1             ||||
+00900   DTM Date/time/period                         C   2-------------+|||
+                                                                        |||
+00910       ---- Segment group 24 ------------------ C   999-----------+|||
+00920   MEA Measurements                             M   1             ||||
+00930   DTM Date/time/period                         C   10            ||||
+                                                                       ||||
+00940       ---- Segment group 25 ------------------ C   10-----------+||||
+00950   RFF Reference                                M   1            |||||
+00960   DTM Date/time/period                         C   2------------++|||
+                                                                        |||
+00970       ---- Segment group 26 ------------------ C   100-----------+|||
+00980   STA Statistics                               M   1             ||||
+00990   DTM Date/time/period                         C   10            ||||
+                                                                       ||||
+01000       ---- Segment group 27 ------------------ C   10-----------+||||
+01010   RFF Reference                                M   1            |||||
+01020   DTM Date/time/period                         C   2------------++|||
+                                                                        |||
+01030       ---- Segment group 28 ------------------ C   100-----------+|||
+01040   TEM Test method                              M   1             ||||
+01050   MEA Measurements                             C   100           ||||
+01060   DTM Date/time/period                         C   10            ||||
+                                                                       ||||
+01070       ---- Segment group 29 ------------------ C   10-----------+||||
+01080   RFF Reference                                M   1            |||||
+01090   DTM Date/time/period                         C   2------------++++|
+                                                                          |
+01100       ---- Segment group 30 ------------------ C   100-------------+|
+01110   PRC Process identification                   M   1               ||
+                                                                         ||
+01120       ---- Segment group 31 ------------------ C   10-------------+||
+01130   NAD Name and address                         M   1              |||
+01140   LOC Place/location identification            C   5--------------+||
+                                                                         ||
+01150       ---- Segment group 32 ------------------ C   200------------+||
+01160   CCI Characteristic/class id                  M   1              |||
+01170   PSD Physical sample description              C   10             |||
+01180   SPS Sampling parameters for summary                             |||
+               statistics                            C   10             |||
+01190   DTM Date/time/period                         C   10             |||
+01200   FTX Free text                                C   10             |||
+                                                                        |||
+01210       ---- Segment group 33 ------------------ C   10------------+|||
+01220   RFF Reference                                M   1             ||||
+01230   DTM Date/time/period                         C   2-------------+|||
+                                                                        |||
+01240       ---- Segment group 34 ------------------ C   999-----------+|||
+01250   MEA Measurements                             M   1             ||||
+01260   DTM Date/time/period                         C   10            ||||
+                                                                       ||||
+01270       ---- Segment group 35 ------------------ C   10-----------+||||
+01280   RFF Reference                                M   1            |||||
+01290   DTM Date/time/period                         C   2------------++|||
+                                                                        |||
+01300       ---- Segment group 36 ------------------ C   100-----------+|||
+01310   STA Statistics                               M   1             ||||
+01320   DTM Date/time/period                         C   10            ||||
+                                                                       ||||
+01330       ---- Segment group 37 ------------------ C   10-----------+||||
+01340   RFF Reference                                M   1            |||||
+01350   DTM Date/time/period                         C   2------------++|||
+                                                                        |||
+01360       ---- Segment group 38 ------------------ C   100-----------+|||
+01370   TEM Test method                              M   1             ||||
+01380   MEA Measurements                             C   100           ||||
+01390   DTM Date/time/period                         C   10            ||||
+                                                                       ||||
+01400       ---- Segment group 39 ------------------ C   10-----------+||||
+01410   RFF Reference                                M   1            |||||
+01420   DTM Date/time/period                         C   2------------+++++
+01430   UNT Message trailer                          M   1     

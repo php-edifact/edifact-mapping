@@ -1,0 +1,1025 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                            Product data message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PRODAT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 8
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                            Product data message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Product data
+       message (PRODAT) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       A message to submit master data - a set of data that is rarely
+       changed - to identify and describe products a supplier offers to his
+       (potential) customer or buyer. This information of long validity
+       includes technical and functional product description but not
+       commercial terms and conditions. This message can be used as well to
+       update the information on a previously sent PRODAT message.
+
+1.2    Field of application
+
+       The Product data message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message provides product identification and description on the
+       full or partial range of deliverable goods a supplier offers to his
+       customers. It might be offered to a single customer, a multitude of
+       customers and to agents as well.
+       
+       The information enables customers to select goods according to
+       appropriate needs. To achieve this the subsequent details may be
+       provided on specified goods:
+       
+       + products characteristics
+       + technical data
+       + utilisation description
+       + utilisation requirements
+       + handling information
+       
+       The information may be provided either structured or in free format.
+       
+       This message provides capability to identify technical information
+       being mandatory for ordering.
+       Descriptive and, or identifying parts of this message can be copied
+       into orders as required.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+       
+       All specified dates and/or times should be in the format 'ccyymmdd'
+       or 'hhmm' unless all parties involved in the transaction agree that
+       there is a functional requirement for an alternative format.
+       
+       Periods should be specified as whole numbers representing the
+       required period as indicated in the date or time or period format
+       (weeks, months, etc.).
+       
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken that the segment qualifier in dependent segments
+       does not conflict with the segment qualifier of the trigger segment
+       of the group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Product data message is PRODAT.
+
+        Note: Product data messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 PRODAT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment by which the sender must uniquely identify the Product
+        Data Message by means of its name and number and when necessary its
+        function. Data element 1225 may be used to identify updates to a
+        previously sent PRODAT message.
+
+00030   DTM, Date/time/period
+        A segment specifying general dates and, when relevant, times
+        related to the whole message. The segment must be specified at
+        least once to identify the Product Data Message date. The
+        Date/time/period segment within other Segment groups should be used
+        whenever the date/time/period requires to be logically related to
+        another specified data item, for example the availability date for
+        a specified line item (DTM following LIN).
+
+00040   ALI, Additional information
+        A segment indicating country of origin.
+
+00050   IMD, Item description
+        A segment providing the product family name commonly used with all
+        products identified within the message in free format and when
+        necessary identifying the language used. It may be repeated as well
+        to provide the name in other languages.
+
+00060   FTX, Free text
+        A segment with free text information, in coded or clear form, used
+        when additional information is needed relevant for all products
+        described in the actual message but cannot be accommodated within
+        other segments. In computer to computer exchanges such text will
+        normally require the receiver to process this segment manually.
+
+00070   PGI, Product group information
+        A segment to identify a product group, price group or tariff group
+        which is applicable to the whole message.
+
+00080   CUX, Currencies
+        A segment to specify currencies and relevant details for the rate
+        of exchange.
+
+
+00090   Segment group 1:  TRU-DTM
+        A group of segments to identify technical rules applicable for all
+        products contained in the message and the rules' issue dates.
+
+00100      TRU, Technical rules
+           A segment identifying technical rules and conditions relevant
+           for the whole message.
+
+00110      DTM, Date/time/period
+           A segment specifying the technical rules' issue date.
+
+
+00120   Segment group 2:  RCS-PIA
+        A group of segments to identify governmental or legal trade
+        restrictions and relevant commodities.
+
+00130      RCS, Requirements and conditions
+           A segment indicating that and which governmental or legal trade
+           restrictions apply to all products described in the actual
+           message.
+
+00140      PIA, Additional product id
+           A segment to identify the commodities relevant for the
+           identified trade restrictions.
+
+
+00150   Segment group 3:  RFF-DTM
+        A group of segments for giving references and where necessary,
+        their dates, relating to the whole message.
+
+00160      RFF, Reference
+           A segment identifying a reference by its type and number.
+
+00170      DTM, Date/time/period
+           A segment specifying the date and, or related to the reference.
+
+
+00180   Segment group 4:  NAD-SG5-SG6
+        A group of segments identifying the parties with associated
+        information relevant to the whole message.
+
+00190      NAD, Name and address
+           A segment identifying names and addresses of the parties, in
+           coded or clear form, and their functions relevant to the
+           message. At least one NAD-segment should be provided, for
+           example the manufacturer, the supplier or message generator. It
+           is recommended that, if possible, only the coded form of the
+           party ID should be specified.
+
+
+00200      Segment group 5:  CTA-COM
+           A group of segments giving contact details of a specific person
+           and, or department within the party identified in the NAD
+           segment.
+
+00210         CTA, Contact information
+              A segment to identify a person and, or department, and their
+              function, to whom communications should be directed.
+
+00220         COM, Communication contact
+              A segment to identify a communication type and number for the
+              contact specified in the CTA segment.
+
+
+00230      Segment group 6:  RFF-DTM
+           A group of segments used to provide references and where
+           necessary, their dates, related to the party identified in the
+           NAD segment.
+
+00240         RFF, Reference
+              A segment identifying a reference by its type and number.
+
+00250         DTM, Date/time/period
+              A segment specifying the date and, or time related to the
+              reference.
+
+
+00260   Segment group 7:  CCI-CAV-MEA
+        A group of segments providing common product characteristic and
+        common characteristic details.
+
+00270      CCI, Characteristic/class id
+           A segment to identify common product characteristic and, or the
+           characteristic name and characteristic relevance for the
+           business process.
+
+00280      CAV, Characteristic value
+           A segment to specify common product characteristic by value in
+           either coded form or in free format.
+
+00290      MEA, Measurements
+           A segment indicating characteristic values being physical
+           measurements (including measurable quantities and percentages)
+           related to specified product family or group characteristics
+           (for example voltage, percentage of material contained) and
+           where relevant measurement ranges. The MEA-segment is repeatable
+           to allow the indication of a number of applicable measurable
+           values, for example one electric appliance may be switchable for
+           different voltages: 110V, 220V, 240V and 380V.
+
+
+00300   Segment group 8:  EFI-CED-COM-RFF-DTM-QTY
+        A group of segments that refers through an external file
+        identification to each of the external files and giving additional
+        information about each of the files.
+
+00310      EFI, External file link identification
+           This segment will identify the external files by indicating the
+           file name, file number and its sequence number in an exchange.
+
+00320      CED, Computer environment details
+           To give precise definitions of all necessary elements belonging
+           to the configuration of a computer system, e.g. hardware,
+           firmware, operating system, communication and application
+           software.
+
+00330      COM, Communication contact
+           To identify a communication number of a department or a person
+           to whom communication should be directed.
+
+00340      RFF, Reference
+           A segment giving reference related to the file identified by a
+           previous external file link identification segment.
+
+00350      DTM, Date/time/period
+           This segment will convey the date/time details of the external
+           file.
+
+00360      QTY, Quantity
+           The size/volume of the external file identified in the previous
+           external file link identification segment.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00370   Segment group 9:  LIN-PIA-DTM-MEA-HAN-DOC-FTX-PGI-SG10-SG11-SG12-
+                          SG13-SG14-SG15-SG16-SG17-SG18-SG20-SG21-SG23-SG28
+        A group of segments providing details of a single product. This
+        segment group may be repeated to give subline details.
+
+00380      LIN, Line item
+           A segment identifying the line item by the line item number and
+           the product by its item number. Detailed product description can
+           be specified using the following segment group: IMD-FTX. Data
+           element 1229 may be used to identify the current line item
+           updating the correspondent line item of a previously sent PRODAT
+           message.
+
+00390      PIA, Additional product id
+           A segment providing either additional identification of the
+           product specified in the LIN segment or any substitute product
+           identification.
+
+00400      DTM, Date/time/period
+           A segment specifying date and, or time or period details
+           relating to the line item only, for example the date of first or
+           last availability of specified product.
+
+00410      MEA, Measurements
+           A segment enabling the physical measurements of the item to be
+           specified where this is required for full identification of the
+           product. Any measurements must refer to the product in its
+           unpacked form, for example thickness of plastic film, length,
+           weight, etc. Note: Measurement related to product
+           characteristics are to be given by MEA within the item
+           characteristic group.
+
+00420      HAN, Handling instructions
+           A segment providing information on required handling of the
+           actual line item's product and additionally, if required,
+           notifying hazardous materials.
+
+00430      DOC, Document/message details
+           A segment to identify documents required with the identified
+           product, for example the SAFHAZ message.
+
+00440      FTX, Free text
+           A segment with free text information, in coded or clear form,
+           used when additional information on the actual product is needed
+           but cannot be accommodated within other segments. The main
+           purpose for using this FTX segment is to provide free format
+           product description. In computer to computer exchanges such text
+           will normally require the receiver to process this segment
+           manually.
+
+00450      PGI, Product group information
+           A segment to identify a product group, price group or tariff
+           group which is applicable to the current line item only.
+
+
+00460      Segment group 10: IMD-FTX
+           A group of segments for naming, identification and short
+           description of the product specified within the PRODAT message
+           line item. This group may be repeated to provide name and, or
+           description in one or more other languages.
+
+00470         IMD, Item description
+              Segment providing the given product name in free format and
+              when necessary identifying the language used. It may be
+              repeated as well to provide name in one more other languages.
+
+00480         FTX, Free text
+              A segment with free text information, in clear form, to
+              describe the named product and when necessary identifying the
+              language used. In computer to computer exchanges such text
+              will normally require the receiver to process this segment
+              manually.
+
+
+00490      Segment group 11: TRU-DTM
+           A group of segments to identify technical rules applicable for
+           the actual product and the rules' issue dates.
+
+00500         TRU, Technical rules
+              A segment identifying technical rules and conditions relevant
+              for the whole message.
+
+00510         DTM, Date/time/period
+              A segment specifying the technical rules' issue date.
+
+
+00520      Segment group 12: RCS-PIA
+           A group of segments to identify governmental or legal trade
+           restrictions and relevant commodities.
+
+00530         RCS, Requirements and conditions
+              A segment indicating that and which governmental or legal
+              trade restrictions apply to the actual product.
+
+00540         PIA, Additional product id
+              A segment to identify the commodities relevant for the
+              identified trade restrictions.
+
+
+00550      Segment group 13: QTY-DTM-STS
+           A group of segments to provide quantity for the specified
+           product and where relevant related date and time information for
+           example minimum delivery batch, indication of manufacturer's
+           capacity within a given period.
+
+00560         QTY, Quantity
+              A segment to specify quantities related to the product.
+
+00570         DTM, Date/time/period
+              A segment indicating that date or time details relate to the
+              quantity, for example number of time units needed to
+              manufacture the specified product quantity.
+
+00580         STS, Status
+              A segment giving a status for the quantity, e.g. metered,
+              estimated or corrected.
+
+
+00590      Segment group 14: PRI-CUX-RNG
+           A segment group to specify the estimated value of an item only
+           for budgetary purposes. This segment group may specify values
+           over a given quantity range and for a current currency.
+
+00600         PRI, Price details
+              A segment to specify the estimated value of an item for
+              information purposes only.
+
+00610         CUX, Currencies
+              A segment to specify the currency of the value.
+
+00620         RNG, Range details
+              A segment to specify the quantity range where the estimated
+              value is applicable.
+
+
+00630      Segment group 15: CCI-CAV-MEA
+           A group of segments providing product characteristic and-product
+           characteristic details.
+
+00640         CCI, Characteristic/class id
+              A segment to identify product characteristic and, or the
+              characteristic name and characteristic relevance for the
+              business process.
+
+00650         CAV, Characteristic value
+              A segment to specify common product characteristic by value
+              in either coded form or in free format.
+
+00660         MEA, Measurements
+              A segment indicating characteristic values being physical
+              measurements (including measurable quantities and
+              percentages) related to specified product characteristics
+              (for example voltage, percentage of material contained) and
+              where relevant measurement ranges. The MEA-segment is
+              repeatable to allow the indication of a number of applicable
+              measurable values, for example one electric appliance may be
+              switchable for different voltages: 110V, 220V, 240V and 380V.
+
+
+00670      Segment group 16: ALI-PCD
+           A group of segments providing information on origin and, or
+           special conditions applicable to the product and - if required -
+           relevant percentages.
+
+00680         ALI, Additional information
+              A segment indicating that the product is subject to special
+              conditions owing to origin, customs preference or commercial
+              factors.
+
+00690         PCD, Percentage details
+              A segment providing a percentage and percentage basis related
+              to the additional information.
+
+
+00700      Segment group 17: RFF-DTM
+           A group of segments giving references related to the product
+           specified in the LIN segment.
+
+00710         RFF, Reference
+              A segment identifying the reference related to the product by
+              its number and type and where appropriate a line within a
+              document.
+
+00720         DTM, Date/time/period
+              A segment specifying the date and, or time related to the
+              reference.
+
+
+00730      Segment group 18: NAD-RFF-QTY-SG19
+           A group of segments identifying the parties with associated
+           information.
+
+00740         NAD, Name and address
+              A segment identifying names and addresses of the parties
+              related to the identified product, in coded or clear form,
+              and their functions for example supplier, warehouse, service.
+              It is recommended that, if possible, only the coded form of
+              the party ID should be specified.
+
+00750         RFF, Reference
+              A segment identifying a reference related to the party
+              described in the preceding NAD segment.
+
+00760         QTY, Quantity
+              A segment enabling the specification of quantities required
+              to satisfy the specified level of service for a specific
+              party.
+
+
+00770         Segment group 19: CTA-COM
+              A group of segments giving contact details of a specific
+              person and, or department within the party identified in the
+              NAD segment.
+
+00780            CTA, Contact information
+                 A segment to identify a person and, or department, and
+                 their function, to whom communications should be directed.
+
+00790            COM, Communication contact
+                 A segment to identify a communication type and number for
+                 the contact specified in the CTA segment.
+
+
+00800      Segment group 20: DGS-QTY-FTX
+           A group of segments containing information about dangerous
+           goods.
+
+00810         DGS, Dangerous goods
+              A segment providing dangerous goods information by using
+              relevant dangerous goods identification.
+
+00820         QTY, Quantity
+              A segment to specify quantity for the given dangerous goods.
+
+00830         FTX, Free text
+              A segment with free text information, in clear form, to
+              identify dangerous goods. In computer to computer exchanges
+              such text will normally require the receiver process this
+              segment manually.
+
+
+00840      Segment group 21: PAC-MEA-QTY-HAN-PCI-SG22
+           A group of segments identifying product specific packaging of
+           the goods identified in the line item, its physical dimensions
+           and marks (for example special packaging relevant for the
+           product).
+
+00850         PAC, Package
+              A segment specifying the number of packages and the physical
+              type of packaging for the product, for example, package type.
+
+00860         MEA, Measurements
+              A segment specifying physical measurements of packages
+              described in the PAC segment,-for example cube or gross
+              weight, stack factor.
+
+00870         QTY, Quantity
+              A segment identifying the type of quantity and the quantity
+              related to the package, for example quantity of products
+              packed into the package.
+
+00880         HAN, Handling instructions
+              A segment providing information on required handling of the
+              actual line item's product depending on packaging and
+              additionally, if required, notifying hazardous materials.
+
+00890         PCI, Package identification
+              A segment specifying markings and labels used on individual
+              physical units (packages) described in the PAC segment, for
+              example item number of packaging unit.
+
+
+00900         Segment group 22: COD-MEA-QTY-PCD
+              A group of segments to indicate the ingredients of the
+              packaging used to pack a product and to provide the quantity
+              of material used in this actual packaging. This group needs
+              to be repeated for the ingredients as relevant.
+
+00910            COD, Component details
+                 A segment to identify the ingredients used for packaging.
+
+00920            MEA, Measurements
+                 A segment to give the measurements of the identified
+                 ingredient as used for packaging.
+
+00930            QTY, Quantity
+                 A segment to give the quantity of the identified
+                 ingredient as used for packaging.
+
+00940            PCD, Percentage details
+                 A segment to give the percentage of the ingredient within
+                 the packaging.
+
+
+00950      Segment group 23: HYN-PIA-QTY-FTX-SG24-SG25-SG26
+           A group of segments to specify hierarchical connections from the
+           given product to higher or lower leveled products.
+
+00960         HYN, Hierarchy information
+              A segment to identify hierarchical connections from the given
+              product to higher or lower leveled products and its function
+              within the logistic chain. Data element 1229 may be used to
+              identify the current line item's hierarchical structure
+              updating the correspondent line item's hierarchical structure
+              of a previously sent PRODAT message.
+
+00970         PIA, Additional product id
+              A segment providing either additional identification of the
+              product specified in the HYN segment or any substitute
+              product identification.
+
+00980         QTY, Quantity
+              A segment identifying the child product's quantity contained
+              within the identified parent product.
+
+00990         FTX, Free text
+              A segment with free text information, in coded or clear form,
+              used when additional information on the actual product and
+              its hierarchical connections.
+
+
+01000         Segment group 24: RFF-DTM
+              A group of segments to provide references linked to the
+              hierarchical item and where necessary the reference date.
+
+01010            RFF, Reference
+                 A segment identifying the reference linked to the
+                 hierarchical item, for example the drawing number on a
+                 wiring diagram.
+
+01020            DTM, Date/time/period
+                 A segment specifying the date and, or time related to the
+                 reference.
+
+
+01030         Segment group 25: CCI-CAV-MEA
+              A group of segments to identify characteristics depending on
+              the product's use within the specified hierarchy.
+
+01040            CCI, Characteristic/class id
+                 A segment to identify product characteristic and, or the
+                 characteristic name and characteristic relevance for the
+                 business process.
+
+01050            CAV, Characteristic value
+                 A segment to specify product characteristic by value in
+                 either coded form or in free format.
+
+01060            MEA, Measurements
+                 A segment indicating characteristic values being physical
+                 measurements (including measurable quantities and
+                 percentages) related to specified product characteristics
+                 (for example voltage, percentage of material contained)
+                 and where relevant measurement ranges. The MEA-segment is
+                 repeatable to allow the indication of a number of
+                 applicable measurable values, for example one electric
+                 appliance may be switchable for different voltages: 110V,
+                 220V, 240V and 380V.
+
+
+01070         Segment group 26: NAD-PIA-QTY-SG27
+              A segment group to specify party dependent information for
+              the actual product in the given hierarchy.
+
+01080            NAD, Name and address
+                 A segment identifying a party preferably in coded form to
+                 which specific product and hierarchical item
+                 characteristics apply.
+
+01090            PIA, Additional product id
+                 A segment providing additional identification(s) of the
+                 hierarchically linked product that are specific to the
+                 identified party, for example an additional number from
+                 another origin to identify the higher or lower leveled
+                 product relevant to the identified party.
+
+01100            QTY, Quantity
+                 A segment identifying the child product's quantity
+                 contained within the identified parent product if
+                 specially defined by the named party.
+
+
+01110            Segment group 27: CCI-CAV-MEA
+                 A group of segments to identify characteristics depending
+                 on the product's use within the hierarchy specific to the
+                 identified party.
+
+01120               CCI, Characteristic/class id
+                    A segment to identify product characteristic and, or
+                    the characteristic name and characteristic relevance
+                    for the business process.
+
+01130               CAV, Characteristic value
+                    A segment to specify product-characteristic by value in
+                    either coded form or in free format.
+
+01140               MEA, Measurements
+                    A segment indicating characteristic values being
+                    physical measurements (including measurable quantities
+                    and percentages) related to specified product
+                    characteristics (for example voltage, percentage of
+                    material contained) and where relevant measurement
+                    ranges. The MEA-segment is repeatable to allow the
+                    indication of a number of applicable measurable values,
+                    for example one electric appliance may be switchable
+                    for different voltages: 110V, 220V, 240V and 380V.
+
+
+01150      Segment group 28: EFI-CED-COM-RFF-DTM-QTY
+           A group of segments that refers through an external file
+           identification to each of the external files and giving
+           additional information about each of the files.
+
+01160         EFI, External file link identification
+              This segment will identify the external files by indicating
+              the file name, file number and its sequence number in an
+              exchange.
+
+01170         CED, Computer environment details
+              To give precise definitions of all necessary elements
+              belonging to the configuration of a computer system like
+              hardware, firmware, operating system, communication and
+              application software.
+
+01180         COM, Communication contact
+              To identify a communication number of a department or a
+              person to whom communication should be directed.
+
+01190         RFF, Reference
+              A segment giving reference related to the file, identified by
+              a previous external file link identification segment.
+
+01200         DTM, Date/time/period
+              This segment will convey the date/time details of the
+              external file.
+
+01210         QTY, Quantity
+              The size/volume of the external file identified in the
+              previous external file link identification segment.
+
+01220   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ALI Additional information
+          BGM Beginning of message
+          CAV Characteristic value
+          CCI Characteristic/class id
+          CED Computer environment details
+          COD Component details
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DGS Dangerous goods
+          DOC Document/message details
+          DTM Date/time/period
+          EFI External file link identification
+          FTX Free text
+          HAN Handling instructions
+          HYN Hierarchy information
+          IMD Item description
+          LIN Line item
+          MEA Measurements
+          NAD Name and address
+          PAC Package
+          PCD Percentage details
+          PCI Package identification
+          PGI Product group information
+          PIA Additional product id
+          PRI Price details
+          QTY Quantity
+          RCS Requirements and conditions
+          RFF Reference
+          RNG Range details
+          STS Status
+          TRU Technical rules
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   10    
+00040   ALI Additional information                   C   5     
+00050   IMD Item description                         C   10    
+00060   FTX Free text                                C   5     
+00070   PGI Product group information                C   10    
+00080   CUX Currencies                               C   9     
+
+00090       ---- Segment group 1  ------------------ C   10---------------+
+00100   TRU Technical rules                          M   1                |
+00110   DTM Date/time/period                         C   1----------------+
+
+00120       ---- Segment group 2  ------------------ C   10---------------+
+00130   RCS Requirements and conditions              M   1                |
+00140   PIA Additional product id                    C   5----------------+
+
+00150       ---- Segment group 3  ------------------ C   99---------------+
+00160   RFF Reference                                M   1                |
+00170   DTM Date/time/period                         C   5----------------+
+
+00180       ---- Segment group 4  ------------------ C   99---------------+
+00190   NAD Name and address                         M   1                |
+                                                                          |
+00200       ---- Segment group 5  ------------------ C   5---------------+|
+00210   CTA Contact information                      M   1               ||
+00220   COM Communication contact                    C   10--------------+|
+                                                                          |
+00230       ---- Segment group 6  ------------------ C   5---------------+|
+00240   RFF Reference                                M   1               ||
+00250   DTM Date/time/period                         C   5---------------++
+
+00260       ---- Segment group 7  ------------------ C   999--------------+
+00270   CCI Characteristic/class id                  M   1                |
+00280   CAV Characteristic value                     C   10               |
+00290   MEA Measurements                             C   10---------------+
+
+00300       ---- Segment group 8  ------------------ C   99---------------+
+00310   EFI External file link identification        M   1                |
+00320   CED Computer environment details             C   99               |
+00330   COM Communication contact                    C   9                |
+00340   RFF Reference                                C   9                |
+00350   DTM Date/time/period                         C   9                |
+00360   QTY Quantity                                 C   9----------------+
+
+            DETAIL SECTION
+
+00370       ---- Segment group 9  ------------------ C   999999-----------+
+00380   LIN Line item                                M   1                |
+00390   PIA Additional product id                    C   10               |
+00400   DTM Date/time/period                         C   99               |
+00410   MEA Measurements                             C   10               |
+00420   HAN Handling instructions                    C   5                |
+00430   DOC Document/message details                 C   99               |
+00440   FTX Free text                                C   99               |
+00450   PGI Product group information                C   10               |
+                                                                          |
+00460       ---- Segment group 10 ------------------ C   10--------------+|
+00470   IMD Item description                         M   1               ||
+00480   FTX Free text                                C   99--------------+|
+                                                                          |
+00490       ---- Segment group 11 ------------------ C   10--------------+|
+00500   TRU Technical rules                          M   1               ||
+00510   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00520       ---- Segment group 12 ------------------ C   10--------------+|
+00530   RCS Requirements and conditions              M   1               ||
+00540   PIA Additional product id                    C   5---------------+|
+                                                                          |
+00550       ---- Segment group 13 ------------------ C   10--------------+|
+00560   QTY Quantity                                 M   1               ||
+00570   DTM Date/time/period                         C   5               ||
+00580   STS Status                                   C   5---------------+|
+                                                                          |
+00590       ---- Segment group 14 ------------------ C   5---------------+|
+00600   PRI Price details                            M   1               ||
+00610   CUX Currencies                               C   1               ||
+00620   RNG Range details                            C   1---------------+|
+                                                                          |
+00630       ---- Segment group 15 ------------------ C   99999-----------+|
+00640   CCI Characteristic/class id                  M   1               ||
+00650   CAV Characteristic value                     C   10              ||
+00660   MEA Measurements                             C   10--------------+|
+                                                                          |
+00670       ---- Segment group 16 ------------------ C   999-------------+|
+00680   ALI Additional information                   M   1               ||
+00690   PCD Percentage details                       C   5---------------+|
+                                                                          |
+00700       ---- Segment group 17 ------------------ C   99--------------+|
+00710   RFF Reference                                M   1               ||
+00720   DTM Date/time/period                         C   5---------------+|
+                                                                          |
+00730       ---- Segment group 18 ------------------ C   99--------------+|
+00740   NAD Name and address                         M   1               ||
+00750   RFF Reference                                C   99              ||
+00760   QTY Quantity                                 C   5               ||
+                                                                         ||
+00770       ---- Segment group 19 ------------------ C   5--------------+||
+00780   CTA Contact information                      M   1              |||
+00790   COM Communication contact                    C   10-------------++|
+                                                                          |
+00800       ---- Segment group 20 ------------------ C   10--------------+|
+00810   DGS Dangerous goods                          M   1               ||
+00820   QTY Quantity                                 C   1               ||
+00830   FTX Free text                                C   5---------------+|
+                                                                          |
+00840       ---- Segment group 21 ------------------ C   5---------------+|
+00850   PAC Package                                  M   1               ||
+00860   MEA Measurements                             C   10              ||
+00870   QTY Quantity                                 C   5               ||
+00880   HAN Handling instructions                    C   5               ||
+00890   PCI Package identification                   C   5               ||
+                                                                         ||
+00900       ---- Segment group 22 ------------------ C   99-------------+||
+00910   COD Component details                        M   1              |||
+00920   MEA Measurements                             C   9              |||
+00930   QTY Quantity                                 C   9              |||
+00940   PCD Percentage details                       C   9--------------++|
+                                                                          |
+00950       ---- Segment group 23 ------------------ C   999999----------+|
+00960   HYN Hierarchy information                    M   1               ||
+00970   PIA Additional product id                    C   10              ||
+00980   QTY Quantity                                 C   5               ||
+00990   FTX Free text                                C   99              ||
+                                                                         ||
+01000       ---- Segment group 24 ------------------ C   999------------+||
+01010   RFF Reference                                M   1              |||
+01020   DTM Date/time/period                         C   5--------------+||
+                                                                         ||
+01030       ---- Segment group 25 ------------------ C   99-------------+||
+01040   CCI Characteristic/class id                  M   1              |||
+01050   CAV Characteristic value                     C   10             |||
+01060   MEA Measurements                             C   10-------------+||
+                                                                         ||
+01070       ---- Segment group 26 ------------------ C   99-------------+||
+01080   NAD Name and address                         M   1              |||
+01090   PIA Additional product id                    C   10             |||
+01100   QTY Quantity                                 C   5              |||
+                                                                        |||
+01110       ---- Segment group 27 ------------------ C   99------------+|||
+01120   CCI Characteristic/class id                  M   1             ||||
+01130   CAV Characteristic value                     C   99            ||||
+01140   MEA Measurements                             C   10------------+++|
+                                                                          |
+01150       ---- Segment group 28 ------------------ C   99--------------+|
+01160   EFI External file link identification        M   1               ||
+01170   CED Computer environment details             C   99              ||
+01180   COM Communication contact                    C   9               ||
+01190   RFF Reference                                C   9               ||
+01200   DTM Date/time/period                         C   9               ||
+01210   QTY Quantity                                 C   9---------------++
+01220   UNT Message trailer                          M   1     

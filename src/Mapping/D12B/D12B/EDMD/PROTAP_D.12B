@@ -1,0 +1,1114 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                      Project tasks planning message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : PROTAP
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG6 Architecture, Engineering and Construction
+
+
+
+                                  CONTENTS
+
+                      Project tasks planning message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+       3.2   Message terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Project tasks
+       planning message (PROTAP) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Project Tasks Planning message is used in various industry
+       sectors when there is a requirement for all parties involved to
+       formally establish and exchange planning and scheduling information.
+       This information describes the tasks and resources needed to
+       complete a project or provide a service. This can include such
+       details as what activities or tasks are involved, who is available
+       to do the work, who is doing the work, what must be completed or
+       delivered such as a document or goods, and when the work will be
+       completed or when the item will be delivered. This document may be
+       part of the contractual documents exchanged for the preparation,
+       status, or completion of a project or service.
+
+1.2    Field of application
+
+       The Project tasks planning message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+       
+       The industry sectors that typically exchange planning and scheduling
+       information include construction, aerospace, aircraft, utility,
+       defense, facility maintenance, automotive, and software development.
+       Various government entities such as transportation, energy, space,
+       and defense also exchange planning and scheduling information with
+       their contractors related to construction, software development,
+       research and development, and production. For departments or
+       ministries of defense, this planning and scheduling information is
+       typically part of the contractual requirements for weapon system
+       acquisition and chemical or hazardous material disposal. 
+       
+       Although various regional and international differences do exist in
+       the business terms used in a planning and scheduling environment,
+       the underlying business requirements are similar. In many respects,
+       the various commercial off the shelf application software used for
+       planning and scheduling around the world have established a default
+       set of common principles and data requirements. Where regional and
+       international differences do exist in business terms, the design of
+       the message is flexible enough to accommodate them.
+
+1.3    Principles
+
+       This message is designed to convey planning, scheduling, and
+       resource information about a project and the business environment
+       related to the project in a neutral data format. This information
+       exchange can be bi-directional between the parties involved. Only
+       data associated with one schedule or plan is exchanged per
+       occurrence of this message. 
+       
+       This message is structured to support the exchange of the three main
+       groups of independent yet interrelated information typical in a
+       project management environment and commercial off the shelf
+       application software. These main groups of information are
+       represented as segment groups within this message and can be used
+       independently or together as needed to fit the requirements of the
+       project. The main groups of information are 1) resource
+       availability; 2) calendar information; and 3) activity or task
+       details with related resource, calendar, milestone, and constraint
+       information. 
+       
+       The header section in this message includes the resource
+       availability segment group. The detail section in this message
+       includes the calendar information and activity or task details.
+       While all three groups of information can be classified as detail
+       data, the resource availability segment group was placed in the
+       header section to prevent segment collision. In addition, the
+       resource availability and calendar information is only exchanged
+       infrequently; the core of the message is the activity or task
+       segment group as this is the data that needs to be exchanged
+       frequently to adequately manage a project. 
+       
+       This message can be used to exchange resource availability,
+       calendar, task and related information between commercial off the
+       shelf or company unique program management software applications.
+       This exchange can be internal to company; for example, when one or
+       more divisions within a company use different software applications
+       or when the company wants to establish a common, standard data
+       exchange format. This exchange can also be external to a company;
+       for example, when data must be exchanged with customers, suppliers,
+       or subcontractors regardless of the application software used by all
+       parties. 
+       
+       Project planning and scheduling information can be highly
+       proprietary to a company. The parties exchanging this data may elect
+       to use various methods to ensure only the right people have access
+       to the data. 
+       
+       1.3.1 Resource Availability Information
+       
+       The resource availability group of segments is designed to convey
+       information about company-wide resources that may be employed to
+       complete work. This includes all types of resources such as labor,
+       material, manufacturing or testing facilities, or capital used
+       through out the company for all their contracts. Information about
+       availability (percent of total time available or available dates a
+       resource can be devoted to a project or task), efficiency factors,
+       unit rate, inflation percentage, quantity, and cost can be described
+       as needed. Typically, this resource availability information is only
+       conveyed early in the initial planning or proposal stage of a
+       project or in the event the business base of the company has changed
+       significantly during the execution of a project plan. Depending on
+       the business environment or requirements of the trading partners,
+       this availability information may not be exchanged at all. 
+       
+       1.3.2 Calendar Information
+       
+       The calendar group of segments is designed to convey information
+       about the working calendars used to plan and schedule work. This
+       includes information about non-working days, working hours, and
+       holidays. There may be multiple working calendars if there are
+       working shifts, different company divisions doing the work, or
+       subcontractors doing the work. Typically, this calendar information
+       is only conveyed early in the initial planning or proposal stage,
+       when work is set to begin, or when there are substantial changes to
+       the working environment. 
+       
+       1.3.3 Activity or Task Information
+       
+       The activity or task related group of segments is the main focus of
+       this message. It is used to convey information about the tasks that
+       must be done or milestone events that must occur to complete the
+       project plan as well as progress against the original plan, or
+       changes to the original plan. This can include information about
+       what must be done, when it must be done, and related details about
+       the activity or task. Quantity, monetary amounts, and percentages
+       can also be associated with the task for planning or tracking
+       progress. An activity or task may include a calendar reference. This
+       reference, when used, can relate to the calendar information segment
+       group details. 
+       
+       1.3.4 Activity or Task Related Information
+       
+       Within the group of segments used to describe an activity or task is
+       subordinate group of segments that can be used to describe items
+       that are related to an activity or task. This includes the resources
+       assigned to a task (who is doing the work or what is needed to
+       complete the work such as materials or facilities), a list of
+       milestone events (a way to measure progress on a task), and
+       relationships or constraints between activities. Quantity, monetary
+       amounts, percentages, and rates can also be associated with these
+       related items for planning or tracking progress. 
+       
+       When resources are assigned to an activity or task, these resources
+       may relate to the resource availability segment group information if
+       the option of building the resource availability data was used for
+       the project. A project office can perform additional planning and
+       scheduling functions with the combined information of available
+       resources and resources assigned to a task to determine if there are
+       enough resources available company-wide to complete a task. This may
+       require the activity to be extended or require the company to hire
+       or secure more resources to complete the work. In addition, a
+       resource may include a calendar reference. This reference, when
+       used, can relate to the calendar information segment group details. 
+       
+       1.3.5 Milestone Information
+       
+       Milestones can be handled in two ways in this message. They can be
+       treated as an activity that is an event (i.e., the activity or task
+       segment group in the detail section) or they can be treated as a
+       subordinate event assigned to a main activity (i.e., the subordinate
+       segment group to the line item in the detail section). 
+       
+       1.3.6 Adding, Changing, and Deleting Information
+       
+       Add, change, and delete notations are included for available
+       resources, index structure details, tasks, milestones, and items
+       related to a task such as milestones, resources, and constraint
+       activities. This allows this message to be used in two ways. The
+       first and most simple method is to send a PROTAP message that
+       includes an entire set of data to completely replace or overwrite
+       old data. The second and more complex method is to send only the
+       tasks, resources, milestones, and so forth that have been added,
+       changed, or deleted. The capabilities of the receiving application
+       or receiving party's business environment will dictate how this
+       capability is used. 
+       
+       1.3.7 Status Information
+       
+       This message is designed to convey initial planning and scheduling
+       information, replanning information, and periodic project status
+       information. Initial planning and scheduling information is used to
+       establish the original baseline plan or schedule data between
+       parties. This baseline provides the foundation for comparison for
+       status information as the project progresses. In the event a project
+       runs into difficulties, it may be necessary to replan the balance of
+       the project, with new baseline plan or schedule data exchanged
+       between parties. The periodic status information conveyed between
+       parties can include remaining duration, percent complete, or actual
+       start and complete dates. Milestones, quantities, percentages, and
+       monetary amounts can be used to calculate the value of the work
+       completed. For the exchange of periodic status information,
+       typically only agreed to key data for the plan or schedule are
+       exchanged. This is a smaller subset of the data required to
+       establish a baseline or rebaseline plan.
+       
+       1.3.8 Other Functionality
+       
+       Other functionality available in this message include the following:
+       
+       Relationships to other projects can be described with notations on
+       the type of relationship such as a parent, child, or other related
+       schedule whether internal or external. 
+       
+       Relationships to other documents can be described with notations on
+       the type of document, and where needed, information about the
+       computing environment used to produce or process the information. 
+       
+       Related index structures can be described and defined for the
+       project. This supports various reporting structures such as a Work
+       Breakdown Structure or Organizational Breakdown Structure that
+       relate to the project or specific tasks. The reporting structure can
+       be up to six levels deep to accommodate very large, complex
+       projects. 
+       
+       Notations about a work team, named responsible person, and product
+       details related to an activity can also be conveyed.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+3.2    Message terms and definitions
+
+       The terms "planning" and "scheduling" have different meanings. A
+       project plan is a formal, approved document used to guide both
+       project execution and project control. The primary uses of the
+       project plan are to document planning assumptions and decisions,
+       facilitate communication, and to document the approved scope, cost,
+       and schedule baselines; these baselines serve as the foundation to
+       measure progress and track changes. 
+       
+       A project schedule is an essential part of any project plan. A
+       schedule provides the details about the activities that must be
+       done, when they must be done, who is doing the work, and work
+       progress measurement criteria. 
+       
+       The terms "task" and "activity" are used interchangeably to describe
+       the work unit that must be completed to reach the end objective of
+       the project.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The header section for this message includes project unique
+       identifying details, general project information, details about the
+       parties exchanging data, information about computing environments,
+       applicable index structure definitions, and the resource
+       availability segment group.
+       
+       The detail section for this message includes the calendar
+       information segment group and the activity or task segment group.
+       Within the activity or task segment group a subordinate segment
+       group is included to provide related information about an activity
+       or task such as assigned resources, milestones, or constraints. 
+       
+       The summary section provides an optional control total segment for
+       checking purposes.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Project tasks planning message is PROTAP.
+
+        Note: Project tasks planning messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 PROTAP
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to identify a single planning or scheduling reporting
+        document, its unique identifier, and specific message function.
+
+00030   GEI, Processing information
+        A segment to identify the report detail type such as network logic,
+        barchart, milestone, line of balance, or task list type of
+        information.
+
+00040   DTM, Date/time/period
+        A segment to identify the message preparation, effective, and
+        project baseline processing date information.
+
+
+00050   Segment group 1:  RFF-IMD-BII-SG2
+        A group of segments to provide information about the project and
+        identify unique reference numbers for the message, to provide
+        descriptions, to identify structured index numbers, and to note
+        cross reference links with other projects.
+
+00060      RFF, Reference
+           A segment to identify references related to the plan or schedule
+           such as a project, program, contract, contract addendum, Request
+           for Quote, or Request for Proposal number.
+
+00070      IMD, Item description
+           A segment to provide a description such as the name of the
+           program for any reference number or program.
+
+00080      BII, Structure identification
+           A segment to provide a structured index number for any reference
+           number, project, plan, or schedule.
+
+
+00090      Segment group 2:  GIR-REL
+           A group of segments to provide related project, plan, or
+           schedule numbers and relationship type such as a parent, child,
+           or peer.
+
+00100         GIR, Related identification numbers
+              A segment to identify related or linked project, plan, or
+              schedule identity numbers.
+
+00110         REL, Relationship
+              A segment to identify the type of relationship such as a
+              parent, child, or peer (internal or external to the project).
+
+
+00120   Segment group 3:  PNA-ADR-BII-SG4-SG5
+        A group of segments to identify the parties relevant to the entire
+        message with related contact and communication information, provide
+        any applicable structured index number, and identify the type of
+        data processing environment in use at the sender or receiver site.
+
+00130      PNA, Party identification
+           A segment to provide message sender and receiver information.
+
+00140      ADR, Address
+           A segment to provide address information for each named party.
+
+00150      BII, Structure identification
+           A segment to provide a structured index number associated with
+           each named party.
+
+
+00160      Segment group 4:  CTA-COM
+           A group of segments to identify contact and communication
+           numbers for each named party.
+
+00170         CTA, Contact information
+              A segment to provide a contact person's name for each named
+              party.
+
+00180         COM, Communication contact
+              A segment to identify the phone number, fax number, e-mail,
+              or other communication number for the contact party.
+
+
+00190      Segment group 5:  CED-DTM
+           A group of segments to provide information about the data
+           processing environment used by each named party.
+
+00200         CED, Computer environment details
+              A segment to describe the data processing environment such as
+              the software application name, version and release.
+
+00210         DTM, Date/time/period
+              A segment to provide the effective, processing, or other date
+              stamp for the named software application.
+
+
+00220   Segment group 6:  EFI-CED-DTM
+        A group of segments to provide information about other documents
+        that relate to the entire message such as cost, other planning or
+        scheduling, technical, text, or graphical files that provide
+        additional project reference or management control information.
+
+00230      EFI, External file link identification
+           A segment to identify a related file and provide details such as
+           the file name, file format, version, and data format.
+
+00240      CED, Computer environment details
+           A segment to describe the data processing environment used to
+           create the named file such as the name of the software
+           application, version and release.
+
+00250      DTM, Date/time/period
+           A segment to provide the created, effective, processing, or
+           other date stamp for the named file.
+
+
+00260   Segment group 7:  IND-BII-IMD-RCS
+        A group of segments to identify index structures and contents of
+        indexing systems used for the plan or schedule.
+
+00270      IND, Index details
+           A segment to identify what the index applies to, such as the
+           entire project or part of a project. Used to indicate whether
+           IND and related segments describes the index structure or
+           describes the index contents. When used to describe a structure,
+           the segment is also used to indicate the structure hierarchical
+           level.
+
+00280      BII, Structure identification
+           A segment to identify a structured index number definition or
+           contents.
+
+00290      IMD, Item description
+           A segment to provide a description for the structured index
+           number definition or contents.
+
+00300      RCS, Requirements and conditions
+           A segment to identify an action (add, change, or delete) for the
+           index data.
+
+
+00310   Segment group 8:  LIN-BII-RFF-IMD-DTM-SG9-SG10-SG11-SG12-SG13
+        A group of segments to identify company-wide resources that are
+        available to complete work on any given project. These resources
+        can be assigned specific working calendars to indicate the days or
+        times they are available to do work.
+
+00320      LIN, Line item
+           A segment to identify the resource and related action code (add,
+           change, or delete).
+
+00330      BII, Structure identification
+           A segment to identify any structured index numbers for the
+           resources that are related to the project such as billing or
+           trade skill categories.
+
+00340      RFF, Reference
+           A segment to provide reference numbers for the resource such as
+           a working calendar number, charge number or organization code.
+
+00350      IMD, Item description
+           A segment to provide a description of the resource or type of
+           resource such as labor or material in clear or coded form.
+
+00360      DTM, Date/time/period
+           A segment to provide start and end dates related to the
+           resource.
+
+
+00370      Segment group 9:  QTY-DTM
+           A group of segments to provide information about the quantity or
+           number of resources available, a unit of measure for the
+           resource such as hours, and related dates.
+
+00380         QTY, Quantity
+              A segment to identify the quantity of available resources and
+              associated unit of measure such as hours or days the resource
+              is available.
+
+00390         DTM, Date/time/period
+              A segment to identify the effective date, or start and end
+              dates for the resource quantity.
+
+
+00400      Segment group 10: PRI-DTM
+           A group of segments to provide a unit price of the resource and
+           effective dates of the price.
+
+00410         PRI, Price details
+              A segment to identify the resource unit price.
+
+00420         DTM, Date/time/period
+              A segment to identify the effective date, or start and end
+              dates for the resource unit price.
+
+
+00430      Segment group 11: PCD-DTM
+           A group of segments to provide availability or efficiency
+           factors for a given resource with any related dates. This
+           segment group can also be used to provide an escalation or
+           inflation percentage that may apply for the resource along with
+           any associated specific start and end dates.
+
+00440         PCD, Percentage details
+              A segment to identify the percentage of availability or
+              efficiency factor for the resource; also used to identify any
+              escalation or inflation percentages.
+
+00450         DTM, Date/time/period
+              A segment to identify the effective date, or start and end
+              dates for the resource availability, efficiency, or
+              escalation percentage.
+
+
+00460      Segment group 12: RTE-DTM
+           A group of segments to provide a rate per unit such as a rate
+           per hour for the resource and related dates.
+
+00470         RTE, Rate details
+              A segment to provide the rate per unit such as a rate per
+              hour for the resource.
+
+00480         DTM, Date/time/period
+              A segment to identify the effective date, or start and end
+              dates for the resource rate per unit.
+
+
+00490      Segment group 13: MOA-DTM
+           A group of segments to provide any monetary amounts associated
+           with the resource such as budgeted, planned, or estimated costs
+           and related dates.
+
+00500         MOA, Monetary amount
+              A segment to identify a monetary amount for the resource.
+
+00510         DTM, Date/time/period
+              A segment to identify the effective date, or start and end
+              dates for the resource monetary amount.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00520   UNS, Section control
+        A mandatory service segment placed before the first user segment in
+        the detail section to avoid segment collision.
+
+
+00530   Segment group 14: RFF-SG15
+        A group of segments to provide information about the working
+        calendars used for the tasks and resources assigned to a task.
+
+00540      RFF, Reference
+           A segment to provide the reference used to identify a given
+           calendar.
+
+
+00550      Segment group 15: SCC-QTY-DTM
+           A group of segments to describe a given calendar. Provides
+           information such as specific working patterns, quantity of
+           working time units per day or working shifts per day, and
+           specific date details such as non-working or holiday dates.
+
+00560         SCC, Scheduling conditions
+              A segment to provide details about a calendar work period
+              pattern such as Monday through Friday.
+
+00570         QTY, Quantity
+              A segment to identify the quantity of working time units per
+              day, quantity of working shifts per day, or quantity of
+              working time units per shift for a given calendar.
+
+00580         DTM, Date/time/period
+              A segment to provide precise date details about a given
+              calendar such as specific non-working or holiday dates.
+
+
+00590   Segment group 16: LIN-STS-BII-RFF-IMD-PNA-CCI-DTM-FTX-SG17-SG18-
+                          SG19-SG20-SG21
+        A group of segments to describe the tasks or milestones that must
+        be done to complete a project. Segments in the group provide
+        structured index numbers or reference numbers, descriptions, named
+        responsible person, named work team, information about the product
+        or service being performed, work status, dates, durations, other
+        text details, quantity with optional dates, percents with optional
+        dates, and monetary amounts with optional dates for the task or
+        milestone.
+        
+        The subordinate segment group GIR-REL-RCS-BII-RFF-DTM-SG22- SG23-
+        SG24-SG25 provides related information for milestones assigned to a
+        main activity or task, interface activities, constraint activities,
+        or resources assigned to a task.
+
+00600      LIN, Line item
+           A segment to identify the task, indicate if it is an activity or
+           milestone event, provide an action code (add, change, delete),
+           and provide a schedule level reference.
+
+00610      STS, Status
+           A segment to provide a work status indicator (work has begun or
+           work has been completed) for the task.
+
+00620      BII, Structure identification
+           A segment to identify any structured index numbers such as a
+           bill of materials or work breakdown structure for the task.
+
+00630      RFF, Reference
+           A segment to provide reference numbers associated with the line
+           item (task) such as charge numbers, cost accounts, statement of
+           work numbers, and calendar or work shift references.
+
+00640      IMD, Item description
+           A segment to provide a description of the task.
+
+00650      PNA, Party identification
+           A segment to provide the party name of a work team for a given
+           line item (task).
+
+00660      CCI, Characteristic/class id
+           A segment to provide information about a product or assembly
+           associated with a given line item (task).
+
+00670      DTM, Date/time/period
+           A segment to provide planned start and finish dates, target
+           dates, actual start and finish dates, estimate start and finish
+           dates, and other related dates for the line item (task).
+
+00680      FTX, Free text
+           A segment to provide additional text for the line item (task).
+           Can be used to provide additional details about the task, events
+           surrounding the task such as an explanation for a behind
+           schedule over cost situation, or further explanation about data
+           associated with the task.
+
+
+00690      Segment group 17: CTA-COM
+           A group of segments to provide a responsible person's name and
+           communication numbers for the line item (task).
+
+00700         CTA, Contact information
+              A segment to provide a responsible person's name for the line
+              item (task).
+
+00710         COM, Communication contact
+              A segment to identify the phone number, fax number, e-mail,
+              or other communication number of the responsible person for
+              the line item (task).
+
+
+00720      Segment group 18: QTY-DTM
+           A group of segments to provide quantities and related unit of
+           measure associated with a line item with related dates. May be
+           used to convey planned, current, or progress durations when
+           expressed as a quantity of units of time or a total quantity
+           such as planned or budgeted hours for the task. Progress can
+           also be conveyed as a percentage (segment group PCD-DTM) or as
+           dates (independent DTM segment). All three methods can be used
+           independently to exchange progress data; typically one of these
+           three methods is preferred and agreed upon between trading
+           parties.
+
+00730         QTY, Quantity
+              A segment to provide the unit of measure (such as hours) and
+              quantities (such as budget, actual, or earned) associated
+              with a line item (task). Also used to provide the duration of
+              the task when expressed as a quantity of time units such as
+              10 working days; lead time duration such as a lead of 5
+              working days is required before the next task can start; and
+              progress information such as a remaining duration of 5
+              working days.
+
+00740         DTM, Date/time/period
+              A segment to provide a single pair of start and end dates or
+              a series of start and end dates (for example, to describe
+              monthly allocations) associated with hour quantities (budget,
+              actual, earned value) for the task.
+
+
+00750      Segment group 19: PCD-DTM
+           A group of segments to provide progress details about a line
+           item and any related dates when progress is expressed as a
+           percentage. Progress can also be conveyed as a duration quantity
+           (segment group QTY-DTM) or as dates (independent DTM segment).
+           All three methods can be used independently to exchange progress
+           data; typically one of these three methods is preferred and
+           agreed upon between trading parties.
+
+00760         PCD, Percentage details
+              A segment to provide the percent complete for the line item
+              (task).
+
+00770         DTM, Date/time/period
+              A segment to provide effective, or start and end dates for
+              the percent complete for the task.
+
+
+00780      Segment group 20: MOA-DTM
+           A group of segments to provide monetary amounts associated with
+           a line item and any related dates.
+
+00790         MOA, Monetary amount
+              A segment to provide monetary amounts (such as budget,
+              actual, or earned value costs) for the line item (task).
+
+00800         DTM, Date/time/period
+              A segment to provide a single pair of start and end dates or
+              a series of start and end dates (for example, to describe
+              costs broken down by month) monetary amounts for the task.
+
+
+00810      Segment group 21: GIR-REL-RCS-BII-RFF-IMD-DTM-SG22-SG23-SG24-
+                             SG25
+           A group of segments to identify a related interface activity,
+           constraint activity, assigned resources, or milestones events
+           (when the line item is an activity) assigned to the line item
+           (task) along with related structured index or reference numbers,
+           descriptions, work status, dates, and any associated quantity,
+           percent, monetary amounts, and rates.
+
+00820         GIR, Related identification numbers
+              A segment to identify a related constraint activity,
+              interface activity, assigned resource, or milestone event
+              (when the line item is an activity). For constraint
+              activities, also used to indicate if the cited constraint
+              activity is a predecessor or successor. For milestone events
+              associated with a task, also used to provide a work status
+              indicator (work has begun, work has been completed, or the
+              milestone event has been revised).
+
+00830         REL, Relationship
+              A segment to identify the type of relationship. Used for
+              constraint type of activities to describe finish to start,
+              start to start, start to finish, and finish to finish types
+              of relationships.
+
+00840         RCS, Requirements and conditions
+              A segment to identify an action (add, change, or delete) for
+              the interface activity, constraint activity, assigned
+              resource, or milestone event.
+
+00850         BII, Structure identification
+              A segment to identify any structured index numbers such an
+              organization breakdown structure, or trade skill for an
+              assigned resource.
+
+00860         RFF, Reference
+              A segment to provide reference numbers associated with the
+              interface activity, constraint activity, assigned resource,
+              or milestone event such as a calendar or shift, department,
+              work package, charge number, or work order number.
+
+00870         IMD, Item description
+              A segment to provide a description of the interface activity,
+              constraint activity, assigned resource, or milestone event.
+              When an assigned resource, can also use this segment to
+              indicate the type of resource in coded form (such as a
+              consumable, recurring, or non-recurring resource).
+
+00880         DTM, Date/time/period
+              A segment to provide start and finish dates, actual start and
+              finish dates, scheduled start and finish dates, planned or
+              revised dates for assigned resources or milestones.
+
+
+00890         Segment group 22: QTY-DTM
+              A group of segments to provide quantity information for
+              assigned resources or milestones events and related dates.
+              Also used to provide the duration of lead or lag time for an
+              interface activity or constraint activity when the duration
+              is expressed as a quantity of time units such as a lead of 5
+              working days or a lag or 7 working days.
+
+00900            QTY, Quantity
+                 A segment to provide quantity information about the
+                 interface activity, constraint activity, assigned
+                 resource, or milestone event. For activities, used to
+                 provide the duration of lead or lag time when expressed as
+                 quantities of time units. For assigned resources, can be
+                 used to indicate the number of resources available for the
+                 task (level per calendar unit or total for the duration of
+                 the task). For assigned resources and milestone events,
+                 can be used to provide associated budget, actual, or
+                 earned value hour quantities.
+
+00910            DTM, Date/time/period
+                 A segment to provide an effective date, a pair of start
+                 and end dates, or a series of start and end dates
+                 associated with an interface activity, constraint
+                 activity, assigned resource, or milestone quantity.
+
+
+00920         Segment group 23: PCD-DTM
+              A group of segments to provide an earned value percentage for
+              milestone events or to provide availability or efficiency
+              factors for assigned resources and any related dates.
+
+00930            PCD, Percentage details
+                 A segment to provide availability or efficiency factors
+                 for an assigned resource or to provide an earned value
+                 percentage for a given milestone (used to calculate the
+                 amount of value earned when a milestone is complete).
+
+00940            DTM, Date/time/period
+                 A segment to provide an effective date, or start and end
+                 dates associated with the availability, efficiency, or
+                 earned value percentage.
+
+
+00950         Segment group 24: MOA-DTM
+              A group of segments to provide monetary amounts for assigned
+              resources and milestone events and any related dates.
+
+00960            MOA, Monetary amount
+                 A segment to provide monetary amounts (such as budget,
+                 actual, or earned value) for the assigned resource or
+                 milestone event.
+
+00970            DTM, Date/time/period
+                 A segment to provide an effective date, a pair of start
+                 and finish dates, or a series of start and finish dates
+                 associated with the budget, actual, or earned value
+                 monetary amount for the assigned resource or milestone
+                 event.
+
+
+00980         Segment group 25: RTE-DTM
+              A group of segments to provide rate information for an
+              assigned resource and any related dates.
+
+00990            RTE, Rate details
+                 A segment to identify a rate for the assigned resource.
+
+01000            DTM, Date/time/period
+                 A segment to provide the effective date, or start and end
+                 dates for the assigned resource rate.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+01010   CNT, Control total
+        A segment to provide control totals for the message such as the
+        total number of activities, milestones, resources, or constraints.
+
+01020   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          BGM Beginning of message
+          BII Structure identification
+          CCI Characteristic/class id
+          CED Computer environment details
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          DTM Date/time/period
+          EFI External file link identification
+          FTX Free text
+          GEI Processing information
+          GIR Related identification numbers
+          IMD Item description
+          IND Index details
+          LIN Line item
+          MOA Monetary amount
+          PCD Percentage details
+          PNA Party identification
+          PRI Price details
+          QTY Quantity
+          RCS Requirements and conditions
+          REL Relationship
+          RFF Reference
+          RTE Rate details
+          SCC Scheduling conditions
+          STS Status
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   GEI Processing information                   M   1     
+00040   DTM Date/time/period                         M   99    
+
+00050       ---- Segment group 1  ------------------ C   99---------------+
+00060   RFF Reference                                M   1                |
+00070   IMD Item description                         C   9                |
+00080   BII Structure identification                 C   99               |
+                                                                          |
+00090       ---- Segment group 2  ------------------ C   99--------------+|
+00100   GIR Related identification numbers           M   1               ||
+00110   REL Relationship                             C   1---------------++
+
+00120       ---- Segment group 3  ------------------ C   99---------------+
+00130   PNA Party identification                     M   1                |
+00140   ADR Address                                  C   1                |
+00150   BII Structure identification                 C   1                |
+                                                                          |
+00160       ---- Segment group 4  ------------------ C   9---------------+|
+00170   CTA Contact information                      M   1               ||
+00180   COM Communication contact                    C   9---------------+|
+                                                                          |
+00190       ---- Segment group 5  ------------------ C   9---------------+|
+00200   CED Computer environment details             M   1               ||
+00210   DTM Date/time/period                         C   9---------------++
+
+00220       ---- Segment group 6  ------------------ C   99---------------+
+00230   EFI External file link identification        M   1                |
+00240   CED Computer environment details             C   1                |
+00250   DTM Date/time/period                         C   1----------------+
+
+00260       ---- Segment group 7  ------------------ C   999--------------+
+00270   IND Index details                            M   1                |
+00280   BII Structure identification                 C   1                |
+00290   IMD Item description                         C   1                |
+00300   RCS Requirements and conditions              C   1----------------+
+
+00310       ---- Segment group 8  ------------------ C   9999-------------+
+00320   LIN Line item                                M   1                |
+00330   BII Structure identification                 C   9                |
+00340   RFF Reference                                C   9                |
+00350   IMD Item description                         C   9                |
+00360   DTM Date/time/period                         C   99               |
+                                                                          |
+00370       ---- Segment group 9  ------------------ C   99--------------+|
+00380   QTY Quantity                                 M   1               ||
+00390   DTM Date/time/period                         C   99--------------+|
+                                                                          |
+00400       ---- Segment group 10 ------------------ C   99--------------+|
+00410   PRI Price details                            M   1               ||
+00420   DTM Date/time/period                         C   99--------------+|
+                                                                          |
+00430       ---- Segment group 11 ------------------ C   99--------------+|
+00440   PCD Percentage details                       M   1               ||
+00450   DTM Date/time/period                         C   99--------------+|
+                                                                          |
+00460       ---- Segment group 12 ------------------ C   99--------------+|
+00470   RTE Rate details                             M   1               ||
+00480   DTM Date/time/period                         C   99--------------+|
+                                                                          |
+00490       ---- Segment group 13 ------------------ C   99--------------+|
+00500   MOA Monetary amount                          M   1               ||
+00510   DTM Date/time/period                         C   99--------------++
+
+            DETAIL SECTION
+
+00520   UNS Section control                          M   1     
+
+00530       ---- Segment group 14 ------------------ C   99---------------+
+00540   RFF Reference                                M   1                |
+                                                                          |
+00550       ---- Segment group 15 ------------------ C   999-------------+|
+00560   SCC Scheduling conditions                    M   1               ||
+00570   QTY Quantity                                 C   99              ||
+00580   DTM Date/time/period                         C   999-------------++
+
+00590       ---- Segment group 16 ------------------ C   9999-------------+
+00600   LIN Line item                                M   1                |
+00610   STS Status                                   C   1                |
+00620   BII Structure identification                 C   9                |
+00630   RFF Reference                                C   9                |
+00640   IMD Item description                         C   9                |
+00650   PNA Party identification                     C   9                |
+00660   CCI Characteristic/class id                  C   9                |
+00670   DTM Date/time/period                         C   99               |
+00680   FTX Free text                                C   99               |
+                                                                          |
+00690       ---- Segment group 17 ------------------ C   9---------------+|
+00700   CTA Contact information                      M   1               ||
+00710   COM Communication contact                    C   9---------------+|
+                                                                          |
+00720       ---- Segment group 18 ------------------ C   99--------------+|
+00730   QTY Quantity                                 M   1               ||
+00740   DTM Date/time/period                         C   99--------------+|
+                                                                          |
+00750       ---- Segment group 19 ------------------ C   99--------------+|
+00760   PCD Percentage details                       M   1               ||
+00770   DTM Date/time/period                         C   99--------------+|
+                                                                          |
+00780       ---- Segment group 20 ------------------ C   99--------------+|
+00790   MOA Monetary amount                          M   1               ||
+00800   DTM Date/time/period                         C   99--------------+|
+                                                                          |
+00810       ---- Segment group 21 ------------------ C   9999------------+|
+00820   GIR Related identification numbers           M   1               ||
+00830   REL Relationship                             C   1               ||
+00840   RCS Requirements and conditions              C   1               ||
+00850   BII Structure identification                 C   9               ||
+00860   RFF Reference                                C   9               ||
+00870   IMD Item description                         C   9               ||
+00880   DTM Date/time/period                         C   99              ||
+                                                                         ||
+00890       ---- Segment group 22 ------------------ C   99-------------+||
+00900   QTY Quantity                                 M   1              |||
+00910   DTM Date/time/period                         C   99-------------+||
+                                                                         ||
+00920       ---- Segment group 23 ------------------ C   99-------------+||
+00930   PCD Percentage details                       M   1              |||
+00940   DTM Date/time/period                         C   99-------------+||
+                                                                         ||
+00950       ---- Segment group 24 ------------------ C   99-------------+||
+00960   MOA Monetary amount                          M   1              |||
+00970   DTM Date/time/period                         C   99-------------+||
+                                                                         ||
+00980       ---- Segment group 25 ------------------ C   99-------------+||
+00990   RTE Rate details                             M   1              |||
+01000   DTM Date/time/period                         C   99-------------+++
+
+            SUMMARY SECTION
+
+01010   CNT Control total                            C   99    
+01020   UNT Message trailer                          M   1     

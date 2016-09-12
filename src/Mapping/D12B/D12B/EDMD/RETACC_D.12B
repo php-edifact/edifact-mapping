@@ -1,0 +1,428 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                   Reinsurance technical account message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : RETACC
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG8 Insurance
+
+
+
+                                  CONTENTS
+
+                   Reinsurance technical account message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Reinsurance
+       technical account message (RETACC) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The RETACC is used by the sender to report to the receiver the
+       latter's position in the sender's books with respect to one single
+       reinsurance contract. It is in this sense a type of account for
+       services rendered, and may initiate a payment flow either directly
+       or via a periodical overview statement.
+
+1.2    Field of application
+
+       The Reinsurance technical account message may be used for both
+       national and international applications. It is based on universal
+       practice related to administration, commerce and transport, and is
+       not dependent on the type of business or industry.
+
+1.3    Principles
+
+       The RETACC will report technical and financial accounting entries
+       that are informational (i.e. the latter items such as reserves will
+       not impact the balance of the account).
+       In the summary section of the RETACC, the ability is given to split
+       the account balance into sub-amounts using different criteria. Such
+       sub-amounts may be collectable and non- collectable. One may even go
+       a level further and split a non- collectable balance into amounts
+       per company or participant.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Reinsurance technical account message is
+        RETACC.
+
+        Note: Reinsurance technical account messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 RETACC
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   GEI, Processing information
+        A segment to give a processing indicator relating to the whole
+        message.
+
+
+00030   Segment group 1:  NAD-CTA-COM-RFF
+        A group of segments to specify relevant parties for the whole
+        transaction.
+
+00040      NAD, Name and address
+           A segment to specify the name and address and the related
+           function of the party involved.
+
+00050      CTA, Contact information
+           A segment to identify a person or department to whom
+           communication should be directed.
+
+00060      COM, Communication contact
+           A segment to identify a communication number of a department or
+           a person to whom communication should be directed.
+
+00070      RFF, Reference
+           A segment to specify the references of the party identified in
+           the leading NAD.
+
+00080   DTM, Date/time/period
+        A segment to specify the message transaction date, accounting
+        period, accounting year, accounting periodicity.
+
+00090   FTX, Free text
+        A segment to provide general message information, and/or narrative
+        descriptions of references or account period given.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00100   Segment group 2:  CUX-RFF-FTX-SG3
+        A group of segments to specify accounting breakdowns within the
+        contract.
+
+00110      CUX, Currencies
+           A segment to specify the account rendering currency (statement
+           currency) of the sub-account, and if required the settlement
+           currency and the exchange rate used to convert from original
+           account currency into settlement currency.
+
+00120      RFF, Reference
+           A segment used to tie the sub-account to a specific reference
+           and to additionally identify the layer or surplus number of the
+           contract for which data are rendered.
+
+00130      FTX, Free text
+           A segment used to provide free text information regarding the
+           contract section reported in the sub-account (particularly for
+           facultative contracts).
+
+
+00140      Segment group 3:  MOA-DTM-PCD-GEI-LOC-FTX-SG4
+           A group of segments to specify accounting entries for the sub-
+           account, and if required the sub-account balance(s).
+
+00150         MOA, Monetary amount
+              A segment to specify the accounting entries or the sub-
+              account balance(s).
+
+00160         DTM, Date/time/period
+              A segment to specify pertinent dates and periods relating to
+              the entry.
+
+00170         PCD, Percentage details
+              A segment to specify the percentage used to calculate the
+              entry, and/or the receiver's share percentage.
+
+00180         GEI, Processing information
+              A segment to give an indicator to specify the way to process
+              the entry.
+
+00190         LOC, Place/location identification
+              A segment to identify the geographical scope to which the
+              entry pertains or - for facultative accounts - the location
+              of the risk.
+
+00200         FTX, Free text
+              A segment used to provide free text information regarding the
+              entry. More particularly, the segment can be used to give
+              loss details or additional information concerning bucket
+              entry codes.
+
+
+00210         Segment group 4:  RFF-DTM-COM-FTX
+              A group of segments to refer to supporting messages or
+              documents. The segment may equally be used in case of loss
+              amount reporting to specify the event reference.
+
+00220            RFF, Reference
+                 A segment to specify a reference to a supporting document
+                 or message and/or (in case of losses reported), the event
+                 reference.
+
+00230            DTM, Date/time/period
+                 A segment to specify the date of transaction of the
+                 supporting document or message.
+
+00240            COM, Communication contact
+                 A segment to identify the means by which the referenced
+                 document or message was transmitted.
+
+00250            FTX, Free text
+                 A segment used to provide free text information regarding
+                 the document or message that is referenced.
+
+00260   UNS, Section control
+        A segment used to prevent collisions between the detail and the
+        summary sections of the message.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+
+00270   Segment group 5:  MOA-GEI-SG6-PAI-RFF-DTM
+        A group of segments that may be used to specify account totals and
+        subdivide them per type of settlement. At the same type this group
+        can be used to break down the account into sub-balances using
+        various criteria, such as collectable or non-collectable, and the
+        embedded group 6 can be used to make breakdowns per party in the
+        underlying market.
+
+00280      MOA, Monetary amount
+           A segment to specify the total account balances per settlement
+           currency, or the possible breakdowns e.g. the amounts due in
+           instalments, or per payment means or combined.
+
+00290      GEI, Processing information
+           A segment to give a processing indicator relating to the
+           settlement.
+
+
+00300      Segment group 6:  NAD-PCD-RFF-GEI-MOA
+           A group of segments used to make breakdowns of the amount
+           reported, per party in the underlying market.
+
+00310         NAD, Name and address
+              A segment to identify the bank where the letter of credit was
+              issued, the payer's and beneficiary's bank, the assuming
+              company, the multiple cedants involved.
+
+00320         PCD, Percentage details
+              A segment used to specify the share of the party in the
+              broker's order or in the 100% of the contract, expressed as a
+              percentage.
+
+00330         RFF, Reference
+              A segment to specify the references of the party named in the
+              leading NAD.
+
+00340         GEI, Processing information
+              A segment to give a processing indicator relating to the
+              settlement by specific parties involved in the transaction.
+
+00350         MOA, Monetary amount
+              A segment to specify the share amount of the party specified.
+
+00360      PAI, Payment instructions
+           A segment to specify the means of settlement.
+
+00370      RFF, Reference
+           A segment to specify references related to the settlement of the
+           account balance.
+
+00380      DTM, Date/time/period
+           A segment to specify pertinent dates and periods relating to the
+           settlement of the RETACC.
+
+00390   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          FTX Free text
+          GEI Processing information
+          LOC Place/location identification
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          PCD Percentage details
+          RFF Reference
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   GEI Processing information                   M   6     
+
+00030       ---- Segment group 1  ------------------ M   9----------------+
+00040   NAD Name and address                         M   1                |
+00050   CTA Contact information                      C   1                |
+00060   COM Communication contact                    C   5                |
+00070   RFF Reference                                C   9----------------+
+00080   DTM Date/time/period                         M   4     
+00090   FTX Free text                                C   5     
+
+            DETAIL SECTION
+
+00100       ---- Segment group 2  ------------------ M   99---------------+
+00110   CUX Currencies                               M   1                |
+00120   RFF Reference                                M   5                |
+00130   FTX Free text                                C   1                |
+                                                                          |
+00140       ---- Segment group 3  ------------------ M   999-------------+|
+00150   MOA Monetary amount                          M   1               ||
+00160   DTM Date/time/period                         M   10              ||
+00170   PCD Percentage details                       C   2               ||
+00180   GEI Processing information                   C   10              ||
+00190   LOC Place/location identification            C   9               ||
+00200   FTX Free text                                C   3               ||
+                                                                         ||
+00210       ---- Segment group 4  ------------------ C   9--------------+||
+00220   RFF Reference                                M   1              |||
+00230   DTM Date/time/period                         C   1              |||
+00240   COM Communication contact                    C   1              |||
+00250   FTX Free text                                C   1--------------+++
+00260   UNS Section control                          M   1     
+
+            SUMMARY SECTION
+
+00270       ---- Segment group 5  ------------------ C   99---------------+
+00280   MOA Monetary amount                          M   1                |
+00290   GEI Processing information                   C   1                |
+                                                                          |
+00300       ---- Segment group 6  ------------------ C   999-------------+|
+00310   NAD Name and address                         M   1               ||
+00320   PCD Percentage details                       C   1               ||
+00330   RFF Reference                                C   2               ||
+00340   GEI Processing information                   C   1               ||
+00350   MOA Monetary amount                          C   1---------------+|
+00360   PAI Payment instructions                     M   1                |
+00370   RFF Reference                                C   9                |
+00380   DTM Date/time/period                         C   3----------------+
+00390   UNT Message trailer                          M   1     

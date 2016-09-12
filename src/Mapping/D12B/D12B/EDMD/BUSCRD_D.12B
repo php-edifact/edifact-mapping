@@ -1,0 +1,1021 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                      Business credit report message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : BUSCRD
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG12 Accounting and Auditing, Registration, Financial Information
+        Services
+
+
+                                  CONTENTS
+
+                      Business credit report message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Business credit
+       report message (BUSCRD) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Business credit report message is used by credit reporting
+       agencies to provide business credit information about a company to
+       the agency's trading partners. Business credit information includes,
+       but is not limited to, company name(s) or location(s), financial,
+       operational, legal and business credit rating information
+       
+       BUSCRD relates solely to the exchange of corporate or company credit
+       information and is intended to enable the automation of business
+       decision processing.
+
+1.2    Field of application
+
+       The Business credit report message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       BUSCRD is bi-directional. It can be used by buyers, sellers,
+       marketeers, and financial institutions to request from a party
+       holding such information, all or part of the credit information of
+       an existing or potential trading partner. It can also be used by
+       parties holding credit information to respond to requests, with all
+       or part of the information as may be available in a data base. Upon
+       receipt, the information can be used to support automated business
+       decision processing and to update business data bases. BUSCRD may
+       also be used to cancel previously transmitted information
+       
+       A single occurrence of BUSCRD may be used to request or to send
+       information for one or more entities or to cancel one or more
+       previous transmissions. The message beginning segment is used to
+       indicate the specific message functionality.
+       
+       Cross referencing is permitted within the message to identify a
+       related electronic exchange. There is typically no requirement to
+       directly link external objects (e.g., associated data) to a business
+       credit report. Stored data will normally be transmitted within the
+       confines of the message structure.
+       
+       Changes to previously submitted data are considered as updates or
+       replacements to the original data. The BUSCRD message structure does
+       not provide for the identification of incremental changes. The
+       receiving application should update the existing data with the
+       revised or new data. If business practice requires retention of an
+       auditable track of all data, then the receiving application should
+       recognize the new data as a complete replacement, providing the
+       necessary distinguishing criteria.
+       
+       While the BUSCRD message is independent of system applications, its
+       structure derives from the manner in which credit information is
+       developed and stored in data bases. Typically, credit information
+       can be classified by category and type. BUSCRD structure is
+       sufficiently flexible to accommodate industry and sectorial
+       differences in data structures.
+       
+       The trigger segment of the group defining the hierarchy is used as
+       the mechanism for accommodating differences in data content and data
+       structure among users. Augmented functionality is attributed to this
+       trigger segment permitting the identification of data dependencies
+       and the content of hierarchically related segment groups. The
+       continuation of parent and/or child relationships is permitted at
+       all necessary levels as is the identification of the level to which
+       the hierarchy applies. This permits the transmission of hierarchical
+       information to as many differing levels as may be necessary to
+       report credit information, the relationship of credit history data,
+       and the relationships among business entities such as parent,
+       subsidiaries affiliates and similar entities.
+       
+       Information conveyed within a BUSCRD message may be considered as
+       business sensitive data. Notwithstanding, there are no special
+       security requirements incorporated in the message structure.
+       Security issues should be treated as matters to be resolved among
+       trading partners and will likely involve varying solutions.
+       
+       BUSCRD may be used to provide information about a company, its
+       branches, subsidiaries, affiliates, or parent company. Names,
+       addresses, work experiences, business or professional titles of
+       management within a company may be included. Other names (e.g.,
+       previous) and length of time a business has been operational may be
+       reported. History of a company may include its previous locations,
+       original starting details, and legal changes.
+       
+       Operational data about a company may be included. This information
+       may consist of detailed descriptions of activities. Such as buying
+       and selling patterns. It may also include buildings or other
+       facilities used, whether owned or rented, number of employees,
+       and/or monetary or quantity amounts of products produced, sold or
+       held in inventory.
+       
+       Financial information could be the largest part of a Business credit
+       report message. This may include typical balance sheet information
+       of assets, liabilities, income and expenses. Outstanding debt such
+       as loans or debentures may be reported as well as repayment history.
+       Required governmental, financial statement information, its format
+       periodicity and completeness may be sent. Financial institution
+       account information may be stated with information pertaining to
+       types of accounts and average balance in each account. A comparison
+       to industry norms may be included.
+       
+       Payment information forms another large part of the BUSCRD message.
+       This may include history of payments to suppliers and vendors.
+       Breakdowns of payment amounts to specific payees. Payments made
+       within contract terms, and past due or slow payments. A history of
+       invoice payment terms to specific payees may be included along with
+       discount percent and discount days due granted. A payment score
+       indication promptness of payments over a period of time may be
+       included.
+       
+       Public filings and legal actions may be reported although this
+       varies among countries. Included may be any type of legal actions
+       citing plaintiffs, defendants, attorneys, dates, status, legal
+       damages and awards.
+       
+       An overall credit or risk assessment rating based upon the credit
+       reporting agency's detailed analysis may be assigned. A detailed
+       analysis of risk factors and credit or financial worthiness may be
+       included.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Business credit report message is BUSCRD.
+
+        Note: Business credit report messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 BUSCRD
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment to identify the individual business credit report
+        document, its unique identifier, and specific message function.
+
+00030   DTM, Date/time/period
+        A segment to identify the Business credit report message date.
+
+00040   RFF, Reference
+        A segment to identify any other relevant references to this message
+        such as a previously sent Business credit report message.
+
+
+00050   Segment group 1:  PNA-ADR-SG2
+        A group of segments to identify, at a minimum, the sender and
+        receiver of the message and appropriate contact information.
+
+00060      PNA, Party identification
+           A segment to identify names of parties, in coded or clear form,
+           and their function relevant to the message. Identification of
+           the sender and receiver is mandatory for the Business credit
+           report message.
+
+00070      ADR, Address
+           A segment to provide addresses of identified parties. Address
+           information may not be necessary when the parties are identified
+           in a coded manner.
+
+
+00080      Segment group 2:  CTA-COM
+           A group of segments to identify contact and communication
+           numbers for each named party.
+
+00090         CTA, Contact information
+              A segment to provide a contact person's name for each named
+              party.
+
+00100         COM, Communication contact
+              A segment to identify the phone number, fax number, e-mail,
+              or other communication number for the contact party.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00110   Segment group 3:  LIN-DTM-PNA-CUX-LAN-IFD-FTX-SG4
+        A group of segments to identify the entity for which the requested
+        detailed information is provided or requested. For example, the
+        segment group may be used to identify a broad category of
+        information such as all payment history related to an entity, and
+        in addition, default values for currency and language codes.
+
+00120      LIN, Line item
+           A segment identifying a line item by a number which is assigned
+           to the company being reported. A data group number may also be
+           included.
+
+00130      DTM, Date/time/period
+           A segment that provides the dates associated with the business
+           credit report.
+
+00140      PNA, Party identification
+           A segment to identify the entity(ies) being reported.
+
+00150      CUX, Currencies
+           A segment specifying the currency of the monetary amounts sent
+           in the report. The currency can be overridden at a lower level
+           when necessary.
+
+00160      LAN, Language
+           A segment identifying the language of any text information sent
+           in the message. This includes text in clear values of data
+           elements and in the specific segment used for free text.
+
+00170      IFD, Information detail
+           A segment identifying at a broad level, the information
+           categories and types.
+
+00180      FTX, Free text
+           A segment to provide free text that is related to the entity at
+           an overall level.
+
+
+00190      Segment group 4:  HYN-IRQ-IFD-PCD-DTM-RFF-MEA-CUX-FTX-SG5-SG6-
+                             SG7-SG8-SG10-SG11-SG12-SG14-SG15-SG16-SG18-
+                             SG19-SG22
+           A group of segments that identify the hierarchical level and the
+           data associated with the level.
+
+00200         HYN, Hierarchy information
+              A segment that defines a hierarchical level, and its
+              relationship to other hierarchical levels such as its parent.
+              The use of codes within this segment define its data
+              relationship to previous iterations of the segment group, if
+              any.
+
+00210         IRQ, Information required
+              A segment specifying at a broad level the type of information
+              requested or sent, such as company locations, facilities,
+              names associated with companies and legal actions.
+
+00220         IFD, Information detail
+              A segment providing the category and type of information
+              details that supplement the broad level preceding data.
+
+00230         PCD, Percentage details
+              A segment to provide percentage amounts relating to the
+              details of the information.
+
+00240         DTM, Date/time/period
+              A segment providing the dates related to the details of the
+              information.
+
+00250         RFF, Reference
+              A segment to provide related reference numbers such as a
+              Value Added Tax Registration number, a Business Registration
+              number or a filing number.
+
+00260         MEA, Measurements
+              A segment to provide measurement values related to the type
+              of information, as may be included in public filings.
+
+00270         CUX, Currencies
+              A segment to provide the currency code applicable to all
+              subsequent monetary amounts. These amounts are related to the
+              type of information. This segment may override, or replace
+              (in the current segment group occurrence only), preceding
+              higher level currency information.
+
+00280         FTX, Free text
+              A segment to provide free text information where coded data
+              is non-existent. This segment may contain legally required
+              phrases.
+
+
+00290         Segment group 5:  MOA-ARD-PCD-FTX
+              A group of segments to provide monetary amounts and percents
+              related to the type of information specified above. Other
+              necessary, detailed monetary amounts are nested within the
+              following applicable segment group.
+
+00300            MOA, Monetary amount
+                 A segment to provide a monetary amount related to the
+                 subject area.
+
+00310            ARD, Monetary amount function
+                 A segment to identify one or more incremental
+                 relationships associated with a monetary amount.
+
+00320            PCD, Percentage details
+                 A segment to provide percentages related to the monetary
+                 amount, such as a percentage change that this monetary
+                 amount represents compared to an amount in another time
+                 period.
+
+00330            FTX, Free text
+                 A segment to provide text information related to a
+                 monetary amount.
+
+
+00340         Segment group 6:  ATT-MEA-PCD
+              A group of segments containing information related to the
+              payment manner of the entity, such as payments made in
+              categories of promptness (e.g., prompt, slow, etc.)
+
+00350            ATT, Attribute
+                 A segment specifying the type of payment manner.
+
+00360            MEA, Measurements
+                 A segment to provide significance information either as a
+                 single or range of values.
+
+00370            PCD, Percentage details
+                 A segment to provide the percent of this payment manner as
+                 compared against the total payments.
+
+
+00380         Segment group 7:  RSL-CAV-FTX
+              A group of segments to provide a rating value or score of the
+              entity being reported upon.
+
+00390            RSL, Result
+                 A segment to provide the rating value or score as
+                 determined by the credit agency.
+
+00400            CAV, Characteristic value
+                 A segment to provide an industry code or text
+                 characteristic of the rating or score.
+
+00410            FTX, Free text
+                 A segment to provide descriptive text associated with the
+                 rating. A text rating or score may also be provided when
+                 codes or values do not exist.
+
+
+00420         Segment group 8:  RCS-IFD-MEA-ATT-SG9
+              A group of segments to specify conditions related to
+              information, and associated ranges of values and monetary
+              amounts The segment group may be used for financial statement
+              information or results obtained from credit inquiries.
+
+00430            RCS, Requirements and conditions
+                 A segment to provide information on a subject area and any
+                 conditions or action taken. This segment is used to
+                 identify a subject area such as a financial statement or
+                 an interview and the action taken therefrom.
+
+00440            IFD, Information detail
+                 A segment to provide information details related to the
+                 subject area such as type of financial statement, any
+                 relevant details and status.
+
+00450            MEA, Measurements
+                 A segment to provide a value or range of values related to
+                 the subject area.
+
+00460            ATT, Attribute
+                 A segment to provide attribute information related to the
+                 subject area, such as format of a financial statement.
+
+
+00470            Segment group 9:  MOA-ARD-FTX
+                 A group of segments to provide monetary amounts related to
+                 stated conditions.
+
+00480               MOA, Monetary amount
+                    A segment to provide a monetary amount related to the
+                    subject area.
+
+00490               ARD, Monetary amount function
+                    A segment to identify one or more incremental
+                    relationships associated with a monetary amount.
+
+00500               FTX, Free text
+                    A segment to provide text information related to a
+                    monetary amount.
+
+
+00510         Segment group 10: QTY-FTX
+              A group of segments to provide quantity information related
+              to the entity. The segment group is primarily used in
+              conjunction with other segment groups at this level that
+              provide meaning to the quantity information.
+
+00520            QTY, Quantity
+                 A segment to provide quantity information related to the
+                 entity, such as number of employees, number of square feet
+                 in a facility, etc.
+
+00530            FTX, Free text
+                 A segment to provide text information related to a
+                 quantity.
+
+
+00540         Segment group 11: BUS-PYT-DTM-RNG-PCD
+              A group of segments to provide the underlying business
+              function, including payment terms (i.e., net terms, discount,
+              terms, discount percent and discount periods) provided by a
+              vendor(s) to the entity over a period of time.
+
+00550            BUS, Business function
+                 A segment to identify the specific business function,
+                 e.g., discount.
+
+00560            PYT, Payment terms
+                 A segment to provide the type of payment terms.
+
+00570            DTM, Date/time/period
+                 A segment to provide the dates related to the payment
+                 terms.
+
+00580            RNG, Range details
+                 A segment to identify the discount percent range or
+                 discount period range, or both, usually expressed in days.
+
+00590            PCD, Percentage details
+                 A segment to specify the percent of a specific payment to
+                 total payments.
+
+
+00600         Segment group 12: GEI-IMD-CAV-PCD-EQN-RFF-SG13
+              A group of segments to provide information about the assets
+              of a company and their ownership. This may include, but is
+              not limited to, securities, inventory, and facilities.
+
+00610            GEI, Processing information
+                 A segment to specify a processing indicator.
+
+00620            IMD, Item description
+                 A segment to identify a type of asset.
+
+00630            CAV, Characteristic value
+                 A segment to identify characteristics related to the
+                 asset.
+
+00640            PCD, Percentage details
+                 A segment to identify the percentage of the asset as
+                 specified in the processing indicator.
+
+00650            EQN, Number of units
+                 A segment to identify the number of units of the asset.
+
+00660            RFF, Reference
+                 A segment to identify references associated with an asset.
+
+
+00670            Segment group 13: MOA-ARD-FTX
+                 A group of segments to provide information related to the
+                 monetary value of the assets.
+
+00680               MOA, Monetary amount
+                    A segment to provide a monetary amount related to the
+                    asset(s).
+
+00690               ARD, Monetary amount function
+                    A segment to identify one or more incremental
+                    relationships associated with a monetary amount.
+
+00700               FTX, Free text
+                    A segment to provide text information related to a
+                    monetary amount.
+
+
+00710         Segment group 14: REL-ATT
+              A group of segments to identify a relationship and its
+              attributes. This may be used to specify the type of financial
+              relationship between the entity and a financial institution.
+
+00720            REL, Relationship
+                 A segment to identify the type of relationship of the
+                 entity with a financial institution, such as a checking
+                 account or an outstanding loan.
+
+00730            ATT, Attribute
+                 A segment to identify attributes of the relationship, such
+                 as the type of loan.
+
+
+00740         Segment group 15: STS-ATT
+              A group of segments to provide status information and related
+              attributes. The segment group may be used for information
+              related to status or process codes on a specific public
+              record filing.
+
+00750            STS, Status
+                 A segment to provide a status of an associated attribute.
+
+00760            ATT, Attribute
+                 A segment specifying the attribute.
+
+
+00770         Segment group 16: PNA-REL-ADR-FII-ATT-PDI-EMP-NAT-RFF-LAN-
+                                DTM-IFD-PCD-COM-QTY-FTX-SG17
+              A group of segments providing information about companies or
+              individuals, pertinent dates, percentages and quantities of
+              information details related to the entity.
+
+00780            PNA, Party identification
+                 A segment to identify a company or individual related to
+                 the entity. Some examples of names are the property owner,
+                 name associated with a business (such as business name
+                 change) or name associated with a legal filing.
+
+00790            REL, Relationship
+                 A segment to identify the relationships among entities.
+
+00800            ADR, Address
+                 A segment to provide address information for a named
+                 company or individual.
+
+00810            FII, Financial institution information
+                 A segment that provides financial institution account
+                 details of the party identified in the preceding segment
+                 identifying the entity name.
+
+00820            ATT, Attribute
+                 A segment to provide attribute information for a named
+                 individual, such as a business or professional title,
+                 ethnicity code, etc.
+
+00830            PDI, Person demographic information
+                 A segment to specify the gender or marital status of a
+                 named individual.
+
+00840            EMP, Employment details
+                 A segment to identify employment details related to a
+                 named individual.
+
+00850            NAT, Nationality
+                 A segment to specify the nationality of a named
+                 individual.
+
+00860            RFF, Reference
+                 A segment to provide reference numbers related to a
+                 company or individual, such as a social security number.
+
+00870            LAN, Language
+                 A segment to specify the language of an individual either
+                 for oral or written communication.
+
+00880            DTM, Date/time/period
+                 A segment to specify related dates.
+
+00890            IFD, Information detail
+                 A segment to provide information details.
+
+00900            PCD, Percentage details
+                 A segment to provide percent information for details
+                 related to a company or individual.
+
+00910            COM, Communication contact
+                 A segment to provide a communications contact for a named
+                 company or individual.
+
+00920            QTY, Quantity
+                 A segment to provide quantity information related to a
+                 company or individual.
+
+00930            FTX, Free text
+                 A segment to provide any associated text data.
+
+
+00940            Segment group 17: MOA-ARD-FTX
+                 A group of segments to provide monetary values and other
+                 information related to the named parties.
+
+00950               MOA, Monetary amount
+                    A segment to provide a monetary amount related to the
+                    subject area.
+
+00960               ARD, Monetary amount function
+                    A segment to identify one or more incremental
+                    relationships associated with a monetary amount.
+
+00970               FTX, Free text
+                    A segment to provide text information related to a
+                    monetary amount.
+
+
+00980         Segment group 18: EVE-DTM-IFD-FTX
+              A group of segments to provide information related to legal
+              filings. Included is type of public filing, related dates,
+              related information details and associated historical events.
+
+00990            EVE, Event
+                 A segment to identify the type of legal event or a public
+                 filing.
+
+01000            DTM, Date/time/period
+                 A segment to provide relevant dates, such as date of
+                 filing or date of resolution.
+
+01010            IFD, Information detail
+                 A segment to provide detailed information about the legal
+                 event. It may include bankruptcy or reasons for law suits
+                 codes. Historical information related to a public filing
+                 or legal event may be included.
+
+01020            FTX, Free text
+                 A segment to provide any textual information related to
+                 the legal event or for non-coded information such as
+                 contingency statements from the court.
+
+
+01030         Segment group 19: LOC-REL-ADR-DTM-COM-IFD-FTX-SG20-SG21
+              A group of segments to provide location information related
+              to the entity as well as addresses, dates, names and
+              communication contacts associated with the location.
+
+01040            LOC, Place/location identification
+                 A segment to specify the type and/or function of a
+                 location, such as an industrial or central business area.
+
+01050            REL, Relationship
+                 A segment to identify the relationship between the data
+                 related t the location and the other information
+                 attributed to the entity.
+
+01060            ADR, Address
+                 A segment to provide the address of the entity at this
+                 location.
+
+01070            DTM, Date/time/period
+                 A segment to provide related date information, such as the
+                 date the entity located there.
+
+01080            COM, Communication contact
+                 A segment to provide the communication contact of the
+                 entity at this location.
+
+01090            IFD, Information detail
+                 A segment to provide detailed information about the entity
+                 at this location, such as type of construction of a
+                 building or fire protection capabilities.
+
+01100            FTX, Free text
+                 A segment to provide textual information related to the
+                 location when the data is not codified.
+
+
+01110            Segment group 20: PNA-REL
+                 A group of segments to identify the entity and parties
+                 associated with the entity at the location.
+
+01120               PNA, Party identification
+                    A segment to identify the name of an entity related to
+                    this location, such as a building manager or owner.
+
+01130               REL, Relationship
+                    A segment to identify the relationship between the
+                    entity and the location, e.g., the spouse of the
+                    corporate officer for the entity at this location.
+
+
+01140            Segment group 21: MOA-ARD-FTX
+                 A group of segments to provide monetary information
+                 related to the entity location.
+
+01150               MOA, Monetary amount
+                    A segment to provide monetary information related to
+                    the location, such as insurance coverage or value of
+                    goods produced at the location.
+
+01160               ARD, Monetary amount function
+                    A segment to identify one or more incremental
+                    relationships associated with a monetary amount.
+
+01170               FTX, Free text
+                    A segment to provide text information related to a
+                    monetary amount.
+
+
+01180         Segment group 22: APR-LOC-PCD-FTX
+              A group of segments to provide class of trade information and
+              associated percentages specific to a location.
+
+01190            APR, Additional price information
+                 A segment to provide the class of trade of an entity.
+
+01200            LOC, Place/location identification
+                 A segment to identify the territory such as a region of a
+                 country or a country for the stated class of trade.
+
+01210            PCD, Percentage details
+                 A segment to specify the percent of the total volume of
+                 business in a class of trade. If a specific location is
+                 identified, the percent is that of the class of trade in
+                 the stated location.
+
+01220            FTX, Free text
+                 A segment to provide text information on class of trade
+                 when the information is not codified.
+
+01230   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          ADR Address
+          APR Additional price information
+          ARD Monetary amount function
+          ATT Attribute
+          BGM Beginning of message
+          BUS Business function
+          CAV Characteristic value
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          EMP Employment details
+          EQN Number of units
+          EVE Event
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          HYN Hierarchy information
+          IFD Information detail
+          IMD Item description
+          IRQ Information required
+          LAN Language
+          LIN Line item
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAT Nationality
+          PCD Percentage details
+          PDI Person demographic information
+          PNA Party identification
+          PYT Payment terms
+          QTY Quantity
+          RCS Requirements and conditions
+          REL Relationship
+          RFF Reference
+          RNG Range details
+          RSL Result
+          STS Status
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   9     
+00040   RFF Reference                                C   99    
+
+00050       ---- Segment group 1  ------------------ M   9----------------+
+00060   PNA Party identification                     M   1                |
+00070   ADR Address                                  C   1                |
+                                                                          |
+00080       ---- Segment group 2  ------------------ C   9---------------+|
+00090   CTA Contact information                      M   1               ||
+00100   COM Communication contact                    C   9---------------++
+
+            DETAIL SECTION
+
+00110       ---- Segment group 3  ------------------ C   999999-----------+
+00120   LIN Line item                                M   1                |
+00130   DTM Date/time/period                         C   99               |
+00140   PNA Party identification                     C   9                |
+00150   CUX Currencies                               C   1                |
+00160   LAN Language                                 C   1                |
+00170   IFD Information detail                       C   99               |
+00180   FTX Free text                                C   99               |
+                                                                          |
+00190       ---- Segment group 4  ------------------ C   999999----------+|
+00200   HYN Hierarchy information                    M   1               ||
+00210   IRQ Information required                     C   99              ||
+00220   IFD Information detail                       C   99              ||
+00230   PCD Percentage details                       C   99              ||
+00240   DTM Date/time/period                         C   99              ||
+00250   RFF Reference                                C   99              ||
+00260   MEA Measurements                             C   99              ||
+00270   CUX Currencies                               C   1               ||
+00280   FTX Free text                                C   99              ||
+                                                                         ||
+00290       ---- Segment group 5  ------------------ C   999------------+||
+00300   MOA Monetary amount                          M   1              |||
+00310   ARD Monetary amount function                 C   9              |||
+00320   PCD Percentage details                       C   9              |||
+00330   FTX Free text                                C   1--------------+||
+                                                                         ||
+00340       ---- Segment group 6  ------------------ C   999------------+||
+00350   ATT Attribute                                M   1              |||
+00360   MEA Measurements                             C   9              |||
+00370   PCD Percentage details                       C   1--------------+||
+                                                                         ||
+00380       ---- Segment group 7  ------------------ C   999------------+||
+00390   RSL Result                                   M   1              |||
+00400   CAV Characteristic value                     C   99             |||
+00410   FTX Free text                                C   99-------------+||
+                                                                         ||
+00420       ---- Segment group 8  ------------------ C   99999----------+||
+00430   RCS Requirements and conditions              M   1              |||
+00440   IFD Information detail                       C   99             |||
+00450   MEA Measurements                             C   9              |||
+00460   ATT Attribute                                C   99             |||
+                                                                        |||
+00470       ---- Segment group 9  ------------------ C   999-----------+|||
+00480   MOA Monetary amount                          M   1             ||||
+00490   ARD Monetary amount function                 C   9             ||||
+00500   FTX Free text                                C   1-------------++||
+                                                                         ||
+00510       ---- Segment group 10 ------------------ C   999------------+||
+00520   QTY Quantity                                 M   1              |||
+00530   FTX Free text                                C   1--------------+||
+                                                                         ||
+00540       ---- Segment group 11 ------------------ C   99-------------+||
+00550   BUS Business function                        M   1              |||
+00560   PYT Payment terms                            C   9              |||
+00570   DTM Date/time/period                         C   9              |||
+00580   RNG Range details                            C   9              |||
+00590   PCD Percentage details                       C   1--------------+||
+                                                                         ||
+00600       ---- Segment group 12 ------------------ C   999------------+||
+00610   GEI Processing information                   M   1              |||
+00620   IMD Item description                         C   99             |||
+00630   CAV Characteristic value                     C   99             |||
+00640   PCD Percentage details                       C   1              |||
+00650   EQN Number of units                          C   1              |||
+00660   RFF Reference                                C   99             |||
+                                                                        |||
+00670       ---- Segment group 13 ------------------ C   9-------------+|||
+00680   MOA Monetary amount                          M   1             ||||
+00690   ARD Monetary amount function                 C   9             ||||
+00700   FTX Free text                                C   1-------------++||
+                                                                         ||
+00710       ---- Segment group 14 ------------------ C   999------------+||
+00720   REL Relationship                             M   1              |||
+00730   ATT Attribute                                C   99-------------+||
+                                                                         ||
+00740       ---- Segment group 15 ------------------ C   999------------+||
+00750   STS Status                                   M   1              |||
+00760   ATT Attribute                                C   99-------------+||
+                                                                         ||
+00770       ---- Segment group 16 ------------------ C   999------------+||
+00780   PNA Party identification                     M   1              |||
+00790   REL Relationship                             C   9              |||
+00800   ADR Address                                  C   99             |||
+00810   FII Financial institution information        C   9              |||
+00820   ATT Attribute                                C   99             |||
+00830   PDI Person demographic information           C   1              |||
+00840   EMP Employment details                       C   9              |||
+00850   NAT Nationality                              C   9              |||
+00860   RFF Reference                                C   9              |||
+00870   LAN Language                                 C   9              |||
+00880   DTM Date/time/period                         C   99             |||
+00890   IFD Information detail                       C   99             |||
+00900   PCD Percentage details                       C   9              |||
+00910   COM Communication contact                    C   9              |||
+00920   QTY Quantity                                 C   99             |||
+00930   FTX Free text                                C   99             |||
+                                                                        |||
+00940       ---- Segment group 17 ------------------ C   999-----------+|||
+00950   MOA Monetary amount                          M   1             ||||
+00960   ARD Monetary amount function                 C   9             ||||
+00970   FTX Free text                                C   1-------------++||
+                                                                         ||
+00980       ---- Segment group 18 ------------------ C   999------------+||
+00990   EVE Event                                    M   1              |||
+01000   DTM Date/time/period                         C   99             |||
+01010   IFD Information detail                       C   99             |||
+01020   FTX Free text                                C   99-------------+||
+                                                                         ||
+01030       ---- Segment group 19 ------------------ C   999------------+||
+01040   LOC Place/location identification            M   1              |||
+01050   REL Relationship                             C   9              |||
+01060   ADR Address                                  C   9              |||
+01070   DTM Date/time/period                         C   99             |||
+01080   COM Communication contact                    C   99             |||
+01090   IFD Information detail                       C   99             |||
+01100   FTX Free text                                C   99             |||
+                                                                        |||
+01110       ---- Segment group 20 ------------------ C   999-----------+|||
+01120   PNA Party identification                     M   1             ||||
+01130   REL Relationship                             C   99------------+|||
+                                                                        |||
+01140       ---- Segment group 21 ------------------ C   99------------+|||
+01150   MOA Monetary amount                          M   1             ||||
+01160   ARD Monetary amount function                 C   9             ||||
+01170   FTX Free text                                C   1-------------++||
+                                                                         ||
+01180       ---- Segment group 22 ------------------ C   999------------+||
+01190   APR Additional price information             M   1              |||
+01200   LOC Place/location identification            C   99             |||
+01210   PCD Percentage details                       C   1              |||
+01220   FTX Free text                                C   99-------------+++
+01230   UNT Message trailer                          M   1     

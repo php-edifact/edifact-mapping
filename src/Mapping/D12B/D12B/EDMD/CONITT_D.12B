@@ -1,0 +1,1243 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                        Invitation to tender message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : CONITT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 5
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG6 Architecture, Engineering and Construction
+
+
+
+                                  CONTENTS
+
+                        Invitation to tender message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+       3.2   Message terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Invitation to
+       tender message (CONITT) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       At the pre-construction stage of a construction project, the Client
+       will wish to appoint a contractor to execute the works. The first
+       step in this appointment process is to issue an invitation to tender
+       (ITT) to contractors this will require a commercial offer to be made
+       by the contractor to the client.
+
+1.2    Field of application
+
+       The Invitation to tender message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+       
+       The following descriptions refer to the construction industry as an
+       example, but do not exclude other business sectors' implementation.
+
+1.3    Principles
+
+       A BoQ is a set of documentation that describes the various facets of
+       work that make up a construction project. This documentation is
+       often quite voluminous and typically contains information structured
+       in accordance with several industry standards.
+       
+       The BoQ is a key set of documentation for a number of stages within
+       the overall construction process. This documentation, or parts of
+       it, are frequently exchanged between the various parties involved in
+       the project.
+       
+       A significant document used within the invitation to tender process
+       is the Bill of Quantities (BoQ). This documentation subsequently
+       becomes the contractual basis for the project.
+       
+       A project is typically subdivided into individual groupings of work
+       and within these groups are detailed work items. It is down to this
+       level of detailed work items that commercial offer information is to
+       be supplied.
+       
+       If there are any project design changes during the tender period,
+       which have an impact on the detailed work items in a BoQ, these
+       would also be communicated in a CONITT message.
+       
+       Although the initial exchange typically takes place at the pre-
+       tender stage, it may also be used post-tender.
+       
+       At the pre-tender stage, one or more competing Main Contractors will
+       be sent by the Client or his representative, a BoQ document for the
+       purpose of pricing the detailed work items to support the commercial
+       tender offer. The Main Contractors in turn may wish to invite
+       tenders from subcontractors for specialist portions of the project.
+       This would be done by each competing Main Contractor creating
+       subsets of the original BoQ document for each type of specialist
+       work and sending that in turn to a number of competing
+       subcontractors of their choice.
+       
+       Once the main contract has been established with the successful Main
+       Contractor, the ITT process will in some cases be repeated with
+       subcontractors. This will enable the Main Contractor to seek
+       improved offers from subcontractors following the securement of the
+       contract.
+       
+       This is only one of a number of messages being designed for the BoQ
+       and the principles for this CONITT message are consistent with those
+       adopted for each of the other BoQ messages.
+       
+       There are several concepts to be understood and these are key to
+       some of the design principles adopted. Most of these have been
+       created to respond to two base problems associated with the BoQ
+       documentation: 
+       
+       i) A BoQ is often a very large document, it is not unusual for it to
+       run to several volumes in its paper form.
+       
+       ii) Given the size of the documents, there is also the problem of
+       how to advise on the structure to which the document conforms and
+       the accurate indexing and sequencing of information within such a
+       volume of data.
+       
+       1.3.1 Work Items 
+       
+       Each individual component of work referred to in the BoQ is called a
+       "work item" and it is at this level that progress and payments are
+       evaluated. For each work item a description is provided and this
+       description is very precise in its wording. This results in two
+       things: 
+       
+       i) A lot of repetitive descriptions for like items at least at the
+       higher levels within these levelled descriptions.
+       
+       ii) A lot of similar work items, indeed the same description, often
+       occurs a number of times throughout the project but assigned to
+       different work items.
+       
+       Point ii) above has been addressed by a concept called " standard
+       items", this enables an equivalent to a standard library of
+       descriptions to be exchanged and individual work items to reference
+       a standard description that need be sent, only once.
+       
+       Frequently within a BoQ, elements of an item's description are
+       common to adjacent items. When this happens the items which share
+       the same description are grouped together and the common part of the
+       description is presented once at the start of the group. This
+       concept is used extensively and it is possible to have quite a
+       number of layers of shared heading.
+       
+       Two distinctions need to be established, firstly, the existence of
+       Heading text which is related to an item. There can be multiples of
+       these as in the levels of a standard description. The second
+       distinction is that of "Groups". Where a group is a collection of
+       more than one work item and all of these items have a common theme.
+       For example: 
+       
+       - they all belong to the same trade 
+       - all for the same part of the project, building or structure.
+       
+       Despite the large number of items that they may embrace, or the fact
+       that they represent substantial parts of the project, all of these
+       are recognised as "groups".
+       
+       Thus, there can be several or many items within a group and there
+       can be layers of groups within groups, all of which collectively
+       constitute the project.
+       
+       1.3.2 Indexing
+       
+        There are numerous variations for structuring the information that
+       makes up the BoQ. Although, it is possible to introduce some
+       standardisation it is clear that any message must allow the freedom
+       to structure the data according to the dictates of a individual
+       project. The design therefore, includes the ability to convey the
+       document's structure as part of the BoQ message. Indeed the design
+       allows for a different set of document structuring information, to
+       be defined at group level as well as globally for the project. This
+       means that a set of indexing rules can be defined to apply to the
+       entire project and that a different set of indexing rules can be
+       used to override these for a given group(s).
+       
+       To complement the indexing concept there is a component referred to
+       as the "Project Index Reference". This is a faceted code assigned to
+       all items of data that are to be used in conjunction with the index.
+       In other words all pieces of data that are to be structured using
+       the index must contain a structured code composed in accordance with
+       the index and this is used as a "sorting" mechanism to ensure that
+       the data is correctly structured.
+       
+       1.3.3 Message format 
+       
+       The actual appearance of the message bears no relation to the
+       appearance of the current paper document.
+       
+       As there are unlimited permutations for assembling the BoQ data it
+       has not been possible, nor desirable to make the appearance similar.
+       The CONITT appearance is similar to the results of the data analysis
+       exercise. Namely that there are 4 blocks or groupings of data, each
+       of which can appear many times and that all of the mechanisms for
+       linking and relating the components together are data elements
+       within these blocks. The task of interpreting the indexing rules and
+       subsequently assembling the data in the message will fall to local
+       software. The complexity of this task has been simplified by
+       grouping the data elements into the blocks described above. In this
+       way the processing can follow a logical flow.
+       This approach has several advantages over the existing rigidity of
+       the paper document. It is clear to the message design team that BoQ
+       documentation exchanged using EDI will deliver a variety of new
+       opportunities to its users.
+       
+       This last principle offers the solution to the volume problem too.
+       One message has a definitive number of occurrences for each block of
+       data. If for a "large" project this number is exceeded then multiple
+       versions of the same message are built. It also enables a BoQ to be
+       exchanges in subdivisions if so desired.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+3.2    Message terms and definitions
+
+       Bill of Quantities - BoQ 
+       
+       A document that is used as the basis of a tender. It gives a
+       description and measurement of quantities of labour and materials,
+       and other items required to carry out a building contract. It is
+       based upon the drawing specifications and schedules and forms part
+       of the Contract documents.
+       
+       Form of Tender 
+       
+       Pro-forma's that are issued by the Client's representative and used
+       by competing contractors to submit their proposed prices.
+       
+       Price Fluctuation Formula 
+       
+       A formal process for calculating the allowance in a contract for
+       changes in the cost of labour and material that occur during the
+       course of construction.
+       
+       Timesing 
+       
+       A multiplication factor applied when taking dimension information
+       from drawings. It is used to denote the number of times a particular
+       piece of work is repeated.
+       
+       Trade 
+       
+       An occupation such as carpentry or bricklaying that needs a specific
+       set of manual skills and training.
+       
+       Work Item 
+       
+       Individual components of work that are identified within a BoQ.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Invitation to tender message is CONITT.
+
+        Note: Invitation to tender messages conforming to this document
+        must contain the following data in segment UNH, composite S009:
+
+        Data element  0065 CONITT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment which identifies the document name and the message
+        function code.
+
+00030   RFF, Reference
+        This segment is used to identify the unique project reference
+        number.
+
+00040   DTM, Date/time/period
+        The document date will be recorded using this DTM segment.
+
+00050   AUT, Authentication result
+        A segment used to authenticate the message by exchanging a password
+        or some other form of identification agreed between the trading
+        partners.
+
+00060   AGR, Agreement identification
+        This segment will be used to identify the "type of contract and
+        form of tender" that apply to this contract.
+
+
+00070   Segment group 1:  IND-RCS-SG2
+        A group of segments to record both the structure and contents of
+        the indexing used for the BoQ document.
+
+00080      IND, Index details
+           A segment to qualify whether the index applies to the whole
+           project, part of a project (a group of items), or whether the
+           index provides an alternative view (analysis) of the work items.
+           The segment also indicates in the index qualifier whether it
+           contains index structure information or describes the index
+           contents.
+
+00090      RCS, Requirements and conditions
+           A segment used to indicate the action request (add, change etc.)
+           to be applied to the index data.
+
+
+00100      Segment group 2:  GEI-SG3
+           A group of segments to specify the position and detailed
+           component parts of the index information.
+
+00110         GEI, Processing information
+              This indicator segment specifies one of six positions within
+              the index structure to which the detailed information
+              applies.
+
+
+00120         Segment group 3:  BII-IMD
+              A group of segments to specify the detailed components of the
+              index information.
+
+00130            BII, Structure identification
+                 A segment used to specify a structured index number that
+                 is to be associated with the descriptions that follow in
+                 segment IMD.
+
+00140            IMD, Item description
+                 A segment to specify the descriptions in both full text
+                 and abbreviated form . These descriptions to be associated
+                 with the contents of segment BII.
+
+
+00150   Segment group 4:  BII-RCS-GEI-NAD-LOC-APR-ALI-QTY-DTM-RTE-SG5-SG6-
+                          SG7-SG9-SG10-SG18
+        This information is subordinate to the data provided within the
+        Header section and relates to groups of work items as described in
+        section 1.3.1 of this document. A segment group recording all the
+        details that apply to a group of items. There can be many "Groups
+        of items" within a project and all are to be recorded within this
+        part of the message.
+
+00160      BII, Structure identification
+           A segment used to convey a structured index number that uniquely
+           identifies each group of items recorded for the project.
+
+00170      RCS, Requirements and conditions
+           The action to be applied to segment group 4 data is recorded
+           here.
+
+00180      GEI, Processing information
+           This indicator segment identifies what category of item
+           grouping.
+
+00190      NAD, Name and address
+           The recording of the name and address information applying to
+           this group of items.
+
+00200      LOC, Place/location identification
+           In addition to the name and address details above this is the
+           identification of a location description and an abbreviated or
+           short name by which the grouping is to be known.
+
+00210      APR, Additional price information
+           A segment to record a multiplication factor called "Timesing"
+           that applies to the entire project or a specific grouping of
+           items.
+
+00220      ALI, Additional information
+           This segment would be used to denote, in a coded form, what
+           rules were adopted for the rounding of all financial values
+           within this group of items.
+
+00230      QTY, Quantity
+           This segment enables grouping control quantities to be recorded.
+           These are not to be confused with message control totals that
+           appear later and use the CNT segment.
+
+00240      DTM, Date/time/period
+           Any date details required for the group of items will be
+           recorded using the DTM segment. There are a considerable number
+           of different date qualifiers that could apply.
+
+00250      RTE, Rate details
+           This segment is used to record a cost rate that may apply to
+           this grouping.
+
+
+00260      Segment group 5:  RFF-DTM-GEI-FTX
+           Some base data about how the information for this group of items
+           was compiled. It will identify the standard method conventions
+           adopted, the author of the data and it will also refer to any
+           "request for quotation" messages that are to be read in
+           conjunction .
+
+00270         RFF, Reference
+              This segment will be used to specify a series of references,
+              including the reference to a "Request for Quotation" message,
+              standard method identity, the identity of the author of the
+              data and the identity, if appropriate any software tool used
+              during the preparation process.
+
+00280         DTM, Date/time/period
+              The date of the Request for Quotation message that is to be
+              processed in conjunction with this BoQ message.
+
+00290         GEI, Processing information
+              An entry in this segment will acknowledge or note the
+              existence of variations to the standard method rules
+              referenced in the associated RFF.
+
+00300         FTX, Free text
+              In the event of variations to the standard method rules this
+              segment will provide any necessary narrative to explain the
+              changes.
+
+
+00310      Segment group 6:  CUX-DTM-FTX
+           Details of which currency rules apply to this group of items.
+
+00320         CUX, Currencies
+              Recording details of the currency that applies to the group
+              of items being defined.
+
+00330         DTM, Date/time/period
+              This segment will be used to recorded any dates that are
+              applicable to qualify the currency details recorded in CUX.
+
+00340         FTX, Free text
+              Any narrative necessary to explain or qualify the currency
+              information.
+
+
+00350      Segment group 7:  ALC-RFF-DTM-RNG-FTX-SG8
+           A group of segments used to convey details of the price
+           fluctuation calculations to be applied.
+
+00360         ALC, Allowance or charge
+              A segment to identity whether the data recorded in this
+              segment group represents an actualization or a revision
+              figure.
+
+00370         RFF, Reference
+              A segment providing a reference to the (usually standard)
+              formula rules to be applied.
+
+00380         DTM, Date/time/period
+              A segment to record the contract base or control date to be
+              used in the formula.
+
+00390         RNG, Range details
+              Where the formula makes reference to data within a range the
+              details of the range will be identified in this segment.
+
+00400         FTX, Free text
+              A segment to convey the actual formula and narrative relating
+              to the formula. This will be used only in the exceptional
+              case of a non-standard formula being used.
+
+
+00410         Segment group 8:  PCD-RFF
+              A group of segments to specify the remaining components of
+              the price fluctuation calculation.
+
+00420            PCD, Percentage details
+                 A segment to specify a percentage value to be used as a
+                 coefficient in conjunction with the reference given in the
+                 following RFF.
+
+00430            RFF, Reference
+                 A segment to specify the reference of a work section
+                 applicable to a set of calculation components.
+
+
+00440      Segment group 9:  RCS-BII-FTX
+           This segment group is used to record, in textual form, any terms
+           and conditions that are deemed to apply to part or all of the
+           group of items.
+
+00450         RCS, Requirements and conditions
+              The identity of the particular conditions that are to apply
+              and a coded reference to denote whether this is to be added
+              or changed etc.
+
+00460         BII, Structure identification
+              A structured index reference to identify to what range within
+              the group of items the conditions apply.
+
+00470         FTX, Free text
+              The narrative description of the condition or term identified
+              by this segment group.
+
+
+00480      Segment group 10: ARD-MOA-FTX-SG11-SG12
+           This segment group is used to record any financial values that
+           apply for a group of items. There are considerable number of
+           different values and qualifiers that will apply.
+
+00490         ARD, Monetary amount function
+              A segment to record the qualifier to the financial value.
+              This qualifier is in addition to the qualifier used within
+              the following MOA segment.
+
+00500         MOA, Monetary amount
+              A segment to record the value of the monetary amount being
+              defined.
+
+00510         FTX, Free text
+              Any narrative qualification necessary to complete the details
+              about a financial value will be recorded in this segment.
+
+
+00520         Segment group 11: TAX-MOA-LOC
+              Where specific tax rules apply to the entire project or a
+              grouping within the project they will be recorded in this
+              segment group.
+
+00530            TAX, Duty/tax/fee details
+                 Where the financial value being described within segment
+                 group 10 is a taxation or duty value, details of the tax
+                 or duty will be recorded here.
+
+00540            MOA, Monetary amount
+                 A segment to specify the actual monetary amount of the tax
+                 or duty.
+
+00550            LOC, Place/location identification
+                 A segment to specify any location details used to qualify
+                 the tax details.
+
+
+00560         Segment group 12: ALC-ALI-SG13-SG14-SG15-SG16-SG17
+              Where it is necessary to express the components that
+              contribute to a monetary value this segment group will be
+              used.
+
+00570            ALC, Allowance or charge
+                 A segment identifying the charge or allowance and where
+                 necessary it's calculation sequence.
+
+00580            ALI, Additional information
+                 A segment indicating that the allowance or charge
+                 specified is subject to special conditions owing to
+                 origin, customs preference or commercial factors.
+
+
+00590            Segment group 13: QTY-RNG
+                 Components of a financial value expressed in terms of
+                 quantities are recorded in this segment group.
+
+00600               QTY, Quantity
+                    Any quantity details used to define or make precise the
+                    monetary value are recorded in this segment.
+
+00610               RNG, Range details
+                    Details of the range that applies to the quantity
+                    components are expressed in this segment.
+
+
+00620            Segment group 14: PCD-RNG
+                 Components of a financial value expressed in terms of a
+                 percentage are recorded in this segment group.
+
+00630               PCD, Percentage details
+                    This segment is used where the financial information is
+                    expressed as a percentage or a percentage is required
+                    for further qualification.
+
+00640               RNG, Range details
+                    Details of the range that applies to the percentage
+                    components are expressed in this segment.
+
+
+00650            Segment group 15: MOA-RNG
+                 Any components of a monetary amount that are themselves
+                 expressed as monetary amounts are recorded in this segment
+                 group.
+
+00660               MOA, Monetary amount
+                    The monetary amount component is recorded in this
+                    segment.
+
+00670               RNG, Range details
+                    Details of the range that applies to the monetary
+                    amount components are expressed in this segment.
+
+
+00680            Segment group 16: RTE-RNG
+                 Components of a financial value expressed in terms of a
+                 rate are recorded in this segment group.
+
+00690               RTE, Rate details
+                    Any rate details used to define or make precise the
+                    monetary value are recorded in this segment.
+
+00700               RNG, Range details
+                    Details of the range that applies to the rate
+                    components are expressed in this segment.
+
+
+00710            Segment group 17: TAX-MOA
+                 Components of a financial value expressed in terms of a
+                 tax or duty are recorded in this segment group.
+
+00720               TAX, Duty/tax/fee details
+                    Any tax details used to define or make precise the
+                    monetary value are recorded in this segment.
+
+00730               MOA, Monetary amount
+                    A segment to specify the actual monetary amount of the
+                    tax or duty component.
+
+
+00740      Segment group 18: NAD-LOC-FII-FTX-SG19-SG20-SG21
+           Name and address information relating to Parties, Banks and
+           Contacts are recorded in this segment group.
+
+00750         NAD, Name and address
+              Company name and address that relate to this group of items
+              and that have not been previously notified are recorded in
+              this segment. Each name and address recorded is qualified by
+              the use of the party qualifier 3035.
+
+00760         LOC, Place/location identification
+              A segment used to record more specific location information
+              of the party specified in the NAD segment, e.g. a location
+              within a construction site.
+
+00770         FII, Financial institution information
+              Bank details associated with these parties recorded in the
+              preceding NAD segment are given here.
+
+00780         FTX, Free text
+              This segment allows for any narrative that may need to
+              accompany the name and address information about a company.
+
+
+00790         Segment group 19: RFF-DTM
+              This group of segments will record unique reference numbers
+              by which the party will be known and referenced. This will
+              ensure that each party is uniquely identified even if there
+              is more than one party with a similar qualifier.
+
+00800            RFF, Reference
+                 Details of any unique referencing used within the project
+                 to identify the party. Not to be confused with the party
+                 qualifier in the NAD.
+
+00810            DTM, Date/time/period
+                 Date and time details that are used to qualify the party
+                 reference number are recorded in this segment.
+
+
+00820         Segment group 20: DOC-DTM
+              This segment group is used to identify documentation related
+              specifically to the party being defined.
+
+00830            DOC, Document/message details
+                 The identity of the documentation is recorded in this
+                 segment.
+
+00840            DTM, Date/time/period
+                 Date details used to qualify the documentation are
+                 recorded in this segment.
+
+
+00850         Segment group 21: CTA-COM
+              The information about who to contact within each of the
+              parties detailed in this segment group.
+
+00860            CTA, Contact information
+                 This segment will contain the identity of the individual,
+                 within a company, who is the contact point.
+
+00870            COM, Communication contact
+                 Here is recorded the telephone number etc. that the
+                 contact can be reached via.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+00880   UNS, Section control
+        A service segment placed at the beginning of the detail section to
+        avoid collision.
+
+
+00890   Segment group 22: BII-RCS-GEI-SG23-SG24-SG25-SG27-SG30-SG31-SG32-
+                          SG34
+        A group of segments recording all the details that apply to an
+        item. There can be many items within a project, details of all
+        items, regardless of where they appear in the BoQ will be recorded
+        in this segment group.
+
+00900      BII, Structure identification
+           A segment used to convey a structured index number that uniquely
+           identifies each item recorded for the project.
+
+00910      RCS, Requirements and conditions
+           The action to be applied to this segment group data is recorded
+           here.
+
+00920      GEI, Processing information
+           Through a list of coded qualifiers this segment is used to
+           define precisely various features about this item e.g.: - it
+           will distinguish between standard, work or sub item types. -
+           identify whether this item is of an agreed, disputed or
+           provisional status. - a qualification of the type of rate that
+           has been associated with this item. - identifying to what
+           category this item resides.
+
+
+00930      Segment group 23: RFF-DTM
+           A group of segments recording additional reference information
+           against an item of work.
+
+00940         RFF, Reference
+              Where project documentation has been prepared in accordance
+              with a Standard Methodology the item's reference to that
+              Standard Method is recorded here. Also recorded here is the
+              unique reference number assigned to a sub item. This
+              reference would be used in conjunction with the item index
+              no. in the BII of this segment group.
+
+00950         DTM, Date/time/period
+              A segment to record a date for the Standard Method of
+              Measurement reference.
+
+
+00960      Segment group 24: DIM-APR-FTX
+           A group of segments which may be used where Segment Group 23
+           refers to a sub-item number. It would contain sets of dimension
+           details to further describe the quantities.
+
+00970         DIM, Dimensions
+              A segment used to record where applicable, the length, width
+              and height for portions of work measured.
+
+00980         APR, Additional price information
+              A segment to record a multiplication factor called "Timesing"
+              that applies to a set of dimensions.
+
+00990         FTX, Free text
+              A segment to record an annotation for each set of dimensions.
+
+
+01000      Segment group 25: LIN-SG26
+           A group of segments to record descriptive text for items and
+           headings for groupings of items.
+
+01010         LIN, Line item
+              A segment to record a qualifier as to whether it is a
+              description for an item or a heading for a group of items.
+              This would also include a number identifying the level the
+              description applies to, within a set of levelled headings.
+
+
+01020         Segment group 26: IMD-RFF-GEI
+              A group of segments to record the description line details
+              together with text reference numbers and change action codes
+              used to identify who is authorised to apply changes.
+
+01030            IMD, Item description
+                 This segment is used to convey any descriptive material to
+                 be recorded for the item. This descriptive material can
+                 apply to the item description and item heading
+                 information. The distinction is explained in section 1.3
+                 of this paper.
+
+01040            RFF, Reference
+                 A segment used to record up to five text reference numbers
+                 per item description line.
+
+01050            GEI, Processing information
+                 A segment used to record up to five text change action
+                 codes per item description line.
+
+
+01060      Segment group 27: QTY-GEI-APR-SG28
+           This segment group is used to record the complex range of
+           quantity values and prices that apply to an item.
+
+01070         QTY, Quantity
+              Many different quantity values can be applied to an item
+              during it's execution. All of these quantities will be
+              recorded in this segment.
+
+01080         GEI, Processing information
+              This segment is used to provide the qualifiers that apply to
+              the various quantities in the previous segment.
+
+01090         APR, Additional price information
+              Item quantities are frequently accompanied by some
+              multiplicands. This APR segment is used to record these.
+
+
+01100         Segment group 28: PRI-GEI-SG29
+              A group of segments to record a series of prices and monetary
+              amounts relating to each QTY value.
+
+01110            PRI, Price details
+                 A segment to record up to three price values for each QTY
+                 value.
+
+01120            GEI, Processing information
+                 A segment to record up to three qualifiers for each price.
+
+
+01130            Segment group 29: ARD-MOA
+                 A group of segments to record the monetary amounts,
+                 currency, tax details resulting from the multiplication of
+                 QTY and PRI values.
+
+01140               ARD, Monetary amount function
+                    A segment to qualify the monetary amount as to it's
+                    purpose in the business exchange.
+
+01150               MOA, Monetary amount
+                    A segment to record the value and currency of the
+                    monetary amount.
+
+
+01160      Segment group 30: TAX-MOA-LOC
+           A group of segments in which is detailed taxation information,
+           which applies to the item . There are often several different
+           types of tax which need to be applied.
+
+01170         TAX, Duty/tax/fee details
+              Details of the taxation to be applied is recorded here.
+
+01180         MOA, Monetary amount
+              A segment to record the value and currency of the monetary
+              amount.
+
+01190         LOC, Place/location identification
+              A segment to specify location codes relating to the tax
+              details recorded in this segment group.
+
+
+01200      Segment group 31: RCS-BII-GEI
+           Where it is necessary to record a relationship about the current
+           item and it's association with another item, this segment group
+           will be used.
+
+01210         RCS, Requirements and conditions
+              A segment to identify the requirements that applied to this
+              particular reference.
+
+01220         BII, Structure identification
+              Record here the structured index number of the other item to
+              which the current item relates.
+
+01230         GEI, Processing information
+              This is the segment where a coded reference describing the
+              item relationship is recorded.
+
+
+01240      Segment group 32: ALC-RFF-DTM-RNG-FTX-SG33
+           A group of segments used to convey details of the price
+           fluctuation calculations to be applied to the item.
+
+01250         ALC, Allowance or charge
+              A segment to identity whether the data recorded in this
+              segment group represents an actualization or a revision
+              figure.
+
+01260         RFF, Reference
+              A segment providing a reference to the (usually standard)
+              formula rules to be applied.
+
+01270         DTM, Date/time/period
+              A segment to record the contract base or control date to be
+              used in the formula.
+
+01280         RNG, Range details
+              Where the formula makes reference to data within a range the
+              details of the range will be identified in this segment.
+
+01290         FTX, Free text
+              A segment to convey the actual formula and narrative relating
+              to the formula . This will be used only in the exceptional
+              case of a non- standard formula being used.
+
+
+01300         Segment group 33: PCD-RFF
+              A group of segments to specify the remaining components of
+              the price fluctuation calculation.
+
+01310            PCD, Percentage details
+                 A segment to specify a percentage value to be used as a
+                 coefficient in conjunction with the reference given in the
+                 following RFF.
+
+01320            RFF, Reference
+                 A segment to specify the reference of a work section
+                 applicable to a set of calculation components.
+
+
+01330      Segment group 34: IMD-QTY-MOA-PRI
+           A segment group to record where necessary alternative index
+           information for an item. The validity of an alternative index
+           would be defined in the Segment Group 3 IMD.
+
+01340         IMD, Item description
+              A segment used to record an alternative index description
+              (previously defined in Segment Group 3 IMD), that relates to
+              this item.
+
+01350         QTY, Quantity
+              A segment to record the quantity and measurement unit that
+              relates to the coded entry for the item.
+
+01360         MOA, Monetary amount
+              A segment to record the currency and value associated with
+              the item.
+
+01370         PRI, Price details
+              A segment to record the monetary rate of the code associated
+              with the item.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+01380   CNT, Control total
+        Various control total checks may be taken and the resultant values
+        would be recorded in this segment. Typically these checks will be
+        counts of quantity and monetary values that apply to the entire
+        message.
+
+01390   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AGR Agreement identification
+          ALC Allowance or charge
+          ALI Additional information
+          APR Additional price information
+          ARD Monetary amount function
+          AUT Authentication result
+          BGM Beginning of message
+          BII Structure identification
+          CNT Control total
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DIM Dimensions
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          IMD Item description
+          IND Index details
+          LIN Line item
+          LOC Place/location identification
+          MOA Monetary amount
+          NAD Name and address
+          PCD Percentage details
+          PRI Price details
+          QTY Quantity
+          RCS Requirements and conditions
+          RFF Reference
+          RNG Range details
+          RTE Rate details
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   RFF Reference                                M   1     
+00040   DTM Date/time/period                         M   1     
+00050   AUT Authentication result                    C   2     
+00060   AGR Agreement identification                 C   2     
+
+00070       ---- Segment group 1  ------------------ C   1000-------------+
+00080   IND Index details                            M   1                |
+00090   RCS Requirements and conditions              M   1                |
+                                                                          |
+00100       ---- Segment group 2  ------------------ M   1---------------+|
+00110   GEI Processing information                   M   1               ||
+                                                                         ||
+00120       ---- Segment group 3  ------------------ M   1--------------+||
+00130   BII Structure identification                 M   1              |||
+00140   IMD Item description                         M   9--------------+++
+
+00150       ---- Segment group 4  ------------------ C   1000-------------+
+00160   BII Structure identification                 M   1                |
+00170   RCS Requirements and conditions              M   1                |
+00180   GEI Processing information                   M   10               |
+00190   NAD Name and address                         C   1                |
+00200   LOC Place/location identification            C   1                |
+00210   APR Additional price information             C   1                |
+00220   ALI Additional information                   C   2                |
+00230   QTY Quantity                                 C   5                |
+00240   DTM Date/time/period                         C   10               |
+00250   RTE Rate details                             C   9                |
+                                                                          |
+00260       ---- Segment group 5  ------------------ C   10--------------+|
+00270   RFF Reference                                M   1               ||
+00280   DTM Date/time/period                         C   2               ||
+00290   GEI Processing information                   C   5               ||
+00300   FTX Free text                                C   5---------------+|
+                                                                          |
+00310       ---- Segment group 6  ------------------ C   5---------------+|
+00320   CUX Currencies                               M   1               ||
+00330   DTM Date/time/period                         C   5               ||
+00340   FTX Free text                                C   1---------------+|
+                                                                          |
+00350       ---- Segment group 7  ------------------ C   2---------------+|
+00360   ALC Allowance or charge                      M   1               ||
+00370   RFF Reference                                C   1               ||
+00380   DTM Date/time/period                         C   1               ||
+00390   RNG Range details                            C   1               ||
+00400   FTX Free text                                C   10              ||
+                                                                         ||
+00410       ---- Segment group 8  ------------------ C   20-------------+||
+00420   PCD Percentage details                       M   1              |||
+00430   RFF Reference                                C   1--------------++|
+                                                                          |
+00440       ---- Segment group 9  ------------------ C   100-------------+|
+00450   RCS Requirements and conditions              M   1               ||
+00460   BII Structure identification                 M   1               ||
+00470   FTX Free text                                C   9---------------+|
+                                                                          |
+00480       ---- Segment group 10 ------------------ M   100-------------+|
+00490   ARD Monetary amount function                 M   1               ||
+00500   MOA Monetary amount                          M   6               ||
+00510   FTX Free text                                C   10              ||
+                                                                         ||
+00520       ---- Segment group 11 ------------------ C   5--------------+||
+00530   TAX Duty/tax/fee details                     M   1              |||
+00540   MOA Monetary amount                          C   1              |||
+00550   LOC Place/location identification            C   5--------------+||
+                                                                         ||
+00560       ---- Segment group 12 ------------------ C   15-------------+||
+00570   ALC Allowance or charge                      M   1              |||
+00580   ALI Additional information                   C   5              |||
+                                                                        |||
+00590       ---- Segment group 13 ------------------ C   1-------------+|||
+00600   QTY Quantity                                 M   1             ||||
+00610   RNG Range details                            C   1-------------+|||
+                                                                        |||
+00620       ---- Segment group 14 ------------------ C   1-------------+|||
+00630   PCD Percentage details                       M   1             ||||
+00640   RNG Range details                            C   1-------------+|||
+                                                                        |||
+00650       ---- Segment group 15 ------------------ C   1-------------+|||
+00660   MOA Monetary amount                          M   1             ||||
+00670   RNG Range details                            C   1-------------+|||
+                                                                        |||
+00680       ---- Segment group 16 ------------------ C   1-------------+|||
+00690   RTE Rate details                             M   1             ||||
+00700   RNG Range details                            C   1-------------+|||
+                                                                        |||
+00710       ---- Segment group 17 ------------------ C   5-------------+|||
+00720   TAX Duty/tax/fee details                     M   1             ||||
+00730   MOA Monetary amount                          C   1-------------+++|
+                                                                          |
+00740       ---- Segment group 18 ------------------ C   20--------------+|
+00750   NAD Name and address                         M   1               ||
+00760   LOC Place/location identification            C   25              ||
+00770   FII Financial institution information        C   9               ||
+00780   FTX Free text                                C   5               ||
+                                                                         ||
+00790       ---- Segment group 19 ------------------ C   5--------------+||
+00800   RFF Reference                                M   1              |||
+00810   DTM Date/time/period                         C   5--------------+||
+                                                                         ||
+00820       ---- Segment group 20 ------------------ C   5--------------+||
+00830   DOC Document/message details                 M   1              |||
+00840   DTM Date/time/period                         C   5--------------+||
+                                                                         ||
+00850       ---- Segment group 21 ------------------ C   5--------------+||
+00860   CTA Contact information                      M   1              |||
+00870   COM Communication contact                    C   5--------------+++
+
+            DETAIL SECTION
+
+00880   UNS Section control                          M   1     
+
+00890       ---- Segment group 22 ------------------ M   1000-------------+
+00900   BII Structure identification                 M   1                |
+00910   RCS Requirements and conditions              M   1                |
+00920   GEI Processing information                   M   10               |
+                                                                          |
+00930       ---- Segment group 23 ------------------ C   10--------------+|
+00940   RFF Reference                                M   1               ||
+00950   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00960       ---- Segment group 24 ------------------ C   100-------------+|
+00970   DIM Dimensions                               M   1               ||
+00980   APR Additional price information             C   1               ||
+00990   FTX Free text                                C   1---------------+|
+                                                                          |
+01000       ---- Segment group 25 ------------------ C   100-------------+|
+01010   LIN Line item                                M   1               ||
+                                                                         ||
+01020       ---- Segment group 26 ------------------ C   1000-----------+||
+01030   IMD Item description                         M   1              |||
+01040   RFF Reference                                C   5              |||
+01050   GEI Processing information                   C   5--------------++|
+                                                                          |
+01060       ---- Segment group 27 ------------------ M   1000------------+|
+01070   QTY Quantity                                 M   1               ||
+01080   GEI Processing information                   C   3               ||
+01090   APR Additional price information             C   1               ||
+                                                                         ||
+01100       ---- Segment group 28 ------------------ C   3--------------+||
+01110   PRI Price details                            M   1              |||
+01120   GEI Processing information                   M   3              |||
+                                                                        |||
+01130       ---- Segment group 29 ------------------ C   2-------------+|||
+01140   ARD Monetary amount function                 M   1             ||||
+01150   MOA Monetary amount                          C   1-------------+++|
+                                                                          |
+01160       ---- Segment group 30 ------------------ C   5---------------+|
+01170   TAX Duty/tax/fee details                     M   1               ||
+01180   MOA Monetary amount                          C   1               ||
+01190   LOC Place/location identification            C   5---------------+|
+                                                                          |
+01200       ---- Segment group 31 ------------------ C   5---------------+|
+01210   RCS Requirements and conditions              M   1               ||
+01220   BII Structure identification                 M   1               ||
+01230   GEI Processing information                   M   1---------------+|
+                                                                          |
+01240       ---- Segment group 32 ------------------ C   2---------------+|
+01250   ALC Allowance or charge                      M   1               ||
+01260   RFF Reference                                C   1               ||
+01270   DTM Date/time/period                         C   1               ||
+01280   RNG Range details                            C   1               ||
+01290   FTX Free text                                C   10              ||
+                                                                         ||
+01300       ---- Segment group 33 ------------------ C   20-------------+||
+01310   PCD Percentage details                       M   1              |||
+01320   RFF Reference                                C   1--------------++|
+                                                                          |
+01330       ---- Segment group 34 ------------------ C   9---------------+|
+01340   IMD Item description                         M   1               ||
+01350   QTY Quantity                                 C   1               ||
+01360   MOA Monetary amount                          C   1               ||
+01370   PRI Price details                            C   1---------------++
+
+            SUMMARY SECTION
+
+01380   CNT Control total                            C   10    
+01390   UNT Message trailer                          M   1     

@@ -1,0 +1,599 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                     Life reinsurance activity message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : LREACT
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 2
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG8 Insurance
+
+
+
+                                  CONTENTS
+
+                     Life reinsurance activity message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Life reinsurance
+       activity message (LREACT) to be used in Electronic Data Interchange
+       (EDI) between trading partners involved in administration, commerce
+       and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The LREACT message is used by companies to exchange insured and
+       policy coverage detail for reinsurance purposes. The message will be
+       used for both ceded and assumed reinsurance.
+                 
+       The trading partners utilizing the Life reinsurance activity message
+       will be direct companies, reinsurance companies, reinsurance
+       intermediaries and retrocessionaires. The message will be used to
+       transmit data required by ceding and assuming companies to maintain
+       the records on reinsured cessions. This data supports the
+       reinsurer's ability to appropriately account for, manage, study,
+       value (reserve) and complete their financial reporting. It also
+       facilitates the reconciliation of the reinsurance records in order
+       to maintain the integrity of the data between the trading partners.
+
+1.2    Field of application
+
+       The Life reinsurance activity message may be used for both national
+       and international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       - The Life reinsurance activity message contains information about
+       reinsured individual life insurance policies, reinsured disability
+       insurance policies and reinsured annuity contracts administered
+       under the terms and conditions of a treaty.
+          
+       - This message provides the reinsurance information about the base
+       policy, the insureds and the coverages of a single policy or group
+       of policies.
+          
+       - This message is only used to communicate information of policies
+       from the time of reinsurance issue to the time of reinsurance
+       termination.
+          
+       - The partners exchange data based on trading partner agreements
+       defining the use of the data segments contained within the Life
+       reinsurance activity message.
+          
+       - The message can be sent for purposes of confirming the details of
+       a policy or group of policies and the associated insureds and
+       coverages under a specific agreement.
+          
+       - The message can be used to communicate information regarding the
+       status of the policy, the changes to the policy and the valuation of
+       a policy or group of policies.
+          
+       - The message structure is generalised by specifying several
+       conditional segments and segment groups. Only a subset of the
+       conditional segments may be needed to meet particular requirements.
+       Users intending to use the message for their particular requirements
+       should study the message structure to identify the segments and
+       segment groups required to meet their needs.
+          
+       - The intent of the structural design of this message is to allow
+       for optimal efficiency of transmission. The business function has
+       the complex "many to many" relationship of insureds to coverages.
+       This message allows the flexibility to structure the data in order
+       to optimize transmission costs or optimize clarity.
+          
+       - The message flows among partners; the partners may change roles in
+       the transmission. That is to say, that the cedent may be the
+       originator of the transmission, or may be the recipient of the
+       transmission (from the reinsurer).
+          
+       - The message is not intended to bear any relation to any particular
+       paper report that trading partners may have used. However, the
+       proprietary nature of the data in the message is the same as when it
+       is sent on a paper report or magnetic media. 
+            
+       - A "claim status" is included to allow for active policies with
+       disability claims. There is no intention to communicate any other
+       claims information using this message.
+                 
+       - The value contained in the GEI segment indicates whether the
+       parent segment group contains policy, insured, coverage or
+       relationship data. If the parent group contains policy data, then it
+       can also contain a policy segment group. If the parent segment group
+       contains insured data then it can also contain an insured segment
+       group. If the parent segment group contains coverage data, then it
+       can also contain a coverage segment group. If the parent segment
+       group contains relationship data, then it can contain no other
+       segment groups.
+                 
+       - Coverages can apply to one or more insureds. The relationship
+       between insureds and coverages can either be defined implicitly or
+       explicitly.
+          
+       When no relationship groups are defined for a policy, the
+       relationship is implicit:
+          
+       - coverage segment group(s) immediately following an insured segment
+       group and before the next policy or insured segment group is related
+       to that insured;
+          
+       - insured segment group(s) immediately following a coverage segment
+       group and before the next policy or coverage segment group is
+       related to that coverage.
+          
+       For joint life cases, this method can introduce considerable
+       redundancy in the message. To explicitly define the relationship
+       between the insureds and the coverages, the relationship segment
+       group is used. A policy would then be structured as a policy segment
+       group followed by one or more insured segment groups, then one or
+       more coverage segment groups, then one or more relationship segment
+       groups. Each relationship segment group would contain the insured
+       sequence number and the related coverage sequence number.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message:
+          
+       - All specified dates should include the century unless all parties
+       involved in the transaction agree that there is a functional
+       requirement for an alternative format.
+          
+       - Where a choice of code or text is given only the code element
+       should be used wherever possible.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Life reinsurance activity message is
+        LREACT.
+
+        Note: Life reinsurance activity messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 LREACT
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        This segment specifies a message code which indicates whether this
+        message contains policy status information, policy activity
+        information or both.
+
+00030   DTM, Date/time/period
+        A segment specifying the reporting period ending date.
+
+00040   CUX, Currencies
+        A segment identifying the default currency and its scaling factor
+        for monetary amounts in this message.
+
+00050   CTA, Contact information
+        A segment identifying a person(s) or department(s), and their
+        function(s), to whom communications should be directed.
+
+00060   FTX, Free text
+        A segment with free text information, in coded or clear form, used
+        when additional information is needed but cannot be accommodated
+        within other segments. In computer to computer exchanges such text
+        will normally require the receiver to process this segment
+        manually.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00070   Segment group 1:  GEI-RFF-ATT-DTM-FTX-SG2-SG3-SG4
+        A group of segments containing policy, insured, coverage or
+        relationship data. Depending on the contents of this parent segment
+        group, the segment group can also contain a policy segment group,
+        insured segment group or coverage segment group.
+
+00080      GEI, Processing information
+           This indicator specifies a code which indicates whether this
+           group is a policy, insured, coverage or relationship group.
+
+00090      RFF, Reference
+           A segment identifying references conditional upon the general
+           indicator above: 
+            
+           - for a policy group: the policy number and case identifier.
+            
+           - for an insured group: a unique number identifying each of the
+           insureds and optionally an original policy number from which a
+           continuation resulted.
+            
+           - for a coverage group: a unique number identifying each of the
+           coverages on a policy, the policy form number, the plan code and
+           the rate band indicator.
+            
+           - for a relationship group: the unique number identifying the
+           insured and the unique number identifying the coverage applied
+           to that insured. This allows insured groups and coverage groups
+           to be related to each other.
+
+00100      ATT, Attribute
+           A segment providing attributes conditional upon the general
+           indicator above: 
+               
+           - for a policy group: the policy activity currently being
+           reported
+            
+           - for an insured group: the insured's gender
+            
+           - for a coverage group: the attributes of the coverage are
+           described.
+
+00110      DTM, Date/time/period
+           A segment specifying general dates or durations related to the
+           policy, the insured or the coverage.
+            
+           - for a policy group: the transaction effective date
+            
+           - for an insured group: the insured's birth date and the
+           mortality rating expiry date
+            
+           - for a coverage group: dates associated with the coverage are
+           defined.
+
+00120      FTX, Free text
+           A segment with free text information, in coded or clear form,
+           used when additional information is needed but cannot be
+           accommodated within other segments. In computer to computer
+           exchanges such text will normally require the receiver to
+           process this segment manually.
+
+
+00130      Segment group 2:  IMD-LOC-SEQ-CUX-PNA
+           A group of segments in which is detailed policy information.
+
+00140         IMD, Item description
+              A segment indicating if the policy is single life or joint
+              life.
+
+00150         LOC, Place/location identification
+              A segment giving location information for the place of issue
+              and the owner place of residence.
+
+00160         SEQ, Sequence details
+              A segment providing the transaction sequence number. This
+              segment is required when the BGM indicates that the message
+              contains transaction activity.
+
+00170         CUX, Currencies
+              A segment identifying the default currency and its
+              multiplying factor for all monetary amounts in this policy.
+
+00180         PNA, Party identification
+              A segment identifying the names of the parties, in coded or
+              clear form, and their functions relevant to the message.
+              Identification of the direct writing company of this policy
+              and any intermediary, third party administrator, of this
+              policy. It is recommended that where possible only the coded
+              form of the party identification should be specified; e.g. if
+              the direct writer and intermediary names are known to the
+              sender and receiver, then only the coded identification is
+              required.
+
+
+00190      Segment group 3:  PCD-PNA-LOC
+           A group of segments in which is detailed insured information.
+
+00200         PCD, Percentage details
+              A segment specifying the mortality or morbidity rating of the
+              insured. The underwriting table rating assigned to the
+              insured is generally expressed as a percentage where 100% is
+              standard. Any rating scheme, however, can be used with
+              agreement between the sending and receiving companies.
+
+00210         PNA, Party identification
+              A segment identifying the name and universal identifier of
+              the insured.
+
+00220         LOC, Place/location identification
+              A segment giving the location of the insured's place of
+              residence.
+
+
+00230      Segment group 4:  ICD-PCD-EMP-AGR-LOC-SG5-SG6-SG8
+           A group of segments in which is detailed coverage information.
+
+00240         ICD, Insurance cover description
+              A segment giving insurance cover risk type.
+
+00250         PCD, Percentage details
+              A segment specifying the mortality or morbidity rating, the
+              Cost of Living Adjustment benefit for disability income
+              riders and mortgage interest rate associated with mortgage
+              plans.
+
+00260         EMP, Employment details
+              A segment providing the occupation class of the insured for
+              purposes of this coverage as defined by the issuing company
+              (required for disability income coverages).
+
+00270         AGR, Agreement identification
+              This segment will be used to provide both the reinsurer's and
+              the cedent's treaty identification for this coverage.
+
+00280         LOC, Place/location identification
+              This segment identifies the insured's place of residence for
+              this coverage.
+
+
+00290         Segment group 5:  MOA-ARD
+              A group of segments in which is detailed monetary amounts and
+              their purpose for the coverage.
+
+00300            MOA, Monetary amount
+                 A segment specifying a monetary amount.
+
+00310            ARD, Monetary amount function
+                 A segment specifying the purpose of the monetary amount.
+
+
+00320         Segment group 6:  RTE-ATT-DTM-SG7
+              A group of segments which details flat extra premiums
+              associated with this coverage.
+
+00330            RTE, Rate details
+                 A segment specifying the rate at which the flat extra
+                 premium is calculated per unit.
+
+00340            ATT, Attribute
+                 A segment specifying the basis for calculating the flat
+                 extra premium e.g. face or net amount at risk.
+
+00350            DTM, Date/time/period
+                 A segment specifying the duration for charging the
+                 additional flat extra premium.
+
+
+00360            Segment group 7:  MOA-ARD
+                 A group of segments in which is detailed monetary amounts
+                 and their purpose for the flat extra premium.
+
+00370               MOA, Monetary amount
+                    A segment specifying a monetary amount.
+
+00380               ARD, Monetary amount function
+                    A segment specifying the purpose of the monetary
+                    amount.
+
+
+00390         Segment group 8:  PRC-ATT-PCD-SG9
+              A group of segments which details the valuations associated
+              with this coverage.
+
+00400            PRC, Process identification
+                 A segment providing the purpose of the valuation e.g.
+                 United States Tax, Generally Accepted Accounting
+                 Principles, etc.
+
+00410            ATT, Attribute
+                 A segment identifying the standard mortality or morbidity
+                 table, the standard function, the standard method and
+                 substandard method used in calculating this reserve.
+
+00420            PCD, Percentage details
+                 A segment specifying the standard interest rate used in
+                 calculating reserves for this coverage.
+
+
+00430            Segment group 9:  MOA-ARD
+                 A group of segments in which is detailed monetary amounts
+                 and their purpose for the valuations.
+
+00440               MOA, Monetary amount
+                    A segment specifying a monetary amount.
+
+00450               ARD, Monetary amount function
+                    A segment specifying the purpose of the monetary
+                    amount.
+
+00460   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AGR Agreement identification
+          ARD Monetary amount function
+          ATT Attribute
+          BGM Beginning of message
+          CTA Contact information
+          CUX Currencies
+          DTM Date/time/period
+          EMP Employment details
+          FTX Free text
+          GEI Processing information
+          ICD Insurance cover description
+          IMD Item description
+          LOC Place/location identification
+          MOA Monetary amount
+          PCD Percentage details
+          PNA Party identification
+          PRC Process identification
+          RFF Reference
+          RTE Rate details
+          SEQ Sequence details
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   1     
+00040   CUX Currencies                               C   1     
+00050   CTA Contact information                      C   9     
+00060   FTX Free text                                C   1     
+
+            DETAIL SECTION
+
+00070       ---- Segment group 1  ------------------ M   999999-----------+
+00080   GEI Processing information                   M   1                |
+00090   RFF Reference                                M   9                |
+00100   ATT Attribute                                C   99               |
+00110   DTM Date/time/period                         C   99               |
+00120   FTX Free text                                C   1                |
+                                                                          |
+00130       ---- Segment group 2  ------------------ C   1---------------+|
+00140   IMD Item description                         M   1               ||
+00150   LOC Place/location identification            M   9               ||
+00160   SEQ Sequence details                         C   1               ||
+00170   CUX Currencies                               C   1               ||
+00180   PNA Party identification                     C   9---------------+|
+                                                                          |
+00190       ---- Segment group 3  ------------------ C   1---------------+|
+00200   PCD Percentage details                       M   1               ||
+00210   PNA Party identification                     C   1               ||
+00220   LOC Place/location identification            C   1---------------+|
+                                                                          |
+00230       ---- Segment group 4  ------------------ C   1---------------+|
+00240   ICD Insurance cover description              M   1               ||
+00250   PCD Percentage details                       M   9               ||
+00260   EMP Employment details                       C   1               ||
+00270   AGR Agreement identification                 C   9               ||
+00280   LOC Place/location identification            C   1               ||
+                                                                         ||
+00290       ---- Segment group 5  ------------------ C   99-------------+||
+00300   MOA Monetary amount                          M   1              |||
+00310   ARD Monetary amount function                 M   1--------------+||
+                                                                         ||
+00320       ---- Segment group 6  ------------------ C   99-------------+||
+00330   RTE Rate details                             M   1              |||
+00340   ATT Attribute                                C   1              |||
+00350   DTM Date/time/period                         C   1              |||
+                                                                        |||
+00360       ---- Segment group 7  ------------------ C   99------------+|||
+00370   MOA Monetary amount                          M   1             ||||
+00380   ARD Monetary amount function                 M   1-------------++||
+                                                                         ||
+00390       ---- Segment group 8  ------------------ C   99-------------+||
+00400   PRC Process identification                   M   1              |||
+00410   ATT Attribute                                C   9              |||
+00420   PCD Percentage details                       C   1              |||
+                                                                        |||
+00430       ---- Segment group 9  ------------------ C   99------------+|||
+00440   MOA Monetary amount                          M   1             ||||
+00450   ARD Monetary amount function                 M   1-------------++++
+00460   UNT Message trailer                          M   1     

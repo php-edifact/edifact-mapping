@@ -1,0 +1,1009 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                    Periodic customs declaration message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : CUSPED
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 3
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG4 Customs
+
+
+
+                                  CONTENTS
+
+                    Periodic customs declaration message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Periodic customs
+       declaration message (CUSPED) to be used in Electronic Data
+       Interchange (EDI) between trading partners involved in
+       administration, commerce and transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       This Periodic Customs Declaration Message (CUSPED) permits the
+       transfer of data from a declarant to a customs administration for
+       the purpose of meeting legislative and/or operational
+       requirements in respect of the periodic declaration of goods
+       for import or export. The message may also be used, for
+       example :
+       
+       - to transmit consignment data from one customs administration
+       to another;
+       - to transmit data from a customs authority to other
+       governments agencies and/or interested administrations;
+       -  to transmit data from a declarant to the appropriate data
+       collection agency on the movement of goods between statistical
+       territories.
+
+1.2    Field of application
+
+       The Periodic customs declaration message may be used for both
+       national and international applications. It is based on universal
+       practice related to administration, commerce and transport, and is
+       not dependent on the type of business or industry.
+
+1.3    Principles
+
+       This message incorporates the necessary complementary and/or
+       aggregated data relating to transport, statistical and customs
+       information of a given period.
+       
+       The design principles adopted allow for referencing one or
+       more previous simplified Customs declarations pertaining
+       to the same periodic declaration.
+       A customs item consists of the grouping of document lines
+       having the same customs characteristics (e.g. tariff
+       number, declared use, etc.). The message correspondingly
+       permits the use of single or multi-packaging concepts and
+       their identification to a customs item.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Periodic customs declaration message is
+        CUSPED.
+
+        Note: Periodic customs declaration messages conforming to this
+        document must contain the following data in segment UNH, composite
+        S009:
+
+        Data element  0065 CUSPED
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment identifying the declaration type and reference.
+
+00030   CST, Customs status of goods
+        A segment identifying the customs procedure and status of the goods
+        relevant to the whole message.
+
+00040   LOC, Place/location identification
+        A segment identifying a place or location relevant to the entire
+        message. For example, office of assessment.
+
+00050   DTM, Date/time/period
+        A segment identifying dates, times or periods relevant to the whole
+        message. For example, period covered by the declaration.
+
+00060   GEI, Processing information
+        A segment identifying the various indicators required by a customs
+        system. For example, special programs.
+
+00070   FII, Financial institution information
+        A segment identifying an account and a related financial
+        institution relevant to the whole message.
+
+
+00080   Segment group 1:  RFF-DTM
+        A group of segments identifying various references relevant to the
+        whole message.
+
+00090      RFF, Reference
+           A segment identifying the various references relevant to the
+           whole message.
+
+00100      DTM, Date/time/period
+           A segment identifying a date related to the previous RFF
+           segment.
+
+
+00110   Segment group 2:  NAD-RFF-SG3
+        A group of segments identifying the parties relevant to the whole
+        message, with their related references, contacts and communication
+        numbers.
+
+00120      NAD, Name and address
+           A segment identifying the parties relevant to the entire
+           message. For example, importer, ultimate consignee, etc.
+
+00130      RFF, Reference
+           A segment identifying references relating to the party specified
+           within the group. For example, a special mailing request number
+           for refunds relating to the customs transaction.
+
+
+00140      Segment group 3:  CTA-COM
+           A group of segments identifying the contacts and communication
+           numbers relevant to the NAD.
+
+00150         CTA, Contact information
+              A segment identifying a contact person(s) or department(s)
+              associated with the party specified in SG2.
+
+00160         COM, Communication contact
+              A segment identifying the phone number, fax number or other
+              communications number of the party and/or contact specified
+              within SG2.
+
+
+00170   Segment group 4:  MOA-SG5
+        A group of segments identifying monetary amounts, currencies and
+        their exchange rates, when required for the whole periodic
+        declaration.
+
+00180      MOA, Monetary amount
+           A segment identifying a monetary function and up to five
+           monetary amounts.
+
+
+00190      Segment group 5:  CUX-DTM
+           A group of segments identifying currencies, a rate of exchange
+           and a related date for a monetary amount identified within this
+           group.
+
+00200         CUX, Currencies
+              A segment identifying currencies and the rate of exchange for
+              a monetary amount identified within this group.
+
+00210         DTM, Date/time/period
+              A segment identifying a date related to the information
+              contained in the CUX.
+
+
+00220   Segment group 6:  TAX-MOA-GEI
+        A group of segments identifying duties/taxes/fees and methods of
+        payment related to the whole periodic declaration.
+
+00230      TAX, Duty/tax/fee details
+           A segment identifying the tax type, rate and base associated
+           with the periodic declaration.
+
+00240      MOA, Monetary amount
+           A segment identifying monetary amounts (e.g. tax/fee amount)
+           associated with the preceding TAX.
+
+00250      GEI, Processing information
+           A segment identifying an indicator (e.g. method payment
+           indicator) associated with the preceding TAX.
+
+00260   CNT, Control total
+        A segment specifying control totals. For example, the number of
+        simplified Customs declarations.
+
+
+00270   Segment group 7:  DMS-CNT-RFF-DTM-GEI-LOC-EQD-PAC-TDT-SG8-SG10-
+                          SG11-SG12-SG14-SG15
+        A group of segments identifying detailed and complementary
+        information of a previous simplified Customs declaration.
+
+00280      DMS, Document/message summary
+           A segment identifying the reference number of the previous
+           simplified Customs declaration heading this group.
+
+00290      CNT, Control total
+           A segment specifying control totals within this group. E.g. the
+           total number of Customs items, and values.
+
+00300      RFF, Reference
+           A segment identifying the various references relevant to the
+           whole previous simplified Customs declaration.
+
+00310      DTM, Date/time/period
+           A segment identifying a date related to the whole previous
+           simplified Customs declaration identified in DMS.
+
+00320      GEI, Processing information
+           A segment identifying any necessary processing indicators where
+           these are required.
+
+00330      LOC, Place/location identification
+           A segment identifying a place or location related to the
+           document identified in the DMS. E.g. Customs office of entry,
+           country of purchase.
+
+00340      EQD, Equipment details
+           A segment identifying the equipment (e.g. container id) used to
+           transport all the goods related to the whole declaration
+           identified in DMS.
+
+00350      PAC, Package
+           A segment identifying the number and type of packages related to
+           the whole declaration identified in DMS.
+
+00360      TDT, Transport information
+           A segment identifying the mode and means of transport used.
+
+
+00370      Segment group 8:  NAD-RFF-SG9
+           A group of segments identifying the parties relevant to the
+           whole declaration identified in DMS, with their related
+           references, contacts and communication numbers.
+
+00380         NAD, Name and address
+              A segment identifying the parties relevant to the entire
+              declaration. For example importer, ultimate consignee, etc.
+
+00390         RFF, Reference
+              A segment identifying references relating to the party
+              specified within the group. For example, a special mailing
+              request number for refunds relating to the customs
+              transaction.
+
+
+00400         Segment group 9:  CTA-COM
+              A group of segments identifying the contacts and
+              communication numbers relevant to the NAD.
+
+00410            CTA, Contact information
+                 A segment identifying a contact person(s) or department(s)
+                 associated with the party specified in SG8.
+
+00420            COM, Communication contact
+                 A segment identifying the phone number, fax number or
+                 other communications number of the party and (or) contact
+                 specified within SG8.
+
+
+00430      Segment group 10: DOC-DTM-LOC-NAD
+           A group of segments identifying documentary requirements related
+           to a previous simplified Customs declaration.
+
+00440         DOC, Document/message details
+              A segment identifying a document related to a previous
+              simplified customs declaration (e.g. preference invoice
+              etc.).
+
+00450         DTM, Date/time/period
+              A segment identifying dates associated with the preceding
+              DOC.
+
+00460         LOC, Place/location identification
+              A segment identifying a location associated with the
+              preceding LOC.
+
+00470         NAD, Name and address
+              A segment identifying the identity and address of the agency
+              related to the documentary requirements.
+
+
+00480      Segment group 11: TOD-LOC-FTX
+           A group of segments identifying the terms of delivery pertinent
+           to the whole document.
+
+00490         TOD, Terms of delivery or transport
+              A segment identifying, in a coded format, the terms of
+              delivery relevant to the entire document.
+
+00500         LOC, Place/location identification
+              A segment identifying a location related to the information
+              contained in the TOD.
+
+00510         FTX, Free text
+              A segment identifying the terms of delivery in narrative
+              form.
+
+
+00520      Segment group 12: MOA-SG13
+           A group of segments identifying various monetary amounts,
+           currencies and rates of exchange that pertain to the whole
+           declaration.
+
+00530         MOA, Monetary amount
+              A segment identifying a monetary amount related to the whole
+              declaration.
+
+
+00540         Segment group 13: CUX-DTM
+              A group of segments identifying currencies, rate of exchange
+              and an associated date.
+
+00550            CUX, Currencies
+                 A segment identifying currency details and a rate of
+                 exchange related to the preceding MOA.
+
+00560            DTM, Date/time/period
+                 The effective date of the rate of exchange reported in
+                 this group.
+
+
+00570      Segment group 14: TAX-MOA-GEI
+           A group of segments identifying the totals and duty/tax/fee
+           levels due for the declaration and summarizing this total by
+           each accounting code included in the total due.
+
+00580         TAX, Duty/tax/fee details
+              A segment identifying the summary tax type, rates and base
+              for a full declaration.
+
+00590         MOA, Monetary amount
+              A segment identifying amounts associated with the preceding
+              TAX (e.g. total amounts for each duty/tax/fee).
+
+00600         GEI, Processing information
+              A segment identifying an indicator related to the preceding
+              TAX (e.g. summary method of payment).
+
+
+00610      Segment group 15: CST-FTX-LOC-DTM-MEA-NAD-TDT-SG16-SG18-SG20-
+                             SG22-SG23-SG24-SG25-SG26-SG27-SG29
+           A group of segments identifying detailed information for a
+           single customs item of a customs declaration.
+
+00620         CST, Customs status of goods
+              A segment identifying the customs tariff of the goods, their
+              required treatment and, where these are different to the
+              header information, the type of declaration and the current
+              status of the goods.
+
+00630         FTX, Free text
+              A segment identifying the goods, related to the preceding
+              CST.
+
+00640         LOC, Place/location identification
+              A segment identifying the places relevant to a customs item.
+              For example, country of origin, country of export, etc.
+
+00650         DTM, Date/time/period
+              A segment identifying dates particular to the customs item.
+              For example, date of original exportation.
+
+00660         MEA, Measurements
+              A segment identifying the necessary statistical information
+              requirements related to a tariff number. For example, net
+              weights, volumes, etc.
+
+00670         NAD, Name and address
+              A segment identifying a party particular to the customs item
+              when required by customs. For example, manufacturer of the
+              goods.
+
+00680         TDT, Transport information
+              A segment identifying transport details, for statistical
+              purposes, on goods crossing statistical boundaries.
+
+
+00690         Segment group 16: PAC-SG17
+              A group of segments identifying the number, type and
+              reference of the packing units associated with the customs
+              item.
+
+00700            PAC, Package
+                 A segment identifying the number and type of packages
+                 relating to the customs item.
+
+
+00710            Segment group 17: PCI-FTX
+                 A group of segments identifying marks and labels, and
+                 giving the description of single packages associated with
+                 a customs item.
+
+00720               PCI, Package identification
+                    A segment identifying markings and labels on the type
+                    of packages reported in the preceding PAC.
+
+00730               FTX, Free text
+                    A segment describing the goods identified in PCI in
+                    narrative form.
+
+
+00740         Segment group 18: MOA-SG19
+              A group of segments identifying various monetary amounts,
+              currencies and rates of exchange that pertain to the customs
+              item.
+
+00750            MOA, Monetary amount
+                 A segment identifying the monetary amounts necessary for
+                 statistical and duty purposes.
+
+
+00760            Segment group 19: CUX-DTM
+                 A group of segments identifying currencies, a rate of
+                 exchange and an associated date related to the preceding
+                 MOA.
+
+00770               CUX, Currencies
+                    A segment identifying currencies and the rate of
+                    exchange for an amount reported in the preceding MOA.
+
+00780               DTM, Date/time/period
+                    A segment identifying a date related to the preceding
+                    CUX.
+
+
+00790         Segment group 20: DOC-DTM-LOC-NAD-GIN-MOA-SG21
+              A group of segments identifying report documentary
+              requirements of particular government agencies with the
+              optional name and address of the agency involved, description
+              and monetary amounts associated with a customs item.
+
+00800            DOC, Document/message details
+                 A segment identifying a document related to a customs
+                 item.
+
+00810            DTM, Date/time/period
+                 A segment identifying dates associated with the preceding
+                 DOC.
+
+00820            LOC, Place/location identification
+                 A segment identifying a location associated with the
+                 preceding DOC.
+
+00830            NAD, Name and address
+                 A segment identifying the identity and address of the
+                 agency related to the documentary requirement.
+
+00840            GIN, Goods identity number
+                 A segment identifying any line or range of lines on the
+                 commercial document reported in the preceding RFF segment,
+                 that contains goods on this customs item.
+
+00850            MOA, Monetary amount
+                 A segment identifying commercial document line monetary
+                 amounts where the Commercial Group is not offered but an
+                 administration requires this information.
+
+
+00860            Segment group 21: IMD-FTX
+                 A group of segments identifying a commercial description
+                 for a documented commodity that is associated with this
+                 customs line item.
+
+00870               IMD, Item description
+                    A segment identifying the coded industry description of
+                    the merchandise on the document line(s) identified in
+                    the preceding GIN segment.
+
+00880               FTX, Free text
+                    A segment identifying the documented merchandise in
+                    narrative form.
+
+
+00890         Segment group 22: RFF-DTM
+              A group of segments identifying references and dates relating
+              to the customs item.
+
+00900            RFF, Reference
+                 A segment identifying particular references relating to
+                 the customs item. For example, the invoice number of any
+                 invoice that contains merchandise on this customs item.
+
+00910            DTM, Date/time/period
+                 A segment identifying a date associated with the preceding
+                 RFF.
+
+
+00920         Segment group 23: TOD-LOC-FTX
+              A group of segments identifying the terms of delivery
+              pertinent to a customs item.
+
+00930            TOD, Terms of delivery or transport
+                 A segment identifying, in coded format, the terms of
+                 delivery of the entered goods, where these are specific to
+                 the customs item.
+
+00940            LOC, Place/location identification
+                 A segment identifying the place of delivery associated
+                 with the preceding TOD.
+
+00950            FTX, Free text
+                 A segment identifying the terms of delivery in narrative
+                 form.
+
+
+00960         Segment group 24: GDS-FTX
+              A group of segments identifying the customs description of
+              merchandise entered on a customs item.
+
+00970            GDS, Nature of cargo
+                 A segment identifying a customs description, in coded
+                 format, of the goods declared on the customs item.
+
+00980            FTX, Free text
+                 A segment identifying the customs description in narrative
+                 form.
+
+
+00990         Segment group 25: GEI-PCD-DTM-RFF
+              A group of segments identifying special indicators or value
+              data related to the customs item.
+
+01000            GEI, Processing information
+                 A segment identifying any necessary processing indicators
+                 where these are required by customs at the item level.
+
+01010            PCD, Percentage details
+                 A segment identifying percentage details related to
+                 adjustments where a relationship is identified between the
+                 buyer and seller.
+
+01020            DTM, Date/time/period
+                 A segment identifying a date related the preceding GEI.
+
+01030            RFF, Reference
+                 A segment identifying a reference related to the preceding
+                 GEI.
+
+
+01040         Segment group 26: TAX-MOA-GEI
+              A group of segments identifying duties/taxes/fees and methods
+              of payment related to a customs item.
+
+01050            TAX, Duty/tax/fee details
+                 A segment identifying the tax type, rate and base
+                 associated with a customs item.
+
+01060            MOA, Monetary amount
+                 A segment identifying monetary amounts (e.g. tax/fee
+                 amount) associated with the preceding TAX.
+
+01070            GEI, Processing information
+                 A segment identifying an indicator (e.g. method payment
+                 indicator) associated with the preceding TAX.
+
+
+01080         Segment group 27: QVR-QTY-SG28
+              A group of segments identifying variances between the
+              quantity commercially documented and/or produced to Customs
+              and the quantity declared.
+
+01090            QVR, Quantity variances
+                 A segment identifying quantity difference and the reason
+                 for the difference between the declared and commercially
+                 documented amounts.
+
+01100            QTY, Quantity
+                 A segment identifying the quantity related to the
+                 preceding QVR.
+
+
+01110            Segment group 28: RFF-DTM
+                 A group of segments identifying an earlier customs
+                 declaration in order to balance the total quantity
+                 declared with the total quantity presented to Customs.
+
+01120               RFF, Reference
+                    A segment identifying a reference to a previous customs
+                    declaration.
+
+01130               DTM, Date/time/period
+                    A segment identifying a date associated with the
+                    preceding RFF.
+
+
+01140         Segment group 29: GIR-GEI-NAD-MEA-SG30-SG32-SG33
+              A group of segments identifying customs reporting
+              requirements associated with a secondary tariff number.
+
+01150            GIR, Related identification numbers
+                 A segment identifying the tariff number where the
+                 published tariff requires more than one tariff number.
+
+01160            GEI, Processing information
+                 A segment identifying any necessary processing indicators
+                 related to the tariff number in the preceding GIR segment,
+                 where these are required by customs.
+
+01170            NAD, Name and address
+                 A segment identifying a party particular to the goods
+                 governed by the tariff number in the preceding GIR
+                 segment. For example, manufacturer of the goods.
+
+01180            MEA, Measurements
+                 A segment identifying the necessary statistical
+                 information requirements related to the tariff number in
+                 the GIR segment. For example, net weight, volume, etc.
+
+
+01190            Segment group 30: MOA-SG31
+                 A group of segments identifying various monetary amounts,
+                 currencies and rates of exchange that pertain to a
+                 secondary tariff number within a customs item.
+
+01200               MOA, Monetary amount
+                    A segment identifying the monetary amount necessary for
+                    statistical and/or duty purposes, as it relates to the
+                    tariff number in the preceding GIR segment.
+
+
+01210               Segment group 31: CUX-DTM
+                    A group of segments identifying currencies, a rate of
+                    exchange and related date for an amount reported in the
+                    preceding MOA.
+
+01220                  CUX, Currencies
+                       A segment identifying currencies and the rate of
+                       exchange for an amount reported in the preceding MOA
+                       segment.
+
+01230                  DTM, Date/time/period
+                       A segment identifying a date related to the
+                       preceding CUX.
+
+
+01240            Segment group 32: TAX-MOA-GEI
+                 A group of segments identifying the duties, taxes, and/or
+                 fees pertinent to the tariff number reported in the GIR
+                 segment.
+
+01250               TAX, Duty/tax/fee details
+                    A segment identifying the tax type, rate and base
+                    associated with the preceding GIR.
+
+01260               MOA, Monetary amount
+                    A segment identifying monetary amounts (e.g. tax/fee
+                    amount) associated with the preceding TAX.
+
+01270               GEI, Processing information
+                    A segment identifying an indicator associated with the
+                    preceding TAX, (e.g. method of payment indicator).
+
+
+01280            Segment group 33: DOC-DTM-LOC-NAD
+                 A group of segments identifying specific documentary
+                 information which may be required by the tariff number in
+                 the GIR segment. For example, a textile category number.
+
+01290               DOC, Document/message details
+                    A segment identifying a specific document related to
+                    the preceding GIR.
+
+01300               DTM, Date/time/period
+                    A segment identifying a date associated with the
+                    preceding DOC.
+
+01310               LOC, Place/location identification
+                    A segment identifying a place associated with the
+                    preceding DOC.
+
+01320               NAD, Name and address
+                    A segment identifying the identity and address of the
+                    agency related to the documentary requirement.
+
+
+01330   Segment group 34: AUT-DTM
+        A group of segments permitting the verification of the authenticity
+        of the sender and the integrity of the data.
+
+01340      AUT, Authentication result
+           A segment containing the result of the algorithm permitting the
+           verification of the authenticity of the sender and the integrity
+           of the data.
+
+01350      DTM, Date/time/period
+           A segment identifying a date associated with the preceding AUT.
+
+01360   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AUT Authentication result
+          BGM Beginning of message
+          CNT Control total
+          COM Communication contact
+          CST Customs status of goods
+          CTA Contact information
+          CUX Currencies
+          DMS Document/message summary
+          DOC Document/message details
+          DTM Date/time/period
+          EQD Equipment details
+          FII Financial institution information
+          FTX Free text
+          GDS Nature of cargo
+          GEI Processing information
+          GIN Goods identity number
+          GIR Related identification numbers
+          IMD Item description
+          LOC Place/location identification
+          MEA Measurements
+          MOA Monetary amount
+          NAD Name and address
+          PAC Package
+          PCD Percentage details
+          PCI Package identification
+          QTY Quantity
+          QVR Quantity variances
+          RFF Reference
+          TAX Duty/tax/fee details
+          TDT Transport information
+          TOD Terms of delivery or transport
+          UNH Message header
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   CST Customs status of goods                  C   1     
+00040   LOC Place/location identification            C   99    
+00050   DTM Date/time/period                         C   99    
+00060   GEI Processing information                   C   99    
+00070   FII Financial institution information        C   1     
+
+00080       ---- Segment group 1  ------------------ C   99---------------+
+00090   RFF Reference                                M   1                |
+00100   DTM Date/time/period                         C   9----------------+
+
+00110       ---- Segment group 2  ------------------ C   99---------------+
+00120   NAD Name and address                         M   1                |
+00130   RFF Reference                                C   9                |
+                                                                          |
+00140       ---- Segment group 3  ------------------ C   9---------------+|
+00150   CTA Contact information                      M   1               ||
+00160   COM Communication contact                    C   9---------------++
+
+00170       ---- Segment group 4  ------------------ C   99---------------+
+00180   MOA Monetary amount                          M   1                |
+                                                                          |
+00190       ---- Segment group 5  ------------------ C   9---------------+|
+00200   CUX Currencies                               M   1               ||
+00210   DTM Date/time/period                         C   1---------------++
+
+00220       ---- Segment group 6  ------------------ C   99---------------+
+00230   TAX Duty/tax/fee details                     M   1                |
+00240   MOA Monetary amount                          C   9                |
+00250   GEI Processing information                   C   9----------------+
+00260   CNT Control total                            C   9     
+
+00270       ---- Segment group 7  ------------------ C   9999-------------+
+00280   DMS Document/message summary                 M   1                |
+00290   CNT Control total                            C   9                |
+00300   RFF Reference                                C   9                |
+00310   DTM Date/time/period                         C   9                |
+00320   GEI Processing information                   C   99               |
+00330   LOC Place/location identification            C   99               |
+00340   EQD Equipment details                        C   999              |
+00350   PAC Package                                  C   9                |
+00360   TDT Transport information                    C   9                |
+                                                                          |
+00370       ---- Segment group 8  ------------------ C   9---------------+|
+00380   NAD Name and address                         M   1               ||
+00390   RFF Reference                                C   9               ||
+                                                                         ||
+00400       ---- Segment group 9  ------------------ C   9--------------+||
+00410   CTA Contact information                      M   1              |||
+00420   COM Communication contact                    C   9--------------++|
+                                                                          |
+00430       ---- Segment group 10 ------------------ C   99--------------+|
+00440   DOC Document/message details                 M   1               ||
+00450   DTM Date/time/period                         C   9               ||
+00460   LOC Place/location identification            C   1               ||
+00470   NAD Name and address                         C   1---------------+|
+                                                                          |
+00480       ---- Segment group 11 ------------------ C   9---------------+|
+00490   TOD Terms of delivery or transport           M   1               ||
+00500   LOC Place/location identification            C   9               ||
+00510   FTX Free text                                C   9---------------+|
+                                                                          |
+00520       ---- Segment group 12 ------------------ C   99--------------+|
+00530   MOA Monetary amount                          M   1               ||
+                                                                         ||
+00540       ---- Segment group 13 ------------------ C   9--------------+||
+00550   CUX Currencies                               M   1              |||
+00560   DTM Date/time/period                         C   1--------------++|
+                                                                          |
+00570       ---- Segment group 14 ------------------ C   99--------------+|
+00580   TAX Duty/tax/fee details                     M   1               ||
+00590   MOA Monetary amount                          C   9               ||
+00600   GEI Processing information                   C   9---------------+|
+                                                                          |
+00610       ---- Segment group 15 ------------------ C   9999------------+|
+00620   CST Customs status of goods                  M   1               ||
+00630   FTX Free text                                C   9               ||
+00640   LOC Place/location identification            C   99              ||
+00650   DTM Date/time/period                         C   9               ||
+00660   MEA Measurements                             C   99              ||
+00670   NAD Name and address                         C   9               ||
+00680   TDT Transport information                    C   9               ||
+                                                                         ||
+00690       ---- Segment group 16 ------------------ C   99-------------+||
+00700   PAC Package                                  M   1              |||
+                                                                        |||
+00710       ---- Segment group 17 ------------------ C   999-----------+|||
+00720   PCI Package identification                   M   1             ||||
+00730   FTX Free text                                C   1-------------++||
+                                                                         ||
+00740       ---- Segment group 18 ------------------ C   99-------------+||
+00750   MOA Monetary amount                          M   1              |||
+                                                                        |||
+00760       ---- Segment group 19 ------------------ C   1-------------+|||
+00770   CUX Currencies                               M   1             ||||
+00780   DTM Date/time/period                         C   1-------------++||
+                                                                         ||
+00790       ---- Segment group 20 ------------------ C   999------------+||
+00800   DOC Document/message details                 M   1              |||
+00810   DTM Date/time/period                         C   9              |||
+00820   LOC Place/location identification            C   1              |||
+00830   NAD Name and address                         C   1              |||
+00840   GIN Goods identity number                    C   99             |||
+00850   MOA Monetary amount                          C   1              |||
+                                                                        |||
+00860       ---- Segment group 21 ------------------ C   1-------------+|||
+00870   IMD Item description                         M   1             ||||
+00880   FTX Free text                                C   9-------------++||
+                                                                         ||
+00890       ---- Segment group 22 ------------------ C   99-------------+||
+00900   RFF Reference                                M   1              |||
+00910   DTM Date/time/period                         C   1--------------+||
+                                                                         ||
+00920       ---- Segment group 23 ------------------ C   1--------------+||
+00930   TOD Terms of delivery or transport           M   1              |||
+00940   LOC Place/location identification            C   9              |||
+00950   FTX Free text                                C   1--------------+||
+                                                                         ||
+00960       ---- Segment group 24 ------------------ C   1--------------+||
+00970   GDS Nature of cargo                          M   1              |||
+00980   FTX Free text                                C   1--------------+||
+                                                                         ||
+00990       ---- Segment group 25 ------------------ C   99-------------+||
+01000   GEI Processing information                   M   1              |||
+01010   PCD Percentage details                       C   1              |||
+01020   DTM Date/time/period                         C   1              |||
+01030   RFF Reference                                C   1--------------+||
+                                                                         ||
+01040       ---- Segment group 26 ------------------ C   99-------------+||
+01050   TAX Duty/tax/fee details                     M   1              |||
+01060   MOA Monetary amount                          C   9              |||
+01070   GEI Processing information                   C   1--------------+||
+                                                                         ||
+01080       ---- Segment group 27 ------------------ C   1--------------+||
+01090   QVR Quantity variances                       M   1              |||
+01100   QTY Quantity                                 C   1              |||
+                                                                        |||
+01110       ---- Segment group 28 ------------------ C   1-------------+|||
+01120   RFF Reference                                M   1             ||||
+01130   DTM Date/time/period                         C   1-------------++||
+                                                                         ||
+01140       ---- Segment group 29 ------------------ C   99-------------+||
+01150   GIR Related identification numbers           M   1              |||
+01160   GEI Processing information                   C   9              |||
+01170   NAD Name and address                         C   1              |||
+01180   MEA Measurements                             C   9              |||
+                                                                        |||
+01190       ---- Segment group 30 ------------------ C   99------------+|||
+01200   MOA Monetary amount                          M   1             ||||
+                                                                       ||||
+01210       ---- Segment group 31 ------------------ C   1------------+||||
+01220   CUX Currencies                               M   1            |||||
+01230   DTM Date/time/period                         C   1------------++|||
+                                                                        |||
+01240       ---- Segment group 32 ------------------ C   99------------+|||
+01250   TAX Duty/tax/fee details                     M   1             ||||
+01260   MOA Monetary amount                          C   9             ||||
+01270   GEI Processing information                   C   1-------------+|||
+                                                                        |||
+01280       ---- Segment group 33 ------------------ C   99------------+|||
+01290   DOC Document/message details                 M   1             ||||
+01300   DTM Date/time/period                         C   9             ||||
+01310   LOC Place/location identification            C   1             ||||
+01320   NAD Name and address                         C   1-------------++++
+
+01330       ---- Segment group 34 ------------------ C   1----------------+
+01340   AUT Authentication result                    M   1                |
+01350   DTM Date/time/period                         C   9----------------+
+01360   UNT Message trailer                          M   1     

@@ -1,0 +1,624 @@
+                                UN/EDIFACT
+
+                  UNITED NATIONS STANDARD MESSAGE (UNSM)
+
+                         Remittance advice message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                           Message Type : REMADV
+                                           Version      : D
+                                           Release      : 12B
+                                           Contr. Agency: UN
+
+                                           Revision     : 13
+                                           Date         : 2012-11-02
+
+
+
+
+
+
+SOURCE: TBG1 Supply Chain
+
+
+
+                                  CONTENTS
+
+                         Remittance advice message
+
+0.     INTRODUCTION
+
+1.     SCOPE
+
+       1.1   Functional definition
+
+       1.2   Field of application
+
+       1.3   Principles
+
+2.     REFERENCES
+
+3.     TERMS AND DEFINITIONS
+
+       3.1   Standard terms and definitions
+
+4.     MESSAGE DEFINITION
+
+       4.1   Segment clarification
+             4.1.1 Header section
+             4.1.2 Detail section
+             4.1.3 Summary section
+
+       4.2   Segment index (alphabetical sequence by tag)
+
+       4.3   Message structure
+             4.3.1 Segment table
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+For general information on UN standard message types see UN Trade Data
+Interchange Directory, UNTDID, Part 4, Section 2.3, UN/ECE UNSM
+General Introduction
+---------------------------------------------------------------------------
+
+
+
+0.     INTRODUCTION
+
+       This specification provides the definition of the Remittance advice
+       message (REMADV) to be used in Electronic Data Interchange (EDI)
+       between trading partners involved in administration, commerce and
+       transport.
+
+1.     SCOPE
+
+1.1    Functional definition
+
+       The Remittance Advice is a communication between trading partners,
+       e.g. seller, buyer, financial institutions, which provides a
+       detailed accounting relative to a payment, or other form of
+       financial settlement, for the provision of goods and/or services as
+       detailed in the advice.
+
+1.2    Field of application
+
+       The Remittance advice message may be used for both national and
+       international applications. It is based on universal practice
+       related to administration, commerce and transport, and is not
+       dependent on the type of business or industry.
+
+1.3    Principles
+
+       - A Remittance Advice is a notice of a payment to be made.
+       
+       - A Remittance Advice may cover one or more commercial trade
+       transactions (and related financial transactions), such as invoices,
+       credit notes, debit notes, etc.
+       
+       - A Remittance Advice may include a cross reference to a Payment
+       Order.
+       
+       - A single Remittance Advice may relate to both national and
+       international settlements.
+       
+       - Each Remittance Advice shall be calculated in only one currency,
+       even though the related transaction is denominated in different
+       currencies.
+       
+       - Each Remittance Advice shall relate to only one settlement date.
+       
+       - Where remittance advice relates to a dispute, the message :
+       
+       . does not necessarily relate to one settlement date
+       . is not necessarily a notice for a payment to be made
+       
+       - A Remittance Advice may be initiated by either party according to
+       agreements.
+
+2.     REFERENCES
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 1.
+
+3.     TERMS AND DEFINITIONS
+
+3.1    Standard terms and definitions
+
+       See UNTDID, Part 4, Chapter 2.3 UN/ECE UNSM - General Introduction,
+       Section 2.
+
+4.     MESSAGE DEFINITION
+
+4.1    Segment clarification
+
+       This section should be read in conjunction with the segment table
+       which indicates mandatory, conditional and repeating requirements.
+       
+       The following guidelines and principles apply to the whole message
+       and are intended to facilitate the understanding and implementation
+       of the message: 
+       
+       All specified dates/times should be in the format 'ccyymmdd'/'hhmm'
+       unless all parties involved in the transaction agree that there is a
+       functional requirement for an alternative format. Periods should be
+       specified as whole numbers representing the required period as
+       indicated in the format qualifier (weeks, months, etc.) 
+       
+       Where a choice of code or text is given only the code element should
+       be used wherever possible.
+       
+       Conditional data that is not required in the message should not be
+       included.
+       
+       Care must be taken that the segment qualifier in dependent segments
+       do not conflict with the segment qualifier of the trigger segment of
+       a group.
+       
+       Free text information within the message should be avoided as this
+       inhibits automatic processing.
+
+4.1.1  Header section
+
+
+       Information to be provided in the Header section:
+
+00010   UNH, Message header
+        A service segment starting and uniquely identifying a message. The
+        message type code for the Remittance advice message is REMADV.
+
+        Note: Remittance advice messages conforming to this document must
+        contain the following data in segment UNH, composite S009:
+
+        Data element  0065 REMADV
+                      0052 D
+                      0054 12B
+                      0051 UN
+
+00020   BGM, Beginning of message
+        A segment for unique identification of the Remittance Advice
+        Message, the type of Remittance Advice and its function.
+
+00030   DTM, Date/time/period
+        A segment specifying the dates, and when relevant, the times
+        related to the whole message. The segment must be specified at
+        least once to specify the message date as allocated by the sender.
+
+00040   RFF, Reference
+        A segment for referencing documents which relate to the whole
+        message.
+
+00050   FII, Financial institution information
+        A segment identifying the financial institution (e.g. bank) and
+        account number and, where relevant, the currency of the account,
+        for each party involved in the transaction. The Payor may indicate
+        the previously agreed choice of financial institution for payment.
+
+00060   PAI, Payment instructions
+        A segment specifying the conditions, guarantee, method and channel
+        of payment for the Remittance Advice.
+
+00070   FTX, Free text
+        A segment with free text information, in coded or clear form, used
+        when additional information is needed but cannot be accommodated
+        within other segments. In computer to computer exchanges such text
+        will normally require the receiver to process this segment
+        manually.
+
+00080   GEI, Processing information
+        A segment identifying various indicators required by a processing
+        system.
+
+
+00090   Segment group 1:  NAD-SG2-SG3
+        A group of segments identifying the parties involved in the
+        transaction and, optionally the contact points and numbers.
+
+00100      NAD, Name and address
+           A segment to identify a party name and address, either by coded
+           identification or in clear form.
+           
+           It is recommended that where possible only the coded form of the
+           party ID should be specified e.g. the Buyer and Seller are known
+           to each other, thus only the coded ID is required.
+
+
+00110      Segment group 2:  RFF-DTM
+           A group of segments specifying references, and associated dates
+           if required, relevant to the party specified in the preceding
+           name and address segment.
+
+00120         RFF, Reference
+              A segment to identify a reference related to the associated
+              party, e.g. tax reference number.
+
+00130         DTM, Date/time/period
+              A segment to specify dates and/or times associated with the
+              above reference.
+
+
+00140      Segment group 3:  CTA-COM
+           A group of segments identifying the contact person or department
+           for a trading party and specifying the communication channel and
+           number.
+
+00150         CTA, Contact information
+              A segment to identify a person or department and their
+              function, to whom communications should be directed.
+
+00160         COM, Communication contact
+              A segment specifying the communication channel and number for
+              the specified contact.
+
+
+00170   Segment group 4:  CUX-DTM
+        A group of segments specifying the currencies and related
+        dates/periods valid for the whole Remittance Advice. Currency data
+        may be omitted in national applications but will be required for
+        international transactions.
+
+00180      CUX, Currencies
+           A segment identifying the currencies required in the Remittance
+           Advice. A rate of exchange may be given to convert a reference
+           currency into a target currency.
+
+00190      DTM, Date/time/period
+           A segment specifying the date/time/period related to the rate of
+           exchange.
+
+4.1.2  Detail section
+
+       Information to be provided in the Detail section:
+
+
+00200   Segment group 5:  DOC-MOA-DTM-RFF-NAD-SG6-SG7-SG9-SG10
+        A group of segments providing details of all documents, e.g.
+        invoices, statements, despatch advises, etc., to which the
+        Remittance Advice refers. It includes information on the monetary
+        amounts for each document and on any adjustments (with an
+        indication of the reason for adjustments) and discounts. For
+        information purposes an indication of the tax element can be
+        provided.
+
+00210      DOC, Document/message details
+           A segment for identifying the reference document against which
+           payment is being made.
+
+00220      MOA, Monetary amount
+           A segment giving the monetary amounts for the amount due and the
+           amount to be remitted.
+
+00230      DTM, Date/time/period
+           A segment to specify the date of the referenced document and to
+           indicate any other relevant dates applicable, e.g. Due date, Tax
+           point date, etc.
+
+00240      RFF, Reference
+           A segment for the inclusion of any additional references related
+           to the reference document.
+
+00250      NAD, Name and address
+           A segment to identify a party name and address, either by coded
+           identification or in a clear form, e.g; original seller or
+           issuer of the document.
+
+
+00260      Segment group 6:  CUX-DTM
+           A group of segments specifying the currencies and the related
+           dates/periods valid of the referenced document where different
+           to the remittance currency.
+
+00270         CUX, Currencies
+              A segment identifying the currency and associated exchange
+              rate of the referenced document where different to the
+              remittance currency.
+
+00280         DTM, Date/time/period
+              A segment specifying the date/time/period related to the rate
+              of exchange.
+
+
+00290      Segment group 7:  AJT-MOA-RFF-FTX-QTY-SG8
+           A group of segments to indicate adjustment amounts and their
+           referenced documents.
+
+00300         AJT, Adjustment details
+              A segment indicating any adjustments to the amounts
+              originally specified in the referenced document, and to which
+              items such adjustments apply, with the associated reason for
+              adjustment.
+
+00310         MOA, Monetary amount
+              A segment giving the monetary amounts of the adjustments of
+              each reference document (e.g. original amount, discount
+              amount, etc).
+              The currency data elements should not be used.
+
+00320         RFF, Reference
+              A segment for the inclusion of any additional references
+              related to the reference document.
+
+00330         FTX, Free text
+              A segment giving information in clear text when it is
+              necessary.
+
+00340         QTY, Quantity
+              A segment used to indicate an adjustment to the amount being
+              remitted based on quantitative data, such as cumulative
+              quantity or promotional quantity across a payment period.
+
+
+00350         Segment group 8:  TAX-MOA
+              A group of segments specifying tax information related to
+              adjustments.
+
+00360            TAX, Duty/tax/fee details
+                 A segment specifying a tax type, category and rate, or
+                 exemption.
+
+00370            MOA, Monetary amount
+                 A segment specifying the amount for the identified
+                 tax/fee.
+
+
+00380      Segment group 9:  INP-FTX
+           A group of segments to indicate instructions to parties in coded
+           and when necessary in free text.
+
+00390         INP, Parties and instruction
+              A segment to indicate instructions to parties in coded form.
+
+00400         FTX, Free text
+              A segment to indicate instructions to parties in free text.
+
+
+00410      Segment group 10: DLI-MOA-PIA-DTM-SG11-SG12
+           A group of segments which may be used when required to provide
+           details of individual line items in the reference document.
+
+00420         DLI, Document line identification
+              A segment identifying a specific line item within the
+              referenced document.
+
+00430         MOA, Monetary amount
+              A segment giving the monetary amounts for the amount due and
+              the amount to be remitted.
+
+00440         PIA, Additional product id
+              A segment specifying item identification codes where
+              required.
+
+00450         DTM, Date/time/period
+              A segment specifying the date/time/period related to the line
+              item, e.g. date of receiving of the goods, delivery date.
+
+
+00460         Segment group 11: CUX-DTM
+              A group of segments identifying the currency and the related
+              dates/periods of the line item where different to the
+              remittance and document currency.
+
+00470            CUX, Currencies
+                 A segment identifying the currency and associated exchange
+                 rate of the line item, where different to the remittance
+                 and document currency.
+
+00480            DTM, Date/time/period
+                 A segment specifying the date/time/period related to the
+                 rate of exchange.
+
+
+00490         Segment group 12: AJT-MOA-RFF-FTX-SG13
+              A group of segments to indicate adjustment amounts and their
+              referenced documents for this line item.
+
+00500            AJT, Adjustment details
+                 A segment indicating any adjustments to the amounts
+                 originally specified for this line item and the reason for
+                 the adjustments.
+
+00510            MOA, Monetary amount
+                 A segment giving the monetary amounts of the adjustment
+                 for this line item.
+
+00520            RFF, Reference
+                 A segment for the inclusion of any additional references
+                 related to the reference document.
+
+00530            FTX, Free text
+                 A segment giving a complement of information to adjustment
+                 reasons for cases that cannot be given (completely) in
+                 coded values.
+
+
+00540            Segment group 13: TAX-MOA
+                 A group of segments specifying tax information related to
+                 adjustments.
+
+00550               TAX, Duty/tax/fee details
+                    A segment specifying a tax type, category and rate, or
+                    exemption.
+
+00560               MOA, Monetary amount
+                    A segment specifying the amount for the identified
+                    tax/fee.
+
+4.1.3  Summary section
+
+       Information to be provided in the Summary section:
+
+00570   UNS, Section control
+        A service segment placed at the start of the summary section to
+        avoid segment collision.
+
+00580   MOA, Monetary amount
+        A segment giving the total amount of the payment to be made or
+        other amounts. It is taken as given, i.e. is not subject to
+        recalculation. It may be used for check operations, such as message
+        validation.
+
+
+00590   Segment group 14: ALC-MOA
+        This segment group is used to identify allowance or charge details
+        and any associated monetary amounts.
+
+00600      ALC, Allowance or charge
+           This segment is used to identify allowance or charge details.
+
+00610      MOA, Monetary amount
+           This segment is used to identify the monetary amount for an
+           allowance or a charge.
+
+00620   UNT, Message trailer
+        A service segment ending a message, giving the total number of
+        segments in the message (including the UNH & UNT) and the control
+        reference number of the message.
+
+4.2    Segment index (alphabetical sequence by tag)
+
+          AJT Adjustment details
+          ALC Allowance or charge
+          BGM Beginning of message
+          COM Communication contact
+          CTA Contact information
+          CUX Currencies
+          DLI Document line identification
+          DOC Document/message details
+          DTM Date/time/period
+          FII Financial institution information
+          FTX Free text
+          GEI Processing information
+          INP Parties and instruction
+          MOA Monetary amount
+          NAD Name and address
+          PAI Payment instructions
+          PIA Additional product id
+          QTY Quantity
+          RFF Reference
+          TAX Duty/tax/fee details
+          UNH Message header
+          UNS Section control
+          UNT Message trailer
+
+4.3    Message structure
+
+4.3.1  Segment table
+
+Pos     Tag Name                                     S   R
+
+            HEADER SECTION
+
+00010   UNH Message header                           M   1     
+00020   BGM Beginning of message                     M   1     
+00030   DTM Date/time/period                         M   5     
+00040   RFF Reference                                C   5     
+00050   FII Financial institution information        C   5     
+00060   PAI Payment instructions                     C   1     
+00070   FTX Free text                                C   99    
+00080   GEI Processing information                   C   5     
+
+00090       ---- Segment group 1  ------------------ C   99---------------+
+00100   NAD Name and address                         M   1                |
+                                                                          |
+00110       ---- Segment group 2  ------------------ C   9---------------+|
+00120   RFF Reference                                M   1               ||
+00130   DTM Date/time/period                         C   9---------------+|
+                                                                          |
+00140       ---- Segment group 3  ------------------ C   5---------------+|
+00150   CTA Contact information                      M   1               ||
+00160   COM Communication contact                    C   5---------------++
+
+00170       ---- Segment group 4  ------------------ C   5----------------+
+00180   CUX Currencies                               M   1                |
+00190   DTM Date/time/period                         C   1----------------+
+
+            DETAIL SECTION
+
+00200       ---- Segment group 5  ------------------ C   999999-----------+
+00210   DOC Document/message details                 M   1                |
+00220   MOA Monetary amount                          M   5                |
+00230   DTM Date/time/period                         C   5                |
+00240   RFF Reference                                C   5                |
+00250   NAD Name and address                         C   2                |
+                                                                          |
+00260       ---- Segment group 6  ------------------ C   5---------------+|
+00270   CUX Currencies                               M   1               ||
+00280   DTM Date/time/period                         C   1---------------+|
+                                                                          |
+00290       ---- Segment group 7  ------------------ C   100-------------+|
+00300   AJT Adjustment details                       M   1               ||
+00310   MOA Monetary amount                          C   1               ||
+00320   RFF Reference                                C   1               ||
+00330   FTX Free text                                C   5               ||
+00340   QTY Quantity                                 C   9               ||
+                                                                         ||
+00350       ---- Segment group 8  ------------------ C   9--------------+||
+00360   TAX Duty/tax/fee details                     M   1              |||
+00370   MOA Monetary amount                          C   9--------------++|
+                                                                          |
+00380       ---- Segment group 9  ------------------ C   5---------------+|
+00390   INP Parties and instruction                  M   1               ||
+00400   FTX Free text                                C   5---------------+|
+                                                                          |
+00410       ---- Segment group 10 ------------------ C   9999------------+|
+00420   DLI Document line identification             M   1               ||
+00430   MOA Monetary amount                          C   5               ||
+00440   PIA Additional product id                    C   5               ||
+00450   DTM Date/time/period                         C   5               ||
+                                                                         ||
+00460       ---- Segment group 11 ------------------ C   5--------------+||
+00470   CUX Currencies                               M   1              |||
+00480   DTM Date/time/period                         C   1--------------+||
+                                                                         ||
+00490       ---- Segment group 12 ------------------ C   10-------------+||
+00500   AJT Adjustment details                       M   1              |||
+00510   MOA Monetary amount                          C   1              |||
+00520   RFF Reference                                C   1              |||
+00530   FTX Free text                                C   5              |||
+                                                                        |||
+00540       ---- Segment group 13 ------------------ C   9-------------+|||
+00550   TAX Duty/tax/fee details                     M   1             ||||
+00560   MOA Monetary amount                          C   9-------------++++
+
+            SUMMARY SECTION
+
+00570   UNS Section control                          M   1     
+00580   MOA Monetary amount                          M   99    
+
+00590       ---- Segment group 14 ------------------ C   99---------------+
+00600   ALC Allowance or charge                      M   1                |
+00610   MOA Monetary amount                          C   9----------------+
+00620   UNT Message trailer                          M   1     
