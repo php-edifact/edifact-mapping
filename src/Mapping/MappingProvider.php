@@ -21,13 +21,25 @@ class MappingProvider
             $path = dirname(__FILE__);
         }
 
-        $this->directory = $directory;
+        $this->directory = $this->checkDirectoryFormat($directory);
         $this->path = $path;
+    }
+
+    public function checkDirectoryFormat($directory)
+    {
+
+        if (preg_match('/D\d{2}[A-C]{1}/', $directory)) {
+            return $directory;
+        }
+        if (preg_match('/\d{2}[A-C]{1}/', $directory)) {
+            return 'D'.$directory;
+        }
+        throw new \Exception('Invalid directory format');
     }
 
     public function setDirectory($directory = 'D95B')
     {
-        $this->directory = $directory;
+        $this->directory = $this->checkDirectoryFormat($directory);
     }
 
     public function setPath($path = null)
