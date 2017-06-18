@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<segments>
+    <segment id="UNB" name="InterchangeHeader" desc="To start, identify and specify an interchange">
+        <composite_data_element id="S001" required="true" name="syntaxIdentifier" desc="Syntax identifier">
+            <data_element id="0001" name="syntaxIdentification" desc="Syntax identifier" type="a" length="4" required="true" />
+            <data_element id="0002" name="syntaxVersionNumber" desc="Syntax version number" type="n" length="1" required="true" />
+        </composite_data_element>
+        <composite_data_element id="S002" required="true" name="interchangeSender" desc="Interchange sender">
+            <data_element id="0004" name="senderIdentification" desc="Sender identification, see ISO 9897 Annex J" type="a" maxlength="9" required="true" />
+            <data_element id="0007" name="identificationCodeQualifier" desc="Identification code qualifier" type="an" maxlength="2" />
+            <data_element id="0008" name="addressReverseRouting" desc="Address for reverse routing" type="an" maxlength="14" />
+        </composite_data_element>
+        <composite_data_element id="S003" required="true" name="interchangeRecipient" desc="Interchange recipient">
+            <data_element id="0010" name="recipientIdentification" desc="Recipient identification, see ISO 9897 Annex J" type="a" maxlength="9" required="true" />
+            <data_element id="0007" name="identificationCodeQualifier" desc="Identification code qualifier" type="an" maxlength="4" />
+            <data_element id="0014" name="routingAddress" desc="Routing address" type="an" maxlength="14" />
+        </composite_data_element>
+        <composite_data_element id="S004" required="true" name="dateTimePreparation" desc="Date Time of preparation">
+            <data_element id="0017" name="date" desc="Date of preparation" type="n" length="6" required="true" />
+            <data_element id="0019" name="time" desc="Time of preparation" type="n" length="4" required="true" />
+        </composite_data_element>
+        <data_element id="0020" required="true" name="interchangeControlReference" desc="" type="an" maxlength="14" />
+        <composite_data_element id="S005" required="true" name="recipientDetails" desc="Reference and password">
+            <data_element id="0022" name="recipientReferencePassword" desc="Recipient’s ref. password" type="an" maxlength="14" required="true" />
+            <data_element id="0025" name="recipientReferencePasswordQualifier" desc="Recipient’s ref. password qualifier" type="an" length="2" />
+        </composite_data_element>
+        <data_element id="0026" name="applicationReference" desc="" type="an" maxlength="14" />
+        <data_element id="0029" name="processingPriorityCode" desc="" type="a" length="1" />
+        <data_element id="0031" name="ackRequest" desc="" type="n" length="1" />
+        <data_element id="0032" name="communicationsAgreementIdentifier" desc="" type="an" maxlength="35" />
+        <data_element id="0035" name="testIndicator" desc="" type="n" length="1" />
+    </segment>
+    <segment id="UNH" name="messageHeader" desc="To head, identify and specify a message.">
+        <data_element id="0062" required="true" name="messageReferenceNumber" desc="Sender’s unique message reference, i.e., estimate, EIR or advice number" type="an" maxlength="14" />
+        <composite_data_element id="S009" required="true" name="messageIdentifier" desc="Type of message transmitted">
+            <data_element id="0065" required="true" name="messageTypeIdentifier" desc="Code identifying a type of message and assigned by its controlling agency." type="an" maxlength="6" />
+            <data_element id="0052" required="true" name="messageTypeVersionNumber" desc="Version number of message." type="an" maxlength="3" />
+            <data_element id="0054" required="true" name="messageTypeReleaseNumber" desc="" type="n" maxlength="3" />
+            <data_element id="0051" required="true" name="controllingAgencyCode" desc="" type="n" maxlength="2" />
+        </composite_data_element>
+        <data_element id="0068" name="commonAccessReference" desc="Key to relate all subsequent transfers of data to the same business file, e.g., customer contract code, etc." type="an" maxlength="35" />
+        <composite_data_element id="S010" name="statusOfTheTransfer" desc="">
+            <data_element id="0070" required="true" name="sequenceMessageTransferNumber" desc="Revision number of message" type="n" maxlength="1" />
+        </composite_data_element>
+    </segment>
+    <segment id="DTM" name="datetimeperiod" desc="To specify date, and/or time, or period.">
+        <data_element id="2005" required="true" name="datetimeperiodQualifier" desc="ATR = Actual Transaction" type="an" maxlength="3" />
+        <data_element id="2001" name="dateCoded" desc="YYMMDD" type="n" maxlength="6" />
+        <data_element id="2002" name="time" desc="HHMM" type="n" maxlength="4" />
+        <data_element id="2461" name="timeZoneSpecifier" desc="" type="an" maxlength="3" />
+    </segment>
+    <segment id="RFF" name="references" desc="To specify identifying numbers associated with a message">
+        <data_element id="1153" required="true" name="referenceQualifier" desc="" type="an" maxlength="3" />
+        <composite_data_element id="C274" required="true" name="reference" desc="Identification of a reference.">
+            <data_element id="1154" required="true" name="referenceNumber" desc="(From UNH Segment) Estimate Number or Authorization Number or Acceptance Number or Release Number" type="an" maxlength="35" />
+        </composite_data_element>
+        <composite_data_element id="C274" name="dateTimeOfReference" desc="">
+            <data_element id="2001" name="date" desc="YYMMDD" type="n" length="6" />
+            <data_element id="2002" name="time" desc="HHMM (24 hour)" type="n" length="4" />
+        </composite_data_element>
+        <composite_data_element id="C282" name="period" desc="">
+            <data_element id="2001" required="true" name="date" desc="Start date" type="n" length="6" />
+            <data_element id="2001" name="date" desc="End date" type="n" length="6" />
+        </composite_data_element>
+    </segment>
+    <segment id="ACA" name="alternativeCurrencyAmounts" desc="To indicate the labor rate">
+        <data_element id="6345" name="currencyCoded" desc="eg: USD" type="a" length="3" />
+        <composite_data_element id="C275" name="alternativeCurrency" desc="">
+            <data_element id="6343" name="currencyQualifier" desc="" type="an" length="3" />
+            <data_element id="5004" name="monetaryAmount" desc="Actual amount (up to six digits to the left and two to the right of the decimal)" type="n" length="9" />
+        </composite_data_element>
+    </segment>
+    <segment id="LBR" name="labor" desc="To indicate the labor rate">
+        <data_element id="8578" name="laborRate" desc="Labor cost per hour (up to six digits to the left and two to the right of the decimal)" type="n" length="9" />
+    </segment>
+    <segment id="EQF" name="equipmentDetails" desc="Toidentify a unit of equipment">
+        <data_element id="8053" required="true" name="equipmentQualifier" desc="" type="an" length="3" />
+        <composite_data_element id="C271" name="equipment" desc="">
+            <data_element id="8114" name="equipmentIdPrefix" desc="" type="an" length="4" />
+            <data_element id="8260" name="unitContainerId" desc="6 serial + 1 check" type="an" length="7" />
+        </composite_data_element>
+        <composite_data_element id="C224" name="equipmentSizeAndType" desc="">
+            <data_element id="8155" name="sizeTypeCode" desc="ISO Code" type="an" length="4" />
+            <data_element id="8154" name="sizeTypeText" desc="Text" type="an" length="35" />
+        </composite_data_element>
+        <composite_data_element id="C272" name="equipmentWeight" desc="">
+            <data_element id="6153" name="weightQualifier" desc="eg MGW (Maximum Gross Weight)" type="an" length="3" />
+            <data_element id="6150" name="weight" desc="" type="n" length="15" />
+            <data_element id="6410" name="measureUnitsCode" desc="eg KGM (Kilograms)" type="an" length="3" />
+        </composite_data_element>
+        <composite_data_element id="C186" name="quantityInformation" desc="Used in TERMIN">
+            <data_element id="6063" name="quantityQualifier" desc="" type="an" length="3" />
+            <data_element id="6060" required="true" name="quantity" desc="" type="n" length="15" />
+            <data_element id="6410" name="measureUnitsSpecifier" desc="" type="an" length="3" />
+        </composite_data_element>
+    </segment>
+    <segment id="NAD" name="nameAndAddress" desc="To specify the name/address and their related function">
+        <data_element id="3035" required="true" name="partyQualifier" desc="Party function within a container transaction" type="an" length="3" />
+        <composite_data_element id="C082" required="true" name="partyId" desc="">
+            <data_element id="3039" required="true" name="partyIdCode" desc="See ISO 9897 Annex J" type="a" length="9" />
+            <data_element id="1131" name="partyCodeList" desc="" type="an" length="2" />
+        </composite_data_element>
+    </segment>
+    <segment id="CTA" name="contactInformation" desc="To identify a person or a department to whoM communication should be directed.">
+        <data_element id="3139" required="true" name="contactFunctionCode" desc="" type="an" maxlength="2" />
+        <composite_data_element id="C056" name="departmentOrEmployeeId" desc="">
+            <data_element id="3413" name="departmentOrEmployeeCode" desc="Coded name of signer" type="an" maxlength="15" />
+            <data_element id="3412" name="departmentOrEmployeeName" desc="Text" type="an" maxlength="35" />
+        </composite_data_element>
+    </segment>
+    <segment id="ERI" name="equipmentRelatedInformation" desc="To give additional information on the equipment">
+        <data_element id="8511" name="material" desc="Main construction material (ISO 9897 Annex E)" type="a" maxlength="2" />
+        <composite_data_element id="C276" name="date" desc="">
+            <data_element id="2001" name="dateCoded" desc="YYMMDD (01 if no date specified)" type="n" maxlength="6" />
+            <data_element id="2002" name="time" desc="HHMM" type="n" maxlength="4" />
+        </composite_data_element>
+        <data_element id="8580" name="cscReexamination" desc="YYMM or 'ACEP'" type="a" maxlength="4" />
+    </segment>
+    <segment id="CUI" name="currentUsageInformation" desc="To give information about current usage of the equipment">
+        <composite_data_element id="C559" name="transactionLocation" desc="">
+            <data_element id="3227" required="true" name="locationQualifier" desc="" type="a" maxlength="3" />
+            <data_element id="3225" required="true" name="locationCode" desc="See ISO 9897 Annex J" type="a" maxlength="9" />
+            <data_element id="1131" name="locationCodeListCode" desc="" type="an" maxlength="2" />
+        </composite_data_element>
+        <composite_data_element id="C276" name="date" desc="">
+            <data_element id="2005" name="dateTimeQualifier" desc="" type="a" maxlength="3" />
+            <data_element id="2001" name="date" desc="YYMMDD" type="n" maxlength="6" />
+            <data_element id="2002" name="time" desc="HHMM" type="n" maxlength="4" />
+        </composite_data_element>
+        <data_element id="8533" name="fullEmptyIndicator" type="a" maxlength="1" />
+        <composite_data_element id="C186" name="quantityInformation" desc="">
+            <data_element id="6063" name="quantityQualifier" desc="TOT = total units" type="an" maxlength="3" />
+            <data_element id="6060" name="quantity" desc="" type="n" maxlength="15" />
+            <data_element id="6410" name="measureUnitSpecifier" desc="" type="an" maxlength="3" />
+        </composite_data_element>
+    </segment>
+    <segment id="ECI" name="equipmentConditionInformation" desc="To give equipment condition information">
+        <data_element id="8521" name="consolidatedCondition" desc="Text" type="an" maxlength="10" />
+    </segment>
+    <segment id="DAM" name="damageLocationID" desc="To specify damage including action taken">
+        <data_element id="1082" name="lineNumber" desc="" type="n" maxlength="2" />
+        <data_element id="8522" name="damageLocationCode" desc="See ISO 9897 Annex C" type="an" maxlength="4" />
+        <data_element id="8523" name="componentCode" desc="See ISO 9897 Annex K, L" type="a" maxlength="3" />
+        <data_element id="8524" name="damageTypeCode" desc="See ISO 9897 Annex D" type="a" maxlength="2" />
+        <data_element id="8525" name="componentMaterialCode" desc="See ISO 9897 Annex E" type="a" maxlength="2" />
+    </segment>
+    <segment id="WOR" name="work" desc="To indicate details of work to be executed">
+        <data_element id="8526" name="repairMethodCode" desc="See ISO 9897 Annex F" type="a" maxlength="2" />
+        <composite_data_element id="C858" name="repairSizeDimension" desc="">
+            <data_element id="6410" name="measureUnitQualifier" desc="See ISO 9897 Annex G" type="an" maxlength="3" />
+            <data_element id="6168" name="lengthDimension" desc="This element may be up to 5 digits to the left and 2 digits to the right of the decimal." type="n" maxlength="8" />
+            <data_element id="6140" name="widthDimension" desc="This element may be up to 5 digits to the left and 2 digits to the right of the decimal." type="n" maxlength="8" />
+            <data_element id="6008" name="heightDimension" desc="Always 0" type="n" maxlength="1" />
+        </composite_data_element>
+        <data_element id="6060" name="quantity" desc="Number of same type, size, cost damage within the same damage location area." type="n" maxlength="3" />
+    </segment>
+    <segment id="COS" name="costPerLineItem" desc="To indicate cost per damage line for each responsibility">
+        <data_element id="8531" name="workScale" desc="Always '00' (See ISO 9897 Annex G)" type="n" maxlength="2" />
+        <data_element id="5533" name="manHours" desc="" type="n" maxlength="7" />
+        <data_element id="5534" name="materialCost" desc="Or repair flat rate per damage line" type="n" maxlength="10" />
+        <data_element id="3535" name="responsibility" desc="See ISO 9897 Annex H (and 'X'= not specified)" type="a" maxlength="1" />
+        <data_element id="3578" name="labourRate" desc="The format allows for five (5) digits before the decimal point and two (2) digits after the decimal point for this field." type="n" maxlength="8" />
+        <data_element id="3579" name="cosLastElement" desc="Always N" type="a" maxlength="1" />
+    </segment>
+    <segment id="CTO" name="costTotals" desc="To consolidate a total for each responsibility">
+        <data_element id="3535" name="responsibility" desc="See ISO 9897 Annex H" type="a" maxlength="1" />
+        <data_element id="5536" name="laborTotal" desc="Hours times rate: The format allows for eight (8) digits before the decimal point and an optional two (2) digits after the decimal point for these fields." type="n" maxlength="11" />
+        <data_element id="5537" name="materialTotal" desc="The format allows for eight (8) digits before the decimal point and an optional two (2) digits after the decimal point for these fields." type="n" maxlength="11" />
+        <data_element id="5539" name="handlingTotal" desc="The format allows for eight (8) digits before the decimal point and an optional two (2) digits after the decimal point for these fields." type="n" maxlength="11" />
+        <data_element id="5538" name="tax" desc="All applicable taxes: The format allows for eight (8) digits before the decimal point and an optional two (2) digits after the decimal point for these fields." type="n" maxlength="11" />
+        <data_element id="5544" name="totalInvoiceAmount" desc="Sum of 5536 to 5539 for each party: The format allows for eight (8) digits before the decimal point and an optional two (2) digits after the decimal point for these fields." type="n" maxlength="11" />
+    </segment>
+    <segment id="TMA" name="totalMessageAmounts" desc="To identify total amounts.">
+        <data_element id="5356" name="messageMonetaryAmount" desc="Estimate grand total: The format allows for nine (9) digits before the decimal point and an optional two (2) digits after the decimal point for this field." type="n" maxlength="15" />
+        <data_element id="5360" name="messageLineItemTotal" desc="null" type="n" maxlength="15" />
+        <data_element id="5348" name="amountSubjectToDiscount" desc="null" type="n" maxlength="15" />
+        <data_element id="5338" name="amountSubjectToTax" desc="null" type="n" maxlength="15" />
+        <data_element id="5358" name="messageAdditionalAmount" desc="null" type="n" maxlength="15" />
+        <data_element id="5492" name="authorizedAmount" desc="The format allows for nine (9) digits before the decimal point and an optional two (2) digits after the decimal point for this field." type="n" maxlength="15" />
+        <data_element id="5384" name="totalAmountPrepaid" desc="null" type="n" maxlength="15" />
+        <data_element id="5420" name="taxRate" desc="The format allows for only two (2) digits before the decimal and an optional two (2) digits after the decimal point for this field." type="n" maxlength="15" />
+    </segment>
+    <segment id="TAD" name="transactionDetails" desc="To give details of a transaction">
+        <composite_data_element id="C040" name="carrier" desc="">
+            <data_element id="3127" name="carrierCoded" desc="See ISO 9897 Annex J" type="a" maxlength="9" />
+            <data_element id="1131" name="codeListIdentifier" desc="null" type="an" maxlength="2" />
+            <data_element id="3128" name="carrierName" desc="null" type="an" maxlength="35" />
+            <data_element id="8213" name="transportIDCoded" desc="Haulier code, See ISO 9897 Annex J" type="a" maxlength="9" />
+        </composite_data_element>
+        <composite_data_element id="C214" name="specialServices" desc="">
+            <data_element id="7161" required="true" name="specialServiceCode" desc="null" type="an" maxlength="6" />
+            <data_element id="3055" name="codeListAgency" desc="null" type="an" maxlength="2" />
+            <data_element id="1131" name="codeListIdentifierCoded" desc="null" type="an" maxlength="2" />
+            <data_element id="8212" name="transportIdentification" desc="Formatted string: country (2), state (2), license (8), expiration (yy/mm) (4), Inspection needed?(Y/N) (1)" type="an" maxlength="17" />
+            <data_element id="8452" name="nationalityOfMeansOfTransport" desc="" type="an" maxlength="17" />
+        </composite_data_element>
+        <composite_data_element id="C228" name="transportMeans" desc="">
+            <data_element id="8265" name="meansOfTransportCoded" desc="" type="an" maxlength="5" />
+            <data_element id="8264" name="meansOfTransport" desc="" type="an" maxlength="35" />
+        </composite_data_element>
+    </segment>
+    <segment id="TXT" name="text" desc="To give information in addition to that in other segments in the service message, as required.">
+        <data_element id="0077" name="textReferenceCode" desc="CDX" type="an" maxlength="3" />
+        <data_element id="0078" required="true" name="freeFormText" desc="Free text" type="an" maxlength="70" />
+    </segment>
+    <segment id="UNT" name="messageTrailer" desc="To end and check the completeness of a message.">
+        <data_element id="0074" required="true" name="numberOfSegmentsInTheMessage" desc="Includes UNH and UNT" type="n" maxlength="6" />
+        <data_element id="0062" name="messageReferenceNumber" desc="Must match UNH segment above" type="an" maxlength="14" />
+    </segment>
+    <segment id="UNZ" name="interchangeTrailer" desc="To end and check the completeness of an interchange.">
+        <data_element id="0036" required="true" name="interchangeControlCount" desc="" type="n" maxlength="6" />
+        <data_element id="0020" required="true" name="interchangeControlReference" desc="Must match UNB segment above" type="an" maxlength="14" />
+    </segment>
+</segments>

@@ -28,13 +28,11 @@ class MappingProvider
     public function checkDirectoryFormat($directory)
     {
 
-        if (preg_match('/D\d{2}[A-C]{1}/', $directory)) {
-            return $directory;
-        }
         if (preg_match('/\d{2}[A-C]{1}/', $directory)) {
             return 'D'.$directory;
         }
-        throw new \Exception('Invalid directory format');
+        
+        return $directory;
     }
 
     public function setDirectory($directory = 'D95B')

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<data_elements>
+    <data_element id="2005">
+        <code id="ATR" desc="Actual Transaction"/>
+        <code id="TRM" desc="Termination"/>
+        <code id="PON" desc="Previous on-hire"/>
+    </data_element>
+    <data_element id="1153">
+        <code id="EST" desc="Estimate"/>
+        <code id="AUT" desc="Authorization"/>
+        <code id="ACC" desc="Acceptance"/>
+        <code id="REL" desc="Release"/>
+        <code id="EIR" desc="Gate In"/>
+        <code id="ADV" desc="Advice"/>
+    </data_element>
+    <data_element id="6343">
+        <code id="STD" desc="standard (labor, tax materials)"/>
+        <code id="DPP" desc="DPP coverage"/>
+    </data_element>
+    <data_element id="8053">
+        <code id="CON" desc="Container"/>
+        <code id="CHZ" desc="Chassis"/>
+        <code id="GEN" desc="Genset"/>
+        <code id="REF" desc="Reefer"/>
+        <code id="TNK" desc="Tanker"/>
+    </data_element>
+    <data_element id="6063">
+        <code id="TOT" desc="Total units"/>
+        <code id="OUT" desc="Outstanding units"/>
+    </data_element>
+    <data_element id="3139">
+        <code id="TO" desc="Specific recipient"/>
+        <code id="FR" desc="Authorized sender"/>
+    </data_element>
+    <data_element id="3227">
+        <code id="TRM" desc="Termination"/>
+        <code id="PON" desc="Previous on-hire"/>
+    </data_element>
+    <data_element id="8533">
+        <code id="E" desc="Empty"/>
+        <code id="L" desc="Full"/>
+    </data_element>
+</data_elements>
