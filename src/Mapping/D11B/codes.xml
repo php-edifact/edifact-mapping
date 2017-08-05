@@ -1046,7 +1046,7 @@
     <code id="AMQ" title="US, Department of Transportation bond surety code" desc="A bond surety code assigned by the United States Department of Transportation (DOT)."/>
     <code id="AMR" title="US, Food and Drug Administration establishment indicator" desc="An establishment indicator assigned by the United States Food and Drug Administration."/>
     <code id="AMS" title="US, Federal Communications Commission (FCC) import condition number" desc="A number known as the United States Federal Communications Commission (FCC) import condition number applying to certain types of regulated communications equipment."/>
-    <code id="AMT" title="Goods and Services Tax identification number" desc="An identification number assigned to an organization collecting Goods and Services Taxes (GST)."/>
+    <code id="AMT" title="Goods and Services Tax identification number" desc="Identifier assigned to an entity by a tax authority for Goods and Services Tax (GST) related purposes."/>
     <code id="AMU" title="Integrated logistic support cross reference number" desc="Provides the identification of the reference which allows cross referencing of items between different areas of integrated logistics support."/>
     <code id="AMV" title="Department number" desc="Number assigned to a department within an organization."/>
     <code id="AMW" title="Buyer's catalogue number" desc="Identification of a catalogue maintained by a buyer."/>
@@ -3840,6 +3840,9 @@
     <code id="392" title="Hazardous waste collector" desc="Party collecting hazardous waste."/>
     <code id="393" title="Hazardous waste generator" desc="Party generating hazardous waste."/>
     <code id="394" title="Marketing agent" desc="Party authorized to market a product."/>
+    <code id="395" title="BE, TELEBIB Centre" desc="The TELEBIB Centre is the Belgian association of Insurance Companies, Brokers and Software Suppliers responsible for the development of standards for use by the insurance industry."/>
+    <code id="396" title="BE, BNB" desc="The Belgian National Bank, which delivers identifiers for, amongst others, Insurers and Re-insurers."/>
+    <code id="397" title="BE, FSMA" desc="The Belgian Financial Services Market Authority, which delivers identifiers for, amongst others, Intermediaries in insurance business."/>
     <code id="ZZZ" title="Mutually defined" desc="A code assigned within a code list to be used on an interim basis and as defined among trading partners until a precise code can be assigned to the code list."/>
   </data_element>
   <data_element id="3077">
@@ -4722,6 +4725,9 @@
     <code id="9" title="Disposal of waste to be arranged" desc="Request to arrange the disposal of waste."/>
     <code id="10" title="Transshipment to be arranged" desc="The consignment has to be transshipped."/>
   </data_element>
+  <data_element id="4153">
+    <code id="1" title="Business information" desc="Identifies information related to the business."/>
+  </data_element>
   <data_element id="4183">
     <code id="1" title="Item for national preference" desc="Item concerned is applicable to national preference calculation."/>
     <code id="2" title="Item qualifying for payment discount" desc="Item concerned is applicable for settlement/payment discount calculation."/>
@@ -4929,6 +4935,7 @@
     <code id="204" title="Trade item is irradiated not applicable" desc="The indication that a trade item is irradiated is not applicable."/>
     <code id="205" title="Size dependent pricing" desc="An item price may be different depending on the size."/>
     <code id="206" title="Size independent pricing" desc="An item price is independent of the size."/>
+    <code id="207" title="Only accepted products" desc="Includes only details regarding accepted products."/>
     <code id="ZZZ" title="Mutually defined" desc="Special condition mutually agreed between interchanging parties."/>
   </data_element>
   <data_element id="4215">
@@ -5993,6 +6000,7 @@
     <code id="AVA" title="Expected delay comment" desc="Comment about the expected delay."/>
     <code id="AVB" title="Transport requirements comment" desc="Comment about the requirements for transport."/>
     <code id="AVC" title="Temporary approval condition" desc="The condition under which the approval is considered."/>
+    <code id="AVD" title="Customs Valuation Information" desc="Information provided in this category will be used by the trader to make certain declarations in relation to Customs Valuation."/>
     <code id="BAG" title="Passenger baggage information" desc="Information related to baggage tendered by a passenger, such as odd size indication, tag."/>
     <code id="BLC" title="Transport contract document clause" desc="[4180] Clause on a transport document regarding the cargo being consigned. Synonym: Bill of Lading clause."/>
     <code id="BLD" title="Instruction to prepare the patient" desc="Instruction with the purpose of preparing the patient."/>
@@ -7083,6 +7091,8 @@
     <code id="539" title="Valuation adjustment amount" desc="Amount of adjustments to the valuation, e.g. price influence, royalties, assists, proceeds and commissions."/>
     <code id="540" title="Damage allowance" desc="An allowance made in the value to the extent of the damage or defect."/>
     <code id="541" title="Air transport freight cost" desc="Charges relating to the air transport of the goods which represent the freight charges only (i.e. not including the handling charges, agency fees etc.)."/>
+    <code id="542" title="Unloading and handling cost" desc="Cost incurred by unloading and handling."/>
+    <code id="543" title="Commission and brokerage, except buying commission" desc="A monetary amount representing commissions and brokerage paid by or on behalf of the purchaser of goods excluding buying commission."/>
     <code id="ZZZ" title="Mutually defined" desc="Mutually defined monetary amount."/>
   </data_element>
   <data_element id="5027">
@@ -8438,6 +8448,10 @@
     <code id="25" title="Projected trade payments" desc="The resulting assessment of projected trade payments."/>
     <code id="26" title="Invoice collection" desc="The resulting assessment based on the collection of invoices."/>
   </data_element>
+  <data_element id="6113">
+    <code id="1" title="Fixed" desc="Length of simple data element is fixed."/>
+    <code id="2" title="Variable" desc="Length of simple data element is variable."/>
+  </data_element>
   <data_element id="6145">
     <code id="1" title="Gross dimensions" desc="The dimension expressed in a gross value."/>
     <code id="2" title="Package dimensions (including goods)" desc="The dimension of the goods including the packaging."/>
@@ -8598,6 +8612,7 @@
     <code id="ACI" title="Volume to dispose" desc="Volume to get rid of."/>
     <code id="ACJ" title="Volume to produce" desc="Volume which will be generated."/>
     <code id="ACK" title="Commodity size" desc="The size name, dimensions, or weight of the commodity."/>
+    <code id="ACL" title="Free surface moment" desc="Effects of force caused by free-surface effects in partly-filled tanks."/>
     <code id="ASX" title="Supplemental tariff classification quantity" desc="Supplemental quantity reportable for a tariff number."/>
     <code id="ASY" title="1st specified tariff quantity, general rules of interpretation 3(c) or 3(b)" desc="The first reportable quantity associated with a tariff number for goods classified under general rules of interpretation 3(b) or 3(c)."/>
     <code id="ASZ" title="2nd specified tariff quantity, general rules of interpretation 3(c) or 3(b)" desc="Secondary reportable quantity associated with a tariff classification for goods classified under harmonized tariff schedule general rules of interpretation 3(b) or 3(c)."/>
@@ -9621,6 +9636,7 @@
     <code id="SUB" title="US FDA (Food and Drug Administration) Product Code Classification Database" desc="US FDA Product Code Classification Database contains medical device names and associated information developed by the Center for Devices and Radiological Health (CDRH)."/>
     <code id="SUC" title="SNOMED CT (Systematized Nomenclature of Medicine-Clinical Terms)" desc="A medical nomenclature system developed between the NHS and the College of American Pathologists."/>
     <code id="SUD" title="UMDNS (Universal Medical Device Nomenclature System)" desc="A standard international nomenclature and computer coding system for medical devices maintained by the Emergency Care Research Institute (ECRI)."/>
+    <code id="SUE" title="GS1 Global Returnable Asset Identifier, non-serialised" desc="A unique, 13-digit number assigned according to the numbering structure of the GS1 system and used to identify a type of Reusable Transport Item (RTI)."/>
     <code id="TG" title="Transport group number" desc="(8012) Additional number to form article groups for packing and/or transportation purposes."/>
     <code id="UA" title="Ultimate customer's article number" desc="Number assigned by ultimate customer to identify relevant article."/>
     <code id="UP" title="UPC (Universal product code)" desc="Number assigned to a manufacturer's product by the Product Code Council."/>
@@ -10326,6 +10342,7 @@
     <code id="172" title="Goods conditionally susceptible to fraud" desc="Goods, in certain cases, presenting increased risks of fraud in the course of a transit procedure in accordance with national law."/>
     <code id="173" title="Information, verified" desc="The information has been verified."/>
     <code id="174" title="Information, not verified" desc="The information has not been verified."/>
+    <code id="175" title="Freight charges apportioned by volume" desc="Method of the proportional allocation of freight charges for each consignment in a multi consignment declaration where freight is apportioned by volume."/>
     <code id="ZZZ" title="Mutually defined" desc="Mutually defined indicator."/>
   </data_element>
   <data_element id="7383">
@@ -11217,10 +11234,6 @@
     <code id="17" title="Numeric, implied decimal point of 8 places" desc="Simple data element character type is numeric with an implied decimal point of 8 places as determined from right to left."/>
     <code id="18" title="Numeric, implied decimal point of 9 places" desc="Simple data element character type is numeric with an implied decimal point of 9 places as determined from right to left."/>
   </data_element>
-  <data_element id="9155">
-    <code id="1" title="Fixed" desc="Length of simple data element is fixed."/>
-    <code id="2" title="Variable" desc="Length of simple data element is variable."/>
-  </data_element>
   <data_element id="9161">
     <code id="1" title="Associated code set" desc="Data element has an associated code set."/>
     <code id="2" title="No associated code set" desc="Data element does not have an associated code set."/>
@@ -11391,9 +11404,6 @@
   </data_element>
   <data_element id="9625">
     <code id="1" title="Accident" desc="The related cause was an accident."/>
-  </data_element>
-  <data_element id="9633">
-    <code id="1" title="Business information" desc="Identifies information related to the business."/>
   </data_element>
   <data_element id="9635">
     <code id="1" title="Claim" desc="The event is a claim."/>

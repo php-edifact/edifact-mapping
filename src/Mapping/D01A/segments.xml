@@ -261,7 +261,6 @@
       <data_element id="1058" name="releaseIdentifier" usage="B" desc="To identify a release." type="an" maxlength="9"/>
       <data_element id="7402" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
     </composite_data_element>
-    <data_element id="9448" name="fileGenerationCommandName" usage="B" desc="Name of a file generation command." type="an" maxlength="35"/>
   </segment>
   <segment id="CIN" name="clinicalInformation" desc="To describe an item of clinical information.">
     <data_element id="6415" required="true" name="clinicalInformationTypeCodeQualifier" usage="B" desc="Code qualifying the type of clinical information." type="an" maxlength="3"/>
@@ -463,23 +462,7 @@
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="7500" name="damageTypeDescription" usage="B" desc="Free form description of the type of damage to an object." type="an" maxlength="35"/>
     </composite_data_element>
-    <composite_data_element id="C822" name="damageArea" desc="To specify where the damage is on an object.">
-      <data_element id="7503" name="damageAreaDescriptionCode" usage="B" desc="Code specifying where the damage is on an object." type="an" maxlength="4"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="7502" name="damageAreaDescription" usage="B" desc="Free form description of where the damage is on an object." type="an" maxlength="35"/>
-    </composite_data_element>
-    <composite_data_element id="C825" name="damageSeverity" desc="To specify the severity of damage to an object.">
-      <data_element id="7509" name="damageSeverityDescriptionCode" usage="B" desc="Code specifying the severity of damage." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="7508" name="damageSeverityDescription" usage="B" desc="Free form description of the severity of damage." type="an" maxlength="35"/>
-    </composite_data_element>
-    <composite_data_element id="C826" name="action" desc="To indicate an action which has been taken or is to be taken (e.g. in relation to a certain object).">
-      <data_element id="1229" name="actionRequest/notificationDescriptionCode" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-    </composite_data_element>
+    <data_element id="tion"/>
   </segment>
   <segment id="DFN" name="definitionFunction" desc="To specify a definition function.">
     <data_element id="9023" required="true" name="definitionFunctionCode" usage="B" desc="Code specifying the function of a definition." type="an" maxlength="3"/>
@@ -493,10 +476,7 @@
       <data_element id="8078" name="additionalHazardClassificationIdentifier" usage="B" desc="To identify an additional hazard classification." type="an" maxlength="7"/>
       <data_element id="8092" name="hazardCodeVersionIdentifier" usage="B" desc="To identify the version number of a hazard code." type="an" maxlength="10"/>
     </composite_data_element>
-    <composite_data_element id="C234" name="undgInformation" desc="Information on dangerous goods, taken from the United Nations Dangerous Goods classification.">
-      <data_element id="7124" name="unitedNationsDangerousGoods(undg)Identifier" usage="B" desc="The unique serial number assigned within the United Nations to substances and articles contained in a list of the dangerous goods most commonly carried." type="n" maxlength="4"/>
-      <data_element id="7088" name="dangerousGoodsFlashpointValue" usage="B" desc="To specify the value of the flashpoint of dangerous goods." type="an" maxlength="8"/>
-    </composite_data_element>
+    <data_element id="ited"/>
     <composite_data_element id="C223" name="dangerousGoodsShipmentFlashpoint" desc="Temperature at which a vapor can be ignited as per ISO 1523/73.">
       <data_element id="7106" name="shipmentFlashpointValue" usage="B" desc="To specify the value of the flashpoint of a shipment." type="n" maxlength="3"/>
       <data_element id="6411" name="measurementUnitCode" usage="C" desc="Code specifying the unit of measurement." type="an" maxlength="3"/>
@@ -509,6 +489,8 @@
       <data_element id="8158" name="orangeHazardPlacardUpperPartIdentifier" usage="B" desc="To specify the identity number for the upper part of the orange hazard placard required on the means of transport." type="an" maxlength="4"/>
       <data_element id="8186" name="orangeHazardPlacardLowerPartIdentifier" usage="B" desc="To specify the identity number for the lower part of the orange hazard placard required on the means of transport." type="an" maxlength="4"/>
     </composite_data_element>
+    <data_element id="ange"/>
+    <data_element id="ange"/>
     <composite_data_element id="C236" name="dangerousGoodsLabel" desc="Markings identifying the type of hazardous goods and similar information.">
       <data_element id="8246" name="dangerousGoodsMarkingIdentifier" usage="B" desc="To identify the marking of dangerous goods." type="an" maxlength="4"/>
       <data_element id="8246" name="dangerousGoodsMarkingIdentifier" usage="B" desc="To identify the marking of dangerous goods." type="an" maxlength="4"/>
@@ -609,11 +591,6 @@
     <composite_data_element id="C782" required="true" name="dataSetIdentification" desc="The identification of a data set.">
       <data_element id="1520" required="true" name="dataSetIdentifier" usage="B" desc="To identify a data set." type="an" maxlength="35"/>
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
-    </composite_data_element>
-    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
-      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
     </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     <composite_data_element id="C286" name="sequenceInformation" desc="Identification of a sequence and source for sequencing.">
@@ -762,19 +739,6 @@
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="9636" name="eventCategoryDescription" usage="B" desc="Free form description of the event category." type="an" maxlength="70"/>
     </composite_data_element>
-    <composite_data_element id="C030" name="eventType" desc="To specify the type of event.">
-      <data_element id="9171" name="eventTypeDescriptionCode" usage="B" desc="Code specifying an event type." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9170" name="eventTypeDescription" usage="B" desc="Free form description of the event type." type="an" maxlength="70"/>
-    </composite_data_element>
-    <composite_data_element id="C063" name="eventIdentification" desc="To identify an event.">
-      <data_element id="9173" name="eventDescriptionCode" usage="B" desc="Code specifying an event." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9172" name="event" usage="B" desc="Free form description of the event." type="an" maxlength="256"/>
-    </composite_data_element>
-    <data_element id="1229" name="actionRequest/notificationDescriptionCode" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
   </segment>
   <segment id="EVT" name="event" desc="To identify an event.">
     <composite_data_element id="C030" name="eventType" desc="To specify the type of event.">
@@ -782,12 +746,6 @@
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="9170" name="eventTypeDescription" usage="B" desc="Free form description of the event type." type="an" maxlength="70"/>
-    </composite_data_element>
-    <composite_data_element id="C063" name="eventIdentification" desc="To identify an event.">
-      <data_element id="9173" name="eventDescriptionCode" usage="B" desc="Code specifying an event." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9172" name="event" usage="B" desc="Free form description of the event." type="an" maxlength="256"/>
     </composite_data_element>
   </segment>
   <segment id="FCA" name="financialChargesAllocation" desc="Description of allocation of charges.">
@@ -825,11 +783,6 @@
       <data_element id="9430" required="true" name="footnoteSetIdentifier" usage="B" desc="To identify a footnote set." type="an" maxlength="35"/>
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
     </composite_data_element>
-    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
-      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-    </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     <data_element id="4513" name="maintenanceOperationCode" usage="C" desc="Code specifying a maintenance operation." type="an" maxlength="3"/>
   </segment>
@@ -837,11 +790,6 @@
     <composite_data_element id="C784" required="true" name="footnoteIdentification" desc="The identification of a footnote.">
       <data_element id="9432" required="true" name="footnoteIdentifier" usage="B" desc="To identify a footnote." type="an" maxlength="35"/>
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
-    </composite_data_element>
-    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
-      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
     </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     <data_element id="4513" name="maintenanceOperationCode" usage="C" desc="Code specifying a maintenance operation." type="an" maxlength="3"/>
@@ -972,28 +920,15 @@
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
       <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     </composite_data_element>
-    <composite_data_element id="C206" name="identificationNumber" desc="The identification of an object.">
-      <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
-      <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
-      <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
-    </composite_data_element>
-    <composite_data_element id="C206" name="identificationNumber" desc="The identification of an object.">
-      <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
-      <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
-      <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
-    </composite_data_element>
-    <composite_data_element id="C206" name="identificationNumber" desc="The identification of an object.">
-      <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
-      <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
-      <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
-    </composite_data_element>
-    <composite_data_element id="C206" name="identificationNumber" desc="The identification of an object.">
-      <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
-      <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
-      <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
+  </segment>
+  <segment id="GIS" name="generalIndicator" desc="To transmit a processing indicator.">
+    <composite_data_element id="C529" required="true" name="processingIndicator" desc="Type of process indication.">
+      <data_element id="7365" required="true" name="processingIndicatorDescriptionCode" usage="C" desc="Code specifying a processing indicator." type="an" maxlength="3"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="7187" name="processTypeDescriptionCode" usage="B" desc="Code specifying a type of process." type="an" maxlength="17"/>
     </composite_data_element>
   </segment>
-  <segment id="GIS" name="generalIndicator" desc="To transmit a processing indicator."/>
   <segment id="GOR" name="governmentalRequirements" desc="To indicate the requirement for a specific governmental action and/or procedure or which specific procedure is valid for a specific part of the transport.">
     <data_element id="8323" name="transportMovementCode" usage="B" desc="Code specifying the transport movement." type="an" maxlength="3"/>
     <composite_data_element id="C232" name="governmentAction" desc="Code indicating a type of government action.">
@@ -1074,11 +1009,6 @@
       <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
       <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
-    </composite_data_element>
-    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
-      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
     </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     <data_element id="1222" name="configurationLevelNumber" usage="B" desc="To specify a level within a configuration." type="n" maxlength="2"/>
@@ -1229,13 +1159,6 @@
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="3222" name="firstRelatedLocationName" usage="B" desc="Name of first related location." type="an" maxlength="70"/>
     </composite_data_element>
-    <composite_data_element id="C553" name="relatedLocationTwoIdentification" desc="Identification of second related location by code or name.">
-      <data_element id="3233" name="secondRelatedLocationNameCode" usage="C" desc="Code specifying the second related location." type="an" maxlength="25"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="3232" name="secondRelatedLocationName" usage="B" desc="Name of the second related location." type="an" maxlength="70"/>
-    </composite_data_element>
-    <data_element id="5479" name="relationCode" usage="C" desc="Code specifying a relation." type="an" maxlength="3"/>
   </segment>
   <segment id="MEA" name="measurements" desc="To specify physical measurements, including dimension tolerances, weights and counts.">
     <data_element id="6311" required="true" name="measurementPurposeCodeQualifier" usage="B" desc="Code qualifying the purpose of the measurement." type="an" maxlength="3"/>
@@ -1363,6 +1286,10 @@
       <data_element id="3042" name="streetAndNumberOrPostOfficeBoxIdentifier" usage="C" desc="To identify a street and number and/or Post Office box number." type="an" maxlength="35"/>
       <data_element id="3042" name="streetAndNumberOrPostOfficeBoxIdentifier" usage="C" desc="To identify a street and number and/or Post Office box number." type="an" maxlength="35"/>
     </composite_data_element>
+    <data_element id="reet" required="true"/>
+    <data_element id="reet"/>
+    <data_element id="reet"/>
+    <data_element id="reet"/>
     <data_element id="3164" name="cityName" usage="C" desc="Name of a city." type="an" maxlength="35"/>
     <composite_data_element id="C819" name="countrySub" desc="To specify a part of a country (eg county or part of a city).">
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
@@ -1437,6 +1364,19 @@
   </segment>
   <segment id="PAT" name="paymentTermsBasis" desc="To specify the payment terms basis.">
     <data_element id="4279" required="true" name="paymentTermsTypeCodeQualifier" usage="B" desc="Code qualifying the type of payment terms." type="an" maxlength="3"/>
+    <composite_data_element id="C110" name="paymentTerms" desc="Terms of payment code from a specified source.">
+      <data_element id="4277" required="true" name="paymentTermsDescriptionIdentifier" usage="B" desc="Identification of the terms of payment between the parties to a transaction (generic term)." type="an" maxlength="17"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="4276" name="paymentTermsDescription" usage="B" desc="Free form description of the conditions of payment between the parties to a transaction." type="an" maxlength="35"/>
+      <data_element id="4276" name="paymentTermsDescription" usage="B" desc="Free form description of the conditions of payment between the parties to a transaction." type="an" maxlength="35"/>
+    </composite_data_element>
+    <composite_data_element id="C112" name="terms" desc="Time details in payment terms.">
+      <data_element id="2475" required="true" name="timeReferenceCode" usage="B" desc="Code referencing a point in time." type="an" maxlength="3"/>
+      <data_element id="2009" name="termsTimeRelationCode" usage="B" desc="Code relating terms to a reference date, time or period." type="an" maxlength="3"/>
+      <data_element id="2151" name="periodTypeCode" usage="B" desc="Code specifying the type of period." type="an" maxlength="3"/>
+      <data_element id="2152" name="periodCountQuantity" usage="C" desc="Count of the number of periods." type="n" maxlength="3"/>
+    </composite_data_element>
   </segment>
   <segment id="PCC" name="premiumCalculationComponentDetails" desc="To identify the component affecting a premium calculation and the value category of the component.">
     <composite_data_element id="C820" name="premiumCalculationComponent" desc="To identify the component affecting premium calculation.">
@@ -1549,11 +1489,6 @@
       <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
       <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
-    </composite_data_element>
-    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
-      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
     </composite_data_element>
     <data_element id="3403" name="nameTypeCode" usage="B" desc="Code specifying the type of name." type="an" maxlength="3"/>
     <data_element id="3397" name="nameStatus,Coded" usage="C" desc="To specify the status of a name (such as current name)." type="an" maxlength="3"/>
@@ -1847,11 +1782,6 @@
       <data_element id="7512" required="true" name="structureComponentIdentifier" usage="B" desc="To identify a component of a structure." type="an" maxlength="35"/>
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
     </composite_data_element>
-    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
-      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-    </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     <data_element id="1222" name="configurationLevelNumber" usage="B" desc="To specify a level within a configuration." type="n" maxlength="2"/>
     <composite_data_element id="C778" name="positionIdentification" desc="To identify the position of an object in a structure containing the object.">
@@ -1978,11 +1908,6 @@
       <data_element id="6434" required="true" name="statisticalConceptIdentifier" usage="B" desc="Free form identification of a statistical concept." type="an" maxlength="35"/>
       <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
     </composite_data_element>
-    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
-      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-    </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     <data_element id="4513" name="maintenanceOperationCode" usage="C" desc="Code specifying a maintenance operation." type="an" maxlength="3"/>
   </segment>
@@ -2002,36 +1927,6 @@
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="4404" name="statusDescription" usage="B" desc="Free form description of a status." type="an" maxlength="35"/>
-    </composite_data_element>
-    <composite_data_element id="C556" name="statusReason" desc="To specify the reason for a status.">
-      <data_element id="9013" required="true" name="statusReasonDescriptionCode" usage="C" desc="Code specifying the reason for a status." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9012" name="statusReasonDescription" usage="B" desc="Free form description of the status reason." type="an" maxlength="256"/>
-    </composite_data_element>
-    <composite_data_element id="C556" name="statusReason" desc="To specify the reason for a status.">
-      <data_element id="9013" required="true" name="statusReasonDescriptionCode" usage="C" desc="Code specifying the reason for a status." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9012" name="statusReasonDescription" usage="B" desc="Free form description of the status reason." type="an" maxlength="256"/>
-    </composite_data_element>
-    <composite_data_element id="C556" name="statusReason" desc="To specify the reason for a status.">
-      <data_element id="9013" required="true" name="statusReasonDescriptionCode" usage="C" desc="Code specifying the reason for a status." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9012" name="statusReasonDescription" usage="B" desc="Free form description of the status reason." type="an" maxlength="256"/>
-    </composite_data_element>
-    <composite_data_element id="C556" name="statusReason" desc="To specify the reason for a status.">
-      <data_element id="9013" required="true" name="statusReasonDescriptionCode" usage="C" desc="Code specifying the reason for a status." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9012" name="statusReasonDescription" usage="B" desc="Free form description of the status reason." type="an" maxlength="256"/>
-    </composite_data_element>
-    <composite_data_element id="C556" name="statusReason" desc="To specify the reason for a status.">
-      <data_element id="9013" required="true" name="statusReasonDescriptionCode" usage="C" desc="Code specifying the reason for a status." type="an" maxlength="3"/>
-      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="17"/>
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9012" name="statusReasonDescription" usage="B" desc="Free form description of the status reason." type="an" maxlength="256"/>
     </composite_data_element>
   </segment>
   <segment id="TAX" name="duty/tax/feeDetails" desc="To specify relevant duty/tax/fee information.">

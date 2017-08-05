@@ -669,7 +669,7 @@
   <segment id="ELM" name="simpleDataElementDetails" desc="To identify a simple data element and give related details.">
     <data_element id="9150" required="true" name="simpleDataElementTagIdentifier" usage="B" desc="To identify the tag of a simple data element." type="an" maxlength="4"/>
     <data_element id="9153" name="simpleDataElementCharacterRepresentationCode" usage="B" desc="Code specifying the character representation of a simple data element." type="an" maxlength="3"/>
-    <data_element id="9155" name="lengthTypeCode" usage="B" desc="Code specifying the type of length." type="an" maxlength="3"/>
+    <data_element id="6113" name="lengthTypeCode" usage="B" desc="Code specifying the type of length." type="an" maxlength="3"/>
     <data_element id="9156" name="simpleDataElementMaximumLengthMeasure" usage="B" desc="To specify the value of the maximum length of a simple data element." type="n" maxlength="3"/>
     <data_element id="9158" name="simpleDataElementMinimumLengthMeasure" usage="B" desc="To specify the value of the minimum length of a simple data element." type="n" maxlength="3"/>
     <data_element id="9161" name="codeSetIndicatorCode" usage="B" desc="Code indicating whether a data element has an associated code set." type="an" maxlength="3"/>
@@ -1108,9 +1108,9 @@
     </composite_data_element>
   </segment>
   <segment id="IFD" name="informationDetail" desc="To specify details about items of information.">
-    <data_element id="9633" name="informationDetailsCodeQualifier" usage="B" desc="Code qualifying the information details." type="an" maxlength="3"/>
+    <data_element id="4153" name="informationDetailsCodeQualifier" usage="B" desc="Code qualifying the information details." type="an" maxlength="3"/>
     <composite_data_element id="C009" name="informationCategory" desc="To specify the category of information.">
-      <data_element id="9615" name="informationCategoryDescriptionCode" usage="B" desc="Code specifying the information category." type="an" maxlength="3"/>
+      <data_element id="4149" name="informationCategoryDescriptionCode" usage="B" desc="Code specifying the information category." type="an" maxlength="3"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="9614" name="informationCategoryDescription" usage="B" desc="Free form description of the category of information." type="an" maxlength="70"/>
@@ -1122,10 +1122,10 @@
       <data_element id="4472" name="informationType" usage="B" desc="Text representation of a type of information." type="an" maxlength="35"/>
     </composite_data_element>
     <composite_data_element id="C011" name="informationDetail" desc="To provide the information details.">
-      <data_element id="9617" name="informationDetailDescriptionCode" usage="B" desc="Code specifying the information detail." type="an" maxlength="17"/>
+      <data_element id="4151" name="informationDetailDescriptionCode" usage="B" desc="Code specifying the information detail." type="an" maxlength="17"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-      <data_element id="9616" name="informationDetailDescription" usage="B" desc="Free form description of the information detail." type="an" maxlength="256"/>
+      <data_element id="4150" name="informationDetailDescription" usage="B" desc="Free form description of the information detail." type="an" maxlength="256"/>
     </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
   </segment>
@@ -2141,6 +2141,12 @@
       <data_element id="8453" name="transportMeansNationalityCode" usage="B" desc="Code specifying the nationality of a means of transport." type="an" maxlength="3"/>
     </composite_data_element>
     <data_element id="8281" name="transportMeansOwnershipIndicatorCode" usage="B" desc="Code indicating the ownership of a means of transport." type="an" maxlength="3"/>
+    <composite_data_element id="C003" name="powerType" desc="To specify the type of power.">
+      <data_element id="7041" name="powerTypeCode" usage="B" desc="Code indicating the type of power." type="an" maxlength="3"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="7040" name="powerTypeDescription" usage="B" desc="Description of the type of power." type="an" maxlength="17"/>
+    </composite_data_element>
   </segment>
   <segment id="TEM" name="testMethod" desc="To describe the nature of the test performed.">
     <composite_data_element id="C244" name="testMethod" desc="Specification of the test method employed.">
