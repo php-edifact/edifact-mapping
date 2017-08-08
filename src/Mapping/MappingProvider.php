@@ -28,7 +28,7 @@ class MappingProvider
     public function checkDirectoryFormat($directory)
     {
 
-        if (preg_match('/\d{2}[A-C]{1}/', $directory)) {
+        if (preg_match('/^\d{2}[A-C]{1}$/', $directory)) {
             return 'D'.$directory;
         }
         
