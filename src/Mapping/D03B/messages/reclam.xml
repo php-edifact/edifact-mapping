@@ -6,7 +6,6 @@
     <data_element id="0054" value="03B"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <group id="SG1" maxrepeat="99" required="true">
     <segment id="GEI" maxrepeat="1" required="true"/>
@@ -25,7 +24,6 @@
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="8" required="true"/>
   <segment id="FTX" maxrepeat="999"/>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG3" maxrepeat="9">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="1"/>
@@ -60,7 +58,6 @@
     </group>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
-  <segment id="SEC" maxrepeat=""/>
   <group id="SG8" maxrepeat="3">
     <segment id="CUX" maxrepeat="1" required="true"/>
     <group id="SG9" maxrepeat="999" required="true">

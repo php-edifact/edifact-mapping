@@ -6,7 +6,6 @@
     <data_element id="0054" value="05A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9" required="true"/>
@@ -22,7 +21,6 @@
       <segment id="COM" maxrepeat="9"/>
     </group>
   </group>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG4" maxrepeat="999" required="true">
     <segment id="LOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>

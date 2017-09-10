@@ -10,7 +10,6 @@
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="RFF" maxrepeat="9"/>
   <segment id="DTM" maxrepeat="9"/>
-  <segment id="CUX" maxrepeat="9"/>
   <group id="SG1" maxrepeat="99">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <segment id="CTA" maxrepeat="1"/>

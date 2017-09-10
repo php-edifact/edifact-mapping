@@ -24,7 +24,7 @@
     <segment id="CTA" maxrepeat="9"/>
     <segment id="COM" maxrepeat="9"/>
   </group>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="ERC" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
     <group id="SG5" maxrepeat="9">

@@ -33,9 +33,9 @@
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
     </group>
+    <segment id="DIM" maxrepeat="1"/>
+    <segment id="FTX" maxrepeat="9"/>
   </group>
-  <segment id="DIM" maxrepeat="1"/>
-  <segment id="FTX" maxrepeat="9"/>
   <group id="SG7" maxrepeat="9">
     <segment id="QTY" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>

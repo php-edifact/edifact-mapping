@@ -33,18 +33,18 @@
       <segment id="EQD" maxrepeat="1" required="true"/>
       <segment id="TPL" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG6" maxrepeat="9">
-    <segment id="NAD" maxrepeat="1" required="true"/>
-    <group id="SG7" maxrepeat="99">
-      <segment id="GID" maxrepeat="1" required="true"/>
-      <segment id="FTX" maxrepeat="1"/>
-      <segment id="SGP" maxrepeat="99"/>
+    <group id="SG6" maxrepeat="9">
+      <segment id="NAD" maxrepeat="1" required="true"/>
+      <group id="SG7" maxrepeat="99">
+        <segment id="GID" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="1"/>
+        <segment id="SGP" maxrepeat="99"/>
+      </group>
+      <group id="SG8" maxrepeat="9">
+        <segment id="CTA" maxrepeat="1" required="true"/>
+        <segment id="COM" maxrepeat="9"/>
+      </group>
     </group>
-  </group>
-  <group id="SG8" maxrepeat="9">
-    <segment id="CTA" maxrepeat="1" required="true"/>
-    <segment id="COM" maxrepeat="9"/>
   </group>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

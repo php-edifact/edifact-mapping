@@ -6,7 +6,6 @@
     <data_element id="0054" value="99B"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="35" required="true"/>
@@ -38,7 +37,6 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG7" maxrepeat="10">
-    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="PCD" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>
@@ -77,7 +75,6 @@
       <segment id="DTM" maxrepeat="1"/>
     </group>
   </group>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG16" maxrepeat="1000">
     <segment id="PGI" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="15"/>
@@ -138,7 +135,6 @@
       </group>
     </group>
     <group id="SG29" maxrepeat="10">
-      <segment id="PAT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="MOA" maxrepeat="1"/>
@@ -156,7 +152,7 @@
       <segment id="MEA" maxrepeat="10"/>
       <segment id="HAN" maxrepeat="5"/>
     </group>
-    <group id="SG33" maxrepeat="9999">
+    <group id="SG33" maxrepeat="99999">
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="99"/>
       <segment id="IMD" maxrepeat="999"/>
@@ -196,11 +192,10 @@
         <segment id="ALC" maxrepeat="1" required="true"/>
         <segment id="ALI" maxrepeat="5"/>
         <segment id="DTM" maxrepeat="9"/>
-        <segment id="SG39" maxrepeat="10"/>
-        <segment id="QTY" maxrepeat="1" required="true"/>
-        <segment id="RNG" maxrepeat="1"/>
-      </group>
-      <group id="SG40" maxrepeat="99">
+        <group id="SG39" maxrepeat="10">
+          <segment id="QTY" maxrepeat="1" required="true"/>
+          <segment id="RNG" maxrepeat="1"/>
+        </group>
         <segment id="PCD" maxrepeat="1" required="true"/>
         <segment id="RNG" maxrepeat="1"/>
       </group>
@@ -218,33 +213,29 @@
         <segment id="DTM" maxrepeat="1"/>
       </group>
     </group>
-    <group id="SG44" maxrepeat="999">
-      <segment id="PAC" maxrepeat="1" required="true"/>
-      <segment id="MEA" maxrepeat="10"/>
-      <segment id="QTY" maxrepeat="99"/>
-      <segment id="HAN" maxrepeat="5"/>
-    </group>
-    <group id="SG45" maxrepeat="10">
-      <segment id="PAT" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="5"/>
-      <segment id="PCD" maxrepeat="1"/>
-      <segment id="MOA" maxrepeat="1"/>
-    </group>
-    <group id="SG46" maxrepeat="10">
-      <segment id="TDT" maxrepeat="1" required="true"/>
-      <segment id="LOC" maxrepeat="10"/>
-    </group>
-    <group id="SG47" maxrepeat="5">
-      <segment id="TOD" maxrepeat="1" required="true"/>
-      <segment id="LOC" maxrepeat="2"/>
-    </group>
-    <group id="SG48" maxrepeat="99">
-      <segment id="NAD" maxrepeat="1" required="true"/>
-      <group id="SG49" maxrepeat="99">
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="99"/>
-      </group>
+    <segment id="PAC" maxrepeat="1" required="true"/>
+    <segment id="MEA" maxrepeat="10"/>
+    <segment id="QTY" maxrepeat="99"/>
+    <segment id="HAN" maxrepeat="5"/>
+  </group>
+  <group id="SG45" maxrepeat="10">
+    <segment id="DTM" maxrepeat="5"/>
+    <segment id="PCD" maxrepeat="1"/>
+    <segment id="MOA" maxrepeat="1"/>
+  </group>
+  <group id="SG46" maxrepeat="10">
+    <segment id="TDT" maxrepeat="1" required="true"/>
+    <segment id="LOC" maxrepeat="10"/>
+  </group>
+  <group id="SG47" maxrepeat="5">
+    <segment id="TOD" maxrepeat="1" required="true"/>
+    <segment id="LOC" maxrepeat="2"/>
+  </group>
+  <group id="SG48" maxrepeat="99">
+    <segment id="NAD" maxrepeat="1" required="true"/>
+    <group id="SG49" maxrepeat="99">
+      <segment id="CTA" maxrepeat="1" required="true"/>
+      <segment id="COM" maxrepeat="99"/>
     </group>
   </group>
-  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

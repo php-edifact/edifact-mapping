@@ -19,7 +19,7 @@
     <segment id="COM" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="99"/>
   </group>
-  <group id="SG3" maxrepeat="9999" required="true">
+  <group id="SG3" maxrepeat="99999" required="true">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="ATT" maxrepeat="1"/>
     <segment id="FII" maxrepeat="9"/>

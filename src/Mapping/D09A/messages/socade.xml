@@ -6,7 +6,6 @@
     <data_element id="0054" value="09A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="5" required="true"/>
@@ -21,9 +20,8 @@
       <segment id="FTX" maxrepeat="9" required="true"/>
     </group>
   </group>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
-  <group id="SG3" maxrepeat="9999" required="true">
+  <group id="SG3" maxrepeat="99999" required="true">
     <segment id="PNA" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="9"/>
     <segment id="PDI" maxrepeat="1"/>
@@ -42,42 +40,42 @@
       <segment id="RFF" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="1"/>
     </group>
-  </group>
-  <group id="SG5" maxrepeat="9">
-    <segment id="ADR" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="1"/>
-  </group>
-  <group id="SG6" maxrepeat="99">
-    <segment id="PRC" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="99"/>
-    <segment id="ATT" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="99"/>
-    <segment id="EMP" maxrepeat="9"/>
-    <segment id="ADR" maxrepeat="9"/>
-    <segment id="DOC" maxrepeat="9"/>
-    <segment id="IND" maxrepeat="9"/>
-    <segment id="STS" maxrepeat="9"/>
-    <segment id="LOC" maxrepeat="9"/>
-    <group id="SG7" maxrepeat="99">
-      <segment id="QTY" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="1"/>
+    <group id="SG5" maxrepeat="9">
+      <segment id="ADR" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="1"/>
     </group>
-  </group>
-  <group id="SG8" maxrepeat="99">
-    <segment id="RFF" maxrepeat="1" required="true"/>
-    <segment id="DTM" maxrepeat="1"/>
-    <segment id="GEI" maxrepeat="9"/>
-  </group>
-  <group id="SG9" maxrepeat="99">
-    <segment id="MOA" maxrepeat="1" required="true"/>
-    <segment id="RFF" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
-  </group>
-  <group id="SG10" maxrepeat="9">
-    <segment id="PCD" maxrepeat="1" required="true"/>
-    <group id="SG11" maxrepeat="9">
-      <segment id="MOA" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="9"/>
+    <group id="SG6" maxrepeat="99">
+      <segment id="PRC" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="99"/>
+      <segment id="ATT" maxrepeat="9"/>
+      <segment id="DTM" maxrepeat="99"/>
+      <segment id="EMP" maxrepeat="9"/>
+      <segment id="ADR" maxrepeat="9"/>
+      <segment id="DOC" maxrepeat="9"/>
+      <segment id="IND" maxrepeat="9"/>
+      <segment id="STS" maxrepeat="9"/>
+      <segment id="LOC" maxrepeat="9"/>
+      <group id="SG7" maxrepeat="99">
+        <segment id="QTY" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="1"/>
+      </group>
+      <group id="SG8" maxrepeat="99">
+        <segment id="RFF" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="1"/>
+        <segment id="GEI" maxrepeat="9"/>
+      </group>
+      <group id="SG9" maxrepeat="99">
+        <segment id="MOA" maxrepeat="1" required="true"/>
+        <segment id="RFF" maxrepeat="9"/>
+        <segment id="DTM" maxrepeat="9"/>
+      </group>
+      <group id="SG10" maxrepeat="9">
+        <segment id="PCD" maxrepeat="1" required="true"/>
+        <group id="SG11" maxrepeat="9">
+          <segment id="MOA" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="9"/>
+        </group>
+      </group>
     </group>
   </group>
   <group id="SG12" maxrepeat="1">

@@ -24,37 +24,31 @@
     <segment id="CTA" maxrepeat="1"/>
     <segment id="COM" maxrepeat="5"/>
   </group>
-  <group id="SG4" maxrepeat="999" required="true">
-    <segment id="LIN" maxrepeat="1" required="true"/>
-    <group id="SG5" maxrepeat="5">
-      <segment id="RFF" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="1"/>
-    </group>
-    <group id="SG6" maxrepeat="99">
-      <segment id="SEQ" maxrepeat="1" required="true"/>
-      <segment id="GIS" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="2"/>
-      <segment id="MOA" maxrepeat="1"/>
-      <segment id="CUX" maxrepeat="1"/>
-      <segment id="PCD" maxrepeat="1"/>
-      <segment id="FTX" maxrepeat="1"/>
-      <segment id="DOC" maxrepeat="5"/>
-      <group id="SG7" maxrepeat="1">
-        <segment id="FII" maxrepeat="1" required="true"/>
-        <segment id="CTA" maxrepeat="1"/>
-        <segment id="COM" maxrepeat="5"/>
-      </group>
-      <group id="SG8" maxrepeat="1">
-        <segment id="NAD" maxrepeat="1" required="true"/>
-        <segment id="CTA" maxrepeat="1"/>
-        <segment id="COM" maxrepeat="5"/>
-      </group>
-    </group>
-  </group>
-  <segment id="CNT" maxrepeat="5"/>
-  <group id="SG9" maxrepeat="5">
-    <segment id="AUT" maxrepeat="1" required="true"/>
+  <segment id="LIN" maxrepeat="1" required="true"/>
+  <group id="SG5" maxrepeat="5">
+    <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="1"/>
   </group>
-  <segment id="UNT" maxrepeat="1" required="true"/>
+  <group id="SG6" maxrepeat="99">
+    <segment id="SEQ" maxrepeat="1" required="true"/>
+    <segment id="GIS" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="2"/>
+    <segment id="MOA" maxrepeat="1"/>
+    <segment id="CUX" maxrepeat="1"/>
+    <segment id="PCD" maxrepeat="1"/>
+    <segment id="FTX" maxrepeat="1"/>
+    <segment id="DOC" maxrepeat="5"/>
+    <group id="SG7" maxrepeat="1">
+      <segment id="FII" maxrepeat="1" required="true"/>
+      <segment id="CTA" maxrepeat="1"/>
+      <segment id="COM" maxrepeat="5"/>
+    </group>
+    <group id="SG8" maxrepeat="1">
+      <segment id="NAD" maxrepeat="1" required="true"/>
+      <segment id="CTA" maxrepeat="1"/>
+      <segment id="COM" maxrepeat="5"/>
+    </group>
+  </group>
+  <segment id="AUT" maxrepeat="1" required="true"/>
+  <segment id="DTM" maxrepeat="1"/>
 </message>

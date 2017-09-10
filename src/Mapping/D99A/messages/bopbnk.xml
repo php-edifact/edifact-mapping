@@ -26,17 +26,18 @@
       <segment id="FTX" maxrepeat="1"/>
       <group id="SG5" maxrepeat="9999" required="true">
         <segment id="MOA" maxrepeat="1" required="true"/>
-        <segment id="SG6" maxrepeat="1"/>
-        <segment id="GIR" maxrepeat="1" required="true"/>
-        <segment id="QTY" maxrepeat="1"/>
-        <segment id="PRI" maxrepeat="1"/>
+        <group id="SG6" maxrepeat="1">
+          <segment id="GIR" maxrepeat="1" required="true"/>
+          <segment id="QTY" maxrepeat="1"/>
+          <segment id="PRI" maxrepeat="1"/>
+        </group>
+        <group id="SG7" maxrepeat="1">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="1"/>
+        </group>
+        <segment id="NAD" maxrepeat="1"/>
+        <segment id="LOC" maxrepeat="4"/>
       </group>
-      <group id="SG7" maxrepeat="1">
-        <segment id="RFF" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="1"/>
-      </group>
-      <segment id="NAD" maxrepeat="1"/>
-      <segment id="LOC" maxrepeat="4"/>
     </group>
   </group>
   <group id="SG8" maxrepeat="1">

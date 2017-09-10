@@ -31,21 +31,22 @@
       <group id="SG5" maxrepeat="99" required="true">
         <segment id="MOA" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="1"/>
-        <segment id="SG6" maxrepeat="2"/>
-        <segment id="IND" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="1"/>
-      </group>
-      <group id="SG7" maxrepeat="2">
-        <segment id="ATT" maxrepeat="1" required="true"/>
-        <segment id="PCD" maxrepeat="1"/>
-      </group>
-      <group id="SG8" maxrepeat="1">
-        <segment id="TAX" maxrepeat="1" required="true"/>
-        <segment id="PCD" maxrepeat="1"/>
+        <group id="SG6" maxrepeat="2">
+          <segment id="IND" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="1"/>
+        </group>
+        <group id="SG7" maxrepeat="2">
+          <segment id="ATT" maxrepeat="1" required="true"/>
+          <segment id="PCD" maxrepeat="1"/>
+        </group>
+        <group id="SG8" maxrepeat="1">
+          <segment id="TAX" maxrepeat="1" required="true"/>
+          <segment id="PCD" maxrepeat="1"/>
+        </group>
       </group>
     </group>
+    <segment id="CUX" maxrepeat="1" required="true"/>
   </group>
-  <segment id="CUX" maxrepeat="1" required="true"/>
   <segment id="MOA" maxrepeat="10" required="true"/>
   <segment id="FTX" maxrepeat="1"/>
   <group id="SG9" maxrepeat="15">

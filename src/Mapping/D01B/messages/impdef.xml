@@ -22,7 +22,7 @@
       <segment id="COM" maxrepeat="5"/>
     </group>
   </group>
-  <group id="SG3" maxrepeat="9999">
+  <group id="SG3" maxrepeat="99999">
     <segment id="DFN" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="99"/>
     <group id="SG4" maxrepeat="1">
@@ -48,22 +48,21 @@
       <segment id="ELM" maxrepeat="1"/>
       <segment id="EDT" maxrepeat="1"/>
       <segment id="IMD" maxrepeat="9"/>
-      <segment id="GIS" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="99"/>
     </group>
     <group id="SG9" maxrepeat="999">
       <segment id="MEA" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="99"/>
     </group>
-    <group id="SG10" maxrepeat="9999">
+    <group id="SG10" maxrepeat="99999">
       <segment id="ELV" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="99"/>
     </group>
-    <group id="SG11" maxrepeat="9999">
+    <group id="SG11" maxrepeat="99999">
       <segment id="CDV" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="99"/>
     </group>
-    <group id="SG12" maxrepeat="9999">
+    <group id="SG12" maxrepeat="99999">
       <segment id="DRD" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="99"/>
     </group>

@@ -6,16 +6,11 @@
     <data_element id="0054" value="04A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="5" required="true"/>
   <segment id="IRQ" maxrepeat="1"/>
   <segment id="FTX" maxrepeat="20"/>
-  <group id="SG1" maxrepeat="9">
-    <segment id="RFF" maxrepeat="1" required="true"/>
-    <segment id="DTM" maxrepeat="9"/>
-  </group>
   <group id="SG2" maxrepeat="25" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <group id="SG3" maxrepeat="5">
@@ -23,11 +18,10 @@
       <segment id="COM" maxrepeat="5"/>
     </group>
   </group>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG4" maxrepeat="999">
     <segment id="DOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
-    <group id="SG5" maxrepeat="2000">
+    <group id="SG5" maxrepeat="20000">
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="25"/>
       <segment id="IMD" maxrepeat="10"/>

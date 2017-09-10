@@ -27,11 +27,11 @@
       <segment id="CED" maxrepeat="10"/>
       <segment id="DTM" maxrepeat="1"/>
     </group>
-  </group>
-  <group id="SG4" maxrepeat="10">
-    <segment id="CTA" maxrepeat="1" required="true"/>
-    <segment id="COM" maxrepeat="5"/>
-    <segment id="LOC" maxrepeat="1"/>
+    <group id="SG4" maxrepeat="10">
+      <segment id="CTA" maxrepeat="1" required="true"/>
+      <segment id="COM" maxrepeat="5"/>
+      <segment id="LOC" maxrepeat="1"/>
+    </group>
   </group>
   <group id="SG5" maxrepeat="999">
     <segment id="DOC" maxrepeat="1" required="true"/>
@@ -44,7 +44,7 @@
       <segment id="DTM" maxrepeat="5"/>
     </group>
   </group>
-  <group id="SG7" maxrepeat="1000">
+  <group id="SG7" maxrepeat="10000">
     <segment id="BII" maxrepeat="1" required="true"/>
     <segment id="GEI" maxrepeat="1"/>
     <segment id="DTM" maxrepeat="1"/>

@@ -25,7 +25,7 @@
     <segment id="CCI" maxrepeat="1" required="true"/>
     <segment id="CAV" maxrepeat="1"/>
   </group>
-  <group id="SG4" maxrepeat="9999" required="true">
+  <group id="SG4" maxrepeat="99999" required="true">
     <segment id="SEQ" maxrepeat="1" required="true"/>
     <segment id="IND" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="9"/>
@@ -44,10 +44,10 @@
         <segment id="COM" maxrepeat="9"/>
       </group>
     </group>
-  </group>
-  <group id="SG7" maxrepeat="99">
-    <segment id="CCI" maxrepeat="1" required="true"/>
-    <segment id="CAV" maxrepeat="1"/>
+    <group id="SG7" maxrepeat="99">
+      <segment id="CCI" maxrepeat="1" required="true"/>
+      <segment id="CAV" maxrepeat="1"/>
+    </group>
   </group>
   <group id="SG8" maxrepeat="1">
     <segment id="AUT" maxrepeat="1" required="true"/>

@@ -19,7 +19,7 @@
     <segment id="COM" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="99"/>
   </group>
-  <group id="SG3" maxrepeat="9999" required="true">
+  <group id="SG3" maxrepeat="99999" required="true">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="ATT" maxrepeat="1"/>
     <segment id="FII" maxrepeat="9"/>
@@ -28,25 +28,25 @@
       <segment id="RFF" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="1"/>
     </group>
-  </group>
-  <group id="SG5" maxrepeat="9">
-    <segment id="NAD" maxrepeat="1" required="true"/>
-    <segment id="CTA" maxrepeat="1"/>
-    <segment id="COM" maxrepeat="9"/>
-  </group>
-  <group id="SG6" maxrepeat="1">
-    <segment id="MOA" maxrepeat="1" required="true"/>
-    <segment id="CUX" maxrepeat="1"/>
-  </group>
-  <group id="SG7" maxrepeat="99">
-    <segment id="RCS" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="99"/>
-    <segment id="MOA" maxrepeat="1"/>
-    <segment id="LOC" maxrepeat="9"/>
-    <group id="SG8" maxrepeat="1">
-      <segment id="GIR" maxrepeat="1" required="true"/>
-      <segment id="QTY" maxrepeat="1"/>
-      <segment id="PRI" maxrepeat="1"/>
+    <group id="SG5" maxrepeat="9">
+      <segment id="NAD" maxrepeat="1" required="true"/>
+      <segment id="CTA" maxrepeat="1"/>
+      <segment id="COM" maxrepeat="9"/>
+    </group>
+    <group id="SG6" maxrepeat="1">
+      <segment id="MOA" maxrepeat="1" required="true"/>
+      <segment id="CUX" maxrepeat="1"/>
+    </group>
+    <group id="SG7" maxrepeat="99">
+      <segment id="RCS" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="99"/>
+      <segment id="MOA" maxrepeat="1"/>
+      <segment id="LOC" maxrepeat="9"/>
+      <group id="SG8" maxrepeat="1">
+        <segment id="GIR" maxrepeat="1" required="true"/>
+        <segment id="QTY" maxrepeat="1"/>
+        <segment id="PRI" maxrepeat="1"/>
+      </group>
     </group>
   </group>
   <segment id="CNT" maxrepeat="9"/>

@@ -44,9 +44,8 @@
       <segment id="DTM" maxrepeat="5"/>
     </group>
   </group>
-  <group id="SG7" maxrepeat="1000">
+  <group id="SG7" maxrepeat="10000">
     <segment id="BII" maxrepeat="1" required="true"/>
-    <segment id="GIS" maxrepeat="1"/>
     <segment id="DTM" maxrepeat="1"/>
     <segment id="IMD" maxrepeat="1"/>
     <segment id="RFF" maxrepeat="5"/>

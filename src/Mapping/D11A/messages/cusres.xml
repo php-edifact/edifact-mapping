@@ -26,7 +26,7 @@
     <segment id="DTM" maxrepeat="9"/>
     <segment id="LOC" maxrepeat="9"/>
   </group>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="ERP" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="9"/>
     <segment id="ERC" maxrepeat="99"/>
@@ -37,7 +37,7 @@
     <segment id="MOA" maxrepeat="99"/>
     <segment id="GEI" maxrepeat="99"/>
   </group>
-  <group id="SG6" maxrepeat="9999">
+  <group id="SG6" maxrepeat="99999">
     <segment id="DOC" maxrepeat="1" required="true"/>
     <segment id="PAC" maxrepeat="9"/>
     <segment id="RFF" maxrepeat="9"/>
@@ -56,35 +56,35 @@
         <segment id="COM" maxrepeat="9"/>
       </group>
     </group>
-  </group>
-  <group id="SG9" maxrepeat="99">
-    <segment id="MOA" maxrepeat="1" required="true"/>
-    <group id="SG10" maxrepeat="9">
-      <segment id="CUX" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="1"/>
+    <group id="SG9" maxrepeat="99">
+      <segment id="MOA" maxrepeat="1" required="true"/>
+      <group id="SG10" maxrepeat="9">
+        <segment id="CUX" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="1"/>
+      </group>
     </group>
-  </group>
-  <group id="SG11" maxrepeat="99">
-    <segment id="TAX" maxrepeat="1" required="true"/>
-    <segment id="MOA" maxrepeat="99"/>
-    <segment id="GEI" maxrepeat="99"/>
-  </group>
-  <group id="SG12" maxrepeat="9999">
-    <segment id="CST" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <group id="SG13" maxrepeat="9999">
+    <group id="SG11" maxrepeat="99">
       <segment id="TAX" maxrepeat="1" required="true"/>
       <segment id="MOA" maxrepeat="99"/>
       <segment id="GEI" maxrepeat="99"/>
-      <segment id="MEA" maxrepeat="9"/>
-      <segment id="RFF" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG14" maxrepeat="9999">
-    <segment id="ERP" maxrepeat="1" required="true"/>
-    <segment id="RFF" maxrepeat="9"/>
-    <segment id="ERC" maxrepeat="9999"/>
-    <segment id="FTX" maxrepeat="9"/>
+    <group id="SG12" maxrepeat="9999">
+      <segment id="CST" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="9"/>
+      <group id="SG13" maxrepeat="99999">
+        <segment id="TAX" maxrepeat="1" required="true"/>
+        <segment id="MOA" maxrepeat="99"/>
+        <segment id="GEI" maxrepeat="99"/>
+        <segment id="MEA" maxrepeat="9"/>
+        <segment id="RFF" maxrepeat="9"/>
+      </group>
+    </group>
+    <group id="SG14" maxrepeat="9999">
+      <segment id="ERP" maxrepeat="1" required="true"/>
+      <segment id="RFF" maxrepeat="9"/>
+      <segment id="ERC" maxrepeat="9999"/>
+      <segment id="FTX" maxrepeat="9"/>
+    </group>
   </group>
   <segment id="CNT" maxrepeat="9"/>
   <group id="SG15" maxrepeat="9">

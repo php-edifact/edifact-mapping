@@ -41,7 +41,7 @@
     <segment id="RFF" maxrepeat="10"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="QTY" maxrepeat="5"/>
-    <group id="SG6" maxrepeat="1000">
+    <group id="SG6" maxrepeat="10000">
       <segment id="BII" maxrepeat="1" required="true"/>
       <segment id="GIS" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="10"/>
@@ -57,17 +57,18 @@
       <segment id="MEA" maxrepeat="1"/>
       <group id="SG7" maxrepeat="99">
         <segment id="RFF" maxrepeat="1" required="true"/>
-        <segment id="SG8" maxrepeat="1"/>
-        <segment id="DOC" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="1"/>
-      </group>
-      <group id="SG9" maxrepeat="999">
-        <segment id="SEQ" maxrepeat="1" required="true"/>
-        <segment id="BII" maxrepeat="1" required="true"/>
-        <segment id="RFF" maxrepeat="1"/>
-        <segment id="GIS" maxrepeat="5" required="true"/>
-        <segment id="DTM" maxrepeat="1"/>
-        <segment id="IMD" maxrepeat="1"/>
+        <group id="SG8" maxrepeat="1">
+          <segment id="DOC" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="1"/>
+        </group>
+        <group id="SG9" maxrepeat="999">
+          <segment id="SEQ" maxrepeat="1" required="true"/>
+          <segment id="BII" maxrepeat="1" required="true"/>
+          <segment id="RFF" maxrepeat="1"/>
+          <segment id="GIS" maxrepeat="5" required="true"/>
+          <segment id="DTM" maxrepeat="1"/>
+          <segment id="IMD" maxrepeat="1"/>
+        </group>
       </group>
     </group>
   </group>

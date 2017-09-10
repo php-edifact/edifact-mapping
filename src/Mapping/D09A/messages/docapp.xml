@@ -90,13 +90,13 @@
       <segment id="DTM" maxrepeat="1"/>
       <segment id="FTX" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG16" maxrepeat="9">
-    <segment id="ALI" maxrepeat="1" required="true"/>
-    <group id="SG17" maxrepeat="3">
-      <segment id="NAD" maxrepeat="1" required="true"/>
-      <segment id="CTA" maxrepeat="1"/>
-      <segment id="COM" maxrepeat="5"/>
+    <group id="SG16" maxrepeat="9">
+      <segment id="ALI" maxrepeat="1" required="true"/>
+      <group id="SG17" maxrepeat="3">
+        <segment id="NAD" maxrepeat="1" required="true"/>
+        <segment id="CTA" maxrepeat="1"/>
+        <segment id="COM" maxrepeat="5"/>
+      </group>
     </group>
   </group>
   <group id="SG18" maxrepeat="1">

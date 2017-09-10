@@ -7,7 +7,6 @@
     <data_element id="0051" value="UN"/>
   </defaults>
   <segment id="UNH" maxrepeat="1" required="true"/>
-  <segment id="GIS" maxrepeat="5" required="true"/>
   <group id="SG1" maxrepeat="9" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <segment id="CTA" maxrepeat="1"/>
@@ -19,7 +18,6 @@
   <group id="SG2" maxrepeat="99" required="true">
     <segment id="REL" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="9"/>
-    <segment id="GIS" maxrepeat="5"/>
     <segment id="CUX" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
     <segment id="QTY" maxrepeat="9"/>
@@ -30,20 +28,20 @@
       <segment id="ARD" maxrepeat="1" required="true"/>
       <group id="SG4" maxrepeat="99" required="true">
         <segment id="MOA" maxrepeat="1" required="true"/>
-        <segment id="GIS" maxrepeat="9"/>
         <segment id="PCD" maxrepeat="9"/>
         <segment id="FTX" maxrepeat="2"/>
         <segment id="DTM" maxrepeat="9"/>
-        <segment id="SG5" maxrepeat="9"/>
-        <segment id="RFF" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="2"/>
-        <segment id="COM" maxrepeat="1"/>
-        <segment id="FTX" maxrepeat="1"/>
-      </group>
-      <group id="SG6" maxrepeat="1">
-        <segment id="CUX" maxrepeat="1" required="true"/>
-        <segment id="MOA" maxrepeat="1"/>
-        <segment id="AJT" maxrepeat="1" required="true"/>
+        <group id="SG5" maxrepeat="9">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="2"/>
+          <segment id="COM" maxrepeat="1"/>
+          <segment id="FTX" maxrepeat="1"/>
+        </group>
+        <group id="SG6" maxrepeat="1">
+          <segment id="CUX" maxrepeat="1" required="true"/>
+          <segment id="MOA" maxrepeat="1"/>
+          <segment id="AJT" maxrepeat="1" required="true"/>
+        </group>
       </group>
     </group>
   </group>

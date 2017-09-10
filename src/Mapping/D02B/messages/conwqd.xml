@@ -42,11 +42,9 @@
     </group>
     <group id="SG8" maxrepeat="999">
       <segment id="LIN" maxrepeat="1" required="true"/>
-      <segment id="GEI" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="1"/>
       <group id="SG9" maxrepeat="10">
         <segment id="QTY" maxrepeat="1" required="true"/>
-        <segment id="GEI" maxrepeat="1"/>
         <segment id="RFF" maxrepeat="1"/>
         <segment id="FTX" maxrepeat="1"/>
       </group>

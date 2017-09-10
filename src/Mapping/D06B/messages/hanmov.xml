@@ -73,32 +73,33 @@
       <segment id="TCC" maxrepeat="9"/>
       <group id="SG14" maxrepeat="9">
         <segment id="NAD" maxrepeat="1" required="true"/>
-        <segment id="SG15" maxrepeat="9"/>
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
+        <group id="SG15" maxrepeat="9">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="9"/>
+        </group>
       </group>
-    </group>
-    <segment id="MEA" maxrepeat="9"/>
-    <segment id="QTY" maxrepeat="9"/>
-    <segment id="GIN" maxrepeat="99"/>
-    <segment id="GIR" maxrepeat="99"/>
-    <group id="SG16" maxrepeat="1">
-      <segment id="DTM" maxrepeat="1" required="true"/>
-      <segment id="QTY" maxrepeat="9"/>
-    </group>
-    <segment id="FTX" maxrepeat="9"/>
-    <group id="SG17" maxrepeat="1">
-      <segment id="RFF" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="9"/>
-    </group>
-    <segment id="LOC" maxrepeat="9"/>
-    <group id="SG18" maxrepeat="1">
-      <segment id="PAC" maxrepeat="1" required="true"/>
       <segment id="MEA" maxrepeat="9"/>
       <segment id="QTY" maxrepeat="9"/>
-      <group id="SG19" maxrepeat="9">
-        <segment id="PCI" maxrepeat="1" required="true"/>
-        <segment id="GIN" maxrepeat="9"/>
+      <segment id="GIN" maxrepeat="99"/>
+      <segment id="GIR" maxrepeat="99"/>
+      <group id="SG16" maxrepeat="1">
+        <segment id="DTM" maxrepeat="1" required="true"/>
+        <segment id="QTY" maxrepeat="9"/>
+      </group>
+      <segment id="FTX" maxrepeat="9"/>
+      <group id="SG17" maxrepeat="1">
+        <segment id="RFF" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="9"/>
+      </group>
+      <segment id="LOC" maxrepeat="9"/>
+      <group id="SG18" maxrepeat="1">
+        <segment id="PAC" maxrepeat="1" required="true"/>
+        <segment id="MEA" maxrepeat="9"/>
+        <segment id="QTY" maxrepeat="9"/>
+        <group id="SG19" maxrepeat="9">
+          <segment id="PCI" maxrepeat="1" required="true"/>
+          <segment id="GIN" maxrepeat="9"/>
+        </group>
       </group>
     </group>
   </group>

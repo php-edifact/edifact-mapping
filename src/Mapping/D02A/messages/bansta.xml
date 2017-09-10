@@ -32,7 +32,6 @@
     </group>
     <group id="SG6" maxrepeat="99">
       <segment id="SEQ" maxrepeat="1" required="true"/>
-      <segment id="GEI" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="2"/>
       <segment id="MOA" maxrepeat="1"/>
       <segment id="CUX" maxrepeat="1"/>

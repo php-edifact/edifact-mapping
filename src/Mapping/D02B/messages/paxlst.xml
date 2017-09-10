@@ -23,24 +23,20 @@
       <segment id="DTM" maxrepeat="5"/>
     </group>
   </group>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <segment id="ATT" maxrepeat="9"/>
     <segment id="DTM" maxrepeat="9"/>
     <segment id="MEA" maxrepeat="9"/>
-    <segment id="GEI" maxrepeat="5"/>
     <segment id="FTX" maxrepeat="5"/>
     <segment id="LOC" maxrepeat="25"/>
     <segment id="COM" maxrepeat="1"/>
     <segment id="EMP" maxrepeat="9"/>
     <segment id="NAT" maxrepeat="9"/>
-    <segment id="RFF" maxrepeat="1"/>
     <group id="SG5" maxrepeat="5">
       <segment id="DOC" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>
-      <segment id="GEI" maxrepeat="9"/>
       <segment id="RFF" maxrepeat="9"/>
-      <segment id="LOC" maxrepeat="2"/>
       <segment id="CPI" maxrepeat="1"/>
       <segment id="QTY" maxrepeat="9"/>
     </group>

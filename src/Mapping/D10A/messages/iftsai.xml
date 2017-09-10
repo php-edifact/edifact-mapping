@@ -64,19 +64,19 @@
       <segment id="GDS" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG11" maxrepeat="9">
-    <segment id="MEA" maxrepeat="1" required="true"/>
-    <segment id="EQN" maxrepeat="9"/>
-  </group>
-  <group id="SG12" maxrepeat="9">
-    <segment id="DIM" maxrepeat="1" required="true"/>
-    <segment id="EQN" maxrepeat="9"/>
-  </group>
-  <group id="SG13" maxrepeat="9">
-    <segment id="DGS" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
+    <group id="SG11" maxrepeat="9">
+      <segment id="MEA" maxrepeat="1" required="true"/>
+      <segment id="EQN" maxrepeat="9"/>
+    </group>
+    <group id="SG12" maxrepeat="9">
+      <segment id="DIM" maxrepeat="1" required="true"/>
+      <segment id="EQN" maxrepeat="9"/>
+    </group>
+    <group id="SG13" maxrepeat="9">
+      <segment id="DGS" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="9"/>
+      <segment id="DTM" maxrepeat="9"/>
+    </group>
   </group>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

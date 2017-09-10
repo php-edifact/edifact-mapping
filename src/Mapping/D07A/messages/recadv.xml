@@ -92,79 +92,82 @@
       <group id="SG21" maxrepeat="999">
         <segment id="PCI" maxrepeat="1" required="true"/>
         <segment id="RFF" maxrepeat="9"/>
-        <segment id="SG22" maxrepeat="10"/>
-        <segment id="CDI" maxrepeat="1" required="true"/>
-        <segment id="INP" maxrepeat="5"/>
-      </group>
-      <group id="SG23" maxrepeat="999">
-        <segment id="GIN" maxrepeat="1" required="true"/>
-        <segment id="SG24" maxrepeat="10"/>
-        <segment id="CDI" maxrepeat="1" required="true"/>
-        <segment id="INP" maxrepeat="5"/>
-      </group>
-    </group>
-  </group>
-  <group id="SG25" maxrepeat="9999">
-    <segment id="LIN" maxrepeat="1" required="true"/>
-    <segment id="PIA" maxrepeat="10"/>
-    <segment id="IMD" maxrepeat="99"/>
-    <segment id="QTY" maxrepeat="10"/>
-    <segment id="QVR" maxrepeat="10"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="PRI" maxrepeat="1"/>
-    <segment id="PCD" maxrepeat="9"/>
-    <segment id="FTX" maxrepeat="99"/>
-    <group id="SG26" maxrepeat="99">
-      <segment id="NAD" maxrepeat="1" required="true"/>
-      <segment id="LOC" maxrepeat="9"/>
-      <group id="SG27" maxrepeat="99">
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
+        <group id="SG22" maxrepeat="10">
+          <segment id="CDI" maxrepeat="1" required="true"/>
+          <segment id="INP" maxrepeat="5"/>
+        </group>
+        <group id="SG23" maxrepeat="999">
+          <segment id="GIN" maxrepeat="1" required="true"/>
+          <group id="SG24" maxrepeat="10">
+            <segment id="CDI" maxrepeat="1" required="true"/>
+            <segment id="INP" maxrepeat="5"/>
+          </group>
+        </group>
       </group>
     </group>
-    <group id="SG28" maxrepeat="10">
-      <segment id="CDI" maxrepeat="1" required="true"/>
-      <segment id="INP" maxrepeat="5"/>
-    </group>
-    <group id="SG29" maxrepeat="10">
-      <segment id="DOC" maxrepeat="1" required="true"/>
-      <group id="SG30" maxrepeat="10">
-        <segment id="CDI" maxrepeat="1" required="true"/>
-        <segment id="INP" maxrepeat="5"/>
-      </group>
-    </group>
-    <group id="SG31" maxrepeat="99">
-      <segment id="GIN" maxrepeat="1" required="true"/>
-      <group id="SG32" maxrepeat="10">
-        <segment id="CDI" maxrepeat="1" required="true"/>
-        <segment id="INP" maxrepeat="5"/>
-      </group>
-    </group>
-    <group id="SG33" maxrepeat="10">
-      <segment id="RFF" maxrepeat="1" required="true"/>
+    <group id="SG25" maxrepeat="9999">
+      <segment id="LIN" maxrepeat="1" required="true"/>
+      <segment id="PIA" maxrepeat="10"/>
+      <segment id="IMD" maxrepeat="99"/>
+      <segment id="QTY" maxrepeat="10"/>
+      <segment id="QVR" maxrepeat="10"/>
       <segment id="DTM" maxrepeat="9"/>
-      <segment id="GEI" maxrepeat="99"/>
-      <segment id="MOA" maxrepeat="99"/>
-      <segment id="ALC" maxrepeat="1"/>
-    </group>
-    <group id="SG34" maxrepeat="9999">
-      <segment id="PCI" maxrepeat="1" required="true"/>
-      <segment id="QTY" maxrepeat="9"/>
-      <segment id="QVR" maxrepeat="1"/>
-      <group id="SG35" maxrepeat="10">
+      <segment id="PRI" maxrepeat="1"/>
+      <segment id="PCD" maxrepeat="9"/>
+      <segment id="FTX" maxrepeat="99"/>
+      <group id="SG26" maxrepeat="99">
+        <segment id="NAD" maxrepeat="1" required="true"/>
+        <segment id="LOC" maxrepeat="9"/>
+        <group id="SG27" maxrepeat="99">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="9"/>
+        </group>
+      </group>
+      <group id="SG28" maxrepeat="10">
         <segment id="CDI" maxrepeat="1" required="true"/>
         <segment id="INP" maxrepeat="5"/>
       </group>
-      <group id="SG36" maxrepeat="10">
+      <group id="SG29" maxrepeat="10">
+        <segment id="DOC" maxrepeat="1" required="true"/>
+        <group id="SG30" maxrepeat="10">
+          <segment id="CDI" maxrepeat="1" required="true"/>
+          <segment id="INP" maxrepeat="5"/>
+        </group>
+      </group>
+      <group id="SG31" maxrepeat="99">
         <segment id="GIN" maxrepeat="1" required="true"/>
-        <segment id="SG37" maxrepeat="10"/>
-        <segment id="CDI" maxrepeat="1" required="true"/>
-        <segment id="INP" maxrepeat="5"/>
+        <group id="SG32" maxrepeat="10">
+          <segment id="CDI" maxrepeat="1" required="true"/>
+          <segment id="INP" maxrepeat="5"/>
+        </group>
       </group>
-    </group>
-    <group id="SG38" maxrepeat="9">
-      <segment id="RFF" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="9"/>
+      <group id="SG33" maxrepeat="10">
+        <segment id="RFF" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="9"/>
+        <segment id="GEI" maxrepeat="99"/>
+        <segment id="MOA" maxrepeat="99"/>
+        <segment id="ALC" maxrepeat="1"/>
+      </group>
+      <group id="SG34" maxrepeat="9999">
+        <segment id="PCI" maxrepeat="1" required="true"/>
+        <segment id="QTY" maxrepeat="9"/>
+        <segment id="QVR" maxrepeat="1"/>
+        <group id="SG35" maxrepeat="10">
+          <segment id="CDI" maxrepeat="1" required="true"/>
+          <segment id="INP" maxrepeat="5"/>
+        </group>
+        <group id="SG36" maxrepeat="10">
+          <segment id="GIN" maxrepeat="1" required="true"/>
+          <group id="SG37" maxrepeat="10">
+            <segment id="CDI" maxrepeat="1" required="true"/>
+            <segment id="INP" maxrepeat="5"/>
+          </group>
+        </group>
+        <group id="SG38" maxrepeat="9">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="9"/>
+        </group>
+      </group>
     </group>
   </group>
   <segment id="CNT" maxrepeat="1"/>

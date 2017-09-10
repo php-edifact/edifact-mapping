@@ -44,6 +44,4 @@
       <segment id="LOC" maxrepeat="9" required="true"/>
     </group>
   </group>
-  <segment id="CNT" maxrepeat="9"/>
-  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

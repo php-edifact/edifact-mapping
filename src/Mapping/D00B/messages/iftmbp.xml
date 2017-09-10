@@ -130,9 +130,10 @@
       </group>
       <group id="SG27" maxrepeat="999">
         <segment id="SGP" maxrepeat="1" required="true"/>
-        <segment id="SG28" maxrepeat="9"/>
-        <segment id="MEA" maxrepeat="1" required="true"/>
-        <segment id="EQN" maxrepeat="1"/>
+        <group id="SG28" maxrepeat="9">
+          <segment id="MEA" maxrepeat="1" required="true"/>
+          <segment id="EQN" maxrepeat="1"/>
+        </group>
       </group>
     </group>
   </group>

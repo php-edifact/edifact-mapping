@@ -6,7 +6,6 @@
     <data_element id="0054" value="08A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="35" required="true"/>
@@ -18,7 +17,7 @@
   <segment id="GEI" maxrepeat="10"/>
   <segment id="DGS" maxrepeat="1"/>
   <segment id="GIR" maxrepeat="10"/>
-  <group id="SG1" maxrepeat="9999">
+  <group id="SG1" maxrepeat="99999">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="GIR" maxrepeat="5"/>
@@ -148,8 +147,7 @@
     <segment id="DTM" maxrepeat="9"/>
     <segment id="QTY" maxrepeat="9"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG27" maxrepeat="9999">
+  <group id="SG27" maxrepeat="99999">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="PIA" maxrepeat="25"/>
     <segment id="PGI" maxrepeat="99"/>
@@ -290,7 +288,6 @@
       <segment id="QTY" maxrepeat="9"/>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="CNT" maxrepeat="10"/>
   <group id="SG52" maxrepeat="100" required="true">

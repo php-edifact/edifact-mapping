@@ -84,13 +84,14 @@
         <segment id="DGS" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="9"/>
         <segment id="MEA" maxrepeat="9"/>
-        <segment id="SG17" maxrepeat="9"/>
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
-      </group>
-      <group id="SG18" maxrepeat="999">
-        <segment id="SGP" maxrepeat="1" required="true"/>
-        <segment id="MEA" maxrepeat="9"/>
+        <group id="SG17" maxrepeat="9">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="9"/>
+        </group>
+        <group id="SG18" maxrepeat="999">
+          <segment id="SGP" maxrepeat="1" required="true"/>
+          <segment id="MEA" maxrepeat="9"/>
+        </group>
       </group>
     </group>
   </group>

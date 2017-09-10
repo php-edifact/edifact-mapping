@@ -10,7 +10,6 @@
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="99"/>
-  <segment id="GIS" maxrepeat="1"/>
   <group id="SG1" maxrepeat="9">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>

@@ -6,7 +6,6 @@
     <data_element id="0054" value="07B"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9" required="true"/>
@@ -41,8 +40,7 @@
     <segment id="FII" maxrepeat="1"/>
     <segment id="PAI" maxrepeat="9"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG7" maxrepeat="9999">
+  <group id="SG7" maxrepeat="99999">
     <segment id="DOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
     <group id="SG8" maxrepeat="9">
@@ -67,7 +65,6 @@
       </group>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <group id="SG12" maxrepeat="99">
     <segment id="MOA" maxrepeat="1" required="true"/>

@@ -37,7 +37,6 @@
       <segment id="FNT" maxrepeat="1" required="true"/>
       <segment id="REL" maxrepeat="1"/>
       <segment id="GIR" maxrepeat="9"/>
-      <segment id="ATT" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="9"/>
     </group>
   </group>
@@ -50,7 +49,6 @@
       <segment id="FNT" maxrepeat="1" required="true"/>
       <segment id="REL" maxrepeat="1"/>
       <segment id="GIR" maxrepeat="9"/>
-      <segment id="ATT" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="9"/>
     </group>
   </group>
@@ -63,7 +61,6 @@
       <segment id="FNT" maxrepeat="1" required="true"/>
       <segment id="REL" maxrepeat="1"/>
       <segment id="GIR" maxrepeat="9"/>
-      <segment id="ATT" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="9"/>
     </group>
   </group>

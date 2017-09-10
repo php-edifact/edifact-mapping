@@ -41,21 +41,20 @@
       </group>
     </group>
   </group>
-  <group id="SG7" maxrepeat="99">
-    <segment id="TSR" maxrepeat="1" required="true"/>
+  <segment id="TSR" maxrepeat="1" required="true"/>
+  <segment id="QTY" maxrepeat="9"/>
+  <segment id="FTX" maxrepeat="9"/>
+  <group id="SG8" maxrepeat="9">
+    <segment id="LOC" maxrepeat="1" required="true"/>
+    <segment id="MEA" maxrepeat="9"/>
+    <segment id="DTM" maxrepeat="9"/>
     <segment id="QTY" maxrepeat="9"/>
+    <segment id="POC" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
-    <group id="SG8" maxrepeat="9">
-      <segment id="LOC" maxrepeat="1" required="true"/>
-      <segment id="MEA" maxrepeat="9"/>
-      <segment id="DTM" maxrepeat="9"/>
-      <segment id="QTY" maxrepeat="9"/>
-      <segment id="POC" maxrepeat="9"/>
-      <segment id="FTX" maxrepeat="9"/>
-      <group id="SG9" maxrepeat="9">
-        <segment id="HAN" maxrepeat="1" required="true"/>
-        <segment id="NAD" maxrepeat="9"/>
-        <segment id="SG10" maxrepeat="9"/>
+    <group id="SG9" maxrepeat="9">
+      <segment id="HAN" maxrepeat="1" required="true"/>
+      <segment id="NAD" maxrepeat="9"/>
+      <group id="SG10" maxrepeat="9">
         <segment id="GDS" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="9"/>
         <segment id="MEA" maxrepeat="9"/>
@@ -64,5 +63,4 @@
       </group>
     </group>
   </group>
-  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

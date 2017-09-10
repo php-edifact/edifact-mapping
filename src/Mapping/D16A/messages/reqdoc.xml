@@ -34,13 +34,13 @@
       <segment id="RFF" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG6" maxrepeat="99">
-    <segment id="NAD" maxrepeat="1" required="true"/>
-    <segment id="LOC" maxrepeat="9"/>
-    <group id="SG7" maxrepeat="9">
-      <segment id="CTA" maxrepeat="1" required="true"/>
-      <segment id="COM" maxrepeat="9"/>
+    <group id="SG6" maxrepeat="99">
+      <segment id="NAD" maxrepeat="1" required="true"/>
+      <segment id="LOC" maxrepeat="9"/>
+      <group id="SG7" maxrepeat="9">
+        <segment id="CTA" maxrepeat="1" required="true"/>
+        <segment id="COM" maxrepeat="9"/>
+      </group>
     </group>
   </group>
   <segment id="UNT" maxrepeat="1" required="true"/>

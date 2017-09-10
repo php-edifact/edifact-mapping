@@ -6,12 +6,10 @@
     <data_element id="0054" value="99B"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="9"/>
-  <segment id="CUX" maxrepeat="9"/>
   <group id="SG1" maxrepeat="9">
     <segment id="DOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
@@ -56,7 +54,6 @@
       <segment id="MOA" maxrepeat="9"/>
     </group>
   </group>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG11" maxrepeat="9999" required="true">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="PIA" maxrepeat="9"/>
@@ -115,14 +112,12 @@
       <segment id="ALI" maxrepeat="9"/>
       <segment id="DTM" maxrepeat="9"/>
       <segment id="MOA" maxrepeat="9"/>
-      <segment id="PCD" maxrepeat="9"/>
       <group id="SG23" maxrepeat="9">
         <segment id="TAX" maxrepeat="1" required="true"/>
         <segment id="MOA" maxrepeat="1"/>
       </group>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="CNT" maxrepeat="9"/>
   <segment id="MOA" maxrepeat="9"/>

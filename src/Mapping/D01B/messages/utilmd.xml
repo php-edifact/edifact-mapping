@@ -24,7 +24,7 @@
       <segment id="COM" maxrepeat="9"/>
     </group>
   </group>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="IDE" maxrepeat="1" required="true"/>
     <segment id="LOC" maxrepeat="9"/>
     <segment id="PIA" maxrepeat="9"/>

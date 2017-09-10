@@ -40,14 +40,14 @@
         <segment id="COM" maxrepeat="9"/>
       </group>
     </group>
-  </group>
-  <group id="SG8" maxrepeat="99" required="true">
-    <segment id="LOC" maxrepeat="1" required="true"/>
-    <segment id="DTM" maxrepeat="9"/>
-  </group>
-  <group id="SG9" maxrepeat="9">
-    <segment id="RFF" maxrepeat="1" required="true"/>
-    <segment id="DTM" maxrepeat="1"/>
+    <group id="SG8" maxrepeat="99" required="true">
+      <segment id="LOC" maxrepeat="1" required="true"/>
+      <segment id="DTM" maxrepeat="9"/>
+    </group>
+    <group id="SG9" maxrepeat="9">
+      <segment id="RFF" maxrepeat="1" required="true"/>
+      <segment id="DTM" maxrepeat="1"/>
+    </group>
   </group>
   <group id="SG10" maxrepeat="99" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>
@@ -69,17 +69,17 @@
       <segment id="MOA" maxrepeat="1" required="true"/>
       <segment id="CUX" maxrepeat="1"/>
     </group>
-  </group>
-  <group id="SG14" maxrepeat="9">
-    <segment id="DOC" maxrepeat="1" required="true"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="EFI" maxrepeat="1"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <group id="SG15" maxrepeat="9">
-      <segment id="NAD" maxrepeat="1" required="true"/>
-      <group id="SG16" maxrepeat="9">
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
+    <group id="SG14" maxrepeat="9">
+      <segment id="DOC" maxrepeat="1" required="true"/>
+      <segment id="DTM" maxrepeat="9"/>
+      <segment id="EFI" maxrepeat="1"/>
+      <segment id="FTX" maxrepeat="9"/>
+      <group id="SG15" maxrepeat="9">
+        <segment id="NAD" maxrepeat="1" required="true"/>
+        <group id="SG16" maxrepeat="9">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="9"/>
+        </group>
       </group>
     </group>
   </group>
@@ -95,35 +95,35 @@
         <segment id="EQN" maxrepeat="1"/>
       </group>
     </group>
-  </group>
-  <group id="SG20" maxrepeat="9">
-    <segment id="DGS" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="99"/>
-  </group>
-  <group id="SG21" maxrepeat="99">
-    <segment id="STS" maxrepeat="1" required="true"/>
-    <segment id="RFF" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="ICD" maxrepeat="9"/>
-    <segment id="LOC" maxrepeat="9"/>
-    <segment id="MEA" maxrepeat="9"/>
-    <segment id="QRS" maxrepeat="99"/>
-    <segment id="FTX" maxrepeat="99"/>
-    <group id="SG22" maxrepeat="9">
-      <segment id="MOA" maxrepeat="1" required="true"/>
-      <segment id="CUX" maxrepeat="1"/>
+    <group id="SG20" maxrepeat="9">
+      <segment id="DGS" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="99"/>
     </group>
-  </group>
-  <group id="SG23" maxrepeat="9">
-    <segment id="DOC" maxrepeat="1" required="true"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="EFI" maxrepeat="1"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <group id="SG24" maxrepeat="9">
-      <segment id="NAD" maxrepeat="1" required="true"/>
-      <group id="SG25" maxrepeat="9">
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
+    <group id="SG21" maxrepeat="99">
+      <segment id="STS" maxrepeat="1" required="true"/>
+      <segment id="RFF" maxrepeat="9"/>
+      <segment id="DTM" maxrepeat="9"/>
+      <segment id="ICD" maxrepeat="9"/>
+      <segment id="LOC" maxrepeat="9"/>
+      <segment id="MEA" maxrepeat="9"/>
+      <segment id="QRS" maxrepeat="99"/>
+      <segment id="FTX" maxrepeat="99"/>
+      <group id="SG22" maxrepeat="9">
+        <segment id="MOA" maxrepeat="1" required="true"/>
+        <segment id="CUX" maxrepeat="1"/>
+      </group>
+      <group id="SG23" maxrepeat="9">
+        <segment id="DOC" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="9"/>
+        <segment id="EFI" maxrepeat="1"/>
+        <segment id="FTX" maxrepeat="9"/>
+        <group id="SG24" maxrepeat="9">
+          <segment id="NAD" maxrepeat="1" required="true"/>
+          <group id="SG25" maxrepeat="9">
+            <segment id="CTA" maxrepeat="1" required="true"/>
+            <segment id="COM" maxrepeat="9"/>
+          </group>
+        </group>
       </group>
     </group>
   </group>

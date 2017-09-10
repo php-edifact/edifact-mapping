@@ -24,17 +24,17 @@
       <segment id="AJT" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG4" maxrepeat="9">
-    <segment id="INP" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="9"/>
-  </group>
-  <group id="SG5" maxrepeat="9999">
-    <segment id="DLI" maxrepeat="1" required="true"/>
-    <segment id="MOA" maxrepeat="2"/>
-    <group id="SG6" maxrepeat="9">
-      <segment id="AJT" maxrepeat="1" required="true"/>
+    <group id="SG4" maxrepeat="9">
+      <segment id="INP" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="9"/>
+    </group>
+    <group id="SG5" maxrepeat="9999">
+      <segment id="DLI" maxrepeat="1" required="true"/>
+      <segment id="MOA" maxrepeat="2"/>
+      <group id="SG6" maxrepeat="9">
+        <segment id="AJT" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="9"/>
+      </group>
     </group>
   </group>
   <segment id="UNT" maxrepeat="1" required="true"/>

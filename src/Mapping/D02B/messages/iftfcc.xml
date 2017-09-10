@@ -84,7 +84,6 @@
     <segment id="MOA" maxrepeat="9"/>
   </group>
   <group id="SG16" maxrepeat="5">
-    <segment id="PYT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="PCD" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>

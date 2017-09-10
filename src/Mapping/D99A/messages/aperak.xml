@@ -11,10 +11,6 @@
   <segment id="DTM" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="9"/>
   <segment id="CNT" maxrepeat="9"/>
-  <group id="SG1" maxrepeat="99">
-    <segment id="DOC" maxrepeat="1" required="true"/>
-    <segment id="DTM" maxrepeat="99"/>
-  </group>
   <group id="SG2" maxrepeat="9">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
@@ -24,7 +20,7 @@
     <segment id="CTA" maxrepeat="9"/>
     <segment id="COM" maxrepeat="9"/>
   </group>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="ERC" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
     <group id="SG5" maxrepeat="9">

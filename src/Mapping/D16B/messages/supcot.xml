@@ -6,7 +6,6 @@
     <data_element id="0054" value="16B"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="RFF" maxrepeat="6" required="true"/>
@@ -23,9 +22,8 @@
       <segment id="COM" maxrepeat="1"/>
     </group>
   </group>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
-  <group id="SG3" maxrepeat="9999" required="true">
+  <group id="SG3" maxrepeat="99999" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <segment id="ATT" maxrepeat="1"/>
     <segment id="RFF" maxrepeat="1"/>
@@ -47,7 +45,6 @@
       </group>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="MOA" maxrepeat="1" required="true"/>
   <segment id="CNT" maxrepeat="9"/>

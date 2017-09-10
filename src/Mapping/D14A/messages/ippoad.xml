@@ -79,36 +79,36 @@
       <segment id="CTA" maxrepeat="1" required="true"/>
       <segment id="COM" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG8" maxrepeat="999">
-    <segment id="COD" maxrepeat="1" required="true"/>
-    <segment id="IDE" maxrepeat="9"/>
-    <segment id="GEI" maxrepeat="1"/>
-    <segment id="ADR" maxrepeat="9"/>
-    <segment id="ATT" maxrepeat="9"/>
-    <segment id="COM" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="EFI" maxrepeat="1"/>
-    <segment id="EMP" maxrepeat="1"/>
-    <segment id="FII" maxrepeat="1"/>
-    <segment id="IMD" maxrepeat="9"/>
-    <segment id="MOA" maxrepeat="9"/>
-    <segment id="PCD" maxrepeat="9"/>
-    <segment id="QRS" maxrepeat="99"/>
-    <segment id="QTY" maxrepeat="9"/>
-    <segment id="RFF" maxrepeat="9"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <group id="SG9" maxrepeat="99">
-      <segment id="PCC" maxrepeat="1" required="true"/>
+    <group id="SG8" maxrepeat="999">
+      <segment id="COD" maxrepeat="1" required="true"/>
       <segment id="IDE" maxrepeat="9"/>
-      <segment id="ADR" maxrepeat="99"/>
+      <segment id="GEI" maxrepeat="1"/>
+      <segment id="ADR" maxrepeat="9"/>
       <segment id="ATT" maxrepeat="9"/>
+      <segment id="COM" maxrepeat="9"/>
       <segment id="DTM" maxrepeat="9"/>
+      <segment id="EFI" maxrepeat="1"/>
+      <segment id="EMP" maxrepeat="1"/>
+      <segment id="FII" maxrepeat="1"/>
+      <segment id="IMD" maxrepeat="9"/>
       <segment id="MOA" maxrepeat="9"/>
       <segment id="PCD" maxrepeat="9"/>
-      <segment id="QRS" maxrepeat="9"/>
+      <segment id="QRS" maxrepeat="99"/>
       <segment id="QTY" maxrepeat="9"/>
+      <segment id="RFF" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="9"/>
+      <group id="SG9" maxrepeat="99">
+        <segment id="PCC" maxrepeat="1" required="true"/>
+        <segment id="IDE" maxrepeat="9"/>
+        <segment id="ADR" maxrepeat="99"/>
+        <segment id="ATT" maxrepeat="9"/>
+        <segment id="DTM" maxrepeat="9"/>
+        <segment id="MOA" maxrepeat="9"/>
+        <segment id="PCD" maxrepeat="9"/>
+        <segment id="QRS" maxrepeat="9"/>
+        <segment id="QTY" maxrepeat="9"/>
+        <segment id="FTX" maxrepeat="9"/>
+      </group>
     </group>
   </group>
   <group id="SG10" maxrepeat="9999">

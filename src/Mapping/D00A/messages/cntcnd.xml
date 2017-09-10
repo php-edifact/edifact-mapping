@@ -12,7 +12,6 @@
   <segment id="ALI" maxrepeat="99"/>
   <segment id="AGR" maxrepeat="99"/>
   <segment id="MOA" maxrepeat="99"/>
-  <segment id="GIS" maxrepeat="99"/>
   <segment id="PAI" maxrepeat="99"/>
   <segment id="TOD" maxrepeat="99"/>
   <segment id="FTX" maxrepeat="99"/>
@@ -43,7 +42,6 @@
     <segment id="MOA" maxrepeat="99"/>
   </group>
   <group id="SG7" maxrepeat="99">
-    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="99"/>
     <segment id="PCD" maxrepeat="99"/>
     <segment id="MOA" maxrepeat="99"/>
@@ -51,7 +49,6 @@
   <group id="SG8" maxrepeat="99" required="true">
     <segment id="SEQ" maxrepeat="1" required="true"/>
     <segment id="NAD" maxrepeat="1" required="true"/>
-    <segment id="GIS" maxrepeat="99"/>
     <segment id="FII" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="99"/>
     <group id="SG9" maxrepeat="99">
@@ -100,7 +97,6 @@
   </group>
   <group id="SG19" maxrepeat="99">
     <segment id="FOR" maxrepeat="1" required="true"/>
-    <segment id="GIS" maxrepeat="99"/>
     <segment id="ALI" maxrepeat="99"/>
     <segment id="RFF" maxrepeat="99"/>
     <segment id="DTM" maxrepeat="99"/>
@@ -136,7 +132,6 @@
       <segment id="MOA" maxrepeat="99"/>
     </group>
     <group id="SG25" maxrepeat="99">
-      <segment id="GIS" maxrepeat="1" required="true"/>
       <segment id="RTE" maxrepeat="99"/>
       <segment id="MOA" maxrepeat="99"/>
       <segment id="TAX" maxrepeat="99"/>
@@ -153,7 +148,6 @@
       <segment id="MOA" maxrepeat="99"/>
       <segment id="RFF" maxrepeat="99"/>
       <segment id="DTM" maxrepeat="99"/>
-      <segment id="GIS" maxrepeat="99"/>
       <group id="SG28" maxrepeat="99">
         <segment id="FSQ" maxrepeat="1" required="true"/>
         <segment id="RTE" maxrepeat="99"/>
@@ -162,7 +156,6 @@
         <segment id="MOA" maxrepeat="99"/>
         <segment id="RFF" maxrepeat="99"/>
         <segment id="DTM" maxrepeat="99"/>
-        <segment id="GIS" maxrepeat="99"/>
         <segment id="QTY" maxrepeat="99"/>
       </group>
     </group>
@@ -219,7 +212,6 @@
     </group>
     <group id="SG40" maxrepeat="99">
       <segment id="NAD" maxrepeat="1" required="true"/>
-      <segment id="GIS" maxrepeat="99"/>
       <segment id="FII" maxrepeat="99"/>
       <segment id="MOA" maxrepeat="99"/>
       <segment id="TAX" maxrepeat="99"/>

@@ -6,7 +6,6 @@
     <data_element id="0054" value="12B"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9" required="true"/>
@@ -24,10 +23,10 @@
       <segment id="RFF" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG4" maxrepeat="9">
-    <segment id="CTA" maxrepeat="1" required="true"/>
-    <segment id="COM" maxrepeat="9"/>
+    <group id="SG4" maxrepeat="9">
+      <segment id="CTA" maxrepeat="1" required="true"/>
+      <segment id="COM" maxrepeat="9"/>
+    </group>
   </group>
   <group id="SG5" maxrepeat="9">
     <segment id="CUX" maxrepeat="1" required="true"/>
@@ -41,8 +40,7 @@
     <segment id="FII" maxrepeat="1"/>
     <segment id="PAI" maxrepeat="9"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG7" maxrepeat="9999">
+  <group id="SG7" maxrepeat="99999">
     <segment id="DOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
     <group id="SG8" maxrepeat="9">
@@ -52,22 +50,21 @@
         <segment id="DTM" maxrepeat="9"/>
       </group>
     </group>
-  </group>
-  <group id="SG10" maxrepeat="99">
-    <segment id="MOA" maxrepeat="1" required="true"/>
-    <segment id="TAX" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="PAI" maxrepeat="1"/>
-    <segment id="PYT" maxrepeat="1"/>
-    <segment id="STS" maxrepeat="9"/>
-    <group id="SG11" maxrepeat="9">
-      <segment id="AJT" maxrepeat="1" required="true"/>
+    <group id="SG10" maxrepeat="99">
       <segment id="MOA" maxrepeat="1" required="true"/>
-      <segment id="RFF" maxrepeat="1"/>
-      <segment id="FTX" maxrepeat="9"/>
+      <segment id="TAX" maxrepeat="9"/>
+      <segment id="DTM" maxrepeat="9"/>
+      <segment id="PAI" maxrepeat="1"/>
+      <segment id="PYT" maxrepeat="1"/>
+      <segment id="STS" maxrepeat="9"/>
+      <group id="SG11" maxrepeat="9">
+        <segment id="AJT" maxrepeat="1" required="true"/>
+        <segment id="MOA" maxrepeat="1" required="true"/>
+        <segment id="RFF" maxrepeat="1"/>
+        <segment id="FTX" maxrepeat="9"/>
+      </group>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <group id="SG12" maxrepeat="99">
     <segment id="MOA" maxrepeat="1" required="true"/>

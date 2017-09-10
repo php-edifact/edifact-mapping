@@ -69,21 +69,22 @@
         <segment id="MOA" maxrepeat="5"/>
         <segment id="PIA" maxrepeat="5"/>
         <segment id="DTM" maxrepeat="5"/>
-        <segment id="SG12" maxrepeat="5"/>
-        <segment id="CUX" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="1"/>
-      </group>
-      <group id="SG13" maxrepeat="10">
-        <segment id="AJT" maxrepeat="1" required="true"/>
-        <segment id="MOA" maxrepeat="1"/>
-        <segment id="RFF" maxrepeat="1"/>
-        <segment id="FTX" maxrepeat="5"/>
+        <group id="SG12" maxrepeat="5">
+          <segment id="CUX" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="1"/>
+        </group>
+        <group id="SG13" maxrepeat="10">
+          <segment id="AJT" maxrepeat="1" required="true"/>
+          <segment id="MOA" maxrepeat="1"/>
+          <segment id="RFF" maxrepeat="1"/>
+          <segment id="FTX" maxrepeat="5"/>
+        </group>
       </group>
     </group>
-  </group>
-  <group id="SG14" maxrepeat="1">
-    <segment id="GEI" maxrepeat="1" required="true"/>
-    <segment id="MOA" maxrepeat="5"/>
+    <group id="SG14" maxrepeat="1">
+      <segment id="GEI" maxrepeat="1" required="true"/>
+      <segment id="MOA" maxrepeat="5"/>
+    </group>
   </group>
   <group id="SG15" maxrepeat="5">
     <segment id="AUT" maxrepeat="1" required="true"/>

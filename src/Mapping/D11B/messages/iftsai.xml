@@ -46,41 +46,37 @@
         <segment id="DTM" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="9"/>
       </group>
+      <group id="SG8" maxrepeat="9">
+        <segment id="NAD" maxrepeat="1" required="true"/>
+        <segment id="LOC" maxrepeat="9"/>
+        <group id="SG9" maxrepeat="9">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="9"/>
+        </group>
+      </group>
+      <group id="SG10" maxrepeat="9">
+        <segment id="GID" maxrepeat="1" required="true"/>
+        <segment id="HAN" maxrepeat="9"/>
+        <segment id="FTX" maxrepeat="9"/>
+        <group id="SG11" maxrepeat="9">
+          <segment id="GDS" maxrepeat="1" required="true"/>
+          <segment id="FTX" maxrepeat="9"/>
+        </group>
+        <group id="SG12" maxrepeat="9">
+          <segment id="MEA" maxrepeat="1" required="true"/>
+          <segment id="EQN" maxrepeat="9"/>
+        </group>
+        <group id="SG13" maxrepeat="9">
+          <segment id="DIM" maxrepeat="1" required="true"/>
+          <segment id="EQN" maxrepeat="9"/>
+        </group>
+        <group id="SG14" maxrepeat="9">
+          <segment id="DGS" maxrepeat="1" required="true"/>
+          <segment id="FTX" maxrepeat="9"/>
+          <segment id="DTM" maxrepeat="9"/>
+        </group>
+      </group>
+      <segment id="UNT" maxrepeat="1" required="true"/>
     </group>
   </group>
-  <group id="SG7" maxrepeat="9">
-    <segment id="EQD" maxrepeat="1" required="true"/>
-    <segment id="EQN" maxrepeat="1"/>
-  </group>
-  <group id="SG8" maxrepeat="9">
-    <segment id="NAD" maxrepeat="1" required="true"/>
-    <segment id="LOC" maxrepeat="9"/>
-    <group id="SG9" maxrepeat="9">
-      <segment id="CTA" maxrepeat="1" required="true"/>
-      <segment id="COM" maxrepeat="9"/>
-    </group>
-  </group>
-  <group id="SG10" maxrepeat="9">
-    <segment id="GID" maxrepeat="1" required="true"/>
-    <segment id="HAN" maxrepeat="9"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <group id="SG11" maxrepeat="9">
-      <segment id="GDS" maxrepeat="1" required="true"/>
-      <segment id="FTX" maxrepeat="9"/>
-    </group>
-  </group>
-  <group id="SG12" maxrepeat="9">
-    <segment id="MEA" maxrepeat="1" required="true"/>
-    <segment id="EQN" maxrepeat="9"/>
-  </group>
-  <group id="SG13" maxrepeat="9">
-    <segment id="DIM" maxrepeat="1" required="true"/>
-    <segment id="EQN" maxrepeat="9"/>
-  </group>
-  <group id="SG14" maxrepeat="9">
-    <segment id="DGS" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
-  </group>
-  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

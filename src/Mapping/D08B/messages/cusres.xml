@@ -37,7 +37,7 @@
     <segment id="MOA" maxrepeat="99"/>
     <segment id="GEI" maxrepeat="99"/>
   </group>
-  <group id="SG6" maxrepeat="9999">
+  <group id="SG6" maxrepeat="99999">
     <segment id="DOC" maxrepeat="1" required="true"/>
     <segment id="PAC" maxrepeat="9"/>
     <segment id="RFF" maxrepeat="9"/>
@@ -71,7 +71,7 @@
     <group id="SG12" maxrepeat="9999">
       <segment id="CST" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="9"/>
-      <group id="SG13" maxrepeat="9999">
+      <group id="SG13" maxrepeat="99999">
         <segment id="TAX" maxrepeat="1" required="true"/>
         <segment id="MOA" maxrepeat="99"/>
         <segment id="GEI" maxrepeat="99"/>

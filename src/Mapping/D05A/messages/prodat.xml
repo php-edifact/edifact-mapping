@@ -6,7 +6,6 @@
     <data_element id="0054" value="05A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="10" required="true"/>
@@ -51,8 +50,7 @@
     <segment id="DTM" maxrepeat="9"/>
     <segment id="QTY" maxrepeat="9"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG9" maxrepeat="9999">
+  <group id="SG9" maxrepeat="99999">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="PIA" maxrepeat="10"/>
     <segment id="DTM" maxrepeat="99"/>
@@ -83,7 +81,7 @@
       <segment id="CUX" maxrepeat="1"/>
       <segment id="RNG" maxrepeat="1"/>
     </group>
-    <group id="SG15" maxrepeat="9999">
+    <group id="SG15" maxrepeat="99999">
       <segment id="CCI" maxrepeat="1" required="true"/>
       <segment id="CAV" maxrepeat="10"/>
       <segment id="MEA" maxrepeat="10"/>
@@ -123,7 +121,7 @@
         <segment id="PCD" maxrepeat="9"/>
       </group>
     </group>
-    <group id="SG23" maxrepeat="9999">
+    <group id="SG23" maxrepeat="99999">
       <segment id="HYN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="10"/>
       <segment id="QTY" maxrepeat="5"/>
@@ -141,20 +139,21 @@
         <segment id="NAD" maxrepeat="1" required="true"/>
         <segment id="PIA" maxrepeat="10"/>
         <segment id="QTY" maxrepeat="5"/>
-        <segment id="SG27" maxrepeat="99"/>
-        <segment id="CCI" maxrepeat="1" required="true"/>
-        <segment id="CAV" maxrepeat="99"/>
-        <segment id="MEA" maxrepeat="10"/>
+        <group id="SG27" maxrepeat="99">
+          <segment id="CCI" maxrepeat="1" required="true"/>
+          <segment id="CAV" maxrepeat="99"/>
+          <segment id="MEA" maxrepeat="10"/>
+        </group>
       </group>
     </group>
-  </group>
-  <group id="SG28" maxrepeat="99">
-    <segment id="EFI" maxrepeat="1" required="true"/>
-    <segment id="CED" maxrepeat="99"/>
-    <segment id="COM" maxrepeat="9"/>
-    <segment id="RFF" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="QTY" maxrepeat="9"/>
+    <group id="SG28" maxrepeat="99">
+      <segment id="EFI" maxrepeat="1" required="true"/>
+      <segment id="CED" maxrepeat="99"/>
+      <segment id="COM" maxrepeat="9"/>
+      <segment id="RFF" maxrepeat="9"/>
+      <segment id="DTM" maxrepeat="9"/>
+      <segment id="QTY" maxrepeat="9"/>
+    </group>
   </group>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

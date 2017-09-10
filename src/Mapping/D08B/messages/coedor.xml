@@ -21,7 +21,7 @@
       <segment id="COM" maxrepeat="9"/>
     </group>
   </group>
-  <group id="SG4" maxrepeat="9999" required="true">
+  <group id="SG4" maxrepeat="99999" required="true">
     <segment id="EQD" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="9"/>
     <segment id="DTM" maxrepeat="9"/>

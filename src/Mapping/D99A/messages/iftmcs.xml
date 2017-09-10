@@ -186,9 +186,10 @@
       </group>
       <group id="SG33" maxrepeat="999">
         <segment id="SGP" maxrepeat="1" required="true"/>
-        <segment id="SG34" maxrepeat="9"/>
-        <segment id="MEA" maxrepeat="1" required="true"/>
-        <segment id="EQN" maxrepeat="1"/>
+        <group id="SG34" maxrepeat="9">
+          <segment id="MEA" maxrepeat="1" required="true"/>
+          <segment id="EQN" maxrepeat="1"/>
+        </group>
       </group>
     </group>
   </group>

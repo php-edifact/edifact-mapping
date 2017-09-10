@@ -6,7 +6,6 @@
     <data_element id="0054" value="99A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="35" required="true"/>
@@ -125,10 +124,9 @@
     <segment id="RCS" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="5"/>
     <segment id="DTM" maxrepeat="5"/>
-    <segment id="FTX" maxrepeat="9999"/>
+    <segment id="FTX" maxrepeat="99999"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG26" maxrepeat="2000">
+  <group id="SG26" maxrepeat="20000">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="PIA" maxrepeat="25"/>
     <segment id="IMD" maxrepeat="99"/>
@@ -200,7 +198,6 @@
     <group id="SG37" maxrepeat="999">
       <segment id="NAD" maxrepeat="1" required="true"/>
       <segment id="LOC" maxrepeat="5"/>
-      <segment id="FII" maxrepeat="5"/>
       <group id="SG38" maxrepeat="99">
         <segment id="RFF" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="5"/>
@@ -269,7 +266,7 @@
       <segment id="RCS" maxrepeat="1" required="true"/>
       <segment id="RFF" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="5"/>
-      <segment id="FTX" maxrepeat="9999"/>
+      <segment id="FTX" maxrepeat="99999"/>
     </group>
     <group id="SG54" maxrepeat="10">
       <segment id="STG" maxrepeat="1" required="true"/>
@@ -279,7 +276,6 @@
       </group>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="MOA" maxrepeat="12"/>
   <segment id="CNT" maxrepeat="10"/>

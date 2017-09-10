@@ -76,9 +76,10 @@
       <segment id="FTX" maxrepeat="9"/>
       <group id="SG15" maxrepeat="9">
         <segment id="NAD" maxrepeat="1" required="true"/>
-        <segment id="SG16" maxrepeat="9"/>
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
+        <group id="SG16" maxrepeat="9">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="9"/>
+        </group>
       </group>
     </group>
   </group>
@@ -116,11 +117,13 @@
         <segment id="DTM" maxrepeat="9"/>
         <segment id="EFI" maxrepeat="1"/>
         <segment id="FTX" maxrepeat="9"/>
-        <segment id="SG24" maxrepeat="9"/>
-        <segment id="NAD" maxrepeat="1" required="true"/>
-        <segment id="SG25" maxrepeat="9"/>
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
+        <group id="SG24" maxrepeat="9">
+          <segment id="NAD" maxrepeat="1" required="true"/>
+          <group id="SG25" maxrepeat="9">
+            <segment id="CTA" maxrepeat="1" required="true"/>
+            <segment id="COM" maxrepeat="9"/>
+          </group>
+        </group>
       </group>
     </group>
   </group>

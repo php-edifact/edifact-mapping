@@ -6,7 +6,6 @@
     <data_element id="0054" value="99A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="10" required="true"/>
@@ -42,8 +41,7 @@
     <segment id="CAV" maxrepeat="10"/>
     <segment id="MEA" maxrepeat="10"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG8" maxrepeat="9999" required="true">
+  <group id="SG8" maxrepeat="99999" required="true">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="PIA" maxrepeat="10"/>
     <segment id="DTM" maxrepeat="5"/>
@@ -107,7 +105,7 @@
       <segment id="HAN" maxrepeat="5"/>
       <segment id="PCI" maxrepeat="5"/>
     </group>
-    <group id="SG21" maxrepeat="9999">
+    <group id="SG21" maxrepeat="99999">
       <segment id="HYN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="10"/>
       <segment id="QTY" maxrepeat="5"/>
@@ -125,10 +123,11 @@
         <segment id="NAD" maxrepeat="1" required="true"/>
         <segment id="PIA" maxrepeat="10"/>
         <segment id="QTY" maxrepeat="5"/>
-        <segment id="SG25" maxrepeat="99"/>
-        <segment id="CCI" maxrepeat="1" required="true"/>
-        <segment id="CAV" maxrepeat="99"/>
-        <segment id="MEA" maxrepeat="10"/>
+        <group id="SG25" maxrepeat="99">
+          <segment id="CCI" maxrepeat="1" required="true"/>
+          <segment id="CAV" maxrepeat="99"/>
+          <segment id="MEA" maxrepeat="10"/>
+        </group>
       </group>
     </group>
   </group>

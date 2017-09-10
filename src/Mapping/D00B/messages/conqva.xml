@@ -6,7 +6,6 @@
     <data_element id="0054" value="00B"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9" required="true"/>
@@ -33,8 +32,7 @@
       <segment id="COM" maxrepeat="5"/>
     </group>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG6" maxrepeat="1000">
+  <group id="SG6" maxrepeat="10000">
     <segment id="BII" maxrepeat="1" required="true"/>
     <segment id="RCS" maxrepeat="1"/>
     <segment id="QTY" maxrepeat="6" required="true"/>
@@ -44,16 +42,14 @@
       <group id="SG8" maxrepeat="1000">
         <segment id="IMD" maxrepeat="1" required="true"/>
         <segment id="RFF" maxrepeat="5"/>
-        <segment id="GIS" maxrepeat="5"/>
+        <group id="SG9" maxrepeat="5">
+          <segment id="TAX" maxrepeat="1" required="true"/>
+          <segment id="MOA" maxrepeat="1"/>
+          <segment id="LOC" maxrepeat="5"/>
+        </group>
       </group>
-    </group>
-    <group id="SG9" maxrepeat="5">
-      <segment id="TAX" maxrepeat="1" required="true"/>
-      <segment id="MOA" maxrepeat="1"/>
-      <segment id="LOC" maxrepeat="5"/>
+      <segment id="CNT" maxrepeat="5"/>
+      <segment id="UNT" maxrepeat="1" required="true"/>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
-  <segment id="CNT" maxrepeat="5"/>
-  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -40,17 +40,12 @@
     <segment id="LOC" maxrepeat="9"/>
     <segment id="MEA" maxrepeat="9"/>
     <segment id="DIM" maxrepeat="9"/>
-    <group id="SG7" maxrepeat="9">
-      <segment id="TMP" maxrepeat="1" required="true"/>
-      <segment id="RNG" maxrepeat="1"/>
-    </group>
     <segment id="SEL" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
     <segment id="PCD" maxrepeat="9"/>
     <group id="SG8" maxrepeat="99">
       <segment id="DGS" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="9"/>
-      <segment id="MEA" maxrepeat="9"/>
       <group id="SG9" maxrepeat="9">
         <segment id="CTA" maxrepeat="1" required="true"/>
         <segment id="COM" maxrepeat="9"/>

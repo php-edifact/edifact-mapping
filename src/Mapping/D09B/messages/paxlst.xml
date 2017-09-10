@@ -24,7 +24,7 @@
       <segment id="DTM" maxrepeat="5"/>
     </group>
   </group>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <segment id="ATT" maxrepeat="9"/>
     <segment id="DTM" maxrepeat="9"/>
@@ -45,15 +45,15 @@
       <segment id="CPI" maxrepeat="1"/>
       <segment id="QTY" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG6" maxrepeat="99">
-    <segment id="GID" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="9"/>
-    <segment id="QTY" maxrepeat="9"/>
-  </group>
-  <group id="SG7" maxrepeat="1">
-    <segment id="TDT" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="1"/>
+    <group id="SG6" maxrepeat="99">
+      <segment id="GID" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="9"/>
+      <segment id="QTY" maxrepeat="9"/>
+    </group>
+    <group id="SG7" maxrepeat="1">
+      <segment id="TDT" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="1"/>
+    </group>
   </group>
   <segment id="CNT" maxrepeat="1"/>
   <segment id="AUT" maxrepeat="1"/>

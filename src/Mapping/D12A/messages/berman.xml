@@ -30,15 +30,15 @@
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG5" maxrepeat="9">
-    <segment id="GOR" maxrepeat="1" required="true"/>
-    <segment id="RFF" maxrepeat="9"/>
-    <segment id="NAD" maxrepeat="99"/>
-    <group id="SG6" maxrepeat="9">
-      <segment id="DOC" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="9"/>
-      <segment id="LOC" maxrepeat="9"/>
+    <group id="SG5" maxrepeat="9">
+      <segment id="GOR" maxrepeat="1" required="true"/>
+      <segment id="RFF" maxrepeat="9"/>
+      <segment id="NAD" maxrepeat="99"/>
+      <group id="SG6" maxrepeat="9">
+        <segment id="DOC" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="9"/>
+        <segment id="LOC" maxrepeat="9"/>
+      </group>
     </group>
   </group>
   <group id="SG7" maxrepeat="99">
@@ -55,12 +55,13 @@
       <group id="SG9" maxrepeat="9">
         <segment id="HAN" maxrepeat="1" required="true"/>
         <segment id="NAD" maxrepeat="9"/>
-        <segment id="SG10" maxrepeat="9"/>
-        <segment id="GDS" maxrepeat="1" required="true"/>
-        <segment id="FTX" maxrepeat="9"/>
-        <segment id="MEA" maxrepeat="9"/>
-        <segment id="EQN" maxrepeat="9"/>
-        <segment id="DGS" maxrepeat="9"/>
+        <group id="SG10" maxrepeat="9">
+          <segment id="GDS" maxrepeat="1" required="true"/>
+          <segment id="FTX" maxrepeat="9"/>
+          <segment id="MEA" maxrepeat="9"/>
+          <segment id="EQN" maxrepeat="9"/>
+          <segment id="DGS" maxrepeat="9"/>
+        </group>
       </group>
     </group>
   </group>

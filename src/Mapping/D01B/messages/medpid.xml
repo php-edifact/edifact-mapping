@@ -20,7 +20,6 @@
     <segment id="LAN" maxrepeat="9"/>
   </group>
   <group id="SG2" maxrepeat="9999" required="true">
-    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="PNA" maxrepeat="1"/>
     <segment id="ADR" maxrepeat="9"/>
     <segment id="RFF" maxrepeat="99"/>

@@ -11,7 +11,6 @@
   <segment id="DTM" maxrepeat="9" required="true"/>
   <segment id="MKS" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="9"/>
-  <segment id="TSR" maxrepeat="9"/>
   <group id="SG1" maxrepeat="9">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
@@ -26,7 +25,7 @@
       <segment id="COM" maxrepeat="9"/>
     </group>
   </group>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="IDE" maxrepeat="1" required="true"/>
     <segment id="LIN" maxrepeat="1"/>
     <segment id="PIA" maxrepeat="9"/>
@@ -39,8 +38,7 @@
     <segment id="FTX" maxrepeat="9"/>
     <segment id="AGR" maxrepeat="9"/>
     <segment id="INP" maxrepeat="9"/>
-    <segment id="TSR" maxrepeat="9"/>
-    <group id="SG5" maxrepeat="9999">
+    <group id="SG5" maxrepeat="99999">
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="HYN" maxrepeat="9"/>
     </group>

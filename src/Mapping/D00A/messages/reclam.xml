@@ -6,10 +6,8 @@
     <data_element id="0054" value="00A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <group id="SG1" maxrepeat="99" required="true">
-    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
   </group>
   <group id="SG2" maxrepeat="999" required="true">
@@ -18,14 +16,12 @@
     <segment id="CTA" maxrepeat="1"/>
     <segment id="COM" maxrepeat="5"/>
     <segment id="RFF" maxrepeat="5"/>
-    <segment id="GIS" maxrepeat="2"/>
     <segment id="FTX" maxrepeat="2"/>
     <segment id="DTM" maxrepeat="9"/>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="8" required="true"/>
   <segment id="FTX" maxrepeat="999"/>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG3" maxrepeat="9">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="1"/>
@@ -36,7 +32,6 @@
   <segment id="MOA" maxrepeat="1"/>
   <segment id="PCD" maxrepeat="1"/>
   <group id="SG4" maxrepeat="99">
-    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="8"/>
     <segment id="LOC" maxrepeat="9"/>
     <segment id="DTM" maxrepeat="1"/>
@@ -44,11 +39,9 @@
     <segment id="PCD" maxrepeat="2"/>
     <group id="SG5" maxrepeat="3">
       <segment id="CUX" maxrepeat="1" required="true"/>
-      <segment id="GIS" maxrepeat="1"/>
       <segment id="FTX" maxrepeat="1"/>
       <group id="SG6" maxrepeat="99" required="true">
         <segment id="MOA" maxrepeat="1" required="true"/>
-        <segment id="GIS" maxrepeat="3" required="true"/>
         <segment id="CUX" maxrepeat="1"/>
         <segment id="FTX" maxrepeat="2"/>
       </group>
@@ -60,7 +53,6 @@
     </group>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
-  <segment id="SEC" maxrepeat=""/>
   <group id="SG8" maxrepeat="3">
     <segment id="CUX" maxrepeat="1" required="true"/>
     <group id="SG9" maxrepeat="999" required="true">
@@ -74,8 +66,7 @@
         <segment id="COM" maxrepeat="1"/>
         <segment id="FTX" maxrepeat="1"/>
       </group>
-      <segment id="GIS" maxrepeat="99" required="true"/>
+      <segment id="UNT" maxrepeat="1" required="true"/>
     </group>
   </group>
-  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

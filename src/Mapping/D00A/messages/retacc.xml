@@ -6,9 +6,7 @@
     <data_element id="0054" value="00A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
-  <segment id="GIS" maxrepeat="6" required="true"/>
   <group id="SG1" maxrepeat="9" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <segment id="CTA" maxrepeat="1"/>
@@ -17,7 +15,6 @@
   </group>
   <segment id="DTM" maxrepeat="4" required="true"/>
   <segment id="FTX" maxrepeat="5"/>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG2" maxrepeat="99" required="true">
     <segment id="CUX" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="5" required="true"/>
@@ -26,7 +23,6 @@
       <segment id="MOA" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="10" required="true"/>
       <segment id="PCD" maxrepeat="2"/>
-      <segment id="GIS" maxrepeat="10"/>
       <segment id="LOC" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="3"/>
       <group id="SG4" maxrepeat="9">
@@ -38,15 +34,12 @@
     </group>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
-  <segment id="SEC" maxrepeat=""/>
   <group id="SG5" maxrepeat="99">
     <segment id="MOA" maxrepeat="1" required="true"/>
-    <segment id="GIS" maxrepeat="1"/>
     <group id="SG6" maxrepeat="999">
       <segment id="NAD" maxrepeat="1" required="true"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="RFF" maxrepeat="2"/>
-      <segment id="GIS" maxrepeat="1"/>
       <segment id="MOA" maxrepeat="1"/>
     </group>
     <segment id="PAI" maxrepeat="1" required="true"/>

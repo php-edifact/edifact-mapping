@@ -37,21 +37,21 @@
       <segment id="PDI" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
     </group>
-  </group>
-  <group id="SG4" maxrepeat="9">
-    <segment id="COM" maxrepeat="1" required="true"/>
-    <segment id="CTA" maxrepeat="9"/>
-  </group>
-  <group id="SG5" maxrepeat="99">
-    <segment id="REL" maxrepeat="1" required="true"/>
-    <segment id="PNA" maxrepeat="1"/>
-    <segment id="ADR" maxrepeat="9"/>
-    <segment id="RFF" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="9"/>
-    <segment id="PDI" maxrepeat="1"/>
-    <segment id="IHC" maxrepeat="9"/>
-    <segment id="NAT" maxrepeat="9"/>
-    <segment id="LAN" maxrepeat="9"/>
+    <group id="SG4" maxrepeat="9">
+      <segment id="COM" maxrepeat="1" required="true"/>
+      <segment id="CTA" maxrepeat="9"/>
+    </group>
+    <group id="SG5" maxrepeat="99">
+      <segment id="REL" maxrepeat="1" required="true"/>
+      <segment id="PNA" maxrepeat="1"/>
+      <segment id="ADR" maxrepeat="9"/>
+      <segment id="RFF" maxrepeat="9"/>
+      <segment id="DTM" maxrepeat="9"/>
+      <segment id="PDI" maxrepeat="1"/>
+      <segment id="IHC" maxrepeat="9"/>
+      <segment id="NAT" maxrepeat="9"/>
+      <segment id="LAN" maxrepeat="9"/>
+    </group>
   </group>
   <group id="SG6" maxrepeat="9">
     <segment id="AUT" maxrepeat="1" required="true"/>

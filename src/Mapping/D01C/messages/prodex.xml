@@ -20,7 +20,6 @@
     <segment id="QTY" maxrepeat="10"/>
     <group id="SG3" maxrepeat="9999">
       <segment id="LIN" maxrepeat="1" required="true"/>
-      <segment id="GIS" maxrepeat="2"/>
       <segment id="LOC" maxrepeat="2"/>
       <segment id="DTM" maxrepeat="1"/>
       <segment id="MEA" maxrepeat="5"/>

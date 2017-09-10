@@ -6,7 +6,6 @@
     <data_element id="0054" value="15A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9" required="true"/>
@@ -22,7 +21,6 @@
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG4" maxrepeat="9999" required="true">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <group id="SG5" maxrepeat="999">
@@ -30,18 +28,18 @@
       <segment id="CAV" maxrepeat="10"/>
       <segment id="MEA" maxrepeat="10"/>
     </group>
-  </group>
-  <group id="SG6" maxrepeat="9999">
-    <segment id="IRQ" maxrepeat="1" required="true"/>
-    <segment id="PIA" maxrepeat="10"/>
-    <segment id="IMD" maxrepeat="10"/>
-    <segment id="MEA" maxrepeat="10"/>
-    <segment id="NAD" maxrepeat="10"/>
-    <segment id="PGI" maxrepeat="9"/>
-    <segment id="DTM" maxrepeat="5"/>
-    <group id="SG7" maxrepeat="10">
-      <segment id="PRI" maxrepeat="1" required="true"/>
-      <segment id="RNG" maxrepeat="1"/>
+    <group id="SG6" maxrepeat="9999">
+      <segment id="IRQ" maxrepeat="1" required="true"/>
+      <segment id="PIA" maxrepeat="10"/>
+      <segment id="IMD" maxrepeat="10"/>
+      <segment id="MEA" maxrepeat="10"/>
+      <segment id="NAD" maxrepeat="10"/>
+      <segment id="PGI" maxrepeat="9"/>
+      <segment id="DTM" maxrepeat="5"/>
+      <group id="SG7" maxrepeat="10">
+        <segment id="PRI" maxrepeat="1" required="true"/>
+        <segment id="RNG" maxrepeat="1"/>
+      </group>
     </group>
   </group>
   <segment id="UNT" maxrepeat="1" required="true"/>

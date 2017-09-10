@@ -41,12 +41,13 @@
         <segment id="GIS" maxrepeat="2"/>
         <segment id="PCD" maxrepeat="3"/>
         <segment id="DTM" maxrepeat="2"/>
-        <segment id="SG6" maxrepeat="9"/>
-        <segment id="RFF" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="3"/>
-        <segment id="COM" maxrepeat="1"/>
+        <group id="SG6" maxrepeat="9">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="3"/>
+          <segment id="COM" maxrepeat="1"/>
+        </group>
+        <segment id="CUX" maxrepeat="1"/>
       </group>
-      <segment id="CUX" maxrepeat="1"/>
     </group>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>

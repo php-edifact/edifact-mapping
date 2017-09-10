@@ -6,7 +6,6 @@
     <data_element id="0054" value="01C"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="35" required="true"/>
@@ -15,10 +14,9 @@
   <segment id="IMD" maxrepeat="1"/>
   <segment id="FTX" maxrepeat="99"/>
   <segment id="LOC" maxrepeat="10"/>
-  <segment id="GIS" maxrepeat="10"/>
   <segment id="DGS" maxrepeat="1"/>
   <segment id="GIR" maxrepeat="10"/>
-  <group id="SG1" maxrepeat="9999">
+  <group id="SG1" maxrepeat="99999">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="GIR" maxrepeat="5"/>
@@ -57,7 +55,6 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG8" maxrepeat="10">
-    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="PCD" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>
@@ -140,8 +137,7 @@
     <segment id="INP" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="5"/>
   </group>
-  <segment id="SECT" maxrepeat=""/>
-  <group id="SG26" maxrepeat="9999">
+  <group id="SG26" maxrepeat="99999">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="PIA" maxrepeat="25"/>
     <segment id="PGI" maxrepeat="99"/>
@@ -162,7 +158,6 @@
       <segment id="CUX" maxrepeat="1"/>
     </group>
     <group id="SG28" maxrepeat="10">
-      <segment id="PAT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="PCD" maxrepeat="99"/>
       <segment id="MOA" maxrepeat="1"/>
@@ -262,7 +257,6 @@
       <segment id="FTX" maxrepeat="5"/>
     </group>
     <group id="SG49" maxrepeat="10">
-      <segment id="GIS" maxrepeat="1" required="true"/>
       <segment id="RFF" maxrepeat="1"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="GIR" maxrepeat="5"/>
@@ -273,7 +267,6 @@
       <segment id="MOA" maxrepeat="2"/>
     </group>
   </group>
-  <segment id="SEC" maxrepeat=""/>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="CNT" maxrepeat="10"/>
   <group id="SG50" maxrepeat="100" required="true">

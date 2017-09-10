@@ -109,7 +109,6 @@
     <group id="SG18" maxrepeat="9">
       <segment id="TDT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
-      <segment id="RFF" maxrepeat="9"/>
       <group id="SG19" maxrepeat="9">
         <segment id="LOC" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="9"/>

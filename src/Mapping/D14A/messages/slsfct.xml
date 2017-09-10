@@ -24,10 +24,10 @@
     <segment id="CUX" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
   </group>
-  <group id="SG5" maxrepeat="2000" required="true">
+  <group id="SG5" maxrepeat="20000" required="true">
     <segment id="LOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
-    <group id="SG6" maxrepeat="2000">
+    <group id="SG6" maxrepeat="20000">
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="5"/>
       <segment id="IMD" maxrepeat="5"/>

@@ -27,9 +27,9 @@
     <segment id="RFF" maxrepeat="1"/>
     <segment id="FTX" maxrepeat="1"/>
   </group>
-  <group id="SG5" maxrepeat="9999">
+  <group id="SG5" maxrepeat="99999">
     <segment id="HAN" maxrepeat="1" required="true"/>
-    <group id="SG6" maxrepeat="9999">
+    <group id="SG6" maxrepeat="99999">
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="RFF" maxrepeat="99" required="true"/>
       <segment id="FTX" maxrepeat="9"/>
@@ -55,9 +55,10 @@
       </group>
       <group id="SG11" maxrepeat="999">
         <segment id="RFF" maxrepeat="1" required="true"/>
-        <segment id="SG12" maxrepeat="99" required="true"/>
-        <segment id="DGS" maxrepeat="1" required="true"/>
-        <segment id="FTX" maxrepeat="1"/>
+        <group id="SG12" maxrepeat="99" required="true">
+          <segment id="DGS" maxrepeat="1" required="true"/>
+          <segment id="FTX" maxrepeat="1"/>
+        </group>
       </group>
     </group>
   </group>

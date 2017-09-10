@@ -6,7 +6,6 @@
     <data_element id="0054" value="17A"/>
     <data_element id="0051" value="UN"/>
   </defaults>
-  <segment id="SECT" maxrepeat=""/>
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="GEI" maxrepeat="2" required="true"/>
   <group id="SG1" maxrepeat="99" required="true">
@@ -17,7 +16,6 @@
   </group>
   <segment id="DTM" maxrepeat="4" required="true"/>
   <segment id="FTX" maxrepeat="5"/>
-  <segment id="SECT" maxrepeat=""/>
   <group id="SG2" maxrepeat="99" required="true">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <group id="SG3" maxrepeat="9999" required="true">
@@ -31,23 +29,22 @@
         <segment id="DTM" maxrepeat="1"/>
         <segment id="FTX" maxrepeat="1"/>
       </group>
+      <segment id="GEI" maxrepeat="6"/>
+      <segment id="MOA" maxrepeat="6" required="true"/>
+      <segment id="CUX" maxrepeat="1"/>
+      <segment id="FTX" maxrepeat="2"/>
+      <group id="SG5" maxrepeat="9999">
+        <segment id="NAD" maxrepeat="1" required="true"/>
+        <segment id="CTA" maxrepeat="1"/>
+        <segment id="COM" maxrepeat="5"/>
+        <segment id="PCD" maxrepeat="1"/>
+        <segment id="RFF" maxrepeat="2"/>
+        <segment id="GEI" maxrepeat="1"/>
+        <segment id="MOA" maxrepeat="1" required="true"/>
+      </group>
     </group>
   </group>
-  <segment id="GEI" maxrepeat="6"/>
-  <segment id="MOA" maxrepeat="6" required="true"/>
-  <segment id="CUX" maxrepeat="1"/>
-  <segment id="FTX" maxrepeat="2"/>
-  <group id="SG5" maxrepeat="9999">
-    <segment id="NAD" maxrepeat="1" required="true"/>
-    <segment id="CTA" maxrepeat="1"/>
-    <segment id="COM" maxrepeat="5"/>
-    <segment id="PCD" maxrepeat="1"/>
-    <segment id="RFF" maxrepeat="2"/>
-    <segment id="GEI" maxrepeat="1"/>
-    <segment id="MOA" maxrepeat="1" required="true"/>
-  </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
-  <segment id="SEC" maxrepeat=""/>
   <group id="SG6" maxrepeat="99">
     <segment id="MOA" maxrepeat="1" required="true"/>
     <segment id="NAD" maxrepeat="4"/>

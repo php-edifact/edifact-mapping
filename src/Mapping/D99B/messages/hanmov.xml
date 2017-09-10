@@ -12,7 +12,6 @@
   <segment id="HAN" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="9"/>
   <segment id="CNT" maxrepeat="9"/>
-  <segment id="CUX" maxrepeat="9"/>
   <group id="SG1" maxrepeat="9">
     <segment id="TCC" maxrepeat="1" required="true"/>
     <segment id="LOC" maxrepeat="9"/>

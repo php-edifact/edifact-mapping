@@ -15,7 +15,6 @@
   <segment id="FTX" maxrepeat="5"/>
   <segment id="LOC" maxrepeat="2"/>
   <segment id="MOA" maxrepeat="5"/>
-  <segment id="PYT" maxrepeat="10"/>
   <segment id="FII" maxrepeat="5"/>
   <group id="SG1" maxrepeat="5">
     <segment id="RFF" maxrepeat="1" required="true"/>
@@ -43,7 +42,6 @@
       <segment id="RFF" maxrepeat="99"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="PAI" maxrepeat="1"/>
-      <segment id="PYT" maxrepeat="5"/>
       <segment id="FII" maxrepeat="5"/>
       <segment id="DIM" maxrepeat="2"/>
       <segment id="FTX" maxrepeat="5"/>
@@ -73,27 +71,27 @@
         <segment id="LAN" maxrepeat="1"/>
         <segment id="FTX" maxrepeat="5"/>
         <segment id="COM" maxrepeat="5"/>
-        <segment id="SG11" maxrepeat="1"/>
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="5"/>
-      </group>
-      <group id="SG12" maxrepeat="5">
-        <segment id="DOC" maxrepeat="1" required="true"/>
-        <segment id="LOC" maxrepeat="1"/>
-        <segment id="DTM" maxrepeat="10"/>
-      </group>
-      <group id="SG13" maxrepeat="10">
-        <segment id="PAI" maxrepeat="1" required="true"/>
-        <segment id="PYT" maxrepeat="1"/>
-        <segment id="FII" maxrepeat="1"/>
-        <segment id="MOA" maxrepeat="1"/>
-        <segment id="RFF" maxrepeat="9"/>
-      </group>
-      <group id="SG14" maxrepeat="10">
-        <segment id="RCS" maxrepeat="1" required="true"/>
-        <segment id="MOA" maxrepeat="2"/>
-        <segment id="RFF" maxrepeat="2"/>
-        <segment id="FTX" maxrepeat="1"/>
+        <group id="SG11" maxrepeat="1">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="5"/>
+        </group>
+        <group id="SG12" maxrepeat="5">
+          <segment id="DOC" maxrepeat="1" required="true"/>
+          <segment id="LOC" maxrepeat="1"/>
+          <segment id="DTM" maxrepeat="10"/>
+        </group>
+        <group id="SG13" maxrepeat="10">
+          <segment id="PAI" maxrepeat="1" required="true"/>
+          <segment id="FII" maxrepeat="1"/>
+          <segment id="MOA" maxrepeat="1"/>
+          <segment id="RFF" maxrepeat="9"/>
+        </group>
+        <group id="SG14" maxrepeat="10">
+          <segment id="RCS" maxrepeat="1" required="true"/>
+          <segment id="MOA" maxrepeat="2"/>
+          <segment id="RFF" maxrepeat="2"/>
+          <segment id="FTX" maxrepeat="1"/>
+        </group>
       </group>
     </group>
   </group>

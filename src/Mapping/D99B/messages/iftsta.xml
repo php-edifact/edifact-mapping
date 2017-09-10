@@ -24,7 +24,7 @@
   <segment id="LOC" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="9"/>
   <segment id="CNT" maxrepeat="9"/>
-  <group id="SG4" maxrepeat="9999">
+  <group id="SG4" maxrepeat="99999">
     <segment id="CNI" maxrepeat="1" required="true"/>
     <segment id="LOC" maxrepeat="9"/>
     <segment id="CNT" maxrepeat="9"/>
@@ -39,10 +39,7 @@
       <segment id="PCI" maxrepeat="99"/>
       <group id="SG6" maxrepeat="99">
         <segment id="TDT" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="9"/>
         <segment id="RFF" maxrepeat="9"/>
-        <segment id="SG7" maxrepeat="9"/>
-        <segment id="LOC" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="9"/>
       </group>
     </group>
@@ -79,5 +76,4 @@
       </group>
     </group>
   </group>
-  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>
