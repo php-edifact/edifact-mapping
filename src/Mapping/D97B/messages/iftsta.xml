@@ -48,7 +48,9 @@
         <segment id="MEA" maxrepeat="9"/>
         <segment id="DIM" maxrepeat="9"/>
         <segment id="SEL" maxrepeat="9"/>
+        <segment id="RFF" maxrepeat="9"/>
         <segment id="TPL" maxrepeat="9"/>
+        <segment id="TMD" maxrepeat="1"/>
         <group id="SG8" maxrepeat="99">
           <segment id="EQA" maxrepeat="1" required="true"/>
           <segment id="SEL" maxrepeat="9"/>

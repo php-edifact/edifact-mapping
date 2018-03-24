@@ -9,6 +9,7 @@
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="5" required="true"/>
+  <segment id="IRQ" maxrepeat="1"/>
   <segment id="FTX" maxrepeat="20"/>
   <group id="SG1" maxrepeat="25" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>

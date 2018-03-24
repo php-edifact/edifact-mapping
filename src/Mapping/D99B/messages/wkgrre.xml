@@ -25,6 +25,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG4" maxrepeat="5">
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
@@ -42,6 +43,7 @@
     </group>
     <segment id="FTX" maxrepeat="1"/>
     <group id="SG7" maxrepeat="5" required="true">
+      <segment id="GIS" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="1"/>
     </group>
     <group id="SG8" maxrepeat="5" required="true">
@@ -65,6 +67,7 @@
         <segment id="FTX" maxrepeat="1"/>
       </group>
       <group id="SG13" maxrepeat="2">
+        <segment id="GIS" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="1"/>
       </group>
       <group id="SG14" maxrepeat="5" required="true">

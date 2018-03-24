@@ -43,9 +43,15 @@
   </group>
   <group id="SG7" maxrepeat="9999" required="true">
     <segment id="EQD" maxrepeat="1" required="true"/>
+    <segment id="RFF" maxrepeat="99"/>
     <segment id="TMD" maxrepeat="9"/>
+    <segment id="DTM" maxrepeat="99"/>
     <segment id="LOC" maxrepeat="9"/>
+    <segment id="MEA" maxrepeat="99"/>
+    <segment id="DIM" maxrepeat="99"/>
     <segment id="SEL" maxrepeat="9"/>
+    <segment id="FTX" maxrepeat="99"/>
+    <segment id="PCD" maxrepeat="9"/>
     <segment id="EQA" maxrepeat="9"/>
     <segment id="HAN" maxrepeat="9"/>
     <group id="SG8" maxrepeat="9">

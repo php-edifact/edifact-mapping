@@ -20,6 +20,7 @@
   </group>
   <group id="SG3" maxrepeat="9">
     <segment id="NAD" maxrepeat="1" required="true"/>
+    <segment id="LOC" maxrepeat="999"/>
     <group id="SG4" maxrepeat="9">
       <segment id="RFF" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>

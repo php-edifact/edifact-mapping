@@ -35,6 +35,7 @@
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="5"/>
       <segment id="IMD" maxrepeat="5"/>
+      <segment id="DTM" maxrepeat="5"/>
       <segment id="PAC" maxrepeat="5"/>
       <segment id="RFF" maxrepeat="5"/>
       <segment id="DOC" maxrepeat="5"/>

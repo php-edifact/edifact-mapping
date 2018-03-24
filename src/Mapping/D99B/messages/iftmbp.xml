@@ -14,6 +14,7 @@
   <segment id="TSR" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="99"/>
   <segment id="CNT" maxrepeat="9"/>
+  <segment id="GDS" maxrepeat="9"/>
   <group id="SG1" maxrepeat="99">
     <segment id="LOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>

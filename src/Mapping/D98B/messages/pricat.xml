@@ -164,8 +164,10 @@
       <segment id="ALI" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="10"/>
       <segment id="NAD" maxrepeat="99"/>
+      <segment id="RFF" maxrepeat="99"/>
       <segment id="LOC" maxrepeat="1"/>
       <segment id="DOC" maxrepeat="1"/>
+      <segment id="FTX" maxrepeat="999"/>
       <group id="SG34" maxrepeat="999">
         <segment id="CCI" maxrepeat="1" required="true"/>
         <segment id="CAV" maxrepeat="10"/>

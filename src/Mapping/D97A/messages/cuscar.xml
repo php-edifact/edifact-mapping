@@ -82,9 +82,11 @@
         <segment id="FTX" maxrepeat="99"/>
         <segment id="MEA" maxrepeat="99"/>
         <segment id="MOA" maxrepeat="9"/>
+        <segment id="SGP" maxrepeat="9999"/>
         <segment id="DGS" maxrepeat="9"/>
         <segment id="PCI" maxrepeat="9"/>
         <segment id="CST" maxrepeat="1"/>
+        <segment id="TMD" maxrepeat="9"/>
         <group id="SG15" maxrepeat="9">
           <segment id="GIS" maxrepeat="1" required="true"/>
           <segment id="DTM" maxrepeat="9"/>

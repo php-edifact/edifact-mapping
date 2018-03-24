@@ -10,6 +10,7 @@
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="10" required="true"/>
   <segment id="ALI" maxrepeat="5"/>
+  <segment id="FTX" maxrepeat="99"/>
   <group id="SG1" maxrepeat="10">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="1"/>
@@ -96,6 +97,8 @@
       <segment id="QVR" maxrepeat="10"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="PRI" maxrepeat="1"/>
+      <segment id="FTX" maxrepeat="99"/>
+      <segment id="NAD" maxrepeat="99"/>
       <group id="SG23" maxrepeat="10">
         <segment id="CDI" maxrepeat="1" required="true"/>
         <segment id="INP" maxrepeat="5"/>

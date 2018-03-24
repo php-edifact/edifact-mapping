@@ -36,6 +36,7 @@
   <group id="SG6" maxrepeat="10">
     <segment id="TDT" maxrepeat="1" required="true"/>
     <segment id="PCD" maxrepeat="6"/>
+    <segment id="TMD" maxrepeat="1"/>
     <group id="SG7" maxrepeat="10">
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="10"/>
@@ -90,6 +91,7 @@
       <segment id="DTM" maxrepeat="5"/>
       <segment id="NAD" maxrepeat="99"/>
       <segment id="TDT" maxrepeat="1"/>
+      <segment id="TMD" maxrepeat="1"/>
       <segment id="HAN" maxrepeat="20"/>
       <segment id="FTX" maxrepeat="99"/>
       <segment id="MOA" maxrepeat="5"/>

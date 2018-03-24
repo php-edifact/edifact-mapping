@@ -59,6 +59,8 @@
       </group>
       <group id="SG12" maxrepeat="1" required="true">
         <segment id="DGS" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="9" required="true"/>
+        <segment id="MEA" maxrepeat="9" required="true"/>
         <segment id="LOC" maxrepeat="99"/>
         <segment id="RFF" maxrepeat="9"/>
         <group id="SG13" maxrepeat="99">

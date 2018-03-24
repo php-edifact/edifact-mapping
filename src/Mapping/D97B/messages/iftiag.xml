@@ -35,6 +35,7 @@
   </group>
   <group id="SG6" maxrepeat="9999">
     <segment id="EQD" maxrepeat="1" required="true"/>
+    <segment id="RFF" maxrepeat="9"/>
     <segment id="SEL" maxrepeat="1"/>
   </group>
   <group id="SG7" maxrepeat="9999" required="true">
@@ -48,6 +49,7 @@
       <segment id="PCI" maxrepeat="1"/>
       <group id="SG9" maxrepeat="1" required="true">
         <segment id="DGS" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="9" required="true"/>
         <segment id="LOC" maxrepeat="99"/>
         <segment id="MEA" maxrepeat="9" required="true"/>
         <group id="SG10" maxrepeat="9999">

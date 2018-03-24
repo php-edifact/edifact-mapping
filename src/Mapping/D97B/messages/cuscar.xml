@@ -9,6 +9,8 @@
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9"/>
+  <segment id="LOC" maxrepeat="9"/>
+  <segment id="QTY" maxrepeat="9"/>
   <group id="SG1" maxrepeat="99">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
@@ -86,6 +88,7 @@
         <segment id="DGS" maxrepeat="9"/>
         <segment id="PCI" maxrepeat="9"/>
         <segment id="CST" maxrepeat="1"/>
+        <segment id="LOC" maxrepeat="9"/>
         <segment id="TMD" maxrepeat="9"/>
         <group id="SG15" maxrepeat="9">
           <segment id="GIS" maxrepeat="1" required="true"/>

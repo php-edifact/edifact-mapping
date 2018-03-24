@@ -29,6 +29,8 @@
     <segment id="FTX" maxrepeat="9"/>
     <segment id="GOR" maxrepeat="9"/>
     <segment id="HAN" maxrepeat="9"/>
+    <segment id="MEA" maxrepeat="9"/>
+    <segment id="PCD" maxrepeat="9"/>
     <group id="SG5" maxrepeat="9">
       <segment id="TDT" maxrepeat="1" required="true"/>
       <segment id="LOC" maxrepeat="9"/>

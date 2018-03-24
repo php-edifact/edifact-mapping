@@ -30,6 +30,7 @@
   <group id="SG5" maxrepeat="9999" required="true">
     <segment id="EQD" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="9"/>
+    <segment id="GDS" maxrepeat="9"/>
     <segment id="TMD" maxrepeat="9"/>
     <segment id="DTM" maxrepeat="9"/>
     <segment id="LOC" maxrepeat="9"/>
@@ -42,6 +43,7 @@
     <segment id="DGS" maxrepeat="9"/>
     <segment id="EQA" maxrepeat="9"/>
     <segment id="PIA" maxrepeat="9"/>
+    <segment id="HAN" maxrepeat="9"/>
     <group id="SG6" maxrepeat="9">
       <segment id="DAM" maxrepeat="1" required="true"/>
       <segment id="COD" maxrepeat="1"/>
@@ -53,5 +55,6 @@
     </group>
     <segment id="NAD" maxrepeat="1"/>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

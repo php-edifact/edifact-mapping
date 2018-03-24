@@ -41,11 +41,13 @@
     <group id="SG6" maxrepeat="3">
       <segment id="EQD" maxrepeat="1" required="true"/>
       <segment id="EQA" maxrepeat="9"/>
-      <group id="SG7" maxrepeat="999">
-        <segment id="DGS" maxrepeat="1" required="true"/>
-        <segment id="FTX" maxrepeat="1"/>
-      </group>
+      <segment id="NAD" maxrepeat="9"/>
+      <segment id="RFF" maxrepeat="9"/>
     </group>
-    <segment id="UNT" maxrepeat="1" required="true"/>
+    <group id="SG7" maxrepeat="999">
+      <segment id="DGS" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="1"/>
+    </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

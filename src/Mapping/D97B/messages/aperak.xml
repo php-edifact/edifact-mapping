@@ -23,7 +23,10 @@
   <group id="SG3" maxrepeat="99999">
     <segment id="ERC" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
-    <segment id="RFF" maxrepeat="1" required="true"/>
-    <segment id="FTX" maxrepeat="9"/>
+    <group id="SG4" maxrepeat="9">
+      <segment id="RFF" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="9"/>
+    </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

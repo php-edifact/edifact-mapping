@@ -61,12 +61,16 @@
           </group>
         </group>
       </group>
-      <group id="SG12" maxrepeat="1">
-        <segment id="AUT" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="1"/>
-        <segment id="RFF" maxrepeat="1"/>
+      <group id="SG11" maxrepeat="1">
+        <segment id="CNT" maxrepeat="1" required="true"/>
+        <segment id="MOA" maxrepeat="1" required="true"/>
       </group>
-      <segment id="UNT" maxrepeat="1" required="true"/>
     </group>
   </group>
+  <group id="SG12" maxrepeat="1">
+    <segment id="AUT" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="1"/>
+    <segment id="RFF" maxrepeat="1"/>
+  </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

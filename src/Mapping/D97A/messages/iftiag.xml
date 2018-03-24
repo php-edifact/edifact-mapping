@@ -50,6 +50,7 @@
         <segment id="DGS" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="5" required="true"/>
         <segment id="LOC" maxrepeat="99"/>
+        <segment id="MEA" maxrepeat="9" required="true"/>
         <group id="SG10" maxrepeat="9999">
           <segment id="SGP" maxrepeat="1" required="true"/>
           <segment id="LOC" maxrepeat="1"/>

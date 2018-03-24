@@ -61,6 +61,7 @@
     <segment id="SEL" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
     <segment id="EQA" maxrepeat="1"/>
+    <segment id="HAN" maxrepeat="9"/>
     <group id="SG10" maxrepeat="9">
       <segment id="TDT" maxrepeat="1" required="true"/>
       <segment id="LOC" maxrepeat="9"/>
@@ -73,5 +74,6 @@
       <segment id="COM" maxrepeat="1"/>
     </group>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

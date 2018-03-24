@@ -23,10 +23,17 @@
   </group>
   <group id="SG4" maxrepeat="1" required="true">
     <segment id="TDT" maxrepeat="1" required="true"/>
-    <segment id="RFF" maxrepeat="9"/>
     <segment id="DTM" maxrepeat="9"/>
+    <segment id="RFF" maxrepeat="9"/>
+    <group id="SG5" maxrepeat="9">
+      <segment id="LOC" maxrepeat="1" required="true"/>
+      <segment id="DTM" maxrepeat="9"/>
+    </group>
+    <segment id="MEA" maxrepeat="9"/>
   </group>
-  <segment id="MEA" maxrepeat="9"/>
-  <segment id="QTY" maxrepeat="1" required="true"/>
-  <segment id="FTX" maxrepeat="1"/>
+  <group id="SG6" maxrepeat="9">
+    <segment id="QTY" maxrepeat="1" required="true"/>
+    <segment id="FTX" maxrepeat="1"/>
+  </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

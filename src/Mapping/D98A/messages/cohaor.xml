@@ -38,8 +38,12 @@
     </group>
     <group id="SG6" maxrepeat="9">
       <segment id="NAD" maxrepeat="1" required="true"/>
-      <segment id="CNT" maxrepeat="1"/>
-      <segment id="UNT" maxrepeat="1" required="true"/>
+      <group id="SG7" maxrepeat="9">
+        <segment id="CTA" maxrepeat="1" required="true"/>
+        <segment id="COM" maxrepeat="9"/>
+      </group>
     </group>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

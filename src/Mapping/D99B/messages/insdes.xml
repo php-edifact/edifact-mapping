@@ -59,6 +59,7 @@
     <segment id="DTM" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
     <segment id="MOA" maxrepeat="99"/>
+    <segment id="ALI" maxrepeat="99"/>
     <group id="SG11" maxrepeat="9">
       <segment id="RFF" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="1"/>

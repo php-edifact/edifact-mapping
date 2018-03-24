@@ -26,6 +26,7 @@
     <segment id="RFF" maxrepeat="9"/>
     <segment id="DTM" maxrepeat="9"/>
     <segment id="LOC" maxrepeat="9"/>
+    <segment id="HAN" maxrepeat="9"/>
     <group id="SG5" maxrepeat="9">
       <segment id="DAM" maxrepeat="1" required="true"/>
       <segment id="COD" maxrepeat="1"/>
@@ -35,5 +36,6 @@
       <segment id="LOC" maxrepeat="9"/>
     </group>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

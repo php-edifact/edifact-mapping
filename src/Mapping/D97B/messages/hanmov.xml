@@ -107,6 +107,7 @@
     <segment id="EQN" maxrepeat="1"/>
     <segment id="SEL" maxrepeat="1"/>
     <segment id="EQA" maxrepeat="99"/>
-    <segment id="UNT" maxrepeat="1" required="true"/>
+    <segment id="RFF" maxrepeat="9"/>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

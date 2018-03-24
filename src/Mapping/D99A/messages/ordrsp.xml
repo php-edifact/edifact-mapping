@@ -199,6 +199,7 @@
     <group id="SG37" maxrepeat="999">
       <segment id="NAD" maxrepeat="1" required="true"/>
       <segment id="LOC" maxrepeat="5"/>
+      <segment id="FII" maxrepeat="5"/>
       <group id="SG38" maxrepeat="99">
         <segment id="RFF" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="5"/>

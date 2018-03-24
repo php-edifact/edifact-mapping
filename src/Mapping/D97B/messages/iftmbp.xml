@@ -146,6 +146,7 @@
     <segment id="HAN" maxrepeat="1"/>
     <segment id="TMP" maxrepeat="1"/>
     <segment id="FTX" maxrepeat="9"/>
+    <segment id="RFF" maxrepeat="9"/>
     <group id="SG30" maxrepeat="9">
       <segment id="NAD" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="1"/>

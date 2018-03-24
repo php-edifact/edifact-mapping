@@ -35,6 +35,7 @@
         <segment id="MOA" maxrepeat="9" required="true"/>
       </group>
       <group id="SG7" maxrepeat="99999" required="true">
+        <segment id="IND" maxrepeat="1" required="true"/>
         <segment id="RFF" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="1" required="true"/>
         <group id="SG8" maxrepeat="999" required="true">

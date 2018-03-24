@@ -70,6 +70,7 @@
     <segment id="RNG" maxrepeat="9"/>
     <segment id="SEL" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
+    <segment id="PCD" maxrepeat="9"/>
     <segment id="DGS" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="9"/>
     <segment id="GOR" maxrepeat="9"/>

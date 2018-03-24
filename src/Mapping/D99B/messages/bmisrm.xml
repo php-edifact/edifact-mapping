@@ -44,11 +44,15 @@
       <segment id="EQD" maxrepeat="1"/>
       <segment id="RFF" maxrepeat="9"/>
       <segment id="QTY" maxrepeat="1"/>
+      <segment id="MEA" maxrepeat="99"/>
+      <segment id="PCD" maxrepeat="99"/>
       <group id="SG8" maxrepeat="99">
         <segment id="PSD" maxrepeat="1" required="true"/>
+        <segment id="LOC" maxrepeat="99"/>
         <group id="SG9" maxrepeat="999">
           <segment id="TEM" maxrepeat="1" required="true"/>
           <segment id="MEA" maxrepeat="99"/>
+          <segment id="PCD" maxrepeat="99"/>
           <segment id="DTM" maxrepeat="99"/>
           <segment id="FTX" maxrepeat="99"/>
         </group>

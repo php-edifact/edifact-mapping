@@ -187,6 +187,7 @@
     <group id="SG35" maxrepeat="9999">
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="QTY" maxrepeat="1"/>
+      <segment id="PCD" maxrepeat="1"/>
       <segment id="DTM" maxrepeat="5"/>
     </group>
     <group id="SG36" maxrepeat="10">

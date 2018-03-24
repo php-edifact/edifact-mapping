@@ -124,6 +124,7 @@
     <segment id="EQD" maxrepeat="1" required="true"/>
     <segment id="EQN" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
-    <segment id="UNT" maxrepeat="1" required="true"/>
+    <segment id="RFF" maxrepeat="9"/>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -18,6 +18,10 @@
     <segment id="TDT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
   </group>
+  <group id="SG3" maxrepeat="9">
+    <segment id="LOC" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="9"/>
+  </group>
   <group id="SG4" maxrepeat="9" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <group id="SG5" maxrepeat="9">
@@ -61,17 +65,21 @@
         <segment id="SGP" maxrepeat="1" required="true"/>
         <segment id="MEA" maxrepeat="9"/>
       </group>
-      <segment id="DGS" maxrepeat="1" required="true"/>
-      <segment id="FTX" maxrepeat="9"/>
-      <segment id="MEA" maxrepeat="9"/>
-      <group id="SG13" maxrepeat="9">
-        <segment id="CTA" maxrepeat="1" required="true"/>
-        <segment id="COM" maxrepeat="9"/>
-      </group>
-      <group id="SG14" maxrepeat="999">
-        <segment id="SGP" maxrepeat="1" required="true"/>
+      <group id="SG12" maxrepeat="99">
+        <segment id="DGS" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="9"/>
         <segment id="MEA" maxrepeat="9"/>
+        <group id="SG13" maxrepeat="9">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="9"/>
+        </group>
+        <group id="SG14" maxrepeat="999">
+          <segment id="SGP" maxrepeat="1" required="true"/>
+          <segment id="MEA" maxrepeat="9"/>
+        </group>
       </group>
     </group>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -9,6 +9,7 @@
   <segment id="UNH" maxrepeat="1" required="true"/>
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="9"/>
+  <segment id="FTX" maxrepeat="99"/>
   <segment id="TDT" maxrepeat="9"/>
   <segment id="LOC" maxrepeat="99"/>
   <segment id="GIS" maxrepeat="10"/>
@@ -58,6 +59,11 @@
     <group id="SG9" maxrepeat="99">
       <segment id="MOA" maxrepeat="1" required="true"/>
       <segment id="CUX" maxrepeat="9"/>
+    </group>
+    <group id="SG10" maxrepeat="99">
+      <segment id="TAX" maxrepeat="1" required="true"/>
+      <segment id="MOA" maxrepeat="99"/>
+      <segment id="GIS" maxrepeat="99"/>
     </group>
     <group id="SG11" maxrepeat="9999">
       <segment id="CST" maxrepeat="1" required="true"/>

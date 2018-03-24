@@ -85,6 +85,7 @@
     </group>
     <group id="SG14" maxrepeat="99">
       <segment id="TCC" maxrepeat="1" required="true"/>
+      <segment id="CUX" maxrepeat="1"/>
       <segment id="PRI" maxrepeat="1"/>
       <segment id="EQN" maxrepeat="1"/>
       <segment id="PCD" maxrepeat="1"/>
@@ -120,6 +121,7 @@
     <segment id="MOA" maxrepeat="9"/>
     <segment id="PIA" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="99"/>
+    <segment id="PCD" maxrepeat="9"/>
     <group id="SG19" maxrepeat="9">
       <segment id="NAD" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="1"/>
@@ -213,8 +215,10 @@
     <segment id="HAN" maxrepeat="1"/>
     <segment id="TMP" maxrepeat="1"/>
     <segment id="FTX" maxrepeat="9"/>
+    <segment id="RFF" maxrepeat="9"/>
     <group id="SG38" maxrepeat="99">
       <segment id="TCC" maxrepeat="1" required="true"/>
+      <segment id="CUX" maxrepeat="1"/>
       <segment id="PRI" maxrepeat="1"/>
       <segment id="EQN" maxrepeat="1"/>
       <segment id="PCD" maxrepeat="1"/>

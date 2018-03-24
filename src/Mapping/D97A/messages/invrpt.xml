@@ -57,6 +57,8 @@
       <segment id="DTM" maxrepeat="1"/>
     </group>
     <group id="SG11" maxrepeat="9999">
+      <segment id="INV" maxrepeat="1" required="true"/>
+      <segment id="QTY" maxrepeat="1" required="true"/>
       <segment id="GIN" maxrepeat="9999"/>
       <segment id="LOC" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="5"/>

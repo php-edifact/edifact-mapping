@@ -42,6 +42,7 @@
     <segment id="DIM" maxrepeat="9"/>
     <segment id="SEL" maxrepeat="9"/>
     <segment id="EQA" maxrepeat="1"/>
+    <segment id="HAN" maxrepeat="9"/>
     <group id="SG7" maxrepeat="9">
       <segment id="TDT" maxrepeat="1" required="true"/>
       <segment id="LOC" maxrepeat="9"/>
@@ -49,5 +50,6 @@
     </group>
     <segment id="NAD" maxrepeat="9"/>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -69,6 +69,7 @@
       </group>
       <group id="SG14" maxrepeat="10">
         <segment id="TDT" maxrepeat="1" required="true"/>
+        <segment id="TMD" maxrepeat="1"/>
         <segment id="DTM" maxrepeat="5"/>
       </group>
       <group id="SG15" maxrepeat="99">

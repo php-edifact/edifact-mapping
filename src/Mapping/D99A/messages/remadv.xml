@@ -64,5 +64,9 @@
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="MOA" maxrepeat="99" required="true"/>
+  <group id="SG11" maxrepeat="99">
+    <segment id="ALC" maxrepeat="1" required="true"/>
+    <segment id="MOA" maxrepeat="9"/>
+  </group>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

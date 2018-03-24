@@ -40,6 +40,8 @@
     <segment id="EQN" maxrepeat="1"/>
     <segment id="MEA" maxrepeat="9"/>
     <segment id="DIM" maxrepeat="9"/>
+    <segment id="FTX" maxrepeat="9"/>
+    <segment id="PCD" maxrepeat="9"/>
     <segment id="SEL" maxrepeat="9"/>
     <segment id="EQA" maxrepeat="1"/>
     <segment id="HAN" maxrepeat="9"/>

@@ -45,9 +45,12 @@
     </group>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
-  <segment id="MOA" maxrepeat="1" required="true"/>
-  <segment id="NAD" maxrepeat="4"/>
-  <segment id="PAI" maxrepeat="1"/>
-  <segment id="RFF" maxrepeat="4"/>
-  <segment id="DTM" maxrepeat="2"/>
+  <group id="SG6" maxrepeat="99">
+    <segment id="MOA" maxrepeat="1" required="true"/>
+    <segment id="NAD" maxrepeat="4"/>
+    <segment id="PAI" maxrepeat="1"/>
+    <segment id="RFF" maxrepeat="4"/>
+    <segment id="DTM" maxrepeat="2"/>
+  </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

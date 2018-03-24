@@ -22,22 +22,23 @@
     </group>
     <group id="SG4" maxrepeat="5">
       <segment id="CTA" maxrepeat="1" required="true"/>
-      <group id="SG5" maxrepeat="100">
-        <segment id="FTX" maxrepeat="1" required="true"/>
-        <group id="SG6" maxrepeat="100">
-          <segment id="NAD" maxrepeat="1" required="true"/>
-          <segment id="LOC" maxrepeat="5"/>
-          <group id="SG7" maxrepeat="10">
-            <segment id="RFF" maxrepeat="1" required="true"/>
-            <segment id="DTM" maxrepeat="10"/>
-          </group>
-          <group id="SG8" maxrepeat="5">
-            <segment id="CTA" maxrepeat="1" required="true"/>
-            <segment id="COM" maxrepeat="5"/>
-          </group>
-        </group>
-      </group>
-      <segment id="UNT" maxrepeat="1" required="true"/>
+      <segment id="COM" maxrepeat="9"/>
     </group>
   </group>
+  <group id="SG5" maxrepeat="100">
+    <segment id="FTX" maxrepeat="1" required="true"/>
+    <group id="SG6" maxrepeat="100">
+      <segment id="NAD" maxrepeat="1" required="true"/>
+      <segment id="LOC" maxrepeat="5"/>
+      <group id="SG7" maxrepeat="10">
+        <segment id="RFF" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="10"/>
+      </group>
+      <group id="SG8" maxrepeat="5">
+        <segment id="CTA" maxrepeat="1" required="true"/>
+        <segment id="COM" maxrepeat="5"/>
+      </group>
+    </group>
+  </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -26,5 +26,6 @@
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <segment id="MOA" maxrepeat="9" required="true"/>
+  <segment id="FTX" maxrepeat="99"/>
   <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

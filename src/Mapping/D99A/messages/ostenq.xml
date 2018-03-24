@@ -25,6 +25,7 @@
       <segment id="PIA" maxrepeat="25"/>
       <segment id="IMD" maxrepeat="10"/>
       <segment id="MEA" maxrepeat="5"/>
+      <segment id="STS" maxrepeat="9"/>
       <group id="SG5" maxrepeat="99">
         <segment id="RFF" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="1"/>

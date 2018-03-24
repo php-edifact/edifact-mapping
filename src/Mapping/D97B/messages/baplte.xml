@@ -33,7 +33,8 @@
     <group id="SG6" maxrepeat="9999">
       <segment id="EQD" maxrepeat="1" required="true"/>
       <segment id="EQN" maxrepeat="1"/>
-      <segment id="UNT" maxrepeat="1" required="true"/>
+      <segment id="RFF" maxrepeat="9"/>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -44,6 +44,7 @@
     <segment id="DGS" maxrepeat="9"/>
     <segment id="EQA" maxrepeat="9"/>
     <segment id="PIA" maxrepeat="9"/>
+    <segment id="COD" maxrepeat="1"/>
     <segment id="HAN" maxrepeat="9"/>
     <group id="SG6" maxrepeat="9">
       <segment id="DAM" maxrepeat="1" required="true"/>

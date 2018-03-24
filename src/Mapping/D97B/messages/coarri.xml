@@ -40,6 +40,7 @@
     <segment id="RNG" maxrepeat="9"/>
     <segment id="SEL" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
+    <segment id="PCD" maxrepeat="9"/>
     <segment id="DGS" maxrepeat="9"/>
     <segment id="EQA" maxrepeat="9"/>
     <segment id="PIA" maxrepeat="9"/>
@@ -53,7 +54,8 @@
       <segment id="LOC" maxrepeat="9"/>
       <segment id="DTM" maxrepeat="9"/>
     </group>
-    <segment id="CNT" maxrepeat="1"/>
-    <segment id="UNT" maxrepeat="1" required="true"/>
+    <segment id="NAD" maxrepeat="9"/>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

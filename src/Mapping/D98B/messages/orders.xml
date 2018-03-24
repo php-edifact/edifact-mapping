@@ -143,6 +143,7 @@
     <segment id="ALI" maxrepeat="5"/>
     <segment id="DTM" maxrepeat="35"/>
     <segment id="MOA" maxrepeat="10"/>
+    <segment id="GIS" maxrepeat="99"/>
     <segment id="GIN" maxrepeat="1000"/>
     <segment id="GIR" maxrepeat="1000"/>
     <segment id="QVR" maxrepeat="1"/>
@@ -166,6 +167,7 @@
     <group id="SG32" maxrepeat="25">
       <segment id="PRI" maxrepeat="1" required="true"/>
       <segment id="CUX" maxrepeat="1"/>
+      <segment id="APR" maxrepeat="99"/>
       <segment id="RNG" maxrepeat="1"/>
       <segment id="DTM" maxrepeat="5"/>
     </group>
@@ -290,6 +292,7 @@
     </group>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
+  <segment id="MOA" maxrepeat="99"/>
   <segment id="CNT" maxrepeat="10"/>
   <group id="SG60" maxrepeat="10">
     <segment id="ALC" maxrepeat="1" required="true"/>

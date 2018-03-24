@@ -57,6 +57,7 @@
       <segment id="QTY" maxrepeat="1" required="true"/>
     </group>
     <group id="SG10" maxrepeat="9">
+      <segment id="NAD" maxrepeat="1" required="true"/>
       <group id="SG11" maxrepeat="9" required="true">
         <segment id="MOA" maxrepeat="1" required="true"/>
         <segment id="TAX" maxrepeat="1"/>

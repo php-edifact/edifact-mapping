@@ -32,6 +32,8 @@
     <segment id="FTX" maxrepeat="5"/>
     <segment id="LOC" maxrepeat="25"/>
     <segment id="COM" maxrepeat="1"/>
+    <segment id="EMP" maxrepeat="9"/>
+    <segment id="NAT" maxrepeat="9"/>
     <group id="SG5" maxrepeat="5">
       <segment id="DOC" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>

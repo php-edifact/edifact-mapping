@@ -21,6 +21,7 @@
   </group>
   <group id="SG3" maxrepeat="1000" required="true">
     <segment id="DOC" maxrepeat="1" required="true"/>
+    <segment id="IMD" maxrepeat="999"/>
     <segment id="PIA" maxrepeat="10"/>
     <segment id="MEA" maxrepeat="10"/>
     <segment id="RCS" maxrepeat="10"/>
@@ -52,37 +53,40 @@
         <segment id="HAN" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="99"/>
       </group>
-      <segment id="IMD" maxrepeat="1" required="true"/>
-      <segment id="MEA" maxrepeat="10"/>
-      <segment id="PCD" maxrepeat="10"/>
-      <segment id="RFF" maxrepeat="10"/>
-      <segment id="FTX" maxrepeat="99"/>
-    </group>
-    <group id="SG11" maxrepeat="10">
-      <segment id="DGS" maxrepeat="1" required="true"/>
-      <segment id="RFF" maxrepeat="10"/>
-      <segment id="FTX" maxrepeat="99"/>
-      <group id="SG12" maxrepeat="10">
-        <segment id="PAC" maxrepeat="1" required="true"/>
-        <segment id="PCI" maxrepeat="10"/>
-      </group>
-    </group>
-    <group id="SG13" maxrepeat="999">
-      <segment id="CCI" maxrepeat="1" required="true"/>
-      <segment id="IMD" maxrepeat="10"/>
-      <segment id="FTX" maxrepeat="99"/>
-      <segment id="CAV" maxrepeat="10"/>
-      <group id="SG14" maxrepeat="10">
-        <segment id="RFF" maxrepeat="1" required="true"/>
-        <segment id="DTM" maxrepeat="10"/>
-      </group>
-      <group id="SG15" maxrepeat="10">
-        <segment id="MEA" maxrepeat="1" required="true"/>
-        <segment id="TEM" maxrepeat="10"/>
-        <segment id="DTM" maxrepeat="10"/>
+      <group id="SG10" maxrepeat="999">
+        <segment id="IMD" maxrepeat="1" required="true"/>
+        <segment id="MEA" maxrepeat="10"/>
+        <segment id="PCD" maxrepeat="10"/>
         <segment id="RFF" maxrepeat="10"/>
         <segment id="FTX" maxrepeat="99"/>
       </group>
+      <group id="SG11" maxrepeat="10">
+        <segment id="DGS" maxrepeat="1" required="true"/>
+        <segment id="RFF" maxrepeat="10"/>
+        <segment id="FTX" maxrepeat="99"/>
+        <group id="SG12" maxrepeat="10">
+          <segment id="PAC" maxrepeat="1" required="true"/>
+          <segment id="PCI" maxrepeat="10"/>
+        </group>
+      </group>
+      <group id="SG13" maxrepeat="999">
+        <segment id="CCI" maxrepeat="1" required="true"/>
+        <segment id="IMD" maxrepeat="10"/>
+        <segment id="FTX" maxrepeat="99"/>
+        <segment id="CAV" maxrepeat="10"/>
+        <group id="SG14" maxrepeat="10">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="10"/>
+        </group>
+        <group id="SG15" maxrepeat="10">
+          <segment id="MEA" maxrepeat="1" required="true"/>
+          <segment id="TEM" maxrepeat="10"/>
+          <segment id="DTM" maxrepeat="10"/>
+          <segment id="RFF" maxrepeat="10"/>
+          <segment id="FTX" maxrepeat="99"/>
+        </group>
+      </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

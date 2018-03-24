@@ -14,6 +14,7 @@
   <segment id="IMD" maxrepeat="999"/>
   <segment id="IRQ" maxrepeat="10"/>
   <segment id="FTX" maxrepeat="99"/>
+  <segment id="MKS" maxrepeat="1"/>
   <group id="SG1" maxrepeat="9999">
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
@@ -33,6 +34,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG5" maxrepeat="10">
+    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="PCD" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>
@@ -68,6 +70,7 @@
   </group>
   <group id="SG11" maxrepeat="99">
     <segment id="NAD" maxrepeat="1" required="true"/>
+    <segment id="LOC" maxrepeat="99"/>
     <segment id="FII" maxrepeat="5"/>
     <group id="SG12" maxrepeat="99">
       <segment id="RFF" maxrepeat="1" required="true"/>
@@ -205,6 +208,7 @@
       <segment id="FTX" maxrepeat="99999"/>
     </group>
     <group id="SG38" maxrepeat="10">
+      <segment id="PAT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="MOA" maxrepeat="1"/>

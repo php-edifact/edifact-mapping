@@ -31,6 +31,7 @@
     </group>
     <group id="SG6" maxrepeat="99999" required="true">
       <segment id="SCD" maxrepeat="1" required="true"/>
+      <segment id="ARR" maxrepeat="99999"/>
       <segment id="RFF" maxrepeat="99"/>
       <segment id="DTM" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="99"/>
