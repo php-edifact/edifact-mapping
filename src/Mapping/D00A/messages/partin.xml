@@ -52,6 +52,7 @@
     </group>
     <group id="SG10" maxrepeat="999">
       <segment id="PAI" maxrepeat="1" required="true"/>
+      <segment id="PAT" maxrepeat="1"/>
       <segment id="CUX" maxrepeat="2"/>
       <segment id="DTM" maxrepeat="9"/>
       <segment id="PCD" maxrepeat="9"/>

@@ -24,6 +24,7 @@
   </group>
   <group id="SG2" maxrepeat="99" required="true">
     <segment id="IRQ" maxrepeat="1" required="true"/>
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="9" required="true"/>
     <segment id="DTM" maxrepeat="1" required="true"/>
     <segment id="STS" maxrepeat="1"/>
@@ -38,6 +39,7 @@
     <group id="SG4" maxrepeat="99">
       <segment id="FCA" maxrepeat="1" required="true"/>
       <segment id="RFF" maxrepeat="9" required="true"/>
+      <segment id="GIS" maxrepeat="1"/>
       <segment id="DTM" maxrepeat="9"/>
       <segment id="PTY" maxrepeat="1"/>
       <segment id="CIN" maxrepeat="9"/>
@@ -80,6 +82,7 @@
         <group id="SG9" maxrepeat="99">
           <segment id="STS" maxrepeat="1" required="true"/>
           <segment id="SEQ" maxrepeat="1"/>
+          <segment id="GIS" maxrepeat="1"/>
           <segment id="RSL" maxrepeat="1"/>
           <segment id="CCI" maxrepeat="9" required="true"/>
           <segment id="CIN" maxrepeat="9"/>
@@ -131,6 +134,7 @@
       </group>
       <group id="SG16" maxrepeat="99" required="true">
         <segment id="LIN" maxrepeat="1" required="true"/>
+        <segment id="GIS" maxrepeat="1" required="true"/>
         <segment id="RSL" maxrepeat="1"/>
         <segment id="CCI" maxrepeat="99" required="true"/>
         <segment id="CIN" maxrepeat="9"/>

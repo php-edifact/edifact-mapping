@@ -62,6 +62,7 @@
     </group>
   </group>
   <group id="SG10" maxrepeat="1">
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <group id="SG11" maxrepeat="99999">
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="99"/>

@@ -45,6 +45,7 @@
   <group id="SG8" maxrepeat="99999">
     <segment id="LIN" maxrepeat="1" required="true"/>
     <segment id="PIA" maxrepeat="10"/>
+    <segment id="DTM" maxrepeat="99"/>
     <segment id="MEA" maxrepeat="10"/>
     <segment id="HAN" maxrepeat="5"/>
     <segment id="DOC" maxrepeat="99"/>

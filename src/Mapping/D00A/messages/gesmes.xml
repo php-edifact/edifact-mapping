@@ -49,6 +49,7 @@
   </group>
   <group id="SG10" maxrepeat="9999">
     <segment id="ASI" maxrepeat="1" required="true"/>
+    <segment id="GIS" maxrepeat="5"/>
     <segment id="FTX" maxrepeat="9"/>
     <segment id="IDE" maxrepeat="5"/>
     <group id="SG11" maxrepeat="999">
@@ -69,6 +70,7 @@
     <segment id="GIR" maxrepeat="2"/>
     <group id="SG14" maxrepeat="99">
       <segment id="IDE" maxrepeat="1" required="true"/>
+      <segment id="GIS" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="5"/>
       <group id="SG15" maxrepeat="999">
         <segment id="CDV" maxrepeat="1" required="true"/>

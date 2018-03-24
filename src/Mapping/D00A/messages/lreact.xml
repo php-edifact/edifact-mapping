@@ -13,6 +13,7 @@
   <segment id="CTA" maxrepeat="9"/>
   <segment id="FTX" maxrepeat="1"/>
   <group id="SG1" maxrepeat="99999" required="true">
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="RFF" maxrepeat="9" required="true"/>
     <segment id="ATT" maxrepeat="99"/>
     <segment id="DTM" maxrepeat="99"/>

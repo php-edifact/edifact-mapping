@@ -21,8 +21,11 @@
     <segment id="RFF" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
   </group>
-  <segment id="CUX" maxrepeat="1" required="true"/>
-  <segment id="DTM" maxrepeat="5"/>
+  <group id="SG4" maxrepeat="5">
+    <segment id="CUX" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="5"/>
+    <segment id="STS" maxrepeat="5"/>
+  </group>
   <group id="SG5" maxrepeat="20000">
     <segment id="LOC" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
@@ -59,6 +62,7 @@
     </group>
   </group>
   <group id="SG10" maxrepeat="1">
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <group id="SG11" maxrepeat="99999">
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="99"/>

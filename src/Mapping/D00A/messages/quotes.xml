@@ -34,6 +34,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG5" maxrepeat="10">
+    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="PCD" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>
@@ -207,6 +208,7 @@
       <segment id="FTX" maxrepeat="99999"/>
     </group>
     <group id="SG38" maxrepeat="10">
+      <segment id="PAT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="MOA" maxrepeat="1"/>

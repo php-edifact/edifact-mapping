@@ -39,13 +39,18 @@
       <segment id="FTX" maxrepeat="9"/>
       <group id="SG8" maxrepeat="999">
         <segment id="NAD" maxrepeat="1" required="true"/>
+        <segment id="GIS" maxrepeat="99"/>
         <segment id="LOC" maxrepeat="99"/>
         <segment id="QTY" maxrepeat="99"/>
         <segment id="QVR" maxrepeat="99"/>
         <segment id="RFF" maxrepeat="99"/>
         <segment id="FTX" maxrepeat="9"/>
-        <segment id="UNT" maxrepeat="1" required="true"/>
+        <group id="SG9" maxrepeat="999">
+          <segment id="GIN" maxrepeat="1" required="true"/>
+          <segment id="RFF" maxrepeat="99"/>
+        </group>
       </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

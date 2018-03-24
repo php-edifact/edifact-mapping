@@ -35,6 +35,7 @@
     <segment id="QTY" maxrepeat="9"/>
     <segment id="CUX" maxrepeat="9"/>
     <segment id="PCD" maxrepeat="9"/>
+    <segment id="FII" maxrepeat="9"/>
     <segment id="CPT" maxrepeat="9"/>
     <group id="SG5" maxrepeat="9">
       <segment id="NAD" maxrepeat="1" required="true"/>

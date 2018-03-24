@@ -36,6 +36,7 @@
       </group>
     </group>
     <group id="SG5" maxrepeat="99" required="true">
+      <segment id="GIS" maxrepeat="1" required="true"/>
       <segment id="RFF" maxrepeat="9" required="true"/>
       <segment id="PNA" maxrepeat="1"/>
       <segment id="DTM" maxrepeat="99"/>

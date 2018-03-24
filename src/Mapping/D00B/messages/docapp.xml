@@ -46,6 +46,7 @@
     <segment id="LOC" maxrepeat="1"/>
   </group>
   <group id="SG8" maxrepeat="5" required="true">
+    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="FII" maxrepeat="1"/>
     <segment id="DTM" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>
@@ -66,6 +67,7 @@
     <segment id="DTM" maxrepeat="2"/>
   </group>
   <group id="SG12" maxrepeat="10">
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="MOA" maxrepeat="1"/>
     <segment id="LOC" maxrepeat="2"/>
     <segment id="NAD" maxrepeat="1"/>
