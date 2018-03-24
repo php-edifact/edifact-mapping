@@ -13,11 +13,17 @@
   <segment id="MEA" maxrepeat="5"/>
   <segment id="MOA" maxrepeat="5"/>
   <segment id="CUX" maxrepeat="9"/>
-  <segment id="RFF" maxrepeat="1" required="true"/>
+  <group id="SG1" maxrepeat="99">
+    <segment id="RFF" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="9"/>
+  </group>
   <group id="SG2" maxrepeat="99">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <segment id="LOC" maxrepeat="10"/>
-    <segment id="RFF" maxrepeat="1" required="true"/>
+    <group id="SG3" maxrepeat="99">
+      <segment id="RFF" maxrepeat="1" required="true"/>
+      <segment id="DTM" maxrepeat="99"/>
+    </group>
     <group id="SG4" maxrepeat="10">
       <segment id="CTA" maxrepeat="1" required="true"/>
       <segment id="COM" maxrepeat="5"/>
@@ -82,6 +88,7 @@
     <group id="SG17" maxrepeat="9999">
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="10"/>
+      <segment id="IMD" maxrepeat="99"/>
       <segment id="MEA" maxrepeat="10"/>
       <segment id="QTY" maxrepeat="10"/>
       <segment id="ALI" maxrepeat="10"/>

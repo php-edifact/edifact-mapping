@@ -44,20 +44,36 @@
       <segment id="FTX" maxrepeat="5"/>
       <segment id="PAC" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="9"/>
-      <segment id="RFF" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="1"/>
+      <group id="SG8" maxrepeat="9">
+        <segment id="RFF" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="1"/>
+      </group>
+      <group id="SG9" maxrepeat="9">
+        <segment id="TDT" maxrepeat="1" required="true"/>
+        <segment id="TMD" maxrepeat="1"/>
+      </group>
+      <group id="SG10" maxrepeat="99">
+        <segment id="LOC" maxrepeat="1" required="true"/>
+        <group id="SG11" maxrepeat="5">
+          <segment id="CTA" maxrepeat="1" required="true"/>
+          <segment id="COM" maxrepeat="5"/>
+        </group>
+      </group>
+      <group id="SG12" maxrepeat="999">
+        <segment id="QTY" maxrepeat="1" required="true"/>
+        <segment id="SCC" maxrepeat="1"/>
+        <segment id="DTM" maxrepeat="9"/>
+        <group id="SG13" maxrepeat="99">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="1"/>
+        </group>
+      </group>
+      <group id="SG14" maxrepeat="9">
+        <segment id="PRI" maxrepeat="1" required="true"/>
+        <segment id="CUX" maxrepeat="1"/>
+        <segment id="DTM" maxrepeat="9"/>
+      </group>
     </group>
-    <segment id="TDT" maxrepeat="1" required="true"/>
-    <segment id="TMD" maxrepeat="1"/>
   </group>
-  <segment id="LOC" maxrepeat="1" required="true"/>
-  <group id="SG11" maxrepeat="5">
-    <segment id="CTA" maxrepeat="1" required="true"/>
-    <segment id="COM" maxrepeat="5"/>
-  </group>
-  <segment id="QTY" maxrepeat="1" required="true"/>
-  <segment id="SCC" maxrepeat="1"/>
-  <segment id="DTM" maxrepeat="9"/>
-  <segment id="RFF" maxrepeat="1" required="true"/>
-  <segment id="DTM" maxrepeat="1"/>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -24,6 +24,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG4" maxrepeat="5">
+    <segment id="GEI" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
@@ -45,12 +46,14 @@
       <segment id="DTM" maxrepeat="5"/>
     </group>
     <group id="SG8" maxrepeat="5" required="true">
+      <segment id="GEI" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="1"/>
     </group>
     <group id="SG9" maxrepeat="5">
       <segment id="EMP" maxrepeat="1" required="true"/>
       <segment id="LOC" maxrepeat="1"/>
       <group id="SG10" maxrepeat="5">
+        <segment id="GEI" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="1"/>
       </group>
       <group id="SG11" maxrepeat="20">
@@ -60,25 +63,27 @@
       </group>
       <group id="SG12" maxrepeat="10">
         <segment id="LAN" maxrepeat="1" required="true"/>
-        <group id="SG13" maxrepeat="1">
-          <segment id="SAL" maxrepeat="1" required="true"/>
-          <segment id="FTX" maxrepeat="1"/>
-          <segment id="DTM" maxrepeat="2"/>
-          <group id="SG14" maxrepeat="10">
-            <segment id="ATT" maxrepeat="1" required="true"/>
-            <segment id="FTX" maxrepeat="1"/>
-          </group>
-          <group id="SG15" maxrepeat="2">
-            <segment id="FTX" maxrepeat="1"/>
-          </group>
-          <group id="SG16" maxrepeat="5">
-            <segment id="MOA" maxrepeat="1" required="true"/>
-            <segment id="RNG" maxrepeat="1"/>
-            <segment id="FTX" maxrepeat="1"/>
-          </group>
-        </group>
+        <segment id="GEI" maxrepeat="1"/>
       </group>
-      <segment id="UNT" maxrepeat="1" required="true"/>
+    </group>
+    <group id="SG13" maxrepeat="1">
+      <segment id="SAL" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="1"/>
+      <segment id="DTM" maxrepeat="2"/>
+      <group id="SG14" maxrepeat="10">
+        <segment id="ATT" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="1"/>
+      </group>
+      <group id="SG15" maxrepeat="2">
+        <segment id="GEI" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="1"/>
+      </group>
+      <group id="SG16" maxrepeat="5">
+        <segment id="MOA" maxrepeat="1" required="true"/>
+        <segment id="RNG" maxrepeat="1"/>
+        <segment id="FTX" maxrepeat="1"/>
+      </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

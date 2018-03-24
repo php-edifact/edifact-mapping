@@ -29,6 +29,7 @@
     <segment id="DTM" maxrepeat="9"/>
     <segment id="MEA" maxrepeat="9"/>
     <segment id="GEI" maxrepeat="5"/>
+    <segment id="FTX" maxrepeat="99"/>
     <segment id="LOC" maxrepeat="25"/>
     <segment id="COM" maxrepeat="1"/>
     <segment id="EMP" maxrepeat="9"/>

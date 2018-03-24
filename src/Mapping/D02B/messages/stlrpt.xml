@@ -17,6 +17,7 @@
   </group>
   <group id="SG2" maxrepeat="9" required="true">
     <segment id="DTM" maxrepeat="1" required="true"/>
+    <segment id="GEI" maxrepeat="1"/>
     <group id="SG3" maxrepeat="999">
       <segment id="CUX" maxrepeat="1" required="true"/>
       <segment id="EQN" maxrepeat="1" required="true"/>
@@ -47,6 +48,7 @@
           <segment id="NAD" maxrepeat="9"/>
           <segment id="LOC" maxrepeat="1"/>
           <segment id="CUX" maxrepeat="1"/>
+          <segment id="GEI" maxrepeat="2"/>
           <segment id="IMD" maxrepeat="9"/>
           <segment id="MOA" maxrepeat="9"/>
           <segment id="ALC" maxrepeat="9"/>
@@ -60,10 +62,12 @@
             <segment id="SEQ" maxrepeat="1"/>
           </group>
           <group id="SG10" maxrepeat="9999">
+            <segment id="PYT" maxrepeat="1" required="true"/>
             <segment id="MOA" maxrepeat="9"/>
             <segment id="RFF" maxrepeat="9"/>
             <segment id="DTM" maxrepeat="2"/>
             <segment id="AGR" maxrepeat="1"/>
+            <segment id="GEI" maxrepeat="2"/>
             <segment id="NAD" maxrepeat="1"/>
             <segment id="FTX" maxrepeat="9"/>
             <segment id="IMD" maxrepeat="2"/>

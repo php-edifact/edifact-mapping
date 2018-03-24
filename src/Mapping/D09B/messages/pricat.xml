@@ -180,6 +180,7 @@
       <segment id="ALI" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="10"/>
       <segment id="RFF" maxrepeat="99"/>
+      <segment id="LOC" maxrepeat="99"/>
       <segment id="DOC" maxrepeat="1"/>
       <segment id="PTY" maxrepeat="99"/>
       <segment id="FTX" maxrepeat="999"/>

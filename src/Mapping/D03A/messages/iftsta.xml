@@ -89,9 +89,10 @@
         </group>
         <group id="SG17" maxrepeat="99">
           <segment id="PCI" maxrepeat="1" required="true"/>
-          <segment id="UNT" maxrepeat="1" required="true"/>
+          <segment id="GIN" maxrepeat="9999"/>
         </group>
       </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

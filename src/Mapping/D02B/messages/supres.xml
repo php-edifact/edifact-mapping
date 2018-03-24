@@ -34,6 +34,7 @@
     <segment id="RFF" maxrepeat="10"/>
   </group>
   <group id="SG5" maxrepeat="1">
+    <segment id="PYT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="10"/>
   </group>
   <group id="SG6" maxrepeat="99">
@@ -77,6 +78,7 @@
         <segment id="RFF" maxrepeat="1"/>
       </group>
       <group id="SG15" maxrepeat="1">
+        <segment id="PYT" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="1"/>
       </group>
       <group id="SG16" maxrepeat="99">
@@ -108,6 +110,7 @@
         </group>
         <group id="SG21" maxrepeat="10">
           <segment id="PAI" maxrepeat="1" required="true"/>
+          <segment id="PYT" maxrepeat="1"/>
           <segment id="FII" maxrepeat="1"/>
           <segment id="MOA" maxrepeat="1"/>
           <segment id="RFF" maxrepeat="9"/>

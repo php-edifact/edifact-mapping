@@ -13,6 +13,7 @@
   <segment id="FII" maxrepeat="5"/>
   <segment id="PAI" maxrepeat="1"/>
   <segment id="FTX" maxrepeat="99"/>
+  <segment id="GEI" maxrepeat="5"/>
   <group id="SG1" maxrepeat="99">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <group id="SG2" maxrepeat="9">

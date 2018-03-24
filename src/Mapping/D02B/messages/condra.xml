@@ -43,6 +43,7 @@
     <segment id="QTY" maxrepeat="5"/>
     <group id="SG6" maxrepeat="10000">
       <segment id="BII" maxrepeat="1" required="true"/>
+      <segment id="GEI" maxrepeat="5"/>
       <segment id="DTM" maxrepeat="10"/>
       <segment id="IMD" maxrepeat="1"/>
       <segment id="QTY" maxrepeat="10"/>
@@ -64,6 +65,7 @@
           <segment id="SEQ" maxrepeat="1" required="true"/>
           <segment id="BII" maxrepeat="1" required="true"/>
           <segment id="RFF" maxrepeat="1"/>
+          <segment id="GEI" maxrepeat="5" required="true"/>
           <segment id="DTM" maxrepeat="1"/>
           <segment id="IMD" maxrepeat="1"/>
         </group>

@@ -130,6 +130,7 @@
       </group>
       <group id="SG29" maxrepeat="9999">
         <segment id="PCI" maxrepeat="1" required="true"/>
+        <segment id="QTY" maxrepeat="9"/>
         <segment id="QVR" maxrepeat="1"/>
         <group id="SG30" maxrepeat="10">
           <segment id="CDI" maxrepeat="1" required="true"/>

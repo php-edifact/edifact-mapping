@@ -13,6 +13,7 @@
   <segment id="FII" maxrepeat="5"/>
   <segment id="PAI" maxrepeat="1"/>
   <segment id="FTX" maxrepeat="99"/>
+  <segment id="GIS" maxrepeat="5"/>
   <group id="SG1" maxrepeat="99">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <group id="SG2" maxrepeat="9">
@@ -43,6 +44,7 @@
       <segment id="MOA" maxrepeat="1"/>
       <segment id="RFF" maxrepeat="1"/>
       <segment id="FTX" maxrepeat="5"/>
+      <segment id="QTY" maxrepeat="9"/>
       <group id="SG8" maxrepeat="9">
         <segment id="TAX" maxrepeat="1" required="true"/>
         <segment id="MOA" maxrepeat="9"/>

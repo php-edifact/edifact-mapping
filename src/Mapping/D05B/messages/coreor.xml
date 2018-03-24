@@ -84,6 +84,7 @@
     <group id="SG15" maxrepeat="9">
       <segment id="TDT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
+      <segment id="RFF" maxrepeat="9"/>
       <group id="SG16" maxrepeat="9">
         <segment id="LOC" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="9"/>

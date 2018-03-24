@@ -87,6 +87,7 @@
         <segment id="MEA" maxrepeat="99"/>
         <segment id="MOA" maxrepeat="9"/>
         <segment id="SGP" maxrepeat="9999"/>
+        <segment id="DGS" maxrepeat="99"/>
         <segment id="PCI" maxrepeat="9"/>
         <segment id="CST" maxrepeat="1"/>
         <segment id="LOC" maxrepeat="9"/>

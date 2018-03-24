@@ -55,6 +55,14 @@
       <segment id="DTM" maxrepeat="1"/>
     </group>
   </group>
+  <group id="SG10" maxrepeat="99">
+    <segment id="EFI" maxrepeat="1" required="true"/>
+    <segment id="CED" maxrepeat="99"/>
+    <segment id="COM" maxrepeat="9"/>
+    <segment id="RFF" maxrepeat="9"/>
+    <segment id="DTM" maxrepeat="9"/>
+    <segment id="QTY" maxrepeat="9"/>
+  </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
   <group id="SG11" maxrepeat="999">
     <segment id="DMS" maxrepeat="1" required="true"/>
@@ -156,6 +164,14 @@
         </group>
       </group>
     </group>
+  </group>
+  <group id="SG31" maxrepeat="99999">
+    <segment id="EFI" maxrepeat="1" required="true"/>
+    <segment id="CED" maxrepeat="99"/>
+    <segment id="COM" maxrepeat="9"/>
+    <segment id="RFF" maxrepeat="9"/>
+    <segment id="DTM" maxrepeat="9"/>
+    <segment id="QTY" maxrepeat="9"/>
   </group>
   <group id="SG32" maxrepeat="99999">
     <segment id="CST" maxrepeat="1" required="true"/>

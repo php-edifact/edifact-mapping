@@ -42,6 +42,7 @@
       <segment id="ALI" maxrepeat="5"/>
       <segment id="GIR" maxrepeat="5"/>
       <segment id="FTX" maxrepeat="5"/>
+      <segment id="PAC" maxrepeat="99"/>
       <segment id="DTM" maxrepeat="9"/>
       <group id="SG8" maxrepeat="9">
         <segment id="RFF" maxrepeat="1" required="true"/>

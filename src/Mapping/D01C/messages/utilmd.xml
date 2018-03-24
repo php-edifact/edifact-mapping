@@ -35,6 +35,8 @@
     <segment id="TAX" maxrepeat="9"/>
     <segment id="PTY" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
+    <segment id="AGR" maxrepeat="9"/>
+    <segment id="INP" maxrepeat="9"/>
     <group id="SG5" maxrepeat="99">
       <segment id="RFF" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>

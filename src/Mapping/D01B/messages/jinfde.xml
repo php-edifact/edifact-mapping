@@ -24,6 +24,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG4" maxrepeat="5">
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
@@ -48,6 +49,7 @@
     </group>
     <segment id="FTX" maxrepeat="30" required="true"/>
     <group id="SG9" maxrepeat="30">
+      <segment id="GIS" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="1"/>
     </group>
   </group>

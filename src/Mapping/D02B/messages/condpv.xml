@@ -45,6 +45,7 @@
     <segment id="BII" maxrepeat="1" required="true"/>
     <segment id="RCS" maxrepeat="1"/>
     <segment id="PAI" maxrepeat="1"/>
+    <segment id="PYT" maxrepeat="1"/>
     <group id="SG9" maxrepeat="2">
       <segment id="APR" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>

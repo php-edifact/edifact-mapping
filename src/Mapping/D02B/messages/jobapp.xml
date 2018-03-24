@@ -24,6 +24,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG4" maxrepeat="5">
+    <segment id="GEI" maxrepeat="1" required="true"/>
     <segment id="FTX" maxrepeat="1"/>
   </group>
   <segment id="UNS" maxrepeat="1" required="true"/>
@@ -39,6 +40,7 @@
       <segment id="DOC" maxrepeat="9"/>
     </group>
     <group id="SG7" maxrepeat="5">
+      <segment id="GEI" maxrepeat="1" required="true"/>
       <segment id="FTX" maxrepeat="1"/>
     </group>
     <group id="SG8" maxrepeat="99" required="true">
@@ -53,6 +55,7 @@
         <segment id="FTX" maxrepeat="1"/>
       </group>
       <group id="SG11" maxrepeat="2">
+        <segment id="GEI" maxrepeat="1" required="true"/>
         <segment id="FTX" maxrepeat="1"/>
       </group>
       <group id="SG12" maxrepeat="5">
@@ -71,8 +74,9 @@
       </group>
       <group id="SG15" maxrepeat="20">
         <segment id="LAN" maxrepeat="1" required="true"/>
-        <segment id="UNT" maxrepeat="1" required="true"/>
+        <segment id="GEI" maxrepeat="3"/>
       </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

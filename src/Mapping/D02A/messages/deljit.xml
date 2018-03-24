@@ -38,10 +38,12 @@
     <group id="SG7" maxrepeat="9999">
       <segment id="LIN" maxrepeat="1" required="true"/>
       <segment id="PIA" maxrepeat="10"/>
+      <segment id="IMD" maxrepeat="99"/>
       <segment id="ALI" maxrepeat="5"/>
       <segment id="GIR" maxrepeat="5"/>
       <segment id="FTX" maxrepeat="5"/>
       <segment id="PAC" maxrepeat="5"/>
+      <segment id="DTM" maxrepeat="9"/>
       <group id="SG8" maxrepeat="5">
         <segment id="RFF" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="1"/>
@@ -60,6 +62,7 @@
       <group id="SG12" maxrepeat="999">
         <segment id="QTY" maxrepeat="1" required="true"/>
         <segment id="SCC" maxrepeat="1"/>
+        <segment id="DTM" maxrepeat="9"/>
         <group id="SG13" maxrepeat="5">
           <segment id="RFF" maxrepeat="1" required="true"/>
           <segment id="DTM" maxrepeat="1"/>

@@ -37,6 +37,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG7" maxrepeat="10">
+    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="PCD" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>
@@ -139,6 +140,7 @@
       </group>
     </group>
     <group id="SG30" maxrepeat="10">
+      <segment id="PAT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="MOA" maxrepeat="1"/>
@@ -238,6 +240,7 @@
         <segment id="HAN" maxrepeat="5"/>
       </group>
       <group id="SG48" maxrepeat="10">
+        <segment id="PAT" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="5"/>
         <segment id="PCD" maxrepeat="1"/>
         <segment id="MOA" maxrepeat="1"/>

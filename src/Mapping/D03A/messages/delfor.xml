@@ -16,7 +16,10 @@
   </group>
   <group id="SG2" maxrepeat="99">
     <segment id="NAD" maxrepeat="1" required="true"/>
-    <segment id="RFF" maxrepeat="1" required="true"/>
+    <group id="SG3" maxrepeat="99">
+      <segment id="RFF" maxrepeat="1" required="true"/>
+      <segment id="DTM" maxrepeat="5"/>
+    </group>
     <group id="SG4" maxrepeat="5">
       <segment id="CTA" maxrepeat="1" required="true"/>
       <segment id="COM" maxrepeat="5"/>
@@ -134,7 +137,12 @@
           <segment id="DTM" maxrepeat="5"/>
         </group>
       </group>
-      <segment id="UNT" maxrepeat="1" required="true"/>
+      <group id="SG31" maxrepeat="9">
+        <segment id="PRI" maxrepeat="1" required="true"/>
+        <segment id="CUX" maxrepeat="1"/>
+        <segment id="DTM" maxrepeat="9"/>
+      </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

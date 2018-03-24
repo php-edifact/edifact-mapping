@@ -27,6 +27,10 @@
   <group id="SG3" maxrepeat="99">
     <segment id="TDT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="9"/>
+    <group id="SG4" maxrepeat="9">
+      <segment id="TSR" maxrepeat="1" required="true"/>
+      <segment id="SCC" maxrepeat="9"/>
+    </group>
     <group id="SG5" maxrepeat="99">
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>

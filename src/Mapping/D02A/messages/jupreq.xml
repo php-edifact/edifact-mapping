@@ -10,6 +10,7 @@
   <segment id="BGM" maxrepeat="1" required="true"/>
   <segment id="DTM" maxrepeat="99" required="true"/>
   <segment id="MOA" maxrepeat="99"/>
+  <segment id="GIS" maxrepeat="99"/>
   <segment id="FTX" maxrepeat="99"/>
   <group id="SG1" maxrepeat="99">
     <segment id="RFF" maxrepeat="1" required="true"/>
@@ -22,6 +23,7 @@
   </group>
   <group id="SG3" maxrepeat="999">
     <segment id="DOC" maxrepeat="1" required="true"/>
+    <segment id="GIS" maxrepeat="99"/>
     <segment id="RFF" maxrepeat="99"/>
     <segment id="DTM" maxrepeat="99"/>
     <segment id="MOA" maxrepeat="99"/>
@@ -51,6 +53,7 @@
     </group>
     <group id="SG9" maxrepeat="99">
       <segment id="FOR" maxrepeat="1" required="true"/>
+      <segment id="GIS" maxrepeat="99"/>
       <segment id="DTM" maxrepeat="99"/>
       <segment id="RTE" maxrepeat="99"/>
       <segment id="MOA" maxrepeat="99"/>
@@ -70,6 +73,7 @@
       <segment id="RTE" maxrepeat="99"/>
       <segment id="DMS" maxrepeat="99"/>
       <segment id="RFF" maxrepeat="99"/>
+      <segment id="GIS" maxrepeat="99"/>
       <group id="SG12" maxrepeat="99">
         <segment id="MOA" maxrepeat="1" required="true"/>
         <segment id="CUX" maxrepeat="99"/>
@@ -81,6 +85,7 @@
       </group>
       <group id="SG14" maxrepeat="99">
         <segment id="FOR" maxrepeat="1" required="true"/>
+        <segment id="GIS" maxrepeat="99"/>
         <segment id="DTM" maxrepeat="99"/>
         <segment id="MOA" maxrepeat="99"/>
       </group>
@@ -91,6 +96,7 @@
         <segment id="TAX" maxrepeat="99"/>
         <group id="SG16" maxrepeat="99">
           <segment id="SEQ" maxrepeat="1" required="true"/>
+          <segment id="GIS" maxrepeat="99"/>
           <segment id="DTM" maxrepeat="99"/>
           <segment id="MOA" maxrepeat="99"/>
           <segment id="RFF" maxrepeat="99"/>

@@ -11,6 +11,10 @@
   <segment id="DTM" maxrepeat="5" required="true"/>
   <segment id="IRQ" maxrepeat="1"/>
   <segment id="FTX" maxrepeat="20"/>
+  <group id="SG1" maxrepeat="9">
+    <segment id="RFF" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="9"/>
+  </group>
   <group id="SG2" maxrepeat="25" required="true">
     <segment id="NAD" maxrepeat="1" required="true"/>
     <group id="SG3" maxrepeat="5">

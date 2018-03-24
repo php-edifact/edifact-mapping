@@ -276,33 +276,34 @@
       <group id="SG55" maxrepeat="9">
         <segment id="DGS" maxrepeat="1" required="true"/>
         <segment id="QTY" maxrepeat="9"/>
-        <group id="SG56" maxrepeat="999">
-          <segment id="HYN" maxrepeat="1" required="true"/>
+        <segment id="FTX" maxrepeat="999"/>
+      </group>
+      <group id="SG56" maxrepeat="999">
+        <segment id="HYN" maxrepeat="1" required="true"/>
+        <segment id="PIA" maxrepeat="99"/>
+        <segment id="QTY" maxrepeat="9"/>
+        <segment id="FTX" maxrepeat="99"/>
+        <group id="SG57" maxrepeat="999">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="9"/>
+        </group>
+        <group id="SG58" maxrepeat="99">
+          <segment id="CCI" maxrepeat="1" required="true"/>
+          <segment id="CAV" maxrepeat="9"/>
+          <segment id="MEA" maxrepeat="99"/>
+        </group>
+        <group id="SG59" maxrepeat="99">
+          <segment id="NAD" maxrepeat="1" required="true"/>
           <segment id="PIA" maxrepeat="99"/>
           <segment id="QTY" maxrepeat="9"/>
-          <segment id="FTX" maxrepeat="99"/>
-          <group id="SG57" maxrepeat="999">
-            <segment id="RFF" maxrepeat="1" required="true"/>
-            <segment id="DTM" maxrepeat="9"/>
-          </group>
-          <group id="SG58" maxrepeat="99">
+          <group id="SG60" maxrepeat="99">
             <segment id="CCI" maxrepeat="1" required="true"/>
-            <segment id="CAV" maxrepeat="9"/>
-            <segment id="MEA" maxrepeat="99"/>
-          </group>
-          <group id="SG59" maxrepeat="99">
-            <segment id="NAD" maxrepeat="1" required="true"/>
-            <segment id="PIA" maxrepeat="99"/>
-            <segment id="QTY" maxrepeat="9"/>
-            <group id="SG60" maxrepeat="99">
-              <segment id="CCI" maxrepeat="1" required="true"/>
-              <segment id="CAV" maxrepeat="99"/>
-              <segment id="MEA" maxrepeat="9"/>
-            </group>
+            <segment id="CAV" maxrepeat="99"/>
+            <segment id="MEA" maxrepeat="9"/>
           </group>
         </group>
       </group>
     </group>
-    <segment id="UNT" maxrepeat="1" required="true"/>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

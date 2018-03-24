@@ -45,6 +45,7 @@
     <segment id="BII" maxrepeat="1" required="true"/>
     <segment id="RCS" maxrepeat="1"/>
     <segment id="PAI" maxrepeat="1"/>
+    <segment id="PAT" maxrepeat="1"/>
     <segment id="PCD" maxrepeat="9"/>
     <group id="SG9" maxrepeat="2">
       <segment id="APR" maxrepeat="1" required="true"/>
@@ -125,47 +126,48 @@
       <group id="SG25" maxrepeat="1000">
         <segment id="IMD" maxrepeat="1" required="true"/>
         <segment id="RFF" maxrepeat="5"/>
-        <group id="SG26" maxrepeat="2">
-          <segment id="APR" maxrepeat="1" required="true"/>
-          <segment id="DTM" maxrepeat="5"/>
-        </group>
-        <group id="SG27" maxrepeat="5">
-          <segment id="TAX" maxrepeat="1" required="true"/>
-          <segment id="MOA" maxrepeat="1"/>
-          <segment id="LOC" maxrepeat="5"/>
-        </group>
-        <group id="SG28" maxrepeat="20">
-          <segment id="ALC" maxrepeat="1" required="true"/>
-          <segment id="ALI" maxrepeat="1"/>
-          <group id="SG29" maxrepeat="1">
-            <segment id="QTY" maxrepeat="1" required="true"/>
-            <segment id="RNG" maxrepeat="1"/>
-          </group>
-          <group id="SG30" maxrepeat="1">
-            <segment id="PCD" maxrepeat="1" required="true"/>
-            <segment id="RNG" maxrepeat="1"/>
-          </group>
-          <group id="SG31" maxrepeat="1">
-            <segment id="MOA" maxrepeat="1" required="true"/>
-            <segment id="RNG" maxrepeat="1"/>
-          </group>
-          <group id="SG32" maxrepeat="1">
-            <segment id="RTE" maxrepeat="1" required="true"/>
-            <segment id="RNG" maxrepeat="1"/>
-          </group>
-          <group id="SG33" maxrepeat="1">
-            <segment id="TAX" maxrepeat="1" required="true"/>
-            <segment id="MOA" maxrepeat="1"/>
-          </group>
-        </group>
+        <segment id="GIS" maxrepeat="5"/>
       </group>
-      <segment id="UNS" maxrepeat="1" required="true"/>
-      <group id="SG34" maxrepeat="10">
+    </group>
+    <group id="SG26" maxrepeat="2">
+      <segment id="APR" maxrepeat="1" required="true"/>
+      <segment id="DTM" maxrepeat="5"/>
+    </group>
+    <group id="SG27" maxrepeat="5">
+      <segment id="TAX" maxrepeat="1" required="true"/>
+      <segment id="MOA" maxrepeat="1"/>
+      <segment id="LOC" maxrepeat="5"/>
+    </group>
+    <group id="SG28" maxrepeat="20">
+      <segment id="ALC" maxrepeat="1" required="true"/>
+      <segment id="ALI" maxrepeat="1"/>
+      <group id="SG29" maxrepeat="1">
+        <segment id="QTY" maxrepeat="1" required="true"/>
+        <segment id="RNG" maxrepeat="1"/>
+      </group>
+      <group id="SG30" maxrepeat="1">
+        <segment id="PCD" maxrepeat="1" required="true"/>
+        <segment id="RNG" maxrepeat="1"/>
+      </group>
+      <group id="SG31" maxrepeat="1">
+        <segment id="MOA" maxrepeat="1" required="true"/>
+        <segment id="RNG" maxrepeat="1"/>
+      </group>
+      <group id="SG32" maxrepeat="1">
+        <segment id="RTE" maxrepeat="1" required="true"/>
+        <segment id="RNG" maxrepeat="1"/>
+      </group>
+      <group id="SG33" maxrepeat="1">
         <segment id="TAX" maxrepeat="1" required="true"/>
-        <segment id="MOA" maxrepeat="2"/>
+        <segment id="MOA" maxrepeat="1"/>
       </group>
-      <segment id="CNT" maxrepeat="5"/>
-      <segment id="UNT" maxrepeat="1" required="true"/>
     </group>
   </group>
+  <segment id="UNS" maxrepeat="1" required="true"/>
+  <group id="SG34" maxrepeat="10">
+    <segment id="TAX" maxrepeat="1" required="true"/>
+    <segment id="MOA" maxrepeat="2"/>
+  </group>
+  <segment id="CNT" maxrepeat="5"/>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

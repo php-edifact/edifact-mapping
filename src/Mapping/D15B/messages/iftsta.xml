@@ -26,6 +26,9 @@
   <segment id="CNT" maxrepeat="9"/>
   <group id="SG4" maxrepeat="99999">
     <segment id="EQD" maxrepeat="1" required="true"/>
+    <segment id="NAD" maxrepeat="9"/>
+    <segment id="DTM" maxrepeat="9"/>
+    <segment id="FTX" maxrepeat="9"/>
     <segment id="MEA" maxrepeat="9"/>
     <segment id="DIM" maxrepeat="9"/>
     <segment id="SEL" maxrepeat="9"/>
@@ -39,6 +42,11 @@
     <group id="SG6" maxrepeat="9">
       <segment id="LOC" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
+    </group>
+    <group id="SG7" maxrepeat="99">
+      <segment id="STS" maxrepeat="1" required="true"/>
+      <segment id="LOC" maxrepeat="1"/>
+      <segment id="DTM" maxrepeat="1"/>
     </group>
     <group id="SG8" maxrepeat="99">
       <segment id="EQA" maxrepeat="1" required="true"/>

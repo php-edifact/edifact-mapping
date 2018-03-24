@@ -36,6 +36,7 @@
     <segment id="DTM" maxrepeat="3"/>
   </group>
   <group id="SG6" maxrepeat="10">
+    <segment id="GIS" maxrepeat="1" required="true"/>
     <segment id="MOA" maxrepeat="1"/>
     <segment id="LOC" maxrepeat="2"/>
     <segment id="NAD" maxrepeat="1"/>
@@ -96,6 +97,7 @@
       </group>
     </group>
     <group id="SG17" maxrepeat="1">
+      <segment id="GIS" maxrepeat="1" required="true"/>
       <segment id="MOA" maxrepeat="5"/>
     </group>
   </group>

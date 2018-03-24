@@ -79,6 +79,9 @@
         <segment id="SGP" maxrepeat="99"/>
         <segment id="DGS" maxrepeat="9"/>
         <segment id="FTX" maxrepeat="9"/>
+        <segment id="GDS" maxrepeat="9"/>
+        <segment id="LOC" maxrepeat="9"/>
+        <segment id="QTY" maxrepeat="9"/>
         <group id="SG15" maxrepeat="99">
           <segment id="MEA" maxrepeat="1" required="true"/>
           <segment id="EQN" maxrepeat="1"/>
@@ -91,8 +94,12 @@
           <segment id="PCI" maxrepeat="1" required="true"/>
           <segment id="GIN" maxrepeat="9999"/>
         </group>
-        <segment id="UNT" maxrepeat="1" required="true"/>
+        <group id="SG18" maxrepeat="9">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="9"/>
+        </group>
       </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

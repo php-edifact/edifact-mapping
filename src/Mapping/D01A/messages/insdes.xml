@@ -74,9 +74,17 @@
       <segment id="PCI" maxrepeat="1" required="true"/>
       <segment id="GIN" maxrepeat="9"/>
     </group>
-    <segment id="UNS" maxrepeat="1" required="true"/>
-    <segment id="MOA" maxrepeat="99"/>
-    <segment id="CNT" maxrepeat="9"/>
-    <segment id="UNT" maxrepeat="1" required="true"/>
+    <group id="SG14" maxrepeat="99">
+      <segment id="DGS" maxrepeat="1" required="true"/>
+      <segment id="FTX" maxrepeat="9"/>
+      <group id="SG15" maxrepeat="9">
+        <segment id="CTA" maxrepeat="1" required="true"/>
+        <segment id="COM" maxrepeat="9"/>
+      </group>
+    </group>
   </group>
+  <segment id="UNS" maxrepeat="1" required="true"/>
+  <segment id="MOA" maxrepeat="99"/>
+  <segment id="CNT" maxrepeat="9"/>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

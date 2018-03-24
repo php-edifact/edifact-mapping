@@ -69,9 +69,13 @@
     <group id="SG12" maxrepeat="1">
       <segment id="TDT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="9"/>
-      <segment id="NAD" maxrepeat="9"/>
+      <group id="SG13" maxrepeat="9">
+        <segment id="LOC" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="9"/>
+      </group>
     </group>
-    <segment id="CNT" maxrepeat="1"/>
-    <segment id="UNT" maxrepeat="1" required="true"/>
+    <segment id="NAD" maxrepeat="9"/>
   </group>
+  <segment id="CNT" maxrepeat="1"/>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

@@ -11,6 +11,7 @@
   <segment id="CST" maxrepeat="1"/>
   <segment id="LOC" maxrepeat="99"/>
   <segment id="DTM" maxrepeat="15"/>
+  <segment id="GEI" maxrepeat="25"/>
   <segment id="FII" maxrepeat="1"/>
   <segment id="MEA" maxrepeat="5"/>
   <segment id="EQD" maxrepeat="999"/>
@@ -88,6 +89,7 @@
       </group>
     </group>
     <group id="SG18" maxrepeat="5">
+      <segment id="PYT" maxrepeat="1" required="true"/>
       <segment id="MOA" maxrepeat="1"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="FTX" maxrepeat="1"/>
@@ -114,6 +116,7 @@
       <segment id="MOA" maxrepeat="15"/>
       <segment id="NAD" maxrepeat="10"/>
       <segment id="GIR" maxrepeat="9999"/>
+      <segment id="GEI" maxrepeat="99"/>
       <segment id="LOC" maxrepeat="1"/>
       <group id="SG22" maxrepeat="10">
         <segment id="DOC" maxrepeat="1" required="true"/>
@@ -135,6 +138,7 @@
         <segment id="LOC" maxrepeat="2"/>
       </group>
       <group id="SG26" maxrepeat="5">
+        <segment id="PYT" maxrepeat="1" required="true"/>
         <segment id="MOA" maxrepeat="1"/>
         <segment id="PCD" maxrepeat="1"/>
         <segment id="FTX" maxrepeat="1"/>
@@ -201,6 +205,7 @@
       <segment id="FTX" maxrepeat="1"/>
     </group>
     <group id="SG40" maxrepeat="25">
+      <segment id="GEI" maxrepeat="1" required="true"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="DTM" maxrepeat="1"/>
       <segment id="RFF" maxrepeat="1"/>
@@ -208,46 +213,50 @@
     <group id="SG41" maxrepeat="10">
       <segment id="TAX" maxrepeat="1" required="true"/>
       <segment id="MOA" maxrepeat="2"/>
-      <group id="SG42" maxrepeat="1">
-        <segment id="QVR" maxrepeat="1" required="true"/>
-        <segment id="QTY" maxrepeat="1"/>
-        <group id="SG43" maxrepeat="1">
-          <segment id="RFF" maxrepeat="1" required="true"/>
+      <segment id="GEI" maxrepeat="1"/>
+    </group>
+    <group id="SG42" maxrepeat="1">
+      <segment id="QVR" maxrepeat="1" required="true"/>
+      <segment id="QTY" maxrepeat="1"/>
+      <group id="SG43" maxrepeat="1">
+        <segment id="RFF" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="1"/>
+      </group>
+    </group>
+    <group id="SG44" maxrepeat="50">
+      <segment id="GIR" maxrepeat="1" required="true"/>
+      <segment id="GEI" maxrepeat="10"/>
+      <segment id="NAD" maxrepeat="1"/>
+      <segment id="MEA" maxrepeat="5"/>
+      <group id="SG45" maxrepeat="10">
+        <segment id="MOA" maxrepeat="1" required="true"/>
+        <group id="SG46" maxrepeat="1">
+          <segment id="CUX" maxrepeat="1" required="true"/>
           <segment id="DTM" maxrepeat="1"/>
         </group>
       </group>
-      <group id="SG44" maxrepeat="50">
-        <segment id="GIR" maxrepeat="1" required="true"/>
-        <segment id="NAD" maxrepeat="1"/>
-        <segment id="MEA" maxrepeat="5"/>
-        <group id="SG45" maxrepeat="10">
-          <segment id="MOA" maxrepeat="1" required="true"/>
-          <group id="SG46" maxrepeat="1">
-            <segment id="CUX" maxrepeat="1" required="true"/>
-            <segment id="DTM" maxrepeat="1"/>
-          </group>
-        </group>
-        <group id="SG47" maxrepeat="10">
-          <segment id="TAX" maxrepeat="1" required="true"/>
-          <segment id="MOA" maxrepeat="2"/>
-          <group id="SG48" maxrepeat="5">
-            <segment id="DOC" maxrepeat="1" required="true"/>
-            <segment id="DTM" maxrepeat="2"/>
-            <segment id="LOC" maxrepeat="1"/>
-          </group>
-        </group>
-      </group>
-      <segment id="UNS" maxrepeat="1" required="true"/>
-      <segment id="CNT" maxrepeat="5"/>
-      <group id="SG49" maxrepeat="50">
+      <group id="SG47" maxrepeat="10">
         <segment id="TAX" maxrepeat="1" required="true"/>
         <segment id="MOA" maxrepeat="2"/>
-        <group id="SG50" maxrepeat="1">
-          <segment id="AUT" maxrepeat="1" required="true"/>
-          <segment id="DTM" maxrepeat="1"/>
-        </group>
-        <segment id="UNT" maxrepeat="1" required="true"/>
+        <segment id="GEI" maxrepeat="1"/>
+      </group>
+      <group id="SG48" maxrepeat="5">
+        <segment id="DOC" maxrepeat="1" required="true"/>
+        <segment id="DTM" maxrepeat="2"/>
+        <segment id="LOC" maxrepeat="1"/>
       </group>
     </group>
   </group>
+  <segment id="UNS" maxrepeat="1" required="true"/>
+  <segment id="CNT" maxrepeat="5"/>
+  <group id="SG49" maxrepeat="50">
+    <segment id="TAX" maxrepeat="1" required="true"/>
+    <segment id="MOA" maxrepeat="2"/>
+    <segment id="GEI" maxrepeat="1"/>
+  </group>
+  <group id="SG50" maxrepeat="1">
+    <segment id="AUT" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="1"/>
+  </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

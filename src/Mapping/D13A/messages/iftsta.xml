@@ -76,6 +76,7 @@
       <segment id="RFF" maxrepeat="999"/>
       <segment id="DTM" maxrepeat="9"/>
       <segment id="DOC" maxrepeat="1"/>
+      <segment id="MOA" maxrepeat="9"/>
       <group id="SG15" maxrepeat="9">
         <segment id="NAD" maxrepeat="1" required="true"/>
         <group id="SG16" maxrepeat="9">
@@ -115,26 +116,33 @@
           </group>
         </group>
       </group>
-      <segment id="GID" maxrepeat="1" required="true"/>
-      <segment id="HAN" maxrepeat="9"/>
-      <segment id="SGP" maxrepeat="99"/>
-      <segment id="DGS" maxrepeat="9"/>
-      <segment id="FTX" maxrepeat="9"/>
-      <segment id="GDS" maxrepeat="9"/>
-      <segment id="LOC" maxrepeat="9"/>
-      <segment id="QTY" maxrepeat="9"/>
-      <group id="SG24" maxrepeat="99">
-        <segment id="MEA" maxrepeat="1" required="true"/>
-        <segment id="EQN" maxrepeat="1"/>
-      </group>
-      <group id="SG25" maxrepeat="99">
-        <segment id="DIM" maxrepeat="1" required="true"/>
-        <segment id="EQN" maxrepeat="1"/>
-      </group>
-      <group id="SG27" maxrepeat="99">
-        <segment id="PCI" maxrepeat="1" required="true"/>
-        <segment id="GIN" maxrepeat="9999"/>
+      <group id="SG23" maxrepeat="9999">
+        <segment id="GID" maxrepeat="1" required="true"/>
+        <segment id="HAN" maxrepeat="9"/>
+        <segment id="SGP" maxrepeat="99"/>
+        <segment id="DGS" maxrepeat="9"/>
+        <segment id="FTX" maxrepeat="9"/>
+        <segment id="GDS" maxrepeat="9"/>
+        <segment id="LOC" maxrepeat="9"/>
+        <segment id="QTY" maxrepeat="9"/>
+        <group id="SG24" maxrepeat="99">
+          <segment id="MEA" maxrepeat="1" required="true"/>
+          <segment id="EQN" maxrepeat="1"/>
+        </group>
+        <group id="SG25" maxrepeat="99">
+          <segment id="DIM" maxrepeat="1" required="true"/>
+          <segment id="EQN" maxrepeat="1"/>
+        </group>
+        <group id="SG26" maxrepeat="9">
+          <segment id="RFF" maxrepeat="1" required="true"/>
+          <segment id="DTM" maxrepeat="9"/>
+        </group>
+        <group id="SG27" maxrepeat="99">
+          <segment id="PCI" maxrepeat="1" required="true"/>
+          <segment id="GIN" maxrepeat="9999"/>
+        </group>
       </group>
     </group>
   </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

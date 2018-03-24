@@ -48,6 +48,7 @@
       <segment id="ELM" maxrepeat="1"/>
       <segment id="EDT" maxrepeat="1"/>
       <segment id="IMD" maxrepeat="9"/>
+      <segment id="GEI" maxrepeat="9"/>
       <segment id="FTX" maxrepeat="99"/>
     </group>
     <group id="SG9" maxrepeat="999">

@@ -13,6 +13,7 @@
   <segment id="CUX" maxrepeat="1"/>
   <segment id="FII" maxrepeat="2"/>
   <segment id="DTM" maxrepeat="9"/>
+  <segment id="PAT" maxrepeat="1"/>
   <segment id="FTX" maxrepeat="5"/>
   <group id="SG1" maxrepeat="6">
     <segment id="NAD" maxrepeat="1" required="true"/>
@@ -31,6 +32,7 @@
     <segment id="LOC" maxrepeat="1"/>
     <segment id="FTX" maxrepeat="3"/>
     <group id="SG4" maxrepeat="9" required="true">
+      <segment id="PAT" maxrepeat="1" required="true"/>
       <segment id="MOA" maxrepeat="1"/>
       <segment id="CUX" maxrepeat="1"/>
       <segment id="DTM" maxrepeat="3"/>

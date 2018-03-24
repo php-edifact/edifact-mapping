@@ -29,6 +29,7 @@
     <segment id="LOC" maxrepeat="99"/>
     <segment id="DTM" maxrepeat="99"/>
   </group>
+  <segment id="GEI" maxrepeat="9"/>
   <group id="SG5" maxrepeat="9999">
     <segment id="EQD" maxrepeat="1" required="true"/>
     <segment id="TSR" maxrepeat="9"/>
@@ -36,6 +37,7 @@
     <segment id="DIM" maxrepeat="9"/>
     <segment id="SEL" maxrepeat="9"/>
     <segment id="NAD" maxrepeat="9"/>
+    <segment id="GEI" maxrepeat="9"/>
     <segment id="LOC" maxrepeat="1"/>
     <group id="SG6" maxrepeat="9">
       <segment id="TMP" maxrepeat="1" required="true"/>
@@ -51,6 +53,7 @@
       <segment id="CNT" maxrepeat="9"/>
       <segment id="MOA" maxrepeat="9"/>
       <segment id="LOC" maxrepeat="99"/>
+      <segment id="GEI" maxrepeat="9"/>
       <segment id="CUX" maxrepeat="9"/>
       <segment id="CPI" maxrepeat="9"/>
       <group id="SG9" maxrepeat="9">
@@ -90,6 +93,7 @@
         <segment id="LOC" maxrepeat="9"/>
         <segment id="TMD" maxrepeat="9"/>
         <group id="SG15" maxrepeat="9">
+          <segment id="GEI" maxrepeat="1" required="true"/>
           <segment id="DTM" maxrepeat="9"/>
           <segment id="DOC" maxrepeat="9"/>
           <segment id="PAC" maxrepeat="9"/>

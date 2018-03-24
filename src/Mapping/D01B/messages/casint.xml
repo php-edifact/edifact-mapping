@@ -40,6 +40,7 @@
   <group id="SG4" maxrepeat="99">
     <segment id="DOC" maxrepeat="1" required="true"/>
     <segment id="GIR" maxrepeat="99"/>
+    <segment id="PAT" maxrepeat="1"/>
     <segment id="DTM" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
     <group id="SG5" maxrepeat="1">

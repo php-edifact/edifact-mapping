@@ -51,6 +51,7 @@
           <segment id="TAX" maxrepeat="9"/>
           <segment id="FTX" maxrepeat="9"/>
           <group id="SG9" maxrepeat="9">
+            <segment id="PYT" maxrepeat="1" required="true"/>
             <segment id="DTM" maxrepeat="9"/>
             <segment id="PCD" maxrepeat="9"/>
             <segment id="MOA" maxrepeat="9"/>

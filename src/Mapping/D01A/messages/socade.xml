@@ -62,24 +62,25 @@
       <group id="SG8" maxrepeat="99">
         <segment id="RFF" maxrepeat="1" required="true"/>
         <segment id="DTM" maxrepeat="1"/>
-        <group id="SG9" maxrepeat="99">
+        <segment id="GIS" maxrepeat="9"/>
+      </group>
+      <group id="SG9" maxrepeat="99">
+        <segment id="MOA" maxrepeat="1" required="true"/>
+        <segment id="RFF" maxrepeat="9"/>
+        <segment id="DTM" maxrepeat="9"/>
+      </group>
+      <group id="SG10" maxrepeat="9">
+        <segment id="PCD" maxrepeat="1" required="true"/>
+        <group id="SG11" maxrepeat="9">
           <segment id="MOA" maxrepeat="1" required="true"/>
-          <segment id="RFF" maxrepeat="9"/>
           <segment id="DTM" maxrepeat="9"/>
-        </group>
-        <group id="SG10" maxrepeat="9">
-          <segment id="PCD" maxrepeat="1" required="true"/>
-          <group id="SG11" maxrepeat="9">
-            <segment id="MOA" maxrepeat="1" required="true"/>
-            <segment id="DTM" maxrepeat="9"/>
-          </group>
         </group>
       </group>
     </group>
-    <group id="SG12" maxrepeat="1">
-      <segment id="AUT" maxrepeat="1" required="true"/>
-      <segment id="DTM" maxrepeat="1"/>
-    </group>
-    <segment id="UNT" maxrepeat="1" required="true"/>
   </group>
+  <group id="SG12" maxrepeat="1">
+    <segment id="AUT" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="1"/>
+  </group>
+  <segment id="UNT" maxrepeat="1" required="true"/>
 </message>

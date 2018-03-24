@@ -50,6 +50,7 @@
     <segment id="DTM" maxrepeat="5"/>
   </group>
   <group id="SG9" maxrepeat="10">
+    <segment id="PAT" maxrepeat="1" required="true"/>
     <segment id="DTM" maxrepeat="5"/>
     <segment id="PCD" maxrepeat="1"/>
     <segment id="MOA" maxrepeat="1"/>
@@ -136,6 +137,7 @@
     <segment id="ALI" maxrepeat="5"/>
     <segment id="DTM" maxrepeat="35"/>
     <segment id="MOA" maxrepeat="10"/>
+    <segment id="GIS" maxrepeat="99"/>
     <segment id="GIN" maxrepeat="1000"/>
     <segment id="GIR" maxrepeat="1000"/>
     <segment id="QVR" maxrepeat="1"/>
@@ -149,6 +151,7 @@
       <segment id="MEA" maxrepeat="10"/>
     </group>
     <group id="SG28" maxrepeat="10">
+      <segment id="PAT" maxrepeat="1" required="true"/>
       <segment id="DTM" maxrepeat="5"/>
       <segment id="PCD" maxrepeat="1"/>
       <segment id="MOA" maxrepeat="1"/>

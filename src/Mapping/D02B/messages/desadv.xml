@@ -102,6 +102,7 @@
       <segment id="HAN" maxrepeat="20"/>
       <segment id="FTX" maxrepeat="99"/>
       <segment id="MOA" maxrepeat="5"/>
+      <segment id="PAC" maxrepeat="9"/>
       <group id="SG18" maxrepeat="99">
         <segment id="RFF" maxrepeat="1" required="true"/>
         <segment id="NAD" maxrepeat="1"/>
