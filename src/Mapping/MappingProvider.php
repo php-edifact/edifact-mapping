@@ -25,7 +25,7 @@ class MappingProvider
      * Constructor
      *
      * @param string $directory
-     * @param string $path
+     * @param string|null $path
      */
     public function __construct($directory = 'D95B', $path = null)
     {
@@ -38,7 +38,7 @@ class MappingProvider
         }
 
         if (is_null($path)) {
-            $path = dirname(__FILE__);
+            $path = __DIR__;
         }
 
         $this->_directory = $this->checkDirectoryFormat($directory);
@@ -52,7 +52,7 @@ class MappingProvider
      *
      * @return void
      */
-    public function checkDirectoryFormat($directory)
+    public function checkDirectoryFormat(string $directory)
     {
 
         if (preg_match('/^\d{2}[A-C]{1}$/', $directory)) {
@@ -97,6 +97,45 @@ class MappingProvider
     }
 
     /**
+     * get all data element codes
+     *
+     * @return array|false
+     */
+    public function loadCodesXml()
+    {
+        $xmlFilePath = $this->getCodes();
+        $codesXmlString = \file_get_contents($xmlFilePath);
+        if ($codesXmlString === false) {
+            return false;
+        }
+
+        $codesXml = new \SimpleXMLIterator($codesXmlString);
+        $this->codes = [];
+        foreach ($codesXml as $codeCollection) {
+            assert($codeCollection instanceof \SimpleXMLIterator);
+
+            $codeCollectionAttributes = $codeCollection->attributes();
+            if ($codeCollectionAttributes === null) {
+                continue;
+            }
+
+            $id = (string) $codeCollectionAttributes->id;
+            $this->codes[$id] = [];
+            foreach ($codeCollection as $codeNode) {
+                assert($codeNode instanceof \SimpleXMLIterator);
+
+                $codeAttributes = $codeNode->attributes();
+                if ($codeAttributes !== null) {
+                    $code = (string) $codeAttributes->id;
+                    $this->codes[$id][$code] = (string) $codeAttributes->desc;
+                }
+            }
+        }
+
+        return $this->codes;
+    }
+
+    /**
      * Get path to segments.xml
      *
      * @return string
@@ -104,6 +143,53 @@ class MappingProvider
     public function getSegments()
     {
         return $this->_path.SEPARATOR.$this->_directory.SEPARATOR."segments.xml";
+    }
+
+    /**
+     * convert segment definition from XML to array. Sequence of data_elements and
+     * composite_data_element same as in XML
+     *
+     * @return array|false
+     */
+    public function loadSegmentsXml()
+    {
+
+        $segment_xml_file = $this->getSegments();
+        // reset
+        $segments = [];
+
+        $segments_xml = \file_get_contents($segment_xml_file);
+        if ($segments_xml === false) {
+            return false;
+        }
+
+        $xml = \simplexml_load_string($segments_xml);
+        if ($xml === false) {
+            return false;
+        }
+
+        // free memory
+        $segments_xml = null;
+
+        foreach ($xml as $segmentNode) {
+            \assert($segmentNode instanceof \SimpleXMLElement);
+
+            $segmentNodeAttributes = $segmentNode->attributes();
+            if ($segmentNodeAttributes === null) {
+                continue;
+            }
+
+            $qualifier = (string) $segmentNodeAttributes->id;
+            $segment = [];
+            $segment['attributes'] = $this->readAttributesArray($segmentNode);
+            $details = $this->readXmlNodes($segmentNode);
+            if (!empty($details)) {
+                $segment['details'] = $details;
+            }
+            $segments[$qualifier] = $segment;
+        }
+
+        return $segments;
     }
 
     /**
@@ -178,5 +264,49 @@ class MappingProvider
     public function listDirectories()
     {
         return array_diff(scandir($this->_path), ['.', '..', 'MappingProvider.php']);
+    }
+
+    /**
+     * return an xml elements attributes in as array
+     *
+     * @param \SimpleXMLElement $element
+     *
+     * @return array
+     */
+    private function readAttributesArray(\SimpleXMLElement $element): array
+    {
+        $attributes = [];
+        foreach ($element->attributes() ?? [] as $attrName => $attr) {
+            $attributes[(string) $attrName] = (string) $attr;
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * read message segments and groups
+     *
+     * @param \SimpleXMLElement $element
+     *
+     * @return array
+     */
+    private function readXmlNodes(\SimpleXMLElement $element): array
+    {
+        $arrayElements = [];
+        foreach ($element as $name => $node) {
+            if ($name == 'defaults') {
+                continue;
+            }
+            $arrayElement = [];
+            $arrayElement['type'] = $name;
+            $arrayElement['attributes'] = $this->readAttributesArray($node);
+            $details = $this->readXmlNodes($node);
+            if (!empty($details)) {
+                $arrayElement['details'] = $details;
+            }
+            $arrayElements[] = $arrayElement;
+        }
+
+        return $arrayElements;
     }
 }
