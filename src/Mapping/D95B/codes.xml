@@ -4794,9 +4794,11 @@
         <code id="BR" desc="Brightness"/>
         <code id="BRA" desc="Brakes"/>
         <code id="BRE" desc="Break"/>
+        <code id="BRL" desc="Carbon Dioxide"/>
         <code id="BS" desc="Breaking strength"/>
         <code id="BSW" desc="Breaking strength wet"/>
         <code id="BW" desc="Basis weight"/>
+        <code id="CD" desc="Carbondioxide setting in percentage"/>
         <code id="CHN" desc="Change"/>
         <code id="CM" desc="Color"/>
         <code id="CT" desc="Contents of package"/>
@@ -4850,6 +4852,7 @@
         <code id="TN" desc="Time period"/>
         <code id="TT" desc="Time"/>
         <code id="U" desc="Weight per unit"/>
+        <code id="VGM" desc="Verified Gross Mass"/>
         <code id="VH" desc="Height, van door"/>
         <code id="VW" desc="Width, van door"/>
         <code id="WA" desc="Weight per unit of area"/>
@@ -4987,6 +4990,13 @@
         <code id="2" desc="Transportable unit"/>
         <code id="3" desc="Number of debit units"/>
         <code id="4" desc="Number of received units"/>
+    </data_element>
+    <data_element id="6411">
+        <code id="CEL" desc="Celcius"/>
+        <code id="FAH" desc="Fahrenheit"/>
+        <code id="KGM" desc="Kilogram"/>
+        <code id="MTQ" desc="Cubic metre"/>
+        <code id="PCT" desc="Percentage"/>
     </data_element>
     <data_element id="7011">
         <code id="1" desc="New, announcement only"/>
