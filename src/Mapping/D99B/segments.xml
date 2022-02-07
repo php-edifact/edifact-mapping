@@ -523,7 +523,11 @@
     <data_element id="1060" name="revisionNumber" usage="B" desc="To specify a revision number." type="an" maxlength="6"/>
   </segment>
   <segment id="DTM" name="date/time/period" desc="To specify date, and/or time, or period.">
-    <composite_data_element id="C507" required="true" name="date" desc="Date and/or time, or period relevant to the specified date/time/period type."/>
+    <composite_data_element id="C507" required="true" name="date" desc="Date and/or time, or period relevant to the specified date/time/period type.">
+      <data_element id="2005" required="true" name="dateOrTimeOrPeriodFunctionCodeQualifier" usage="C" desc="Code qualifying the function of a date, time or period." type="an" maxlength="3"/>
+      <data_element id="2380" name="dateOrTimeOrPeriodValue" usage="C" desc="The value of a date, a date and time, a time or of a period in a specified representation." type="an" maxlength="35"/>
+      <data_element id="2379" name="dateOrTimeOrPeriodFormatCode" usage="C" desc="Code specifying the representation of a date, time or period." type="an" maxlength="3"/>
+    </composite_data_element>
   </segment>
   <segment id="EDT" name="editingDetails" desc="To specify editing details.">
     <data_element id="6178" name="editFieldLength" usage="B" desc="To specify the length of a field for editing." type="n" maxlength="3"/>
