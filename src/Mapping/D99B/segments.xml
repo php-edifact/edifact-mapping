@@ -255,7 +255,12 @@
       <data_element id="7506" name="componentMaterial" usage="B" desc="Description identifying the material of which a component is composed (e.g. steel, plastics)." type="an" maxlength="35"/>
     </composite_data_element>
   </segment>
-  <segment id="COM" name="communicationContact" desc="To identify a communication number of a department or a person to whom communication should be directed."/>
+  <segment id="COM" name="communicationContact" desc="To identify a communication number of a department or a person to whom communication should be directed.">
+	  <composite_data_element id="C076" required="true" name="communicationContact" desc="Communication number of a department or employee in a specified channel.">
+	    <data_element id="3148" required="true" name="communicationNumber" usage="C" desc="The communication number." type="an" maxlength="512"/>
+	    <data_element id="3155" required="true" name="communicationCodeQualifier" usage="C" desc="Code qualifying the communication number." type="an" maxlength="3"/>
+	  </composite_data_element>
+  </segment>
   <segment id="COT" name="contributionDetails" desc="To specify details about membership contributions.">
     <data_element id="5047" required="true" name="contributionQualifier" usage="B" desc="Specification of the meaning of a financial contribution to a scheme or group." type="an" maxlength="3"/>
     <composite_data_element id="C953" name="contributionType" desc="Identification of the type of a contribution to a scheme or group.">
