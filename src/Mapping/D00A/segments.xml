@@ -769,6 +769,12 @@
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="9170" name="eventTypeDescription" usage="B" desc="Free form description of the event type." type="an" maxlength="70"/>
     </composite_data_element>
+    <composite_data_element id="C063" name="eventIdentification" desc="To identify an event.">
+      <data_element id="9173" name="eventDescriptionCode" usage="B" desc="Code specifying an event." type="an" maxlength="35"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="3"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="9172" name="event" usage="B" desc="Free form description of the event." type="an" maxlength="256"/>
+    </composite_data_element>
     <data_element id="1229" name="actionRequestOrnotificationDescriptionCode" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
   </segment>
   <segment id="EVT" name="event" desc="To identify an event.">
@@ -1109,6 +1115,12 @@
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="3"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="9612" name="informationTypeDescription" usage="B" desc="Free form description of the type of information." type="an" maxlength="70"/>
+    </composite_data_element>
+    <composite_data_element id="C011" name="informationDetail" desc="To provide the information details.">
+      <data_element id="9617" name="informationDetailDescriptionCode" usage="B" desc="Code specifying the information detail." type="an" maxlength="17"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="3"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="9616" name="informationDetailDescription" usage="B" desc="Free form description of the information detail." type="an" maxlength="256"/>
     </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
   </segment>
@@ -1457,6 +1469,7 @@
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a code list." type="an" maxlength="3"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
     </composite_data_element>
+    <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
   </segment>
   <segment id="PCI" name="packageIdentification" desc="To specify markings and labels on individual packages or physical units.">
     <data_element id="4233" name="markingInstructionsCode" usage="B" desc="Code specifying instructions for marking." type="an" maxlength="3"/>
@@ -1823,6 +1836,7 @@
       <data_element id="5284" name="unitPriceBasisValue" usage="B" desc="To specify the basis for a unit price." type="n" maxlength="9"/>
       <data_element id="6411" name="measurementUnitCode" usage="C" desc="Code specifying the unit of measurement." type="an" maxlength="3"/>
     </composite_data_element>
+    <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
   </segment>
   <segment id="SAL" name="remunerationTypeIdentification" desc="Identification of a remuneration type.">
     <composite_data_element id="C049" name="remunerationTypeIdentification" desc="Identification of the type of a remuneration.">

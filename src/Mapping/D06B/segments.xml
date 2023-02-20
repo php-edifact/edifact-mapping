@@ -733,6 +733,7 @@
     <data_element id="8077" name="equipmentSupplierCode" usage="B" desc="Code specifying the party that is the supplier of the equipment." type="an" maxlength="3"/>
     <data_element id="8249" name="equipmentStatusCode" usage="B" desc="Code specifying the status of equipment." type="an" maxlength="3"/>
     <data_element id="8169" name="fullOrEmptyIndicatorCode" usage="B" desc="Code indicating whether an object is full or empty." type="an" maxlength="3"/>
+    <data_element id="4233" name="markingInstructionsCode" usage="B" desc="Code specifying instructions for marking." type="an" maxlength="3"/>
   </segment>
   <segment id="EQN" name="numberOfUnits" desc="To specify the number of units.">
     <composite_data_element id="C523" required="true" name="numberOfUnitDetails" desc="Identification of number of units and its purpose.">

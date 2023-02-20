@@ -1880,6 +1880,7 @@
       <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
       <data_element id="7402" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
     </composite_data_element>
+    <data_element id="4525" name="sealTypeCode" usage="B" desc="To specify a type of seal." type="an" maxlength="3"/>
   </segment>
   <segment id="SEQ" name="sequenceDetails" desc="To provide details relating to the sequence.">
     <data_element id="1229" name="actionCode" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
@@ -2056,6 +2057,7 @@
     <data_element id="5305" name="dutyOrTaxOrFeeCategoryCode" usage="B" desc="Code specifying a duty or tax or fee category." type="an" maxlength="3"/>
     <data_element id="3446" name="partyTaxIdentifier" usage="B" desc="To identify a number assigned to a party by a tax authority." type="an" maxlength="20"/>
     <data_element id="1227" name="calculationSequenceCode" usage="B" desc="Code specifying a calculation sequence." type="an" maxlength="3"/>
+    <data_element id="5307" name="taxOrDutyOrFeePaymentDueDateCode" usage="B" desc="A code indicating when the duty, tax, or fee payment will be due." type="an" maxlength="3"/>
   </segment>
   <segment id="TCC" name="chargeOrrateCalculations" desc="To specify charges.">
     <composite_data_element id="C200" name="charge" desc="Identification of a charge by code and/or by name.">

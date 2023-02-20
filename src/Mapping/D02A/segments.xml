@@ -107,6 +107,9 @@
       <data_element id="7164" name="hierarchicalStructureLevelIdentifier" usage="C" desc="To identify a level within a hierarchical structure." type="an" maxlength="35"/>
       <data_element id="1050" name="sequencePositionIdentifier" usage="C" desc="To identify a position in a sequence." type="an" maxlength="10"/>
     </composite_data_element>
+    <composite_data_element id="C770" name="arrayCellDetails" desc="To contain the data for a contiguous set of cells in an array.">
+      <data_element id="9424" name="arrayCellDataDescription" usage="B" desc="Free form description of the content of an array cell." type="an" maxlength="512"/>
+    </composite_data_element>
   </segment>
   <segment id="ASI" name="arrayStructureIdentification" desc="To identify the structure of an array.">
     <composite_data_element id="C779" required="true" name="arrayStructureIdentification" desc="The identification of an array structure.">

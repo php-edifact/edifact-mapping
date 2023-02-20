@@ -2083,6 +2083,12 @@
       <data_element id="8067" name="transportModeNameCode" usage="B" desc="Code specifying the name of a mode of transport." type="an" maxlength="3"/>
       <data_element id="8066" name="transportModeName" usage="B" desc="Name of a mode of transport." type="an" maxlength="17"/>
     </composite_data_element>
+    <composite_data_element id="C001" name="transportMeans" desc="Code and/or name identifying the type of means of transport.">
+      <data_element id="8179" name="transportMeansDescriptionCode" usage="C" desc="Code specifying the means of transport." type="an" maxlength="8"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="8178" name="transportMeansDescription" usage="B" desc="Free form description of the means of transport." type="an" maxlength="17"/>
+    </composite_data_element>
     <composite_data_element id="C040" name="carrier" desc="Identification of a carrier by code and/or by name. Code preferred.">
       <data_element id="3127" name="carrierIdentifier" usage="B" desc="To identify a carrier." type="an" maxlength="17"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>

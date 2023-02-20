@@ -2141,6 +2141,12 @@
       <data_element id="8453" name="transportMeansNationalityCode" usage="B" desc="Code specifying the nationality of a means of transport." type="an" maxlength="3"/>
     </composite_data_element>
     <data_element id="8281" name="transportMeansOwnershipIndicatorCode" usage="B" desc="Code indicating the ownership of a means of transport." type="an" maxlength="3"/>
+    <composite_data_element id="C003" name="powerType" desc="To specify the type of power.">
+      <data_element id="7041" name="powerTypeCode" usage="B" desc="Code indicating the type of power." type="an" maxlength="3"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="7040" name="powerTypeDescription" usage="B" desc="Description of the type of power." type="an" maxlength="17"/>
+    </composite_data_element>
   </segment>
   <segment id="TEM" name="testMethod" desc="To describe the nature of the test performed.">
     <composite_data_element id="C244" name="testMethod" desc="Specification of the test method employed.">

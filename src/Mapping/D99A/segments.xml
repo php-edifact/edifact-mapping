@@ -1922,6 +1922,7 @@
     </composite_data_element>
     <data_element id="5305" name="dutyOrtaxOrfeeCategory,Coded" usage="B" desc="Code identifying a tax/duty/fee category within a tax/duty/fee type system." type="an" maxlength="3"/>
     <data_element id="3446" name="partyTaxIdentificationNumber" usage="B" desc="Number assigned to a party by a taxation authority." type="an" maxlength="20"/>
+    <data_element id="1227" name="calculationSequenceIndicator,Coded" usage="B" desc="Code indicating the sequence of cumulated calculations to be agreed between interchange partners." type="an" maxlength="3"/>
   </segment>
   <segment id="TCC" name="transportChargeOrrateCalculations" desc="To specify charges.">
     <composite_data_element id="C200" name="charge" desc="Identification of a charge by code and/or by name.">

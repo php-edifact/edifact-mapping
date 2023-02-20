@@ -77,6 +77,11 @@
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="9048" name="applicabilityTypeDescription" usage="B" desc="Free form description of the type of applicability." type="an" maxlength="35"/>
     </composite_data_element>
+    <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
+      <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+    </composite_data_element>
   </segment>
   <segment id="APR" name="additionalPriceInformation" desc="To provide information concerning pricing related to class of trade, price multiplier, and reason for change.">
     <data_element id="4043" name="tradeClassCode" usage="B" desc="Code identifying the class of trade." type="an" maxlength="3"/>
@@ -884,6 +889,12 @@
       <data_element id="7085" required="true" name="cargoTypeClassificationCode" usage="B" desc="Code specifying the classification of a type of cargo." type="an" maxlength="3"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+    </composite_data_element>
+    <composite_data_element id="C288" name="productGroup" desc="To give product group information.">
+      <data_element id="5389" name="productGroupNameCode" usage="C" desc="Code specifying the name of a product group." type="an" maxlength="25"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="5388" name="productGroupName" usage="B" desc="Name of a product code." type="an" maxlength="35"/>
     </composite_data_element>
   </segment>
   <segment id="GEI" name="processingInformation" desc="To identify processing information.">

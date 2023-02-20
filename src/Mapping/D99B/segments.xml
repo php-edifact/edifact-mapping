@@ -13,6 +13,15 @@
     <data_element id="3164" name="cityName" usage="C" desc="Name of a city (a town, a village) for addressing purposes." type="an" maxlength="35"/>
     <data_element id="3251" name="postalIdentificationCode" usage="C" desc="Code specifying the postal zone or address." type="an" maxlength="17"/>
     <data_element id="3207" name="countryNameCode" usage="C" desc="Identification of the name of the country or other geographical entity as specified in ISO 3166." type="an" maxlength="3"/>
+    <composite_data_element id="C819" name="countrySub" desc="To specify a part of a country (eg county or part of a city).">
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+    </composite_data_element>
+    <composite_data_element id="C517" name="locationIdentification" desc="Identification of a location by code or name.">
+      <data_element id="3225" name="locationNameCode" usage="C" desc="Code specifying the name of the location." type="an" maxlength="25"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="3224" name="locationName" usage="C" desc="Name of the location." type="an" maxlength="256"/>
+    </composite_data_element>
   </segment>
   <segment id="AGR" name="agreementIdentification" desc="To specify the agreement details.">
     <composite_data_element id="C543" name="agreementTypeIdentification" desc="Identification of specific agreement type by code or name.">
@@ -73,11 +82,20 @@
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="5006" name="monetaryAmountFunctionDescription" usage="B" desc="Free form description of the monetary amount function." type="an" maxlength="70"/>
     </composite_data_element>
+    <composite_data_element id="C008" name="monetaryAmountFunctionDetail" desc="To provide the detail of a monetary amount function.">
+      <data_element id="5105" name="monetaryAmountFunctionDetailCode" usage="B" desc="Code specifying the detail of a monetary amount function." type="an" maxlength="17"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="5104" name="monetaryAmountFunctionDetailDescription" usage="B" desc="Free form description of the detail of a monetary amount function." type="an" maxlength="70"/>
+    </composite_data_element>
   </segment>
   <segment id="ARR" name="arrayInformation" desc="To contain the data in an array.">
     <composite_data_element id="C778" name="positionIdentification" desc="To identify the position of an object in a structure containing the object.">
       <data_element id="7164" name="hierarchicalStructureLevelIdentifier" usage="C" desc="To identify a level within a hierarchy structure." type="an" maxlength="35"/>
       <data_element id="1050" name="sequenceNumber" usage="C" desc="Number indicating the position in a sequence." type="an" maxlength="10"/>
+    </composite_data_element>
+    <composite_data_element id="C770" name="arrayCellDetails" desc="To contain the data for a contiguous set of cells in an array.">
+      <data_element id="9424" name="arrayCellDataDescription" usage="B" desc="Free form description of the content of an array cell." type="an" maxlength="512"/>
     </composite_data_element>
   </segment>
   <segment id="ASI" name="arrayStructureIdentification" desc="To identify the structure of an array.">
@@ -100,6 +118,12 @@
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="9020" name="attributeTypeDescription" usage="B" desc="Free form description of an attribute type." type="an" maxlength="70"/>
+    </composite_data_element>
+    <composite_data_element id="C956" name="attributeDetail" desc="Identification of the attribute related to an entity.">
+      <data_element id="9019" name="attributeDescriptionCode" usage="B" desc="Code specifying an attribute." type="an" maxlength="17"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="9018" name="attributeDescription" usage="C" desc="Free form description of an attribute." type="an" maxlength="256"/>
     </composite_data_element>
   </segment>
   <segment id="AUT" name="authenticationResult" desc="To specify results of the application of an authentication procedure.">
@@ -259,7 +283,12 @@
       <data_element id="7506" name="componentMaterial" usage="B" desc="Description identifying the material of which a component is composed (e.g. steel, plastics)." type="an" maxlength="35"/>
     </composite_data_element>
   </segment>
-  <segment id="COM" name="communicationContact" desc="To identify a communication number of a department or a person to whom communication should be directed."/>
+  <segment id="COM" name="communicationContact" desc="To identify a communication number of a department or a person to whom communication should be directed.">
+    <composite_data_element id="C076" required="true" name="communicationContact" desc="Communication number of a department or employee in a specified channel.">
+      <data_element id="3148" required="true" name="communicationNumber" usage="C" desc="The communication number." type="an" maxlength="512"/>
+      <data_element id="3155" required="true" name="communicationNumberCodeQualifier" usage="B" desc="Code qualifying the communication number." type="an" maxlength="3"/>
+    </composite_data_element>
+  </segment>
   <segment id="COT" name="contributionDetails" desc="To specify details about membership contributions.">
     <data_element id="5047" required="true" name="contributionQualifier" usage="B" desc="Specification of the meaning of a financial contribution to a scheme or group." type="an" maxlength="3"/>
     <composite_data_element id="C953" name="contributionType" desc="Identification of the type of a contribution to a scheme or group.">
@@ -952,6 +981,11 @@
   </segment>
   <segment id="IDE" name="identity" desc="To identify an object.">
     <data_element id="7495" required="true" name="objectTypeCodeQualifier" usage="B" desc="Code qualifying a type of object." type="an" maxlength="3"/>
+    <composite_data_element id="C206" name="identificationNumber" desc="The identification of an object.">
+      <data_element id="7402" required="true" name="objectIdentifier" usage="C" desc="Code specifying the unique identity of an object." type="an" maxlength="35"/>
+      <data_element id="7405" name="objectIdentificationCodeQualifier" usage="C" desc="Code qualifying the identification of an object." type="an" maxlength="3"/>
+      <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
+    </composite_data_element>
     <composite_data_element id="C082" name="partyIdentificationDetails" desc="Identification of a transaction party by code.">
       <data_element id="3039" required="true" name="partyIdentifier" usage="C" desc="Code specifying the identity of a party." type="an" maxlength="35"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
@@ -959,6 +993,10 @@
     </composite_data_element>
     <data_element id="4405" name="statusDescriptionCode" usage="C" desc="Code specifying a status." type="an" maxlength="3"/>
     <data_element id="1222" name="configurationLevel" usage="B" desc="Number indicating the level of an object which is in a hierarchy." type="n" maxlength="2"/>
+    <composite_data_element id="C778" name="positionIdentification" desc="To identify the position of an object in a structure containing the object.">
+      <data_element id="7164" name="hierarchicalStructureLevelIdentifier" usage="C" desc="To identify a level within a hierarchy structure." type="an" maxlength="35"/>
+      <data_element id="1050" name="sequenceNumber" usage="C" desc="Number indicating the position in a sequence." type="an" maxlength="10"/>
+    </composite_data_element>
     <composite_data_element id="C240" name="productCharacteristic" desc="Specific product characteristic data.">
       <data_element id="7037" required="true" name="characteristicDescriptionCode" usage="C" desc="A code specifying a characteristic." type="an" maxlength="17"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
@@ -1220,6 +1258,9 @@
     </composite_data_element>
     <composite_data_element id="C059" name="street" desc="Street address and/or PO Box number in a structured address: one to four lines."/>
     <data_element id="3164" name="cityName" usage="C" desc="Name of a city (a town, a village) for addressing purposes." type="an" maxlength="35"/>
+    <composite_data_element id="C819" name="countrySub" desc="To specify a part of a country (eg county or part of a city).">
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+    </composite_data_element>
     <data_element id="3251" name="postalIdentificationCode" usage="C" desc="Code specifying the postal zone or address." type="an" maxlength="17"/>
     <data_element id="3207" name="countryNameCode" usage="C" desc="Identification of the name of the country or other geographical entity as specified in ISO 3166." type="an" maxlength="3"/>
   </segment>
@@ -1533,6 +1574,7 @@
       <data_element id="7294" name="requirementOrConditionDescription" usage="B" desc="Free form description of a requirement or condition." type="an" maxlength="35"/>
     </composite_data_element>
     <data_element id="1229" name="actionRequestOrnotificationDescriptionCode" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
+    <data_element id="3207" name="countryNameCode" usage="C" desc="Identification of the name of the country or other geographical entity as specified in ISO 3166." type="an" maxlength="3"/>
   </segment>
   <segment id="REL" name="relationship" desc="To identify relationships between objects.">
     <data_element id="9141" required="true" name="relationshipTypeCodeQualifier" usage="B" desc="Code qualifying a type of relationship." type="an" maxlength="3"/>

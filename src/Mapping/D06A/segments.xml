@@ -519,6 +519,7 @@
       <data_element id="8246" name="dangerousGoodsMarkingIdentifier" usage="B" desc="To identify the marking of dangerous goods." type="an" maxlength="4"/>
     </composite_data_element>
     <data_element id="8255" name="packingInstructionTypeCode" usage="B" desc="Code specifying a type of packing instruction." type="an" maxlength="3"/>
+    <data_element id="8179" name="transportMeansDescriptionCode" usage="C" desc="Code specifying the means of transport." type="an" maxlength="8"/>
     <data_element id="8211" name="hazardousCargoTransportAuthorisationCode" usage="B" desc="Code specifying the authorisation for the transportation of hazardous cargo." type="an" maxlength="3"/>
   </segment>
   <segment id="DII" name="directoryIdentification" desc="To identify a directory and to give its release, status, controlling agency, language and maintenance operation.">
@@ -703,6 +704,7 @@
       <data_element id="9006" name="qualificationClassificationDescription" usage="B" desc="Free form description of a qualification classification." type="an" maxlength="35"/>
       <data_element id="9006" name="qualificationClassificationDescription" usage="B" desc="Free form description of a qualification classification." type="an" maxlength="35"/>
     </composite_data_element>
+    <data_element id="3480" name="personJobTitle" usage="B" desc="Name of a job title such as rank or rating of crew member." type="an" maxlength="35"/>
     <data_element id="9035" name="qualificationApplicationAreaCode" usage="B" desc="Code specifying the application area of a qualification." type="an" maxlength="3"/>
   </segment>
   <segment id="EQA" name="attachedEquipment" desc="To specify attached or related equipment.">
@@ -1463,6 +1465,7 @@
       <data_element id="7102" name="shippingMarksDescription" usage="B" desc="Free form description of the shipping marks." type="an" maxlength="35"/>
       <data_element id="7102" name="shippingMarksDescription" usage="B" desc="Free form description of the shipping marks." type="an" maxlength="35"/>
     </composite_data_element>
+    <data_element id="8169" name="fullOrEmptyIndicatorCode" usage="B" desc="Code indicating whether an object is full or empty." type="an" maxlength="3"/>
     <composite_data_element id="C827" name="typeOfMarking" desc="Specification of the type of marking that reflects the method that was used and the conventions adhered to for marking (e.g. of packages).">
       <data_element id="7511" required="true" name="markingTypeCode" usage="B" desc="Code specifying the type of marking." type="an" maxlength="3"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>

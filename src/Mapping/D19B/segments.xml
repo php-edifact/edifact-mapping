@@ -2150,6 +2150,13 @@
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
       <data_element id="7040" name="powerTypeDescription" usage="B" desc="Description of the type of power." type="an" maxlength="17"/>
     </composite_data_element>
+    <composite_data_element id="C290" name="transportService" desc="To identify a transport service.">
+      <data_element id="8462" name="transportServiceIdentificationCode" usage="B" desc="Code identifying a transport service." type="an" maxlength="17"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="8463" name="transportServiceName" usage="B" desc="Name of a transport service." type="an" maxlength="35"/>
+      <data_element id="8464" name="transportServiceDescription" usage="B" desc="Free form description of a transport service." type="an" maxlength="256"/>
+    </composite_data_element>
   </segment>
   <segment id="TEM" name="testMethod" desc="To describe the nature of the test performed.">
     <composite_data_element id="C244" name="testMethod" desc="Specification of the test method employed.">

@@ -225,6 +225,8 @@
     <data_element id="9426" required="true" name="codeValue" usage="B" desc="Value of the code." type="an" maxlength="35"/>
     <data_element id="9434" name="codeName" usage="B" desc="Name of a code." type="an" maxlength="70"/>
     <data_element id="4513" name="maintenanceOperation,Coded" usage="C" desc="To indicate the type of data maintenance operation for an object, such as add, delete, replace." type="an" maxlength="3"/>
+    <data_element id="9453" name="codeValueSource,Coded" usage="B" desc="Identifies the source of a code value." type="an" maxlength="3"/>
+    <data_element id="7299" name="requirementDesignator,Coded" usage="C" desc="To specify the designated requirement." type="an" maxlength="3"/>
   </segment>
   <segment id="CED" name="computerEnvironmentDetails" desc="To give a precise definition of all necessary elements belonging to the configuration of a computer system like hardware, firmware, operating system, communication (VANS, network type, protocol, format) and application software.">
     <data_element id="1501" required="true" name="computerEnvironmentDetailsQualifier" usage="B" desc="A code to identify the computer environment details." type="an" maxlength="3"/>
@@ -521,6 +523,17 @@
     <data_element id="4457" name="productOrserviceSubstitution,Coded" usage="B" desc="Code indicating product or service substitution conditions." type="an" maxlength="3"/>
   </segment>
   <segment id="DMS" name="documentOrmessageSummary" desc="To specify summary information relating to the document/message.">
+    <composite_data_element id="C106" name="document" desc="Identification of a document/message by its number and eventually its version or revision.">
+      <data_element id="1004" name="documentOrmessageNumber" usage="C" desc="Reference number assigned to the document/message by the issuer." type="an" maxlength="35"/>
+      <data_element id="1056" name="version" usage="B" desc="To specify the version number or name of an object." type="an" maxlength="9"/>
+      <data_element id="1060" name="revisionNumber" usage="B" desc="To specify a revision number." type="an" maxlength="6"/>
+    </composite_data_element>
+    <composite_data_element id="C002" name="document" desc="Identification of a type of document/message by code or name. Code preferred.">
+      <data_element id="1001" name="documentOrmessageName,Coded" usage="C" desc="Document/message identifier expressed in code." type="an" maxlength="3"/>
+      <data_element id="1131" name="codeListQualifier" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
+      <data_element id="3055" name="codeListResponsibleAgency,Coded" usage="C" desc="Code identifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="1000" name="documentOrmessageName" usage="B" desc="Plain language identifier specifying the function of a document/message." type="an" maxlength="35"/>
+    </composite_data_element>
     <data_element id="7240" name="totalNumberOfItems" usage="B" desc="Total number of items, having separate goods descriptions." type="n" maxlength="15"/>
   </segment>
   <segment id="DOC" name="documentOrmessageDetails" desc="To identify documents and details directly related to it.">
@@ -611,6 +624,7 @@
     <data_element id="9161" name="codeSetIndicator,Coded" usage="B" desc="To indicate if a data element has an associated code set." type="an" maxlength="3"/>
     <data_element id="1507" name="classDesignator,Coded" usage="B" desc="To identify a designated class." type="an" maxlength="3"/>
     <data_element id="4513" name="maintenanceOperation,Coded" usage="C" desc="To indicate the type of data maintenance operation for an object, such as add, delete, replace." type="an" maxlength="3"/>
+    <data_element id="6432" name="significantDigits" usage="B" desc="To specify the number of significant digits." type="n" maxlength="2"/>
   </segment>
   <segment id="ELU" name="dataElementUsageDetails" desc="To specify the usage of a data element.">
     <data_element id="9162" required="true" name="dataElementTag" usage="B" desc="Tag of a data element." type="an" maxlength="4"/>
@@ -618,6 +632,9 @@
     <data_element id="1050" name="sequenceNumber" usage="C" desc="Number indicating the position in a sequence." type="an" maxlength="10"/>
     <data_element id="4513" name="maintenanceOperation,Coded" usage="C" desc="To indicate the type of data maintenance operation for an object, such as add, delete, replace." type="an" maxlength="3"/>
     <data_element id="6176" name="maximumNumberOfOccurrences" usage="B" desc="To specify the maximum number of occurrences." type="n" maxlength="7"/>
+    <data_element id="9453" name="codeValueSource,Coded" usage="B" desc="Identifies the source of a code value." type="an" maxlength="3"/>
+    <data_element id="9285" name="validationCriteria,Coded" usage="B" desc="Code indicating the validation criteria to be applied." type="an" maxlength="3"/>
+    <data_element id="9175" name="dataElementUsageType,Coded" usage="B" desc="Identifies the usage type for a data element." type="an" maxlength="3"/>
   </segment>
   <segment id="ELV" name="elementValueDefinition" desc="To define an element value.">
     <data_element id="9029" required="true" name="valueDefinitionQualifier" usage="B" desc="To qualify a value definition." type="an" maxlength="3"/>
@@ -781,6 +798,7 @@
       <data_element id="4440" name="freeText" usage="C" desc="Free text field available to the message sender for information." type="an" maxlength="70"/>
     </composite_data_element>
     <data_element id="3453" name="language,Coded" usage="C" desc="Code of language (ISO 639-1988)." type="an" maxlength="3"/>
+    <data_element id="4447" name="textFormatting,Coded" usage="B" desc="Code specifying the formatting parameters for the text." type="an" maxlength="3"/>
   </segment>
   <segment id="GDS" name="natureOfCargo" desc="To indicate the type of cargo as a general classification.">
     <composite_data_element id="C703" name="natureOfCargo" desc="Rough classification of a type of cargo.">
@@ -936,6 +954,7 @@
   </segment>
   <segment id="HYN" name="hierarchyInformation" desc="A segment to identify hierarchical connections from a given item to a higher or lower levelled item or to identify dependencies among the content of hierarchically related groups of data.">
     <data_element id="7173" required="true" name="hierarchyObjectQualifier" usage="B" desc="To qualify the object of the given hierarchy (e.g. product hierarchy, company hierarchy..)." type="an" maxlength="3"/>
+    <data_element id="7171" name="hierarchicalLevel,Coded" usage="B" desc="To identify the relationship between the hierarchical object and the identified object." type="an" maxlength="3"/>
     <data_element id="1229" name="actionRequestOrnotification,Coded" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
     <composite_data_element id="C212" name="itemNumberIdentification" desc="Goods identification for a specified source.">
       <data_element id="7140" name="itemNumber" usage="C" desc="A number allocated to a group or item." type="an" maxlength="35"/>
@@ -943,6 +962,7 @@
       <data_element id="1131" name="codeListQualifier" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
       <data_element id="3055" name="codeListResponsibleAgency,Coded" usage="C" desc="Code identifying the agency responsible for a code list." type="an" maxlength="3"/>
     </composite_data_element>
+    <data_element id="7166" name="hierarchicalParentId." usage="B" desc="Identification number of the next higher level in a hierarchical structure." type="an" maxlength="12"/>
   </segment>
   <segment id="ICD" name="insuranceCoverDescription" desc="To describe the insurance cover.">
     <composite_data_element id="C330" required="true" name="insuranceCoverType" desc="To provide the insurance cover type.">
@@ -1185,6 +1205,12 @@
     </composite_data_element>
     <data_element id="1507" name="classDesignator,Coded" usage="B" desc="To identify a designated class." type="an" maxlength="3"/>
     <data_element id="4513" name="maintenanceOperation,Coded" usage="C" desc="To indicate the type of data maintenance operation for an object, such as add, delete, replace." type="an" maxlength="3"/>
+    <composite_data_element id="C941" name="relationship" desc="Identification and/or description of a relationship.">
+      <data_element id="9143" name="relationship,Coded" usage="C" desc="Identification of a relationship." type="an" maxlength="3"/>
+      <data_element id="1131" name="codeListQualifier" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
+      <data_element id="3055" name="codeListResponsibleAgency,Coded" usage="C" desc="Code identifying the agency responsible for a code list." type="an" maxlength="3"/>
+      <data_element id="9142" name="relationship" usage="B" desc="Description of a relationship." type="an" maxlength="35"/>
+    </composite_data_element>
   </segment>
   <segment id="NAD" name="nameAndAddress" desc="To specify the name/address and their related function, either by CO82 only and/or unstructured by CO58 or structured by CO80 thru 3207.">
     <data_element id="3035" required="true" name="partyQualifier" usage="C" desc="Code giving specific meaning to a party." type="an" maxlength="3"/>
@@ -1437,6 +1463,7 @@
       <data_element id="3401" name="nameComponentUsage,Coded" usage="C" desc="To specify the usage of a name component." type="an" maxlength="3"/>
       <data_element id="3295" name="nameComponentOriginalRepresentation,Coded" usage="C" desc="To specify the alphabet originally used to represent the name." type="an" maxlength="3"/>
     </composite_data_element>
+    <data_element id="1229" name="actionRequestOrnotification,Coded" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
   </segment>
   <segment id="POC" name="purposeOfConveyanceCall" desc="To specify the purpose of the call of the conveyance.">
     <composite_data_element id="C525" required="true" name="purposeOfConveyanceCall" desc="Description of the purpose of the call of the conveyance.">
@@ -1705,6 +1732,7 @@
     </composite_data_element>
   </segment>
   <segment id="SEQ" name="sequenceDetails" desc="To provide details relating to the sequence.">
+    <data_element id="1229" name="actionRequestOrnotification,Coded" usage="C" desc="Code specifying the action to be taken or already taken." type="an" maxlength="3"/>
     <composite_data_element id="C286" name="sequenceInformation" desc="Identification of a sequence and source for sequencing.">
       <data_element id="1050" required="true" name="sequenceNumber" usage="C" desc="Number indicating the position in a sequence." type="an" maxlength="10"/>
       <data_element id="1159" name="sequenceNumberSource,Coded" usage="B" desc="Specification of the source for a specified sequence number in a coded form." type="an" maxlength="3"/>

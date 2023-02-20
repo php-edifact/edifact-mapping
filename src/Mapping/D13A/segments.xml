@@ -174,6 +174,7 @@
     </composite_data_element>
     <data_element id="1225" name="messageFunctionCode" usage="C" desc="Code indicating the function of the message." type="an" maxlength="3"/>
     <data_element id="4343" name="responseTypeCode" usage="C" desc="Code specifying the type of acknowledgment required or transmitted." type="an" maxlength="3"/>
+    <data_element id="1373" name="documentStatusCode" usage="B" desc="Code specifying the status of a document." type="an" maxlength="3"/>
   </segment>
   <segment id="BII" name="structureIdentification" desc="A segment used to convey an indexing structure mechanism which identifies the positioning of a group or item.">
     <data_element id="7429" required="true" name="indexingStructureCodeQualifier" usage="B" desc="Code qualifying an indexing structure." type="an" maxlength="3"/>

@@ -522,6 +522,11 @@
     <data_element id="8255" name="packingInstructionTypeCode" usage="B" desc="Code specifying a type of packing instruction." type="an" maxlength="3"/>
     <data_element id="8179" name="transportMeansDescriptionCode" usage="C" desc="Code specifying the means of transport." type="an" maxlength="8"/>
     <data_element id="8211" name="hazardousCargoTransportAuthorisationCode" usage="B" desc="Code specifying the authorisation for the transportation of hazardous cargo." type="an" maxlength="3"/>
+    <composite_data_element id="C289" name="tunnelRestriction" desc="To specify a restriction for transport through tunnels.">
+      <data_element id="8461" name="tunnelRestrictionCode" usage="B" desc="A code indicating a restriction for transport through tunnels." type="an" maxlength="6"/>
+      <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
+      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+    </composite_data_element>
   </segment>
   <segment id="DII" name="directoryIdentification" desc="To identify a directory and to give its release, status, controlling agency, language and maintenance operation.">
     <data_element id="1056" required="true" name="versionIdentifier" usage="B" desc="To identify a version." type="an" maxlength="9"/>
