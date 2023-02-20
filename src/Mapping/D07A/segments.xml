@@ -213,7 +213,7 @@
     <data_element id="4507" name="creditCoverResponseTypeCode" usage="B" desc="Code specifying the type of response to a request for credit cover." type="an" maxlength="3"/>
     <data_element id="4509" name="creditCoverResponseReasonCode" usage="B" desc="Code specifying the reason for a response to a request for credit cover." type="an" maxlength="3"/>
   </segment>
-  <segment id="CCI" name="characteristic/classId" desc="To identify and describe a specific characteristic and its relevance for subsequent business processes.">
+  <segment id="CCI" name="characteristicOrclassId" desc="To identify and describe a specific characteristic and its relevance for subsequent business processes.">
     <data_element id="7059" name="classTypeCode" usage="B" desc="Code specifying the type of class." type="an" maxlength="3"/>
     <composite_data_element id="C502" name="measurementDetails" desc="Identification of measurement type.">
       <data_element id="6313" name="measuredAttributeCode" usage="C" desc="Code specifying the attribute measured." type="an" maxlength="3"/>
@@ -561,7 +561,7 @@
     </composite_data_element>
     <data_element id="4457" name="substitutionConditionCode" usage="B" desc="Code specifying the conditions under which substitution may take place." type="an" maxlength="3"/>
   </segment>
-  <segment id="DMS" name="document/messageSummary" desc="To specify summary information relating to the document/message.">
+  <segment id="DMS" name="documentOrmessageSummary" desc="To specify summary information relating to the document/message.">
     <composite_data_element id="C106" name="document" desc="Identification of a document/message by its number and eventually its version or revision.">
       <data_element id="1004" name="documentIdentifier" usage="C" desc="To identify a document." type="an" maxlength="35"/>
       <data_element id="1056" name="versionIdentifier" usage="B" desc="To identify a version." type="an" maxlength="9"/>
@@ -575,7 +575,7 @@
     </composite_data_element>
     <data_element id="7240" name="itemTotalQuantity" usage="B" desc="Count of the total number of items." type="n" maxlength="15"/>
   </segment>
-  <segment id="DOC" name="document/messageDetails" desc="To identify documents and details directly related to it.">
+  <segment id="DOC" name="documentOrmessageDetails" desc="To identify documents and details directly related to it.">
     <composite_data_element id="C002" required="true" name="document" desc="Identification of a type of document/message by code or name. Code preferred.">
       <data_element id="1001" name="documentNameCode" usage="C" desc="Code specifying the document name." type="an" maxlength="3"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>
@@ -628,7 +628,7 @@
     </composite_data_element>
     <data_element id="1060" name="revisionIdentifier" usage="B" desc="To identify a revision." type="an" maxlength="6"/>
   </segment>
-  <segment id="DTM" name="date/time/period" desc="To specify date, and/or time, or period.">
+  <segment id="DTM" name="dateOrtimeOrperiod" desc="To specify date, and/or time, or period.">
     <composite_data_element id="C507" required="true" name="date" desc="Date and/or time, or period relevant to the specified date/time/period type.">
       <data_element id="2005" required="true" name="dateOrTimeOrPeriodFunctionCodeQualifier" usage="C" desc="Code qualifying the function of a date, time or period." type="an" maxlength="3"/>
       <data_element id="2380" name="dateOrTimeOrPeriodText" usage="C" desc="The value of a date, a date and time, a time or of a period in a specified representation." type="an" maxlength="35"/>
@@ -1211,7 +1211,7 @@
     <data_element id="1222" name="configurationLevelNumber" usage="B" desc="To specify a level within a configuration." type="n" maxlength="2"/>
     <data_element id="7083" name="configurationOperationCode" usage="B" desc="Code specifying the configuration operation." type="an" maxlength="3"/>
   </segment>
-  <segment id="LOC" name="place/locationIdentification" desc="To identify a place or a location and/or related locations.">
+  <segment id="LOC" name="placeOrlocationIdentification" desc="To identify a place or a location and/or related locations.">
     <data_element id="3227" required="true" name="locationFunctionCodeQualifier" usage="C" desc="Code identifying the function of a location." type="an" maxlength="3"/>
     <composite_data_element id="C517" name="locationIdentification" desc="Identification of a location by code or name.">
       <data_element id="3225" name="locationIdentifier" usage="C" desc="To identify a location." type="an" maxlength="35"/>
@@ -1288,7 +1288,7 @@
       <data_element id="4294" name="changeReasonDescription" usage="B" desc="Free form description of the reason for change." type="an" maxlength="35"/>
     </composite_data_element>
   </segment>
-  <segment id="MKS" name="market/salesChannelInformation" desc="To specify to which market and/or through which sales distribution channel and/or for which end- use the sales of product/service have been made or are given as forecast.">
+  <segment id="MKS" name="marketOrsalesChannelInformation" desc="To specify to which market and/or through which sales distribution channel and/or for which end- use the sales of product/service have been made or are given as forecast.">
     <data_element id="7293" required="true" name="sectorAreaIdentificationCodeQualifier" usage="B" desc="Code qualifying identification of a subject area." type="an" maxlength="3"/>
     <composite_data_element id="C332" required="true" name="salesChannelIdentification" desc="Identification of sales channel for marketing data, sales, forecast, planning...">
       <data_element id="3496" required="true" name="salesChannelIdentifier" usage="B" desc="To identify a sales channel." type="an" maxlength="17"/>
@@ -2030,7 +2030,7 @@
       <data_element id="9012" name="statusReasonDescription" usage="B" desc="Free form description of the status reason." type="an" maxlength="256"/>
     </composite_data_element>
   </segment>
-  <segment id="TAX" name="duty/tax/feeDetails" desc="To specify relevant duty/tax/fee information.">
+  <segment id="TAX" name="dutyOrtaxOrfeeDetails" desc="To specify relevant duty/tax/fee information.">
     <data_element id="5283" required="true" name="dutyOrTaxOrFeeFunctionCodeQualifier" usage="B" desc="Code qualifying the function of a duty or tax or fee." type="an" maxlength="3"/>
     <composite_data_element id="C241" name="duty" desc="Code and/or name identifying duty, tax or fee.">
       <data_element id="5153" name="dutyOrTaxOrFeeTypeNameCode" usage="C" desc="Code specifying a type of duty, tax or fee." type="an" maxlength="3"/>
@@ -2057,7 +2057,7 @@
     <data_element id="3446" name="partyTaxIdentifier" usage="B" desc="To identify a number assigned to a party by a tax authority." type="an" maxlength="20"/>
     <data_element id="1227" name="calculationSequenceCode" usage="B" desc="Code specifying a calculation sequence." type="an" maxlength="3"/>
   </segment>
-  <segment id="TCC" name="charge/rateCalculations" desc="To specify charges.">
+  <segment id="TCC" name="chargeOrrateCalculations" desc="To specify charges.">
     <composite_data_element id="C200" name="charge" desc="Identification of a charge by code and/or by name.">
       <data_element id="8023" name="freightAndOtherChargesDescriptionIdentifier" usage="B" desc="Code identifying freight and other charges." type="an" maxlength="17"/>
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Code identifying a user or association maintained code list." type="an" maxlength="17"/>

@@ -3487,6 +3487,7 @@
     <code id="P3" title="Contact party 3" desc="Third party to contact."/>
     <code id="P4" title="Contact party 4" desc="Fourth party to contact."/>
     <code id="PA" title="Party to receive inspection report" desc="Party to whom the inspection report should be sent."/>
+    <code id="PAD" title="Party Administrator" desc="A party responsible for maintaining party information."/>
     <code id="PB" title="Paying financial institution" desc="Financial institution designated to make payment."/>
     <code id="PC" title="Actual purchaser's customer" desc="Party the purchaser within the actual message is selling the ordered goods or services to."/>
     <code id="PD" title="Purchaser's department buyer" desc="Purchasing department of buyer."/>
@@ -3646,9 +3647,6 @@
     <code id="WY" title="Destination terminal operator" desc="Party that operates a terminal to which goods or containers are destined."/>
     <code id="WZ" title="Departure terminal operator" desc="Party that operates a terminal from which goods or containers have departed or will depart."/>
     <code id="ZZZ" title="Mutually defined" desc="Party specification mutually agreed between interchanging parties."/>
-  </data_element>
-  <data_element id="3039">
-    <code id="1" title="Party Administrator" desc="A party responsible for maintaining party information."/>
   </data_element>
   <data_element id="3045">
     <code id="1" title="Name components in sequence as defined in description below" desc="Name component 1: Family name. Name component 2: Given name or initials. Name component 3: Given name or initials. Name component 4: Maiden name. Name component 5: Title Group of name components transmitted in sequence with name component 1 transmitted first. The maiden name is the family name given at birth of a female. Other names are self-explanatory."/>

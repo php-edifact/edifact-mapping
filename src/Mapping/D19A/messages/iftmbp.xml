@@ -80,6 +80,8 @@
   <group id="SG15" maxrepeat="99999">
     <segment id="GID" maxrepeat="1" required="true"/>
     <segment id="HAN" maxrepeat="1"/>
+    <segment id="TMP" maxrepeat="9"/>
+    <segment id="RNG" maxrepeat="9"/>
     <segment id="TMD" maxrepeat="1"/>
     <segment id="LOC" maxrepeat="9"/>
     <segment id="FTX" maxrepeat="9"/>
@@ -147,6 +149,7 @@
     <segment id="TPL" maxrepeat="9"/>
     <segment id="HAN" maxrepeat="1"/>
     <segment id="TMP" maxrepeat="1"/>
+    <segment id="RNG" maxrepeat="1"/>
     <segment id="FTX" maxrepeat="9"/>
     <segment id="RFF" maxrepeat="9"/>
     <group id="SG31" maxrepeat="9">
