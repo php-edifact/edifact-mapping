@@ -145,20 +145,28 @@ class MappingProvider
         return $this->_path.SEPARATOR.$this->_directory.SEPARATOR."segments.xml";
     }
 
+    public function loadServiceSegmentsXml()
+    {
+        return $this->loadXml($this->getServiceSegments(3));
+    }
+
+    public function loadSegmentsXml()
+    {
+        return $this->loadXml($this->getSegments());
+    }
+
     /**
      * convert segment definition from XML to array. Sequence of data_elements and
      * composite_data_element same as in XML
      *
      * @return array|false
      */
-    public function loadSegmentsXml()
+    public function loadXml($xmlFile)
     {
-
-        $segment_xml_file = $this->getSegments();
         // reset
         $segments = [];
 
-        $segments_xml = \file_get_contents($segment_xml_file);
+        $segments_xml = \file_get_contents($xmlFile);
         if ($segments_xml === false) {
             return false;
         }
@@ -169,7 +177,7 @@ class MappingProvider
         }
 
         // free memory
-        $segments_xml = null;
+        unset($segments_xml);
 
         foreach ($xml as $segmentNode) {
             \assert($segmentNode instanceof \SimpleXMLElement);
