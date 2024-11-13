@@ -1117,7 +1117,8 @@
       <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
       <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
     </composite_data_element>
-    <composite_data_element id="C829" name="sub" desc="To provide an indication that a segment or segment group is used to contain sub-line or sub-line item information and to optionally enable the sub-line to be identified.">
+    <composite_data_element id="C829" name="sublineInformation" desc="To provide an indication that a segment or segment group is used to contain sub-line or sub-line item information and to optionally enable the sub-line to be identified.">
+      <data_element id="5495" name="sublineIndicatorCoded" usage="B" desc="Indication that the segment and/or segment group is used for sub-line item information." type="an" maxlength="3"/>
       <data_element id="1082" name="lineItemNumber" usage="C" desc="Serial number designating each separate item within a series of articles." type="an" maxlength="6"/>
     </composite_data_element>
     <data_element id="1222" name="configurationLevel" usage="B" desc="Number indicating the level of an object which is in a hierarchy." type="n" maxlength="2"/>
@@ -1287,11 +1288,16 @@
     </composite_data_element>
     <composite_data_element id="C532" name="returnablePackageDetails" desc="Indication of responsibility for payment and load contents of returnable packages."/>
   </segment>
-  <segment id="PAI" name="paymentInstructions" desc="To specify the instructions for payment.">
-    <composite_data_element id="C534" required="true" name="paymentInstructionDetails" desc="Indication of method of payment employed or to be employed.">
-      <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
-    </composite_data_element>
-  </segment>
+    <segment id="PAI" name="paymentInstructions" desc="To specify the instructions for payment.">
+        <composite_data_element id="C534" required="true" name="paymentInstructionDetails" desc="Indication of method of payment employed or to be employed.">
+            <data_element id="4439" name="paymentConditionsCoded" usage="C" desc="Identification of the method employed or to be employed in order that a payment may be made or regarded as made. The method may or may not be tied to a guarantee." type="an" maxlength="3"/>
+            <data_element id="4431" name="paymentGuaranteeCoded" usage="B" desc="Identification of the means of guarantee." type="an" maxlength="3"/>
+            <data_element id="4461" name="paymentMeansCoded" usage="B" desc="Indication of the instrument of payment, which may include a guarantee." type="an" maxlength="3"/>
+            <data_element id="1131" name="codeListIdentificationCode" usage="C" desc="Identification of a code list." type="an" maxlength="3"/>
+            <data_element id="3055" name="codeListResponsibleAgencyCode" usage="C" desc="Code specifying the agency responsible for a code list." type="an" maxlength="3"/>
+            <data_element id="4435" name="paymentChannelCoded" usage="B" desc="Identification of the channel of payment." type="an" maxlength="3"/>
+        </composite_data_element>
+    </segment>
   <segment id="PAS" name="attendance" desc="To specify attendance information relating to an individual.">
     <data_element id="9443" required="true" name="attendanceTypeCodeQualifier" usage="B" desc="Code qualifying a type of attendance." type="an" maxlength="3"/>
     <composite_data_element id="C839" name="attendeeCategory" desc="To specify the category of the attendee.">
