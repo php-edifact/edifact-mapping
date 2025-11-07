@@ -20,6 +20,8 @@ class MappingProvider
 
     private $_directory = 'D95B';
     private $_path;
+    private $codes;
+
 
     /**
      * Constructor
@@ -46,23 +48,6 @@ class MappingProvider
     }
 
     /**
-     * UN/EDIFACT folders are in the format D\d{2}[A-C]{1}
-     *
-     * @param string $directory
-     *
-     * @return void
-     */
-    public function checkDirectoryFormat(string $directory)
-    {
-
-        if (preg_match('/^\d{2}[A-C]{1}$/', $directory)) {
-            return 'D'.$directory;
-        }
-
-        return $directory;
-    }
-
-    /**
      * Set directory
      *
      * @param string $directory
@@ -84,6 +69,33 @@ class MappingProvider
     public function setPath($path = null)
     {
         $this->_path = $path;
+    }
+
+    /**
+     * UN/EDIFACT folders are in the format D\d{2}[A-C]{1}
+     *
+     * @param string $directory
+     *
+     * @return void
+     */
+    public function checkDirectoryFormat(string $directory)
+    {
+
+        if (preg_match('/^\d{2}[A-C]{1}$/', $directory)) {
+            return 'D'.$directory;
+        }
+
+        return $directory;
+    }
+
+    /**
+     * Returns path
+     *
+     * @return string
+     */
+    public function getBasePath()
+    {
+        return $this->_path;
     }
 
     /**
@@ -136,6 +148,47 @@ class MappingProvider
     }
 
     /**
+     * Load a specific data element code list
+     *
+     * @param string $codeId The data element code ID (e.g., '0001', '3055')
+     *
+     * @return array|false
+     */
+    public function loadCodeDefinition($codeId)
+    {
+        $xmlFile = $this->getCodes();
+        $codes_xml = \file_get_contents($xmlFile);
+        if ($codes_xml === false) {
+            return false;
+        }
+
+        $xml = \simplexml_load_string($codes_xml);
+        if ($xml === false) {
+            return false;
+        }
+
+        // Find the data_element using XPath
+        $result = $xml->xpath("//data_element[@id='".$codeId."']");
+        if (empty($result)) {
+            return false;
+        }
+
+        $codeNode = $result[0];
+        $code = [
+            'attributes' => $this->readAttributesArray($codeNode),
+            'codes' => []
+        ];
+
+        // Parse individual code values
+        foreach ($codeNode->children() as $codeValue) {
+            \assert($codeValue instanceof \SimpleXMLElement);
+            $code['codes'][] = $this->readAttributesArray($codeValue);
+        }
+
+        return $code;
+    }
+
+    /**
      * Get path to segments.xml
      *
      * @return string
@@ -156,16 +209,15 @@ class MappingProvider
     }
 
     /**
-     * convert segment definition from XML to array. Sequence of data_elements and
-     * composite_data_element same as in XML
+     * Load a specific segment definition
+     *
+     * @param string $segmentId The segment ID (e.g., 'UNH', 'BGM')
      *
      * @return array|false
      */
-    public function loadXml($xmlFile)
+    public function loadSegmentDefinition($segmentId)
     {
-        // reset
-        $segments = [];
-
+        $xmlFile = $this->getSegments();
         $segments_xml = \file_get_contents($xmlFile);
         if ($segments_xml === false) {
             return false;
@@ -176,28 +228,43 @@ class MappingProvider
             return false;
         }
 
-        // free memory
-        unset($segments_xml);
-
-        foreach ($xml as $segmentNode) {
-            \assert($segmentNode instanceof \SimpleXMLElement);
-
-            $segmentNodeAttributes = $segmentNode->attributes();
-            if ($segmentNodeAttributes === null) {
-                continue;
-            }
-
-            $qualifier = (string) $segmentNodeAttributes->id;
-            $segment = [];
-            $segment['attributes'] = $this->readAttributesArray($segmentNode);
-            $details = $this->readXmlNodes($segmentNode);
-            if (!empty($details)) {
-                $segment['details'] = $details;
-            }
-            $segments[$qualifier] = $segment;
+        // Find the segment using XPath
+        $result = $xml->xpath("//segment[@id='".$segmentId."']");
+        if (empty($result)) {
+            return false;
         }
 
-        return $segments;
+        $segmentNode = $result[0];
+        $segment = [
+            'attributes' => $this->readAttributesArray($segmentNode),
+            'elements' => []
+        ];
+
+        // Parse data elements and composite data elements
+        foreach ($segmentNode->children() as $element) {
+            \assert($element instanceof \SimpleXMLElement);
+
+            $elementName = $element->getName();
+            $elementData = [
+                'type' => $elementName, // 'data_element' or 'composite_data_element'
+                'attributes' => $this->readAttributesArray($element)
+            ];
+
+            // If it's a composite, parse its components
+            if ($elementName === 'composite_data_element') {
+                $elementData['components'] = [];
+                foreach ($element->children() as $component) {
+                    \assert($component instanceof \SimpleXMLElement);
+                    $elementData['components'][] = [
+                        'attributes' => $this->readAttributesArray($component)
+                    ];
+                }
+            }
+
+            $segment['elements'][] = $elementData;
+        }
+
+        return $segment;
     }
 
     /**
@@ -213,14 +280,25 @@ class MappingProvider
         return $folder.SEPARATOR.strtolower($message).".xml";
     }
 
-    /**
-     * Returns path
-     *
-     * @return string
-     */
-    public function getBasePath()
+    public function loadMessageXml($message = "codeco")
     {
-        return $this->_path;
+        $xmlFilePath = $this->getMessage($message);
+        return $this->loadXml($xmlFilePath, false);
+    }
+
+    /**
+     * Get message names from folder in this directory
+     *
+     * @return array
+     */
+    public function listMessages()
+    {
+        $folder = $this->_path.SEPARATOR.$this->_directory.SEPARATOR."messages";
+        $messages = array_slice(scandir($folder), 2);
+        foreach ($messages as &$msg) {
+            $msg = str_replace('.xml', '', $msg);
+        }
+        return $messages;
     }
 
     /**
@@ -250,21 +328,6 @@ class MappingProvider
     }
 
     /**
-     * Get message names from folder in this directory
-     *
-     * @return array
-     */
-    public function listMessages()
-    {
-        $folder = $this->_path.SEPARATOR.$this->_directory.SEPARATOR."messages";
-        $messages = array_slice(scandir($folder), 2);
-        foreach ($messages as &$msg) {
-            $msg = str_replace('.xml', '', $msg);
-        }
-        return $messages;
-    }
-
-    /**
      * Get directory names from the selected folder
      *
      * @return array
@@ -272,6 +335,73 @@ class MappingProvider
     public function listDirectories()
     {
         return array_diff(scandir($this->_path), ['.', '..', 'MappingProvider.php']);
+    }
+
+    /**
+     * convert segment definition from XML to array. Sequence of data_elements and
+     * composite_data_element same as in XML
+     *
+     * @return array|false
+     */
+    private function loadXml($xmlFile, $keepDefaults = true)
+    {
+        $segments_xml = \file_get_contents($xmlFile);
+        if ($segments_xml === false) {
+            return false;
+        }
+
+        $xml = \simplexml_load_string($segments_xml);
+        if ($xml === false) {
+            return false;
+        }
+
+        unset($segments_xml);
+
+        $result = [];
+
+        // Handle defaults separately if needed
+        if ($keepDefaults && isset($xml->defaults)) {
+            $result['defaults'] = $this->readAttributesArray($xml->defaults);
+        }
+
+        $result['structure'] = $this->parseStructure($xml);
+
+        return $result;
+    }
+
+    private function parseStructure($parentNode)
+    {
+        $structure = [];
+
+        foreach ($parentNode as $node) {
+            \assert($node instanceof \SimpleXMLElement);
+
+            $nodeName = $node->getName();
+
+            // Skip defaults at this level
+            if ($nodeName === 'defaults') {
+                continue;
+            }
+
+            $nodeAttributes = $node->attributes();
+            if ($nodeAttributes === null) {
+                continue;
+            }
+
+            $item = [
+                'type' => $nodeName, // 'segment' or 'group'
+                'attributes' => $this->readAttributesArray($node)
+            ];
+
+            // If it's a group, recursively parse its children
+            if ($nodeName === 'group') {
+                $item['children'] = $this->parseStructure($node);
+            }
+
+            $structure[] = $item;
+        }
+
+        return $structure;
     }
 
     /**
