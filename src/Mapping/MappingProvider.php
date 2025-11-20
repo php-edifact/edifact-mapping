@@ -113,7 +113,7 @@ class MappingProvider
      *
      * @return array|false
      */
-    public function loadCodesXml()
+    public function loadCodesXml($all = false)
     {
         $xmlFilePath = $this->getCodes();
         $codesXmlString = \file_get_contents($xmlFilePath);
@@ -139,7 +139,14 @@ class MappingProvider
                 $codeAttributes = $codeNode->attributes();
                 if ($codeAttributes !== null) {
                     $code = (string) $codeAttributes->id;
-                    $this->codes[$id][$code] = (string) $codeAttributes->desc;
+                    if ($all) {
+                        $this->codes[$id][$code] = [
+                            'desc' => (string) $codeAttributes->desc,
+                            'title' => (string) $codeAttributes->title,
+                        ];
+                    } else {
+                        $this->codes[$id][$code] = (string) $codeAttributes->desc;
+                    }
                 }
             }
         }
